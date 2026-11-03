@@ -1,0 +1,21 @@
+# 강의 노트
+
+[레포지토리 안내](../README.ko.md) | [English](README.md) | [한국어](README.ko.md)
+
+> **최종 수정일:** 2026-11-04
+
+| 단원 | 주제 | 문서 |
+|:-----|:-----|:-----|
+| [1주차 미래차로의 변혁과 자동차 통신의 필요성](Week01_Future-Vehicles-and-the-Need-for-Automotive-Communication/) | 미래차 산업의 키워드 C.A.S.E., 주요국의 자율주행 정책과 로드맵, 세계와 국내 자동차 산업 현황, 자동차의 기본 구조와 차량 내부 네트워크(IVN)의 필요성, V2X 통신의 분류와 커넥티드카, 자율주행차의 센서 데이터량과 무선 통신 방식, 커넥티드카 정책과 C-ITS | [강의 노트](Week01_Future-Vehicles-and-the-Need-for-Automotive-Communication/Concepts_Lecture.ko.md) |
+| [2주차 자동차 아키텍처 변화와 산업 변혁](Week02_Vehicle-Architecture-and-Industry-Transformation/) | 자율주행 레벨의 정의, 자율주행차 플랫폼과 산업 생태계, E/E 아키텍처, 대형버스용 자율주행 시스템 아키텍처와 네트워크 토폴로지, 차량 전장 기능과 하네스, IVN의 개념과 장점, X-by-wire 시스템(FBW, SBW, BBW), 실시간성과 전송 속도에 따른 IVN 분류, 한국자동차연구원(KATECH) | [강의 노트](Week02_Vehicle-Architecture-and-Industry-Transformation/Concepts_Lecture.ko.md) |
+| [3주차 CAN 버스 입문, 차량용 네트워크, 네트워크의 분류](Week03_Introduction-to-CAN-Bus/) | CAN 버스의 개요와 관련 표준, 비트 스터핑, 버스 신호 레벨과 종단 저항, CAN 2.0A와 2.0B 메시지 프레임, ID 기반 중재와 방송형 통신, 오류 검출, CAN 기반 바디 제어 시스템, 차량용 프로토콜 비교(LIN, FlexRay, MOST, KWP2000, OBD-II), WAN, MAN, LAN, 자율주행차의 물리적 구성 | [강의 노트](Week03_Introduction-to-CAN-Bus/Concepts_Lecture.ko.md) |
+| [4주차 데이터 통신의 용어와 인코딩, 전송 매체, 교환 방식](Week04_Data-Communication-Terms-Media-and-Switching/) | 데이터 통신의 주요 용어, 디지털 데이터와 아날로그 정보의 인코딩(ASK, FSK, PSK, NRZ, 바이페이즈 부호), 샘플링 정리와 PCM, FDM과 TDM, 유도 매체(꼬임쌍선, 동축 케이블, 광섬유)와 비유도 매체, 회선 교환과 패킷 교환, 프레임 릴레이와 ATM, 일본자동차연구소(JARI) | [강의 노트](Week04_Data-Communication-Terms-Media-and-Switching/Concepts_Lecture.ko.md) |
+| [5주차 프로토콜과 계층 구조](Week05_Protocols-and-Layered-Architecture/) | 네트워크 프로토콜, TCP/IP 계층과 데이터 전송, TCP 세그먼트와 IP 데이터그램의 헤더, 라우터의 역할, OSI 7계층 모델과 계층별 기능, OSI와 TCP/IP의 비교 | [강의 노트](Week05_Protocols-and-Layered-Architecture/Concepts_Lecture.ko.md) |
+| [6주차 네트워크 토폴로지](Week06_Network-Topologies/) | 네트워크 연결 장비(리피터, 허브, 브리지, 스위치, 라우터, 게이트웨이), 버스, 트리, 링, 스타 토폴로지, 토폴로지와 전송 매체의 선택, 기저대역과 광대역 동축 케이블, 링 리피터와 타이밍 지터, 스타 LAN, 구조화된 케이블 시스템, 영국의 HORIBA MIRA | [강의 노트](Week06_Network-Topologies/Concepts_Lecture.ko.md) |
+| [7주차 LLC와 MAC, CSMA/CD, 브리지와 라우터, CRC](Week07_LLC-MAC-and-CSMA-CD/) | IEEE 802 참조 모델, LLC의 서비스와 주소 지정(LSAP, 그룹 주소), MAC의 제어 위치와 방식(라운드 로빈, 예약, 경합), ALOHA, CSMA, CSMA/CD, 브리지와 라우터, CRC, IEEE 802 표준 기술위원회 | [강의 노트](Week07_LLC-MAC-and-CSMA-CD/Concepts_Lecture.ko.md) |
+| [9주차 차량용 IVN 상세: LIN, FlexRay, 차량용 이더넷, CAN, CAN FD](Week09_In-Vehicle-Networks/) | 차량 전장 시스템과 도메인별 프로토콜 비교, LIN의 마스터/슬레이브 구조와 메시지 프레임, FlexRay의 프레임과 매체 접근 제어, 차량용 이더넷, CAN의 물리 계층, 프레임 형식, 중재, 오류 처리, CAN FD | [강의 노트](Week09_In-Vehicle-Networks/Concepts_Lecture.ko.md) |
+| [10주차 CAN 통신 실습](Week10_CAN-Communication-Practice/) | CAN의 특징과 역사, 정보의 인코딩과 비트 순서, UART와 통신 속도, CAN 토폴로지와 신호 레벨, CAN 메시지 프레임과 식별자 우선순위, CRC 계산과 검산, CAN FD, OBD-II, CAN 모니터링 장비와 신호선 연결, 종단 저항, CAN DB와 DBC 파일, 메시지와 시그널의 Factor, Offset 변환, 로직 애널라이저, Kvaser CanKing, Vector CANoe를 이용한 CAN 통신 실습 | [강의 노트](Week10_CAN-Communication-Practice/Concepts_Lecture.ko.md) |
+| [11주차 커넥티드 자율주행의 개요와 활용, V2X 메시지](Week11_Connected-Automated-Driving-and-V2X-Messages/) | 커넥티드 자율주행의 용어와 국가별 기술 분류, ITS와 C-ITS, 안전 관점에서 본 V2X의 필요성, 군집주행과 ADAS 사례, 원격 주행, 텔레매틱스와 커넥티드카 서비스 분류, 커넥티드카 보안과 HMI, 자차 센서 기반 자율주행 기술, 커넥티드카 메시지 교환과 V2X 메시지 규격(SAE J2735) | [강의 노트](Week11_Connected-Automated-Driving-and-V2X-Messages/Concepts_Lecture.ko.md) |
+| [12주차 각국의 커넥티드 자율주행](Week12_Connected-Automated-Driving-by-Country/) | 미국의 C-ITS 표준화와 Connected Vehicle 로드맵(CAMP, VSC, VII), 유럽의 EU 프로젝트와 C2C-CC, 일본의 SIP-adus와 자율주행 실증, 한국의 KADIF와 한국자동차연구원 과제, K-City와 C-ITS 시범 사업, UTIS | [강의 노트](Week12_Connected-Automated-Driving-by-Country/Concepts_Lecture.ko.md) |
+| [13주차 무선 통신, DSRC, WAVE](Week13_Wireless-Communication-DSRC-and-WAVE/) | OSI 7계층과 무선 통신의 물리 계층, 데이터 링크 계층, 네트워크 계층(라우팅, 가상 회선과 데이터그램, IPv4와 IPv6), DSRC 프로토콜 스택과 하이패스(ETCS), IEEE 802.11 무선 LAN, IEEE WAVE(IEEE 802.11p, IEEE 1609)와 WSMP, WAVE EPS, 프랑스의 UTAC | [강의 노트](Week13_Wireless-Communication-DSRC-and-WAVE/Concepts_Lecture.ko.md) |
+| [14주차 C-V2X, CALM, 자율주행 통신의 법규제와 보급정책](Week14_C-V2X-CALM-and-Regulations/) | 이동통신의 발전과 3GPP, 5G NR, ProSe와 C-V2X 통신 모드, NR-V2X, IEEE 802.11p와 C-V2X의 비교, C-V2X 유즈케이스와 5GAA, CALM 아키텍처(ISO TC204 WG16)와 관리 기능, UN/ECE WP29 규제, 자율주행 규제혁파 로드맵(OTA, 사이버 보안, S/W 업데이트), V2X 통신 의무 장착과 보급 현황 | [강의 노트](Week14_C-V2X-CALM-and-Regulations/Concepts_Lecture.ko.md) |
