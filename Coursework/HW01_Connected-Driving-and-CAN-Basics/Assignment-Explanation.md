@@ -120,7 +120,7 @@ The line colors in Figure 2 indicate the network type: blue is CAN, green is CAN
 | Module | Connected Network | What It Does |
 |:-----|:-----|:-----|
 | LIDAR (four corner units, three wide-field units, an additional LIDAR) | Ethernet (through the LIDAR HUB to LIDAR Processing) | Measures the surroundings as a 3D point cloud |
-| MAP & Positioning | Ethernet (with GPS input) | Provides the precision map and the vehicle's precise position |
+| MAP & Positioning | Ethernet (with GPS input), USB | Provides the precision map and the vehicle's precise position |
 | ADR (with camera) | Ethernet | A multi-channel recorder for buses that records driving data including camera video |
 | HVI | Ethernet, USB | An interface device that shows information to the driver and takes input (the HMI for buses) |
 | HAV-DCU | Ethernet, CAN, CAN FD | The autonomous driving controller that gathers perception results and handles decision and control |
@@ -143,9 +143,9 @@ The key reason for using Ethernet is **bandwidth**. The maximum data rate of sta
 
 Computing the amount of data a lidar produces makes the difference clear. The 64-channel lidar covered in Week 1 (Velodyne HDL-64) outputs about 2.2 million points per second. Assuming each point is represented with 2 bytes of distance and 1 byte of reflectance intensity, 3 bytes in total, gives the following.
 
-$$
+```math
 2.2 \times 10^{6}\ \text{points/s} \times 3\ \text{B/point} \times 8\ \text{bit/B} = 52.8\ \text{Mbit/s}
-$$
+```
 
 This is more than 50 times the 1 Mbit/s bandwidth of CAN, so it cannot be sent over CAN but fits on 100 Mbit/s Ethernet. If the lidar instead completes object recognition internally and sends only distance, azimuth, and object type, the data shrinks to about 5 kB per second (40 kbit/s), and CAN is sufficient. The radars and the multi cameras in Figure 2 are connected to CAN because they send only such processed object information.
 
@@ -251,9 +251,9 @@ The termination resistors do two things.
 
 The two resistors are connected in parallel between CAN_H and CAN_L, so the equivalent resistance of the whole bus is as follows.
 
-$$
+```math
 R_{\text{eq}} = \frac{1}{\dfrac{1}{120\ \Omega} + \dfrac{1}{120\ \Omega}} = 60\ \Omega
-$$
+```
 
 This value is used to check the wiring. Measuring the resistance between CAN_H and CAN_L with the power off gives about 60 Ω when everything is normal. About 120 Ω means one termination resistor is missing or a wire is broken, about 40 Ω means one extra 120 Ω resistor is attached (three in parallel), and close to 0 Ω means the two lines are shorted.
 
@@ -375,7 +375,7 @@ Bits b10-b6 are the same for all three IDs. At b5 only 0x67F sends recessive (1)
 
 The RTR bit after the ID also takes part in arbitration, so for the same ID a data frame, whose RTR is dominant, beats a remote frame, whose RTR is recessive. System designers use this property to assign small IDs to messages that are dangerous if late, such as braking and steering, and large IDs to messages that are not urgent, such as information displays.
 
-> **Caution:** Arbitration decides only between different IDs. If two nodes on one network send data frames with the same ID, arbitration produces no winner in the arbitration field and bit errors arise in the data field, so data frame IDs are assigned so that they do not overlap between sending nodes.
+> **Caution:** Arbitration decides only between different IDs. If two nodes on one network send data frames with the same ID, arbitration produces no winner in the arbitration field, both nodes keep transmitting together, and bit errors arise if the bits of the following control or data field differ, so data frame IDs are assigned so that they do not overlap between sending nodes.
 
 ---
 
@@ -415,7 +415,7 @@ The RTR bit after the ID also takes part in arbitration, so for the same ID a da
    <details>
    <summary>Answer</summary>
 
-   It cannot. $10^{6} \times 3 \times 8 = 24\ \text{Mbit/s}$, which is 48 times 500 kbit/s. Raw point clouds are sent over Ethernet, and only processed object information is sent over CAN.
+   It cannot. $`10^{6} \times 3 \times 8 = 24\ \text{Mbit/s}`$, which is 48 times 500 kbit/s. Raw point clouds are sent over Ethernet, and only processed object information is sent over CAN.
 
    </details>
 

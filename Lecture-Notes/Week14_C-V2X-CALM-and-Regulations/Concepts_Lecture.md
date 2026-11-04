@@ -87,7 +87,7 @@ Mobile communication has advanced by one generation roughly every ten years. Fig
 
 *Table 1. Features of each mobile communication generation*
 
-> **Definition:** **Analog mobile communication** carries the waveform of the voice signal directly on a carrier, while **digital mobile communication** converts the voice into a bit stream of 0s and 1s before sending it. Digital systems allow error correction and encryption and can accommodate more users on the same frequency. **AMPS (Advanced Mobile Phone System)** is the first-generation analog standard of the United States, **GSM (Global System for Mobile communications)** is a second-generation time-division standard that started in Europe, and **CDMA (code division multiple access)** is a second-generation method that lets users share the same frequency at the same time by multiplying each user's signal by a different code.
+> **Definition:** **Analog mobile communication** carries the waveform of the voice signal directly on a carrier, while **digital mobile communication** converts the voice into a bit stream of 0s and 1s before sending it. Digital systems allow error correction and encryption and can accommodate more users on the same frequency. **AMPS (Advanced Mobile Phone System)** is the first-generation analog standard of the United States, **GSM (Global System for Mobile communications)** is a second-generation time-division standard that started in Europe, and **CDMA (code division multiple access)** is a multiple access method that lets users share the same frequency at the same time by multiplying each user's signal by a different code; in the second generation, the American IS-95 standard used it.
 
 Standards from several camps competed in each generation. Figure 2 summarizes the lineage of the standards by generation [2].
 
@@ -105,7 +105,7 @@ flowchart LR
 
 *Figure 2. Lineage of mobile communication standards by generation*
 
-In Figure 2, the CDMA family that started from the American AMPS (IS-95, CDMA2000, EV-DO) was managed by a standards body called 3GPP2, and the family that started from the European GSM (GPRS, EDGE, WCDMA, HSPA) was managed by 3GPP. IEEE created the WiMAX family, which extends wireless LAN technology to wide areas. Third-generation standards were developed to meet the ITU requirements called IMT-2000, fourth-generation standards IMT-Advanced, and fifth-generation standards IMT-2020. From the fourth generation onward, the LTE family of 3GPP became the de facto single worldwide standard, and 5G is also developed by 3GPP.
+In Figure 2, within the CDMA family that started from the American AMPS, IS-95 is a standard of the U.S. Telecommunications Industry Association (TIA), and the third-generation CDMA2000 and EV-DO were managed by a standards body called 3GPP2. The family that started from the European GSM (GPRS, EDGE, WCDMA, HSPA) was managed by 3GPP, and China's third-generation standard TD-SCDMA was also included in the 3GPP specifications. IEEE created the WiMAX family based on its wireless MAN standard IEEE 802.16. Third-generation standards were developed to meet the ITU requirements called IMT-2000, fourth-generation standards IMT-Advanced, and fifth-generation standards IMT-2020. From the fourth generation onward, the LTE family of 3GPP became the de facto single worldwide standard, and 5G is also developed by 3GPP.
 
 > **Definition:** **GPRS (General Packet Radio Service)** and **EDGE (Enhanced Data rates for GSM Evolution)** are technologies that add packet data transmission to GSM networks, and **WCDMA (Wideband CDMA)** is the third-generation standard of 3GPP. **HSPA (High Speed Packet Access)** is an enhancement that raises the downlink (HSDPA) and uplink (HSUPA) data rates of WCDMA. **LTE (Long Term Evolution)** is the fourth-generation radio access technology of 3GPP, and LTE-Advanced is LTE improved to meet the IMT-Advanced requirements.
 
@@ -199,13 +199,13 @@ The meaning of each indicator is as follows [4].
 
 Why latency matters for vehicle safety becomes clear when it is expressed as the distance a vehicle travels. A vehicle driving at 100 km/h moves at $100{,}000 / 3{,}600 \approx 27.8$ m per second.
 
-$$
+```math
 \begin{aligned}
 \text{Distance traveled in 10 ms} &= 27.8\ \text{m/s} \times 0.010\ \text{s} \approx 0.28\ \text{m} \\
 \text{Distance traveled in 1 ms} &= 27.8\ \text{m/s} \times 0.001\ \text{s} \approx 0.028\ \text{m} = 2.8\ \text{cm} \\
 \text{Distance traveled in 100 ms} &= 27.8\ \text{m/s} \times 0.100\ \text{s} \approx 2.8\ \text{m}
 \end{aligned}
-$$
+```
 
 If a warning message arrives 100 ms late, the vehicle travels about 2.8 m further in the meantime, and the margin for avoiding a collision shrinks by that much. In contrast, downloading a 1 GB (= 8 Gb) file takes $8 / 1 = 8$ seconds at a peak data rate of 1 Gbps and $8 / 20 = 0.4$ seconds at 20 Gbps; this difference is a matter of convenience, not of safety.
 
@@ -213,7 +213,7 @@ If a warning message arrives 100 ms late, the vehicle travels about 2.8 m furthe
 
 *Figure 6. Importance of key capabilities in different usage scenarios*
 
-Figure 6 marks how important each indicator is in the three scenarios as high, medium, or low. For eMBB, the peak data rate, user-experienced data rate, area traffic capacity, and spectrum efficiency are important; for mMTC, connection density and energy efficiency are important. For URLLC, latency and mobility are important. In some ultra-reliable low-latency scenarios, especially safety-critical applications, low latency can be the most important, and when used for mobility and traffic safety, low-latency performance can matter more than a high data rate [4].
+Figure 6 marks how important each indicator is in the three scenarios as high, medium, or low. For eMBB, the peak data rate, user-experienced data rate, area traffic capacity, spectrum efficiency, energy efficiency, and mobility are all high, while latency and connection density are medium. For mMTC, connection density is high and energy efficiency is medium; for URLLC, latency and mobility are high; the remaining indicators of these two scenarios are low. In some ultra-reliable low-latency scenarios, especially safety-critical applications, low latency can be the most important, and when used for mobility and traffic safety, low-latency performance can matter more than a high data rate [4].
 
 The representative use cases and performance targets of each of the three 5G categories are given in Table 5. The use cases can also be divided by the combination of communicating parties into human-to-human, human-to-machine, and machine-to-machine communication [1].
 
@@ -401,7 +401,7 @@ Figure 15 shows cases with a relay device (UE-R). In A, the UE-R within coverage
 
 ### 1.7 LTE-V2X Operation Scenarios
 
-3GPP TR 36.885 defined three operation scenarios for LTE-based V2X [12]. The E-UTRAN shown in the figures is the LTE radio access network, that is, the LTE base station. The operation scenarios of NR-V2X, which is based on NR, are covered in Section 1.8.
+3GPP TR 36.885 defined three operation scenarios for LTE-based V2X [13]. The E-UTRAN shown in the figures is the LTE radio access network, that is, the LTE base station. The operation scenarios of NR-V2X, which is based on NR, are covered in Section 1.8.
 
 **Scenario 1: PC5-based.** A vehicle UE sends a V2X message directly to multiple nearby UEs over the sidelink (SL). It does not go through a base station.
 
@@ -444,7 +444,7 @@ In V2I of Figure 17, the base station itself acts as the roadside unit (E-UTRAN 
 
 ### 1.8 NR-V2X Operation Scenarios
 
-3GPP TR 38.885 defined the operation scenarios of NR-based V2X [13]. An NR-V2X vehicle can use both the NR sidelink (NR V2X SL) and the LTE sidelink (LTE V2X SL), and the scenarios differ in which base station provides the control and configuration information for the two sidelinks.
+3GPP TR 38.885 defined the operation scenarios of NR-based V2X [14]. An NR-V2X vehicle can use both the NR sidelink (NR V2X SL) and the LTE sidelink (LTE V2X SL), and the scenarios differ in which base station provides the control and configuration information for the two sidelinks.
 
 ![Figure 20. Standalone scenarios of NR-V2X](../../images/Week14_p32.png)
 
@@ -480,11 +480,11 @@ The PC5 interface of the sidelink, the direct communication link of C-V2X, start
 
 *Table 14. Evolution of C-V2X features by 3GPP release*
 
-> **Note:** The completion dates in Table 14 are the schedules given in industry materials (Qualcomm, 5GAA) from around 2020 [14]. Release 16 was delayed and was completed (frozen) in July 2020 [15]. A **release freeze** means finalizing the specifications without adding new features to that release.
+> **Note:** The completion dates in Table 14 are the schedules given in industry materials (Qualcomm, 5GAA) from around 2020 [15]. Release 16 was delayed and was completed (frozen) in July 2020 [16]. A **release freeze** means finalizing the specifications without adding new features to that release.
 
 > **Definition:** A **vulnerable road user (VRU)** is a road user with almost no protection in a collision with a vehicle, such as a pedestrian, cyclist, or motorcyclist.
 
-C-V2X has two complementary transmission modes [14].
+C-V2X has two complementary transmission modes [15].
 
 ![Figure 22. Network communications and direct communications of C-V2X](../../images/Week14_p36.png)
 
@@ -501,7 +501,7 @@ On the left of Figure 22, two vehicles communicate through a base station (eNode
 
 > **Definition:** **Licensed spectrum** is a frequency band for which the government has granted exclusive use rights to a specific operator, and an **ITS band** is a band designated for intelligent transport systems. The allocation of the 5.9 GHz band differs by country and was summarized in Week 1.
 
-C-V2X direct communication has three characteristics that let it manage itself without a network (self-managed) [14].
+C-V2X direct communication has three characteristics that let it manage itself without a network (self-managed) [15].
 
 | Characteristic | Content |
 |:-----|:-----|
@@ -513,7 +513,7 @@ C-V2X direct communication has three characteristics that let it manage itself w
 
 > **Definition:** A **USIM (Universal Subscriber Identity Module)** is the chip (SIM card) that holds the information used to authenticate a mobile subscriber. **GNSS (Global Navigation Satellite System)** is the collective name for satellite navigation systems such as GPS, Galileo, GLONASS, and BeiDou, which provide not only position but also precise time information.
 
-Time synchronization is needed because the sidelink divides time into intervals of fixed length and shares resources by these intervals. All devices must agree on the start times of the intervals to use the same resource pool without overlapping. GNSS is already required for positioning in every V2X technology, including IEEE 802.11p, and the time is obtained as part of the position calculation and requires fewer satellites than positioning does [14].
+Time synchronization is needed because the sidelink divides time into intervals of fixed length and shares resources by these intervals. All devices must agree on the start times of the intervals to use the same resource pool without overlapping. GNSS is already required for positioning in every V2X technology, including IEEE 802.11p, and the time is obtained as part of the position calculation and requires fewer satellites than positioning does [15].
 
 ### 1.10 C-V2X Standardization Roadmap and 5G-V2X
 
@@ -521,7 +521,7 @@ Time synchronization is needed because the sidelink divides time into intervals 
 
 *Figure 23. Evolution of V2X technology to 5G while maintaining backward compatibility*
 
-Figure 23 shows V2X technology evolving in three stages while maintaining backward compatibility [14]. The first stage, **basic safety**, establishes the foundation for V2X with IEEE 802.11p or C-V2X Rel-14. The second stage, **enhanced safety**, improves communication range and reliability with C-V2X Rel-14 and Rel-15. The third stage, **advanced safety**, provides higher data rates and reliability, wideband ranging and positioning, and lower latency with C-V2X Rel-16, which builds upon Rel-14.
+Figure 23 shows V2X technology evolving in three stages while maintaining backward compatibility [15]. The first stage, **basic safety**, establishes the foundation for V2X with IEEE 802.11p or C-V2X Rel-14. The second stage, **enhanced safety**, improves communication range and reliability with C-V2X Rel-14 and Rel-15. The third stage, **advanced safety**, provides higher data rates and reliability, wideband ranging and positioning, and lower latency with C-V2X Rel-16, which builds upon Rel-14.
 
 | Item | D2D communications (Rel-12/13) | Enhanced safety (Rel-14 phase I, Rel-15 phase II) | Autonomous driving (Rel-16 5G NR, phase III) |
 |:-----|:-----|:-----|:-----|
@@ -539,7 +539,7 @@ Figure 23 shows V2X technology evolving in three stages while maintaining backwa
 
 > **Definition:** **Broadcast** sends to all devices in range, **unicast** sends to one specific device, and **multicast** sends to a specific group of devices (for example, the vehicles of a platoon). Because the sidelink of Rel-14 and Rel-15 supports only broadcast, every message is delivered to everyone nearby. Communication with a specific partner, such as two vehicles negotiating their driving plans, requires unicast.
 
-5G NR provides new radio technologies for both direct and network communications [14].
+5G NR provides new radio technologies for both direct and network communications [15].
 
 | New 5G NR technology | Meaning |
 |:-----|:-----|
@@ -552,11 +552,11 @@ Figure 23 shows V2X technology evolving in three stages while maintaining backwa
 
 *Table 18. New 5G NR technologies for 5G-V2X*
 
-LDPC codes for the data channels and polar codes for the control channels are defined in the NR channel coding specification [16]. Thanks to these technologies, PC5 direct communication gains higher data rates and URLLC capabilities and is designed to work without network assistance in the ITS spectrum, and Uu network communication also gains higher data rates and URLLC capabilities in licensed spectrum.
+LDPC codes for the data channels and polar codes for the control channels are defined in the NR channel coding specification [17]. Thanks to these technologies, PC5 direct communication gains higher data rates and URLLC capabilities and is designed to work without network assistance in the ITS spectrum, and Uu network communication also gains higher data rates and URLLC capabilities in licensed spectrum.
 
 > **Definition:** **OFDM (orthogonal frequency division multiplexing)** divides a wide band into many narrow **subcarriers** that do not interfere with each other and sends data over them in parallel. A **numerology** is the combination of subcarrier spacing and the symbol length and slot length determined by it.
 
-The subcarrier spacing of NR is $\Delta f = 15 \times 2^\mu$ kHz, one slot consists of 14 OFDM symbols, and the slot length is $1 / 2^\mu$ ms [17]. The wider the subcarrier spacing, the shorter the symbols and slots, and the lower the latency.
+The subcarrier spacing of NR is $\Delta f = 15 \times 2^\mu$ kHz, one slot consists of 14 OFDM symbols, and the slot length is $1 / 2^\mu$ ms [18]. The wider the subcarrier spacing, the shorter the symbols and slots, and the lower the latency.
 
 | $\mu$ | Subcarrier spacing | Slot length |
 |:-----|:-----|:-----|
@@ -569,15 +569,15 @@ The subcarrier spacing of NR is $\Delta f = 15 \times 2^\mu$ kHz, one slot consi
 
 A wide subcarrier spacing is also robust against the **Doppler effect** that arises in fast vehicles. The Doppler frequency shift is $f_d = v f_c / c$. Two vehicles approaching each other at 120 km/h each have a relative speed of 240 km/h, that is, $240{,}000 / 3{,}600 \approx 66.7$ m/s. Substituting the carrier frequency $f_c = 5.9$ GHz and the speed of light $c = 3 \times 10^8$ m/s gives the following.
 
-$$
+```math
 f_d = \frac{66.7 \times 5.9 \times 10^9}{3 \times 10^8} = 66.7 \times 19.67 \approx 1{,}311\ \text{Hz}
-$$
+```
 
-This shift is about $1{,}311 / 15{,}000 \approx 8.7\%$ of a 15 kHz spacing but shrinks to about 4.4% of a 30 kHz spacing, so the interference between subcarriers becomes smaller.
+This shift is about $`1{,}311 / 15{,}000 \approx 8.7\%`$ of a 15 kHz spacing but shrinks to about 4.4% of a 30 kHz spacing, so the interference between subcarriers becomes smaller.
 
 Why wideband transmission helps positioning can also be calculated simply. The resolution with which a signal of bandwidth $B$ can distinguish arrival times is roughly $1/B$. For $B = 100$ MHz this is $1 / (100 \times 10^6) = 10$ ns, and light travels $3 \times 10^8 \times 10 \times 10^{-9} = 3$ m in 10 ns, so the distance resolution is about 3 m. Widening the bandwidth to 400 MHz improves it to about 0.75 m.
 
-With 5G-V2X, connected cars gain the following capabilities. They rely on wideband carrier support, high throughput, ultra-low latency, ultra-high reliability, and strong security, while maintaining backward compatibility with existing capabilities [14].
+With 5G-V2X, connected cars gain the following capabilities. They rely on wideband carrier support, high throughput, ultra-low latency, ultra-high reliability, and strong security, while maintaining backward compatibility with existing capabilities [15].
 
 | Capability | Content |
 |:-----|:-----|
@@ -598,7 +598,7 @@ As Figure 24 shows, 5G NR C-V2X complements rather than replaces Rel-14. Rel-14 
 
 ### 1.11 Upper Layer Architecture of C-V2X
 
-C-V2X newly defines only the radio segment (lower layers) and reuses the upper layers already defined by the automotive industry [14].
+C-V2X newly defines only the radio segment (lower layers) and reuses the upper layers already defined by the automotive industry [15].
 
 ![Figure 25. Protocol stack of C-V2X and the reused upper layers](../../images/Week14_p45.png)
 
@@ -608,7 +608,7 @@ C-V2X newly defines only the radio segment (lower layers) and reuses the upper l
 - **Reuse of existing security and transport layers:** The security, transport, and network protocols defined by ISO, ETSI, and the IEEE 1609 family are used as they are.
 - **Continuous enhancements to the radio and lower layers:** 3GPP develops the lower layers to support the ever-evolving V2X use cases.
 
-The upper part of Figure 25 (blue) consists of the applications (safety and non-safety), the message and facilities layer, UDP/TCP and IPv6, the IEEE, ETSI, and ISO transport and network layers, and security services; this part reuses and adapts other standards. The lower part (green) is the scope of 3GPP and consists of ProSe signaling, the path that does not use IP (Non-IP), PDCP, RLC, MAC, and PHY. The SAE J2735 messages of the message layer were covered in Week 11, and the IEEE 1609 family in Week 13.
+The upper part of Figure 25 (blue) consists of the applications (safety and non-safety), the message and facilities layer, UDP/TCP and IPv6, the IEEE, ETSI, and ISO transport and network layers, and security services; this part reuses and adapts other standards. The lower part (green) is the scope of 3GPP and consists of ProSe signaling, the path that does not use IP (Non-IP), PDCP, RLC, MAC, and PHY. In addition, the network architecture and system design of LTE Direct were also enhanced to support V2X. The SAE J2735 messages of the message layer were covered in Week 11, and the IEEE 1609 family in Week 13.
 
 > **Definition:** In the radio protocol stack of LTE and NR, the **PHY** is the physical layer that modulates signals and sends them as radio waves, **MAC (Medium Access Control)** is the layer that shares radio resources, **RLC (Radio Link Control)** is the layer responsible for segmenting and retransmitting packets, and **PDCP (Packet Data Convergence Protocol)** is the layer responsible for header compression and ciphering.
 
@@ -631,11 +631,11 @@ The upper part of Figure 25 (blue) consists of the applications (safety and non-
 
 In Table 21, C-V2X is rated more favorably than 802.11p in direct communication latency, support for network communication, and evolution path. Both technologies operate in the 5.9 GHz ITS band without a base station and do not require a SIM, and their V2V, V2I, and V2P security uses the same IEEE WAVE and ETSI ITS security services. An **AP (access point)** is the access point of a wireless LAN; the entry means that an 802.11p device can connect to a network only through an access point such as a roadside unit.
 
-> **Note:** Table 21 comes from Qualcomm, which supplies C-V2X chipsets, so it reflects a perspective favorable to C-V2X. An 802.11p device can also receive network services through a roadside unit connected to the Internet, and IEEE 802.11bd (NGV, Next Generation V2X), which maintains backward compatibility, was standardized in 2022 as the evolution path of 802.11p [18]. The two entries that call 802.11p's network communication limited and say it has no evolution path are therefore difficult to accept as they are. The comparison table of vehicle communication methods in Week 1 also includes IEEE 802.11bd as a variant of WAVE. The completion dates in Table 21 are also projections of that time. Rel-14 completed V2V in September 2016 and the full V2X feature in March 2017 (ASN.1 freeze June 2017), Rel-15 was frozen in June 2018, and Rel-16 in July 2020.
+> **Note:** Table 21 comes from Qualcomm, which supplies C-V2X chipsets, so it reflects a perspective favorable to C-V2X. An 802.11p device can also receive network services through a roadside unit connected to the Internet, and IEEE 802.11bd (NGV, Next Generation V2X), which maintains backward compatibility, was standardized in 2022 as the evolution path of 802.11p [19]. The two entries that call 802.11p's network communication limited and say it has no evolution path are therefore difficult to accept as they are. The comparison table of vehicle communication methods in Week 1 also includes IEEE 802.11bd as a variant of WAVE. The completion dates in Table 21 are also projections of that time. Rel-14 completed V2V in September 2016 and the full V2X feature in March 2017 (ASN.1 freeze June 2017), Rel-15 was frozen in June 2018, and Rel-16 in July 2020.
 
 ### 1.13 C-V2X Use Cases
 
-5GAA organized the evolution of C-V2X use cases for connected cooperative driving along two axes [19]. The cooperation axis advances from only warning the driver (connected driver warning) to assisting driving (connected driver assistance) to vehicles driving cooperatively with each other (connected cooperative driving), and the automation axis advances from traffic efficiency and safety to advanced safety to automated driving.
+5GAA organized the evolution of C-V2X use cases for connected cooperative driving along two axes [20]. The cooperation axis advances from only warning the driver (connected driver warning) to assisting driving (connected driver assistance) to vehicles driving cooperatively with each other (connected cooperative driving), and the automation axis advances from traffic efficiency and safety to advanced safety to automated driving.
 
 | Automation stage | Use cases |
 |:-----|:-----|
@@ -651,9 +651,9 @@ C-V2X divides the two transmission modes according to the latency requirements o
 
 *Figure 26. Direct communications for active safety use cases*
 
-The six use cases in Figure 26 are do not pass warning (DNPW), blind curve and local hazard warning (a stopped vehicle beyond a curve), road works warning, intersection movement assist (IMA) at a blind intersection, vulnerable road user alerts at a blind intersection, and left turn assist (LTA). All of them must report, within a few hundred ms, hazards that the driver or sensors cannot see directly.
+The six use cases in Figure 26 are do not pass warning (DNPW), blind curve and local hazard warning (a stopped vehicle beyond a curve), road works warning, intersection movement assist (IMA) at a blind intersection, vulnerable road user alerts at a blind intersection, and left turn assist (LTA). All of them must report, with short latency, hazards that the driver or vehicle sensors can hardly notice in advance.
 
-> **Definition:** **Non-line-of-sight (NLOS)** is the condition in which an obstacle such as a building or another vehicle lies between the transmitter and receiver so that they cannot see each other directly. Cameras and radars cannot detect objects in NLOS, but radio waves can reach beyond obstacles by reflection and diffraction.
+> **Definition:** **Non-line-of-sight (NLOS)** is the condition in which an obstacle such as a building or another vehicle lies between the transmitter and receiver so that they cannot see each other directly. Cameras and radars can hardly detect objects in NLOS, but radio waves can reach beyond obstacles by reflection and diffraction.
 
 Use cases that tolerate some latency use network communication. Telematics, infotainment, and informational safety services belong here.
 
@@ -674,7 +674,7 @@ The main facts about 5GAA are as follows.
 - It joined 3GPP in April 2017.
 - In February 2018 it announced that LTE-V2X would be deployed by 2020.
 
-The LTE-V2X deployment timeline that 5GAA announced in December 2017 is given in Table 23 [20].
+The LTE-V2X deployment timeline that 5GAA announced in December 2017 is given in Table 23 [21].
 
 | Item | Schedule |
 |:-----|:-----|
@@ -706,7 +706,7 @@ The same material stated that C-V2X had been codified in 3GPP Release 14 in June
 
 ### 1.15 5G-V2X Use Cases Defined by 3GPP
 
-3GPP TR 22.886 classified the use cases of 5G-V2X as follows [21], [22].
+3GPP TR 22.886 classified the use cases of 5G-V2X as follows [22], [23].
 
 | Group | Use cases |
 |:-----|:-----|
@@ -752,7 +752,7 @@ The C-V2X of Section 1 and the WAVE of Week 13 are each vehicle communication sy
 
 Figure 31 is the early stage CALM architecture. At the bottom are the various communication media. 2G cellular (GPRS, EDGE), 3G cellular (UMTS, cdma2000), infrared (IR), wireless LAN (Wi-Fi, M5), millimeter wave (radar, MM-J, MM-E), DSRC (regional variants such as J-DSRC, K-DSRC, and C-DSRC), wireless MAN (WiMAX, HC-SDMA), broadcast (DAB, GPS), personal area networks (wireless USB, Bluetooth), and wired media (Ethernet, AMIC, CAN) are each connected through their own medium manager. Each medium has a standard such as ISO 21212 (2G), ISO 21213 (3G), ISO 21214 (IR), ISO 21215 (W-LAN), and ISO 21216 (millimeter wave), and the top of every medium is unified into the link service access point (LSAP) defined by ISO 21218.
 
-The network interface above them (ISO 21210) handles routing and media switching based on IPv6. At the top are three kinds of applications. Non-CALM-aware applications based on ISO 15628 (the DSRC application layer) and IP (Internet) applications connect through convergence layers, while CALM-aware applications run directly over Internet standards such as TCP/UDP. The management entity on the left (CME, CALM Management Entity) handles the CALM manager and the registration of ingress and egress interfaces, the network manager (NME) and the interface manager (IME, ISO 24102) manage each layer, and application management is defined by ISO 24101. In the legend, the red dots are data SAPs that exchange data, and the teal dots are management SAPs that exchange management information.
+The network interface above them (ISO 21210) handles routing and media switching based on IPv6. At the top are three kinds of applications. Non-CALM-aware applications based on ISO 15628 (the DSRC application layer) and IP (Internet) applications connect through convergence layers, while CALM-aware applications run directly over Internet standards such as TCP/UDP. The management entity on the left (CME, CALM Management Entity) handles the CALM manager and the registration of ingress and egress interfaces, the network manager (NME) and the interface manager (IME, ISO 24102) manage each layer, and application management is defined by ISO 24101. In the legend, the red dots are data SAPs that exchange data, and the teal dots are management SAPs that exchange management information. The legend at the bottom distinguishes by color CALM media (light blue), external media (gray), CALM network elements (dark green), the LSAP of ISO 21218 (orange), and applications (beige).
 
 > **Definition:** A **SAP (Service Access Point)** is the logical point at which one layer provides services to the layer above or beside it. Data and commands pass between layers only through SAPs. A **CALM-aware application** knows the management functions of CALM and states its communication requirements directly, while a **non-CALM-aware application** is an existing application that does not know CALM.
 
@@ -835,13 +835,13 @@ The communication media handled by the lower layers are divided by communication
 
 ### 2.5 ITS Station Reference Architecture: ISO 21217
 
-ISO 21217:2014 (Intelligent transport systems - Communications access for land mobiles (CALM) - Architecture) is the central standard of CALM [23]. It focuses on defining the functions needed for all layers and entities that make up an ITS station and the open interfaces between them, and its purpose is to let ITS stations from different manufacturers implement their functions interoperably. Its contents consist of requirements, the ITS station architecture, ITS station interfaces, typical implementations, and so on.
+ISO 21217:2014 (Intelligent transport systems - Communications access for land mobiles (CALM) - Architecture) is the central standard of CALM [24]. It focuses on defining the functions needed for all layers and entities that make up an ITS station and the open interfaces between them, and its purpose is to let ITS stations from different manufacturers implement their functions interoperably. Its contents consist of requirements, the ITS station architecture, ITS station interfaces, typical implementations, and so on.
 
 ![Figure 34. ITS station reference architecture](../../images/Week14_p64.png)
 
 *Figure 34. ITS station reference architecture*
 
-The ITS station reference architecture in Figure 34 stacks three communication layers in the middle and places the management entity vertically on the left and the security entity on the right [23], [24].
+The ITS station reference architecture in Figure 34 stacks three communication layers in the middle and places the management entity vertically on the left and the security entity on the right [24], [25].
 
 | Component | Function | Corresponding OSI layers |
 |:-----|:-----|:-----|
@@ -856,7 +856,7 @@ The ITS station reference architecture in Figure 34 stacks three communication l
 
 > **[Computer Networks]** The OSI reference model divides communication functions into seven layers: physical, data link, network, transport, session, presentation, and application (Week 5). The ITS station architecture groups layers 1 and 2 as the access layer, layers 3 and 4 as the networking & transport layer, and layers 5-7 as the facilities layer, and it separates management and security, which span all layers, into separate entities.
 
-The basic terms defined by ISO 21217 are as follows [23].
+The basic terms defined by ISO 21217 are as follows [24].
 
 | Term | Definition |
 |:-----|:-----|
@@ -868,7 +868,7 @@ The basic terms defined by ISO 21217 are as follows [23].
 
 For example, the implementation of a vehicle's ITS station (ITS-S) is an ITS-SU, and if it contains a separate V2X communication module and a cellular communication module, each of the two modules is an ITS-SCU.
 
-The devices (nodes) that make up an ITS-S are divided into three kinds according to how they handle packets [23].
+The devices (nodes) that make up an ITS-S are divided into three kinds according to how they handle packets [24].
 
 | Node | Definition | Packet forwarding |
 |:-----|:-----|:-----|
@@ -888,7 +888,7 @@ Figure 35 shows three examples of applying the architecture to real devices. At 
 
 ### 2.6 ITS-S Access Layer
 
-The ITS-S access layer provides the means of communication among entities inside and outside the station. The access layer provides four kinds of interfaces [23].
+The ITS-S access layer provides the means of communication among entities inside and outside the station. The access layer provides four kinds of interfaces [24].
 
 | Item | Communication with the outside of the station | Station-internal communication |
 |:-----|:-----|:-----|
@@ -901,7 +901,7 @@ The various access technologies may be modified so that they interface with the 
 
 ### 2.7 ITS-S Networking & Transport Layer
 
-The ITS-S networking & transport layer consists of the following [23].
+The ITS-S networking & transport layer consists of the following [24].
 
 1. Protocols corresponding to an OSI network layer and an OSI transport layer
 2. If needed, modified elements such as the management adaptation entity (MAE) and the security adaptation entity (SAE)
@@ -913,7 +913,7 @@ The ITS-S networking & transport layer consists of the following [23].
 
 In Figure 36, the inside of the layer is divided into the transport layer protocols at the top (UDP, TCP, FNTP, BTP) and the network layer protocols at the bottom (IPv6, FNTP, GeoNetworking, 6LoWPAN), and the security adaptation entity (SAE) and management adaptation entity (MAE) on the left connect to the security entity and management entity through the SN and MN interfaces. NF at the top and IN at the bottom are the interfaces to the facilities layer and the access layer.
 
-The network protocols used in the networking & transport layer are as follows [23].
+The network protocols used in the networking & transport layer are as follows [24].
 
 | Protocol | Characteristics |
 |:-----|:-----|
@@ -928,7 +928,7 @@ The network protocols used in the networking & transport layer are as follows [2
 
 An IPv4 address has 32 bits, so there are only $2^{32} = 4{,}294{,}967{,}296$, about 4.3 billion, addresses. This is not enough for ITS, where every vehicle, roadside unit, and sensor needs an address. An IPv6 address has 128 bits, giving $2^{128} \approx 3.4 \times 10^{38}$ addresses, so there is practically no risk of exhaustion. IPv4 and IPv6 were covered in Week 13.
 
-WSMP is the IEEE 1609.3 protocol seen in Week 13 that sends short safety messages without an IP header [25]. GeoNetworking is a network protocol of the European ETSI that delivers packets based on position instead of IP addresses; it provides GeoUnicast, which sends to one station at a specific position, GeoBroadcast, which sends to all stations in a specified area, and GeoAnycast, which sends to any one station in a specified area [26]. It suits V2X messages whose destination is an area, such as "all vehicles within 200 m of the intersection".
+WSMP is the IEEE 1609.3 protocol seen in Week 13 that sends short safety messages without an IP header [26]. GeoNetworking is a network protocol of the European ETSI that delivers packets based on position instead of IP addresses; it provides GeoUnicast, which sends to one station at a specific position, GeoBroadcast, which sends to all stations in a specified area, and GeoAnycast, which sends to any one station in a specified area [27]. It suits V2X messages whose destination is an area, such as "all vehicles within 200 m of the intersection".
 
 The following four transport protocols are used to meet the communication requirements of the ITS-S.
 
@@ -941,7 +941,7 @@ The following four transport protocols are used to meet the communication requir
 
 *Table 34. ITS-S transport protocols*
 
-Like UDP, BTP attaches only a port number without a connection and hands GeoNetworking packets to the appropriate application [27].
+Like UDP, BTP attaches only a port number without a connection and hands GeoNetworking packets to the appropriate application [28].
 
 ### 2.8 ITS-S Management Entity
 
@@ -949,7 +949,7 @@ Like UDP, BTP attaches only a port number without a connection and hands GeoNetw
 
 *Figure 37. Management entity of the ITS-S reference architecture*
 
-The ITS-S management entity consists of the following [23].
+The ITS-S management entity consists of the following [24].
 
 - Various management protocols
 - A Management Information Base (MIB)
@@ -964,7 +964,7 @@ ITS-S management is divided into **remote ITS-S management**, performed remotely
 
 ### 2.9 Access Technology Support: ISO 21218
 
-ISO 21218 (Intelligent transport systems - Hybrid communications - Access technology support) defines the structure of the ITS station access layer that applies commonly to all or several access technologies [28].
+ISO 21218 (Intelligent transport systems - Hybrid communications - Access technology support) defines the structure of the ITS station access layer that applies commonly to all or several access technologies [29].
 
 ![Figure 38. Architecture of the ITS-S access layer](../../images/Week14_p81.png)
 
@@ -988,7 +988,7 @@ The main contents of ISO 21218 are as follows.
 
 ### 2.10 Localized Message: ISO/TS 16460
 
-ISO/TS 16460:2016 (Intelligent transport systems - Communications access for land mobiles (CALM) - Communications protocol messages for global usage) is a technical specification that lets the American IEEE WAVE and the ISO CALM exchange the same radio messages [29].
+ISO/TS 16460:2016 (Intelligent transport systems - Communications access for land mobiles (CALM) - Communications protocol messages for global usage) is a technical specification that lets the American IEEE WAVE and the ISO CALM exchange the same radio messages [30].
 
 > **Definition:** An ISO **TS (Technical Specification)** is a normative document reflecting consensus at the level of a technical committee (TC) or subcommittee (SC). It is an intermediate-stage standards document expected to be agreed on as an international standard in the future, and it is not an international standard (IS, International Standard).
 
@@ -1059,22 +1059,22 @@ The value ranges in the two tables match the bit widths of the fields exactly. T
 
 For example, assuming that the fields are filled in the order of Figure 40 starting from the most significant bit of the first octet, the first octet of a header with Subtype 2 (N-hop forwarding), N-Extensions flag 1, and Version 3 is as follows.
 
-$$
+```math
 \underbrace{0010}_{\text{Subtype}=2}\ \underbrace{1}_{\text{flag}}\ \underbrace{011}_{\text{Version}=3} = 00101011_2 = \text{0x2B}
-$$
+```
 
 ### 2.11 FNTP and FSAP
 
-**FNTP (Fast Networking & Transport Layer Protocol)** is the protocol defined by ISO 29281-1 (Intelligent transport systems - Localized communications - Part 1: Fast networking & transport layer protocol (FNTP)) [30].
+**FNTP (Fast Networking & Transport Layer Protocol)** is the protocol defined by ISO 29281-1 (Intelligent transport systems - Localized communications - Part 1: Fast networking & transport layer protocol (FNTP)) [31].
 
 - **Concept:** FNTP is a non-IP protocol and a protocol for nearby localized communications. At the ITS-S access layer it is identified by the EtherType value 0x8950.
 - **Contents:** It defines the protocol elements (SAPs, FNTP NPDU), general protocol procedures (port management, forwarding tables, and so on), the procedure for transmitting packets, and the procedure for receiving packets.
 
-> **Definition:** The **EtherType** is a 2-octet field in Ethernet-family frames that indicates which upper-layer protocol is carried inside. For example, IPv4 is 0x0800, IPv6 is 0x86DD, and the WSMP of WAVE is 0x88DC [25]. The receiving device looks at this value and passes the frame to the appropriate protocol.
+> **Definition:** The **EtherType** is a 2-octet field in Ethernet-family frames that indicates which upper-layer protocol is carried inside. For example, IPv4 is 0x0800, IPv6 is 0x86DD, and the WSMP of WAVE is 0x88DC [26]. The receiving device looks at this value and passes the frame to the appropriate protocol.
 
-Because FNTP omits procedures such as the IP header, address resolution, and route discovery, its header is short and its processing is fast. On the other hand, it does not connect directly to the IP Internet, so it is used for short, time-critical messages with nearby stations. It can be seen as the ISO protocol with the same purpose as the WSMP of WAVE, and ISO/TS 16460 of Section 2.10 harmonizes the two protocols.
+Because FNTP omits procedures such as the IP header, address resolution, and route discovery, its header is short and its processing is fast. On the other hand, it does not connect directly to the IP Internet, so it is used for short, time-critical messages with nearby stations. It can be seen as the ISO protocol with the same purpose as the WSMP of WAVE, and ISO/TS 16460 of Section 2.10 harmonizes the two protocols. In the FNTP reference architecture, FNTP sits in the networking & transport layer together with a port management function; the access layer below it contains the CIs of ISO 21216 (millimeter wave), ISO 21215 (M5), and ISO 21214 (infrared), which support MAC groupcast frames, and a LAN CI for access to the station-internal network; and the management entity contains path and flow management and CI management.
 
-**FSAP (Fast Service Advertisement Protocol)** is the protocol defined by ISO 22418 [31]. The ISO 24102-5 in Figure 39 is the earlier standard that defined the same FSAP.
+**FSAP (Fast Service Advertisement Protocol)** is the protocol defined by ISO 22418 [32]. The ISO 24102-5 in Figure 39 is the earlier standard that defined the same FSAP.
 
 - **Concept:** It supports locally advertising ITS services that are uniquely identified by an ITS application identifier (ITS-AID).
 - **Contents:** It defines the formats of the FSAM (fast service advertisement message) and FSRM (fast service response message), three types of application session, and the protocol procedures including the FSAP communication handler and the FSAP manager.
@@ -1089,7 +1089,7 @@ In Figure 41, the functions of FSAP are distributed over several entities. The F
 
 ### 2.12 ITS Station Management Standards: ISO 24102
 
-The ISO 24102 series (Intelligent transport systems - ITS station management) defines the management functions of the ITS station in several parts [32].
+The ISO 24102 series (Intelligent transport systems - ITS station management) defines the management functions of the ITS station in several parts [33].
 
 **Part 1, local management (ISO 24102-1).** It defines the functionality of local ITS station management, CI and VCI management in an ITS-SCU, and interference protection. Its main contents are CI management, cross-CI prioritization, regulatory information management, networking & transport layer management, and management data elements.
 
@@ -1105,7 +1105,7 @@ The ISO 24102 series (Intelligent transport systems - ITS station management) de
 
 An example in which cross-CI prioritization is needed is a vehicle equipped with two radio interfaces at nearby frequencies, such as 5.8 GHz DSRC for toll collection and 5.9 GHz M5. While one interface transmits, the reception of the adjacent interface can be disturbed by the strong signal, so the management entity briefly stops the operation of the lower-priority interface.
 
-**Part 4, station-internal management communications (ISO 24102-4).** It defines how the management entities in different ITS-SCUs of the same ITS-S communicate through the station-internal network. A specific purpose of this communication (IIC, ITS-S internal management communications) is to use the management service access points (SAPs) of other SCUs remotely. Its main contents are the IIC protocol data units (PDUs), the communication procedure (initialization, transmission, reception), and the management procedure. The reference architecture uses FNTP of ISO 29281-1 as an example of the internal communication means.
+**Part 4, station-internal management communications (ISO 24102-4).** It defines how the management entities in different ITS-SCUs of the same ITS-S communicate through the station-internal network. A specific purpose of this communication (IIC, ITS-S internal management communications) is to use the management service access points (SAPs) of other SCUs remotely. Its main contents are the IIC protocol data units (PDUs), the communication procedure (initialization, transmission, reception), and the management procedure. In the reference architecture, the ITS station-internal management communication manager (IICM) in the management entity and the ITS station-internal management communication agent (IICA) in the facilities layer carry out this communication, a CI selection manager chooses the communication interface to use, and FNTP of ISO 29281-1 together with a LAN CI for access to the station-internal network serves as an example of the internal means of communication.
 
 **Part 2, remote management of ITS-SCUs (ISO 24102-2).** These are the functions by which another station remotely manages the ITS-SCUs of an ITS-SU.
 
@@ -1138,7 +1138,7 @@ As in Figure 42, interface names are formed by joining the initials of the two c
 
 ### 2.13 Path and Flow Management: ISO 24102-6
 
-ISO 24102-6 (path and flow management) defines the functions that decide which of several access technologies and which path to send over [32].
+ISO 24102-6 (path and flow management) defines the functions that decide which of several access technologies and which path to send over [33].
 
 - **Concept:** It defines the functionalities of the ITS station used to collect the information needed for path and flow management. The information collected by the management entity is used to determine the most appropriate communication profile and routing path.
 - **Contents:** It covers ITS-S capabilities management, path management, flow management, path selection, and communication profile management.
@@ -1217,7 +1217,7 @@ The CALM of Section 2 is a standard created by WG16 of TC204, and the CAN standa
 
 ### 3.2 UN/ECE WP.29
 
-> **Definition:** **WP.29 (World Forum for Harmonization of Vehicle Regulations)** is the body under the UN Economic Commission for Europe that creates international regulations (UN Regulations) on vehicle safety and the environment. Countries that are parties to the 1958 Agreement use the UN Regulations adopted by WP.29 as their national type approval criteria and mutually recognize the type approvals of other parties [33].
+> **Definition:** **WP.29 (World Forum for Harmonization of Vehicle Regulations)** is the body under the UN Economic Commission for Europe that creates international regulations (UN Regulations) on vehicle safety and the environment. Countries that are parties to the 1958 Agreement use the UN Regulations adopted by WP.29 as their national type approval criteria and mutually recognize the type approvals of other parties [34].
 
 > **Definition:** **Type approval** is a system in which the government or a designated body checks and approves, before a vehicle is sold, that its type (model) meets safety and environmental standards.
 
@@ -1243,13 +1243,13 @@ The working parties of WP.29 and the informal working groups (IWGs) related to a
 
 *Table 43. Working parties of WP.29 and informal working groups related to autonomous driving*
 
-> **Note:** In June 2018, WP.29 reorganized GRRF, which dealt with brakes and running gear, into GRVA, which deals with automated and connected vehicles [33]. Table 43 lists the working parties from before and after the reorganization together, and after the reorganization there are six GRs, as in Figure 45. The original material also gives the responsibility of the DSSAD/EDR group as lighting and light-signalling, but DSSAD (Data Storage System for Automated Driving) is a device that records the operation of the automated driving system and EDR (Event Data Recorder) is a device that records the vehicle state before and after a crash, so Table 43 corrects this.
+> **Note:** In June 2018, WP.29 reorganized GRRF, which dealt with brakes and running gear, into GRVA, which deals with automated and connected vehicles [34]. Table 43 lists the working parties from before and after the reorganization together, and after the reorganization there are six GRs, as in Figure 45. The original material also gives the responsibility of the DSSAD/EDR group as lighting and light-signalling, but DSSAD (Data Storage System for Automated Driving) is a device that records the operation of the automated driving system and EDR (Event Data Recorder) is a device that records the vehicle state before and after a crash, so Table 43 corrects this.
 
 The working group directly related to autonomous driving communication is CS/OTA (cybersecurity and over-the-air updates) under GRVA. The results of this group are UN R155 and UN R156 of Sections 3.5 and 3.6.
 
 ### 3.3 Regulatory Reform Roadmap for Autonomous Vehicles
 
-To find and fix in advance the regulations that block the commercialization of autonomous vehicles, the Korean government prepared a regulatory reform roadmap for autonomous vehicles, and roadmap 2.0, finalized in December 2021, divided the tasks to be pursued by 2030 into short-term, medium-term, and long-term tasks [34]. Its six short-term tasks, to be pursued in 2022-2023, are given in Table 44.
+To find and fix in advance the regulations that block the commercialization of autonomous vehicles, the Korean government prepared a regulatory reform roadmap for autonomous vehicles, and in December 2021 it finalized the Regulatory Innovation Roadmap 2.0 for autonomous vehicles, which supplements it [35]. Roadmap 2.0 divides the tasks to be pursued by 2030 into short-term (2022-2023), medium-term (2024-2026), and long-term (2027-2030) tasks, and its six short-term tasks are given in Table 44.
 
 | Area | Task (responsible ministry, related law) | Before | Improvement |
 |:-----|:-----|:-----|:-----|
@@ -1306,16 +1306,16 @@ Two reference documents underlie this task.
 
 | Document | Nature | Content |
 |:-----|:-----|:-----|
-| UN R155 | A WP.29 regulation (regulation) | Uniform provisions concerning the approval of vehicles with regards to cyber security and the cyber security management system (CSMS). It entered into force as an annex to the 1958 Agreement on January 22, 2021 [35]. |
-| ISO/SAE 21434 | A joint ISO and SAE standard (standard) | The standard for cybersecurity engineering of road vehicles. Its first edition was published in August 2021 [36]. |
+| UN R155 | A WP.29 regulation (regulation) | Uniform provisions concerning the approval of vehicles with regards to cyber security and the cyber security management system (CSMS). It entered into force as an annex to the 1958 Agreement on January 22, 2021 [36]. |
+| ISO/SAE 21434 | A joint ISO and SAE standard (standard) | The standard for cybersecurity engineering of road vehicles. Its first edition was published in August 2021 [37]. |
 
 *Table 46. International criteria for vehicle cybersecurity*
 
-UN R155 requires manufacturers to have an organization-level CSMS and to demonstrate that they have assessed and treated risks for each vehicle type, and ISO/SAE 21434 specifies in detail the engineering activities to perform throughout the development life cycle to meet those requirements. The European Union made this regulation mandatory for newly approved vehicle types from July 2022 and for all newly registered vehicles from July 2024 [37]. Korea also amended the Motor Vehicle Management Act in February 2024 to introduce certification of vehicle cybersecurity management systems and a software update management scheme, effective from August 14, 2025 [38].
+UN R155 requires manufacturers to have an organization-level CSMS and to demonstrate that they have assessed and treated risks for each vehicle type, and ISO/SAE 21434 specifies in detail the engineering activities to perform throughout the development life cycle to meet those requirements. The European Union made this regulation mandatory for newly approved vehicle types from July 2022 and for all newly registered vehicles from July 2024 [38]. Korea also amended the Motor Vehicle Management Act in February 2024 to introduce certification of vehicle cybersecurity management systems and a software update management scheme, effective from August 14, 2025 [39].
 
 > **[Information Security]** The three goals of information security are confidentiality (unauthorized parties cannot see information), integrity (information is not changed without authorization), and availability (information and services can be used when needed). For V2X messages, guaranteeing integrity and sender authentication with digital signatures is especially important, and the certification management system of Section 3.3 issues and manages the certificates used for signing.
 
-The information processing flow of an autonomous vehicle shows why security is needed in almost every element [39].
+The information processing flow of an autonomous vehicle shows why security is needed in almost every element [40].
 
 ```mermaid
 flowchart LR
@@ -1328,16 +1328,17 @@ flowchart LR
         SP["Sensor processing"]
     end
     subgraph UND["Understand"]
-        FUS["Sensor fusion"]
         V2X["V2V, V2I communication"]
         MAP["Maps (a priori information)"]
-        DS["Driver state"]
-        AE["Action engine"]
+        FUS["Sensor fusion"]
+        M3D["3D map"]
     end
     subgraph ACT["Act"]
+        DS["Driver state"]
+        AE["Action engine"]
         VC["Vehicle controls (brake, acceleration, steering)"]
-        VIS["Visualization and display"]
     end
+    VIS["Visualization/display subsystem"]
     S1 --> SP
     S2 --> SP
     S3 --> SP
@@ -1346,16 +1347,18 @@ flowchart LR
     SP --> FUS
     V2X --> FUS
     MAP --> FUS
+    FUS --> M3D
     FUS --> AE
     DS --> AE
     AE --> VC
+    FUS --> VIS
     AE --> VIS
-    FUS -->|"compressed data"| CLOUD["Cloud services"]
+    SP -->|"compressed data"| VIS
 ```
 
 *Figure 47. Sense, understand, and act processing flow of an autonomous vehicle*
 
-In Figure 47, sensor data are turned into object parameters (time stamp, dimensions, position and velocity) through per-sensor processing, and sensor fusion combines them with V2V and V2I communication and map information to build a 3D map. The action engine, considering the driver state, chooses one of doing nothing, warning, complementing, or controlling, and the vehicle controls execute braking, acceleration, and steering. Part of the data is compressed and exchanged with cloud services. If any point of this flow (communication, network, software, or sensors) is attacked, it leads to wrong decisions and control, so information security must be applied to almost every element.
+In Figure 47, sensor data are turned into object parameters (time stamp, dimensions, position and velocity) through per-sensor processing, and sensor fusion combines them with V2V and V2I communication and map information to build a 3D map. Based on the fusion result and the driver state, the action engine chooses one of doing nothing, warning, complementing, or controlling, and the vehicle controls execute braking, acceleration, and steering. The per-sensor processing results are compressed and sent to the visualization/display subsystem, which also displays the fusion result and the action decision. If any point of this flow (communication, network, software, or sensors) is attacked, it leads to wrong decisions and control, so information security must be applied to almost every element.
 
 ![Figure 48. Concepts of spoofing and jamming](../../images/Week14_p108.png)
 
@@ -1376,7 +1379,7 @@ Medium-term task 9 is to establish criteria for vehicle software updates (MOLIT,
 - **Improvement:** An institutional basis, such as manufacturer obligations, a certification system, and technical conditions, is established for stable software updates (by 2024). The international standard on software updates (UN R156) was established in June 2020, and countries are preparing to adopt it.
 - **Effect:** Vehicle safety is secured and software-related technology development is promoted.
 
-OTA first became common in smartphones and then spread to vehicles [40].
+OTA first became common in smartphones and then spread to vehicles [41].
 
 | Period | Event |
 |:-----|:-----|
@@ -1392,7 +1395,7 @@ OTA first became common in smartphones and then spread to vehicles [40].
 
 *Table 47. Development of OTA updates*
 
-UN R156 (uniform provisions concerning the approval of vehicles with regards to software update and the software update management system) entered into force together with R155 on January 22, 2021 [41].
+UN R156 (uniform provisions concerning the approval of vehicles with regards to software update and the software update management system) entered into force together with R155 on January 22, 2021 [42].
 
 ![Figure 49. Software update management system required by UN R156](../../images/Week14_p110.png)
 
@@ -1432,13 +1435,13 @@ Around 2015, the U.S. Department of Transportation presented the following sched
 
 > **Definition:** An **ANPRM (advance notice of proposed rulemaking)** is a preliminary notice that seeks opinions before a rule is made, and an **NPRM (notice of proposed rulemaking)** announces a concrete proposed rule. **NHTSA** is the U.S. National Highway Traffic Safety Administration, and **FHWA** is the U.S. Federal Highway Administration.
 
-However, this plan was not realized. Citing the emergence of new V2V communication methods and the change in the 5.9 GHz rules by the U.S. Federal Communications Commission (FCC), NHTSA formally withdrew the proposed V2V mandate in November 2023 [42].
+However, this plan was not realized. Citing the emergence of new V2V communication methods and the change in the 5.9 GHz rules by the U.S. Federal Communications Commission (FCC), NHTSA formally withdrew the proposed V2V mandate in November 2023 [43].
 
 Looking at the deployment policies of major countries, the United States and China chose C-V2X, and Europe, whose communication infrastructure is complex, pursued a form that accepts several methods.
 
 | Country | Deployment status |
 |:-----|:-----|
-| United States | In July 2021, the FCC rules repurposing 75 MHz of the 5.9 GHz band took effect. WAVE technology was excluded from the use of the ITS spectrum, and the upper 30 MHz of the ITS spectrum is used for C-V2X [43]. In November 2024, the detailed operating rules for C-V2X were finalized [44]. |
+| United States | In July 2021, the FCC rules repurposing 75 MHz of the 5.9 GHz band took effect. WAVE technology was excluded from the use of the ITS spectrum, and the upper 30 MHz of the ITS spectrum is used for C-V2X [44]. In November 2024, the detailed operating rules for C-V2X were finalized [45]. |
 | Europe | In March 2020, the ITS frequency band was extended from a 70 MHz bandwidth to an 80 MHz bandwidth. In January 2019, an EC delegated regulation mandating ITS-G5 (WAVE) was submitted as the legal basis for promoting C-ITS deployment on European roads, but it was finally rejected by the Council of the EU in July 2019. A new regulation that would also include C-V2X was then expected to be enacted in 2021. |
 | China | In October 2018, the 5.905-5.925 GHz range was officially designated for C-V2X. National-level testbeds based on C-V2X technology were built in more than ten regions, and about ten automakers were expected to launch vehicles capable of C-V2X direct communication by 2022. |
 
@@ -1453,7 +1456,7 @@ In Korea, the schedule for deciding the communication method for vehicle safety 
 - **Selection:** After the LTE-V2X demonstration and the deployment of the underlying C-ITS infrastructure, a dual-mode pilot project using both WAVE and LTE-V2X (a 2,000 km section) compares performance in 2023, and a single V2X communication method is selected.
 - **Deployment:** From 2024, the main C-ITS infrastructure deployment project proceeds with the selected communication method.
 
-> **Note:** The original material gives the band allocated in 2016 as 70 MHz from 5.860 GHz, but the allocated band is 5.855-5.925 GHz [45]. For the pilot projects of the two methods, in March 2022 the lower 20 MHz of the 70 MHz was assigned to LTE-V2X and the upper 30 MHz to WAVE [45], and in December 2023 the Ministry of Science and ICT and the Ministry of Land, Infrastructure and Transport chose LTE-V2X as the single communication method for C-ITS [46]. The further course of each country's policy is summarized in Sections 3.7 and 3.8 of Week 1.
+> **Note:** The original material gives the band allocated in 2016 as 70 MHz from 5.860 GHz, but the allocated band is 5.855-5.925 GHz [46]. For the pilot projects of the two methods, in March 2022 the lower 20 MHz of the 70 MHz was assigned to LTE-V2X and the upper 30 MHz to WAVE [46], and in December 2023 the Ministry of Science and ICT and the Ministry of Land, Infrastructure and Transport chose LTE-V2X as the single communication method for C-ITS [47]. The further course of each country's policy is summarized in Sections 3.7 and 3.8 of Week 1.
 
 ---
 
@@ -1475,7 +1478,7 @@ In Korea, the schedule for deciding the communication method for vehicle safety 
 
 **True/False Check:**
 
-| Statement | Judgment and reason |
+| Statement | Judgment and Reason |
 |:-----|:-----|
 | A vehicle must have a USIM for C-V2X direct communication. | **F.** Direct communication works without a USIM. |
 | Even in the PC5-based operation scenario, V2X messages are delivered through the base station. | **F.** In the PC5-based scenario, devices exchange messages directly over the sidelink. |
@@ -1503,7 +1506,7 @@ In Korea, the schedule for deciding the communication method for vehicle safety 
 | NR-V2X operation scenarios | There are standalone scenarios, in which one base station controls the sidelinks, and MR-DC scenarios (NE-DC, NGEN-DC, EN-DC), in which base stations of two RATs control them together. |
 | Two transmission modes of C-V2X | Uu network communication is used for V2N in licensed spectrum and PC5 direct communication for V2V, V2I, and V2P in ITS bands, and direct communication synchronizes with GNSS without a USIM. |
 | Evolution of C-V2X | Rel-14/15 LTE-V2X handles broadcast-based safety services, and Rel-16+ NR-V2X handles autonomous driving services based on unicast and multicast. |
-| 802.11p and C-V2X | Both operate at 5.9 GHz without a base station and use the same security services, and C-V2X advances in latency and network integration while 802.11p advances by evolving into 802.11bd. |
+| 802.11p and C-V2X | Both operate at 5.9 GHz without a base station and use the same security services. C-V2X is rated favorably in direct communication latency and network integration, and 802.11p has evolved into the backward-compatible 802.11bd. |
 | CALM | The hybrid communications standards framework of ISO TC204 WG16, which lets one ITS station choose among several access technologies and communicate without interruption. |
 | ITS station reference architecture | It consists of the access, networking & transport, and facilities layers and the management and security entities, and its components are connected by named SAPs. |
 | CALM-related standards | ISO 21218 defines the access layer, ISO/TS 16460 the messages common with WAVE, ISO 29281-1 FNTP, ISO 22418 FSAP, and ISO 24102 station management and path selection. |
@@ -1576,7 +1579,7 @@ In Korea, the schedule for deciding the communication method for vehicle safety 
    <details>
    <summary>Answer</summary>
 
-   The subcarrier spacing is $15 \times 2^2 = 60$ kHz and the slot length is $1 / 2^2 = 0.25$ ms. 180 km/h is $180{,}000 / 3{,}600 = 50$ m/s, so $f_d = 50 \times 5.9 \times 10^9 / (3 \times 10^8) = 50 \times 19.67 \approx 983$ Hz. This is $983 / 30{,}000 \approx 3.3\%$ of 30 kHz.
+   The subcarrier spacing is $15 \times 2^2 = 60$ kHz and the slot length is $1 / 2^2 = 0.25$ ms. 180 km/h is $180{,}000 / 3{,}600 = 50$ m/s, so $f_d = 50 \times 5.9 \times 10^9 / (3 \times 10^8) = 50 \times 19.67 \approx 983$ Hz. This is $`983 / 30{,}000 \approx 3.3\%`$ of 30 kHz.
 
    </details>
 
@@ -1603,7 +1606,7 @@ In Korea, the schedule for deciding the communication method for vehicle safety 
     <details>
     <summary>Answer</summary>
 
-    Subtype 1 is 0001 in 4 bits, the flag is 0, and Version 3 is 011 in 3 bits, so the first octet is $0001\ 0\ 011 = 00010011_2 = \text{0x13}$. The values reserved for IEEE are 8-15, so there are $15 - 8 + 1 = 8$ of them.
+    Subtype 1 is 0001 in 4 bits, the flag is 0, and Version 3 is 011 in 3 bits, so the first octet is $`0001\ 0\ 011 = 00010011_2 = \text{0x13}`$. The values reserved for IEEE are 8-15, so there are $15 - 8 + 1 = 8$ of them.
 
     </details>
 
@@ -1654,44 +1657,45 @@ In Korea, the schedule for deciding the communication method for vehicle safety 
 3. 3GPP, "About 3GPP." https://www.3gpp.org/about-us
 4. ITU-R, *IMT Vision - Framework and overall objectives of the future development of IMT for 2020 and beyond*, Recommendation ITU-R M.2083-0, Sep. 2015.
 5. 과학기술정보통신부, 5G 이동통신 주파수 경매 결과, 2018년 6월.
-6. 3GPP TSG RAN, document RP-161249, Jun. 2016.
-7. S. Martinez Lopez, "An Overview of D2D in 3GPP LTE Standards," presentation, Jun. 21, 2016.
+6. 3GPP TSG RAN #72, document RP-161249 (NR architecture configuration options), Busan, Korea, Jun. 2016.
+7. S. Martinez Lopez, "An overview of D2D in 3GPP LTE standard," presentation, Orange, Jun. 21, 2016. https://www.slideshare.net/wiless/an-overview-of-d2d-in-3gpp-lte-standard
 8. 3GPP TS 23.303, *Proximity-based services (ProSe); Stage 2*, Release 12.
 9. 3GPP TS 23.285, *Architecture enhancements for V2X services*, Release 14, 2017.
 10. 3GPP TS 36.300, *Evolved Universal Terrestrial Radio Access (E-UTRA) and Evolved Universal Terrestrial Radio Access Network (E-UTRAN); Overall description; Stage 2*, Release 14.
 11. 3GPP TS 38.300, *NR; NR and NG-RAN Overall description; Stage-2*, Release 16.
-12. 3GPP TR 36.885 V14.0.0, *Study on LTE-based V2X services*, Jun. 2016.
-13. 3GPP TR 38.885 V16.0.0, *Study on NR Vehicle-to-Everything (V2X)*, Mar. 2019.
-14. Qualcomm Technologies, Inc., C-V2X presentation and "5G V2X" webinar deck, Mar. 2020.
-15. 3GPP, "Release 16." https://www.3gpp.org/specifications-technologies/releases/release-16
-16. 3GPP TS 38.212, *NR; Multiplexing and channel coding*, Release 15.
-17. 3GPP TS 38.211, *NR; Physical channels and modulation*, Release 15.
-18. IEEE Std 802.11bd-2022, *Enhancements for Next Generation V2X*, amendment to IEEE Std 802.11, 2023.
-19. 5G Automotive Association (5GAA), "A visionary roadmap for advanced driving use cases, connectivity technologies, and radio spectrum needs," white paper, Nov. 2022. https://5gaa.org/content/uploads/2023/01/5gaa-white-paper-roadmap.pdf
-20. 5G Automotive Association (5GAA), "Timeline for deployment of LTE-V2X," Dec. 18, 2017.
-21. 3GPP TR 22.886 V16.2.0, *Study on enhancement of 3GPP support for 5G V2X services*, Dec. 2018.
-22. A. Alalewi, I. Dayoub, and S. Cherkaoui, "On 5G-V2X use cases and enabling technologies: A comprehensive survey," *IEEE Access*, vol. 9, pp. 107710-107737, 2021.
-23. ISO 21217:2014, *Intelligent transport systems - Communications access for land mobiles (CALM) - Architecture*, International Organization for Standardization, 2014.
-24. ETSI EN 302 665 V1.1.1, *Intelligent Transport Systems (ITS); Communications Architecture*, Sep. 2010.
-25. IEEE Std 1609.3-2016, *IEEE Standard for Wireless Access in Vehicular Environments (WAVE) - Networking Services*, 2016.
-26. ETSI EN 302 636-4-1, *Intelligent Transport Systems (ITS); Vehicular Communications; GeoNetworking; Part 4: Geographical addressing and forwarding for point-to-point and point-to-multipoint communications; Sub-part 1: Media-Independent Functionality*.
-27. ETSI EN 302 636-5-1, *Intelligent Transport Systems (ITS); Vehicular Communications; GeoNetworking; Part 5: Transport Protocols; Sub-part 1: Basic Transport Protocol*.
-28. ISO 21218, *Intelligent transport systems - Hybrid communications - Access technology support*, International Organization for Standardization.
-29. ISO/TS 16460:2016, *Intelligent transport systems - Communications access for land mobiles (CALM) - Communications protocol messages for global usage*, International Organization for Standardization, 2016.
-30. ISO 29281-1, *Intelligent transport systems - Localized communications - Part 1: Fast networking & transport layer protocol (FNTP)*, International Organization for Standardization.
-31. ISO 22418, *Intelligent transport systems - Fast service advertisement protocol (FSAP)*, International Organization for Standardization.
-32. ISO 24102 series, *Intelligent transport systems - ITS station management*, Parts 1-4 and 6, International Organization for Standardization.
-33. UNECE, "World Forum for Harmonization of Vehicle Regulations (WP.29)." https://unece.org/transport/vehicle-regulations/world-forum-harmonization-vehicle-regulations-wp29
-34. 국토교통부, "자율주행차 규제혁신 로드맵 2.0," 2021년 12월.
-35. UNECE, *UN Regulation No. 155 - Uniform provisions concerning the approval of vehicles with regards to cyber security and cyber security management system*, E/ECE/TRANS/505/Rev.3/Add.154, Jan. 2021.
-36. ISO/SAE 21434:2021, *Road vehicles - Cybersecurity engineering*, Aug. 2021.
-37. European Parliament and Council of the European Union, Regulation (EU) 2019/2144 on type-approval requirements for motor vehicles as regards their general safety and the protection of vehicle occupants and vulnerable road users, *Official Journal of the European Union*, L 325, Dec. 2019.
-38. 자동차관리법 (2024년 2월 13일 개정, 2025년 8월 14일 시행), 제30조의9, 제34조의5. 국가법령정보센터. https://www.law.go.kr
-39. F. Mujica, "Scalable electronics driving autonomous vehicle technologies," Kilby Labs, Texas Instruments, technical report, 2014.
-40. FutureBridge, OTA update timeline in the automotive industry, FutureBridge Analysis.
-41. UNECE, *UN Regulation No. 156 - Uniform provisions concerning the approval of vehicles with regards to software update and software update management system*, E/ECE/TRANS/505/Rev.3/Add.155, Jan. 2021.
-42. NHTSA, "Federal Motor Vehicle Safety Standards; V2V Communications," withdrawal of notice of proposed rulemaking, *Federal Register*, vol. 88, no. 222, pp. 80685-80686, Nov. 20, 2023.
-43. Federal Communications Commission, *Use of the 5.850-5.925 GHz Band*, First Report and Order, FCC 20-164, ET Docket No. 19-138, Nov. 2020.
-44. Federal Communications Commission, *Use of the 5.850-5.925 GHz Band*, Second Report and Order, FCC 24-123, ET Docket No. 19-138, Nov. 2024.
-45. 과학기술정보통신부, 국토교통부, "자율주행 시대를 앞당기기 위해 과기정통부와 국토부 맞손," 보도자료, 2022년 3월 16일.
-46. 김병욱, "정부, 지능형 교통체계 통신방식 'LTE-V2X'로 통합 추진," *뉴데일리*, 2023년 12월 12일.
+12. 3GPP TR 23.703, *Study on architecture enhancements to support Proximity-based Services (ProSe)*, Release 12.
+13. 3GPP TR 36.885 V14.0.0, *Study on LTE-based V2X services*, Jun. 2016.
+14. 3GPP TR 38.885 V16.0.0, *Study on NR Vehicle-to-Everything (V2X)*, Mar. 2019.
+15. Qualcomm Technologies, Inc., C-V2X presentation and "5G V2X" webinar deck, Mar. 2020.
+16. 3GPP, "Release 16." https://www.3gpp.org/specifications-technologies/releases/release-16
+17. 3GPP TS 38.212, *NR; Multiplexing and channel coding*, Release 15.
+18. 3GPP TS 38.211, *NR; Physical channels and modulation*, Release 15.
+19. IEEE Std 802.11bd-2022, *Enhancements for Next Generation V2X*, amendment to IEEE Std 802.11, 2023.
+20. 5G Automotive Association (5GAA), "A visionary roadmap for advanced driving use cases, connectivity technologies, and radio spectrum needs," white paper, Nov. 2022. https://5gaa.org/content/uploads/2023/01/5gaa-white-paper-roadmap.pdf
+21. 5G Automotive Association (5GAA), "Timeline for deployment of LTE-V2X," Dec. 18, 2017.
+22. 3GPP TR 22.886 V16.2.0, *Study on enhancement of 3GPP support for 5G V2X services*, Dec. 2018.
+23. A. Alalewi, I. Dayoub, and S. Cherkaoui, "On 5G-V2X use cases and enabling technologies: A comprehensive survey," *IEEE Access*, vol. 9, pp. 107710-107737, 2021.
+24. ISO 21217:2014, *Intelligent transport systems - Communications access for land mobiles (CALM) - Architecture*, International Organization for Standardization, 2014.
+25. ETSI EN 302 665 V1.1.1, *Intelligent Transport Systems (ITS); Communications Architecture*, Sep. 2010.
+26. IEEE Std 1609.3-2016, *IEEE Standard for Wireless Access in Vehicular Environments (WAVE) - Networking Services*, 2016.
+27. ETSI EN 302 636-4-1, *Intelligent Transport Systems (ITS); Vehicular Communications; GeoNetworking; Part 4: Geographical addressing and forwarding for point-to-point and point-to-multipoint communications; Sub-part 1: Media-Independent Functionality*.
+28. ETSI EN 302 636-5-1, *Intelligent Transport Systems (ITS); Vehicular Communications; GeoNetworking; Part 5: Transport Protocols; Sub-part 1: Basic Transport Protocol*.
+29. ISO 21218, *Intelligent transport systems - Hybrid communications - Access technology support*, International Organization for Standardization.
+30. ISO/TS 16460:2016, *Intelligent transport systems - Communications access for land mobiles (CALM) - Communications protocol messages for global usage*, International Organization for Standardization, 2016.
+31. ISO 29281-1, *Intelligent transport systems - Localized communications - Part 1: Fast networking & transport layer protocol (FNTP)*, International Organization for Standardization.
+32. ISO 22418, *Intelligent transport systems - Fast service advertisement protocol (FSAP)*, International Organization for Standardization.
+33. ISO 24102 series, *Intelligent transport systems - ITS station management*, Parts 1-4 and 6, International Organization for Standardization.
+34. UNECE, "World Forum for Harmonization of Vehicle Regulations (WP.29)." https://unece.org/transport/vehicle-regulations/world-forum-harmonization-vehicle-regulations-wp29
+35. 국토교통부, "자율주행차 규제혁신 로드맵 2.0," 2021년 12월.
+36. UNECE, *UN Regulation No. 155 - Uniform provisions concerning the approval of vehicles with regards to cyber security and cyber security management system*, E/ECE/TRANS/505/Rev.3/Add.154, Jan. 2021.
+37. ISO/SAE 21434:2021, *Road vehicles - Cybersecurity engineering*, Aug. 2021.
+38. European Parliament and Council of the European Union, Regulation (EU) 2019/2144 on type-approval requirements for motor vehicles as regards their general safety and the protection of vehicle occupants and vulnerable road users, *Official Journal of the European Union*, L 325, Dec. 2019.
+39. 자동차관리법 (2024년 2월 13일 개정, 2025년 8월 14일 시행), 제30조의9, 제34조의5. 국가법령정보센터. https://www.law.go.kr
+40. F. Mujica, "Scalable electronics driving autonomous vehicle technologies," Kilby Labs, Texas Instruments, technical report, 2014.
+41. FutureBridge, OTA update timeline in the automotive industry, FutureBridge Analysis.
+42. UNECE, *UN Regulation No. 156 - Uniform provisions concerning the approval of vehicles with regards to software update and software update management system*, E/ECE/TRANS/505/Rev.3/Add.155, Jan. 2021.
+43. NHTSA, "Federal Motor Vehicle Safety Standards; V2V Communications," withdrawal of notice of proposed rulemaking, *Federal Register*, vol. 88, no. 222, pp. 80685-80686, Nov. 20, 2023.
+44. Federal Communications Commission, *Use of the 5.850-5.925 GHz Band*, First Report and Order, FCC 20-164, ET Docket No. 19-138, Nov. 2020.
+45. Federal Communications Commission, *Use of the 5.850-5.925 GHz Band*, Second Report and Order, FCC 24-123, ET Docket No. 19-138, Nov. 2024.
+46. 과학기술정보통신부, 국토교통부, "자율주행 시대를 앞당기기 위해 과기정통부와 국토부 맞손," 보도자료, 2022년 3월 16일.
+47. 김병욱, "정부, 지능형 교통체계 통신방식 'LTE-V2X'로 통합 추진," *뉴데일리*, 2023년 12월 12일.

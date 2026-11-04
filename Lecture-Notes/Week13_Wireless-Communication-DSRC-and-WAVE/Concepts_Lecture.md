@@ -180,7 +180,7 @@ In Figure 3, the signal produced by the transmitter (TX) passes through a filter
 | Band | Frequency range | Main propagation mode | Example applications |
 |:-----|:-----|:-----|:-----|
 | LF, MF | 30 kHz-3 MHz | Ground (surface) waves that follow the earth, up to about 1,000 km | Submarine communication, radio navigation, broadcasting |
-| HF | 3-30 MHz | Space waves reflected by the ionosphere, hopping in steps of 100-150 km | Broadcasting, long-distance radio |
+| HF | 3-30 MHz | Space waves, about 100-150 km | Data radio, radio broadcasting |
 | VHF, UHF | 30 MHz-3 GHz | Space waves, up to the radio horizon | Data radio, radio and television broadcasting |
 | SHF, EHF | 3-300 GHz | Direct waves, up to the geometric horizon (line of sight) | Line-of-sight radio, satellite communication, radar |
 
@@ -200,7 +200,9 @@ Because vehicles move fast, the reinforcement and cancellation of multipath wave
 
 **Path loss models.** A path loss model expresses, as a function of distance, the fraction of the transmit power $P_T$ that reaches the receiver as $P_R$. The simplest case is free space with no obstacles at all, described by the Friis formula [2].
 
-$$\frac{P_R}{P_T} = G_T G_R \left( \frac{\lambda}{4 \pi d} \right)^2$$
+```math
+\frac{P_R}{P_T} = G_T G_R \left( \frac{\lambda}{4 \pi d} \right)^2
+```
 
 $G_T$ and $G_R$ are the gains of the transmit and receive antennas, $\lambda$ is the wavelength, and $d$ is the distance. Since the received power is inversely proportional to the square of the distance, doubling the distance reduces the received power to 1/4, that is, by $10 \log_{10} 4 \approx 6$ dB. For example, the wavelength at 5.9 GHz is $\lambda = c/f = (3 \times 10^8)/(5.9 \times 10^9) \approx 0.0508$ m. With antenna gains of 1, the free-space path loss at 100 m is $20 \log_{10}(4 \pi \times 100 / 0.0508) \approx 87.9$ dB, and at 200 m it is about 93.9 dB.
 
@@ -210,11 +212,15 @@ $G_T$ and $G_R$ are the gains of the transmit and receive antennas, $\lambda$ is
 
 Real roads always have reflecting surfaces. The **two-ray model** in Figure 6 considers only two waves arriving at a vehicle antenna of height $h_2$ at distance $d$ from a transmit antenna of height $h_1$: the direct wave and the wave reflected from the ground. The reflected wave appears to come from a mirror-image antenna at depth $h_1$ below the ground, so the path difference of the two waves is computed with the heights $h_1 + h_2$ and $h_1 - h_2$. When the distance is large enough, the two waves meet almost in opposite phase and cancel each other, and the received power is approximated as follows.
 
-$$L_F = \frac{P_R}{P_T} = G_T \cdot G_R \cdot \left( \frac{h_1 h_2}{d^2} \right)^2$$
+```math
+L_F = \frac{P_R}{P_T} = G_T \cdot G_R \cdot \left( \frac{h_1 h_2}{d^2} \right)^2
+```
 
 Converting this to decibels with the logarithm rules $\log(ab) = \log a + \log b$ and $\log x^n = n \log x$ gives the following.
 
-$$L_F[\text{dB}] = 10 \log \left( G_T \cdot G_R \cdot \frac{(h_1 h_2)^2}{d^4} \right) = 10 \log G_T + 10 \log G_R + 20 \log h_1 + 20 \log h_2 - 40 \log d$$
+```math
+L_F[\text{dB}] = 10 \log \left( G_T \cdot G_R \cdot \frac{(h_1 h_2)^2}{d^4} \right) = 10 \log G_T + 10 \log G_R + 20 \log h_1 + 20 \log h_2 - 40 \log d
+```
 
 Three things can be read from this formula. First, the received power is inversely proportional to the fourth power of the distance, so doubling the distance reduces it by $40 \log 2 \approx 12$ dB, much faster than in free space (6 dB). Second, doubling the antenna height $h_1$ or $h_2$ improves it by $20 \log 2 \approx 6$ dB, another reason roadside units are mounted high. Third, the wavelength does not appear in this approximation.
 
@@ -238,15 +244,17 @@ For example, with $h_1 = 10$ m, $h_2 = 1.5$ m, and $G_T = G_R = 1$, at $d = 2{,}
 
 **QPSK (Quadrature Phase Shift Keying).** The four two-bit groups (dibits) are mapped to carriers whose phases differ by 90° (π/2). In the table of Figure 8, 00 is 0°, 01 is 90°, 10 is 180°, and 11 is 270°, and the bit sequence 01, 10, 10, 11, 00 is sent as waveforms with those phases. Two bits are sent per symbol, so at the same symbol rate data goes twice as fast as with BPSK.
 
-> **Note:** Real systems use **Gray code** mapping, which assigns phases in the order 00, 01, 11, 10 so that the bit groups of neighboring constellation points differ in only one bit [4]. This way, even if noise makes the receiver choose a neighboring point by mistake, only one bit error results.
+> **Note:** Most digital communication systems, including IEEE 802.11, use **Gray code** mapping, which assigns phases in the order 00, 01, 11, 10 so that the bit groups of neighboring constellation points differ in only one bit [4]. This way, even if noise makes the receiver choose a neighboring point by mistake, only one bit error results.
 
 ![Figure 9. The waveform and constellation of 8-QAM](../../images/Week13_13-1_p20.png)
 
 *Figure 9. The waveform and constellation of 8-QAM*
 
-**QAM (Quadrature Amplitude Modulation).** Unlike PSK, it uses amplitude (magnitude) as well as phase as a variable. The 8-QAM in Figure 9 uses eight points that combine two amplitudes and four phases to send 3 bits ($2^3 = 8$) at once. In the constellation, the inner four points (000, 010, 100, 110) have the small amplitude and the outer four points (001, 011, 101, 111) have the large amplitude, and two points in the same direction share the same phase. By the same principle, 16-QAM sends 4 bits ($2^4 = 16$) at once and 64-QAM sends 6 bits ($2^6 = 64$). In general, a modulation with $M$ points carries the following number of bits per symbol.
+**QAM (Quadrature Amplitude Modulation).** Unlike PSK, it uses amplitude (magnitude) as well as phase as a variable. The 8-QAM in Figure 9 uses eight points that combine two amplitudes and four phases to send 3 bits ($`2^3 = 8`$) at once. In the constellation, the inner four points (000, 010, 100, 110) have the small amplitude and the outer four points (001, 011, 101, 111) have the large amplitude, and two points in the same direction share the same phase. By the same principle, 16-QAM sends 4 bits ($`2^4 = 16`$) at once and 64-QAM sends 6 bits ($`2^6 = 64`$). In general, a modulation with $M$ points carries the following number of bits per symbol.
 
-$$b = \log_2 M$$
+```math
+b = \log_2 M
+```
 
 | Modulation | Constellation points $M$ | Bits per symbol $b$ |
 |:-----|:-----|:-----|
@@ -264,9 +272,11 @@ $$b = \log_2 M$$
 
 > **Definition:** **Channel coding** is a technique that transforms the original data by adding extra bits (redundancy) so that errors in the data can be detected and corrected. Representative examples are **linear block codes** and **convolutional codes**.
 
-Every channel code converts $k$ information bits that one actually wants to send into an $n$-bit codeword ($n > k$). The ratio of the number of information bits to the codeword length is called the **code rate**.
+Every channel code converts $k$ information bits that one actually wants to send into an $n$-bit codeword ($`n > k`$). The ratio of the number of information bits to the codeword length is called the **code rate**.
 
-$$R = \frac{\text{information bit length}}{\text{encoded codeword length}} = \frac{k}{n}$$
+```math
+R = \frac{\text{information bit length}}{\text{encoded codeword length}} = \frac{k}{n}
+```
 
 - The larger the codeword length $n$, the more work the decoder must do and the more complex the system becomes.
 - The code rate $R$ is related to the bandwidth the communication system occupies and to the error-correcting capability of the code. The smaller $R$, the more redundancy and the better the error correction, but the less information can be sent in the same bandwidth.
@@ -297,9 +307,11 @@ In Figure 10, the three axes are time, frequency, and power (or code). TDM lines
 
 > **Definition:** Two signals (vectors) being **orthogonal** means that their inner product is 0, which implies that they are independent and one signal does not interfere with detecting the other.
 
-If the symbol length is $T$ and the subcarrier frequencies are chosen as integer multiples of $1/T$ ($k/T$), the inner product of two different subcarriers $k \neq m$ is 0, as follows.
+If the symbol length is $T$ and the subcarrier frequencies are chosen as integer multiples of $1/T$ ($`k/T`$), the inner product of two different subcarriers $k \neq m$ is 0, as follows.
 
-$$\int_0^T e^{j 2 \pi k t / T} \cdot e^{-j 2 \pi m t / T} \, dt = \int_0^T e^{j 2 \pi (k - m) t / T} \, dt = \begin{cases} T & (k = m) \\ 0 & (k \neq m) \end{cases}$$
+```math
+\int_0^T e^{j 2 \pi k t / T} \cdot e^{-j 2 \pi m t / T} \, dt = \int_0^T e^{j 2 \pi (k - m) t / T} \, dt = \begin{cases} T & (k = m) \\ 0 & (k \neq m) \end{cases}
+```
 
 If $k \neq m$, $e^{j 2 \pi (k-m) t / T}$ rotates exactly an integer number of times during the interval $T$, so the integral is 0. As in the upper part of Figure 11, the spectra of the subcarriers overlap, but at the peak frequency of each subcarrier the spectra of all other subcarriers pass through 0. So even though the subcarriers are packed closely without empty guard bands between them, as FDM would need, the receiver can still separate each subcarrier, and the bandwidth is used efficiently. In addition, splitting the data into slow flows makes each symbol longer, which makes the system robust to inter-symbol interference (ISI), in which waves delayed by multipath intrude into the next symbol (the cyclic prefix in Section 2.13).
 
@@ -387,7 +399,7 @@ As in Figure 13, MAC methods fall into two broad branches. **Deterministic metho
 
 *Figure 14. Transmissions and collisions in pure ALOHA and slotted ALOHA*
 
-**Pure ALOHA.** The simplest method, which needs no synchronization, sends as soon as there is data. In the upper part of Figure 14, user 1's second DATA1 and user 2's second DATA2 overlap in time even partially, so both frames are destroyed. **Slotted ALOHA** synchronizes clocks, divides time into slots one frame long, and allows sending only at the start of a slot. Then frames never overlap partially, and collisions occur only when the same slot is chosen, so the vulnerable period shrinks from two frame lengths to one. As a result, the maximum channel efficiency rises from about 18% ($1/2e$) for pure ALOHA to about 37% ($1/e$) [5].
+**Pure ALOHA.** The simplest method, which needs no synchronization, sends as soon as there is data. In the upper part of Figure 14, user 1's second DATA1 and user 2's second DATA2 overlap in time even partially, so both frames are destroyed. **Slotted ALOHA** synchronizes clocks, divides time into slots one frame long, and allows sending only at the start of a slot. Then frames never overlap partially, and collisions occur only when the same slot is chosen, so the vulnerable period shrinks from two frame lengths to one. As a result, the maximum channel efficiency rises from about 18% ($`1/2e`$) for pure ALOHA to about 37% ($`1/e`$) [5].
 
 ![Figure 15. Operation of 1-persistent, non-persistent, and p-persistent CSMA](../../images/Week13_13-1_p29.png)
 
@@ -715,7 +727,7 @@ The MAC layer of RF-DSRC uses a TDMA frame that divides time into slots. One slo
 
 *Table 13. Slots of the RF-DSRC MAC frame*
 
-Since the number of MDS and ACTS slots together is at least 1 and at most 8 ($1 \le n + k \le 8$), a frame including the FCMS consists of 2-9 slots.
+Since the number of MDS and ACTS slots together is at least 1 and at most 8 ($`1 \le n + k \le 8`$), a frame including the FCMS consists of 2-9 slots.
 
 ![Figure 31. The RF-DSRC communication procedure between the RFCU and OBU](../../images/Week13_13-2_p08.png)
 
@@ -737,7 +749,7 @@ Figure 31 shows the communication procedure between the roadside RFCU and the ve
 
 *Figure 32. Field structure of the RF-DSRC FCMS*
 
-The FCMS in Figure 32 carries the following fields within the 100-octet slot (the numbers above the figure are the sizes allocated to each field).
+The FCMS in Figure 32 carries the following fields within the 100-octet slot.
 
 | Field | Meaning | Role |
 |:-----|:-----|:-----|
@@ -753,6 +765,8 @@ The FCMS in Figure 32 carries the following fields within the 100-octet slot (th
 
 *Table 14. Fields of the FCMS*
 
+> **Note:** If all the numbers in Figure 32 are read as octets, they add up to far more than 100. The eight SCIs alone, each made of CI (1) and T0 (28), give $8 \times 29 = 232$. These numbers therefore cannot be read directly as the octet layout of the FCMS; unlike the MDS slot (Figure 33) and the ACTS slot (Figure 34), whose field sizes add up to exactly 100 octets, Figure 32 should be read as showing the kinds and order of the fields.
+
 An MDS slot consists of an MDC, which carries data, and an ACKC, which carries the acknowledgment (the numbers are octets).
 
 ```text
@@ -763,18 +777,18 @@ An MDS slot consists of an MDC, which carries data, and an ACKC, which carries t
 +----+-----+-----+--------+-----+------+----+-----+----+-----+------+
 |<------------ MDC ------------>|      |<------ ACKC ------->|
 
-MAC control field: FRG | C/L | (reserved) | C/R | SEQ | LI | (reserved)
+MAC control field (bits): FRG 1 | C/L 1 | reserved 1 | C/R 1 | SEQ 4 | LI 7 | reserved 1
 ```
 
 *Figure 33. Structure of the RF-DSRC MDS slot*
 
-The MDC is 73 octets: PR (2), CSW (2), MAC control field (2), MSDU (65), and CRC (2); the ACKC is 7 octets: PR (2), CSW (2), AI (1), and CRC (2). The t3 (11) and t4 (9) between and after them are time gaps for switching between transmission and reception, and everything adds up to $73 + 11 + 7 + 9 = 100$ octets. The CSW is a synchronization word that comes right after the PR, like the FSW of the FCMS. The MAC control field consists of the following subfields.
+The MDC is 73 octets: PR (2), CSW (2), MAC control field (2), MSDU (65), and CRC (2); the ACKC is 7 octets: PR (2), CSW (2), AI (1), and CRC (2). The t3 (11) and t4 (9) between and after them are time gaps for switching between transmission and reception, and everything adds up to $73 + 11 + 7 + 9 = 100$ octets. The CSW is a synchronization word that comes right after the PR, like the FSW of the FCMS. The 16-bit MAC control field consists of the following subfields, and its remaining two bits are reserved for future use.
 
-- **FRG (fragmentation):** Fragmentation information of the LPDU.
-- **C/L (continuous/last):** Indicates whether this is the last piece of a fragmented LPDU.
-- **C/R (command/response):** Distinguishes commands from responses.
-- **SEQ (sequence number):** The sequence number of the MSDU.
-- **LI (length indicator):** The length of the valid data in the MSDU.
+- **FRG (fragmentation, 1 bit):** Fragmentation information of the LPDU.
+- **C/L (continuous/last, 1 bit):** Indicates whether this is the last piece of a fragmented LPDU.
+- **C/R (command/response, 1 bit):** Distinguishes commands from responses.
+- **SEQ (sequence number, 4 bits):** The sequence number of the MSDU.
+- **LI (length indicator, 7 bits):** The length of the valid data in the MSDU.
 
 The **AI (acknowledgement identifier)** of the ACKC is the acknowledgment information.
 
@@ -812,7 +826,7 @@ ETCS, the representative application of DSRC, has different names in different c
 
 *Figure 36. Structure of the Hi-Pass service system*
 
-A Hi-Pass lane in Figure 36 has antenna 1 and antenna 2 (RF or infrared) mounted on the canopy, a vehicle classification unit (combined with the TCS), a vehicle camera, a vehicle detector, an integrated lane controller, and a driver display. Vehicle terminals come in infrared and radio frequency (RF) types. Collection proceeds in the following order.
+A Hi-Pass lane in Figure 36 has antenna 1 and antenna 2 (RF or infrared) mounted on poles in front of the toll plaza canopy, a vehicle classification unit (combined with the TCS), a vehicle camera, a vehicle detector, an integrated lane controller, and a driver display. Vehicle terminals come in infrared and radio frequency (RF) types. Collection proceeds in the following order.
 
 1. A vehicle equipped with a vehicle terminal holding an electronic card enters the toll plaza.
 2. The antenna and the vehicle terminal exchange information over DSRC.
@@ -896,9 +910,9 @@ IEEE 802.11p, produced by TGp, is the physical and MAC layer of WAVE in Section 
 
 > **Definition:** **DSSS (direct sequence spread spectrum)** spreads each bit over a wide band by multiplying it by a fast code sequence. **CCK (complementary code keying)** is the DSSS code scheme 802.11b uses for 5.5 Mbps and 11 Mbps. **MIMO (multiple input multiple output)** is a technology that uses several antennas for transmission and reception to send several data flows (spatial streams) at the same time; 4×4 means four transmit and four receive antennas.
 
-The 3.7 GHz row of Table 17 is the amendment (802.11y) that uses the 802.11a scheme at high power in the U.S. 3.65-3.7 GHz band, reaching up to 5 km outdoors. 802.11n raised speeds with MIMO and 40 MHz channel bonding, and 802.11ac with up to 160 MHz and eight streams. 802.11ad delivers about 6.9 Gbit/s with 2,160 MHz-wide channels in the 60 GHz band.
+The 3.7 GHz row of Table 17 is the amendment (802.11y) that uses the 802.11a scheme at high power in the U.S. 3.65-3.7 GHz band, reaching up to 5 km outdoors. 802.11n raised speeds with MIMO and 40 MHz channel bonding, and 802.11ac with up to 160 MHz and eight streams. 802.11ad delivers up to about 6.75 Gbit/s with 2,160 MHz-wide channels in the 60 GHz band [11].
 
-> **Note:** 802.11ad compensates for the large path loss at 60 GHz not with MIMO, which sends several spatial streams at once, but with beamforming, which focuses the wave in one direction using many antenna elements. The "Over 10×10" in Table 17 is more accurately understood as the size of such antenna arrays.
+> **Note:** 802.11ad compensates for the large path loss at 60 GHz not with MIMO, which sends several spatial streams at once, but with beamforming, which focuses the wave in one direction using many antenna elements. The "Over 10×10" in Table 17 is more accurately understood as the size of such antenna arrays. Also, the 802.11ad rate of 6,912 Mbit/s in Table 17 is larger than the maximum 802.11ad data rate of about 6.75 Gbit/s [11].
 
 ### 2.8 Components and Architecture of Wireless LANs
 
@@ -958,7 +972,9 @@ The basic access method in Figure 42 is as follows.
 
 The shorter an interframe space (IFS), the higher its priority. With the slot time $aSlotTime$, the following relations hold.
 
-$$PIFS = SIFS + aSlotTime, \qquad DIFS = SIFS + 2 \times aSlotTime$$
+```math
+PIFS = SIFS + aSlotTime, \qquad DIFS = SIFS + 2 \times aSlotTime
+```
 
 In the 20 MHz OFDM physical layer, $aSlotTime = 9$ µs and SIFS = 16 µs, so PIFS = 25 µs and DIFS = 34 µs [4]. The **PIFS (PCF interframe space)** is used by the PCF controller to seize the channel before DCF stations.
 
@@ -968,9 +984,11 @@ In the 20 MHz OFDM physical layer, $aSlotTime = 9$ µs and SIFS = 16 µs, so PIF
 
 **Random backoff time.** The backoff time is chosen as follows.
 
-$$\text{Backoff Time} = \text{Random}() \times aSlotTime$$
+```math
+\text{Backoff Time} = \text{Random}() \times aSlotTime
+```
 
-$\text{Random}()$ is a pseudo-random integer drawn from the interval $[0, CW]$, and the contention window $CW$ satisfies $aCWmin \le CW \le aCWmax$. The slot time is the minimum time needed to sense the channel once. On the first attempt $CW = aCWmin$; after each failed transmission it grows as $CW \leftarrow 2(CW + 1) - 1$, and once it reaches $aCWmax$ it grows no further. In the example of Figure 43 ($aCWmin = 7$, $aCWmax = 255$), CW grows as 7, 15, 31, 63, 127, 255, 255. After a successful transmission, CW returns to $aCWmin$. For example, with $CW = 15$ and $aSlotTime = 9$ µs, the backoff time is one of the values in 0-135 µs in steps of 9 µs. The more frequent the collisions, the larger CW grows, making it more likely that stations choose different backoff values, and collisions decrease.
+$\text{Random}()$ is a pseudo-random integer drawn from the interval $[0, CW]$, and the contention window $CW$ satisfies $aCWmin \le CW \le aCWmax$. The slot time is the minimum time needed to sense the channel once. On the first attempt $CW = aCWmin$; after each failed transmission it grows as $CW \leftarrow 2(CW + 1) - 1$, and once it reaches $aCWmax$ it grows no further. In the example of Figure 43 ($aCWmin = 7$, $`aCWmax = 255`$), CW grows as 7, 15, 31, 63, 127, 255, 255. After a successful transmission, CW returns to $aCWmin$. For example, with $CW = 15$ and $aSlotTime = 9$ µs, the backoff time is one of the values in 0-135 µs in steps of 9 µs. The more frequent the collisions, the larger CW grows, making it more likely that stations choose different backoff values, and collisions decrease.
 
 ![Figure 44. The DCF backoff procedure of several stations](../../images/Week13_13-2_p26.png)
 
@@ -1011,7 +1029,9 @@ The left side of Figure 45 is a legacy 802.11 station with only one queue and on
 
 In Figure 46, the AIFS of each access category is defined as follows.
 
-$$AIFS[AC] = AIFSN[AC] \times aSlotTime + SIFS$$
+```math
+AIFS[AC] = AIFSN[AC] \times aSlotTime + SIFS
+```
 
 $AIFSN$ is an integer set for each access category. With the values in the figure ($aSlotTime = 9$ µs, SIFS = 16 µs), the 802.11 defaults give an AIFS of 34 µs (= DIFS) for AIFSN 2 of AC_VO and AC_VI, $3 \times 9 + 16 = 43$ µs for AIFSN 3 of AC_BE, and $7 \times 9 + 16 = 79$ µs for AIFSN 7 of AC_BK. When the medium becomes idle, a higher-priority queue waits a shorter time and then backs off within a smaller contention window, so statistically it seizes the channel first. The backoff decreases only while the medium is idle and stops when the medium becomes busy again.
 
@@ -1117,11 +1137,11 @@ The receiver must first interpret SIGNAL to know at what rate to receive DATA, s
 ```mermaid
 flowchart LR
     subgraph TX["Transmitter"]
-        A1["FEC coder"] --> A2["Interleaving and mapping"] --> A3["IFFT"] --> A4["GI addition"] --> A5["Symbol wave shaping"] --> A6["IQ modulation"] --> A7["HPA"]
+        A1["FEC coder"] --> A2["Interleaving and mapping"] --> A3["IFFT"] --> A4["GI addition"] --> A5["Symbol wave shaping"] --> A6["IQ modulation"] --> A8["Up-conversion (mixer)"] --> A7["HPA"]
     end
     subgraph RX["Receiver"]
-        B1["LNA"] --> B2["AGC amplifier"] --> B3["IQ detection"] --> B4["GI removal"] --> B5["FFT"] --> B6["Demapping and deinterleaving"] --> B7["FEC decoder"]
-        B1 -.-> C1["Rx level detection"] -.-> B2
+        B1["LNA"] --> B8["Down-conversion (mixer)"] --> B2["AGC amplifier"] --> B3["IQ detection"] --> B4["GI removal"] --> B5["FFT"] --> B6["Demapping and deinterleaving"] --> B7["FEC decoder"]
+        B2 -.-> C1["Rx level detection"] -.-> B2
         B3 -.-> C2["AFC and clock recovery"]
     end
     A7 -- "Radio channel" --> B1
@@ -1129,7 +1149,7 @@ flowchart LR
 
 *Figure 50. Block diagram of the transmitter and receiver of the OFDM physical layer*
 
-In the transmitter of Figure 50, the **FEC coder** adds redundancy with the convolutional code of Section 1.7; **interleaving** scatters neighboring bits onto subcarriers far apart so that errors do not cluster even if a particular frequency is weakened by fading; and **mapping** converts bit groups into constellation points of BPSK through 64-QAM. The **IFFT (inverse fast Fourier transform)** converts the values of all subcarriers at once into a time-domain OFDM symbol, and **GI (guard interval) addition** attaches the cyclic prefix. The symbol waveform is then shaped, placed on the carrier by **IQ modulation** (modulation using in-phase and quadrature components), amplified by the **HPA (high power amplifier)**, and sent to the antenna. The receiver reverses the process. The **LNA (low noise amplifier)** and the **AGC (automatic gain control)** amplifier adjust the signal level, IQ detection yields the baseband signal, and **AFC (automatic frequency control)** and clock recovery align frequency and time. After the GI is removed and the **FFT** extracts the subcarrier values, demapping, deinterleaving, and FEC decoding restore the original bits.
+In the transmitter of Figure 50, the **FEC coder** adds redundancy with the convolutional code of Section 1.7; **interleaving** scatters neighboring bits onto subcarriers far apart so that errors do not cluster even if a particular frequency is weakened by fading; and **mapping** converts bit groups into constellation points of BPSK through 64-QAM. The **IFFT (inverse fast Fourier transform)** converts the values of all subcarriers at once into a time-domain OFDM symbol, and **GI (guard interval) addition** attaches the cyclic prefix. The symbol waveform is then shaped, placed on an intermediate-frequency carrier by **IQ modulation** (modulation using in-phase and quadrature components), raised to the radio frequency by a mixer and a local oscillator (up-conversion), amplified by the **HPA (high power amplifier)**, and sent to the antenna. The receiver reverses the process. The signal amplified by the **LNA (low noise amplifier)** is lowered to the intermediate frequency by a mixer (down-conversion), and the **AGC (automatic gain control)** amplifier, whose gain is controlled by the receive level detector, adjusts the signal level. Then IQ detection yields the baseband signal, and **AFC (automatic frequency control)** and clock recovery align frequency and time. After the GI is removed and the **FFT** extracts the subcarrier values, demapping, deinterleaving, and FEC decoding restore the original bits.
 
 ![Figure 51. Arrangement of OFDM subcarriers and symbol synchronization using the cyclic prefix](../../images/Week13_13-2_p37.png)
 
@@ -1137,7 +1157,7 @@ In the transmitter of Figure 50, the **FEC coder** adds redundancy with the conv
 
 **Subcarriers.** As in the upper part of Figure 51, the subcarriers of an OFDM channel have different roles. There are **data subcarriers**, which carry data; **pilot subcarriers**, which carry known values so the receiver can track phase and frequency errors; and **null subcarriers**, which are left empty. Null subcarriers are placed at the guard bands at both edges of the channel and at the center (DC), where leakage from the transceiver's local oscillator (LO leakage) appears. 802.11a/g/p use 52 of the 64 FFT positions: 48 for data and 4 for pilots.
 
-**Cyclic prefix and symbol synchronization.** In front of each OFDM symbol is a **cyclic prefix (CP)**, a copy of the last part of length $T_G$ of that symbol. The tail of the previous symbol that arrives late through multipath falls only on the CP interval, so when the receiver discards the CP, inter-symbol interference disappears. In the lower part of Figure 51, the CP (interval B) is identical to the end of the same symbol (interval $B'$). The receiver places two windows W1 and W2 of length $T_G$ a distance $T_{sub}$ (the useful symbol length) apart, slides them along the signal (sliding window), and computes the correlation of the two windows. The correlation peaks when the windows sit exactly on B and $B'$, so the start of the symbol is found at that position. In a 20 MHz channel, $T_{sub} = 3.2$ µs and $T_G = 0.8$ µs, so one symbol is 4 µs.
+**Cyclic prefix and symbol synchronization.** In front of each OFDM symbol is a **cyclic prefix (CP)**, a copy of the last part of length $T_G$ of that symbol. The tail of the previous symbol that arrives late through multipath falls only on the CP interval, so when the receiver discards the CP, inter-symbol interference disappears. In the lower part of Figure 51, the CP (interval B) is identical to the end of the same symbol (interval $`B'`$). The receiver places two windows W1 and W2 of length $T_G$ a distance $T_{sub}$ (the useful symbol length) apart, slides them along the signal (sliding window), and computes the correlation of the two windows. The correlation peaks when the windows sit exactly on B and $B'$, so the start of the symbol is found at that position. In a 20 MHz channel, $T_{sub} = 3.2$ µs and $T_G = 0.8$ µs, so one symbol is 4 µs.
 
 | Modulation | Code rate | Coded bits per subcarrier | Coded bits per OFDM symbol | Data bits per OFDM symbol | Rate (20 MHz, Mb/s) | Rate (10 MHz, Mb/s) | Rate (5 MHz, Mb/s) |
 |:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|
@@ -1213,16 +1233,16 @@ The WAVE architecture in Figure 54 is divided into the **data plane**, which car
 - **Data plane:** From the bottom there are the physical layer (PHY), the WAVE MAC including channel coordination, and the LLC sublayer, above which there are two branches of the network layer. One is IPv6 with transport protocols such as UDP/TCP; the other is the networking and transport protocols of WSMP. At the top come the higher layer standards, for example the SAE J2735 messages of Week 11.
 - **Management plane:** It contains the physical layer management entity (PLME), the MAC management entity (MLME), the MLME extension for multichannel operation, the WAVE management entity (WME), and the WAVE security services. They connect to each layer through service access points (SAPs). For example, the MLMEX SAP is the SAP of the MLME extension, the WME SAP that of the WME, and the SEC SAP that of the security services.
 
-The brackets on the right of the figure show the scope of each standard. IEEE 802.11p covers the physical layer and MAC, IEEE 1609.4 the channel coordination of the WAVE MAC and the MLME extension, IEEE 1609.3 the networking services above LLC (IPv6, WSMP, WME), and IEEE 1609.2 the security services.
+The brackets on the right of the figure show the scope of each standard. IEEE 802.11p covers the physical layer and MAC, IEEE 1609.4 the channel coordination of the WAVE MAC and the MLME extension, IEEE 1609.3 the LLC sublayer and the networking services above it (IPv6, WSMP, WME), and IEEE 1609.2 the security services.
 
 | Standard | Content |
 |:-----|:-----|
-| IEEE 802.11p (2010) | The sixth amendment to IEEE 802.11 (Amendment 6), for WAVE [11] |
-| IEEE 1609.2 (2016) | Security services for application and management messages [12] |
-| IEEE 1609.3 (2016) | Networking services [13] |
-| IEEE 1609.4 (2016) | Multichannel operation [14] |
-| IEEE 1609.11 (2010) | Over-the-air electronic payment data exchange protocol for ITS [15] |
-| IEEE 1609.12 (2016) | Identifier allocations [16] |
+| IEEE 802.11p (2010) | The sixth amendment to IEEE 802.11 (Amendment 6), for WAVE [12] |
+| IEEE 1609.2 (2016) | Security services for application and management messages [13] |
+| IEEE 1609.3 (2016) | Networking services [14] |
+| IEEE 1609.4 (2016) | Multichannel operation [15] |
+| IEEE 1609.11 (2010, published 2011) | Over-the-air electronic payment data exchange protocol for ITS [16] |
+| IEEE 1609.12 (2016) | Identifier allocations [17] |
 
 *Table 24. Standards that make up WAVE*
 
@@ -1254,7 +1274,7 @@ The WAVE physical layer uses the 802.11a OFDM of Section 2.13 scaled down to 10 
 
 *Figure 56. The U.S. WAVE channel plan and the transmit power limit of each channel*
 
-Figure 56 is the channel plan of the 5.9 GHz band set by the U.S. Federal Communications Commission (FCC) [17]. The center frequency of channel number $n$ is $5000 + 5n$ MHz, so for example channel 172 is centered at $5000 + 5 \times 172 = 5860$ MHz. The lowest 5 MHz (5.850-5.855 GHz) is left as a guard band.
+Figure 56 is the channel plan of the 5.9 GHz band set by the U.S. Federal Communications Commission (FCC) [18]. The center frequency of channel number $n$ is $5000 + 5n$ MHz, so for example channel 172 is centered at $5000 + 5 \times 172 = 5860$ MHz. The lowest 5 MHz (5.850-5.855 GHz) is left as a guard band.
 
 | Channel | Center frequency (GHz) | Use | Transmit power limit |
 |:-----|:-----|:-----|:-----|
@@ -1268,11 +1288,11 @@ Figure 56 is the channel plan of the 5.9 GHz band set by the U.S. Federal Commun
 
 *Table 26. Uses and transmit power limits of the U.S. WAVE channels*
 
-> **Definition:** **dBm** expresses power in decibels relative to 1 mW: $P[\text{dBm}] = 10 \log_{10}(P / 1\ \text{mW})$. 33 dBm is $10^{3.3} \approx 2{,}000$ mW, about 2 W; 23 dBm is about 0.2 W, 40 dBm is 10 W, and 44.8 dBm is about 30 W.
+> **Definition:** **dBm** expresses power in decibels relative to 1 mW: $`P[\text{dBm}] = 10 \log_{10}(P / 1\ \text{mW})`$. 33 dBm is $10^{3.3} \approx 2{,}000$ mW, about 2 W; 23 dBm is about 0.2 W, 40 dBm is 10 W, and 44.8 dBm is about 30 W.
 
 Control channel 178 is where all devices gather to hear WSAs and safety messages, so it allows the highest power; channel 172 is dedicated to vehicle-to-vehicle safety communication, which needs low latency and high availability, and channel 184 to high-power public safety communication at intersections. The remaining service channels are shared and split by range into medium range (33 dBm) and short range (23 dBm).
 
-> **Note:** This channel plan is the original U.S. plan. In 2020 the FCC reassigned the lower 45 MHz of the band to unlicensed Wi-Fi and the upper 30 MHz to C-V2X [18]. National spectrum policies were covered in Week 1.
+> **Note:** This channel plan is the original U.S. plan. In 2020 the FCC reassigned the lower 45 MHz of the band to unlicensed Wi-Fi and the upper 30 MHz to C-V2X [19]. National spectrum policies were covered in Week 1.
 
 ### 3.5 The IEEE 802.11p MAC and EDCA Parameters
 
@@ -1323,7 +1343,7 @@ The CWmin of AC_VI is $(15 + 1)/2 - 1 = 7$, and the CWmin of AC_VO is $(15 + 1)/
 
 *Figure 58. The sync interval, guard intervals, and time slots 0 and 1*
 
-If a device has only one radio transceiver, it can use only one channel at a time. IEEE 1609.4 divides time so that one transceiver can alternate between the control channel and the service channels [14].
+If a device has only one radio transceiver, it can use only one channel at a time. IEEE 1609.4 divides time so that one transceiver can alternate between the control channel and the service channels [15].
 
 - **Sync interval:** Time is divided into equal sync intervals aligned with the start of each second of Coordinated Universal Time (UTC). The default is 100 ms, so there are 10 sync intervals per second.
 - **Time slots:** A sync interval is divided into the CCH interval (time slot 0) and the SCH interval (time slot 1), each 50 ms by default.
@@ -1494,7 +1514,7 @@ In the 2016 edition in Figure 69, the WSA is sent as a WSM rather than a managem
 
 Ordinary WSMs go down the same way (Figure 70). When the higher layer hands over data with WSM-WaveShortMessage.req, WSMP builds the WSM by attaching the N-Header (Subtype 0, option indicator, version, optional information element extension, TPID 0) and the T-Header (PSID, WSM length) and passes it to LLC with DL-UNITDATAX.req. LLC attaches Type = 0x88DC and passes it to the MAC with MA-UNITDATAX.req.
 
-> **Definition:** The **EtherType** is a 2-octet value that tells which network layer protocol the data carried in a frame belongs to. The LLC of WAVE attaches 0x88DC to WSMP data and 0x86DD to IPv6 data, so the receiving LLC uses this value to pass the data up to WSMP or IPv6 [13].
+> **Definition:** The **EtherType** is a 2-octet value that tells which network layer protocol the data carried in a frame belongs to. The LLC of WAVE attaches 0x88DC to WSMP data and 0x86DD to IPv6 data, so the receiving LLC uses this value to pass the data up to WSMP or IPv6 [14].
 
 ### 3.11 WAVE Communication Procedures
 
@@ -1538,7 +1558,7 @@ Since service information repeats as many times as Service Info Count indicates,
 
 > **Definition:** The **PSID (provider service identifier)** is an identifier that indicates which application service a WSA or WSM belongs to. In ETSI and ISO standards the same value is called the **AID (ITS application identifier)**.
 
-IEEE 1609.12 is the standard for the allocation of WAVE identifiers (active since September 21, 2012), and it contains normative requirements for the allocation of PSIDs used in ETSI, ISO, SAE, and IEEE standards [16]. PSIDs have variable length and are expressed with **p-encoding**, in which the leading bits of the first octet indicate the length.
+IEEE 1609.12 is the standard for the allocation of WAVE identifiers (active since September 21, 2012), and it contains normative requirements for the allocation of PSIDs used in ETSI, ISO, SAE, and IEEE standards [17]. PSIDs have variable length and are expressed with **p-encoding**, in which the leading bits of the first octet indicate the length.
 
 | Leading bits of the first octet (b7 b6 b5 b4) | PSID length | Range of p-encoded values (hexadecimal) | Number of values |
 |:-----|:-----|:-----|:-----|
@@ -1560,18 +1580,31 @@ An x is a bit that may be either 0 or 1. The number of values is computed from t
 
 The octets are transmitted starting from the first octet. Short PSIDs are assigned to frequently used core services to keep messages short.
 
-| PSID value | p-encoded value | Application area | Related standard |
+| PSID value | p-encoded value | Application area | Related standard or organization |
 |:-----|:-----|:-----|:-----|
 | 0x00 | 0x00 | System | ISO 15628 |
 | 0x01 | 0x01 | Electronic fee collection | ISO 14906 |
 | 0x02-0x13 | 0x02-0x13 | DSRC applications such as freight management, public transport, traffic information, and parking management | ISO 15628 and others |
+| 0x14, 0x15 | 0x14, 0x15 | EFC compliance check communication applications, localisation augmentation communication applications | ISO TS 12813, ISO TS 13141 |
 | 0x20 | 0x20 | Vehicle to vehicle safety and awareness | SAE J2735 |
+| 0x21, 0x22 | 0x21, 0x22 | Limited sensor vehicle to vehicle safety and awareness, tracked vehicle safety and awareness | SAE J2735 |
 | 0x23 | 0x23 | WAVE security management | IEEE 1609.2 |
 | 0x24 | 0x24 | CA basic service (cooperative awareness) | ETSI EN 302 637-2 |
 | 0x25 | 0x25 | DEN basic service (decentralized environmental notification) | ETSI EN 302 637-3 |
+| 0x26 | 0x26 | Misbehavior reporting for common applications | CAMP |
+| 0x27 | 0x27 | Vulnerable road user (VRU) safety application | SAE DSRC TC |
 | 0x7F | 0x7F | Testing | IEEE P1609 WG |
-| 0x80-0x85 | 0x80-00 to 0x80-05 | GPS corrections, intersection safety, traveler information and roadside signage, probe exchanges, emergency vehicles | SAE J2735 |
+| 0x80-0x85 | 0x80-00 to 0x80-05 | Differential GPS corrections (uncompressed, compressed), intersection safety and awareness, traveler information and roadside signage, mobile probe exchanges, emergency and erratic vehicles present in the roadway | SAE J2735 |
+| 0x86 | 0x80-06 | Remote ITS station management protocol (RMPE) | ISO 24102-2 |
 | 0x87 | 0x80-07 | WAVE service advertisement (WSA) | IEEE 1609.3 |
+| 0x88 | 0x80-08 | Peer-to-peer distribution of security management information | CAMP |
+| 0x01-00 | 0x80-80 | Certificate revocation list (CRL) application | CAMP |
+| 0x3E-80 to 0x40-1F | 0xBE-00 to 0xBF-9F | Reserved (416 values) | IEEE P1609 WG |
+| 0x40-20 to 0x40-5F | 0xBF-A0 to 0xBF-DF | Private use (64 values) | IEEE P1609 WG |
+| 0x40-60 to 0x40-7F | 0xBF-E0 to 0xBF-FF | Testing (32 values) | IEEE P1609 WG |
+| 0x40-80, 0x40-81 | 0xC0-00-00, 0xC0-00-01 | Cooperative Awareness Message (CAM) processor, Decentralized Environmental Notification Message (DENM) processor (both deprecated) | ETSI |
+| 0x20-40-81 | 0xE0-00-00-01 | ITS station internal management communications protocol (IICP) | ISO 24102-4 |
+| 0x10-20-40-7E | 0xEF-FF-FF-FE | IPv6 routing | IEEE 1609.3 |
 
 *Table 36. Major PSID allocations in IEEE 1609.12*
 
@@ -1579,13 +1612,13 @@ For PSIDs of 2 octets or more, the PSID value and the p-encoded value differ. Si
 
 ### 3.13 The WAVE Electronic Payment Service
 
-So that electronic toll collection such as DSRC's Hi-Pass can also be done over WAVE, IEEE 1609.11 defines the **WAVE EPS (electronic payment service)** [15].
+So that electronic toll collection such as DSRC's Hi-Pass can also be done over WAVE, IEEE 1609.11 defines the **WAVE EPS (electronic payment service)** [16].
 
 ![Figure 73. The WAVE EPS architecture of the RSU and OBU](../../images/Week13_13-3_p39.png)
 
 *Figure 73. The WAVE EPS architecture of the RSU and OBU*
 
-In Figure 73, the RSU side, which receives the toll, is the **payee**, and the OBU side, which pays it, is the **payer**. Both consist of an application (payee or payer application), a payment service, and a WAVE stack, and the application is divided into an application core and the **WIAL (WAVE interface application layer)**. The content of the application core is out of the scope of the standard; the interface between the application core and the WIAL follows ISO 14906, the application interface standard for DSRC toll collection [19], and the interface between the WIALs of the payee and payer follows ISO 15628, the DSRC application layer standard [9]. In other words, WAVE EPS keeps the toll collection application of the DSRC era as it is and replaces only the communication beneath it with WAVE.
+In Figure 73, the RSU side, which receives the toll, is the **payee**, and the OBU side, which pays it, is the **payer**. Both consist of an application (payee or payer application), a payment service, and a WAVE stack, and the application is divided into an application core and the **WIAL (WAVE interface application layer)**. What passes directly between the payee and payer application cores is out of the scope of the standard; the interface between the application core and the WIAL follows ISO 14906, the application interface standard for DSRC toll collection [20], and the interface between the WIALs of the payee and payer follows ISO 15628, the DSRC application layer standard [9]. In other words, WAVE EPS keeps the toll collection application of the DSRC era as it is and replaces only the communication beneath it with WAVE.
 
 ![Figure 74. The initialization procedure in which the RSU sends the BST in a WSA](../../images/Week13_13-3_p40.png)
 
@@ -1710,7 +1743,7 @@ The sites in Figure 80 are the Mortefontaine and Linas-Montlhéry test centers i
 | Special vehicles | Converts vehicles to add capabilities such as discreet protection, systems integration, and reduced emissions, and builds protected vehicles with ballistic and blast protection. |
 | Audit | Helps companies assess their performance or prepare for certification, and has auditors for automotive producers, manufacturers, and suppliers. |
 | Training | Provides training in road risk management, eco-driving, and commuting safety and special qualification training for government agencies, and its courses hold the French training quality certification (Qualiopi). |
-| Events | Runs business (BtoB) events, more than 14 public (BtoC) events a year at Linas-Montlhéry, and sponsorship. |
+| Events | Runs business (BtoB) events such as press and product presentations, training, cinema, TV, and fashion shootings, and workshops with a dedicated team and infrastructure, holds more than 14 public (BtoC) events a year at Linas-Montlhéry, drawing on its heritage, and offers partnerships such as sponsorship and VIP access. |
 
 *Table 38. UTAC's service areas*
 
@@ -1753,7 +1786,7 @@ The partners are the road construction company COLAS, the telecom operators Oran
 
 *Figure 84. Track layout of the Millbrook proving ground in the United Kingdom*
 
-In February 2021 (announced December 2020), UTAC completed the acquisition of Millbrook in the United Kingdom, one of the largest vehicle test laboratories in Europe, laying a foundation for offering diverse services in more countries, and in 2019 it completed a test facility for electric vehicles, broadening its testing and certification base for future vehicles. The Millbrook proving ground in Figure 84 is a facility specially built for testing passenger cars and heavy vehicles. Its road tracks simulate demanding European roads and include a high-speed circuit, many special surfaces, and the Millbrook Hill Route, famous for simulation, and its off-road tracks have many obstacles that test the capabilities of civilian and military vehicles.
+In February 2021 (announced December 2020) [21], UTAC completed the acquisition of Millbrook in the United Kingdom, one of the largest vehicle test laboratories in Europe, laying a foundation for offering diverse services in more countries, and in 2019 it completed a test facility for electric vehicles, broadening its testing and certification base for future vehicles. The Millbrook proving ground in Figure 84 is a facility specially built for testing passenger cars and heavy vehicles. Its road tracks simulate demanding European roads, a high-speed circuit, and many special surfaces and include the famous Millbrook Hill Route, and its off-road tracks have many obstacles that test the capabilities of civilian and military vehicles.
 
 ### 4.5 Test Facilities
 
@@ -1804,7 +1837,7 @@ Such surfaces are used to test the durability and reliability of vehicles and co
 
 **True/False Check:**
 
-| Statement | Judgment and reason |
+| Statement | Judgment and Reason |
 |:-----|:-----|
 | 5.8 GHz DSRC implements all seven OSI layers. | **F.** It defines only the application layer (7), the data link layer (2), and the physical layer (1). |
 | In the two-ray model, doubling the distance reduces the received power by 6 dB. | **F.** It follows a fourth-power law, so the reduction is 12 dB. 6 dB is the free-space case. |
@@ -1975,7 +2008,7 @@ Such surfaces are used to test the durability and reliability of vehicles and co
     <details>
     <summary>Answer</summary>
 
-    Both procedures initialize by exchanging a BST and a VST and follow the same flow of reading billing information, debiting, storing a receipt, and releasing the connection, and their applications follow ISO 14906 and ISO 15628. The difference is the means of carrying the messages. Hi-Pass sends them in the TDMA slots (FCMS, MDS, ACTS) of 5.8 GHz DSRC, while WAVE EPS sends them in the WSAs (BST) and WSMs (VST and payment messages) of 5.9 GHz WAVE.
+    Both procedures initialize by exchanging a BST and a VST and follow the same flow of reading billing information, debiting, storing a receipt, and releasing the connection. WAVE EPS reuses this DSRC toll collection application (ISO 14906, ISO 15628) as it is. The difference is the means of carrying the messages. Hi-Pass sends them in the TDMA slots (FCMS, MDS, ACTS) of 5.8 GHz DSRC, while WAVE EPS sends them in the WSAs (BST) and WSMs (VST and payment messages) of 5.9 GHz WAVE.
 
     </details>
 
@@ -2004,12 +2037,14 @@ Such surfaces are used to test the durability and reliability of vehicles and co
 8. EN 12253:2004, *Road transport and traffic telematics - Dedicated short-range communication - Physical layer using microwave at 5.8 GHz*, European Committee for Standardization, 2004.
 9. ISO 15628:2013, *Intelligent transport systems - Dedicated short range communication (DSRC) - DSRC application layer*, International Organization for Standardization, 2013.
 10. ARIB STD-T75, *Dedicated Short-Range Communication System*, Association of Radio Industries and Businesses, 2001.
-11. IEEE Std 802.11p-2010, *Amendment 6: Wireless Access in Vehicular Environments*, 2010.
-12. IEEE Std 1609.2-2016, *IEEE Standard for Wireless Access in Vehicular Environments - Security Services for Applications and Management Messages*, 2016.
-13. IEEE Std 1609.3-2016, *IEEE Standard for Wireless Access in Vehicular Environments (WAVE) - Networking Services*, 2016.
-14. IEEE Std 1609.4-2016, *IEEE Standard for Wireless Access in Vehicular Environments (WAVE) - Multi-Channel Operation*, 2016.
-15. IEEE Std 1609.11-2010, *IEEE Standard for Wireless Access in Vehicular Environments (WAVE) - Over-the-Air Electronic Payment Data Exchange Protocol for Intelligent Transportation Systems (ITS)*, 2010.
-16. IEEE Std 1609.12-2016, *IEEE Standard for Wireless Access in Vehicular Environments (WAVE) - Identifier Allocations*, 2016.
-17. Federal Communications Commission, *Amendment of the Commission's Rules Regarding Dedicated Short-Range Communication Services in the 5.850-5.925 GHz Band (5.9 GHz Band)*, Memorandum Opinion and Order, FCC 06-110, Jul. 2006.
-18. Federal Communications Commission, *Use of the 5.850-5.925 GHz Band*, First Report and Order, FCC 20-164, ET Docket No. 19-138, Nov. 2020.
-19. ISO 14906:2018, *Electronic fee collection - Application interface definition for dedicated short-range communication*, International Organization for Standardization, 2018.
+11. S. Shankar N., D. Dash, H. El Madi, and G. Gopalakrishnan, "WiGig and IEEE 802.11ad - For multi-gigabyte-per-second WPAN and WLAN," arXiv:1211.7356, Nov. 2012. https://arxiv.org/abs/1211.7356
+12. IEEE Std 802.11p-2010, *Amendment 6: Wireless Access in Vehicular Environments*, 2010.
+13. IEEE Std 1609.2-2016, *IEEE Standard for Wireless Access in Vehicular Environments - Security Services for Applications and Management Messages*, 2016.
+14. IEEE Std 1609.3-2016, *IEEE Standard for Wireless Access in Vehicular Environments (WAVE) - Networking Services*, 2016.
+15. IEEE Std 1609.4-2016, *IEEE Standard for Wireless Access in Vehicular Environments (WAVE) - Multi-Channel Operation*, 2016.
+16. IEEE Std 1609.11-2010, *IEEE Standard for Wireless Access in Vehicular Environments (WAVE) - Over-the-Air Electronic Payment Data Exchange Protocol for Intelligent Transportation Systems (ITS)*, 2010.
+17. IEEE Std 1609.12-2016, *IEEE Standard for Wireless Access in Vehicular Environments (WAVE) - Identifier Allocations*, 2016.
+18. Federal Communications Commission, *Amendment of the Commission's Rules Regarding Dedicated Short-Range Communication Services in the 5.850-5.925 GHz Band (5.9 GHz Band)*, Memorandum Opinion and Order, FCC 06-110, Jul. 2006.
+19. Federal Communications Commission, *Use of the 5.850-5.925 GHz Band*, First Report and Order, FCC 20-164, ET Docket No. 19-138, Nov. 2020.
+20. ISO 14906:2018, *Electronic fee collection - Application interface definition for dedicated short-range communication*, International Organization for Standardization, 2018.
+21. Spectris plc, "Divestment of Millbrook completed," regulatory announcement, London Stock Exchange, Feb. 2, 2021. https://www.sharesmagazine.co.uk/news/market/LSE20210202071511_3865205/Divestment-of-Millbrook-completed

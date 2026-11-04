@@ -196,20 +196,20 @@ On the left of Figure 5, the waveform is dense (high frequency) where the bit is
 
 *Figure 6. PSK waveform of the bit stream 00110100010*
 
-In Figure 6, the amplitude and frequency are constant, and the phase shifts by 180° at the points where the waveform appears to break abruptly. The simplest binary PSK (BPSK) gives 0 and 1 different phases (for example, 0° and 180°), and differential PSK (DPSK) inverts the phase relative to the previous bit for a 1 and keeps it for a 0.
+In Figure 6, the amplitude and frequency are constant, and the phase shifts by 180° at the points where the waveform appears to break abruptly. The simplest binary PSK (BPSK) gives 0 and 1 different phases (for example, 0° and 180°), so the phase is inverted whenever the bit value changes. Differential PSK (DPSK) inverts the phase relative to the previous signal for a 1 and keeps it for a 0. In Figure 6, the phase breaks only where a bit of 1 (the 3rd, 4th, 6th, and 10th) begins, so the waveform of Figure 6 is differential PSK.
 
 > **Definition:** A **symbol** is the unit of signal that carries data information, that is, a signal element distinguished at one time. The **baud rate (signaling rate)** is the number of symbols transmitted per second, in baud. The **data rate** is the number of bits transmitted per second, in bps.
 
 If a symbol takes one of $M$ states, it can carry $\log_2 M$ bits, so the two rates are related as follows [1].
 
-$$
+```math
 \text{Data rate (bps)} = \text{Baud rate (baud)} \times \log_2 M
-$$
+```
 
 **Worked example.** Consider a line with a baud rate of 2,400 baud.
 
-- BPSK has 2 phases ($M = 2$), so each symbol carries $\log_2 2 = 1$ bit, giving $2400 \times 1 = 2400$ bps.
-- QPSK has 4 phases (0°, 90°, 180°, 270°, $M = 4$), so each symbol carries $\log_2 4 = 2$ bits, giving $2400 \times 2 = 4800$ bps. For example, 00 is sent as 0°, 01 as 90°, 10 as 180°, and 11 as 270°.
+- BPSK has 2 phases ($`M = 2`$), so each symbol carries $\log_2 2 = 1$ bit, giving $2400 \times 1 = 2400$ bps.
+- QPSK has 4 phases (0°, 90°, 180°, 270°, $`M = 4`$), so each symbol carries $\log_2 4 = 2$ bits, giving $2400 \times 2 = 4800$ bps. For example, 00 is sent as 0°, 01 as 90°, 10 as 180°, and 11 as 270°.
 - 8-PSK has $M = 8$, so each symbol carries 3 bits, giving $2400 \times 3 = 7200$ bps.
 
 At the same baud rate, increasing the bits per symbol raises the data rate. In exchange, the spacing between phases narrows, making the signal more sensitive to noise. In this way, bandwidth (which sets the baud rate), data rate, and robustness against noise trade off against one another.
@@ -228,7 +228,7 @@ Sending digital data as a digital signal is widely used in local networks. The r
 **Biphase codes.** A voltage transition occurs in the middle of each bit time.
 
 - There is at least one transition in every bit, so the receiver can find the bit boundaries from these transitions and align its clock (self-clocking).
-- **Manchester code:** The direction of the mid-bit transition represents the value. In the IEEE 802.3 convention, a high-to-low transition is 0 and a low-to-high transition is 1. It is used in 10 Mbps Ethernet [1].
+- **Manchester code:** The direction of the mid-bit transition represents the value. In the IEEE 802.3 convention, a high-to-low transition is 0 and a low-to-high transition is 1. It is used in 10 Mbps Ethernet [1]. A Manchester signal under this convention equals the exclusive OR (XOR) of the data and the clock (a square wave that is high in the first half of the bit time and low in the second half). For example, a data bit of 1 gives 1 XOR 1 = 0 (low) in the first half and 1 XOR 0 = 1 (high) in the second half, which is a low-to-high transition, and a data bit of 0 gives the opposite, a high-to-low transition.
 - **Differential Manchester code:** The mid-bit transition is always present and is used only for synchronization. The value is represented by the presence or absence of a transition at the start of the bit: a transition at the start for 0, none for 1 [1].
 
 The figure below draws the same bit stream 01001100011 in four codes. The upper line is the high level, the lower line is the low level, and ┊ marks the bit-time boundaries. The previous level is assumed to be low for NRZI and high for differential Manchester.
@@ -291,7 +291,7 @@ To send analog information such as voice digitally, the continuous signal must b
 
 > **Definition:** **Sampling** is measuring the value of a continuous signal at regular time intervals, and the number of measurements per second is called the **sampling rate**.
 
-> **Key Point:** **Sampling theorem.** If a signal is sampled at a rate higher than twice its highest frequency, the original signal can be completely reconstructed from the samples alone.
+> **Key Point:** **Sampling theorem.** If a signal is sampled at a rate higher than twice its highest frequency, the original signal can be completely reconstructed from the samples alone. In practice, the signal is filtered so that all of its frequency components lie below some upper bound of $B$ Hz, and it is then sampled at $2B$ samples per second. Because the highest frequency of the signal is below $B$, this rate is higher than twice the highest frequency.
 
 ![Figure 9. Adequate sampling and undersampling](../../images/Week04_p29.png)
 
@@ -307,13 +307,13 @@ The left side of Figure 9 is dense sampling within one period, and connecting th
 
 Following the three steps of PCM with Figure 10 gives the following.
 
-1. **Sampling:** As in part (a), a signal with highest frequency $f_m$ is measured at intervals of $1/(2f_m)$. This interval corresponds to a sampling rate of $2f_m$, so it satisfies the sampling theorem.
-2. **Quantization:** Each measured value is rounded to the nearest level. In the figure, 1.52 becomes 1.5, 0.92 becomes 0.9, and 0.11 becomes 0.1. The difference produced here (for example, $1.52 - 1.5 = 0.02$) is called the **quantization error**, and it becomes smaller as the levels become finer (as the number of bits increases).
+1. **Sampling:** As in part (a), a signal whose frequency components all lie below $f_m$ is measured at intervals of $1/(2f_m)$. This interval corresponds to a sampling rate of $2f_m$, and because $f_m$ is an upper bound on the signal frequencies, it satisfies the sampling theorem.
+2. **Quantization:** Each measured value is rounded to the nearest level. In the figure, 1.52 becomes 1.5, 0.92 becomes 0.9, and 0.11 becomes 0.1. The difference produced here (for example, $`1.52 - 1.5 = 0.02`$) is called the **quantization error**, and it becomes smaller as the levels become finer (as the number of bits increases).
 3. **Encoding:** Each level is converted into a binary code. Part (b) represents the 16 levels 0-15 by 4-bit codes (0000-1111) and their pulse waveforms. For example, level 9 is 1001, so it is sent as pulse, blank, blank, pulse.
 
-**Computing voice PCM.** Most of the energy of telephone voice lies below 4,000 Hz.
+**Computing voice PCM.** Most of the energy of telephone voice lies below 4,000 Hz, so the telephone network filters voice to below 4,000 Hz (the actual call band is about 300-3,400 Hz) before encoding it.
 
-1. The sampling rate is twice the highest frequency, $2 \times 4000 = 8000$ Hz, that is, 8,000 samples per second.
+1. The sampling rate is twice the upper frequency bound of 4,000 Hz, $2 \times 4000 = 8000$ Hz, that is, 8,000 samples per second.
 2. Quantizing each sample with 8 bits distinguishes $2^8 = 256$ levels (A/D conversion).
 3. The transmission rate of voice data is $8000 \times 8 = 64{,}000$ bps, that is, 64 kbps.
 
@@ -353,7 +353,7 @@ In Figure 12, the multiplexer sends the data of sources 1, 2, 3, 4, 5, and 6 one
 
 *Table 5. Synchronous and asynchronous TDM*
 
-**Worked example.** To combine six terminals that each send at 9.6 kbps with synchronous TDM, the line needs at least $6 \times 9.6 = 57.6$ kbps. If only two terminals are sending at some moment, four of the six slots are transmitted empty, wasting $4/6 \approx 67\%$ of the capacity. Asynchronous TDM gives slots only to the terminals that have data to send, so in the same situation a slower line is enough, or more terminals can be connected to the same line.
+**Worked example.** To combine six terminals that each send at 9.6 kbps with synchronous TDM, the line needs at least $6 \times 9.6 = 57.6$ kbps. If only two terminals are sending at some moment, four of the six slots are transmitted empty, wasting $`4/6 \approx 67\%`$ of the capacity. Asynchronous TDM gives slots only to the terminals that have data to send, so in the same situation a slower line is enough, or more terminals can be connected to the same line.
 
 ---
 
@@ -438,7 +438,7 @@ The performance of the two cables is compared numerically as follows.
 
 *Figure 16. Structure of a coaxial cable*
 
-As Figure 16 shows, a coaxial cable consists, from the inside out, of a solid metal inner conductor, insulation, an outer conductor of braided metal, and an outer sheath.
+As Figure 16 shows, a coaxial cable consists, from the inside out, of a solid metal inner conductor, insulation, an outer conductor of braided metal, and an outer sheath. Some actual products add a layer of metal foil under the metal braid to strengthen the shielding.
 
 - Its diameter is about 1-2.5 cm.
 - The outer conductor completely surrounds and shields the inner conductor, so it is more resistant to noise than twisted pair.
@@ -501,7 +501,7 @@ Multimode fiber is further divided into two types. In **step-index** fiber, the 
 
 *Table 9. Characteristics of typical optical fibers*
 
-The attenuation values in Table 9 are maximums, and step-index fiber has the worst attenuation and bandwidth while single mode has the best. Even in the same fiber, the longer the wavelength of the light (1300 nm or 1500 nm rather than 850 nm), the smaller the attenuation. The bandwidth unit MHz·km means that the product of distance and bandwidth is constant. For example, 50 µm graded-index fiber has 1500 MHz·km at 1300 nm, so it provides a bandwidth of 1500 MHz over 1 km and $1500 / 3 = 500$ MHz over 3 km.
+The attenuation values in Table 9 are maximums, and step-index fiber has the worst attenuation and bandwidth while single mode has the best. Even in the same fiber, the longer the wavelength of the light (1300 nm or 1500 nm rather than 850 nm), the smaller the attenuation. The bandwidth unit MHz·km means that the product of distance and bandwidth is approximately constant. For example, 50 µm graded-index fiber has 1500 MHz·km at 1300 nm, so to a first approximation it provides a bandwidth of about 1500 MHz over 1 km and about $1500 / 3 = 500$ MHz over 3 km.
 
 ### 2.6 Unguided Media: Microwave and Infrared
 
@@ -648,7 +648,7 @@ The properties of datagrams are as follows.
 
 *Figure 24. Packet switching with the datagram approach*
 
-Figures 23 and 24 show, in time order from (a) to (e), the left station sending packets 1, 2, and 3 to the right station. In the virtual circuit approach of Figure 23, the three packets move one after another along the same predetermined thick path and arrive in order. In the datagram approach of Figure 24, packet 3 branches onto a different link from packets 1 and 2 in (b) and (c), goes around by a different upper path in (d), and rejoins them at a node near the destination. This happens because each node chooses the best link at that moment for each packet, which is also why datagram packets may arrive in a different order from the order in which they were sent.
+Figures 23 and 24 show, in time order from (a) to (e), the left station sending packets 1, 2, and 3 to the right station. In the virtual circuit approach of Figure 23, the three packets move one after another along the same predetermined thick path and arrive in order. In the datagram approach of Figure 24, packet 3 branches onto an upper link different from that of packets 1 and 2 in (b), follows the upper path in (c), and rejoins packets 1 and 2 at the node just before the destination in (d). This happens because each node chooses the best link at that moment for each packet. In Figure 24 the three packets arrive in order in (e), but because the delay differs from path to path, datagram packets may arrive in a different order from the order in which they were sent.
 
 | Item | Virtual circuit | Datagram |
 |:-----|:-----|:-----|
@@ -733,7 +733,7 @@ The Tsukuba Research Facility has the following facilities.
 |:-----|:-----|
 | Laboratory for heavy-duty ultra-low emission vehicles | Researches technologies that reduce the emissions of heavy vehicles such as trucks and buses. |
 | Laboratories for EV, FC and batteries | Research electric vehicles (EV), fuel cells (FC), and batteries. |
-| Driving simulator | Places a vehicle inside a cylindrical screen and studies driver responses in a virtual road environment. |
+| Driving simulator | Places a real vehicle inside a round screen enclosure and studies driver responses in a virtual road environment. |
 | All-purpose test road | Total length of 1,500 m. |
 | Crash test facility | Evaluates safety by crashing vehicles into each other or into motorcycles on several runways that fan out. |
 
@@ -763,7 +763,7 @@ The Shirosato Test Center has an area of 302 ha (910,000 pyeong). One hectare is
 
 ### 4.4 Organization
 
-As of April 2013, JARI's organization places the following departments under the president, the board members such as the managing director, senior executive director, director, and executive director, and the auditor.
+As of April 2013, JARI's organization places the following departments under the president, the executive board (managing director, senior executive director, and executive director), and the auditor.
 
 | Category | Departments |
 |:-----|:-----|
@@ -820,7 +820,7 @@ Platooning can keep short gaps safely only if acceleration and braking are synch
 
 **True/False Check:**
 
-| Statement | Verdict and Reason |
+| Statement | Judgment and Reason |
 |:-----|:-----|
 | An amplifier removes noise when it amplifies a signal. | **F.** An amplifier amplifies the noise as well, so noise accumulates; it is the repeater, which regenerates digital signals, that filters out noise. |
 | If the baud rate is 1,200 baud and each symbol carries 4 bits, the data rate is 4,800 bps. | **T.** $1200 \times 4 = 4800$. |
@@ -898,12 +898,12 @@ Platooning can keep short gaps safely only if acceleration and braking are synch
 
    </details>
 
-5. **PCM:** Compute the minimum transmission rate needed for one channel when music whose highest frequency is 20 kHz is PCM-encoded with 16 bits per sample.
+5. **PCM:** Compute the minimum transmission rate needed for one channel when music filtered so that only frequency components below 20 kHz remain is PCM-encoded with 16 bits per sample.
 
    <details>
    <summary>Answer</summary>
 
-   By the sampling theorem, the sampling rate is at least $2 \times 20 = 40$ kHz, that is, 40,000 samples per second. With 16 bits per sample, the transmission rate is $40{,}000 \times 16 = 640{,}000$ bps, that is, 640 kbps.
+   Because all components are below 20 kHz, by the sampling theorem a sampling rate of $2 \times 20 = 40$ kHz, that is, 40,000 samples per second, is sufficient. With 16 bits per sample, the transmission rate is $40{,}000 \times 16 = 640{,}000$ bps, that is, 640 kbps.
 
    </details>
 
@@ -976,7 +976,7 @@ Platooning can keep short gaps safely only if acceleration and braking are synch
 
 ## References
 
-1. W. Stallings, *Data and Computer Communications*, 10th ed. Upper Saddle River, NJ, USA: Pearson, 2014.
+1. W. Stallings, *Data and Computer Communications*, 10th ed. Boston, MA, USA: Pearson, 2014.
 2. J. Postel, "Internet Protocol," RFC 791, Sep. 1981. https://www.rfc-editor.org/rfc/rfc791
 3. ITU-T, *Recommendation I.430: Basic user-network interface - Layer 1 specification*, International Telecommunication Union, 1995.
 4. ITU-T, *Recommendation I.361: B-ISDN ATM layer specification*, International Telecommunication Union, 1999.

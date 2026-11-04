@@ -66,9 +66,9 @@ Coursework/HW02_Modulation-Multiplexing-and-TCP-IP/
 
 To send digital data over a medium that carries only analog signals, such as a telephone line or radio, a property of the **carrier**, a sine wave of fixed frequency, is changed according to the data. This process is called **modulation**. As shown below, the carrier has three properties, amplitude $A$, frequency $f$, and phase $\phi$, and the three basic methods differ in which one they change.
 
-$$
+```math
 s(t) = A \cos(2\pi f t + \phi)
-$$
+```
 
 - **Amplitude-shift keying (ASK):** Different amplitudes are assigned to bits 1 and 0. The simplest form is on-off keying, which sends the carrier for 1 and nothing for 0.
 - **Frequency-shift keying (FSK):** The amplitude and phase stay fixed, and two frequencies $f_1$ and $f_2$ near the carrier frequency are assigned to bits 1 and 0.
@@ -88,11 +88,11 @@ $$
 
 When PSK uses more than two phases, one signal change (a symbol) can carry several bits. QPSK, which uses the four phases 0°, 90°, 180°, and 270°, carries 2 bits per symbol, and 8PSK, which uses eight phases, carries 3 bits. If the number of symbols per second is the **baud rate** $B_s$ and the number of distinct symbols is $M$, the data rate $R$ is as follows.
 
-$$
+```math
 R = B_s \times \log_2 M
-$$
+```
 
-For example, QPSK ($M = 4$) at 2,400 baud gives $R = 2400 \times 2 = 4800$ bps, and 8PSK ($M = 8$) at the same baud rate gives $R = 2400 \times 3 = 7200$ bps. At the same baud rate the signal occupies almost the same bandwidth, so increasing $M$ sends more bits in the same bandwidth. The phases, however, move closer together and noise causes more misjudgments, so $M$ cannot grow without limit.
+For example, QPSK ($`M = 4`$) at 2,400 baud gives $R = 2400 \times 2 = 4800$ bps, and 8PSK ($`M = 8`$) at the same baud rate gives $R = 2400 \times 3 = 7200$ bps. At the same baud rate the signal occupies almost the same bandwidth, so increasing $M$ sends more bits in the same bandwidth. The phases, however, move closer together and noise causes more misjudgments, so $M$ cannot grow without limit.
 
 > **Key Point:** Amplitude is the property to which noise is added most directly, so ASK is the most vulnerable to errors, and phase is hardly affected by amplitude noise, so PSK is the most robust. Real high-speed communication combines these methods, as in QAM, which changes amplitude and phase together.
 
@@ -106,9 +106,9 @@ For example, QPSK ($M = 4$) at 2,400 baud gives $R = 2400 \times 2 = 4800$ bps, 
 
 The **sampling theorem** states that to reconstruct a signal whose highest frequency is $f_{\max}$ exactly from its samples, the following condition must hold [1].
 
-$$
+```math
 f_s > 2 f_{\max}
-$$
+```
 
 $2 f_{\max}$ is called the **Nyquist rate**. If the condition does not hold, a different signal of lower frequency produces the same samples, and the two cannot be told apart. This phenomenon is called **aliasing**, and the lower frequency that is wrongly reconstructed is called an **alias**.
 
@@ -119,17 +119,17 @@ $2 f_{\max}$ is called the **Nyquist rate**. If the condition does not hold, a d
 In Figure 3 the original signal is $x(t) = \sin(2\pi \cdot 3t)$, a 3 Hz sine wave, and the Nyquist rate is 6 Hz.
 
 - **(a) $f_s = 20$ Hz:** This exceeds 6 Hz, so more than six samples fall in each period and capture every rise and fall of the waveform. Joining the samples reveals the shape of the original signal, and smoothing them with a low-pass filter reconstructs it.
-- **(b) $f_s = 4$ Hz:** This is below 6 Hz, so there are too few samples. The $n$th sample is taken at $t = n/4$, and its value equals exactly the sample of a 1 Hz signal, as follows.
+- **(b) $f_s = 4$ Hz:** This is below 6 Hz, so there are too few samples. The $`n`$th sample is taken at $t = n/4$, and its value equals exactly the sample of the 1 Hz signal of opposite phase, $-\sin(2\pi \cdot 1 \cdot t)$, as follows.
 
-  $$
+  ```math
   \sin\!\left(2\pi \cdot 3 \cdot \frac{n}{4}\right) = \sin\!\left(2\pi \cdot \frac{3n}{4} - 2\pi n\right) = \sin\!\left(2\pi \cdot (3 - 4) \cdot \frac{n}{4}\right) = -\sin\!\left(2\pi \cdot 1 \cdot \frac{n}{4}\right)
-  $$
+  ```
 
   The first equality uses the periodicity that subtracting $2\pi n$ from the angle of a sine does not change its value, and the last equality uses $\sin(-x) = -\sin x$. Therefore the samples taken at 4 Hz alone cannot tell whether the signal is 3 Hz or 1 Hz, and reconstruction yields a 1 Hz signal (the red dashed line in the figure).
 
 In general, sampling a component of frequency $f$ at $f_s$ gives the same samples as the frequencies $\lvert f - k f_s \rvert$ for integers $k$, and the one at or below $f_s/2$ is what is reconstructed. In the example above it is $\lvert 3 - 1 \times 4 \rvert = 1$ Hz. Viewed in the frequency domain, sampling replicates the spectrum of the signal at intervals of $f_s$, and if $f_s \le 2 f_{\max}$, the replicated spectra overlap the original spectrum and can no longer be separated.
 
-The reason the inequality excludes equality also needs checking. Sampling a sine wave at $f_s = 2f$ takes one sample every half period, and if the samples happen to fall at the instants the wave crosses 0, every sample is 0 and the signal vanishes. The waveform shows only in the lucky case where the samples fall on the peaks, so reliable reconstruction needs a sampling rate greater than $2f$. Real systems first remove components at or above $f_s/2$ with an **anti-aliasing filter** before sampling, and sample with a margin.
+The reason the inequality excludes equality also needs checking. Sampling a sine wave at $f_s = 2f$ takes one sample every half period, and if the samples happen to fall at the instants the wave crosses 0, every sample is 0 and the signal vanishes. In other cases, too, the magnitude of the samples ranges between 0 and the original amplitude depending on the phase at which they are taken, so the samples alone cannot determine the amplitude and phase of the original signal. Reliable reconstruction therefore needs a sampling rate greater than $2f$. Real systems first remove components at or above $f_s/2$ with an **anti-aliasing filter** before sampling, and sample with a margin.
 
 Telephone voice in Week 4 is a typical example. Most of the energy of a voice signal lies below 4 kHz, so it is sampled at twice that, 8,000 Hz, and each sample is quantized to 8 bits (256 levels). The filter before sampling passes only frequencies below 4 kHz, so 8,000 Hz exceeds twice the highest frequency left in the signal. The data rate of one voice channel is $8000 \times 8 = 64000$ bps, that is, 64 kbps.
 
@@ -283,7 +283,7 @@ The IPv4 header is 20 bytes without options and up to 60 bytes with options [2].
 
 ### 6.3 A Fragmentation Example
 
-Suppose a 4,000-byte datagram made of a 20-byte header and 3,980 bytes of data must cross a network with an MTU of 1,500 bytes. Each fragment also needs a 20-byte header, so it can carry at most $1500 - 20 = 1480$ bytes of data. Because the offset is in units of 8 bytes, the data length of every fragment except the last must be a multiple of 8, and 1480 is $8 \times 185$, so the condition holds.
+As an example, consider a 4,000-byte datagram made of a 20-byte header and 3,980 bytes of data that must cross a network with an MTU of 1,500 bytes. Each fragment also needs a 20-byte header, so it can carry at most $1500 - 20 = 1480$ bytes of data. Because the offset is in units of 8 bytes, the data length of every fragment except the last must be a multiple of 8, and 1480 is $8 \times 185$, so the condition holds.
 
 | Fragment | Data Range (bytes) | Data Length | Total Length | Fragmentation Offset | MF |
 |:-----|:-----|:-----|:-----|:-----|:-----|
@@ -411,4 +411,4 @@ The size and complexity of the transport layer depend on the type of service the
 2. J. Postel, "Internet Protocol," RFC 791, Sep. 1981.
 3. K. Nichols, S. Blake, F. Baker, and D. Black, "Definition of the Differentiated Services Field (DS Field) in the IPv4 and IPv6 Headers," RFC 2474, Dec. 1998.
 4. K. Ramakrishnan, S. Floyd, and D. Black, "The Addition of Explicit Congestion Notification (ECN) to IP," RFC 3168, Sep. 2001.
-5. W. Stallings, *Data and Computer Communications*, 10th ed. Upper Saddle River, NJ, USA: Pearson, 2014.
+5. W. Stallings, *Data and Computer Communications*, 10th ed. Boston, MA, USA: Pearson, 2014.

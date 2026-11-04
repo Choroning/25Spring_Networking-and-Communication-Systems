@@ -94,7 +94,7 @@ The **electrical and electronic (E/E) system** of a vehicle is the entirety of t
 
 > **Definition:** **AUTOSAR (AUTomotive Open System ARchitecture)** is a standard architecture for ECU software created jointly by vehicle manufacturers and suppliers. It places a standardized basic software layer between the application software and the hardware so that the same application software can be moved to different ECUs. **GENIVI** is an organization that created an open-source software platform for in-vehicle infotainment (IVI) systems.
 
-These three components come together in a vehicle. A standard software platform runs on a 32-bit high-performance microcontroller (semiconductors from Infineon, ST, Freescale, and others), the software is built with development tools from companies such as Vector and ETAS, and suppliers such as Hyundai Mobis, Mando, and Bosch deliver the result as highly reliable automotive ECUs. What connects these ECUs to each other is the in-vehicle network (IVN) (Week 3).
+These three components come together in a vehicle. A standard software platform runs on a 32-bit high-performance microcontroller (semiconductors from Infineon, ST, Freescale, and others), the software is built with development tools from companies such as Vector, Elektrobit, and ETAS, and suppliers such as Hyundai Mobis, Mando, and Bosch deliver the result as highly reliable automotive ECUs. What connects these ECUs to each other is the in-vehicle network (IVN) (Week 3).
 
 ### 1.2 Evolution of Vehicle Networks and Bandwidth Demand
 
@@ -121,9 +121,9 @@ Adding up the bandwidth required by the X-by-wire systems (Week 2) and sensors e
 
 Comparing the total of 906 kbit/s with the bandwidth of each network gives the following.
 
-$$
+```math
 \text{CAN occupancy} = \frac{906\ \text{kbit/s}}{1\ \text{Mbit/s}} = 90.6\%, \qquad \text{FlexRay occupancy} = \frac{906\ \text{kbit/s}}{10\ \text{Mbit/s}} \approx 9\%
-$$
+```
 
 With CAN, whose maximum speed is 1 Mbit/s, more than 90% of the bandwidth would be used, which is practically unmanageable, whereas FlexRay, with 10 Mbit/s per channel (20 Mbit/s when the two channels are used separately), would use only about 9%. This difference is why high-speed networks such as FlexRay are needed.
 
@@ -254,11 +254,11 @@ Figure 4 places the networks with the cost of adding one node (in dollars) on th
 - **LIN:** 20 kbit/s, about 1 dollar per node. A master/slave single-wire bus whose slaves need no quartz crystal.
 - **CAN-B:** low-speed CAN of the 125 kbit/s class. Event-triggered, fault tolerant, dual wire.
 - **CAN-C:** high-speed CAN of the 1 Mbit/s class. Event-triggered, dual wire.
-- **TTx:** a time-triggered, fault-tolerant protocol then being defined, using 2×2 wires (it led to FlexRay).
+- **TTx:** the place of a time-triggered, fault-tolerant protocol then being defined, using 2×2 wires. Protocols such as TTP/C and FlexRay fill this place.
 - **Byteflight:** an optical bus of the 2 Mbit/s class.
 - **D2B, MOST:** token-ring optical buses of the 25.6 Mbit/s class.
 
-As the caption in the figure says, LIN fits in at the low end of in-car multiplexing, making a LIN system a cost-effective solution.
+At the horizontal-axis marks of 1, 2, 4.5, and 10 dollars lie roughly LIN, CAN (CAN-B and CAN-C), TTx and Byteflight, and D2B and MOST in that order, so the faster the network, the higher the incremental cost per node. As the caption in the figure says, LIN fits in at the low end of in-car multiplexing, making a LIN system a cost-effective solution.
 
 ![Figure 5. Sub-networks built with LIN and with dual-wire CAN](../../images/Week09_p20.png)
 
@@ -337,11 +337,11 @@ To guarantee timing, the length of each message must be predictable.
 
 **Computing the frame time.** The LIN 2.x specification defines the nominal frame time as follows [3]. One byte is 10 bits including the start and stop bits, and the header, made of the break and break delimiter, the sync byte, and the identifier byte, is 34 bits.
 
-$$
+```math
 T_{header} = 34 \times T_{bit}, \quad T_{response} = 10 \times (N_{data} + 1) \times T_{bit}, \quad T_{frame,max} = 1.4 \times (T_{header} + T_{response})
-$$
+```
 
-Here $N_{data}$ is the number of data bytes and the $+1$ is the checksum byte. At 19.2 kbit/s ($T_{bit} \approx 52.1\ \mu$s) the results are as follows.
+Here $N_{data}$ is the number of data bytes and the $+1$ is the checksum byte. At 19.2 kbit/s ($`T_{bit} \approx 52.1\ \mu`$s) the results are as follows.
 
 | Data bytes | Nominal bits | Nominal frame time | Maximum frame time (140%) |
 |:-----|:-----|:-----|:-----|
@@ -391,9 +391,9 @@ The fields are as follows.
 
 The parity bits are computed from the identifier bits $ID_0 \sim ID_5$ as follows ($\oplus$ is XOR) [3].
 
-$$
+```math
 P_0 = ID_0 \oplus ID_1 \oplus ID_2 \oplus ID_4, \qquad P_1 = \overline{ID_1 \oplus ID_3 \oplus ID_4 \oplus ID_5}
-$$
+```
 
 **A worked example.** Let us find the protected identifier of identifier hexadecimal 10 (binary 010000, that is, $ID_4 = 1$ and all others 0).
 
@@ -422,7 +422,7 @@ $$
 
 *Table 8. Calculation of the classic checksum*
 
-The checksum is hexadecimal E6. When the receiver sums all the data bytes and the checksum in the same way, the result must be FF for the frame to be error-free ($19 + E6 = FF$). The enhanced checksum of the same data including the protected identifier 50 starts the sum from 50, reaches a running sum of 69, and inverts it to 96.
+The checksum is hexadecimal E6. When the receiver sums all the data bytes and the checksum in the same way, the result must be FF for the frame to be error-free ($`19 + E6 = FF`$). The enhanced checksum of the same data including the protected identifier 50 starts the sum from 50, reaches a running sum of 69, and inverts it to 96.
 
 ![Figure 8. The LIN frame slot and the placement of signals within data bytes](../../images/Week09_p30.png)
 
@@ -532,7 +532,7 @@ flowchart LR
     H <-- "control data and status information" --> BD
     CC <-- "control signals, communication data" --> BD
     BD <--> BUS
-    PS -. "control signals (optional)" .-> BD
+    BD -. "control signals (optional)" .-> PS
 ```
 
 *Figure 10. Components and interfaces of a FlexRay node*
@@ -575,7 +575,7 @@ Media access in FlexRay is based on a repeating **communication cycle**. The cyc
 |:-----|:-----|
 | Static segment | Consists of `gNumberOfStaticSlots` static slots of equal length. Each slot is assigned to one node, which sends its static frame from the point `gdActionPointOffset` after the slot start (the action point). The frame is followed by a channel idle delimiter (CID). |
 | Dynamic segment | Consists of `gNumberOfMinislots` short minislots. Only nodes with something to send transmit, and a dynamic frame spans several minislots with variable length (Section 2.7). The frame ends with a DTS and a CID. |
-| Symbol window | A segment for sending special symbols such as the media test symbol (MTS). It is optional. |
+| Symbol window | A segment for sending special symbols such as the media test symbol (MTS). In Figure 12 the symbol is 30 bits long (odCAS = 30 bits). It is optional. |
 | Network idle time (NIT) | A segment in which nobody transmits. Each node computes its clock correction values in this time and applies the correction in the offset correction segment within it. |
 
 *Table 13. Composition of the FlexRay communication cycle*
@@ -655,11 +655,11 @@ The upper part of Figure 15 shows static slots u and u+1, each consisting of cha
 
 **A worked example.** A static frame with a 16-byte payload has a 5-byte header, a 16-byte payload, and a 3-byte trailer, 24 bytes in all. Each byte receives a 2-bit BSS and becomes 10 bits, so with the TSS set to 5 bits the number of bits in the frame is as follows.
 
-$$
+```math
 \underbrace{5}_{TSS} + \underbrace{1}_{FSS} + \underbrace{24 \times 10}_{\text{bytes with BSS}} + \underbrace{2}_{FES} = 248\ \text{bits}
-$$
+```
 
-At 10 Mbit/s, the transmission time of this frame is $248 \times 0.1\ \mu\text{s} = 24.8\ \mu$s. A static slot must be set longer than this time plus the action point offset and the channel idle delimiter.
+At 10 Mbit/s, the transmission time of this frame is $`248 \times 0.1\ \mu\text{s} = 24.8\ \mu`$s. A static slot must be set longer than this time plus the action point offset and the channel idle delimiter.
 
 ### 2.7 Media Access Control: Static TDMA and Dynamic Minislots
 
@@ -697,9 +697,9 @@ In particular, a scheme was planned to update the software of every ECU in the v
 
 **A worked example.** The time to send 1 GB ($8 \times 10^9$ bits) at 200 kbps is as follows.
 
-$$
+```math
 \frac{8 \times 10^9\ \text{bits}}{2 \times 10^5\ \text{bits/s}} = 4 \times 10^4\ \text{s} \approx 11.1\ \text{hours}
-$$
+```
 
 Taking 11 hours to update the software of one car at a workshop is unacceptable. Sending the same data over 100 Mbps Ethernet takes only $8 \times 10^9 / 10^8 = 80$ seconds.
 
@@ -723,7 +723,7 @@ Before Ethernet, BMW tried to develop and apply MOST and USB, but both ran into 
 - It is a widely known interface, and the 480 Mbps of USB 2.0 is ample speed.
 - **Reliability and robustness problems:** Achieving vehicle-grade reliability with USB required very expensive cables and connectors.
 - **Insufficient cable length:** The limit was about 4 m, which made it hard to use for software updates or diagnostics in a large workshop.
-- **No network support:** USB connects one host to one device and cannot form a network, so a tester and software update equipment could not be connected at the same time.
+- **No network support:** USB is a host-centric scheme in which one host controls the devices, so it cannot form a network of peer devices, so a tester and software update equipment could not be connected at the same time.
 - **New protocol:** A new protocol stack and drivers had to be developed for vehicles.
 
 ### 2.10 Emergence of Automotive Ethernet
@@ -759,7 +759,7 @@ Because of the harsh electromagnetic and environmental conditions in vehicles, a
 | Standard | MAC interface | Coding and modulation | Line |
 |:-----|:-----|:-----|:-----|
 | 100BASE-TX (Fast Ethernet) | MII | 4B/5B, MLT-3 | 100 Mbit/s per pair, 125 MBaud, unidirectional, 2 pairs |
-| 1000BASE-T (Gigabit Ethernet) | GMII | PAM-5 | 250 Mbit/s per pair, 125 MBaud, bidirectional, 4 pairs |
+| 1000BASE-T (Gigabit Ethernet) | GMII | 8B/9B, PAM-5 | 250 Mbit/s per pair, 125 MBaud, bidirectional, 4 pairs |
 | BroadR-Reach (automotive Ethernet) | MII | PCS, PAM-3 | 100 Mbit/s per pair, 66.6 MBaud, bidirectional, 1 pair |
 
 *Table 18. Comparison of Ethernet physical layers*
@@ -822,9 +822,9 @@ Figure 19 shows the stages of automotive E/E architecture proposed by Bosch.
 
 *Table 20. Stages of automotive E/E architecture*
 
-Current architectures are at the integration and centralization stages, and the explosive growth in the complexity of ADAS and infotainment (IVI) drives the change to later stages. The higher the stage, the more large data volumes flow among a few high-performance computers, so the role of Ethernet as a high-speed backbone grows.
+On the time scale at the top of the figure, the modular stage corresponds to 1990, integration to 2010, centralization to 2017, fusion to 2020, the vehicle computer to the 2030s, and vehicle cloud computing to a later time. Current architectures are at the integration and centralization stages, and the explosive growth in the complexity of ADAS and infotainment (IVI) drives the change to later stages. The higher the stage, the more large data volumes flow among a few high-performance computers, so the role of Ethernet as a high-speed backbone grows.
 
-What the automotive market requires of automotive Ethernet is **lower costs**, **higher efficiency**, passing strict **EMC tests**, and **low power consumption**. Automotive Ethernet technologies that meet these requirements include BroadR-Reach of the OPEN Alliance (OABR, OPEN Alliance BroadR-Reach) and 100BASE-T1 and 1000BASE-T1 of IEEE (the latter called RTPGE, reduced twisted pair gigabit Ethernet, during development).
+What the automotive market requires of automotive Ethernet is reliability in harsh environments such as extreme cold, **lower costs**, **higher efficiency**, passing strict **EMC tests**, and **low power consumption**. Automotive Ethernet technologies that meet these requirements include BroadR-Reach of the OPEN Alliance (OABR, OPEN Alliance BroadR-Reach) and 100BASE-T1 and 1000BASE-T1 of IEEE (the latter called RTPGE, reduced twisted pair gigabit Ethernet, during development).
 
 ### 2.14 The OPEN Alliance and BroadR-Reach
 
@@ -873,13 +873,13 @@ A link runs from the transmit and receive ends of the PHY (or switch) through a 
 
 1BR-100 and 1BR-10 in Table 21 are long-reach modes of the BroadR-Reach technology, showing that a single pair can reach farther than conventional Ethernet. Inside a vehicle, much shorter distances (about 15 m) are used, but strict EMC conditions must be met instead.
 
-A BroadR-Reach PHY connects to the MAC through the same MII (or RGMII) interface. Unlike a standard 10/100/1000BASE-T PHY, which connects through four pairs (TRD[0]-TRD[3]), magnetics (transformers), and an RJ-45 connector, a BroadR-Reach PHY uses only one pair (TRD[0]). The MAC and higher software can therefore stay unchanged while only the PHY is replaced (the implementation model of Week 7).
+A BroadR-Reach PHY connects to the MAC through the same MII (or RGMII) interface. Unlike a standard 10/100/1000BASE-T PHY, which connects through four pairs (`TRD[0]`-`TRD[3]`), magnetics (transformers), and an RJ-45 connector, a BroadR-Reach PHY uses only one pair (`TRD[0]`). The MAC and higher software can therefore stay unchanged while only the PHY is replaced (the implementation model of Week 7).
 
 ![Figure 21. An example vehicle network based on BroadR-Reach and a media converter](../../images/Week09_p67.png)
 
 *Figure 21. An example vehicle network based on BroadR-Reach and a media converter*
 
-The upper part of Figure 21 is an example configuration of an autonomous driving domain. Data from four cameras, a radar, and a lidar is collected through Ethernet switches into an Ethernet gateway (based on AUTOSAR) and an autonomous driving DCU (AD DCU). Core 1 of the AD DCU runs Ethernet and Linux, and core 2 runs AUTOSAR and a hardware security module (HSM). The gateway connects the HVI (human-vehicle interface), the map (MAP), and the V2X unit with the powertrain, safety, body, and chassis domains. The board at the bottom is a **BroadR-Reach media converter (MC)**, which converts between ordinary Ethernet (RJ-45) and BroadR-Reach (single-pair) signals so that ordinary equipment such as a PC can test and monitor automotive Ethernet.
+The upper part of Figure 21 is an example configuration of an autonomous driving domain. Data from four cameras, a radar, and a lidar is collected through Ethernet switches into an Ethernet gateway (based on AUTOSAR) and an autonomous driving DCU (AD DCU). Core 1 of the AD DCU runs Ethernet and Linux, and core 2 runs AUTOSAR and is equipped with a hardware security module (HSM). The gateway connects the HVI (human-vehicle interface), the map (MAP), and the V2X unit with the powertrain, safety, body, and chassis domains. The board at the bottom is a **BroadR-Reach media converter (MC)**, which converts between ordinary Ethernet (RJ-45) and BroadR-Reach (single-pair) signals so that ordinary equipment such as a PC can test and monitor automotive Ethernet.
 
 ### 2.15 IEEE Standards Related to Automotive Ethernet
 
@@ -947,7 +947,7 @@ In Figure 22, S is a sensor, A an actuator, and C a controller. If two sensors a
 
 ### 3.2 Features and Layer Structure of CAN
 
-CAN (Controller Area Network) began and was introduced as an internal Bosch project in 1983 and was standardized as ISO 11898 in 1993. The features of CAN are as follows.
+CAN (Controller Area Network) began development as an internal Bosch project in 1983, was officially introduced in 1986, and was standardized as ISO 11898 in 1993. The features of CAN are as follows.
 
 - It is a widely recognized standard.
 - It uses serial communication.
@@ -1016,7 +1016,7 @@ A CAN node (ECU) consists of a microcontroller (MCU), a CAN controller, and a CA
 
 1. **Tx:** the serial data output line from the controller to the transceiver
 2. **Rx:** the serial data input line from the transceiver to the controller
-3. **Vref:** the reference voltage output of the transceiver, nominally half the supply voltage ($0.5\,V_{CC}$, 2.5 V for a 5 V supply)
+3. **Vref:** the reference voltage output of the transceiver, nominally half the supply voltage ($`0.5\,V_{CC}`$, 2.5 V for a 5 V supply)
 
 External connections often use a D-sub 9-pin connector: pin 2 is CAN_L, pin 7 is CAN_H, pin 3 is CAN ground, pin 5 is the optional shield, pin 6 is the optional power ground, pin 9 is the optional power (CAN_V+), and pins 1, 4, and 8 are reserved (Table 5 of Week 3).
 
@@ -1051,14 +1051,14 @@ Figure 23 shows the TX logic signal of the controller. Recessive (1) is the high
 |:-----|:-----|:-----|
 | Standard | ISO 11898-2 | ISO 11898-3 |
 | Rate | 125 kbps-1 Mbps | 10 kbps-125 kbps |
-| $V_{CAN\_H}$, $V_{CAN\_L}$ when recessive | Both about 2.5 V | About 0 V, about 5 V |
-| $V_{CAN\_H}$, $V_{CAN\_L}$ when dominant | About 3.5 V (2.75-4.5 V), about 1.5 V (0.5-2.25 V) | About 3.6 V, about 1.4 V |
-| $V_{CAN\_H} - V_{CAN\_L}$ when recessive | About 0 V (-0.5 to 0.05 V) | About -5 V |
-| $V_{CAN\_H} - V_{CAN\_L}$ when dominant | About 2.0 V (1.5-3.0 V) | About 2.2 V (2.2-5.0 V) |
+| $`V_{CAN\_H}`$, $`V_{CAN\_L}`$ when recessive | Both about 2.5 V | About 0 V, about 5 V |
+| $`V_{CAN\_H}`$, $`V_{CAN\_L}`$ when dominant | About 3.5 V (2.75-4.5 V), about 1.5 V (0.5-2.25 V) | About 3.6 V, about 1.4 V |
+| $`V_{CAN\_H} - V_{CAN\_L}`$ when recessive | About 0 V (-0.5 to 0.05 V) | About -5 V |
+| $`V_{CAN\_H} - V_{CAN\_L}`$ when dominant | About 2.0 V (1.5-3.0 V) | About 2.2 V (2.2-5.0 V) |
 
 *Table 26. Signal levels of high-speed and low-speed CAN*
 
-The top of Figure 24 is the TX logic of the controller, the middle shows the voltages of the two bus wires and their difference, and the bottom is the RX logic that the transceiver returns to the controller. In both schemes, when TX is 0 (dominant), CAN_H rises and CAN_L falls so that the differential voltage becomes positive, and RX follows TX exactly. Low-speed CAN keeps the two wires apart at 0 V and 5 V even when recessive, so the swing of the differential voltage is large. Thanks to this large margin, communication can continue on the remaining wire even if one wire breaks or shorts to ground, which is why low-speed CAN is fault tolerant.
+The top of Figure 24 is the TX logic of the controller, the middle shows the voltages of the two bus wires and their difference, and the bottom is the RX logic that the transceiver returns to the controller. In both schemes, when TX is 0 (dominant), CAN_H rises and CAN_L falls so that the differential voltage becomes positive, and RX follows TX exactly. Low-speed CAN keeps the two wires apart at 0 V and 5 V even when recessive, so the voltage of each wire relative to ground also differs greatly between dominant and recessive. When the transceiver detects a fault in which one wire is broken or shorted to ground or to the supply, it can therefore switch to single-wire operation that continues communication using only the voltage of the remaining wire, which is why low-speed CAN is called fault-tolerant CAN.
 
 ### 3.7 Bit Stuffing
 
@@ -1083,17 +1083,17 @@ At 50 kbps a CAN bus can be up to 1 km long, and transceivers conforming to ISO 
 
 As the "Rate × length" column of Table 27 shows, the product of the two values is roughly constant. For bit-wise arbitration to work, the round-trip time of the signal on the bus plus the delays of the transceivers and controllers must fit within a part of the bit time (Prop_Seg in Section 3.18). Doubling the length doubles the round-trip delay, so the bit time must grow by the same factor, that is, the rate must be halved. The product is smaller on short buses because the fixed delays of the components, which do not depend on length, weigh more heavily. Plotted on logarithmic scales, the relationship between rate and length is a line that stays flat at 1 Mbit/s up to about 30-40 m and then falls in inverse proportion to length.
 
-> **Note:** The lecture material gives a bit time of 20 µs in the 1 km row, but 20 µs is the bit time of 50 kbit/s ($1 / 50000 = 20\ \mu$s). The bit time at 62.5 kbit/s is 16 µs. Together with "up to 1 km at 50 kbps" in Section 1.5, the practical rate at 1 km is about 50-62.5 kbit/s.
+> **Note:** Some sources give a bit time of 20 µs in the 1 km row, but 20 µs is the bit time of 50 kbit/s ($`1 / 50000 = 20\ \mu`$s). The bit time at 62.5 kbit/s is 16 µs. Together with "up to 1 km at 50 kbps" in Section 1.5, the practical rate at 1 km is about 50-62.5 kbit/s.
 
 ### 3.9 Wiring Technology and Electromagnetic Interference
 
 - To minimize reflections on the bus line, the bus is built as a linear (single line) structure.
-- Both ends must be terminated with 120 Ω resistors. Reading the color bands brown (1), red (2), and brown (×10) gives $12 \times 10 = 120\ \Omega$.
+- Both ends must be terminated with 120 Ω resistors. Reading the color bands brown (1), red (2), and brown (×10) gives $`12 \times 10 = 120\ \Omega`$.
 - The length of the trunk cable follows the practical bus length of Table 27.
 - Drop cables branching from the trunk to the nodes are kept as short as possible, at most 0.3 m at 1 Mbps. The end of a drop cable is not terminated, so reflections occur there if it is long.
 - The cable is an unshielded twisted pair.
 
-**Electromagnetic interference (EMI).** CAN determines values from the voltage difference between two wires, so it is naturally robust against electromagnetic interference. Even if both wires pick up the same noise, the voltage difference between them stays the same ($V_{diff} = const$). The detailed principle and the role of the termination resistors were covered in Week 3.
+**Electromagnetic interference (EMI).** CAN determines values from the voltage difference between two wires, so it is naturally robust against electromagnetic interference. Even if both wires pick up the same noise, the voltage difference between them stays the same ($`V_{diff} = const`$). The detailed principle and the role of the termination resistors were covered in Week 3.
 
 ### 3.10 The CAN Data Frame
 
@@ -1193,7 +1193,7 @@ The format of a remote frame is as follows.
 - In CAN 2.0A the RTR is recessive (1). In CAN 2.0B the SRR, IDE, and RTR are all recessive (1).
 - The DLC contains the length of the requested data.
 
-A remote frame works as follows.
+A remote frame works as follows. Inside each controller, transmission proceeds in the order prepare, frame assembly (remote frame or data frame), and send, and reception in the order receive, selection by the acceptance filter (select), and accept.
 
 ```mermaid
 sequenceDiagram
@@ -1324,9 +1324,9 @@ The positions in the frame at which the five errors are detected are as follows.
 
 *Table 34. Main rules for changing the CAN error counters*
 
-The specification has a few other exceptions. For example, if an error passive transmitter detects an ACK error and detects no dominant bit while sending its passive error flag, it does not increase its TEC.
+The specification has a few other exceptions. For example, if an error passive transmitter detects an ACK error and detects no dominant bit while sending its passive error flag, it does not increase its TEC. This keeps a node from going bus off on its own when there is no other node at all and nobody sends an ACK.
 
-**A worked example.** Assume that a faulty transmitter suffers an error on every frame it sends and never succeeds. Each failure adds 8 to the TEC, so after $128 / 8 = 16$ failures TEC = 128 > 127 and the node becomes error passive. If it keeps failing, at the $256 / 8 = 32$nd failure TEC = 256 > 255, the node becomes bus off, and it is logically disconnected from the bus. Each successful transmission, on the other hand, reduces the TEC by only 1, so occasional errors are quickly recovered from, whereas repeated errors accumulate rapidly.
+**A worked example.** Assume that a faulty transmitter suffers an error on every frame it sends and never succeeds. Each failure adds 8 to the TEC, so after $128 / 8 = 16$ failures TEC = 128 > 127 and the node becomes error passive. If it keeps failing, at the $`256 / 8 = 32`$nd failure TEC = 256 > 255, the node becomes bus off, and it is logically disconnected from the bus. Each successful transmission, on the other hand, reduces the TEC by only 1, so occasional errors are quickly recovered from, whereas repeated errors accumulate rapidly.
 
 ### 3.18 Bit Timing
 
@@ -1365,10 +1365,10 @@ The sample point is the boundary between Phase_Seg1 and Phase_Seg2. The ranges i
 
 **A worked example.** A CAN controller with a 16 MHz clock is to communicate at 500 kbit/s.
 
-1. With BRP = 2, the time quantum is $t_q = 2 / 16\ \text{MHz} = 125$ ns.
-2. The bit time at 500 kbit/s is $1 / 500000 = 2\ \mu$s, so one bit is $2\ \mu\text{s} / 125\ \text{ns} = 16$ tq.
+1. With BRP = 2, the time quantum is $`t_q = 2 / 16\ \text{MHz} = 125`$ ns.
+2. The bit time at 500 kbit/s is $`1 / 500000 = 2\ \mu`$s, so one bit is $`2\ \mu\text{s} / 125\ \text{ns} = 16`$ tq.
 3. Dividing it into Sync_Seg = 1 tq, Prop_Seg = 6 tq, Phase_Seg1 = 7 tq, and Phase_Seg2 = 2 tq gives $1 + 6 + 7 + 2 = 16$ tq.
-4. The sample point lies $(1 + 6 + 7) / 16 = 87.5\%$ into the bit, that is, at 1.75 µs.
+4. The sample point lies $`(1 + 6 + 7) / 16 = 87.5\%`$ into the bit, that is, at 1.75 µs.
 5. SJW must not exceed the smaller of 4 tq and Phase_Seg2 = 2 tq, so it is at most 2 tq.
 
 Prop_Seg = 6 tq = 750 ns must cover the round-trip delay. On a 40 m bus where a signal takes about 5 ns per meter, the round-trip delay of the bus is $2 \times 40 \times 5 = 400$ ns; assuming a round-trip delay of about 300 ns in the transceivers and controllers, the total is about 700 ns, which fits within 750 ns.
@@ -1390,7 +1390,7 @@ If ECUs kept drawing power while the engine is off, the battery would drain, so 
 
 *Figure 31. Detection of a wake-up pattern*
 
-Figure 31 shows the waveform of the differential voltage $V_{Diff} = V_{CAN\_H} - V_{CAN\_L}$ and the RxD output of the transceiver. All pulses shorter than the filter time $t_{Filter}$ ($t < t_{Filter}$) are ignored. A **pattern of a dominant period longer than $t_{Filter}$, then a recessive period longer than $t_{Filter}$, then again a dominant period longer than $t_{Filter}$** is a valid WUP if it is completed within the wake-up timeout $t_{Wake}$. At the moment the last dominant period exceeds $t_{Filter}$, the wake-up is detected and RxD changes to the low level to inform the microcontroller. For the transceiver in this example, the short filter time is at most 1.8 µs and the wake-up timeout is at most 10 ms [12], [10].
+Figure 31 shows the waveform of the differential voltage $`V_{Diff} = V_{CAN\_H} - V_{CAN\_L}`$ and the RxD output of the transceiver. All pulses shorter than the filter time $t_{Filter}$ ($`t < t_{Filter}`$) are ignored. A **pattern of a dominant period longer than $t_{Filter}$, then a recessive period longer than $t_{Filter}$, then again a dominant period longer than $t_{Filter}$** is a valid WUP if it is completed within the wake-up timeout $t_{Wake}$. At the moment the last dominant period exceeds $t_{Filter}$, the wake-up is detected and RxD changes to the low level to inform the microcontroller. For the transceiver in this example, the short filter time is at most 1.8 µs and the wake-up timeout is at most 10 ms [12], [10].
 
 | Parameter | Symbol | Min | Max |
 |:-----|:-----|:-----|:-----|
@@ -1402,9 +1402,11 @@ Figure 31 shows the waveform of the differential voltage $V_{Diff} = V_{CAN\_H} 
 
 *Table 36. Bus biasing control timings of the high-speed CAN physical medium attachment (HS-PMA)*
 
-**A worked example.** At 500 kbps one bit is 2 µs (1 µs at 1 Mbps). To pass the wake-up filter safely even with the longest filter time (5.0 µs), a message must contain at least 3 consecutive bits of the same level ($3 \times 2 = 6\ \mu\text{s} > 5.0\ \mu$s). Two bits ($4\ \mu$s) may not be enough.
+Only one of the long and short filter times needs to be met. A short filter time increases the risk of unwanted wake-ups caused by noise, while a long one restricts the messages that can be used for wake-up, especially at high bit rates, so the specified range is a compromise between the two requirements. The wake-up timeout is an optional parameter, and a minimum of 350 µs is also acceptable for legacy implementations. The timer of the bus inactivity timeout $t_{Silence}$ is restarted whenever the bus changes from dominant to recessive or vice versa, and if no change occurs within this time, the transceiver judges the bus to be inactive and switches the bus biasing off. The bus bias reaction time $t_{Bias}$ is the time from the start of a dominant-recessive-dominant sequence with phases of 6 µs each until the transceiver switches the bus biasing on again, at most 250 µs [10].
 
-The behavior after wake-up is described in the transceiver's data sheet as follows. If a valid WUP has been detected, the RxD output pin follows the HS CAN bus signal after a delay $t_{WU}$. During the mode transition from stand-by mode to normal-operating mode, the RxD output is held "high" with a delay $t_{RxD\_Rec} < 5\ \mu$s, and after the transition time $t_{Mode}$ it is released and follows the dominant signal on the bus [12]. In other words, RxD is held at the recessive level during the short mode change so that no spurious signal reaches the microcontroller.
+**A worked example.** At 500 kbps one bit is 2 µs (1 µs at 1 Mbps). To pass the wake-up filter safely even with the longest filter time (5.0 µs), a message must contain at least 3 consecutive bits of the same level ($`3 \times 2 = 6\ \mu\text{s} > 5.0\ \mu`$s). Two bits ($`4\ \mu`$s) may not be enough.
+
+The behavior after wake-up is as follows. If a valid WUP has been detected, the RxD output pin follows the HS CAN bus signal after a delay $t_{WU}$. During the mode transition from stand-by mode to normal-operating mode, the RxD output is held "high" with a delay $`t_{RxD\_Rec} < 5\ \mu`$s, and after the transition time $t_{Mode}$ it is released and follows the dominant signal on the bus [12]. In other words, RxD is held at the recessive level during the short mode change so that no spurious signal reaches the microcontroller.
 
 ### 3.20 Emergence of CAN FD
 
@@ -1491,10 +1493,10 @@ The longer the data, the greater the chance of missing an error, so longer data 
 
 **A worked example.** Let us compare the time needed to send 64 bytes. Take the arbitration rate as 500 kbit/s and the CAN FD data rate as 2 Mbit/s, and compute an approximation that leaves out stuff bits and the interframe space.
 
-1. **Classical CAN:** An 8-byte standard frame is 108 bits (Week 3), so 64 bytes need 8 frames, $8 \times 108 = 864$ bits. $864 / 500000 = 1728\ \mu$s.
-2. **CAN FD, the part sent at the arbitration rate:** the 17 bits of SOF, the 11-bit identifier, RRS, IDE, FDF, res, and BRS, plus the 9 bits of the ACK slot, ACK delimiter, and 7-bit EOF, 26 bits in all. $26 / 500000 = 52\ \mu$s.
-3. **CAN FD, the part sent at the data rate:** the 1-bit ESI, 4-bit DLC, 512 bits of data, 4-bit stuff count, 21-bit CRC, and 1-bit CRC delimiter, 543 bits in all. $543 / 2000000 = 271.5\ \mu$s.
-4. The transmission time of one CAN FD frame is $52 + 271.5 = 323.5\ \mu$s, about one fifth of that of classical CAN.
+1. **Classical CAN:** An 8-byte standard frame is 108 bits (Week 3), so 64 bytes need 8 frames, $8 \times 108 = 864$ bits. $`864 / 500000 = 1728\ \mu`$s.
+2. **CAN FD, the part sent at the arbitration rate:** the 17 bits of SOF, the 11-bit identifier, RRS, IDE, FDF, res, and BRS, plus the 9 bits of the ACK slot, ACK delimiter, and 7-bit EOF, 26 bits in all. $`26 / 500000 = 52\ \mu`$s.
+3. **CAN FD, the part sent at the data rate:** the 1-bit ESI, 4-bit DLC, 512 bits of data, 4-bit stuff count, 21-bit CRC, and 1-bit CRC delimiter, 543 bits in all. $`543 / 2000000 = 271.5\ \mu`$s.
+4. The transmission time of one CAN FD frame is $`52 + 271.5 = 323.5\ \mu`$s, about one fifth of that of classical CAN.
 
 Besides sending the same data about 5 times faster, CAN FD has the advantage that all 64 bytes are delivered together consistently because they fit in one frame.
 
@@ -1559,7 +1561,7 @@ Besides sending the same data about 5 times faster, CAN FD has the advantage tha
    <details>
    <summary>Answer</summary>
 
-   CAN: $906 / 1000 = 90.6\%$; FlexRay (10 Mbit/s per channel): $906 / 10000 \approx 9\%$. For CAN it is recommended to keep the load at or below about 50% in view of jitter and the delay of low-priority messages, so with a load above 90% the delay of safety-related messages cannot be guaranteed.
+   CAN: $`906 / 1000 = 90.6\%`$; FlexRay (10 Mbit/s per channel): $`906 / 10000 \approx 9\%`$. For CAN it is recommended to keep the load at or below about 50% in view of jitter and the delay of low-priority messages, so with a load above 90% the delay of safety-related messages cannot be guaranteed.
 
    </details>
 
@@ -1577,7 +1579,7 @@ Besides sending the same data about 5 times faster, CAN FD has the advantage tha
    <details>
    <summary>Answer</summary>
 
-   The nominal number of bits is the 34-bit header plus the $10 \times (8 + 1) = 90$-bit response, 124 bits. The bit time is $1 / 19200 \approx 52.1\ \mu$s, so the nominal frame time is about 6.46 ms. The maximum frame time is 140% of nominal, $1.4 \times 124 = 173.6$ bits, about 9.04 ms, so the frame slot must be at least about 9.04 ms.
+   The nominal number of bits is the 34-bit header plus the $10 \times (8 + 1) = 90$-bit response, 124 bits. The bit time is $`1 / 19200 \approx 52.1\ \mu`$s, so the nominal frame time is about 6.46 ms. The maximum frame time is 140% of nominal, $1.4 \times 124 = 173.6$ bits, about 9.04 ms, so the frame slot must be at least about 9.04 ms.
 
    </details>
 
@@ -1631,7 +1633,7 @@ Besides sending the same data about 5 times faster, CAN FD has the advantage tha
    <details>
    <summary>Answer</summary>
 
-   $t_q = 2 / 8\ \text{MHz} = 250$ ns and the bit time is $1 / 250000 = 4\ \mu$s, so one bit is 16 tq. For example, dividing it into Sync_Seg 1, Prop_Seg 6, Phase_Seg1 7, and Phase_Seg2 2 puts the sample point at $(1 + 6 + 7) / 16 = 87.5\%$. SJW is then at most 2 tq.
+   $`t_q = 2 / 8\ \text{MHz} = 250`$ ns and the bit time is $`1 / 250000 = 4\ \mu`$s, so one bit is 16 tq. For example, dividing it into Sync_Seg 1, Prop_Seg 6, Phase_Seg1 7, and Phase_Seg2 2 puts the sample point at $`(1 + 6 + 7) / 16 = 87.5\%`$. SJW is then at most 2 tq.
 
    </details>
 
@@ -1649,7 +1651,7 @@ Besides sending the same data about 5 times faster, CAN FD has the advantage tha
     <details>
     <summary>Answer</summary>
 
-    At 250 kbps one bit is $1 / 250000 = 4\ \mu$s. One bit (4 µs) is shorter than 5.0 µs and therefore not enough, while two consecutive bits give $2 \times 4 = 8\ \mu\text{s} > 5.0\ \mu$s and pass. At least two consecutive bits of the same level are therefore needed.
+    At 250 kbps one bit is $`1 / 250000 = 4\ \mu`$s. One bit (4 µs) is shorter than 5.0 µs and therefore not enough, while two consecutive bits give $`2 \times 4 = 8\ \mu\text{s} > 5.0\ \mu`$s and pass. At least two consecutive bits of the same level are therefore needed.
 
     </details>
 

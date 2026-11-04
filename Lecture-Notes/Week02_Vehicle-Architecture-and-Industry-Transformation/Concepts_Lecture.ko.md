@@ -68,7 +68,7 @@
 
 ### 1.1 자율주행 레벨의 정의
 
-자율주행 기술의 수준을 나누는 기준으로는 미국 자동차공학회(SAE)의 레벨 0\~5와 미국 도로교통안전국(NHTSA)이 2013년에 제시한 레벨 0\~4가 있다 [1], [2]. 두 기준은 레벨 0\~3이 서로 대응하고, SAE는 NHTSA의 레벨 4를 운행 설계 영역(ODD)이 제한된 레벨 4와 제한이 없는 레벨 5로 나눈다. NHTSA는 2016년부터 SAE의 기준을 채택했다 [3]. 레벨 0\~2의 시스템은 운전자를 돕는 **차량 자동화 시스템(vehicle automation systems)** 이고, 레벨 3 이상의 시스템은 시스템이 운전 전체를 맡는 **자율주행 시스템(ADS, automated driving systems)** 이다.
+자율주행 기술의 수준을 나누는 기준으로는 미국 자동차공학회(SAE)의 레벨 0\~5와 미국 도로교통안전국(NHTSA)이 2013년에 제시한 레벨 0\~4가 있다 [1], [2]. 두 기준은 레벨 0\~3이 서로 대응하고, SAE는 NHTSA의 레벨 4를 운행 설계 영역(ODD)이 제한된 레벨 4와 제한이 없는 레벨 5로 나눈다. NHTSA는 2016년부터 SAE의 기준을 채택했다 [3]. 레벨 1\~2의 시스템은 운전자를 돕는 **차량 자동화 시스템(vehicle automation systems)** 이고(레벨 0에는 운전자동화 시스템이 없다), 레벨 3 이상의 시스템은 시스템이 운전 전체를 맡는 **자율주행 시스템(ADS, automated driving systems)** 이다.
 
 | SAE 레벨 | NHTSA 레벨 | NHTSA 명칭 | 운전자의 손, 발, 눈 |
 |:-----|:-----|:-----|:-----|
@@ -190,7 +190,7 @@ Frost & Sullivan은 자율주행차를 여섯 개의 플랫폼으로 나누고, 
 
 *표 5. 자율주행차 생태계의 네 비즈니스 섹터*
 
-완성차 업체는 섹터마다 다른 기업과 손잡는다. 예를 들어 Google은 Velodyne의 라이다, 자회사 Waymo의 소프트웨어와 HD 맵, Uber의 차량 호출 서비스와 연결되었고, Ford는 Velodyne, Aptiv의 하드웨어, Autotalks의 V2X, Argo의 AI, Civil Maps와 DeepMap의 HD 맵과 연결되었다. GM은 LG, Strobe의 하드웨어, Cruise의 소프트웨어와 HD 맵, IBM Watson의 클라우드, Lyft의 차량 호출과 연결되었고, Volvo는 Autoliv, Aptiv, Veoneer의 하드웨어, Zenuity의 소프트웨어, Cisco의 클라우드, TomTom의 HD 맵, Uber의 차량 호출과 연결되었다. 소프트웨어, 클라우드, 차량 관리 서비스(섹터 2\~4)는 전통적인 완성차와 부품사의 영역 밖에 있으며, 이 영역에서 새로운 기업이 생태계에 들어온다.
+완성차 업체는 섹터마다 다른 기업과 손잡는다. 예를 들어 BMW는 HELLA, Innoviz, Continental, Aptiv의 하드웨어, IBM Watson의 AI와 클라우드, HERE의 HD 맵, Car2Go와 ParkNow 같은 모빌리티 서비스와 연결되었고, Google은 Velodyne의 라이다, 자회사 Waymo의 소프트웨어와 HD 맵, Uber의 차량 호출 서비스와 연결되었다. Ford는 Velodyne, Princeton Lightwave, Aptiv, Continental의 하드웨어, Autotalks의 V2X, Argo의 AI, Civil Maps와 DeepMap의 HD 맵, Chariot과 TransLoc의 모빌리티 서비스와 연결되었다. GM은 Veoneer, LG, Strobe의 하드웨어, Cruise의 소프트웨어와 HD 맵, OnStar의 차량 외부 통신, IBM Watson의 클라우드, Lyft와 Maven의 차량 호출과 공유 서비스와 연결되었고, Volvo는 HELLA, Autoliv, Aptiv, Veoneer의 하드웨어, Zenuity의 소프트웨어, Cisco의 클라우드, TomTom의 HD 맵, Uber의 차량 호출과 자율주행 시범 프로그램 DriveMe와 연결되었다. 소프트웨어, 클라우드, 차량 관리 서비스(섹터 2\~4)는 전통적인 완성차와 부품사의 영역 밖에 있으며, 이 영역에서 새로운 기업이 생태계에 들어온다.
 
 ### 1.7 빅테크의 자동차 산업 진출
 
@@ -218,7 +218,7 @@ Frost & Sullivan은 자율주행차를 여섯 개의 플랫폼으로 나누고, 
 **Intel의 사례.** Intel은 다음 단계로 자동차 시장을 공략했다.
 
 1. 2017년 3월 자율주행용 카메라 기업 Mobileye를 153억 달러(당시 약 17조 원)에 인수했다. Mobileye를 통해 카메라 센서와 자동차용 고성능 프로세서(AP) 사업을 추진하며, Mobileye의 2020년 매출은 9억 6,700만 달러였다 [7]. 자율주행차 관련 반도체 개발을 위해 구축 중인 메가칩 설계 센터의 인력은 약 6,000명에 이른다.
-2. 110조 원을 투입하여 유럽에 주로 차량용 반도체를 생산하는 반도체 공장 2개를 새로 짓겠다고 발표했다. Intel CEO Pat Gelsinger는 2021년 9월에 프리미엄 차량의 부품 원가에서 반도체가 차지하는 비율이 2019년 4%에서 2025년 12%, 2030년 20%로 늘어날 것으로 전망했다 [8].
+2. 110조 원을 투입하여 유럽에 주로 차량용 반도체를 생산하는 반도체 공장 2개를 새로 짓겠다고 발표했다. Intel CEO Pat Gelsinger는 2021년 9월에 프리미엄 차량의 부품 원가에서 반도체가 차지하는 비율이 2019년 4%에서 2025년 12%, 2030년 20%로 늘어날 것으로 전망했다 [8]. Intel은 데이터센터, 5G, HMI, 차량 내 컴퓨팅을 아우르는 자율주행 플랫폼을 내세운다.
 3. 2022년 2월 Intel Foundry Services(IFS)에 자동차 전담 그룹을 만들었다. 이 그룹은 완성차가 차세대 솔루션을 구축할 수 있는 컴퓨팅 플랫폼인 개방형 중앙 컴퓨팅 아키텍처(Open Central Compute Architecture), 차량용 응용과 고객의 요건을 만족하는 제조 기술인 차량용 파운드리 플랫폼(Automotive-Grade Foundry Platform), 완성차의 첨단 공정과 패키징 기술 전환을 위한 설계 서비스와 IP 제공(Transition to Advanced Technologies)을 맡는다.
 
 > **용어 정의:** **AP(application processor)** 는 운영체제와 복잡한 응용 프로그램을 실행하는 고성능 프로세서이고, **파운드리(foundry)** 는 다른 회사가 설계한 반도체를 위탁받아 생산하는 사업이다.
@@ -306,7 +306,7 @@ flowchart LR
 
 *그림 6. 대형버스용 자율주행 부품과 시스템 개발 과제의 구성*
 
-과제는 세 개의 세부 과제와 총괄로 이루어진다.
+이 과제는 대형버스용 자율주행 부품과 시스템을 개발하고 친환경 수소 자율주행 버스를 시범 운행하는 과제이며, 세 개의 세부 과제와 총괄로 이루어진다.
 
 | 구성 | 내용 |
 |:-----|:-----|
@@ -413,7 +413,7 @@ flowchart LR
 | CAN (Automated CAN) | 전방, 후방, 좌우 다목적 카메라, 장거리 레이더(LRR), 좌우 도어 초음파 센서, SSVM, KATECH 제어기, HAV-DCU, 라이다 처리 장치, 두 GW |
 | CAN FD | 중거리 레이더(MRR) 5개, HAV-DCU, 두 GW |
 | 이더넷 | 라이다 허브에 연결된 코너 라이다 4개(전방 좌우, 후방 좌우)와 Wide VFOV 라이다 3개(전방, 좌측, 우측), 라이다 처리 장치, 추가 라이다(포인트 클라우드), ADR, HVI, HAV-DCU, 지도와 측위 장치(GPS), V2X OBU, 디스플레이 4(BIS), 엣지 로거, 음영 저감 장치 2개 |
-| 영상과 USB | SSVM 카메라 6개(전방 좌우, 후방 좌우, 전방, 후방)는 6채널 영상으로 SSVM에 연결되고, 디스플레이 1(HVI), 2(SSVM), 3(내비게이션)은 USB로 각각 HVI, SSVM, 지도와 측위 장치에 연결된다. |
+| 영상과 USB | SSVM 카메라 6개(전방 좌우, 후방 좌우, 전방, 후방)는 6채널 영상으로 SSVM에 연결되고, SSVM은 6채널 AHD 영상(SSVM 데이터)으로 ADR에 연결된다. 디스플레이 1(HVI), 2(SSVM), 3(내비게이션)은 USB로 각각 HVI, SSVM, 지도와 측위 장치에 연결된다. |
 | 차량 | KATECH 제어기는 차량의 바디와 섀시 CAN에 연결되어 실제 차량을 제어한다. |
 
 *표 11. 대형버스 네트워크 토폴로지의 구성*
@@ -640,7 +640,7 @@ flowchart LR
 
 그림 21의 왼쪽인 기존 조향 장치에서는 운전대(steering wheel)의 회전이 조향축(column shaft)을 거쳐 랙과 피니언(rack and pinion)으로 전달되어 앞바퀴를 돌린다. 가운데의 SBW에서는 조향축이 없다. 운전대의 각도 센서가 회전 각도를 읽어 신호로 보내면, 제어기가 계산한 명령에 따라 DC 모터가 랙을 움직여 바퀴를 돌린다. 운전대 쪽에도 모터를 두어 노면의 반력을 운전자에게 전달한다. 오른쪽은 국내 부품사 만도가 개발한 SBW이다.
 
-**BBW(brake-by-wire).** 제동에 by-wire를 적용한 것이다. 브레이크 페달을 밟는 힘을 유압으로 직접 전달하는 대신, 페달의 움직임을 센서로 읽어 전자 제어 장치가 각 바퀴의 제동력을 정한다. 만도의 BBW 구성에는 통합 전자식 브레이크(IDB, integrated dynamic brake), 캘리퍼에 모터를 단 전자식 주차 브레이크(MoC, motor on caliper), ABS와 ESC, 캘리퍼 브레이크가 있다.
+**BBW(brake-by-wire).** 제동에 by-wire를 적용한 것이다. 브레이크 페달을 밟는 힘을 유압으로 직접 전달하는 대신, 페달의 움직임을 센서로 읽어 전자 제어 장치가 각 바퀴의 제동력을 정한다. 만도의 BBW 구성에는 통합 전자식 브레이크(IDB, integrated dynamic brake), 캘리퍼에 모터를 단 전자식 주차 브레이크(MoC, motor on caliper), ABS와 ESC, 캘리퍼 브레이크, 디자인을 강조한 프리미엄 캘리퍼가 있다.
 
 | 시스템 | 대상 | 없어지는 기계적 연결 | 신호의 흐름 |
 |:-----|:-----|:-----|:-----|
@@ -682,13 +682,13 @@ Volvo S80은 속도가 다른 두 개의 CAN 버스를 쓴다. 그림 22에서 �
 
 *표 15. Volvo S80의 CAN 모듈 구성*
 
-> **참고:** Volvo의 정비 자료에서 TCM은 변속기 제어 모듈(Transmission Control Module), ETM은 전자식 스로틀 모듈(Electronic Throttle Module)이다 [16], [17]. 두 약어를 반대로 풀이하는 자료가 있으나 표 15는 Volvo의 용어를 따른다. 또 Volvo는 2005년형부터 고속 버스의 속도를 500 kbit/s로 높였다 [16].
+> **참고:** Volvo의 정비 자료에서 TCM은 변속기 제어 모듈(Transmission Control Module), ETM은 전자식 스로틀 모듈(Electronic Throttle Module)이다 [16], [17]. 두 약어를 반대로 풀이하는 자료가 있으나 표 15는 Volvo의 용어를 따른다. 또 Volvo는 2005년에 고속 버스의 속도를 500 kbit/s로 높였다 [16].
 
 이 구성은 기능의 성격에 따라 버스를 나누는 원칙을 보여 준다. 엔진, 변속기, 제동처럼 실시간성이 중요한 파워트레인과 섀시 기능은 고속 버스에, 오디오, 공조, 도어처럼 빠른 응답이 필요 없는 바디와 편의 기능은 저속 버스에 두고, 두 버스 사이의 정보는 CEM이 게이트웨이로서 전달한다. 예를 들어 계기판(DIM)에 엔진 회전수를 표시하려면 ECM이 고속 버스로 보낸 메시지를 CEM이 저속 버스로 옮겨 주어야 한다.
 
 ### 3.9 실시간성과 전송 속도에 따른 IVN 분류
 
-SAE는 차량 네트워크의 도입기에 전송 속도와 실시간성에 따라 차량 네트워크를 Class A, B, C로 분류했다. 이 분류는 1994년에 정해졌으며, 이후 1 Mbit/s를 넘는 Class D가 더해졌다 [18].
+SAE는 차량 네트워크의 도입기에 전송 속도와 실시간성에 따라 차량 네트워크를 Class A, B, C로 분류했다. 이후 1 Mbit/s를 넘는 Class D가 더해졌다 [18].
 
 | 클래스 | 전송 속도 | 전달하는 정보 | 응용 예 | 대표 프로토콜 |
 |:-----|:-----|:-----|:-----|:-----|
@@ -851,7 +851,7 @@ flowchart TB
 
 > **용어 정의:** **TOPS(tera operations per second)** 는 초당 1조 번의 연산을 뜻하는 AI 연산 성능의 단위이다. 240 TOPS는 초당 $2.4 \times 10^{14}$번의 연산이다. **LSAD(low-speed automated driving)** 는 정해진 구역을 저속으로 운행하는 자율주행 시스템이다.
 
-주요 과제 2의 컴퓨팅 모듈은 이 과목의 주제인 차량 통신 인터페이스를 여럿 갖추고 있다. 카메라 8채널은 GMSL2 직렬화 링크(MAX9295, MAX9296 SERDES, 링크 속도 6 Gbit/s)로 연결되고, 차량용 이더넷 100BASE-T1 3포트(100 Mbit/s)와 라이다 연결용 1000BASE-T 이더넷, 무선 인터페이스(GNSS, LTE), 디스플레이 출력을 갖는다.
+주요 과제 1의 시스템은 운전자 사용성 평가, 실차와 가상 환경을 결합한 VILS(vehicle-in-the-loop simulation) 실차 평가, 주행 시험장(PG) 실차 평가로 검증되었다. 주요 과제 2의 컴퓨팅 모듈은 이 과목의 주제인 차량 통신 인터페이스를 여럿 갖추고 있다. 카메라 8채널은 GMSL2 직렬화 링크(MAX9295, MAX9296 SERDES, 링크 속도 6 Gbit/s)로 연결되며, 카메라 센서와 ISP의 조합은 AR0231과 AP0200(30 fps), AR0233과 GW5200(60 fps)이다. 이 밖에 차량용 이더넷 100BASE-T1 3포트(100 Mbit/s), 16채널 360° 기계식 라이다 4대를 연결하는 1000BASE-T 이더넷, 무선 인터페이스(GPS L1과 GLONASS 대역의 GNSS, 하향 150 Mbit/s와 상향 75 Mbit/s의 LTE Cat 4), 디스플레이 출력을 갖는다.
 
 > **용어 정의:** **SERDES(serializer/deserializer)** 는 병렬 데이터를 고속 직렬 신호로 바꾸어 보내고 받는 쪽에서 다시 병렬로 되돌리는 회로이다. **GMSL(gigabit multimedia serial link)** 은 카메라 영상처럼 대용량 데이터를 한 가닥의 동축 케이블로 수 Gbit/s의 속도로 전송하는 차량용 직렬 링크이다.
 
@@ -998,7 +998,7 @@ flowchart TB
 5. Frost & Sullivan, *Global Autonomous Driving Industry Outlook, 2018*, 2018.
 6. Frost & Sullivan, *Global Autonomous Driving Industry Outlook, 2019*, 2019.
 7. Intel Corporation, *2020 Annual Report on Form 10-K*, Santa Clara, CA, USA, 2021.
-8. Intel Corporation, "Intel CEO Pat Gelsinger keynote at IAA Mobility 2021," Munich, Germany, Sep. 2021.
+8. Intel Corporation, "Intel CEO predicts chips will be more than 20% of premium vehicle BOM by 2030," press release, *Business Wire*, Sep. 7, 2021. https://www.businesswire.com/news/home/20210907005345/en
 9. Macrotrends and Investing.com, company financial data (revenue and operating income for 2021, market capitalization as of Apr. 2022).
 10. 전자신문, 한국자동차연구원, 금융감독원, 국내 자동차 부품사 경영 실적 자료(2019, 2020년).
 11. IEEE Std 802.3bw-2015, *Physical Layer Specifications and Management Parameters for 100 Mb/s Operation over a Single Balanced Twisted Pair Cable (100BASE-T1)*, 2015.

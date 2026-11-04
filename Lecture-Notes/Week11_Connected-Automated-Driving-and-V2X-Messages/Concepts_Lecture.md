@@ -78,7 +78,7 @@ The literature on connected automated driving uses several terms that look alike
 
 In Figure 1, the smart car set contains most of the automated vehicle and connected car sets, and the CAV lies where automated vehicles and connected cars overlap. The ITS set on the right is the program of making the whole transportation system intelligent, and **C-ITS (Cooperative ITS)** inside it is a cooperative transportation system in which vehicles and infrastructure share information in real time. Because the CAV also overlaps C-ITS, connected automated driving sits where vehicle technology and transportation system technology meet. ITS and C-ITS are defined in detail in Sections 1.6 and 1.7.
 
-> **Note:** The levels of driving automation (Levels 0-5) and the definition of the driving task are covered in Week 2. In this note, the **dynamic driving task (DDT)** means all the real-time operations of steering, accelerating, and decelerating the vehicle and of monitoring and responding to the surrounding environment [1].
+> **Note:** The levels of driving automation (Levels 0-5) and the definition of the driving task are covered in Week 2. The **dynamic driving task (DDT)** means all the real-time operations of steering, accelerating, and decelerating the vehicle and of monitoring and responding to the surrounding environment [1].
 
 ### 1.2 Technical Classification by the European C2C-CC
 
@@ -190,7 +190,7 @@ Most services in Table 5 show on the terminal screen the distance to the event (
 
 ### 1.5 The Automotive Industry and the ITS Industry
 
-Connected automated driving is a technology built jointly by the automotive industry and the ITS industry, but the two industries differ greatly in size. According to the Korea Automotive Technology Institute (KATECH), the Korean automotive industry is worth about 250 trillion won per year and the ITS industry about 1 trillion won per year [10]. Because the automotive industry is far larger, it needs many workers at every stage of research and development, mass production, and manufacturing. New technologies are handled mainly by R&D staff, and mature technologies mainly by mass production and manufacturing staff. Meanwhile, the connected car market is maturing later than expected, so industry prospects in this field must be judged with that delay in mind.
+Connected automated driving is a technology built jointly by the automotive industry and the ITS industry, but the two industries differ greatly in size. According to the Korea Automotive Technology Institute (KATECH), the Korean automotive industry is worth about 250 trillion won per year and the ITS industry about 1 trillion won per year [10]. Because the automotive industry is far larger, it needs many workers at every stage of research and development, mass production, and manufacturing. New technologies are handled mainly by R&D staff with master's or doctoral degrees, and mature technologies mainly by mass production and manufacturing staff with a bachelor's degree or higher. Meanwhile, the connected car market is maturing later than expected, so industry prospects in this field must be judged with that delay in mind.
 
 ![Figure 4. Cost decision ratio and cost incurrence ratio over the product life cycle, and the annual sizes of the automotive and ITS industries](../../images/Week11_11-1_p12.png)
 
@@ -265,7 +265,7 @@ The left side of Figure 7 shows V2V services: a vehicle involved in an accident 
 
 *Figure 8. Concept of the reduction in traffic accidents as safety technologies advance*
 
-Figure 8, taken from an automaker's data, stacks the percentage reduction in traffic fatalities by safety technology from 2000 to a future year (20XX). The top band is the contribution of **passive safety**, technologies such as airbags and seat belts that reduce harm after a crash has occurred. The middle band is the contribution of **active safety**, vehicle-only technologies such as ABS, electronic stability control, and emergency braking that prevent the crash itself. These two alone cannot reach a reduction of -100%, and what fills the remainder (the red band) is **road-vehicle cooperative safety systems**, that is, V2X-based safety systems. The lesson of the figure is that approaching the goal of "Toward zero accidents" at the bottom of the graph requires learning through communication about hazards that a vehicle cannot see by itself.
+Figure 8, taken from an automaker's data, stacks the percentage reduction in traffic accidents by safety technology from 2000 to a future year (20XX). The top band is the contribution of **passive safety**, technologies such as airbags and seat belts that reduce harm after a crash has occurred. The middle band is the contribution of **active safety**, vehicle-only technologies such as ABS, electronic stability control, and emergency braking that prevent the crash itself. These two alone cannot reach a reduction of -100%, and what fills the remainder (the red band) is **road-vehicle cooperative safety systems**, that is, V2X-based safety systems. The lesson of the figure is that approaching the goal of "Toward zero accidents" at the bottom of the graph requires learning through communication about hazards that a vehicle cannot see by itself.
 
 From this perspective, Japan has run the **Advanced Safety Vehicle (ASV)** project in five-year phases since 1991, led by the Ministry of Transport (the Ministry of Land, Infrastructure, Transport and Tourism since 2001) [11].
 
@@ -302,13 +302,13 @@ The whole dashed box in Figure 9 is the **platooning control system (PCS)**. The
 | Abbr. | Term | Definition |
 |:-----|:-----|:-----|
 | LV | Leading vehicle | The head vehicle of the platoon. The LV driver manages and supervises FVs and PFVs through V2V and, by their own judgment, forms the platoon, lets vehicles join or merge, and lets them leave, splits, or dissolves the platoon. The LV may also communicate with the BO to support the communication for POCF. |
-| FV | Following vehicle | A vehicle running behind the LV and connected by V2V. Its longitudinal motion is controlled by CACC, and lateral control such as lane keeping may also be applied. |
+| FV | Following vehicle | A vehicle running behind the LV and connected by V2V. Its longitudinal motion is controlled by CACC, and lateral control such as lane keeping assistance (LKAS) or partially automated lane change (PALS) may also be applied. It may also communicate with the BO for POCF communication. |
 | TV | Trailing vehicle | The last vehicle among the FVs. |
 | PV | Platoon vehicle | The generic term for the LV and FVs (including the TV). |
 | OV | Other vehicle | A vehicle that does not participate in the platoon but may affect it, for example by emergency braking or cutting in. |
-| PLV | Potential leading vehicle | A vehicle that is not currently leading but may become an LV. |
-| PFV | Potential following vehicle | A vehicle that is not currently in the platoon but may become an FV when forming or joining. |
-| PPV | Potential platoon vehicle | The generic term for PLVs and PFVs. |
+| PLV | Potential leading vehicle | A vehicle that is not currently leading a platoon but may do so, or one that has left the platoon as the LV by leaving or dissolving. It may become the LV of a platoon. |
+| PFV | Potential following vehicle | A vehicle that is not currently in a platoon but may be, or one that has left the platoon as an FV by leaving or dissolving. It becomes an FV when it joins or forms a platoon. |
+| PPV | Potential platoon vehicle | The generic term for PLVs and PFVs, that is, a vehicle that may be included in a platoon. Once in a platoon, a PPV becomes either the LV or an FV (TV). |
 
 *Table 9. Vehicle terms related to platooning*
 
@@ -354,11 +354,13 @@ Major automakers sell sensors and ADAS functions bundled as packages.
 
 In Table 10, Mercedes-Benz and Toyota include V2X in their sensor configurations. Mercedes-Benz Car-to-X Communication receives hazard information from other vehicles and infrastructure and alerts the driver.
 
+> **Note:** The Toyota column of Table 10 follows the lecture material. According to Toyota, Toyota Safety Sense detects objects and lane markers with a forward-facing camera and a forward-facing radar, and the Proactive Driving Assist of TSS 3.0 also uses this front camera and radar [15]. The ultrasonic sensors, rear camera, and V2X in the table are not presented as components of TSS 3.0.
+
 ![Figure 12. Sensor configuration of Mercedes-Benz DRIVE PILOT](../../images/Week11_11-1_p28.png)
 
 *Figure 12. Sensor configuration of Mercedes-Benz DRIVE PILOT*
 
-Figure 12 shows the DRIVE PILOT sensor configuration of the Mercedes-Benz S-Class. It consists of cameras that capture images for a 3D environment, a lidar that measures the 3D environment with laser beams, radars that measure distance and speed with electromagnetic waves, ultrasonic sensors that detect the near surroundings with sonic impulses, a driver camera that detects driver attention, an antenna array for highly accurate positioning, and a road moisture sensor that detects road surface wetness. In December 2021, DRIVE PILOT received approval in Germany as a Level 3 conditionally automated system under UN Regulation No. 157, and it initially took over the driving task in congested motorway traffic at up to 60 km/h [15], [16].
+Figure 12 shows the DRIVE PILOT sensor configuration of the Mercedes-Benz S-Class. It consists of cameras that capture images for a 3D environment, a lidar that measures the 3D environment with laser beams, radars that measure distance and speed with electromagnetic waves, ultrasonic sensors that detect the near surroundings with sonic impulses, a driver camera that detects driver attention, an antenna array for highly accurate positioning, and a road moisture sensor that detects road surface wetness. In December 2021, DRIVE PILOT received approval in Germany as a Level 3 conditionally automated system under UN Regulation No. 157, and it initially took over the driving task in congested motorway traffic at up to 60 km/h [16], [17].
 
 ![Figure 13. ADAS sensor layout of a BMW vehicle](../../images/Week11_11-1_p29.png)
 
@@ -429,7 +431,7 @@ The photos at the bottom show the vehicles and a remote driving station of Halo,
 
 Figure 16 is a concept diagram from DriveU, a vendor of communication platforms for remote driving. Vehicles such as robots, buses, cars, trucks, and delivery robots contain antennas, an automated driving computer (AD PC), modems, drive-by-wire actuators (DBW), and a CAN bus. The vehicle uploads 4K video and sensor data to the driver node in the command and control center, and the driver node sends control commands down to the vehicle. The uplink carries large volumes and the downlink is latency-critical, so a connection with low latency and high capacity is needed in all network conditions.
 
-> **Note:** 3GPP specifies the communication performance required for remote driving as a maximum end-to-end latency of 5 ms, a reliability of 99.999%, and data rates of 25 Mbps from the vehicle to the server and 1 Mbps from the server to the vehicle [17]. The larger data rate in the direction that uploads video is consistent with the data flow in Figure 16.
+> **Note:** 3GPP specifies the communication performance required for remote driving as a maximum end-to-end latency of 5 ms, a reliability of 99.999%, and data rates of 25 Mbps from the vehicle to the server and 1 Mbps from the server to the vehicle [18]. The larger data rate in the direction that uploads video is consistent with the data flow in Figure 16.
 
 Remote driving services are implemented in stages according to the readiness of technology and infrastructure.
 
@@ -489,7 +491,7 @@ The **connected car** arose where the normal mobile communication domain, such a
 
 ### 2.3 Classification of Connected Car Services
 
-The present and future of connected car services as summarized by Frost & Sullivan in 2020 (infotainment, smartphone integration, electric vehicle services, navigation, telematics) were covered in Week 1, Table 2. In its 2019 report, Frost & Sullivan divided the connected services that automakers can sell into seven areas [18].
+The present and future of connected car services as summarized by Frost & Sullivan in 2020 (infotainment, smartphone integration, electric vehicle services, navigation, telematics) were covered in Week 1, Table 2. In its 2019 report, Frost & Sullivan divided the connected services that automakers can sell into seven areas [19].
 
 | Area | Example services |
 |:-----|:-----|
@@ -503,7 +505,7 @@ The present and future of connected car services as summarized by Frost & Sulliv
 
 *Table 14. Seven areas of connected services that automakers can sell*
 
-The same report grouped connected car services again into four broad categories [18].
+The same report grouped connected car services again into four broad categories [19].
 
 | Category | Example services |
 |:-----|:-----|
@@ -520,7 +522,7 @@ The same report grouped connected car services again into four broad categories 
 
 > **Definition:** A **human-machine interface (HMI)** is the point of contact through which people and machines exchange information. In a vehicle, displays, buttons, touchscreens, voice recognition, and head-up displays are HMIs.
 
-In 2020, Frost & Sullivan surveyed the HMI adoption of 15 automakers selling in Europe (Audi, BMW, DS, Fiat, Honda, Hyundai, JLR, Kia, Mercedes-Benz, Nissan, Porsche, PSA, Renault, Toyota, Volkswagen) [19].
+In 2020, Frost & Sullivan surveyed the HMI adoption of 15 automakers selling in Europe (Audi, BMW, DS, Fiat, Honda, Hyundai, JLR, Kia, Mercedes-Benz, Nissan, Porsche, PSA, Renault, Toyota, Volkswagen) [20].
 
 | HMI element | Number of adopters (out of 15) | Adopters or non-adopters |
 |:-----|--:|:-----|
@@ -538,7 +540,7 @@ In 2020, Frost & Sullivan surveyed the HMI adoption of 15 automakers selling in 
 
 *Table 16. HMI adoption of 15 automakers in Europe (2020)*
 
-In Table 16, displays, touchscreens, and voice recognition are already standard at every automaker, while head-up displays and digital assistants are spreading quickly. Touchpads and gestures are still used only by a few automakers.
+In Table 16, displays, touchscreens, and voice recognition are already standard at every automaker, and head-up displays (9 automakers) and digital assistants (11 automakers) are also adopted by more than half. Touchpads and gestures are still used only by a few automakers.
 
 The more information a connected car provides, the more important HMI design becomes.
 
@@ -546,9 +548,9 @@ The more information a connected car provides, the more important HMI design bec
 
 *Figure 19. Satirical illustration of a driver distracted by information overload*
 
-Figure 19 is an illustration that the European AIDE (Adaptive Integrated Driver-vehicle InterfacE) project presented as a situation to avoid [20]. Numerous screens and devices in front of the driver display "WARNING! BLACK ICE AHEAD!!!" and "ATTENTION! INCOMING FAX MESSAGE!!!" at the same time, while music plays as well. When life-critical warnings and trivial notifications pour in with the same weight, the driver misses the warning that matters. AIDE tried to solve this problem through **HMI integration**: active safety applications such as ACC and collision warning, infotainment applications such as navigation and media players, off-board devices such as personal portable devices, and wireless online services are tied into a single HMI management scheme that adjusts the priority and timing of information according to the driver's workload and situation.
+Figure 19 is an illustration that the European AIDE (Adaptive Integrated Driver-vehicle InterfacE) project presented as a situation to avoid [21]. Numerous screens and devices in front of the driver display "WARNING! BLACK ICE AHEAD!!!" and "ATTENTION! INCOMING FAX MESSAGE!!!" at the same time, while music plays as well. When life-critical warnings and trivial notifications pour in with the same weight, the driver misses the warning that matters. AIDE tried to solve this problem through **HMI integration**: active safety applications such as ACC and collision warning, infotainment applications such as navigation and media players, off-board devices such as personal portable devices, and wireless online services are tied into a single HMI management scheme that adjusts the priority and timing of information according to the driver's workload and situation.
 
-The Korean Industrial Standard KS C 5077 (Automotive display devices: Requirements for driver interface) specifies, by characteristic of the information, the forms in which information may be provided on a display while driving [21].
+The Korean Industrial Standard KS C 5077 (Automotive display devices: Requirements for driver interface) specifies, by characteristic of the information, the forms in which information may be provided on a display while driving [22].
 
 | No. | Characteristic | Information type | Text, symbols | Still images | Sound | Moving images | Remarks |
 |:-----|:-----|:-----|:--:|:--:|:--:|:--:|:-----|
@@ -573,7 +575,7 @@ The Korean Industrial Standard KS C 5077 (Automotive display devices: Requiremen
 
 *Table 17. Criteria of KS C 5077 for providing information while driving (○ allowed, X not allowed, - not applicable)*
 
-The principle of Table 17 is to restrict strictly the moving images that hold the driver's gaze for long. Moving images are allowed only for emergency guidance, driving information and route guidance, urgent traffic and weather information, and external vehicle video that helps driving, and entertainment information may not be provided in any form while driving. News may only be heard as sound.
+The principle of Table 17 is to restrict strictly the moving images that hold the driver's gaze for long. Moving images are allowed only for emergency information (national emergencies and disaster guidance), driving information and route guidance, traffic information, urgent weather information, and external vehicle video that helps driving, and entertainment information may not be provided in any form while driving. News may only be heard as sound.
 
 ### 2.5 Connected Car Security
 
@@ -583,7 +585,7 @@ When a vehicle is connected to the outside, the paths through which hackers can 
 
 *Figure 20. Hacked points and potential future threat points of a connected car*
 
-Figure 20 is Frost & Sullivan's 2018 analysis of automotive cybersecurity threats [18]. The green dashed lines mark the points hacked most often up to 2018, and the numbered red circles mark points that will become threats.
+Figure 20 is Frost & Sullivan's 2018 analysis of automotive cybersecurity threats [19]. The green dashed lines mark the points hacked most often up to 2018, and the numbered red circles mark points that will become threats.
 
 | Category | Points |
 |:-----|:-----|
@@ -592,11 +594,11 @@ Figure 20 is Frost & Sullivan's 2018 analysis of automotive cybersecurity threat
 
 *Table 18. Hacked points and potential threat points of a connected car*
 
-CAN, the in-vehicle network, has no sender authentication in its messages (Weeks 3 and 9), so an attacker who breaks into one ECU from outside can send messages that deceive other ECUs. In V2X, a fake BSM or fake signal information can lead to accidents, so a security scheme that attaches a certificate-based digital signature to every message (IEEE 1609.2) is used [22]. The place of IEEE 1609.2 in the WAVE architecture is covered in Week 13 Section 3.2, and the C-ITS certificate management system and vehicle cybersecurity regulations in Week 14 Sections 3.3 and 3.5.
+CAN, the in-vehicle network, has no sender authentication in its messages (Weeks 3 and 9), so an attacker who breaks into one ECU from outside can send messages that deceive other ECUs. In V2X, a fake BSM or fake signal information can lead to accidents, so a security scheme that attaches a certificate-based digital signature to every message (IEEE 1609.2) is used [23]. The place of IEEE 1609.2 in the WAVE architecture is covered in Week 13 Section 3.2, and the C-ITS certificate management system and vehicle cybersecurity regulations in Week 14 Sections 3.3 and 3.5.
 
 ### 2.6 Classification of Vehicle Safety Systems and Autonomous Shuttles
 
-In its 2014 analysis of the European ADAS market, Frost & Sullivan classified vehicle safety systems as in Figure 21 [23].
+In its 2014 analysis of the European ADAS market, Frost & Sullivan classified vehicle safety systems as in Figure 21 [24].
 
 ```mermaid
 flowchart TD
@@ -613,7 +615,7 @@ flowchart TD
 
 *Figure 21. Classification of vehicle safety systems*
 
-Autonomous shuttles are a field where connected automated driving is introduced early as a commercial service. Frost & Sullivan defined the 2019 autonomous shuttle market as in Figure 22 [24].
+Autonomous shuttles are a field where connected automated driving is introduced early as a commercial service. Frost & Sullivan defined the 2019 autonomous shuttle market as in Figure 22 [25].
 
 ```mermaid
 flowchart TD
@@ -650,7 +652,7 @@ Automated driving that perceives the surroundings with only the vehicle's own se
 
 *Table 19. Sensor configurations and services of Waymo, Tesla, and 42dot*
 
-The Tesla sensor layout in the middle of Figure 23 is marked with numbers: ① a camera above the rear license plate, ② ultrasonic sensors in the front and rear bumpers (if equipped), ③ a camera in each door pillar, ④ three cameras on the windshield above the rear view mirror, ⑤ a camera on each front fender, and ⑥ a radar behind the front bumper (if equipped). 42dot on the right is a software company of Hyundai Motor Group that operated a taxi based on the Kia Niro and a small shuttle. The sensor configurations of Waymo and Tesla were compared in detail in Week 3, Section 4.
+The Tesla sensor layout in the middle of Figure 23 is marked with numbers: ① a camera above the rear license plate, ② ultrasonic sensors in the front and rear bumpers (if equipped), ③ a camera in each door pillar, ④ three cameras on the windshield above the rear view mirror, ⑤ a camera on each front fender, and ⑥ a radar behind the front bumper (if equipped). This layout applies to vehicles equipped with radar and ultrasonic sensors; Tesla removed radar from new vehicles from 2021 and ultrasonic sensors from October 2022, moving to camera-only Tesla Vision [26]. 42dot on the right is a software company of Hyundai Motor Group that operated a taxi based on the Kia Niro and a small shuttle. The sensor configurations of Waymo and Tesla were compared in detail in Week 3, Section 4.
 
 ### 2.8 Connected Automated Driving Services: Safety and Convenience
 
@@ -721,11 +723,11 @@ Figure 28 shows experimental results measuring how accurately the relative posit
 
 > **Definition:** **Longitudinal** is the vehicle's direction of travel, and **lateral** is the left-right direction perpendicular to it. The **root mean square error (RMSE)** is obtained by squaring the differences between estimates and true values, averaging them, and taking the square root; it represents the typical size of the error.
 
-With estimated positions $\hat{x}_i$ and true positions $x_i$ over $N$ frames, the RMSE is as follows.
+With estimated positions $`\hat{x}_i`$ and true positions $x_i$ over $N$ frames, the RMSE is as follows.
 
-$$
+```math
 \text{RMSE} = \sqrt{\frac{1}{N}\sum_{i=1}^{N}\left(\hat{x}_i - x_i\right)^2}
-$$
+```
 
 The graphs on the right of Figure 28 are the per-frame errors measured over about 2,800 frames, and the bar chart on the left gives their RMSE.
 
@@ -742,24 +744,24 @@ Table 21 can be interpreted as follows. The camera estimates distance from image
 
 The improvement rate is computed as $(\text{baseline RMSE} - \text{fusion RMSE}) / \text{baseline RMSE}$. The longitudinal improvement over the camera is as follows.
 
-$$
+```math
 \frac{1.91 - 0.27}{1.91} = \frac{1.64}{1.91} \approx 0.859 = 85.9\%
-$$
+```
 
 Computing the rest in the same way gives Table 22.
 
 | Comparison | Longitudinal improvement | Lateral improvement |
 |:-----|--:|--:|
-| Over camera | $(1.91 - 0.27)/1.91 \approx 86\%$ | $(0.16 - 0.12)/0.16 = 25\%$ |
-| Over radar | $(0.57 - 0.27)/0.57 \approx 53\%$ | $(0.26 - 0.12)/0.26 \approx 54\%$ |
+| Over camera | $`(1.91 - 0.27)/1.91 \approx 86\%`$ | $`(0.16 - 0.12)/0.16 = 25\%`$ |
+| Over radar | $`(0.57 - 0.27)/0.57 \approx 53\%`$ | $`(0.26 - 0.12)/0.26 \approx 54\%`$ |
 
 *Table 22. Improvement in position error by fusion*
 
-> **Note:** The lecture material states that fusion improved accuracy by 86% and 52% over the camera and radar longitudinally and by 27% and 56% laterally. These differ slightly from Table 22 because the RMSE values shown in the figure are rounded to two decimal places. For example, if the lateral camera RMSE were 0.164 m and the fusion RMSE 0.120 m, the improvement would be about 27%. Either way, the conclusion that fusion is more accurate than any single method is the same.
+> **Note:** The result of this experiment is reported as fusion improving accuracy by 86% and 52% over the camera and radar longitudinally and by 27% and 56% laterally. These differ slightly from Table 22 because the RMSE values shown in the figure are rounded to two decimal places. For example, if the lateral camera RMSE were 0.164 m and the fusion RMSE 0.120 m, the improvement would be about 27%. Either way, the conclusion that fusion is more accurate than any single method is the same.
 
 ### 2.11 Comparison of US and EU V2V and V2I Standards
 
-The United States and Europe developed V2X standards separately, but many parts are similar [25].
+The United States and Europe developed V2X standards separately, but many parts are similar [27].
 
 - The overall architectures are similar.
 - The security protocol and physical layer standards are nearly identical (both based on IEEE 802.11p).
@@ -770,7 +772,7 @@ The structures of the two protocol stacks are compared in Figure 44 of Section 3
 
 ### 2.12 Cooperative Driving Phases and Services of the European C2C-CC
 
-The Day 1, Day 2, and Day 3+ classification in Section 1.2 corresponds to the phases of **awareness driving**, **sensing driving**, and **cooperative driving**, respectively. In awareness driving, vehicles announce their presence and status to each other; in sensing driving, they also share the objects detected by their own sensors; and in cooperative driving, they share and coordinate future trajectories and maneuvers. As the next phase, the C2C-CC proposes synchronised cooperative driving, in which vehicles synchronize their maneuvers [2]. Day 3/4 below refers to cooperative driving and the phase after it together.
+The Day 1, Day 2, and Day 3+ classification in Section 1.2 corresponds to the phases of **awareness driving**, **sensing driving**, and **cooperative driving**, respectively. In awareness driving, vehicles announce their presence and status to each other; in sensing driving, they also share the objects detected by their own sensors; and in cooperative driving, they share and coordinate future trajectories and maneuvers. As the next phase, the C2C-CC V2X roadmap placed synchronized cooperative driving, in which Level 4 and 5 vehicles exchange and synchronize their driving trajectories to achieve optimal driving patterns, with accident-free driving as the final goal [28]. Day 3/4 below refers to cooperative driving and the phase after it together.
 
 ![Figure 29. Examples of Day 1 awareness driving services](../../images/Week11_11-2_p35.png)
 
@@ -808,7 +810,7 @@ Cooperative driving in Day 3/4 begins with sharing trajectories and maneuvers. I
 
 The next level of cooperative driving is coordination and negotiation. In **cooperative merging on highways** on the left of Figure 32, when a vehicle announces its intention to merge, the vehicles concerned exchange information to open a gap and coordinate the merging maneuver with increased time spans. In **I2V assisted cooperative merging** on the right, the infrastructure suggests information that coordinates the right of way so as to optimize the overall traffic flow (the "leave space for merging" in the figure is such advice).
 
-C-Roads, the European C-ITS deployment platform, summarized the messages and standards used by each service [26].
+C-Roads, the European C-ITS deployment platform, summarized the messages and standards used by each service [29].
 
 | Abbr. | Service | Bundle | Timeframe | Communication | Category | Network | Message | Standard |
 |:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|
@@ -821,7 +823,7 @@ C-Roads, the European C-ITS deployment platform, summarized the messages and sta
 
 *Table 24. C-ITS services of C-Roads with their messages and standards*
 
-> **Definition:** **Road hazard signalling (RHS)** is the V2X application specified in ETSI TS 101 539-1, which sets the requirements for services that announce hazardous situations on the road with DENMs [27].
+> **Definition:** **Road hazard signalling (RHS)** is the V2X application specified in ETSI TS 101 539-1, which sets the requirements for services that announce hazardous situations on the road with DENMs [30].
 
 In Table 24, most V2V safety services use the DENM, which announces events, and when the vehicle's own state is the information, as with emergency or slow vehicles, the CAM is used as well. For in-vehicle signage (VSGN) the table lists the CAM, but the IVI data structures in its standards column are carried in the IVIM message of Table 3 [7].
 
@@ -833,7 +835,7 @@ In Table 24, most V2V safety services use the DENM, which announces events, and 
 
 ### 3.1 From Sensor-Based Autonomous Driving to Connected Automation
 
-The US supplier Delphi (now Aptive) forecast the functions and technologies by automation level as follows [28].
+The US supplier Delphi (now Aptive) forecast the functions and technologies by automation level as follows [31].
 
 | Level | Name | Functions | Technologies | Timing |
 |:-----|:-----|:-----|:-----|:-----|
@@ -845,7 +847,7 @@ The US supplier Delphi (now Aptive) forecast the functions and technologies by a
 
 *Table 25. Delphi's forecast of functions and technologies by automation level*
 
-> **Note:** The lecture material labels Level 4 "Full," but in SAE J3016 Level 4 is high driving automation and full driving automation is Level 5 [1].
+> **Note:** The Delphi outlook labels Level 4 "Full," but in SAE J3016 Level 4 is high driving automation and full driving automation is Level 5 [1].
 
 In Table 25, V2X enters the technology list at Level 2 and remains as the level rises. The sensor configuration in Figure 25 alone cannot see NLOS areas or long distances, so the role of communication grows as automation increases.
 
@@ -853,7 +855,7 @@ In Table 25, V2X enters the technology list at Level 2 and remains as the level 
 
 *Figure 33. Relationships among autonomous vehicles, connected vehicles, and connected automated vehicles*
 
-Figure 33 is a concept diagram of the ITS Joint Program Office (ITS JPO) of the US Department of Transportation [29]. The **autonomous vehicle** at the top operates in isolation from other vehicles using internal sensors, and the **connected vehicle** at the bottom communicates with nearby vehicles and infrastructure. The **connected automated vehicle** in the middle, where the two streams meet, leverages both autonomous and connected capabilities for the greatest benefits.
+Figure 33 is a concept diagram of the ITS Joint Program Office (ITS JPO) of the US Department of Transportation [32]. The **autonomous vehicle** at the top operates in isolation from other vehicles using internal sensors, and the **connected vehicle** at the bottom communicates with nearby vehicles and infrastructure. The **connected automated vehicle** in the middle, where the two streams meet, leverages both autonomous and connected capabilities for the greatest benefits.
 
 ### 3.2 Feature Examples of SAE J3216 Cooperative Driving Automation
 
@@ -919,7 +921,7 @@ In Figure 36, B denotes an intent-sharing message and C an agreement-seeking mes
 
 > **Definition:** A **geofence** is a virtual boundary set on a map; when a vehicle enters it, specific rules (e.g., a lowered speed limit) apply.
 
-> **Note:** The lecture material lists the transmission mode of the agreement-seeking example in Table 29 as "one-way," but agreement-seeking works only as a two-way exchange of sending intent and receiving agreement. As in the merging example of Table 28, it should be understood as the proposal C-ADS 1 → C-ADS 2 and the agreement C-ADS 2 → C-ADS 1 being exchanged together.
+> **Note:** The SAE J3216 table lists the transmission mode of the agreement-seeking example in Table 29 as "One-way," but agreement-seeking works only as a two-way exchange of sending intent and receiving agreement. As in the merging example of Table 28, it should be understood as the proposal C-ADS 1 → C-ADS 2 and the agreement C-ADS 2 → C-ADS 1 being exchanged together.
 
 **Cooperative vehicle following.**
 
@@ -939,7 +941,7 @@ The status-sharing example in Table 30 assumes CDA vehicles at Levels 1-5, and t
 
 ### 3.3 Position of V2X Messages in the Protocol Stack
 
-Where in the protocol stack do V2X messages sit? Based on the US DSRC (WAVE) stack, the answer is shown in Figure 39 [30].
+Where in the protocol stack do V2X messages sit? Based on the US DSRC (WAVE) stack, the answer is shown in Figure 39 [33].
 
 ```mermaid
 flowchart TB
@@ -961,7 +963,7 @@ flowchart TB
 
 In Figure 39, V2X messages sit in the **message sublayer**, the lower part of the application layer. SAE J2735 defines the format of the messages (what is sent in which bits), and SAE J2945/1 defines when, how often, and with what performance the messages must be sent. Safety messages are delivered directly over the lightweight **WAVE short message protocol (WSMP)** without going through IP, reducing latency and overhead, while non-safety applications such as Internet services use TCP/UDP and IPv6. The security services (IEEE 1609.2) span several layers and handle the signing and verification of messages.
 
-Viewed from the IEEE 1609 standards, the same structure is as follows [31].
+Viewed from the IEEE 1609 standards, the same structure is as follows [34].
 
 | Layer | Components | Standard |
 |:-----|:-----|:-----|
@@ -977,7 +979,7 @@ Viewed from the IEEE 1609 standards, the same structure is as follows [31].
 
 ### 3.4 Message Exchange Methods of Connected Vehicles
 
-SAE applications and the IEEE 1609 communication layers divide their roles as in Figure 40 [32].
+SAE applications and the IEEE 1609 communication layers divide their roles as in Figure 40 [35].
 
 ```mermaid
 flowchart LR
@@ -1047,12 +1049,12 @@ When the WSA from the RSU contains a **WAVE router advertisement (WRA)**, the OB
 
 | Region | Standard | Content |
 |:-----|:-----|:-----|
-| US | SAE J2735 V2X Communications Message Set Dictionary | Definitions of V2X messages, data frames, and data elements [33] |
-| US | SAE J2945 DSRC Performance Requirements for V2V Safety Awareness | Performance requirements for V2V safety awareness (J2945/1: transmission rules for BSM) [34] |
-| US | SAE J3224 V2X Sensor-Sharing for Cooperative and Automated Driving | Sensor data sharing for cooperative automated driving (SDSM) [35] |
-| Europe | ETSI TS 102 637-1 | Part 1: Functional requirements [36] |
-| Europe | ETSI TS 102 637-2 | Part 2: Specification of the cooperative awareness basic service (CAM) [36] |
-| Europe | ETSI TS 102 637-3 | Part 3: Specifications of the decentralized environmental notification basic service (DENM) [36] |
+| US | SAE J2735 V2X Communications Message Set Dictionary | Definitions of V2X messages, data frames, and data elements [36] |
+| US | SAE J2945 DSRC Performance Requirements for V2V Safety Awareness | Performance requirements for V2V safety awareness (J2945/1: transmission rules for BSM) [37] |
+| US | SAE J3224 V2X Sensor-Sharing for Cooperative and Automated Driving | Sensor data sharing for cooperative automated driving (SDSM) [38] |
+| Europe | ETSI TS 102 637-1 | Part 1: Functional requirements [39] |
+| Europe | ETSI TS 102 637-2 | Part 2: Specification of the cooperative awareness basic service (CAM) [39] |
+| Europe | ETSI TS 102 637-3 | Part 3: Specifications of the decentralized environmental notification basic service (DENM) [39] |
 
 *Table 32. V2X message standards of the United States and Europe*
 
@@ -1060,7 +1062,7 @@ When the WSA from the RSU contains a **WAVE router advertisement (WRA)**, the OB
 
 > **Definition:** SAE J2735 defines messages at three levels. A **data element** is a value that cannot be divided further, such as speed or latitude; a **data frame** is a structure that groups data elements, such as a position (latitude, longitude, elevation); and a **message** gathers data frames and data elements into one transmission unit. These definitions are written in the abstract syntax notation ASN.1 and are encoded for transmission with UPER (unaligned packed encoding rules), which packs them bit by bit without gaps.
 
-In Korea, the Korean Agency for Technology and Standards (KATS) is standardizing V2X messages for cooperative automated driving systems as the KS R 1600 series [37].
+In Korea, the Korean Agency for Technology and Standards (KATS) is standardizing V2X messages for cooperative automated driving systems as the KS R 1600 series [40].
 
 | Standard number | Title | Main content | Establishment |
 |:-----|:-----|:-----|:-----|
@@ -1076,17 +1078,17 @@ In Korea, the Korean Agency for Technology and Standards (KATS) is standardizing
 
 For Parts 3-7 in Table 33, the plan was to complete the consultation and review procedures by the end of 2024 and to establish and announce them in the first half of 2025. Because the messages covered by each part have the same names as SAE J2735 messages, the Korean standards are evidently being built on the US message system. The abbreviations in the table are BSM (Basic Safety Message), SPaT (Signal Phase and Timing), MAP (Map Data), NMEA (National Marine Electronics Association), RTCM (Radio Technical Commission for Maritime Services), PVD (Probe Vehicle Data), PDM (Probe Data Management), TIM (Traveler Information Message), RSA (Road Side Alert), PSM (Pedestrian Safety Message), CSR (Common Safety Request), EVA (Emergency Vehicle Alert), and ICA (Intersection Collision Avoidance).
 
-> **Note:** KS R 1600 calls the PSM the Pedestrian Safety Message, but its name in SAE J2735 is the Personal Safety Message, because it covers all VRUs, including not only pedestrians but also cyclists and wheelchair users [33].
+> **Note:** KS R 1600 calls the PSM the Pedestrian Safety Message, but its name in SAE J2735 is the Personal Safety Message, because it covers all VRUs, including not only pedestrians but also cyclists and wheelchair users [36].
 
 ![Figure 44. Comparison of the US and European V2X protocol stacks](../../images/Week11_11-3_p19.png)
 
 *Figure 44. Comparison of the US and European V2X protocol stacks*
 
-Figure 44 compares as stacks the US and European standards discussed in Section 2.11 [25]. The US application layer (the SAE J2735 message set and the J2945 data performance requirements) corresponds to the Applications and Facilities layers in Europe. The European Facilities layer generates and manages common messages such as CAM and DENM. The US network layer of IEEE 1609.3 and 1609.4 corresponds to the European Networking & Transport layer, and the IEEE 802.11p physical layer to the European Access layer. Europe places a decentralized congestion control (DCC) function in each layer (DCC Facilities, DCC NET, DCC Access), and Management and Security entities connect to all layers through service access points (SAPs). The United States places its security functions beside the stack as IEEE 1609.2.
+Figure 44 compares as stacks the US and European standards discussed in Section 2.11 [27]. The US application layer (the SAE J2735 message set and the J2945 data performance requirements) corresponds to the Applications and Facilities layers in Europe. The European Facilities layer generates and manages common messages such as CAM and DENM. The US network layer of IEEE 1609.3 and 1609.4 corresponds to the European Networking & Transport layer, and the IEEE 802.11p physical layer to the European Access layer. Europe places a decentralized congestion control (DCC) function in each layer (DCC Facilities, DCC NET, DCC Access), and Management and Security entities connect to all layers through service access points (SAPs). The United States places its security functions beside the stack as IEEE 1609.2.
 
 ### 3.6 SAE J2735 Message List
 
-The messages defined by SAE J2735 are as follows [33]. The communication column gives the direction in which the message is mainly used.
+The messages defined by SAE J2735 are as follows [36]. The communication column gives the direction in which the message is mainly used.
 
 | No. | Abbr. | Message name | Communication | Description |
 |:-----|:-----|:-----|:-----|:-----|
@@ -1124,7 +1126,7 @@ The messages defined by SAE J2735 are as follows [33]. The communication column 
 
 *Table 34. Messages defined by SAE J2735*
 
-> **Note:** For transmission, every J2735 message is wrapped in a common container called the **MessageFrame**. The MessageFrame consists of a number that indicates the message type (messageId) and the message body (value), and the receiver uses this number to decide which message to decode the body as. For example, in the 2016 edition of J2735, MAP is 18, SPaT is 19, BSM is 20, TIM is 31, and PSM is 32 [33].
+> **Note:** For transmission, every J2735 message is wrapped in a common container called the **MessageFrame**. The MessageFrame consists of a number that indicates the message type (messageId) and the message body (value), and the receiver uses this number to decide which message to decode the body as. For example, in the 2016 edition of J2735, MAP is 18, SPaT is 19, BSM is 20, TIM is 31, and PSM is 32 [36].
 
 The purpose, key content, and transmission timing of frequently used messages are summarized below.
 
@@ -1149,7 +1151,7 @@ The purpose, key content, and transmission timing of frequently used messages ar
 
 ### 3.7 Basic Safety Message (BSM)
 
-The **Basic Safety Message (BSM)** is the basic message of V2V safety applications. When every vehicle keeps announcing its state to its surroundings, each vehicle uses the received BSMs to track the positions and motions of nearby vehicles and runs applications such as forward collision warning, intersection collision warning, and lane change warning. SAE J2945/1 specifies that the BSM is typically broadcast 10 times per second (every 100 ms) and that the transmission interval is lengthened when the channel is congested, to control congestion [34].
+The **Basic Safety Message (BSM)** is the basic message of V2V safety applications. When every vehicle keeps announcing its state to its surroundings, each vehicle uses the received BSMs to track the positions and motions of nearby vehicles and runs applications such as forward collision warning, intersection collision warning, and lane change warning. SAE J2945/1 specifies that the BSM is typically broadcast 10 times per second (every 100 ms) and that the transmission interval is lengthened when the channel is congested, to control congestion [37].
 
 The BSM is divided into two parts.
 
@@ -1163,7 +1165,7 @@ The BSM is divided into two parts.
 
 *Table 36. Structure of the BSM*
 
-**Part 1 (core data)** is the minimal vehicle state sent every time. Its fields and units are as follows [33].
+**Part 1 (core data)** is the minimal vehicle state sent every time. Its fields and units are as follows [36].
 
 | Field | Type | Meaning | Range and unit |
 |:-----|:-----|:-----|:-----|
@@ -1201,7 +1203,7 @@ To send a speed of 72 km/h, the sender works in reverse: $72 / 3.6 = 20$ m/s, an
 
 **Part 2 (optional extensions)** is appended only when needed. VehicleSafetyExtensions contains event flags (events, e.g., hard braking or hazard lights), the path traveled (pathHistory), the predicted path (pathPrediction), exterior lights (lights), a time (timestamp), and the vehicle height (height). The path history and path prediction are used on curved roads to judge whether a vehicle ahead is in the same lane. SpecialVehicleExtensions contains details of emergency vehicles (EmergencyDetails), an event description (EventDescription), and trailer information (TrailerData). SupplementalVehicleExtensions contains the basic vehicle class (classification), detailed classification (classDetails), vehicle data (vehicleData), disabled vehicle status (status), the US Federal Highway Administration vehicle class (fhwaVehicleClass), trailers (trailers), and regional extensions (regional, 1-4). In this extension, the weather report (WeatherReport), weather probe (WeatherProbe), obstacle detection (ObstacleDetection), speed profile (SpeedProfile), and RTCM package (RTCMpackage) remain under the names deprecated1-5; they are items that have been withdrawn from use.
 
-Because the European CAM and the US BSM serve the same purpose, most of their data elements correspond. The results of a 2013 comparison are as follows [25].
+Because the European CAM and the US BSM serve the same purpose, most of their data elements correspond. The results of a 2013 comparison are as follows [27].
 
 | CAM | BSM | Correspondence |
 |:-----|:-----|:-----|
@@ -1224,7 +1226,7 @@ Because the European CAM and the US BSM serve the same purpose, most of their da
 
 *Table 39. Correspondence of the data elements of the CAM and the BSM*
 
-The most critical vehicle dynamics data are defined the same or similarly in both messages. However, the European CAM has continued to accommodate the needs of various vehicle types (heavy vehicles, emergency vehicles, and so on), whereas the US BSM at the time focused on light vehicles, so the assessment at the time was that the United States could learn from Europe once heavy-vehicle DSRC activity progressed further.
+In the comparison figure, no correspondence is drawn for the BSM's Steering wheel angle and Event flags (optional) or for the CAM's Optional elements and LaneCount. The most critical vehicle dynamics data are defined the same or similarly in both messages. However, the European CAM has continued to accommodate the needs of various vehicle types (heavy vehicles, emergency vehicles, and so on), whereas the US BSM at the time focused on light vehicles, so the assessment at the time was that the United States could learn from Europe once heavy-vehicle DSRC activity progressed further.
 
 ### 3.8 Probe Vehicle Data (PVD)
 
@@ -1270,7 +1272,7 @@ flowchart LR
 
 *Figure 45. Process of combining MAP and SPaT to find the signal for a lane*
 
-**Structure of the SPaT message.** A SPaT carries the states of one or more intersections [33].
+**Structure of the SPaT message.** A SPaT carries the states of one or more intersections [36].
 
 | Level | Data element | Type | Remarks |
 |:-----|:-----|:-----|:-----|
@@ -1296,13 +1298,13 @@ Each entry of states (MovementState) carries a signal group number (signalGroup)
 
 Times use the **TimeMark** type, a value in units of 0.1 s counted from the start of the current hour (0-35999). For example, if the current time is 14:25:30.0, the current TimeMark is as follows.
 
-$$
+```math
 (25 \times 60 + 30) \times 10 = 1530 \times 10 = 15300
-$$
+```
 
 If a signal group then has minEndTime 15450 and likelyTime 15520, the phase ends no earlier than $(15450 - 15300)/10 = 15.0$ s from now, and the most likely end is $(15520 - 15300)/10 = 22.0$ s from now. If this signal group is green and a vehicle is 300 m from the stop line, it must arrive within 15 s to pass on this green, which requires an average of at least $300 / 15 = 20$ m/s (72 km/h). If the speed limit is lower than that, a GLOSA application advises the driver not to accelerate excessively but to decelerate to meet the next green.
 
-**Structure of the MAP message.** MAP describes the geometry of intersections and road segments [33].
+**Structure of the MAP message.** MAP describes the geometry of intersections and road segments [36].
 
 | Level | Data element | Content |
 |:-----|:-----|:-----|
@@ -1322,7 +1324,7 @@ If a signal group then has minEndTime 15450 and likelyTime 15520, the phase ends
 
 Because the lane centerlines in MAP are expressed as how many centimeters east and north they lie from the reference point, the data are far smaller than sending a latitude and longitude for every point. The signalGroup in connectsTo has the same number as the signalGroup in the SPaT MovementState, so this number is the key that links the two messages in Figure 45.
 
-The geometry of an intersection does not change unless there is construction, but the signal state changes every moment. Therefore, in actual deployments it is common to broadcast SPaT about 10 times per second and MAP about once per second [38].
+The geometry of an intersection does not change unless there is construction, but the signal state changes every moment. Therefore, CTI 4501, the US implementation guide for connected intersections, requires SPaT to be broadcast at an average of 10 messages per second and MAP at an average of 1 message per second (each within ±1 message over a 10-second period) [41].
 
 ### 3.10 Laws on Remote Management
 
@@ -1335,13 +1337,13 @@ For automated vehicles without a driver on board to drive on roads, the law must
 | License and qualification | Must obtain a government license or approval, which ensures the reliability of operation. | Must meet specific qualification requirements and hold the relevant license; technical expertise and legal knowledge are required. |
 | Remote monitoring | Monitors the vehicle's state remotely while it operates automatically and responds when technical problems arise. | Monitors the vehicle remotely and takes emergency measures in abnormal situations, controlling or stopping the vehicle remotely if necessary. |
 | Legal liability | Bears legal liability for accidents and problems, is obliged to take out insurance, and compensates accidents and damage during operation on the user's behalf. | Ensures technical safety and legal compliance, bears legal liability for technical problems during operation, and must meet regulatory requirements. |
-| Data and compliance | Records and retains operating data to cooperate with regulators, and continuously updates and reviews software and hardware. | Records, analyzes, and reports technical state and operating data to regulators, and regularly inspects and updates software and hardware. |
+| Data and compliance | Records and retains operating data to cooperate with regulators, manages operation so that it complies with the relevant laws, and continuously updates and reviews software and hardware. | Records, analyzes, and reports technical state and operating data to regulators, uses the data to keep improving technical safety and performance, and regularly inspects and updates software and hardware. |
 
 *Table 44. Comparison of the UK NUIC operator and the German technical supervisor*
 
 > **Definition:** **No-user-in-charge (NUIC)** means operation in which no user inside the vehicle is responsible for driving. In this case, the organization that bears the responsibility in place of a driver is the NUIC operator.
 
-> **Note:** The lecture material gives only the Automated and Electric Vehicles Act 2018 as the legal basis. That act is the law that set the liability structure in which the insurer compensates first when an accident occurs during automated driving [39]. Licensing of NUIC operators was introduced in the later Automated Vehicles Act 2024 [40]. Also, the technical supervisor under German law can deactivate the vehicle remotely or approve alternative driving maneuvers proposed by the vehicle, but is not a remote driver who continuously operates steering and acceleration from afar [41]. The "controlling or stopping the vehicle remotely" in Table 44 should be understood as such deactivation and maneuver approval.
+> **Note:** Of the UK legal bases in Table 44, the Automated and Electric Vehicles Act 2018 is the law that set the liability structure in which the insurer compensates first when an accident occurs during automated driving [42]. Licensing of NUIC operators was introduced in the later Automated Vehicles Act 2024. Under that act, responsibility for how the vehicle drives during automated driving lies with the authorised self-driving entity (ASDE) that obtained the vehicle authorisation, while the NUIC operator is responsible for detecting and responding to problems during the driverless journeys it oversees [43]. Also, the technical supervisor under German law can deactivate the vehicle remotely or approve alternative driving maneuvers proposed by the vehicle, but is not a remote driver who continuously operates steering and acceleration from afar [44]. The "controlling or stopping the vehicle remotely" in Table 44 should be understood as such deactivation and maneuver approval.
 
 What the two regimes share is that, where the driver has disappeared, a licensed person or organization is put in charge of remote monitoring, accident liability, and data recording. Such remote monitoring and intervention require V2N communication and the remote driving technology of Section 1.14, so laws and communication technology must develop together.
 
@@ -1364,7 +1366,7 @@ What the two regimes share is that, where the driver has disappeared, a licensed
 
 **True/False Check:**
 
-| Statement | Verdict and Reason |
+| Statement | Judgment and Reason |
 |:-----|:-----|
 | Class C (agreement-seeking) of SAE J3216 also applies to Level 2 vehicles. | **F.** At Levels 1 and 2, where a human drives, the system cannot guarantee an agreed action, so Classes C and D are not applicable. |
 | V2X-based object recognition is unaffected by weather and lighting. | **T.** Objects send their own information through communication, so recognition performance does not vary with weather and lighting as it does for a camera. It is affected by the radio environment instead. |
@@ -1510,7 +1512,7 @@ What the two regimes share is that, where the driver has disappeared, a licensed
 ## References
 
 1. SAE International, *Taxonomy and Definitions for Terms Related to Driving Automation Systems for On-Road Motor Vehicles*, SAE J3016_202104, 2021.
-2. CAR 2 CAR Communication Consortium, *Guidance for Day 2 and Beyond Roadmap*, 2021.
+2. CAR 2 CAR Communication Consortium, *Guidance for Day 2 and Beyond Roadmap*, C2CCC_WP_2072, Version 1.2, 2021. https://www.car-2-car.org/fileadmin/documents/General_Documents/C2CCC_WP_2072_RoadmapDay2AndBeyond_V1.2.pdf
 3. ETSI EN 302 637-2 V1.4.1, *Intelligent Transport Systems (ITS); Vehicular Communications; Basic Set of Applications; Part 2: Specification of Cooperative Awareness Basic Service*, 2019.
 4. ETSI EN 302 637-3 V1.3.1, *Intelligent Transport Systems (ITS); Vehicular Communications; Basic Set of Applications; Part 3: Specifications of Decentralized Environmental Notification Basic Service*, 2019.
 5. ETSI TS 103 324 V2.1.1, *Intelligent Transport Systems (ITS); Vehicular Communications; Basic Set of Applications; Collective Perception Service*, 2023.
@@ -1519,34 +1521,37 @@ What the two regimes share is that, where the driver has disappeared, a licensed
 8. SAE International, *Taxonomy and Definitions for Terms Related to Cooperative Driving Automation for On-Road Motor Vehicles*, SAE J3216_202107, 2021.
 9. 국토교통부, 차세대 지능형 교통체계(C-ITS) 서비스 소개 자료.
 10. 한국자동차연구원, 자동차 산업과 ITS 산업 비교, 자율주행차 레벨별 부품 구성 전망 자료.
-11. Ministry of Land, Infrastructure, Transport and Tourism (MLIT), Japan, *Advanced Safety Vehicle (ASV) Project*, Phase 3-7 reports.
+11. Ministry of Land, Infrastructure, Transport and Tourism (MLIT), Japan, "ASV (Advanced Safety Vehicle)." https://www.mlit.go.jp/jidosha/anzen/01asv/
 12. ISO 4272:2022, *Intelligent transport systems - Truck platooning systems (TPS) - Functional and operational requirements and test procedures*, International Organization for Standardization, 2022.
 13. G. J. L. Naus, R. P. A. Vugts, J. Ploeg, M. J. G. van de Molengraft, and M. Steinbuch, "String-stable CACC design and experimental validation: A frequency-domain approach," *IEEE Transactions on Vehicular Technology*, vol. 59, no. 9, pp. 4268-4279, 2010.
 14. T. Robinson, E. Chan, and E. Coelingh, "Operating platoons on public motorways: An introduction to the SARTRE platooning programme," in *Proc. 17th ITS World Congress*, Busan, Korea, 2010.
-15. Mercedes-Benz Group, "Mercedes-Benz receives world's first internationally valid system approval for conditionally automated driving," press release, Dec. 2021.
-16. UNECE, *UN Regulation No. 157: Uniform provisions concerning the approval of vehicles with regard to Automated Lane Keeping Systems*, 2021.
-17. 3GPP TS 22.186, *Enhancement of 3GPP support for V2X scenarios; Stage 1*, Release 16.
-18. Frost & Sullivan, *Global Connected Car Market Outlook, 2019*, 2019.
-19. Frost & Sullivan, *Global Connected Car Market Outlook, 2020*, 2020.
-20. Volvo Technology, AIDE (Adaptive Integrated Driver-vehicle InterfacE) project presentation, EU FP6 Integrated Project, 2006.
-21. KS C 5077:2014, 자동차 디스플레이 장치: 운전자 인터페이스 요구사항, 국가기술표준원, 2014.
-22. IEEE Std 1609.2-2022, *IEEE Standard for Wireless Access in Vehicular Environments - Security Services for Application and Management Messages*, 2022.
-23. Frost & Sullivan, *Analysis of ADAS Market in Europe*, 2014.
-24. Frost & Sullivan, *Global Shared and Autonomous Mobility Industry Outlook, 2020*, 2020.
-25. Honda R&D Americas, "US-EU V2V/V2I standards compare/contrast" and "CAM-BSM compare & contrast: Overview," 2013.
-26. C-Roads Platform, *C-ITS service list: Messages and standards*.
-27. ETSI TS 101 539-1 V1.1.1, *Intelligent Transport Systems (ITS); V2X Applications; Part 1: Road Hazard Signalling (RHS) application requirements specification*, 2013.
-28. Delphi Automotive, presentation at the Automated Vehicles Symposium.
-29. U.S. Department of Transportation, ITS Joint Program Office, presentation material at the Automated Vehicles Symposium.
-30. J. B. Kenney, "Dedicated short-range communications (DSRC) standards in the United States," *Proceedings of the IEEE*, vol. 99, no. 7, pp. 1162-1182, 2011.
-31. A. Marroquin et al., "A general overview of vehicle-to-X (V2X) beacon-based cooperative vehicular networks," 2019.
-32. JMC Rota, presentation at the SIP-adus Workshop 2021, Breakout Workshop: Connected Vehicles, 2021.
-33. SAE International, *V2X Communications Message Set Dictionary*, SAE J2735.
-34. SAE International, *On-Board System Requirements for V2V Safety Communications*, SAE J2945/1_201603, 2016.
-35. SAE International, *V2X Sensor-Sharing for Cooperative and Automated Driving*, SAE J3224_202208, 2022.
-36. ETSI TS 102 637-1, -2, -3, *Intelligent Transport Systems (ITS); Vehicular Communications; Basic Set of Applications; Parts 1-3*, 2010-2011.
-37. 국가기술표준원, KS R 1600-1\~7, 협력형 자율주행 시스템을 위한 V2X 메시지 명세.
-38. Institute of Transportation Engineers, *Connected Intersections (CI) Implementation Guide*, ITE CTI 4501.
-39. *Automated and Electric Vehicles Act 2018*, United Kingdom, 2018.
-40. *Automated Vehicles Act 2024*, United Kingdom, 2024.
-41. *Gesetz zur Änderung des Straßenverkehrsgesetzes und des Pflichtversicherungsgesetzes - Gesetz zum autonomen Fahren*, *Bundesgesetzblatt*, Teil I, Germany, 2021.
+15. Toyota Motor North America, "The Evolution of Safety at Toyota - Part 2: Toyota Safety Sense for All," *Toyota USA Newsroom*, Jun. 24, 2025. https://pressroom.toyota.com/the-evolution-of-safety-at-toyota-part-2-toyota-safety-sense-for-all/
+16. Mercedes-Benz Group, "Mercedes-Benz receives world's first internationally valid system approval for conditionally automated driving," press release, Dec. 2021. https://group.mercedes-benz.com/innovation/product-innovation/autonomous-driving/system-approval-for-conditionally-automated-driving.html
+17. UNECE, *UN Regulation No. 157: Uniform provisions concerning the approval of vehicles with regard to Automated Lane Keeping Systems*, 2021.
+18. 3GPP TS 22.186, *Enhancement of 3GPP support for V2X scenarios; Stage 1*, Release 16.
+19. Frost & Sullivan, *Global Connected Car Market Outlook, 2019*, 2019.
+20. Frost & Sullivan, *Global Connected Car Market Outlook, 2020*, 2020.
+21. J. Engström, J. Arfwidsson, A. Amditis, L. Andreone, K. Bengler, P. C. Cacciabue, W. Janssen, H. Kußmann, and F. Nathan, "Towards the automotive HMI of the future: Mid-term results of the AIDE project," in *Advanced Microsystems for Automotive Applications 2006*, Springer, 2006. https://doi.org/10.1007/3-540-33410-6_28
+22. KS C 5077:2014, 자동차 디스플레이 장치: 운전자 인터페이스 요구사항, 국가기술표준원, 2014.
+23. IEEE Std 1609.2-2022, *IEEE Standard for Wireless Access in Vehicular Environments - Security Services for Application and Management Messages*, 2022.
+24. Frost & Sullivan, *Analysis of ADAS Market in Europe*, 2014.
+25. Frost & Sullivan, *Global Shared and Autonomous Mobility Industry Outlook, 2020*, 2020.
+26. F. Lambert, "Tesla announces it's moving away from ultrasonic sensors in favor of 'Tesla Vision'," *Electrek*, Oct. 4, 2022. https://electrek.co/2022/10/04/tesla-moving-away-ultrasonic-sensors-in-favor-tesla-vision/
+27. Honda R&D Americas, "US-EU V2V/V2I standards compare/contrast" and "CAM-BSM compare & contrast: Overview," 2013.
+28. K. Sjöberg, P. Andres, T. Buburuzan, and A. Brakemeier, "Cooperative intelligent transport systems in Europe: Current deployment status and outlook," *IEEE Vehicular Technology Magazine*, vol. 12, no. 2, pp. 89-97, 2017.
+29. C-Roads Platform, *C-ITS service list: Messages and standards*.
+30. ETSI TS 101 539-1 V1.1.1, *Intelligent Transport Systems (ITS); V2X Applications; Part 1: Road Hazard Signalling (RHS) application requirements specification*, 2013.
+31. Delphi Automotive, presentation at the Automated Vehicles Symposium.
+32. U.S. Department of Transportation, ITS Joint Program Office, presentation material at the Automated Vehicles Symposium.
+33. J. B. Kenney, "Dedicated short-range communications (DSRC) standards in the United States," *Proceedings of the IEEE*, vol. 99, no. 7, pp. 1162-1182, 2011.
+34. A. Marroquin et al., "A general overview of vehicle-to-X (V2X) beacon-based cooperative vehicular networks," Sep. 2019. https://www.researchgate.net/publication/335966938_A_General_Overview_of_Vehicle-to-X_V2X_Beacon-Based_Cooperative_Vehicular_Networks
+35. JMC Rota, presentation at the SIP-adus Workshop 2021, Breakout Workshop: Connected Vehicles, 2021.
+36. SAE International, *V2X Communications Message Set Dictionary*, SAE J2735.
+37. SAE International, *On-Board System Requirements for V2V Safety Communications*, SAE J2945/1_201603, 2016.
+38. SAE International, *V2X Sensor-Sharing for Cooperative and Automated Driving*, SAE J3224_202208, 2022.
+39. ETSI TS 102 637-1, -2, -3, *Intelligent Transport Systems (ITS); Vehicular Communications; Basic Set of Applications; Parts 1-3*, 2010-2011.
+40. 국가기술표준원, KS R 1600-1\~7, 협력형 자율주행 시스템을 위한 V2X 메시지 명세.
+41. AASHTO, ITE, NEMA, and SAE, *Connected Intersections (CI) Implementation Guide*, CTI 4501 v01.01, Institute of Transportation Engineers, 2022. https://www.ite.org/ITEORG/assets/File/Standards/CTI%204501v0101.pdf
+42. *Automated and Electric Vehicles Act 2018*, United Kingdom, 2018. https://www.legislation.gov.uk/ukpga/2018/18
+43. *Automated Vehicles Act 2024*, United Kingdom, 2024. https://www.legislation.gov.uk/ukpga/2024/10
+44. *Gesetz zur Änderung des Straßenverkehrsgesetzes und des Pflichtversicherungsgesetzes - Gesetz zum autonomen Fahren*, *Bundesgesetzblatt*, Teil I, p. 3108, Germany, 2021.

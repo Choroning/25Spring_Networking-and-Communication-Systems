@@ -105,10 +105,10 @@
 | W14 | 6/7 | Autonomous Driving V2X Communication Technology: C-V2X, CALM, and Legal Systems | 14주차 자율주행통신시스템 |
 | W15 | 6/14 | Final exam | Final exam |
 
-- The planned topics follow the weekly plan shared by both syllabi, and the textbook scope of weeks 1-14 is the PPT and video materials (PPT and lab video materials in week 10). The `DAMO423-00` syllabus is laid out over 16 weeks and sets week 15 as field learning and other activities and week 16 as the final exam, while the `DSC-211012` syllabus sets week 15 as the final exam. The final exam was held in week 15.
+- The planned topics follow the weekly plan shared by both syllabi, and the textbook scope of weeks 1-7 and 9-14 is the PPT and video materials (the `DSC-211012` syllabus lists PPT and lab video materials for week 10). The `DAMO423-00` syllabus is laid out over 16 weeks and sets week 15 as field learning and other activities and week 16 as the final exam, while the `DSC-211012` syllabus sets week 15 as the final exam. The final exam was held in week 15.
 - The class dates are the dates of the Saturday class time. The lectures were provided every week as videos in three sessions, and the Lecture Decks Covered column gives the file names of the lecture decks. Weeks 11-13 have a separate deck for each session. The date next to an assignment is the date the report was submitted.
 - Appendices introducing the Korea Automotive Technology Institute (KATECH), the Japan Automobile Research Institute (JARI), HORIBA MIRA of the United Kingdom, and the IEEE 802 standards committee are at the end of the decks of weeks 2, 4, 6, and 7, respectively. Of the separate appendix decks, `자율차통신강의_부록_자율차구성` (the physical composition of autonomous vehicles) was covered in week 3 and `자율차통신강의_부록_UTAC` (UTAC of France) in week 13, while `자율차통신강의_부록_JARI` and `자율차통신강의_부록_MIRA` introduce the same institutes as the appendices of the week 4 and week 6 decks. The appendices are organized in the lecture note of the corresponding week.
-- The `DAMO423-00` syllabus lists appendix 4 of week 5 (the autonomous large bus of KATECH) and appendix 6 of week 12 (UTIS of KATECH, included in 12-2) as video materials.
+- Both syllabi list appendix 4 of week 5 (the autonomous large bus of KATECH) and appendix 6 of week 12 (UTIS of KATECH, included in 12-2) as video materials.
 - Weeks 8 (midterm exam) and 15 (final exam) have no lecture note.
 
 ---

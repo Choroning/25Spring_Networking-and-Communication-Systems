@@ -91,6 +91,8 @@
 - LAN의 한 세그먼트에서 다른 세그먼트로 전송 신호를 재생하여 송신한다.
 - 최근의 네트워크 장비들에는 리피터 기능이 기본으로 들어 있어 리피터를 따로 쓰는 일은 드물다.
 
+> **참고:** 리피터를 신호의 세기를 키우는 단순 증폭 장치(앰프)로 설명하는 경우가 있으나, 디지털 LAN의 리피터는 받은 신호에서 0과 1을 판별한 뒤 깨끗한 신호를 새로 만들어 내보내는 재생 장치이다. 앰프는 잡음까지 함께 키우지만, 리피터는 판별이 틀리지 않는 한 잡음을 다음 세그먼트로 넘기지 않는다(4주차의 앰프와 리피터).
+
 > **용어 정의:** **세그먼트(segment)** 는 리피터나 브리지 같은 장비 사이에 놓인 한 구간의 전송 매체와 거기에 연결된 스테이션들이다. 이 절의 세그먼트는 5주차 TCP 세그먼트와는 다른 뜻이다.
 
 **허브(hub)** 의 특징은 다음과 같다.
@@ -665,7 +667,7 @@ T: terminator
 
 *그림 11. 링 배선 집중기를 쓴 스타-링 구성*
 
-그림 11의 가운데 배선 집중기(그림의 wire center)에서 여덟 갈래의 케이블이 각 리피터(repeater)로 나갔다가 돌아오고, 각 리피터에 노드(node)가 붙어 있다. 신호는 배선 집중기에서 한 리피터로 나갔다가 돌아와 다음 리피터로 가는 식으로 모든 리피터를 차례로 돌아 링을 이룬다. 링크 위의 짧은 사선은 바이패스할 수 있는 지점을 나타낸다.
+그림 11의 가운데 배선 집중기(그림의 wire center)에서 일곱 개의 리피터(repeater)로 각각 케이블이 나갔다가 돌아오고, 각 리피터에 노드(node)가 붙어 있다. 배선 집중기 아래의 점은 같은 방식으로 리피터를 더 연결할 수 있음을 나타낸다. 신호는 배선 집중기에서 한 리피터로 나갔다가 돌아와 다음 리피터로 가는 식으로 모든 리피터를 차례로 돌아 링을 이룬다. 링크 위의 짧은 사선은 바이패스할 수 있는 지점을 나타낸다.
 
 **브리지를 포함한 링 토폴로지.** 넓은 지역에서 많은 리피터를 링 하나에 연결하면 케이블 길이 때문에 크기 한계에 부딪힌다. 이때는 배선 집중기의 연결 순서로 여러 개의 작은 링 구조를 구성하고, 링 구조들을 브리지로 연결한다. 이를 **세그먼트화된 링(segmented rings)** 이라 한다.
 
@@ -799,7 +801,7 @@ LAN 스위치는 프레임을 언제 내보내는지에 따라 두 종류로 나
 커플러를 만드는 방법은 두 가지이다.
 
 - **바이코닉 융합 커플러(biconic fused coupler):** 여러 광섬유를 모아 꼬고 가열하면서 잡아당겨 녹여 붙인다. 가운데가 가늘어지는 양쪽 원뿔(biconical) 모양이 되며, 가늘어진 결합 영역(coupling region)에서 빛이 광섬유 사이로 넘나들어 섞인다.
-- **믹싱 로드 커플러(mixing rod coupler):** 입력 광섬유와 출력 광섬유를 짧은 유리 막대(mixer rod)의 양 끝에 붙인다. 막대 안에서 빛이 퍼져 섞인 뒤 출력 광섬유들로 나뉜다. 제조가 비교적 쉽다.
+- **믹싱 로드 커플러(mixing rod coupler):** 입력 광섬유와 출력 광섬유를 짧은 유리 막대(mixer rod)의 양 끝에 붙인다. 막대 안에서 빛이 퍼져 섞인 뒤 출력 광섬유들로 나뉜다. 더 큰 규모로 만들 수 있고 제조가 비교적 쉽다.
 
 ![그림 18. 믹싱 로드 커플러와 바이코닉 융합 커플러](../../images/Week06_p83.png)
 
@@ -817,7 +819,9 @@ LAN 스위치는 프레임을 언제 내보내는지에 따라 두 종류로 나
 
 광섬유 LAN의 범위는 빛이 송신기에서 수신기까지 가는 동안 잃는 세기, 즉 **광 손실**로 정해진다. 손실은 데시벨(dB)로 나타낸다. 입력 세기 $P_{in}$이 출력 세기 $P_{out}$으로 줄었다면 손실은 다음과 같다.
 
-$$\text{손실(dB)} = 10 \log_{10} \frac{P_{in}}{P_{out}}$$
+```math
+\text{손실(dB)} = 10 \log_{10} \frac{P_{in}}{P_{out}}
+```
 
 예를 들어 세기가 절반이 되면 $10 \log_{10} 2 \approx 3$ dB, 1/10이 되면 10 dB이다. 데시벨은 곱셈을 덧셈으로 바꾸므로, 여러 구성 요소를 지날 때의 전체 손실은 각 손실의 합이다.
 
@@ -843,11 +847,13 @@ $$\text{손실(dB)} = 10 \log_{10} \frac{P_{in}}{P_{out}}$$
 
 *그림 20. 손실 예산 30 dB에서 수동적 스타 커플러 LAN의 포트 수와 운용 범위*
 
-그림 20의 가로축은 운용 범위(operating range, km), 세로축은 포트 수(number of ports)이며 로그 눈금이다. 30 dB 손실 예산(30-dB loss budget) 아래에서 바이코닉 융합 커플러로 표시된 넓은 영역은 4포트에서 약 1.8 km, 32포트에서 약 0.7 km까지이고, 믹싱 로드 커플러로 표시된 좁은 영역은 8\~16포트에서 약 1 km 이하이다. 두 영역 모두 포트가 많을수록 범위가 줄어드는 사선의 경계를 가진다. 그림에서 믹싱 로드 커플러는 바이코닉 융합 커플러보다 포트 수의 범위가 좁고, 같은 손실 예산에서 운용 범위도 더 짧다.
+그림 20의 가로축은 운용 범위(operating range, km), 세로축은 포트 수(number of ports)이며 로그 눈금이다. 30 dB 손실 예산(30-dB loss budget) 아래에서 바이코닉 융합 커플러로 표시된 넓은 영역은 4포트에서 약 1.8 km, 32포트에서 약 0.7 km까지이고, 믹싱 로드 커플러로 표시된 좁은 영역은 8\~16포트에서 약 1 km 이하이다. 두 영역 모두 포트가 많을수록 범위가 줄어드는 사선의 경계를 가진다. 그림에서 믹싱 로드 커플러는 바이코닉 융합 커플러보다 포트 수의 범위가 좁고, 같은 손실 예산에서 운용 범위도 더 짧다. 즉 믹싱 로드 커플러는 큰 규모로 만들기 쉽다는 제조상의 장점이 있지만, 30 dB 손실 예산 아래에서 쓸 수 있는 포트 수와 거리는 바이코닉 융합 커플러보다 작다.
 
 **운용 범위의 계산.** 이 사선은 손실 예산으로 설명할 수 있다. 커플러의 중심에서 각 스테이션까지의 거리를 $L$ km라 하면, 빛은 송신 스테이션에서 커플러까지 $L$, 커플러에서 수신 스테이션까지 $L$을 지나 모두 $2L$ km를 진행한다. 광섬유 감쇠를 1 km당 4 dB, 커넥터와 커플러의 과잉 손실을 합한 고정 손실을 9 dB(커넥터 4개 6 dB와 커플러 자체의 손실 3 dB)로 가정하면, 손실 예산 30 dB는 다음과 같이 나누어 쓴다.
 
-$$30 = 9 + 10 \log_{10} N + 4 \times 2L \quad \Rightarrow \quad L = \frac{21 - 10 \log_{10} N}{8}$$
+```math
+30 = 9 + 10 \log_{10} N + 4 \times 2L \quad \Rightarrow \quad L = \frac{21 - 10 \log_{10} N}{8}
+```
 
 | 포트 수 $N$ | 커플러의 분배 손실 $10 \log_{10} N$ (dB) | 광섬유에 남는 예산 (dB) | 운용 범위 $L$ (km) |
 |:-----|:-----|:-----|:-----|
@@ -916,7 +922,7 @@ flowchart TB
 
 *그림 23. MIRA 테크놀로지 파크의 전경과 주요 수치*
 
-그림 23은 시험장과 연구 단지를 하늘에서 본 사진이며, 왼쪽에 주요 수치가 적혀 있다. 1946년 설립(Est. 1946), 39개의 주요 시설(39 major facilities), 단지에 입주한 35개 이상의 기업, 대학과의 협력(University partnerships), 총 62마일(100 km)의 프루빙 그라운드, 교통 연구 개발의 중심(centre of excellence in transport R&D)이 표시되어 있다. 가운데 상자의 MIRA 테크놀로지 파크(MIRA Technology Park)는 유럽의 대표적인 자동차 기술 클러스터를 내세운다.
+그림 23은 시험장과 연구 단지를 하늘에서 본 사진이며, 왼쪽에 주요 수치가 적혀 있다. 1946년 설립(Est. 1946), 전 세계 620명 이상의 직원(620+ global staff), 39개의 주요 시설(39 major facilities), 단지에 입주한 35개 이상의 기업, 대학과의 협력(University partnerships), 총 62마일(100 km)의 프루빙 그라운드, 교통 연구 개발의 중심(centre of excellence in transport R&D)이 표시되어 있다. 가운데 상자의 MIRA 테크놀로지 파크(MIRA Technology Park)는 유럽의 대표적인 자동차 기술 클러스터를 내세운다.
 
 > **용어 정의:** **프루빙 그라운드(proving ground, PG)** 는 고속 주회로, 핸들링 시험로, 험로, 제동 시험로처럼 여러 도로 조건을 재현한 차량 시험장이다.
 
@@ -924,7 +930,7 @@ flowchart TB
 
 HORIBA MIRA의 현황은 다음과 같다.
 
-- 다양한 산업 분야의 기업 고객을 대상으로 업무를 수행하며, 업무 비중은 자동차 분야가 75%, 국방 분야가 25%이다. 사업 분야는 자동차(automotive), 국방(defence), 건설과 농업용 같은 비도로 차량(off highway), 모터스포츠(motorsport)에 걸친다.
+- 다양한 산업 분야의 기업 고객을 대상으로 업무를 수행하며, 업무 비중은 자동차 분야가 75%, 국방 분야가 25%이다. 사업 분야는 자동차(automotive), 국방(defence), 건설과 농업용 같은 비도로 차량(off highway), 모터스포츠(motorsport)에 걸친다. 고객으로는 Airbus, Boeing, Bombardier 같은 항공 우주 기업, JCB, Caterpillar, Terex 같은 건설 장비 기업, Jaguar, Land Rover, Ford, Toyota, Volkswagen, Hyundai, Tata, Geely 같은 자동차 제조사, Bosch, ZF, Continental 같은 부품 기업, BAE Systems, Thales, Lockheed Martin, General Dynamics 같은 방산 기업, Red Bull Racing, Williams Martini Racing 같은 모터스포츠 팀, Innovate UK와 유럽 연합 같은 공공 기관이 있다.
 - 600명 이상의 직원이 39개의 주요 시험 장비를 가지고 다양한 형태의 시험 인증과 연구 개발 지원 업무를 수행한다.
 - 총 길이 약 100 km의 시험로를 갖춘 프루빙 그라운드를 보유하여 다양한 종류의 차량을 시험할 수 있다. 부지는 297 ha에 이른다 [7].
 - MIRA 테크놀로지 파크(MTP)라는 자동차 기술 클러스터 단지를 영국 정부와 함께 구축하고 지원한다. 40여 개의 자동차 관련 기관, 업체, 대학이 입주하여 기술적, 상업적 시너지를 만든다.
@@ -951,7 +957,9 @@ HORIBA MIRA의 현황은 다음과 같다.
 
 **중립 속도의 계산.** 경사진 곡선 도로에서 **중립 속도(neutral speed)** 는 운전자가 조향으로 옆 방향의 힘을 보태지 않아도, 즉 타이어와 노면 사이의 옆 방향 마찰 없이 차가 곡선을 따라 돌 수 있는 속도이다. 경사각이 $\theta$, 곡선의 반지름이 $r$일 때, 차에 작용하는 수직항력 $N$의 수직 성분은 중력 $mg$와, 수평 성분은 원운동에 필요한 구심력 $mv^2/r$과 같아야 한다.
 
-$$N \cos\theta = mg, \qquad N \sin\theta = \frac{mv^2}{r}$$
+```math
+N \cos\theta = mg, \qquad N \sin\theta = \frac{mv^2}{r}
+```
 
 두 식을 나누면 $\tan\theta = v^2 / (rg)$이므로 중립 속도는 $v = \sqrt{rg\tan\theta}$이다. $r = 216$ m, $\theta = 33°$, $g = 9.81$ m/s²를 넣으면 $rg = 2118.96$, $\tan 33° = 0.6494$이므로 $v = \sqrt{2118.96 \times 0.6494} = \sqrt{1376.1} \approx 37.1$ m/s, 즉 약 134 km/h(83 mph)이다. 공식 중립 속도 86 mph(38.4 m/s)는 이 계산값보다 약간 크다. 경사 33°에서 86 mph가 나오는 반지름은 $r = v^2 / (g\tan\theta) = 38.4^2 / (9.81 \times 0.6494) \approx 232$ m이므로, 공식 값은 표의 반지름 216 m와 최대 경사 33°만으로는 재현되지 않는다.
 
@@ -998,10 +1006,10 @@ $$N \cos\theta = mg, \qquad N \sin\theta = \frac{mv^2}{r}$$
 
 **제동 거리의 계산.** 마찰이 일정하면 최대 감속도는 $\mu g$이므로, 속도 $v$에서 정지할 때까지의 거리는 $d = v^2 / (2\mu g)$이다. 80 km/h($80 / 3.6 = 22.2$ m/s)에서 제동하면 $v^2 = 493.8$이므로 다음과 같다.
 
-- 델루그립($\mu = 0.65$): $d = 493.8 / (2 \times 0.65 \times 9.81) \approx 38.7$ m
-- 매끄러운 콘크리트($\mu = 0.40$): $d \approx 62.9$ m
-- 현무암 타일($\mu = 0.20$): $d \approx 125.8$ m
-- 세라믹 타일($\mu = 0.10$): $d \approx 251.7$ m
+- 델루그립($`\mu = 0.65`$): $d = 493.8 / (2 \times 0.65 \times 9.81) \approx 38.7$ m
+- 매끄러운 콘크리트($`\mu = 0.40`$): $d \approx 62.9$ m
+- 현무암 타일($`\mu = 0.20`$): $d \approx 125.8$ m
+- 세라믹 타일($`\mu = 0.10`$): $d \approx 251.7$ m
 
 세라믹 타일에서는 80 km/h의 제동 거리가 노면 길이 100 m를 훨씬 넘는다. 50 km/h(13.9 m/s)로 낮추면 $d = 13.9^2 / (2 \times 0.10 \times 9.81) \approx 98$ m로 100 m 안에 들어온다. 이처럼 마찰 계수가 낮은 노면에서는 제동 거리가 노면 길이 안에 들도록 시험 속도를 낮추어야 한다.
 
@@ -1184,7 +1192,7 @@ HORIBA MIRA는 최근 커넥티드 자율주행차(CAV, connected automated vehi
 
 1. IEEE, *IEEE Standard for Local and Metropolitan Area Networks: Media Access Control (MAC) Bridges*, IEEE Std 802.1D-2004, 2004.
 2. ITU-T, *Recommendation G.984.1: Gigabit-capable passive optical networks (GPON): General characteristics*, International Telecommunication Union, 2008.
-3. W. Stallings, *Data and Computer Communications*, 10th ed. Upper Saddle River, NJ, USA: Pearson, 2014.
+3. W. Stallings, *Data and Computer Communications*, 10th ed. Boston, MA, USA: Pearson, 2014.
 4. IEEE, *IEEE Standard for Ethernet*, IEEE Std 802.3-2022, 2022.
 5. Telecommunications Industry Association, *ANSI/TIA-568 Commercial Building Telecommunications Cabling Standard* series, Arlington, VA, USA.
 6. ISO/IEC 11801-1:2017, *Information technology - Generic cabling for customer premises - Part 1: General requirements*, International Organization for Standardization, 2017.

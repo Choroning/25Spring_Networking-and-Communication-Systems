@@ -181,7 +181,7 @@ A **group address** points not to a single entity but to a set of entities, and 
 
 LSAP addresses are normally unique **only within one station**. Making LSAPs unique across the whole network would limit the number of processes that can be used and require SAP numbers to be assigned and managed centrally. Instead, the same LSAP number is assigned to processes common to all stations, such as station management. Then, as in (d), (e), (g), and (h), combining multicast or broadcast MAC addresses with LSAP addresses sends a message to the same process at several stations with a single frame [1].
 
-In real IEEE 802 addresses, a group address has its least significant bit of the first byte (the I/G bit) set to 1, and FF-FF-FF-FF-FF-FF, with all bits 1, is the broadcast address. The DSAP of LLC also distinguishes individual and group by its least significant bit, and 0xFF is the global address that points to all SAPs [2].
+In real IEEE 802 addresses, a group address has its least significant bit of the first byte (the I/G bit) set to 1, and FF-FF-FF-FF-FF-FF, with all bits 1, is the broadcast address [2]. The DSAP of LLC also distinguishes individual and group by its least significant bit, and 0xFF is the global address that points to all SAPs [3].
 
 ---
 
@@ -200,9 +200,9 @@ The symbols follow the notation of Week 7.
 - $p(x)$: the remainder of dividing $x^m d(x)$ by $g(x)$ ($m$ bits)
 - $c(x)$: the bit frame to transmit ($k + m$ bits)
 
-$$
+```math
 p(x) = \text{Rem}\left[\frac{x^m d(x)}{g(x)}\right], \qquad c(x) = x^m d(x) + p(x)
-$$
+```
 
 $x^m d(x)$ is the data with $m$ zeros appended. In modulo-2 arithmetic addition and subtraction are the same, so adding the remainder $p(x)$ is the same as subtracting it, and $c(x)$ is **exactly divisible** by $g(x)$.
 
@@ -210,8 +210,8 @@ $x^m d(x)$ is the data with $m$ zeros appended. In modulo-2 arithmetic addition 
 
 The values in the question are as follows.
 
-- Data $d = 101011$, that is, $d(x) = x^5 + x^3 + x + 1$ ($k = 6$)
-- Generator polynomial $g = 10011$, that is, $g(x) = x^4 + x + 1$ ($m = 4$)
+- Data $d = 101011$, that is, $d(x) = x^5 + x^3 + x + 1$ ($`k = 6`$)
+- Generator polynomial $g = 10011$, that is, $g(x) = x^4 + x + 1$ ($`m = 4`$)
 
 **Step 1:** $x^4 d(x) = x^9 + x^7 + x^5 + x^4$, which as a bit sequence is the data with four zeros appended, 1010110000.
 
@@ -238,17 +238,17 @@ The first bit is 1, so XORing 10101 with 10011 gives 00110. The second bit is 0,
 
 **Step 3:** Add the remainder $p = 0100$, that is, $p(x) = x^2$, to $x^4 d(x)$. This replaces the 0000 after the data with 0100.
 
-$$
+```math
 c(x) = x^4 d(x) + p(x) = x^9 + x^7 + x^5 + x^4 + x^2
-$$
+```
 
 Therefore the bit frame to transmit is **1010110100**. The first six bits, 101011, are the original data, and the last four bits, 0100, are the FCS.
 
 The result can also be checked with the quotient. Multiplying the quotient by the generator polynomial gives the following.
 
-$$
+```math
 (x^5 + x^3 + x^2)(x^4 + x + 1) = x^9 + x^6 + x^5 + x^7 + x^4 + x^3 + x^6 + x^3 + x^2 = x^9 + x^7 + x^5 + x^4 + x^2
-$$
+```
 
 In modulo-2 arithmetic two identical terms (the two $x^6$ terms and the two $x^3$ terms) cancel, so the product equals $c(x)$ exactly. That is, $c(x)$ is a multiple of $g(x)$.
 
@@ -273,10 +273,10 @@ g                1 0 0 1 1
 
 If the ninth bit were flipped in transit and 1010110110 were received, the remainder of the same division would be 0010, which is not 0, so the error would be detected.
 
-The detection capability of a CRC is determined by the generator polynomial [3].
+The detection capability of a CRC is determined by the generator polynomial [4].
 
 - A generator polynomial with a constant term detects all single-bit errors.
-- A generator polynomial of degree $m$ detects all burst errors (errors in a contiguous span) of length $m$ or less.
+- A generator polynomial of degree $m$ with a constant term detects all burst errors (errors in a contiguous span) of length $m$ or less.
 - If the generator polynomial has $x + 1$ as a factor, it detects every error in which an odd number of bits change.
 - Errors outside these conditions may go undetected with low probability.
 
@@ -324,9 +324,9 @@ In the analogy of Week 7, reservation corresponds to an intersection with traffi
 
 These characteristics can be checked numerically from the viewpoint of load and delay. A standard data frame carrying 8 bytes is 108 bits from SOF to EOF (Section 10), or 111 bits with the 3-bit intermission between frames. At 500 kbit/s one bit takes 2 µs, so one such frame occupies the bus for about $111 \times 2 = 222$ µs (excluding stuff bits). Sending 1,000 of these frames per second gives the following bus load.
 
-$$
+```math
 \text{Bus load} = \frac{1000 \times 111\ \text{bit/s}}{500000\ \text{bit/s}} = 22.2\%
-$$
+```
 
 Week 9 recommends keeping traffic at about 50% of the total bandwidth or less, but the bus loads of high-end models keep rising, such as KH 75.9%, VI 53.6%, Benz 37.9%, and Infiniti M35 47.5%. Under high load, low-priority messages must wait until higher-priority messages finish, and the waiting time depends on which messages are on the bus at that moment. Therefore, even when the total traffic is nearly constant, the transmission delay of each message varies widely, which is called **jitter**, and jitter degrades the response of control loops. This limit is the background for the introduction of CAN FD, time-triggered FlexRay, and automotive Ethernet.
 
@@ -336,7 +336,7 @@ Week 9 recommends keeping traffic at about 50% of the total bandwidth or less, b
 
 ## 9. Master and Slave in LIN (Question 8)
 
-**LIN (local interconnect network)** is a subnetwork for connecting body devices that do not need fast communication, such as windows, mirrors, seats, wipers, and rain sensors, at low cost. It uses a single wire with a data rate of at most 20 kbit/s and is implemented with the UART/SCI interface found in most microcontrollers. The current standard is ISO 17987 [4]. A LIN cluster consists of one **master node** and several **slave nodes** (2-16 members on the bus), and because the master directs all communication, **no arbitration is needed**, unlike CAN.
+**LIN (local interconnect network)** is a subnetwork for connecting body devices that do not need fast communication, such as windows, mirrors, seats, wipers, and rain sensors, at low cost. It uses a single wire with a data rate of at most 20 kbit/s and is implemented with the UART/SCI interface found in most microcontrollers. The current standard is ISO 17987 [5]. A LIN cluster consists of one **master node** and several **slave nodes** (2-16 members on the bus), and because the master directs all communication, **no arbitration is needed**, unlike CAN.
 
 A LIN frame consists of a **header** sent by the master and a **response** sent by one node.
 
@@ -367,7 +367,7 @@ The **roles of a slave** are as follows.
 
 The master node contains not only the master task but also a **slave task**. The master can therefore answer its own header to send data to the slaves (master to slave), receive a slave's response (slave to master), or have one slave's response received by another slave (slave to slave). That the master node can also act as a slave refers to this structure.
 
-> **Caution:** LIN has no error signal like the CAN error frame. A slave that detects an error records it in a status signal (the response error bit in LIN 2.x), and the master learns of the error by regularly reading a frame that carries this signal [4]. A cluster also has only one master, and a slave never takes over the master role. The master node often doubles as the gateway between CAN and LIN.
+> **Caution:** LIN has no error signal like the CAN error frame. A slave that detects an error records it in a status signal (the response error bit in LIN 2.x), and the master learns of the error by regularly reading a frame that carries this signal [5]. A cluster also has only one master, and a slave never takes over the master role. The master node often doubles as the gateway between CAN and LIN.
 
 ---
 
@@ -375,7 +375,7 @@ The master node contains not only the master task but also a **slave task**. The
 
 ## 10. The CAN 2.0A Message Frame (Question 9)
 
-CAN 2.0A is the standard format, which uses an 11-bit ID, and CAN 2.0B is the extended format, which uses a 29-bit ID. A CAN 2.0A data frame is structured as follows [5].
+CAN 2.0A is the standard format, which uses an 11-bit ID, and CAN 2.0B is the extended format, which uses a 29-bit ID. A CAN 2.0A data frame is structured as follows [6].
 
 ```text
    1        11        1     1    1     4     8n       15       1     1     1     7     3
@@ -405,7 +405,7 @@ CAN 2.0A is the standard format, which uses an 11-bit ID, and CAN 2.0B is the ex
 
 *Table 8. Fields of a CAN 2.0A data frame*
 
-The number of bits from SOF to EOF is $1 + 11 + 1 + 1 + 1 + 4 + 8n + 15 + 1 + 1 + 1 + 7 = 44 + 8n$. With 8 bytes of data this is $44 + 64 = 108$ bits, so the share of data is $64 / 108 \approx 59\%$, and stuff bits are added on top.
+The number of bits from SOF to EOF is $1 + 11 + 1 + 1 + 1 + 4 + 8n + 15 + 1 + 1 + 1 + 7 = 44 + 8n$. With 8 bytes of data this is $44 + 64 = 108$ bits, so the share of data is $`64 / 108 \approx 59\%`$, and stuff bits are added on top.
 
 The behavior of the ACK slot is how the sending node judges the result. The sending node reads the bus while sending recessive, and if it reads dominant, it takes this to mean that at least one node received the frame correctly. If it reads recessive to the end, no node acknowledged the frame, so it judges an ACK error and retransmits. Conversely, a receiving node that detects a CRC error does not overwrite the ACK slot and sends an error frame after the ACK delimiter to notify all nodes. Meanwhile, the bus is regarded as idle when recessive bits continue through the 8 bits formed by the ACK delimiter and the 7-bit EOF, followed by the 3 bits of intermission.
 
@@ -415,7 +415,7 @@ The behavior of the ACK slot is how the sending node judges the result. The send
 
 ## 11. CAN and CAN FD (Question 10)
 
-**CAN FD (CAN with flexible data-rate)** is an extension published by Bosch in 2012 and included in ISO 11898-1:2015, which keeps the arbitration of classical CAN unchanged and increases the length and speed of the data field [6], [7].
+**CAN FD (CAN with flexible data-rate)** is an extension published by Bosch in 2012 and included in ISO 11898-1:2015, which keeps the arbitration of classical CAN unchanged and increases the length and speed of the data field [7], [8].
 
 | Aspect | Classical CAN | CAN FD |
 |:-----|:-----|:-----|
@@ -430,7 +430,7 @@ The behavior of the ACK slot is how the sending node judges the result. The send
 
 CAN FD is faster for two reasons. First, the data a frame can carry grows eightfold from 8 bytes to 64 bytes, so the share of overhead such as the header and CRC shrinks. Second, the speed of the arbitration phase, in which the bits of all nodes must overlap, is hard to raise because of the time a signal takes to travel to the end of the bus and back, but once arbitration is over only the sending node transmits, so the bit time can be shortened in the data phase. The span from the sampling point of the BRS bit to the CRC delimiter is sent at the faster rate.
 
-The ESI bit reports the error state of the sending node (dominant for error active, recessive for error passive). The CRC was lengthened to 17 and 21 bits and the stuff count was added to keep the error detection capability even with long data fields. The generator polynomial of CRC-17 is 0x3685B, and that of CRC-21 is 0x302899 [7].
+The ESI bit reports the error state of the sending node (dominant for error active, recessive for error passive). The CRC was lengthened to 17 and 21 bits and the stuff count was added to keep the error detection capability even with long data fields. The generator polynomial of CRC-17 is 0x3685B, and that of CRC-21 is 0x302899 [8].
 
 > **Caution:** A CAN FD controller can also send and receive classical CAN frames, but the reverse does not hold. A classical CAN controller that does not know CAN FD interprets the bits after FDF in the classical format, detects errors in the CAN FD frame, and destroys it by sending an error frame. Therefore, to use CAN FD frames on a bus, every node must support CAN FD or be an FD-tolerant controller made to ignore CAN FD frames.
 
@@ -528,10 +528,11 @@ The ESI bit reports the error state of the sending node (dominant for error acti
 
 ## References
 
-1. W. Stallings, *Data and Computer Communications*, 10th ed. Upper Saddle River, NJ, USA: Pearson, 2014.
+1. W. Stallings, *Local and Metropolitan Area Networks*, 6th ed. Upper Saddle River, NJ, USA: Prentice Hall, 2000.
 2. IEEE, "IEEE Standard for Local and Metropolitan Area Networks: Overview and Architecture," IEEE Std 802-2014, 2014.
-3. B. A. Forouzan, *Data Communications and Networking*, 5th ed. New York, NY, USA: McGraw-Hill, 2013.
-4. ISO, "Road Vehicles: Local Interconnect Network (LIN), Part 3: Protocol Specification," ISO 17987-3:2016, 2016.
-5. Robert Bosch GmbH, "CAN Specification Version 2.0," Stuttgart, Germany, 1991.
-6. Robert Bosch GmbH, "CAN with Flexible Data-Rate Specification Version 1.0," 2012.
-7. ISO, "Road Vehicles: Controller Area Network (CAN), Part 1: Data Link Layer and Physical Signalling," ISO 11898-1:2015, 2015.
+3. IEEE, "Information Technology: Telecommunications and Information Exchange Between Systems: Local and Metropolitan Area Networks: Specific Requirements, Part 2: Logical Link Control," IEEE Std 802.2-1998, 1998.
+4. B. A. Forouzan, *Data Communications and Networking*, 5th ed. New York, NY, USA: McGraw-Hill, 2013.
+5. ISO, "Road Vehicles: Local Interconnect Network (LIN), Part 3: Protocol Specification," ISO 17987-3:2016, 2016.
+6. Robert Bosch GmbH, "CAN Specification Version 2.0," Stuttgart, Germany, 1991.
+7. Robert Bosch GmbH, "CAN with Flexible Data-Rate Specification Version 1.0," 2012.
+8. ISO, "Road Vehicles: Controller Area Network (CAN), Part 1: Data Link Layer and Physical Signalling," ISO 11898-1:2015, 2015.

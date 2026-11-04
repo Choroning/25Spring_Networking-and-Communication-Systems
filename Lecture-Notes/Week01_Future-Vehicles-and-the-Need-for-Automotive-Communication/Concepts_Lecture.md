@@ -112,7 +112,7 @@ The level of autonomous driving capability is expressed by **levels of driving a
 
 *Table 3. New vehicle sales forecast by level of driving automation (units, market forecast with base year 2019)*
 
-Table 3 shows that Level 0 vehicles, which have no autonomous driving function at all and are called **level-zero vehicles**, decline quickly. In the same forecast, the share of Level 0 vehicles among new cars falls from 55% in 2019 to 36% in 2023 and 24% in 2025, reaches 2% in 2028, and no Level 0 vehicles are sold in 2030. Up to 2030 the best-selling vehicles are Level 1 vehicles, which assist with only one of lane keeping or adaptive cruise control, and Level 5 vehicles, which need no driver at all, were expected not to be sold even by 2030.
+Table 3 shows that Level 0 vehicles, which have no autonomous driving function at all and are called **level-zero vehicles**, decline quickly. In the same forecast, the share of Level 0 vehicles among new cars falls from 55% in 2019 to 36% in 2023 and 24% in 2025, reaches 2% in 2028, and no Level 0 vehicles are sold in 2030. From 2023 to 2030 the best-selling vehicles are Level 1 vehicles, which assist with only one of lane keeping or adaptive cruise control, and Level 5 vehicles, which need no driver at all, were expected not to be sold even by 2030.
 
 ### 1.4 Shared: The Shared Mobility Market Outlook
 
@@ -154,13 +154,13 @@ Autonomous driving cannot be commercialized by technology alone; safety standard
 
 > **Definition:** The **ODD (operational design domain)** is the range of conditions (road type, speed, weather, time of day, etc.) under which an automated driving system is designed to operate properly. The **MRC (minimal risk condition)** is the state in which the vehicle has been brought to a safe stop when the system can no longer continue driving. Both terms are revisited in Week 2.
 
-**Europe.** ERTRAC, the European road transport research advisory council, presented separate development roadmaps for passenger cars, freight vehicles, and urban mobility in its *Connected Automated Driving Roadmap* (2019) [7]. EPoSS, the technology platform for smart systems, presented in its 2015 roadmap the research and development, demonstration, and commercialization stages for technology development, infrastructure, big data, standardization, and laws and institutions [8]. The milestones of the EPoSS roadmap are conditional automated driving (Level 3) at low speeds in simple environments in 2020, highly automated driving (Level 4) on highways in 2025, and highly automated driving (Level 4) in cities in 2030. Throughout the 2010s the European Union carried out a series of projects: highly automated driving projects such as HAVEit, InteractIVe, AdaptIVe, and L3Pilot, driver assistance and platooning projects such as SARTRE and ENSEMBLE, and infrastructure connectivity and cooperative driving projects such as DRIVE C2X and AUTONET.
+**Europe.** ERTRAC, the European road transport research advisory council, presented separate development roadmaps for passenger cars, freight vehicles, and urban mobility in its *Connected Automated Driving Roadmap* (2019) [7]. EPoSS, the technology platform for smart systems, presented in its 2015 roadmap the research and development, demonstration, and commercialization stages for each of eight activity fields: technology inside the car, infrastructure, big data, system integration and validation, system design, standardization, legal frameworks, and awareness measures [8]. The milestones of the EPoSS roadmap are conditional automated driving (Level 3) at low speeds in simple environments in 2020, highly automated driving (Level 4) on highways in 2025, and highly automated driving (Level 4) in cities in 2030. Throughout the 2010s the European Union carried out a series of projects: highly automated driving projects such as HAVEit, InteractIVe, AdaptIVe, and L3Pilot, driver assistance and platooning projects such as SARTRE and ENSEMBLE, infrastructure connectivity and cooperative driving projects such as DRIVE C2X and AUTONET, and networking, coordination, and support projects such as EuroFOT, CARTRE, SCOUT, and ARCADE. The EU also held the European Conference on Connected and Automated Driving (EUCAD) in 2017 and 2019.
 
-**Japan.** Japan established a cross-ministry governance system, **SIP Automated Driving for Universal Services (SIP-adus)**, under the Cabinet Office. Phase 1 ran from 2014 to 2018 and phase 2 from 2018 to 2022, with the Ministry of Internal Affairs and Communications, the Ministry of Economy, Trade and Industry, the National Police Agency, and the Ministry of Land, Infrastructure, Transport and Tourism among the participants. The program director (PD) is Seigo Kuzumaki, formerly of Toyota, appointed in 2016. Although the program runs within a government body, an expert from the automotive industry leads it, so it can be described as a structure in which industry takes the lead in building a kind of social consensus rather than one driven unilaterally by the state.
+**Japan.** Japan established a cross-ministry governance system, **SIP Automated Driving for Universal Services (SIP-adus)**, under the Cabinet Office. Phase 1 ran from 2014 to 2018 and phase 2 from 2018 to 2022, with the Ministry of Internal Affairs and Communications, the Ministry of Economy, Trade and Industry, the National Police Agency, and the Ministry of Land, Infrastructure, Transport and Tourism among the participants. The program director (PD) is Seigo Kuzumaki, formerly of Toyota, appointed in 2016. Although the program runs within a government body, an expert from the automotive industry leads it, so it can be described as a structure in which industry takes the lead in building a kind of social consensus rather than one driven unilaterally by the state. The implementation organization places, under a promoting committee chaired by the PD with the Cabinet Office as secretariat (with the Cabinet Secretariat, the National Police Agency, the Ministry of Internal Affairs and Communications, the Ministry of Economy, Trade and Industry, the Ministry of Land, Infrastructure, Transport and Tourism, and others participating), three working groups for system implementation, next-generation transport, and international cooperation and a task force for the 2020 field operational test in the Tokyo waterfront city area, while the New Energy and Industrial Technology Development Organization (NEDO) manages the research projects.
 
 The strategy of SIP phase 2 is to extend the operational domain of autonomous driving from expressways to arterial and general roads and to expand into mobility services such as public transport and logistics. Through this it aims to reduce traffic accidents and congestion, support the mobility of vulnerable people, and solve the driver shortage in logistics, toward a society in which everyone can travel safely and comfortably. A distinctive feature is that privately owned vehicles (mass-produced by automakers) and logistics and mobility service vehicles are pursued on separate tracks. Phase 1 (until 2018) established the static information infrastructure linked with high-definition 3D maps (the basic concept of the dynamic map), and phase 2 (until 2022) developed dynamic traffic information such as V2X-based accident reduction, traffic flow improvement, and signal information, and demonstrated it in the Tokyo waterfront area. The targets for private vehicles were Level 2 on general roads by 2020, Level 2-3 on expressways around 2020, and Level 4 on expressways around 2025.
 
-Following the reference architecture of Society 5.0, the SIP-adus R&D plan defines eight strategic fields: strategy, rules, organization, business, functions, data, data collection, and technology (assets) [9]. It also developed separate roadmaps for ten technology fields, namely maps (high-definition 3D maps, dynamic maps), communication infrastructure, perception, decision-making, human factors, functional safety, cybersecurity, software talent, social acceptance, and safety assessment, with particular emphasis on securing software talent and competitiveness. Demonstrations were carried out in many forms by local governments, at expressway rest areas, for last-mile transport, in the Smart Mobility Challenge (a competition), on airport roads, and in smart cities.
+Following the reference architecture of Society 5.0, the SIP-adus R&D plan defines eight strategic fields: strategy, rules, organization, business, functions, data, data collection, and technology (assets) [9]. Strategy covers the vision and scope; rules cover laws and regulations; organization covers operating bodies such as implementing agencies and councils; business covers services, contracts, and ecosystems; functions cover the individual functions that realize services; data covers data sets, codes, and catalogs; data collection covers the collection, integration, and cleansing of data and IoT device management; and technology (assets) covers sensors, actuators, hardware, and networks, while security and authentication form an axis spanning all fields. It also developed separate roadmaps for ten technology fields, namely maps (high-definition 3D maps, dynamic maps), communication infrastructure, perception, decision-making, human factors, functional safety, cybersecurity, software talent, social acceptance, and safety assessment, with particular emphasis on securing software talent and competitiveness. Among these, the roadmap for the perception and decision-making fields targets Level 3 on expressways and Level 2 on general roads for private vehicles in fiscal 2020. On the institutional side, the Ministry of Land, Infrastructure, Transport and Tourism and the National Traffic Safety and Environment Laboratory prepare performance criteria for Level 2 on expressways (lane keeping, lane changes) and Level 3 (ALKS, automated lane keeping system), safety guidelines for automated vehicles, and international standards on methods for confirming ALKS safety performance. On the research side, the roadmap pursues test course improvement and pre-evaluation for public road driving by the Japan Automobile Research Institute (JARI), research on the perception technology needed for Levels 3 and 4 with the Tokyo waterfront field operational test, collection of driving video data and development of automatic tagging technology, driver models built from driving behavior data, and the construction and operation of a traffic accident database (Institute for Traffic Accident Research and Data Analysis, ITARDA). Demonstrations were carried out in many forms by local governments, at expressway rest areas, for last-mile transport, in the Smart Mobility Challenge (a competition), on airport roads, and in smart cities.
 
 > **Definition:** **Society 5.0** is a national vision of the Japanese government for a society that highly integrates cyberspace and physical space. It means the fifth society, following the hunting, agrarian, industrial, and information societies.
 
@@ -411,7 +411,7 @@ A vehicle has many controllers, and the signal and power lines connecting them a
 
 1. A mid-size car is equipped with 70-140 ECUs.
 2. In the past, ECUs, sensors, and actuators were each connected by individual wires. As a result the harness became heavier, and failures caused by wiring errors and the difficulty of repairs increased.
-3. Recently a bus form is used in which several ECUs are attached to one network (bus). As a result the harness became lighter, failures decreased, the structure became simpler, and transmission speed increased.
+3. Recently a bus form is used in which several ECUs are attached to one network (bus). As a result the harness became lighter, failures decreased, the structure became simpler, and transmission speed increased. For example, a body controller and a headlight controller that used to be wired separately are tied into one network.
 
 > **Definition:** A **bus** is a connection method in which several devices share one common transmission path. A signal sent by one device is delivered to all devices connected to the bus.
 
@@ -465,7 +465,7 @@ Several protocols with different uses and speeds are used together in an in-vehi
 
 *Figure 6. An in-vehicle network organized around a gateway*
 
-Figure 6 is an example of the IVN configuration of a real vehicle [22]. The central **gateway** connects the different networks. The OBD-II diagnostic port and the cellular module are connected to the gateway. The low-speed CAN bus connects the radio, GPS, infotainment, and telematics, as well as body control ECUs such as door, light, and climate control. The high-speed CAN bus connects safety systems such as ABS, SRS (airbags), and EBA (emergency brake assist) and powertrain ECUs such as engine, transmission, and oil supply control. A domain controller manages each domain, some ECUs are connected by Ethernet and FlexRay, and LIN is attached under body control as a sub-network. High-speed CAN consists of two wires, CAN-High and CAN-Low.
+Figure 6 is an example of the IVN configuration of a real vehicle [22]. The central **gateway** connects the different networks. The OBD-II diagnostic port, the cellular module, and, through an Ethernet switch, cameras and ECUs are connected to the gateway. The low-speed CAN bus connects the radio, GPS, infotainment, and telematics, as well as body control ECUs such as door, light, and climate control. The high-speed CAN bus connects safety systems such as ABS, SRS (airbags), and EBA (emergency brake assist) and powertrain ECUs such as engine, transmission, and oil supply control. The domain controller is linked to the gateway by CAN and sits between the low-speed and high-speed CAN buses, and ECUs connected by LIN hang below it as a sub-network. In addition, ECUs are attached to a separate CAN bus and a FlexRay bus that branch from the gateway. In the legend of the figure, CAN-High (red line) and CAN-Low (blue line) denote the high-speed and low-speed CAN buses, respectively. ISO 11898 high-speed CAN and low-speed fault-tolerant CAN both carry signals as the voltage difference between two wires, CAN_H and CAN_L, a principle covered in Week 3.
 
 > **Definition:** A **gateway** is a device that converts and forwards messages between networks with different protocols or speeds. **OBD-II (On-Board Diagnostics II)** is the standard diagnostic interface for reading a vehicle's fault diagnosis information with external equipment.
 
@@ -519,7 +519,7 @@ In 2019, Frost & Sullivan identified the main feature trends of connected cars a
 
 > **Definition:** **Features on Demand (FoD)** is a business model in which hardware is installed in the vehicle in advance and the corresponding function is enabled by software when the user pays for it. It comes as one-time purchases or recurring subscriptions.
 
-More than 30 services can be offered as Features on Demand, launched through dealership retrofits or OTA. Tesla began with one-time purchases and is moving toward recurring on-demand features. Examples by category are shown in Table 20 [25].
+More than 30 services can be offered as Features on Demand, launched through dealership retrofits or OTA. Tesla currently offers one-time purchases, and recurring purchases were expected to become available in the longer term. Examples by category are shown in Table 20 [25].
 
 | Category | Examples of Features on Demand |
 |:-----|:-----|
@@ -533,20 +533,20 @@ More than 30 services can be offered as Features on Demand, launched through dea
 
 *Table 20. Categories and examples of Features on Demand*
 
-**V2X players.** In the C-V2X camp, adoption of C-V2X became evident as partnerships between companies increased, and system integrators released products supporting both DSRC and C-V2X. Keysight offered C-V2X test equipment that can be extended to 5G, and 5GAA announced at CES 2019 a plan to put 5G C-V2X on the road by 2020. Ford announced that all its new models would carry C-V2X from 2022 and ran a pilot in China, and Lexus tested 4G C-V2X on the RX 450h F Sport with the Australian government and Telstra. LG Innotek and Quectel released C-V2X modules based on the Qualcomm 9150 chipset, and Danlaw released an on-board unit (OBU) and roadside unit (RSU) based on the same chipset. Qorvo presented at CES 2019 a module supporting both C-V2X and DSRC, Autotalks a chipset supporting both, Continental a hybrid 4G and 5G V2X, and Savari the StreetWAVE 2000 supporting both. As 5G commercialization progressed, C-V2X was preferred, and apart from Toyota and GM, DSRC took a back seat for lack of regulatory support [25].
+**V2X players.** In the C-V2X camp, adoption of C-V2X became evident as partnerships between companies increased, and system integrators released products supporting both DSRC and C-V2X. Keysight offered C-V2X test equipment that can be extended to 5G, and 5GAA announced at CES 2019 a plan to put 5G C-V2X on the road by 2020. Ford announced that all its new models would carry C-V2X from 2022 and ran a pilot in China, and Lexus tested 4G C-V2X on the RX 450h F Sport with the Australian government and Telstra. LG Innotek and Quectel released C-V2X modules based on the Qualcomm 9150 chipset, and Danlaw released an on-board unit (OBU) and roadside unit (RSU) based on the same chipset. Qorvo presented at CES 2019 a module supporting both C-V2X and DSRC, Autotalks a chipset supporting both, Continental a hybrid V2X supporting both C-V2X and DSRC over 4G and 5G networks, and Savari the StreetWAVE 2000 supporting both. As 5G commercialization progressed, C-V2X was preferred, and apart from Toyota and GM, DSRC took a back seat for lack of regulatory support [25].
 
 **Regional trends.** Most regions favored C-V2X, and because 5G was not yet in full swing, commercial launches in 2019 began with LTE [25].
 
 | Region | Trend |
 |:-----|:-----|
 | Europe | The debate between ITS-G5 (IEEE 802.11p) and 5G (LTE) continued. The C2C-CC and ETSI supported ITS-G5, while mobile network operators pushed C-V2X. |
-| United States | 5GAA (Qualcomm and others) pushed 5G C-V2X, and automakers considered hybrid solutions supporting both DSRC and C-V2X as early as 2020. |
+| United States | 5GAA (Qualcomm and others) pushed 5G C-V2X, many technology providers introduced hybrid solutions, and automakers were expected to introduce both DSRC and C-V2X as early as 2020. |
 | China | The Ministry of Industry and Information Technology (MIIT) designated 5,905-5,925 MHz as an experimental band, and Qualcomm partnered with automakers on LTE C-V2X. |
 | Japan | V2X standardization was government-led, and 5.8 GHz DSRC was deployed. The ITS Connect and ITS Japan consortia led V2V and V2I safety applications. |
 
 *Table 21. V2X trends by region*
 
-> **Note:** Japan's ITS Connect is a safe driving support system using V2V and V2I communication in the 760 MHz band, which Toyota began applying to production vehicles at the end of 2015 [26]. In Japan, 5.8 GHz DSRC is used mainly for electronic toll collection (ETC) and road information services.
+> **Note:** Japan's ITS Connect is a safe driving support system using V2V and V2I communication in the 760 MHz band, which Toyota began applying to production vehicles with the Crown launched in October 2015 [26]. In Japan, 5.8 GHz DSRC is used mainly for electronic toll collection (ETC) and road information services.
 
 ### 3.4 Why Connected Automated Driving Is Needed
 
@@ -600,13 +600,13 @@ As in Figure 8, the Velodyne HDL-64, a 360-degree rotating LiDAR, outputs about 
 
 Let us compare the two cases as bit rates. Assuming that each point is represented by four values, the x, y, and z coordinates and the reflection intensity, and that each value is stored as a 4-byte floating-point number, one point takes 16 bytes.
 
-$$
+```math
 2{,}200{,}000 \times 16\ \text{B/s} = 35{,}200{,}000\ \text{B/s} \approx 35.2\ \text{MB/s} = 281.6\ \text{Mbit/s}
-$$
+```
 
-$$
+```math
 5{,}000\ \text{B/s} \times 8 = 40{,}000\ \text{bit/s} = 40\ \text{kbit/s}
-$$
+```
 
 The raw data is about $281.6 / 0.04 \approx 7{,}000$ times the perception information. A raw point cloud is hard to transmit in real time not only over CAN, whose maximum is 1 Mbit/s, but also over most wireless links, whereas perception information fits comfortably on CAN. Therefore, if vehicles exchange only perception results, high-capacity communication is not strictly necessary, and the need for 5G arises mainly from high-capacity services such as sharing raw data, downloading high-definition maps, and video for remote driving. Note that the size of one point differs by sensor and data format, so the calculation above only illustrates the order of magnitude.
 
@@ -710,7 +710,7 @@ The left of Figure 10 shows the C-ITS components installed on the road, and the 
 | VDS | Vehicle detection system | Collecting traffic volume and speed with video and loop detectors |
 | CCTV | Video collection system | Collecting video of road conditions |
 | AVC | Automatic vehicle classification | Classifying the types of passing vehicles |
-| RSE | Roadside equipment | Communicating wirelessly with vehicles at the roadside |
+| RSE | Roadside equipment | Communicating wirelessly with vehicles at the roadside (same meaning as roadside unit, RSU) |
 | OBU | On-board unit | Communicating from the vehicle with roadside equipment and other vehicles |
 | LCS | Lane control system | Showing whether each lane is open |
 | VMS | Variable message sign | Displaying traffic information to drivers |
@@ -786,7 +786,7 @@ Connect each situation with the concept that serves as the basis for judgment.
 | Connected car | A vehicle that exchanges data with the outside through communication, providing infotainment, smartphone integration, EV, navigation, telematics, and autonomous driving services. |
 | Policies of major countries | The United States pursues autonomous driving through DOT guidelines, Europe through the ERTRAC and EPoSS roadmaps, and Japan through SIP-adus, a cross-ministry framework under the Cabinet Office. |
 | Korean automotive industry | It accounts for a large share of employment and exports and has electronics and automotive industries, groups of parts companies, and a single nationwide infrastructure, but lacks software talent and preparation for future vehicles. |
-| Industrial structural change | The shift to electric vehicles reduces the number of parts, and with E/E architectures that centralize computation and SDVs, the center of value moves to software and semiconductors. |
+| Industrial structural change | The shift to electric vehicles reduces the number of parts, and with E/E architectures that centralize computation and SDVs, the center of value moves to software and electrical and electronic parts. |
 | IVN and V2X | Automotive communication is divided into IVNs, which connect the inside of the vehicle mostly by wire, and V2X, which connects the vehicle with the outside wirelessly. |
 | Bus-type network | As ECUs grew to 70-140, a shared bus replaced individual wiring, reducing harness weight, failures, and wiring errors. |
 | IVN protocols | LIN, CAN, FlexRay, and automotive Ethernet are used together according to use and speed, and a gateway connects them. |
@@ -880,12 +880,12 @@ Connect each situation with the concept that serves as the basis for judgment.
 
 ## References
 
-1. SBD Automotive, "Change personified in four letters: C-A-S-E," infographic, reproduced in *ZDNet Korea*.
+1. SBD Automotive, "Change personified in four letters: C-A-S-E," infographic, reproduced in *ZDNet*.
 2. Frost & Sullivan, *Global Connected Car Market Outlook, 2020*, May 2020.
-3. Frost & Sullivan, shared mobility gross merchandise value data (base year 2019), 2020.
+3. Frost & Sullivan, "Mobility outlook: Gross market value forecast by new mobility services type, global, 2019 and 2020," chart, 2020.
 4. U.S. Department of Transportation and NHTSA, *Automated Driving Systems 2.0: A Vision for Safety*, Washington, DC, USA, 2017.
 5. U.S. Department of Transportation, *Preparing for the Future of Transportation: Automated Vehicles 3.0*, Washington, DC, USA, 2018.
-6. U.S. Department of Transportation, *Ensuring American Leadership in Automated Driving Technologies: Automated Vehicles 4.0*, Washington, DC, USA, 2020.
+6. National Science and Technology Council and U.S. Department of Transportation, *Ensuring American Leadership in Automated Vehicle Technologies: Automated Vehicles 4.0*, Washington, DC, USA, Jan. 2020.
 7. ERTRAC, *Connected Automated Driving Roadmap*, Brussels, Belgium, 2019.
 8. EPoSS, *European Roadmap Smart Systems for Automated Driving*, Berlin, Germany, 2015.
 9. Cabinet Office, Government of Japan, *SIP Automated Driving for Universal Services (SIP-adus) R&D Plan*, 2018.

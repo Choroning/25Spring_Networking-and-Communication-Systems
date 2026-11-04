@@ -113,7 +113,7 @@ CAN 관련 ISO 표준은 다음과 같다.
 
 *표 2. CAN 관련 ISO 11898 표준*
 
-> **참고:** ISO 11898-5와 ISO 11898-6이 폐지된 것은 그 내용이 ISO 11898-2:2016에 통합되었기 때문이다 [1]. 또 ISO 11898-1:2015는 기존 CAN과 함께 데이터 구간의 속도를 높인 CAN FD도 정의한다 [2]. CAN FD는 9주차에서 다룬다.
+> **참고:** ISO 11898-5와 ISO 11898-6이 폐지된 것은 그 내용이 ISO 11898-2:2016에 통합되었기 때문이다 [1]. 또 ISO 11898-1:2015는 기존 CAN과 함께 데이터 구간의 속도를 높인 CAN FD도 정의한다 [2]. CAN FD는 9주차에서 다룬다. 두 부는 이후 개정되어 2024년에 ISO 11898-1:2024와 ISO 11898-2:2024가 발행되었으며, ISO 11898-1:2024는 데이터 필드를 최대 2,048바이트까지 늘린 CAN XL 프레임 형식도 정의한다 [3], [4].
 
 ![그림 2. OSI 참조 계층과 CAN 계층, ISO 11898 각 부의 범위](../../images/Week03_p08.png)
 
@@ -125,7 +125,7 @@ CAN 관련 ISO 표준은 다음과 같다.
 
 고속 CAN 버스는 **CAN_H**와 **CAN_L**이라는 두 전선을 꼬아 만든 꼬임쌍선(twisted pair)이다. 수신기는 한 전선의 전압이 아니라 두 전선의 전압 차이로 비트를 판단한다.
 
-> **용어 정의:** **차동 신호 방식(differential signaling)** 은 두 전선에 서로 반대 방향으로 변하는 신호를 싣고, 수신기가 두 전압의 차 $V_{diff} = V_{CAN\_H} - V_{CAN\_L}$로 값을 판단하는 방식이다.
+> **용어 정의:** **차동 신호 방식(differential signaling)** 은 두 전선에 서로 반대 방향으로 변하는 신호를 싣고, 수신기가 두 전압의 차 $`V_{diff} = V_{CAN\_H} - V_{CAN\_L}`$로 값을 판단하는 방식이다.
 
 CAN 버스는 두 가지 상태만 가진다.
 
@@ -167,11 +167,11 @@ CAN 버스는 두 가지 상태만 가진다.
 
 두 전선은 서로 꼬여 같은 공간을 지나므로, 외부 간섭은 두 전선에 거의 같은 크기와 방향으로 유도된다. 간섭 전압을 $V_n$이라 하면 수신기가 보는 차는 다음과 같다.
 
-$$
+```math
 (V_{CAN\_H} + V_n) - (V_{CAN\_L} + V_n) = V_{CAN\_H} - V_{CAN\_L} = V_{diff}
-$$
+```
 
-두 전선에 똑같이 더해진 성분(공통 모드 잡음, common-mode noise)이 뺄셈에서 사라지므로 $V_{diff}$는 일정하게 유지된다(그림 4의 $V_{diff} = const$). 그림 4의 양 끝에 있는 120 Ω 저항은 1.4절의 종단 저항이다.
+두 전선에 똑같이 더해진 성분(공통 모드 잡음, common-mode noise)이 뺄셈에서 사라지므로 $V_{diff}$는 일정하게 유지된다(그림 4의 $`V_{diff} = const`$). 그림 4의 양 끝에 있는 120 Ω 저항은 1.4절의 종단 저항이다.
 
 ### 1.4 종단 저항
 
@@ -203,15 +203,15 @@ CAN_L ─┴───────┴──────────────�
 
 **계산 예.** 두 120 Ω 저항은 CAN_H와 CAN_L 사이에서 병렬로 연결되므로 합성 저항은 다음과 같다.
 
-$$
+```math
 R_{bus} = \frac{120 \times 120}{120 + 120} = \frac{14400}{240} = 60\ \Omega
-$$
+```
 
-우성 상태의 차동 전압이 약 2 V이면 버스에 흐르는 전류는 $I = 2\ \text{V} / 60\ \Omega \approx 33$ mA이다. 이 값은 고장 진단에도 쓰인다. 전원을 끈 상태에서 CAN_H와 CAN_L 사이의 저항을 재면 정상 버스는 약 60 Ω이다. 약 120 Ω이 나오면 종단 저항 하나가 빠진 것이고, 약 40 Ω($120/3$)이 나오면 종단 저항이 하나 더 달린 것이다.
+우성 상태의 차동 전압이 약 2 V이면 버스에 흐르는 전류는 $`I = 2\ \text{V} / 60\ \Omega \approx 33`$ mA이다. 이 값은 고장 진단에도 쓰인다. 전원을 끈 상태에서 CAN_H와 CAN_L 사이의 저항을 재면 정상 버스는 약 60 Ω이다. 약 120 Ω이 나오면 종단 저항 하나가 빠진 것이고, 약 40 Ω($`120/3`$)이 나오면 종단 저항이 하나 더 달린 것이다.
 
 > **주의:** 종단 저항은 버스의 양 끝 두 곳에만 둔다. 모든 노드에 120 Ω을 달면 합성 저항이 너무 작아져 트랜시버가 충분한 차동 전압을 만들지 못한다. 또 버스 본선에서 노드로 갈라지는 분기선(stub)은 짧게 유지해야 한다. 분기선 끝은 종단되지 않으므로, 길어지면 그곳에서 반사가 생긴다.
 
-그림 5의 오른쪽은 산업용 CAN 장비와 계측 장비에서 흔히 쓰는 D-sub 9핀 커넥터와 핀 배치이다 [3].
+그림 5의 오른쪽은 산업용 CAN 장비와 계측 장비에서 흔히 쓰는 D-sub 9핀 커넥터와 핀 배치이다 [5].
 
 | 핀 | 신호 | 핀 | 신호 |
 |:-----|:-----|:-----|:-----|
@@ -229,7 +229,7 @@ CAN은 비트를 **NRZ(non-return-to-zero)** 방식으로 싣는다. NRZ는 한 
 
 > **용어 정의:** **비트 스터핑(bit stuffing)** 은 송신기가 같은 값의 비트를 5개 연속으로 보내면 그 뒤에 반대 값의 비트(스터핑 비트) 하나를 자동으로 끼워 넣고, 수신기가 그 비트를 다시 제거하는 규칙이다.
 
-비트 스터핑은 두 가지 역할을 한다. 첫째, 같은 값이 최대 5비트까지만 이어지므로 일정 간격마다 에지가 보장되어 재동기화가 가능하다. 둘째, 수신기가 같은 값을 6개 연속으로 보면 규칙이 깨진 것이므로 **스터핑 오류(stuff error)** 로 판정한다. 즉 비트 스터핑은 오류 검출 수단도 된다(1.9절). 스터핑은 SOF부터 CRC 시퀀스까지 적용되고, 고정된 형식을 가진 CRC 구분자, ACK 필드, EOF에는 적용되지 않는다 [4].
+비트 스터핑은 두 가지 역할을 한다. 첫째, 같은 값이 최대 5비트까지만 이어지므로 일정 간격마다 에지가 보장되어 재동기화가 가능하다. 둘째, 수신기가 같은 값을 6개 연속으로 보면 규칙이 깨진 것이므로 **스터핑 오류(stuff error)** 로 판정한다. 즉 비트 스터핑은 오류 검출 수단도 된다(1.9절). 스터핑은 SOF부터 CRC 시퀀스까지 적용되고, 고정된 형식을 가진 CRC 구분자, ACK 필드, EOF에는 적용되지 않는다 [6].
 
 **예제.** 다음 16비트를 보낸다고 하자(r = 열성, d = 우성).
 
@@ -293,11 +293,11 @@ CAN에서 데이터를 나르는 단위를 **데이터 프레임(data frame)** �
 
 **프레임 길이 계산.** 8바이트 데이터를 담은 표준 프레임의 길이를 스터핑 비트를 빼고 세면 다음과 같다.
 
-$$
+```math
 1 + 11 + 1 + 1 + 1 + 4 + 64 + 15 + 1 + 1 + 1 + 7 = 108\ \text{비트}
-$$
+```
 
-여기에 IFS 3비트를 더하면 다음 프레임까지 111비트가 걸린다. 실제 데이터는 64비트이므로 프레임 안에서 데이터가 차지하는 비율은 $64 / 108 \approx 59\%$이다. 나머지는 식별자, 제어, 오류 검사, 확인을 위한 오버헤드이다.
+여기에 IFS 3비트를 더하면 다음 프레임까지 111비트가 걸린다. 실제 데이터는 64비트이므로 프레임 안에서 데이터가 차지하는 비율은 $`64 / 108 \approx 59\%`$이다. 나머지는 식별자, 제어, 오류 검사, 확인을 위한 오버헤드이다.
 
 확장 프레임은 중재 필드가 길어진다.
 
@@ -383,7 +383,7 @@ Bus           0  0  1  0  1  0  1  1  0  0  1
 5. **ID1:** A는 1, B는 0을 보낸다. 버스는 0이다. A는 1을 보냈는데 0을 읽었으므로 진다.
 6. **ID0 이후:** B만 남아 식별자의 마지막 비트와 RTR, 제어 필드, 데이터를 이어서 보낸다.
 
-결과는 세 값 가운데 가장 작은 0x159를 가진 B가 이기는 것이다($0\text{x}159 < 0\text{x}15\text{A} < 0\text{x}1\text{C}0$). 이 과정에서 버스에 나타난 비트열은 처음부터 끝까지 B의 식별자와 같으므로, B의 프레임은 충돌로 손상되지 않았고 재전송도 필요 없다. 진 A와 C는 B의 프레임을 수신한 뒤 버스가 다시 유휴 상태가 되면 전송을 재시도한다.
+결과는 세 값 가운데 가장 작은 0x159를 가진 B가 이기는 것이다($`0\text{x}159 < 0\text{x}15\text{A} < 0\text{x}1\text{C}0`$). 이 과정에서 버스에 나타난 비트열은 처음부터 끝까지 B의 식별자와 같으므로, B의 프레임은 충돌로 손상되지 않았고 재전송도 필요 없다. 진 A와 C는 B의 프레임을 수신한 뒤 버스가 다시 유휴 상태가 되면 전송을 재시도한다.
 
 > **주의:** 비트 단위 중재가 성립하려면 같은 버스에서 두 노드가 같은 식별자의 데이터 프레임을 보내지 않아야 한다. 식별자가 같으면 중재 필드가 끝날 때까지 승부가 나지 않고, 그 뒤의 데이터가 달라지는 지점에서 비트 오류가 발생한다. 그래서 CAN 네트워크를 설계할 때 메시지마다 고유한 식별자를 배정한다.
 
@@ -463,7 +463,7 @@ stateDiagram-v2
 
 버스 오프 상태의 노드는 리셋과 설정을 거친 뒤 열성 비트 11개가 연속으로 나타나는 것을 128번 관찰해야(버스가 충분히 오래 정상임을 확인해야) 오류 활성 상태로 돌아간다. 이렇게 고장 난 노드를 단계적으로 고립시키는 기능이 1.2절의 결함 국한이다.
 
-> **참고:** 강의자료의 상태도는 버스 오프로 가는 조건을 "REC > 255"로, 오류 활성으로 돌아오는 조건을 "REC < 127 or TEC < 127"로 적고 있다. 규격에서는 버스 오프를 일으키는 것은 송신 오류 카운터뿐이므로 조건은 TEC > 255이며, 오류 활성으로 돌아오려면 두 카운터가 모두 127 이하가 되어야 한다 [4].
+> **참고:** 강의자료의 상태도는 버스 오프로 가는 조건을 "REC > 255"로, 오류 활성으로 돌아오는 조건을 "REC < 127 or TEC < 127"로 적고 있다. 규격에서는 버스 오프를 일으키는 것은 송신 오류 카운터뿐이므로 조건은 TEC > 255이며, 오류 활성으로 돌아오려면 두 카운터가 모두 127 이하가 되어야 한다 [6].
 
 오류 프레임의 형식, 카운터의 증감 규칙, 비트 타이밍은 9주차에서 다룬다.
 
@@ -578,7 +578,7 @@ CAN을 실제 차량에 적용한 개발 사례로, 도어, 미러, 창문 같�
 
 *표 12. 차량 내 응용 분야별 네트워크 분류*
 
-> **참고:** SAE 분류의 속도 경계는 자료마다 다르다. SAE J2057을 바탕으로 한 흔한 분류는 Class A를 10 kbps 미만, Class B를 10 kbps\~125 kbps, Class C를 125 kbps\~1 Mbps로 두고, 그보다 빠른 멀티미디어용 네트워크를 Class D로 둔다 [5]. 어느 분류에서든 바디 제어가 가장 느리고 파워트레인과 섀시 제어가 가장 빠른 등급이라는 순서는 같다. 프리텐셔너(pretensioner)는 충돌 순간 안전띠를 당겨 탑승자를 좌석에 고정하는 장치이다.
+> **참고:** SAE 분류의 속도 경계는 자료마다 다르다. SAE J2057을 바탕으로 한 흔한 분류는 Class A를 10 kbps 미만, Class B를 10 kbps\~125 kbps, Class C를 125 kbps\~1 Mbps로 두고, 그보다 빠른 멀티미디어용 네트워크를 Class D로 둔다 [7]. 어느 분류에서든 바디 제어가 가장 느리고 파워트레인과 섀시 제어가 가장 빠른 등급이라는 순서는 같다. 프리텐셔너(pretensioner)는 충돌 순간 안전띠를 당겨 탑승자를 좌석에 고정하는 장치이다.
 
 | 속도 | 프로토콜 | 특성 |
 |:-----|:-----|:-----|
@@ -627,7 +627,7 @@ MOST 네트워크의 목표는 다음과 같다.
 
 *그림 24. 차량의 MOST 네트워크 구성 예*
 
-그림 24에서 빨간 선이 MOST 네트워크(광섬유)이다. DVD 플레이어, 카메라, 게임 장치를 묶는 오디오 비디오 게이트웨이, 뒷좌석 디스플레이, 계기판, 무선 인터페이스, 앞좌석 멀티미디어 디스플레이, 텔레매틱스와 AM/FM 튜너, 앰프가 MOST로 연결된다. 차량 게이트웨이는 MOST 네트워크를 CAN이나 J1850 같은 제어용 버스(OEM 버스)와 연결한다.
+그림 24에서 빨간 선이 MOST 네트워크(광섬유)이다. DVD 플레이어, 카메라, 게임 장치를 묶는 오디오 비디오 게이트웨이, 뒷좌석 디스플레이, 계기판, 무선 인터페이스, 앞좌석 멀티미디어 디스플레이, 외부 기기용 통신 포트, 텔레매틱스와 AM/FM 튜너, 앰프가 MOST로 연결된다. 차량 게이트웨이는 MOST 네트워크를 CAN이나 J1850 같은 제어용 버스(OEM 버스)와 연결한다.
 
 ### 2.4 TTP
 
@@ -639,7 +639,7 @@ CAN처럼 사건이 생길 때 보내는 사건 기반(event-triggered) 통신�
 
 *그림 25. TTP로 연결한 X-by-wire 시험 장치*
 
-그림 25는 TTTech가 만든 시험 장치로, 네 개의 제어 장치가 TTP로 연결되어 소형 차량의 조향과 구동을 제어한다.
+그림 25는 TTTech가 만든 시험 장치로, 네 개의 제어 장치가 TTP로 연결되어 X-by-wire 방식으로 소형 차량 모형을 제어한다.
 
 ### 2.5 FlexRay
 
@@ -650,11 +650,11 @@ CAN처럼 사건이 생길 때 보내는 사건 기반(event-triggered) 통신�
 
 FlexRay는 두 방식을 한 주기 안에 함께 제공하여, 시간 보장이 필요한 메시지와 그렇지 않은 메시지를 한 네트워크에서 다룬다. 2004년 말 Philips가 FlexRay 칩의 양산을 시작했다.
 
-![그림 26. FlexRay 컨소시엄의 참여사와 평가용 플랫폼](../../images/Week03_p41.png)
+![그림 26. FlexRay 평가용 플랫폼](../../images/Week03_p41.png)
 
-*그림 26. FlexRay 컨소시엄의 참여사와 평가용 플랫폼*
+*그림 26. FlexRay 평가용 플랫폼*
 
-그림 26의 왼쪽은 FlexRay 컨소시엄에 참여한 GM, Audi, Bentley, Volkswagen, Bosch, Daimler 같은 회사이고, 오른쪽은 FlexRay 개발과 시험에 쓰는 평가용 모듈과 인터페이스 장비이다. FlexRay의 프레임과 매체 접근 방식은 9주차에서 다룬다.
+FlexRay 컨소시엄에는 GM, Audi, Bentley, Volkswagen, Bosch, Daimler 같은 회사도 참여했다. 그림 26은 FlexRay 개발과 시험에 쓰는 평가용 모듈과 인터페이스 장비로, Microsys의 FlexIM IP 모듈, DECOMSYS의 xModule/PC104와 xCluster/PC, TZM, DECOMSYS, Vector가 만든 ServiceModule이다. FlexRay의 프레임과 매체 접근 방식은 9주차에서 다룬다.
 
 ### 2.6 진단 통신: KWP2000과 OBD
 
@@ -669,9 +669,9 @@ OBD의 발전 과정은 다음과 같다.
 
 OBD-II는 다음 다섯 프로토콜 가운데 하나를 쓴다: SAE J1850 PWM, SAE J1850 VPW, ISO 9141-2, ISO 14230-4(KWP2000), ISO 15765-4(SAE J2480, CAN 기반).
 
-> **참고:** 미국에서는 2008년식 차량부터 OBD-II 통신에 CAN 기반 ISO 15765-4를 쓰도록 의무화되어, 현재 대부분의 차량은 진단 통신에도 CAN을 쓴다 [6].
+> **참고:** 미국에서는 2008년식 차량부터 OBD-II 통신에 CAN 기반 ISO 15765-4를 쓰도록 의무화되어, 현재 대부분의 차량은 진단 통신에도 CAN을 쓴다 [8].
 
-> **용어 정의:** **KWP2000(Keyword Protocol 2000)** 은 차량 진단을 위해 개발된 직렬 통신 프로토콜로, 국제 규격 ISO 14230이다. OBD-II가 허용하는 프로토콜의 하나이다.
+> **용어 정의:** **KWP2000(Keyword Protocol 2000)** 은 차량 진단을 위해 개발된 직렬 통신 프로토콜로, 국제 규격 ISO 14230이다. OBD-II가 허용하는 프로토콜의 하나이며, OBD-II 진단 장비(스캔 도구)의 요구사항은 SAE J1978이 정한다.
 
 KWP2000의 메시지는 헤더, 데이터, 체크섬으로 이루어진다.
 
@@ -688,7 +688,7 @@ KWP2000의 메시지는 헤더, 데이터, 체크섬으로 이루어진다.
 
 - **헤더(header):** 메시지의 형식을 정한다. 형식 바이트(Fmt), 목적지 주소(Tgt, target), 출발지 주소(Src, source), 길이 바이트(Len)로 이루어지며 최대 4바이트이다.
 - **데이터 바이트(data bytes):** 첫 바이트는 요청하는 진단 서비스의 종류를 나타내는 서비스 식별자(SId, service identifier)이고, 그 뒤가 서비스의 데이터이다. 최대 255바이트이다.
-- **체크섬(checksum):** 1바이트(8비트)로, 앞선 모든 바이트를 더한 값으로 전송 오류를 검사한다.
+- **체크섬(checksum):** 1바이트(8비트)로, 앞선 모든 바이트를 더한 값의 하위 8비트로 전송 오류를 검사한다.
 
 진단 장비(tester)와 차량 사이의 통신 서비스에는 통신 시작(Start Communication), 통신 종료(Stop Communication), 타이밍 매개변수 접근(Access Timing Parameter), 데이터 전송(Send Data) 서비스가 있다. 통신 시작으로 연결을 열고, 타이밍 매개변수 접근으로 응답 대기 시간 같은 값을 조정하고, 데이터 전송으로 진단 요청과 응답을 주고받은 뒤, 통신 종료로 연결을 닫는다.
 
@@ -723,12 +723,12 @@ KWP2000의 메시지는 헤더, 데이터, 체크섬으로 이루어진다.
 | 프로토콜 | 특징 |
 |:-----|:-----|
 | D2B(Domestic Digital Bus) | Optical Chip Consortium이 개발했다. 광섬유 매체를 쓰며, Mercedes S-Class에 쓰였다. |
-| IDB-C(ITS Data Bus, CAN) | CAN 2.0B의 물리 계층과 데이터 링크 계층을 바탕으로 한 SAE 표준(SAE J2366)이다. CAN과 같은 꼬임쌍선을 쓴다 [7]. |
+| IDB-C(ITS Data Bus, CAN) | CAN 2.0B의 물리 계층과 데이터 링크 계층을 바탕으로 한 SAE 표준(SAE J2366)이다. CAN과 같은 꼬임쌍선을 쓴다 [9]. |
 | MOST | Oasis Silicon Systems가 개발했다. 동기와 비동기 대역폭을 모두 제공하고, 가상 네트워크 관리 기능을 시스템에 내장한다. |
 
 *표 16. 차량용 멀티미디어 네트워크 프로토콜*
 
-> **참고:** 강의자료는 IDB-C가 광섬유 매체를 쓴다고 적지만, IDB-C의 물리 계층은 SAE J2284-2의 CAN 2.0B를 바탕으로 하므로 구리 꼬임쌍선을 쓴다 [7].
+> **참고:** 강의자료는 IDB-C가 광섬유 매체를 쓴다고 적지만, IDB-C의 물리 계층은 SAE J2284-2의 CAN 2.0B를 바탕으로 하므로 구리 꼬임쌍선을 쓴다 [9].
 
 동기 대역폭은 음성과 영상처럼 일정한 속도로 끊김 없이 흘러야 하는 데이터를 위해 대역의 일부를 고정으로 예약해 둔 것이고, 비동기 대역폭은 파일이나 제어 메시지처럼 불규칙하게 생기는 데이터에 남는 대역을 나누어 주는 것이다.
 
@@ -760,7 +760,7 @@ KWP2000의 메시지는 헤더, 데이터, 체크섬으로 이루어진다.
 
 *그림 31. 거리와 데이터 전송 속도로 본 다중 프로세서 시스템, LAN, MAN, WAN*
 
-그림 31은 가로축에 거리(m), 세로축에 데이터 전송 속도(bps)를 로그 눈금으로 두고 각 시스템이 차지하는 영역을 표시한다. 다중 프로세서 시스템은 1 m 안팎의 짧은 거리에서, 전통적인 LAN은 수십 m\~수 km에서 $10^6$\~$10^7$ bps 정도를, 고속 LAN은 $10^8$ bps 이상을 차지한다. MAN은 약 $10^3$ m 이상, 수십 km까지의 거리에서 고속 전송을 하고, WAN은 그보다 먼 거리를 담당한다. 전통적인 WAN은 속도가 낮았지만 고속 WAN은 LAN에 가까운 속도를 낸다. 전체적으로 거리가 멀수록 같은 속도를 내기가 어렵다는 경향이 보인다.
+그림 31은 가로축에 거리(m), 세로축에 데이터 전송 속도(bps)를 로그 눈금으로 두고 각 시스템이 차지하는 영역을 표시한다. 다중 프로세서 시스템은 1 m 안팎의 짧은 거리에서, 전통적인 LAN은 수십 m\~수 km에서 $10^6$\~$`10^7`$ bps 정도를, 고속 LAN은 $10^8$ bps 이상을 차지한다. MAN은 약 $10^3$ m 이상, 수십 km까지의 거리에서 고속 전송을 하고, WAN은 그보다 먼 거리를 담당한다. 전통적인 WAN은 속도가 낮았지만 고속 WAN은 LAN에 가까운 속도를 낸다. 전체적으로 거리가 멀수록 같은 속도를 내기가 어렵다는 경향이 보인다.
 
 > **참고:** 차량 내부 네트워크는 거리로 보면 수 m 규모라 LAN보다도 작다. 그러나 여러 노드가 한 매체를 공유하고 브로드캐스팅 방식으로 전송한다는 LAN의 기술적 특성을 그대로 가지므로, CAN은 LAN의 기술을 차량에 적용한 것으로 볼 수 있다.
 
@@ -928,13 +928,13 @@ Google의 자율주행 회사 Waymo의 차량은 카메라 29개를 포함한 �
 
 ### 4.3 Tesla
 
-Tesla는 라이다를 쓰지 않으며, 2020년 무렵까지 카메라 8대와 전방 레이더 1대, 초음파 센서로 주변을 인식했다.
+Tesla는 라이다를 쓰지 않으며, 2020년 무렵까지 카메라 8대와 전방 레이더 1대, 초음파 센서로 주변을 인식했다. 자료는 Tesla가 카메라 8대만으로 자율주행을 구현하려다가 레이더를 다시 채용했다고 적는다.
 
 | 구성 요소 | 내용 |
 |:-----|:-----|
-| 카메라 | 전방 3개(triple front camera), 전측방 2개(forward looking side camera), 후측방 2개(rearward looking side camera), 후방 1개(rear view camera)로 총 8개이다. ON Semiconductor와 협력하여 자체 개발했다. 2016년 첫 자율주행 사망 사고 뒤 Mobileye와 결별했다. |
+| 카메라 | 전방 3개(triple front camera), 전측방 2개(forward looking side camera), 후측방 2개(rearward looking side camera), 후방 1개(rear view camera)로 총 8개이다. ON Semiconductor와 협력하여 자체 개발했다. 2016년 Autopilot 작동 중 일어난 첫 사망 사고 뒤 Mobileye와 결별했다. |
 | 레이더 | Continental의 장단거리 혼합 레이더를 써 왔다. |
-| 컴퓨팅 모듈 | 2016\~2019년의 HW2와 HW2.5에는 NVIDIA DRIVE PX 2 기반 컴퓨터를 썼고, 2019년의 HW3부터는 Tesla가 자체 설계한 FSD 칩을 쓴다 [8]. 자율주행 소프트웨어는 자체 개발한다. |
+| 컴퓨팅 모듈 | 2016\~2019년의 HW2와 HW2.5에는 NVIDIA DRIVE PX 2 기반 컴퓨터를 썼고, 2019년의 HW3부터는 Tesla가 자체 설계한 FSD 칩을 쓴다 [10]. 자율주행 소프트웨어는 자체 개발한다. |
 | 지도 | 내비게이션 지도를 Wi-Fi로 내려받아 쓰며, HD 맵을 쓰지 않는다. |
 
 *표 19. Tesla 자율주행차의 구성*
@@ -1163,9 +1163,11 @@ Waymo와 Cruise는 라이다, 레이더, 카메라를 모두 많이 달고 HD �
 
 1. ISO 11898-2:2016, *Road vehicles - Controller area network (CAN) - Part 2: High-speed medium access unit*, International Organization for Standardization, 2016.
 2. ISO 11898-1:2015, *Road vehicles - Controller area network (CAN) - Part 1: Data link layer and physical signalling*, International Organization for Standardization, 2015.
-3. CAN in Automation, *CiA 303-1: Cabling and connector pin assignment*, version 1.9.0, Nuremberg, Germany, 2017.
-4. Robert Bosch GmbH, *CAN Specification, Version 2.0*, Stuttgart, Germany, 1991.
-5. N. Navet, Y. Song, F. Simonot-Lion, and C. Wilwert, "Trends in automotive communication systems," *Proceedings of the IEEE*, vol. 93, no. 6, pp. 1204-1223, 2005.
-6. CSS Electronics, "OBD2 Explained - A Simple Intro," *CSS Electronics*. https://www.csselectronics.com/pages/obd2-explained-simple-intro
-7. SAE International, *ITS Data Bus - IDB-C Physical Layer*, SAE J2366/1, Nov. 2001.
-8. Tesla, Inc., "Tesla Autonomy Day," investor presentation, Palo Alto, CA, USA, Apr. 22, 2019.
+3. ISO 11898-1:2024, *Road vehicles - Controller area network (CAN) - Part 1: Data link layer and physical coding sublayer*, International Organization for Standardization, 2024.
+4. ISO 11898-2:2024, *Road vehicles - Controller area network (CAN) - Part 2: High-speed physical medium attachment (PMA) sublayer*, International Organization for Standardization, 2024.
+5. CAN in Automation, *CiA 303-1: Cabling and connector pin assignment*, version 1.9.0, Nuremberg, Germany, 2017.
+6. Robert Bosch GmbH, *CAN Specification, Version 2.0*, Stuttgart, Germany, 1991.
+7. N. Navet, Y. Song, F. Simonot-Lion, and C. Wilwert, "Trends in automotive communication systems," *Proceedings of the IEEE*, vol. 93, no. 6, pp. 1204-1223, 2005.
+8. CSS Electronics, "OBD2 Explained - A Simple Intro," *CSS Electronics*. https://www.csselectronics.com/pages/obd2-explained-simple-intro
+9. SAE International, *ITS Data Bus - IDB-C Physical Layer*, SAE J2366/1, Nov. 2001.
+10. Tesla, Inc., "Tesla Autonomy Day," investor presentation, Palo Alto, CA, USA, Apr. 22, 2019.

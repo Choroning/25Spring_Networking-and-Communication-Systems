@@ -113,7 +113,7 @@ The ISO standards related to CAN are as follows.
 
 *Table 2. ISO 11898 standards related to CAN*
 
-> **Note:** ISO 11898-5 and ISO 11898-6 were withdrawn because their content was merged into ISO 11898-2:2016 [1]. In addition, ISO 11898-1:2015 defines, alongside classical CAN, CAN FD, which raises the speed of the data phase [2]. CAN FD is covered in Week 9.
+> **Note:** ISO 11898-5 and ISO 11898-6 were withdrawn because their content was merged into ISO 11898-2:2016 [1]. In addition, ISO 11898-1:2015 defines, alongside classical CAN, CAN FD, which raises the speed of the data phase [2]. CAN FD is covered in Week 9. Both parts were later revised, and ISO 11898-1:2024 and ISO 11898-2:2024 were published in 2024; ISO 11898-1:2024 also defines the CAN XL frame format, which extends the data field to up to 2,048 bytes [3], [4].
 
 ![Figure 2. OSI reference layers, CAN layers, and the scope of each part of ISO 11898](../../images/Week03_p08.png)
 
@@ -125,7 +125,7 @@ Figure 2 shows how the OSI data link and physical layers are subdivided in CAN. 
 
 A high-speed CAN bus is a twisted pair made of two wires, **CAN_H** and **CAN_L**. The receiver decides each bit not from the voltage of one wire but from the voltage difference between the two wires.
 
-> **Definition:** **Differential signaling** puts signals that change in opposite directions on two wires, and the receiver determines the value from the difference of the two voltages, $V_{diff} = V_{CAN\_H} - V_{CAN\_L}$.
+> **Definition:** **Differential signaling** puts signals that change in opposite directions on two wires, and the receiver determines the value from the difference of the two voltages, $`V_{diff} = V_{CAN\_H} - V_{CAN\_L}`$.
 
 A CAN bus has only two states.
 
@@ -167,9 +167,9 @@ When two nodes send different values at the same instant, the bus value is deter
 
 Because the two wires are twisted together and pass through the same space, external interference is induced in both wires with almost the same magnitude and direction. If the interference voltage is $V_n$, the difference seen by the receiver is as follows.
 
-$$
+```math
 (V_{CAN\_H} + V_n) - (V_{CAN\_L} + V_n) = V_{CAN\_H} - V_{CAN\_L} = V_{diff}
-$$
+```
 
 The component added equally to both wires (common-mode noise) cancels in the subtraction, so $V_{diff}$ stays constant ($V_{diff} = const$ in Figure 4). The 120 Ω resistors at both ends in Figure 4 are the termination resistors of Section 1.4.
 
@@ -203,15 +203,15 @@ There are three reasons why termination resistors are needed.
 
 **Worked example.** The two 120 Ω resistors are connected in parallel between CAN_H and CAN_L, so the combined resistance is as follows.
 
-$$
+```math
 R_{bus} = \frac{120 \times 120}{120 + 120} = \frac{14400}{240} = 60\ \Omega
-$$
+```
 
-If the differential voltage in the dominant state is about 2 V, the current flowing in the bus is $I = 2\ \text{V} / 60\ \Omega \approx 33$ mA. This value is also used in fault diagnosis. Measuring the resistance between CAN_H and CAN_L with the power off gives about 60 Ω on a healthy bus. A reading of about 120 Ω means that one termination resistor is missing, and about 40 Ω ($120/3$) means that one extra termination resistor is attached.
+If the differential voltage in the dominant state is about 2 V, the current flowing in the bus is $`I = 2\ \text{V} / 60\ \Omega \approx 33`$ mA. This value is also used in fault diagnosis. Measuring the resistance between CAN_H and CAN_L with the power off gives about 60 Ω on a healthy bus. A reading of about 120 Ω means that one termination resistor is missing, and about 40 Ω ($`120/3`$) means that one extra termination resistor is attached.
 
 > **Caution:** Termination resistors go only at the two ends of the bus. Putting 120 Ω at every node makes the combined resistance too small for the transceivers to produce a sufficient differential voltage. In addition, the stubs that branch from the main bus line to the nodes must be kept short. The end of a stub is not terminated, so a long stub causes reflections there.
 
-The right side of Figure 5 shows the D-sub 9-pin connector and its pin assignment, which is common in industrial CAN equipment and measurement tools [3].
+The right side of Figure 5 shows the D-sub 9-pin connector and its pin assignment, which is common in industrial CAN equipment and measurement tools [5].
 
 | Pin | Signal | Pin | Signal |
 |:-----|:-----|:-----|:-----|
@@ -229,7 +229,7 @@ CAN puts bits on the bus with **NRZ (non-return-to-zero)** coding. NRZ keeps the
 
 > **Definition:** **Bit stuffing** is the rule by which, when a transmitter has sent five consecutive bits of the same value, it automatically inserts one bit of the opposite value (a stuff bit), and the receiver removes that bit again.
 
-Bit stuffing has two roles. First, the same value continues for at most five bits, so edges are guaranteed at regular intervals and resynchronization is possible. Second, if a receiver sees six consecutive bits of the same value, the rule has been broken, so it declares a **stuff error**. That is, bit stuffing also serves as an error detection mechanism (Section 1.9). Stuffing applies from the SOF to the CRC sequence, and it does not apply to the CRC delimiter, the ACK field, and the EOF, which have fixed formats [4].
+Bit stuffing has two roles. First, the same value continues for at most five bits, so edges are guaranteed at regular intervals and resynchronization is possible. Second, if a receiver sees six consecutive bits of the same value, the rule has been broken, so it declares a **stuff error**. That is, bit stuffing also serves as an error detection mechanism (Section 1.9). Stuffing applies from the SOF to the CRC sequence, and it does not apply to the CRC delimiter, the ACK field, and the EOF, which have fixed formats [6].
 
 **Example.** Suppose the following 16 bits are to be sent (r = recessive, d = dominant).
 
@@ -293,11 +293,11 @@ The structure of a standard frame is as follows (the numbers are bit counts).
 
 **Computing the frame length.** Counting the length of a standard frame with 8 bytes of data, excluding stuff bits, gives the following.
 
-$$
+```math
 1 + 11 + 1 + 1 + 1 + 4 + 64 + 15 + 1 + 1 + 1 + 7 = 108\ \text{bits}
-$$
+```
 
-Adding the 3-bit IFS, the next frame can start after 111 bits. The actual data is 64 bits, so the share of data within the frame is $64 / 108 \approx 59\%$. The rest is overhead for the identifier, control, error checking, and acknowledgment.
+Adding the 3-bit IFS, the next frame can start after 111 bits. The actual data is 64 bits, so the share of data within the frame is $`64 / 108 \approx 59\%`$. The rest is overhead for the identifier, control, error checking, and acknowledgment.
 
 In an extended frame, the arbitration field becomes longer.
 
@@ -383,7 +383,7 @@ Following the bits one at a time gives the following.
 5. **ID1:** A sends 1, and B sends 0. The bus is 0. A sent 1 but read 0, so it loses.
 6. **ID0 and after:** Only B remains and goes on to send the last identifier bit, the RTR, the control field, and the data.
 
-The result is that B, which has the smallest of the three values, 0x159, wins ($0\text{x}159 < 0\text{x}15\text{A} < 0\text{x}1\text{C}0$). The bit stream that appeared on the bus during this process equals B's identifier from start to end, so B's frame was not damaged by the collision and needs no retransmission. The losers A and C receive B's frame and retry their transmissions when the bus becomes idle again.
+The result is that B, which has the smallest of the three values, 0x159, wins ($`0\text{x}159 < 0\text{x}15\text{A} < 0\text{x}1\text{C}0`$). The bit stream that appeared on the bus during this process equals B's identifier from start to end, so B's frame was not damaged by the collision and needs no retransmission. The losers A and C receive B's frame and retry their transmissions when the bus becomes idle again.
 
 > **Caution:** For bit-wise arbitration to work, two nodes on the same bus must not send data frames with the same identifier. With equal identifiers, the contest is not decided by the end of the arbitration field, and a bit error occurs at the point where the following data differ. For this reason, a unique identifier is assigned to each message when a CAN network is designed.
 
@@ -463,7 +463,7 @@ stateDiagram-v2
 
 A node in the bus off state returns to the error active state only after reset and configuration and after observing 128 occurrences of 11 consecutive recessive bits (that is, after confirming that the bus has been healthy long enough). This function of isolating a faulty node step by step is the fault confinement of Section 1.2.
 
-> **Note:** The state diagram in the lecture material gives the condition for entering bus off as "REC > 255" and the condition for returning to error active as "REC < 127 or TEC < 127". In the specification, only the transmit error counter causes bus off, so the condition is TEC > 255, and returning to error active requires both counters to be 127 or below [4].
+> **Note:** The state diagram in the lecture material gives the condition for entering bus off as "REC > 255" and the condition for returning to error active as "REC < 127 or TEC < 127". In the specification, only the transmit error counter causes bus off, so the condition is TEC > 255, and returning to error active requires both counters to be 127 or below [6].
 
 The format of the error frame, the rules for incrementing and decrementing the counters, and bit timing are covered in Week 9.
 
@@ -578,7 +578,7 @@ The application domains, the systems they cover, and the classifications of the 
 
 *Table 12. Network classification by application domain in a vehicle*
 
-> **Note:** The speed boundaries of the SAE classes vary between sources. A common classification based on SAE J2057 puts Class A below 10 kbps, Class B at 10 kbps-125 kbps, and Class C at 125 kbps-1 Mbps, and puts faster multimedia networks in Class D [5]. In every classification, the order is the same: body control is the slowest class, and powertrain and chassis control is the fastest. A pretensioner is a device that pulls the seat belt tight at the moment of a crash to hold the occupant in the seat.
+> **Note:** The speed boundaries of the SAE classes vary between sources. A common classification based on SAE J2057 puts Class A below 10 kbps, Class B at 10 kbps-125 kbps, and Class C at 125 kbps-1 Mbps, and puts faster multimedia networks in Class D [7]. In every classification, the order is the same: body control is the slowest class, and powertrain and chassis control is the fastest. A pretensioner is a device that pulls the seat belt tight at the moment of a crash to hold the occupant in the seat.
 
 | Speed | Protocol | Characteristics |
 |:-----|:-----|:-----|
@@ -627,7 +627,7 @@ The goals of the MOST network are as follows.
 
 *Figure 24. Example configuration of a MOST network in a vehicle*
 
-In Figure 24, the red line is the MOST network (optical fiber). The audio/video gateway that groups the DVD player, camera, and game system, the rear displays, the instrument cluster, the wireless interface, the front multimedia display, the telematics unit and AM/FM tuner, and the amplifier are connected by MOST. The vehicle gateway connects the MOST network with control buses (OEM buses) such as CAN and J1850.
+In Figure 24, the red line is the MOST network (optical fiber). The audio/video gateway that groups the DVD player, camera, and game system, the rear displays, the instrument cluster, the wireless interface, the front multimedia display, the communication ports for external devices, the telematics unit and AM/FM tuner, and the amplifier are connected by MOST. The vehicle gateway connects the MOST network with control buses (OEM buses) such as CAN and J1850.
 
 ### 2.4 TTP
 
@@ -639,7 +639,7 @@ In event-triggered communication such as CAN, which sends when an event occurs, 
 
 *Figure 25. X-by-wire test rig connected with TTP*
 
-Figure 25 is a test rig made by TTTech in which four control units connected with TTP control the steering and drive of a small vehicle.
+Figure 25 is a test rig made by TTTech in which four control units connected with TTP control a small vehicle model in X-by-wire fashion.
 
 ### 2.5 FlexRay
 
@@ -650,11 +650,11 @@ Figure 25 is a test rig made by TTTech in which four control units connected wit
 
 By providing both methods within one cycle, FlexRay handles messages that need guaranteed timing and messages that do not in a single network. Philips began mass production of FlexRay chips at the end of 2004.
 
-![Figure 26. Members of the FlexRay consortium and evaluation platforms](../../images/Week03_p41.png)
+![Figure 26. FlexRay evaluation platforms](../../images/Week03_p41.png)
 
-*Figure 26. Members of the FlexRay consortium and evaluation platforms*
+*Figure 26. FlexRay evaluation platforms*
 
-The left side of Figure 26 shows companies that took part in the FlexRay consortium, such as GM, Audi, Bentley, Volkswagen, Bosch, and Daimler, and the right side shows evaluation modules and interface equipment used for FlexRay development and testing. The FlexRay frame and medium access method are covered in Week 9.
+Companies such as GM, Audi, Bentley, Volkswagen, Bosch, and Daimler also took part in the FlexRay consortium. Figure 26 shows evaluation modules and interface equipment used for FlexRay development and testing: the FlexIM IP-Module by Microsys, the xModule/PC104 and xCluster/PC by DECOMSYS, and the ServiceModule by TZM, DECOMSYS, and Vector. The FlexRay frame and medium access method are covered in Week 9.
 
 ### 2.6 Diagnostic Communication: KWP2000 and OBD
 
@@ -669,9 +669,9 @@ The development of OBD is as follows.
 
 OBD-II uses one of the following five protocols: SAE J1850 PWM, SAE J1850 VPW, ISO 9141-2, ISO 14230-4 (KWP2000), and ISO 15765-4 (SAE J2480, CAN-based).
 
-> **Note:** In the United States, CAN-based ISO 15765-4 has been mandatory for OBD-II communication since model year 2008, so most vehicles today also use CAN for diagnostic communication [6].
+> **Note:** In the United States, CAN-based ISO 15765-4 has been mandatory for OBD-II communication since model year 2008, so most vehicles today also use CAN for diagnostic communication [8].
 
-> **Definition:** **KWP2000 (Keyword Protocol 2000)** is a serial communication protocol developed for vehicle diagnosis, the international standard ISO 14230. It is one of the protocols that OBD-II permits.
+> **Definition:** **KWP2000 (Keyword Protocol 2000)** is a serial communication protocol developed for vehicle diagnosis, the international standard ISO 14230. It is one of the protocols that OBD-II permits, and the requirements for OBD-II diagnostic equipment (scan tools) are set by SAE J1978.
 
 A KWP2000 message consists of a header, data, and a checksum.
 
@@ -688,7 +688,7 @@ A KWP2000 message consists of a header, data, and a checksum.
 
 - **Header:** Determines the format of the message. It consists of the format byte (Fmt), the target address (Tgt), the source address (Src), and the length byte (Len), up to 4 bytes.
 - **Data bytes:** The first byte is the service identifier (SId), which indicates the kind of diagnostic service requested, and the service data follow. Up to 255 bytes.
-- **Checksum:** One byte (8 bits) that checks for transmission errors with the sum of all preceding bytes.
+- **Checksum:** One byte (8 bits) that checks for transmission errors with the low 8 bits of the sum of all preceding bytes.
 
 The communication services between the diagnostic equipment (tester) and the vehicle are the Start Communication, Stop Communication, Access Timing Parameter, and Send Data services. Start Communication opens the connection, Access Timing Parameter adjusts values such as the response wait times, Send Data exchanges diagnostic requests and responses, and Stop Communication closes the connection.
 
@@ -723,12 +723,12 @@ Pins not listed in Table 15 are free for manufacturers to use. Which protocol a 
 | Protocol | Characteristics |
 |:-----|:-----|
 | D2B (Domestic Digital Bus) | Developed by the Optical Chip Consortium. It uses fiber-optic media and was used in the Mercedes S-Class. |
-| IDB-C (ITS Data Bus, CAN) | An SAE standard (SAE J2366) based on the physical and data link layers of CAN 2.0B. It uses the same twisted pair as CAN [7]. |
+| IDB-C (ITS Data Bus, CAN) | An SAE standard (SAE J2366) based on the physical and data link layers of CAN 2.0B. It uses the same twisted pair as CAN [9]. |
 | MOST | Developed by Oasis Silicon Systems. It provides both synchronous and asynchronous bandwidth and embeds virtual network management in the system. |
 
 *Table 16. In-vehicle multimedia network protocols*
 
-> **Note:** The lecture material states that IDB-C uses optical fiber media, but the physical layer of IDB-C is based on CAN 2.0B as defined in SAE J2284-2 and therefore uses copper twisted pair [7].
+> **Note:** The lecture material states that IDB-C uses optical fiber media, but the physical layer of IDB-C is based on CAN 2.0B as defined in SAE J2284-2 and therefore uses copper twisted pair [9].
 
 Synchronous bandwidth is a part of the capacity reserved permanently for data that must flow at a constant rate without interruption, such as voice and video, and asynchronous bandwidth distributes the remaining capacity to data that arise irregularly, such as files and control messages.
 
@@ -760,7 +760,7 @@ In Figure 30, several LANs within buildings or areas are tied together by a city
 
 *Figure 31. Multiprocessor systems, LANs, MANs, and WANs by distance and data rate*
 
-Figure 31 plots distance (m) on the horizontal axis and data rate (bps) on the vertical axis, both on logarithmic scales, and marks the region each system occupies. Multiprocessor systems occupy short distances around 1 m, traditional LANs occupy about $10^6$-$10^7$ bps over tens of meters to a few kilometers, and high-speed LANs occupy $10^8$ bps and above. MANs transmit at high speed over distances from about $10^3$ m up to tens of kilometers, and WANs cover longer distances. Traditional WANs were slow, but high-speed WANs reach speeds close to those of LANs. Overall, the figure shows the tendency that the same speed is harder to achieve over longer distances.
+Figure 31 plots distance (m) on the horizontal axis and data rate (bps) on the vertical axis, both on logarithmic scales, and marks the region each system occupies. Multiprocessor systems occupy short distances around 1 m, traditional LANs occupy about $10^6$-$`10^7`$ bps over tens of meters to a few kilometers, and high-speed LANs occupy $10^8$ bps and above. MANs transmit at high speed over distances from about $10^3$ m up to tens of kilometers, and WANs cover longer distances. Traditional WANs were slow, but high-speed WANs reach speeds close to those of LANs. Overall, the figure shows the tendency that the same speed is harder to achieve over longer distances.
 
 > **Note:** By distance, an in-vehicle network is only a few meters across, smaller even than a LAN. However, it has the technical characteristics of a LAN, in which several nodes share one medium and transmit by broadcasting, so CAN can be seen as LAN technology applied to the vehicle.
 
@@ -928,13 +928,13 @@ The upper part of Figure 40 marks the LIDAR on the roof of a Waymo vehicle and t
 
 ### 4.3 Tesla
 
-Tesla does not use LIDAR, and until around 2020 it perceived its surroundings with eight cameras, one front radar, and ultrasonic sensors.
+Tesla does not use LIDAR, and until around 2020 it perceived its surroundings with eight cameras, one front radar, and ultrasonic sensors. The source material states that Tesla pursued automated driving with eight cameras alone and then adopted radar again.
 
 | Component | Details |
 |:-----|:-----|
-| Cameras | 8 in total: a triple front camera (3), forward looking side cameras (2), rearward looking side cameras (2), and a rear view camera (1). Developed in-house in cooperation with ON Semiconductor. Tesla parted ways with Mobileye after the first fatal autonomous driving crash in 2016. |
+| Cameras | 8 in total: a triple front camera (3), forward looking side cameras (2), rearward looking side cameras (2), and a rear view camera (1). Developed in-house in cooperation with ON Semiconductor. Tesla parted ways with Mobileye after the first fatal crash with Autopilot engaged in 2016. |
 | RADAR | Has used Continental's combined long- and short-range radar. |
-| Computing module | HW2 and HW2.5 (2016-2019) used computers based on NVIDIA DRIVE PX 2, and from HW3 (2019) Tesla uses its own FSD chip [8]. The autonomous driving software is developed in-house. |
+| Computing module | HW2 and HW2.5 (2016-2019) used computers based on NVIDIA DRIVE PX 2, and from HW3 (2019) Tesla uses its own FSD chip [10]. The autonomous driving software is developed in-house. |
 | Map | Downloads navigation maps over Wi-Fi and does not use HD maps. |
 
 *Table 19. Configuration of Tesla autonomous vehicles*
@@ -1016,7 +1016,7 @@ Waymo and Cruise chose an approach that mounts many LIDARs, radars, and cameras 
 
 **True/False Check:**
 
-| Statement | Verdict and Reason |
+| Statement | Judgment and Reason |
 |:-----|:-----|
 | On a CAN bus, if one node sends recessive and another sends dominant, the bus becomes recessive. | **F.** Dominant is an actively driven state, so if even one node sends dominant, the bus becomes dominant. |
 | A CAN frame contains the address of the receiving node. | **F.** The identifier only indicates the kind and priority of the message, and every node receives the frame and filters it. |
@@ -1163,9 +1163,11 @@ Waymo and Cruise chose an approach that mounts many LIDARs, radars, and cameras 
 
 1. ISO 11898-2:2016, *Road vehicles - Controller area network (CAN) - Part 2: High-speed medium access unit*, International Organization for Standardization, 2016.
 2. ISO 11898-1:2015, *Road vehicles - Controller area network (CAN) - Part 1: Data link layer and physical signalling*, International Organization for Standardization, 2015.
-3. CAN in Automation, *CiA 303-1: Cabling and connector pin assignment*, version 1.9.0, Nuremberg, Germany, 2017.
-4. Robert Bosch GmbH, *CAN Specification, Version 2.0*, Stuttgart, Germany, 1991.
-5. N. Navet, Y. Song, F. Simonot-Lion, and C. Wilwert, "Trends in automotive communication systems," *Proceedings of the IEEE*, vol. 93, no. 6, pp. 1204-1223, 2005.
-6. CSS Electronics, "OBD2 Explained - A Simple Intro," *CSS Electronics*. https://www.csselectronics.com/pages/obd2-explained-simple-intro
-7. SAE International, *ITS Data Bus - IDB-C Physical Layer*, SAE J2366/1, Nov. 2001.
-8. Tesla, Inc., "Tesla Autonomy Day," investor presentation, Palo Alto, CA, USA, Apr. 22, 2019.
+3. ISO 11898-1:2024, *Road vehicles - Controller area network (CAN) - Part 1: Data link layer and physical coding sublayer*, International Organization for Standardization, 2024.
+4. ISO 11898-2:2024, *Road vehicles - Controller area network (CAN) - Part 2: High-speed physical medium attachment (PMA) sublayer*, International Organization for Standardization, 2024.
+5. CAN in Automation, *CiA 303-1: Cabling and connector pin assignment*, version 1.9.0, Nuremberg, Germany, 2017.
+6. Robert Bosch GmbH, *CAN Specification, Version 2.0*, Stuttgart, Germany, 1991.
+7. N. Navet, Y. Song, F. Simonot-Lion, and C. Wilwert, "Trends in automotive communication systems," *Proceedings of the IEEE*, vol. 93, no. 6, pp. 1204-1223, 2005.
+8. CSS Electronics, "OBD2 Explained - A Simple Intro," *CSS Electronics*. https://www.csselectronics.com/pages/obd2-explained-simple-intro
+9. SAE International, *ITS Data Bus - IDB-C Physical Layer*, SAE J2366/1, Nov. 2001.
+10. Tesla, Inc., "Tesla Autonomy Day," investor presentation, Palo Alto, CA, USA, Apr. 22, 2019.

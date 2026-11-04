@@ -91,6 +91,8 @@ The characteristics of a **repeater** are as follows.
 - It regenerates and retransmits the transmitted signal from one segment of a LAN to another segment.
 - Recent network equipment has the repeater function built in, so separate repeaters are rarely used.
 
+> **Note:** A repeater is sometimes described as a simple amplifier that boosts signal strength, but a repeater in a digital LAN is a regenerator that decides the 0s and 1s of the incoming signal and generates a clean new signal. An amplifier boosts the noise along with the signal, whereas a repeater does not pass noise on to the next segment as long as its decisions are correct (the amplifiers and repeaters of Week 4).
+
 > **Definition:** A **segment** is one stretch of transmission medium between devices such as repeaters or bridges, together with the stations attached to it. A segment in this section has a different meaning from the TCP segment of Week 5.
 
 The characteristics of a **hub** are as follows.
@@ -665,7 +667,7 @@ The characteristics of the **star ring topology** are as follows.
 
 *Figure 11. Star-ring configuration with a ring wiring concentrator*
 
-From the wiring concentrator (labeled wire center) in the middle of Figure 11, eight cable loops go out to each repeater and come back, and a node is attached to each repeater. The signal goes out from the wiring concentrator to one repeater, comes back, and goes on to the next repeater, visiting every repeater in turn to form a ring. The short slashes across the links mark the points that can be bypassed.
+From the wiring concentrator (labeled wire center) in the middle of Figure 11, cable loops go out to each of seven repeaters and come back, and a node is attached to each repeater. The dots below the wiring concentrator indicate that more repeaters can be connected in the same way. The signal goes out from the wiring concentrator to one repeater, comes back, and goes on to the next repeater, visiting every repeater in turn to form a ring. The short slashes across the links mark the points that can be bypassed.
 
 **Ring topology with bridges.** Connecting many repeaters over a large area to one ring runs into size limits because of cable length. In that case, several small ring structures are formed by the connection order at the wiring concentrators, and the ring structures are connected by bridges. This is called **segmented rings**.
 
@@ -799,7 +801,7 @@ The device used at the center of a star topology in optical fiber LANs is the **
 Couplers are made in two ways.
 
 - **Biconic fused coupler:** Several fibers are bundled, twisted, and fused together while being heated and pulled. The result has a biconical shape narrowing in the middle, and in the narrowed coupling region light crosses between the fibers and mixes.
-- **Mixing rod coupler:** The input and output fibers are attached to the two ends of a short glass rod (mixer rod). Light spreads and mixes inside the rod and is then divided among the output fibers. It is relatively easy to manufacture.
+- **Mixing rod coupler:** The input and output fibers are attached to the two ends of a short glass rod (mixer rod). Light spreads and mixes inside the rod and is then divided among the output fibers. It can be built at a larger scale and is relatively easy to manufacture.
 
 ![Figure 18. Mixing rod coupler and biconic fused coupler](../../images/Week06_p83.png)
 
@@ -817,7 +819,9 @@ In Figure 19, each station has a transmitter (T) and a receiver (R) and is conne
 
 The range of an optical fiber LAN is set by the strength that light loses on the way from transmitter to receiver, that is, the **optical loss**. Loss is expressed in decibels (dB). If input power $P_{in}$ falls to output power $P_{out}$, the loss is as follows.
 
-$$\text{loss (dB)} = 10 \log_{10} \frac{P_{in}}{P_{out}}$$
+```math
+\text{loss (dB)} = 10 \log_{10} \frac{P_{in}}{P_{out}}
+```
 
 For example, halving the power is $10 \log_{10} 2 \approx 3$ dB, and reducing it to 1/10 is 10 dB. Decibels turn multiplication into addition, so the total loss through several components is the sum of the individual losses.
 
@@ -843,11 +847,13 @@ There are two ways to avoid this loss.
 
 *Figure 20. Number of ports and operating range of a passive-star-coupler LAN with a 30 dB loss budget*
 
-In Figure 20, the horizontal axis is the operating range (km) and the vertical axis is the number of ports, on a logarithmic scale. Under the 30-dB loss budget, the wide region marked as the biconic fused coupler extends to about 1.8 km at 4 ports and about 0.7 km at 32 ports, while the narrow region marked as the mixing rod coupler covers 8-16 ports at about 1 km or less. Both regions have a slanted boundary along which the range shrinks as the number of ports grows. In the figure, the mixing rod coupler covers a narrower range of port counts than the biconic fused coupler and has a shorter operating range under the same loss budget.
+In Figure 20, the horizontal axis is the operating range (km) and the vertical axis is the number of ports, on a logarithmic scale. Under the 30-dB loss budget, the wide region marked as the biconic fused coupler extends to about 1.8 km at 4 ports and about 0.7 km at 32 ports, while the narrow region marked as the mixing rod coupler covers 8-16 ports at about 1 km or less. Both regions have a slanted boundary along which the range shrinks as the number of ports grows. In the figure, the mixing rod coupler covers a narrower range of port counts than the biconic fused coupler and has a shorter operating range under the same loss budget. In other words, the mixing rod coupler has the manufacturing advantage of being easy to build at a large scale, but under a 30 dB loss budget the number of ports and the distance it can serve are smaller than those of the biconic fused coupler.
 
 **Computing the operating range.** This slanted boundary can be explained with the loss budget. Let $L$ km be the distance from the coupler to each station; light then travels $L$ from the sending station to the coupler and $L$ from the coupler to the receiving station, $2L$ km in all. Assuming fiber attenuation of 4 dB per km and a fixed loss of 9 dB combining connectors and the coupler's excess loss (6 dB for four connectors and 3 dB for the coupler itself), the 30 dB loss budget is spent as follows.
 
-$$30 = 9 + 10 \log_{10} N + 4 \times 2L \quad \Rightarrow \quad L = \frac{21 - 10 \log_{10} N}{8}$$
+```math
+30 = 9 + 10 \log_{10} N + 4 \times 2L \quad \Rightarrow \quad L = \frac{21 - 10 \log_{10} N}{8}
+```
 
 | Number of ports $N$ | Coupler splitting loss $10 \log_{10} N$ (dB) | Budget left for fiber (dB) | Operating range $L$ (km) |
 |:-----|:-----|:-----|:-----|
@@ -916,7 +922,7 @@ As Figure 22 shows, a structured cabling system is a two-level star rooted at th
 
 *Figure 23. Aerial view and key figures of MIRA Technology Park*
 
-Figure 23 is an aerial photograph of the proving ground and research park, with key figures on the left: established in 1946 (Est. 1946), 39 major facilities, more than 35 companies on site, university partnerships, a proving ground of 62 miles (100 km) in total, and a centre of excellence in transport R&D. The box in the middle presents MIRA Technology Park as Europe's leading automotive technology cluster.
+Figure 23 is an aerial photograph of the proving ground and research park, with key figures on the left: established in 1946 (Est. 1946), more than 620 staff worldwide (620+ global staff), 39 major facilities, more than 35 companies on site, university partnerships, a proving ground of 62 miles (100 km) in total, and a centre of excellence in transport R&D. The box in the middle presents MIRA Technology Park as Europe's leading automotive technology cluster.
 
 > **Definition:** A **proving ground (PG)** is a vehicle test site that reproduces a variety of road conditions, such as high-speed circuits, handling tracks, rough roads, and braking tracks.
 
@@ -924,7 +930,7 @@ Figure 23 is an aerial photograph of the proving ground and research park, with 
 
 The current status of HORIBA MIRA is as follows.
 
-- It works for corporate customers in a variety of industries, with the automotive sector accounting for 75% of the work and the defense sector for 25%. Its business areas span automotive, defence, off-highway vehicles such as construction and agricultural machines, and motorsport.
+- It works for corporate customers in a variety of industries, with the automotive sector accounting for 75% of the work and the defense sector for 25%. Its business areas span automotive, defence, off-highway vehicles such as construction and agricultural machines, and motorsport. Its customers include aerospace companies such as Airbus, Boeing, and Bombardier; construction equipment companies such as JCB, Caterpillar, and Terex; vehicle manufacturers such as Jaguar, Land Rover, Ford, Toyota, Volkswagen, Hyundai, Tata, and Geely; suppliers such as Bosch, ZF, and Continental; defense companies such as BAE Systems, Thales, Lockheed Martin, and General Dynamics; motorsport teams such as Red Bull Racing and Williams Martini Racing; and public bodies such as Innovate UK and the European Union.
 - More than 600 employees, with 39 major test facilities, carry out various forms of testing, certification, and R&D support.
 - It has a proving ground with test tracks totaling about 100 km, allowing many types of vehicles to be tested. The site covers 297 ha [7].
 - Together with the UK government, it built and supports an automotive technology cluster called MIRA Technology Park (MTP). Some 40 automotive institutions, companies, and universities are located there, creating technical and commercial synergy.
@@ -951,7 +957,9 @@ The left of Figure 24 is an aerial photograph of the main proving ground, with m
 
 **Computing the neutral speed.** On a banked bend, the **neutral speed** is the speed at which a car can follow the bend without the driver adding sideways force by steering, that is, without lateral friction between tires and road. With bank angle $\theta$ and bend radius $r$, the vertical component of the normal force $N$ on the car must equal gravity $mg$, and its horizontal component must equal the centripetal force $mv^2/r$ required for circular motion.
 
-$$N \cos\theta = mg, \qquad N \sin\theta = \frac{mv^2}{r}$$
+```math
+N \cos\theta = mg, \qquad N \sin\theta = \frac{mv^2}{r}
+```
 
 Dividing the two equations gives $\tan\theta = v^2 / (rg)$, so the neutral speed is $v = \sqrt{rg\tan\theta}$. Substituting $r = 216$ m, $\theta = 33°$, and $g = 9.81$ m/s² gives $rg = 2118.96$ and $\tan 33° = 0.6494$, so $v = \sqrt{2118.96 \times 0.6494} = \sqrt{1376.1} \approx 37.1$ m/s, or about 134 km/h (83 mph). The official neutral speed of 86 mph (38.4 m/s) is slightly higher than this result. The radius that gives 86 mph at a 33° bank is $r = v^2 / (g\tan\theta) = 38.4^2 / (9.81 \times 0.6494) \approx 232$ m, so the official value cannot be reproduced from the 216 m radius and the 33° maximum bank in the table alone.
 
@@ -998,10 +1006,10 @@ The upper photograph of Figure 25 shows a test vehicle braking on a wetted surfa
 
 **Computing braking distance.** If friction is constant, the maximum deceleration is $\mu g$, so the distance to stop from speed $v$ is $d = v^2 / (2\mu g)$. Braking from 80 km/h ($80 / 3.6 = 22.2$ m/s) gives $v^2 = 493.8$, so:
 
-- Delugrip ($\mu = 0.65$): $d = 493.8 / (2 \times 0.65 \times 9.81) \approx 38.7$ m
-- Smooth concrete ($\mu = 0.40$): $d \approx 62.9$ m
-- Basalt tiles ($\mu = 0.20$): $d \approx 125.8$ m
-- Ceramic tiles ($\mu = 0.10$): $d \approx 251.7$ m
+- Delugrip ($`\mu = 0.65`$): $d = 493.8 / (2 \times 0.65 \times 9.81) \approx 38.7$ m
+- Smooth concrete ($`\mu = 0.40`$): $d \approx 62.9$ m
+- Basalt tiles ($`\mu = 0.20`$): $d \approx 125.8$ m
+- Ceramic tiles ($`\mu = 0.10`$): $d \approx 251.7$ m
 
 On ceramic tiles, the braking distance from 80 km/h far exceeds the 100 m length of the surface. Lowering the speed to 50 km/h (13.9 m/s) gives $d = 13.9^2 / (2 \times 0.10 \times 9.81) \approx 98$ m, which fits within 100 m. On low-friction surfaces, therefore, the test speed must be lowered so that the braking distance fits within the surface length.
 
@@ -1046,7 +1054,7 @@ The left of Figure 26 is an aerial photograph of the highway test area (ASSURED 
 
 **True/False Check:**
 
-| Statement | Verdict and Reason |
+| Statement | Judgment and Reason |
 |:-----|:-----|
 | A hub looks at the MAC address and sends a frame only to the destination port. | **F.** A hub does not use MAC addresses and duplicates the received frame to all ports. |
 | A bridge discards a frame if its destination MAC address is not in the table. | **F.** If it is not in the table, the bridge floods the frame to all ports except the one it arrived on. |
@@ -1184,7 +1192,7 @@ The left of Figure 26 is an aerial photograph of the highway test area (ASSURED 
 
 1. IEEE, *IEEE Standard for Local and Metropolitan Area Networks: Media Access Control (MAC) Bridges*, IEEE Std 802.1D-2004, 2004.
 2. ITU-T, *Recommendation G.984.1: Gigabit-capable passive optical networks (GPON): General characteristics*, International Telecommunication Union, 2008.
-3. W. Stallings, *Data and Computer Communications*, 10th ed. Upper Saddle River, NJ, USA: Pearson, 2014.
+3. W. Stallings, *Data and Computer Communications*, 10th ed. Boston, MA, USA: Pearson, 2014.
 4. IEEE, *IEEE Standard for Ethernet*, IEEE Std 802.3-2022, 2022.
 5. Telecommunications Industry Association, *ANSI/TIA-568 Commercial Building Telecommunications Cabling Standard* series, Arlington, VA, USA.
 6. ISO/IEC 11801-1:2017, *Information technology - Generic cabling for customer premises - Part 1: General requirements*, International Organization for Standardization, 2017.

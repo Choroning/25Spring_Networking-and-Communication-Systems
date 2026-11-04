@@ -180,7 +180,7 @@ OSI의 계층 개념은 서울의 학교와 로마의 학교 학생들이 편지
 | 대역 | 주파수 범위 | 주된 전파 방식 | 응용 예 |
 |:-----|:-----|:-----|:-----|
 | LF, MF | 30 kHz\~3 MHz | 지표를 따라 휘어 가는 지표파, 약 1,000 km까지 | 잠수함 통신, 무선 항법, 방송 |
-| HF | 3\~30 MHz | 전리층에 반사되는 공간파, 100\~150 km 단위로 도약 | 방송, 원거리 무선 |
+| HF | 3\~30 MHz | 공간파(space wave), 약 100\~150 km | 데이터 무선, 라디오 방송 |
 | VHF, UHF | 30 MHz\~3 GHz | 공간파, 전파 수평선(radio horizon)까지 | 데이터 무선, 라디오와 텔레비전 방송 |
 | SHF, EHF | 3\~300 GHz | 직접파, 기하학적 수평선(가시거리)까지 | 가시거리 무선, 위성 통신, 레이더 |
 
@@ -200,7 +200,9 @@ OSI의 계층 개념은 서울의 학교와 로마의 학교 학생들이 편지
 
 **경로 손실 모델.** 송신 전력 $P_T$ 가운데 수신기에 도달하는 전력 $P_R$의 비율을 거리의 함수로 나타낸 것이 경로 손실 모델(path loss model)이다. 가장 단순한 경우는 장애물이 전혀 없는 자유 공간이며, 프리스(Friis)의 공식으로 나타낸다 [2].
 
-$$\frac{P_R}{P_T} = G_T G_R \left( \frac{\lambda}{4 \pi d} \right)^2$$
+```math
+\frac{P_R}{P_T} = G_T G_R \left( \frac{\lambda}{4 \pi d} \right)^2
+```
 
 $G_T$와 $G_R$은 송신 안테나와 수신 안테나의 이득, $\lambda$는 파장, $d$는 거리이다. 수신 전력은 거리의 제곱에 반비례하므로 거리가 두 배가 되면 수신 전력은 1/4, 즉 $10 \log_{10} 4 \approx 6$ dB 줄어든다. 예를 들어 5.9 GHz의 파장은 $\lambda = c/f = (3 \times 10^8)/(5.9 \times 10^9) \approx 0.0508$ m이다. 안테나 이득이 1일 때 100 m에서 자유 공간 경로 손실은 $20 \log_{10}(4 \pi \times 100 / 0.0508) \approx 87.9$ dB이고, 200 m에서는 약 93.9 dB이다.
 
@@ -210,11 +212,15 @@ $G_T$와 $G_R$은 송신 안테나와 수신 안테나의 이득, $\lambda$는 �
 
 실제 도로에는 반사면이 반드시 있다. 그림 6의 **2파 모델(two-ray model)** 은 높이 $h_1$인 송신 안테나에서 거리 $d$만큼 떨어진 높이 $h_2$의 차량 안테나로 오는 직접파와 지면에서 반사된 반사파 두 개만 고려한다. 반사파는 지면 아래 $h_1$ 깊이에 있는 거울상 안테나에서 출발한 것처럼 보이므로, 두 파의 경로 차이는 높이 $h_1 + h_2$와 $h_1 - h_2$로 계산된다. 거리가 충분히 멀면 두 파가 거의 반대 위상으로 만나 서로 상쇄되고, 수신 전력은 다음과 같이 근사된다.
 
-$$L_F = \frac{P_R}{P_T} = G_T \cdot G_R \cdot \left( \frac{h_1 h_2}{d^2} \right)^2$$
+```math
+L_F = \frac{P_R}{P_T} = G_T \cdot G_R \cdot \left( \frac{h_1 h_2}{d^2} \right)^2
+```
 
 이를 데시벨로 바꾸면 로그의 성질 $\log(ab) = \log a + \log b$와 $\log x^n = n \log x$에 따라 다음과 같다.
 
-$$L_F[\text{dB}] = 10 \log \left( G_T \cdot G_R \cdot \frac{(h_1 h_2)^2}{d^4} \right) = 10 \log G_T + 10 \log G_R + 20 \log h_1 + 20 \log h_2 - 40 \log d$$
+```math
+L_F[\text{dB}] = 10 \log \left( G_T \cdot G_R \cdot \frac{(h_1 h_2)^2}{d^4} \right) = 10 \log G_T + 10 \log G_R + 20 \log h_1 + 20 \log h_2 - 40 \log d
+```
 
 이 식에서 세 가지를 읽을 수 있다. 첫째, 수신 전력은 거리의 네제곱에 반비례하므로 거리가 두 배가 되면 $40 \log 2 \approx 12$ dB 줄어, 자유 공간(6 dB)보다 훨씬 빨리 약해진다. 둘째, 안테나 높이 $h_1$이나 $h_2$를 두 배로 하면 $20 \log 2 \approx 6$ dB 좋아진다. 노변 기지국을 높이 세우는 또 다른 이유이다. 셋째, 이 근사에는 파장이 들어 있지 않다.
 
@@ -238,15 +244,17 @@ $$L_F[\text{dB}] = 10 \log \left( G_T \cdot G_R \cdot \frac{(h_1 h_2)^2}{d^4} \r
 
 **QPSK(Quadrature Phase Shift Keying).** 2비트 묶음(dibit) 네 가지에 위상이 90°(π/2)씩 다른 반송파를 대응시킨다. 그림 8의 표에서 00은 0°, 01은 90°, 10은 180°, 11은 270°이며, 비트열 01, 10, 10, 11, 00을 그 위상의 파형으로 보낸다. 한 심볼에 2비트를 보내므로, 같은 심볼 속도에서 BPSK의 두 배 속도로 데이터를 보낸다.
 
-> **참고:** 실제 시스템은 성상도에서 이웃한 두 점의 비트 묶음이 한 비트만 다르도록 위상을 00, 01, 11, 10의 순서로 배정하는 **그레이 부호(Gray code)** 매핑을 쓴다 [4]. 잡음 때문에 수신기가 이웃한 점으로 잘못 판정하더라도 비트 오류가 하나만 생기도록 하기 위해서이다.
+> **참고:** IEEE 802.11을 비롯한 대부분의 디지털 통신 시스템은 성상도에서 이웃한 두 점의 비트 묶음이 한 비트만 다르도록 위상을 00, 01, 11, 10의 순서로 배정하는 **그레이 부호(Gray code)** 매핑을 쓴다 [4]. 잡음 때문에 수신기가 이웃한 점으로 잘못 판정하더라도 비트 오류가 하나만 생기도록 하기 위해서이다.
 
 ![그림 9. 8-QAM의 파형과 성상도](../../images/Week13_13-1_p20.png)
 
 *그림 9. 8-QAM의 파형과 성상도*
 
-**QAM(Quadrature Amplitude Modulation).** PSK와 달리 위상뿐 아니라 진폭(크기)도 변수로 쓴다. 그림 9의 8-QAM은 진폭 두 가지와 위상 네 가지를 조합한 여덟 점을 써서 한 번에 3비트($2^3 = 8$)를 보낸다. 성상도에서 안쪽 네 점(000, 010, 100, 110)은 작은 진폭, 바깥쪽 네 점(001, 011, 101, 111)은 큰 진폭이며, 같은 방향의 두 점은 위상이 같다. 같은 원리로 16-QAM은 한 번에 4비트($2^4 = 16$), 64-QAM은 6비트($2^6 = 64$)를 보낸다. 일반적으로 $M$개의 점을 쓰는 변조는 한 심볼에 다음 비트 수를 싣는다.
+**QAM(Quadrature Amplitude Modulation).** PSK와 달리 위상뿐 아니라 진폭(크기)도 변수로 쓴다. 그림 9의 8-QAM은 진폭 두 가지와 위상 네 가지를 조합한 여덟 점을 써서 한 번에 3비트($`2^3 = 8`$)를 보낸다. 성상도에서 안쪽 네 점(000, 010, 100, 110)은 작은 진폭, 바깥쪽 네 점(001, 011, 101, 111)은 큰 진폭이며, 같은 방향의 두 점은 위상이 같다. 같은 원리로 16-QAM은 한 번에 4비트($`2^4 = 16`$), 64-QAM은 6비트($`2^6 = 64`$)를 보낸다. 일반적으로 $M$개의 점을 쓰는 변조는 한 심볼에 다음 비트 수를 싣는다.
 
-$$b = \log_2 M$$
+```math
+b = \log_2 M
+```
 
 | 변조 방식 | 성상도의 점 수 $M$ | 심볼당 비트 수 $b$ |
 |:-----|:-----|:-----|
@@ -264,9 +272,11 @@ $$b = \log_2 M$$
 
 > **용어 정의:** **부호화(channel coding)** 는 데이터의 오류를 검출하고 정정할 수 있도록 원래 데이터에 여분의 비트(중복, redundancy)를 더해 변환하는 기술이다. 대표적으로 **선형 블록 부호(linear block code)** 와 **길쌈 부호(convolutional code)** 가 있다.
 
-모든 채널 부호는 실제로 보내려는 정보 비트 $k$개를 $n$비트의 부호어(codeword)로 바꾼다($n > k$). 정보 비트 수와 부호어 길이의 비를 **부호화율(code rate)** 이라 한다.
+모든 채널 부호는 실제로 보내려는 정보 비트 $k$개를 $n$비트의 부호어(codeword)로 바꾼다($`n > k`$). 정보 비트 수와 부호어 길이의 비를 **부호화율(code rate)** 이라 한다.
 
-$$R = \frac{\text{정보 비트 길이}}{\text{부호화된 부호어 길이}} = \frac{k}{n}$$
+```math
+R = \frac{\text{정보 비트 길이}}{\text{부호화된 부호어 길이}} = \frac{k}{n}
+```
 
 - 부호어 길이 $n$이 클수록 복호기(decoder)의 처리량이 늘어 시스템이 복잡해진다.
 - 부호화율 $R$은 통신 시스템이 차지하는 주파수 대역폭과 부호의 오류 정정 능력에 관련된다. $R$이 작을수록 중복이 많아 오류를 더 잘 정정하지만, 같은 대역폭으로 보낼 수 있는 정보량은 줄어든다.
@@ -297,9 +307,11 @@ $$R = \frac{\text{정보 비트 길이}}{\text{부호화된 부호어 길이}} =
 
 > **용어 정의:** 두 신호(벡터)가 **직교(orthogonal)** 한다는 것은 두 신호의 내적이 0이라는 뜻이며, 서로 독립적이어서 한 신호가 다른 신호의 검출을 방해하지 않음을 의미한다.
 
-심볼 길이가 $T$일 때 부반송파의 주파수를 $1/T$의 정수배($k/T$)로 정하면, 서로 다른 두 부반송파 $k \neq m$의 내적은 다음과 같이 0이 된다.
+심볼 길이가 $T$일 때 부반송파의 주파수를 $1/T$의 정수배($`k/T`$)로 정하면, 서로 다른 두 부반송파 $k \neq m$의 내적은 다음과 같이 0이 된다.
 
-$$\int_0^T e^{j 2 \pi k t / T} \cdot e^{-j 2 \pi m t / T} \, dt = \int_0^T e^{j 2 \pi (k - m) t / T} \, dt = \begin{cases} T & (k = m) \\ 0 & (k \neq m) \end{cases}$$
+```math
+\int_0^T e^{j 2 \pi k t / T} \cdot e^{-j 2 \pi m t / T} \, dt = \int_0^T e^{j 2 \pi (k - m) t / T} \, dt = \begin{cases} T & (k = m) \\ 0 & (k \neq m) \end{cases}
+```
 
 $k \neq m$이면 $e^{j 2 \pi (k-m) t / T}$가 구간 $T$ 동안 정확히 정수 번 회전하므로 적분이 0이 된다. 그림 11의 위쪽처럼 부반송파의 스펙트럼은 서로 겹치지만, 각 부반송파의 정점 주파수에서 다른 부반송파의 스펙트럼은 모두 0을 지난다. 그래서 FDM처럼 부반송파 사이에 빈 보호 대역을 두지 않고 촘촘히 배치해도 수신기가 각 부반송파를 분리할 수 있어 대역폭을 효율적으로 쓴다. 또 데이터를 저속으로 쪼개면 심볼 하나의 길이가 길어지므로, 다중 경로로 늦게 도착한 파가 다음 심볼을 침범하는 심볼 간 간섭(ISI)에 강해진다(2.13절의 순환 전치).
 
@@ -387,7 +399,7 @@ flowchart TD
 
 *그림 14. 순수 ALOHA와 슬롯 ALOHA의 전송과 충돌*
 
-**순수 ALOHA(pure ALOHA).** 동기가 필요 없는 가장 단순한 방식으로, 보낼 데이터가 생기면 즉시 보낸다. 그림 14의 위쪽에서 사용자 1의 두 번째 DATA1과 사용자 2의 두 번째 DATA2가 시간상 일부라도 겹치므로 두 프레임 모두 망가진다. **슬롯 ALOHA(slotted ALOHA)** 는 시계를 맞추어 시간을 프레임 길이의 슬롯으로 나누고, 슬롯의 시작에서만 보내게 한다. 그러면 프레임이 일부만 겹치는 일이 없어지고 같은 슬롯을 고른 경우에만 충돌하므로, 충돌 가능 구간이 프레임 두 개 길이에서 한 개 길이로 줄어든다. 그 결과 최대 채널 효율이 순수 ALOHA의 약 18%($1/2e$)에서 약 37%($1/e$)로 높아진다 [5].
+**순수 ALOHA(pure ALOHA).** 동기가 필요 없는 가장 단순한 방식으로, 보낼 데이터가 생기면 즉시 보낸다. 그림 14의 위쪽에서 사용자 1의 두 번째 DATA1과 사용자 2의 두 번째 DATA2가 시간상 일부라도 겹치므로 두 프레임 모두 망가진다. **슬롯 ALOHA(slotted ALOHA)** 는 시계를 맞추어 시간을 프레임 길이의 슬롯으로 나누고, 슬롯의 시작에서만 보내게 한다. 그러면 프레임이 일부만 겹치는 일이 없어지고 같은 슬롯을 고른 경우에만 충돌하므로, 충돌 가능 구간이 프레임 두 개 길이에서 한 개 길이로 줄어든다. 그 결과 최대 채널 효율이 순수 ALOHA의 약 18%($`1/2e`$)에서 약 37%($`1/e`$)로 높아진다 [5].
 
 ![그림 15. 1-지속, 비지속, p-지속 CSMA의 동작](../../images/Week13_13-1_p29.png)
 
@@ -715,7 +727,7 @@ RF-DSRC의 MAC 계층은 시간을 슬롯으로 나눈 TDMA 프레임을 쓴다.
 
 *표 13. RF-DSRC MAC 프레임의 슬롯*
 
-MDS와 ACTS의 합은 1개 이상 8개 이하이므로($1 \le n + k \le 8$), FCMS를 포함한 한 프레임은 2\~9개의 슬롯으로 이루어진다.
+MDS와 ACTS의 합은 1개 이상 8개 이하이므로($`1 \le n + k \le 8`$), FCMS를 포함한 한 프레임은 2\~9개의 슬롯으로 이루어진다.
 
 ![그림 31. RFCU와 OBU 사이의 RF-DSRC 통신 절차](../../images/Week13_13-2_p08.png)
 
@@ -737,7 +749,7 @@ MDS와 ACTS의 합은 1개 이상 8개 이하이므로($1 \le n + k \le 8$), FCM
 
 *그림 32. RF-DSRC FCMS의 필드 구성*
 
-그림 32의 FCMS는 100옥텟 슬롯 안에 다음 필드를 담는다(그림 위의 숫자는 각 필드에 할당된 크기이다).
+그림 32의 FCMS는 100옥텟 슬롯 안에 다음 필드를 담는다.
 
 | 필드 | 뜻 | 역할 |
 |:-----|:-----|:-----|
@@ -753,6 +765,8 @@ MDS와 ACTS의 합은 1개 이상 8개 이하이므로($1 \le n + k \le 8$), FCM
 
 *표 14. FCMS의 필드*
 
+> **참고:** 그림 32에 적힌 숫자를 모두 옥텟으로 보고 더하면 100을 크게 넘는다. 예를 들어 CI(1)와 T0(28)로 이루어진 SCI 여덟 개만 더해도 $8 \times 29 = 232$이다. 따라서 이 숫자를 FCMS의 옥텟 배치로 그대로 읽을 수는 없으며, 필드의 크기를 더하면 정확히 100옥텟이 되는 MDS 슬롯(그림 33), ACTS 슬롯(그림 34)과 달리 그림 32는 필드의 종류와 순서를 보여 주는 그림으로 보아야 한다.
+
 MDS 슬롯은 데이터를 싣는 MDC와 수신 확인을 싣는 ACKC로 이루어진다(숫자는 옥텟 수).
 
 ```text
@@ -763,18 +777,18 @@ MDS 슬롯은 데이터를 싣는 MDC와 수신 확인을 싣는 ACKC로 이루�
 +----+-----+-----+--------+-----+------+----+-----+----+-----+------+
 |<------------ MDC ------------>|      |<------ ACKC ------->|
 
-MAC control field: FRG | C/L | (reserved) | C/R | SEQ | LI | (reserved)
+MAC control field (bits): FRG 1 | C/L 1 | reserved 1 | C/R 1 | SEQ 4 | LI 7 | reserved 1
 ```
 
 *그림 33. RF-DSRC MDS 슬롯의 구성*
 
-MDC는 PR(2), CSW(2), MAC 제어 필드(2), MSDU(65), CRC(2)의 73옥텟이고, ACKC는 PR(2), CSW(2), AI(1), CRC(2)의 7옥텟이다. 그 사이와 뒤의 t3(11)과 t4(9)는 송신과 수신을 전환하기 위한 시간 간격이며, 모두 더하면 $73 + 11 + 7 + 9 = 100$옥텟이 된다. CSW는 FCMS의 FSW처럼 PR 바로 뒤에 오는 동기 워드이다. MAC 제어 필드는 다음 하위 필드로 이루어진다.
+MDC는 PR(2), CSW(2), MAC 제어 필드(2), MSDU(65), CRC(2)의 73옥텟이고, ACKC는 PR(2), CSW(2), AI(1), CRC(2)의 7옥텟이다. 그 사이와 뒤의 t3(11)과 t4(9)는 송신과 수신을 전환하기 위한 시간 간격이며, 모두 더하면 $73 + 11 + 7 + 9 = 100$옥텟이 된다. CSW는 FCMS의 FSW처럼 PR 바로 뒤에 오는 동기 워드이다. 16비트의 MAC 제어 필드는 다음 하위 필드로 이루어지며, 나머지 두 비트는 이후 사용을 위해 예약되어 있다.
 
-- **FRG(fragmentation):** LPDU의 분할 정보이다.
-- **C/L(continuous/last):** 분할된 LPDU의 마지막 조각인지 알린다.
-- **C/R(command/response):** 명령인지 응답인지 구분한다.
-- **SEQ(sequence number):** MSDU의 순서 번호이다.
-- **LI(length indicator):** MSDU 안의 유효 데이터 길이이다.
+- **FRG(fragmentation, 1비트):** LPDU의 분할 정보이다.
+- **C/L(continuous/last, 1비트):** 분할된 LPDU의 마지막 조각인지 알린다.
+- **C/R(command/response, 1비트):** 명령인지 응답인지 구분한다.
+- **SEQ(sequence number, 4비트):** MSDU의 순서 번호이다.
+- **LI(length indicator, 7비트):** MSDU 안의 유효 데이터 길이이다.
 
 ACKC의 **AI(acknowledgement identifier)** 는 수신 확인 정보이다.
 
@@ -812,7 +826,7 @@ DSRC의 대표적인 응용인 ETCS는 나라마다 이름이 다르다. 한국�
 
 *그림 36. 하이패스 서비스 시스템의 구조*
 
-그림 36의 하이패스 차로에는 지붕(캐노피)에 달린 안테나 1과 안테나 2(RF 또는 적외선), 차종 분류 장치(TCS 겸용), 차량 촬영 장치, 차량 검지기, 통합 차로 제어기, 운전자 표시기가 있다. 차량 단말기에는 적외선 방식과 주파수(RF) 방식이 있다. 징수는 다음 순서로 진행된다.
+그림 36의 하이패스 차로에는 요금소 지붕(캐노피) 앞의 기둥에 달린 안테나 1과 안테나 2(RF 또는 적외선), 차종 분류 장치(TCS 겸용), 차량 촬영 장치, 차량 검지기, 통합 차로 제어기, 운전자 표시기가 있다. 차량 단말기에는 적외선 방식과 주파수(RF) 방식이 있다. 징수는 다음 순서로 진행된다.
 
 1. 전자 카드를 꽂은 차량 단말기를 단 차량이 요금소에 진입한다.
 2. 안테나와 차량 단말기가 DSRC 통신으로 정보를 교환한다.
@@ -896,9 +910,9 @@ TGp가 만든 IEEE 802.11p가 3절의 WAVE의 물리 계층과 MAC 계층이다.
 
 > **용어 정의:** **DSSS(direct sequence spread spectrum, 직접 수열 확산 스펙트럼)** 는 각 비트를 빠른 부호열에 곱해 넓은 대역으로 퍼뜨려 보내는 방식이다. **CCK(complementary code keying)** 는 802.11b가 5.5 Mbps와 11 Mbps에 쓰는 DSSS의 부호 방식이다. **MIMO(multiple input multiple output)** 는 송신과 수신에 여러 안테나를 써서 여러 데이터 흐름(공간 스트림)을 동시에 보내는 기술이며, 4×4는 송신 안테나 4개와 수신 안테나 4개를 뜻한다.
 
-표 17의 3.7 GHz 행은 미국의 3.65\~3.7 GHz 대역에서 802.11a 방식을 고출력으로 쓰는 개정(802.11y)으로, 실외 5 km까지 닿는다. 802.11n은 MIMO와 40 MHz 대역 결합으로, 802.11ac는 최대 160 MHz와 8개 스트림으로 속도를 높였다. 802.11ad는 60 GHz 대역의 2,160 MHz 폭 채널로 약 6.9 Gbit/s를 낸다.
+표 17의 3.7 GHz 행은 미국의 3.65\~3.7 GHz 대역에서 802.11a 방식을 고출력으로 쓰는 개정(802.11y)으로, 실외 5 km까지 닿는다. 802.11n은 MIMO와 40 MHz 대역 결합으로, 802.11ac는 최대 160 MHz와 8개 스트림으로 속도를 높였다. 802.11ad는 60 GHz 대역의 2,160 MHz 폭 채널로 최대 약 6.75 Gbit/s를 낸다 [11].
 
-> **참고:** 802.11ad는 여러 공간 스트림을 동시에 보내는 MIMO가 아니라, 많은 안테나 소자로 전파를 한 방향에 모으는 빔포밍(beamforming)으로 60 GHz의 큰 경로 손실을 보상한다. 표 17의 "10×10 초과"는 이런 안테나 배열의 규모로 이해하는 편이 정확하다.
+> **참고:** 802.11ad는 여러 공간 스트림을 동시에 보내는 MIMO가 아니라, 많은 안테나 소자로 전파를 한 방향에 모으는 빔포밍(beamforming)으로 60 GHz의 큰 경로 손실을 보상한다. 표 17의 "10×10 초과"는 이런 안테나 배열의 규모로 이해하는 편이 정확하다. 또 표 17의 802.11ad 속도 6,912 Mbit/s는 802.11ad의 최고 전송 속도인 약 6.75 Gbit/s보다 크게 적힌 값이다 [11].
 
 ### 2.8 무선 LAN의 구성 요소와 구조
 
@@ -958,7 +972,9 @@ DCF는 무선 LAN의 기본 접근 방식으로, 1.10절의 CSMA/CA를 구현한
 
 프레임 간 간격(IFS)은 짧을수록 우선순위가 높다. 슬롯 시간을 $aSlotTime$이라 하면 다음 관계가 있다.
 
-$$PIFS = SIFS + aSlotTime, \qquad DIFS = SIFS + 2 \times aSlotTime$$
+```math
+PIFS = SIFS + aSlotTime, \qquad DIFS = SIFS + 2 \times aSlotTime
+```
 
 20 MHz OFDM 물리 계층에서는 $aSlotTime = 9$ µs, SIFS = 16 µs이므로 PIFS = 25 µs, DIFS = 34 µs이다 [4]. **PIFS(PCF interframe space)** 는 PCF의 제어국이 DCF 단말보다 먼저 채널을 잡을 때 쓴다.
 
@@ -968,9 +984,11 @@ $$PIFS = SIFS + aSlotTime, \qquad DIFS = SIFS + 2 \times aSlotTime$$
 
 **임의 백오프 시간.** 백오프 시간은 다음과 같이 정한다.
 
-$$\text{Backoff Time} = \text{Random}() \times aSlotTime$$
+```math
+\text{Backoff Time} = \text{Random}() \times aSlotTime
+```
 
-$\text{Random}()$은 구간 $[0, CW]$에서 고른 의사 난수 정수이고, 경쟁 윈도 $CW$는 $aCWmin \le CW \le aCWmax$를 만족한다. 슬롯 시간은 채널을 한 번 감지하는 데 필요한 최소 시간이다. 처음 시도할 때 $CW = aCWmin$이고, 전송에 실패할 때마다 $CW \leftarrow 2(CW + 1) - 1$로 늘리며, $aCWmax$에 이르면 더 늘리지 않는다. 그림 43의 예($aCWmin = 7$, $aCWmax = 255$)에서 CW는 7, 15, 31, 63, 127, 255, 255로 늘어난다. 전송에 성공하면 CW는 다시 $aCWmin$으로 돌아간다. 예를 들어 $CW = 15$, $aSlotTime = 9$ µs이면 백오프 시간은 0\~135 µs 가운데 9 µs 단위의 값이다. 충돌이 잦을수록 CW가 커져 단말들이 서로 다른 백오프 값을 고를 확률이 높아지고, 충돌이 줄어든다.
+$\text{Random}()$은 구간 $[0, CW]$에서 고른 의사 난수 정수이고, 경쟁 윈도 $CW$는 $aCWmin \le CW \le aCWmax$를 만족한다. 슬롯 시간은 채널을 한 번 감지하는 데 필요한 최소 시간이다. 처음 시도할 때 $CW = aCWmin$이고, 전송에 실패할 때마다 $CW \leftarrow 2(CW + 1) - 1$로 늘리며, $aCWmax$에 이르면 더 늘리지 않는다. 그림 43의 예($aCWmin = 7$, $`aCWmax = 255`$)에서 CW는 7, 15, 31, 63, 127, 255, 255로 늘어난다. 전송에 성공하면 CW는 다시 $aCWmin$으로 돌아간다. 예를 들어 $CW = 15$, $aSlotTime = 9$ µs이면 백오프 시간은 0\~135 µs 가운데 9 µs 단위의 값이다. 충돌이 잦을수록 CW가 커져 단말들이 서로 다른 백오프 값을 고를 확률이 높아지고, 충돌이 줄어든다.
 
 ![그림 44. 여러 단말의 DCF 백오프 절차](../../images/Week13_13-2_p26.png)
 
@@ -1011,7 +1029,9 @@ IEEE 802.11e는 QoS를 지원하기 위해 EDCA를 도입했다.
 
 그림 46에서 각 접근 범주의 AIFS는 다음과 같이 정한다.
 
-$$AIFS[AC] = AIFSN[AC] \times aSlotTime + SIFS$$
+```math
+AIFS[AC] = AIFSN[AC] \times aSlotTime + SIFS
+```
 
 $AIFSN$은 접근 범주마다 정한 정수이다. 그림의 값($aSlotTime = 9$ µs, SIFS = 16 µs)을 쓰면 802.11의 기본값인 AC_VO와 AC_VI의 AIFSN 2는 AIFS 34 µs(= DIFS), AC_BE의 AIFSN 3은 $3 \times 9 + 16 = 43$ µs, AC_BK의 AIFSN 7은 $7 \times 9 + 16 = 79$ µs이다. 매체가 비면 높은 우선순위의 큐가 더 짧게 기다린 뒤 더 작은 경쟁 윈도에서 백오프하므로, 통계적으로 먼저 채널을 잡는다. 백오프는 매체가 비어 있는 동안만 줄고, 매체가 다시 바빠지면 멈춘다.
 
@@ -1117,11 +1137,11 @@ Destination:      CTS              ACK0              ACK1
 ```mermaid
 flowchart LR
     subgraph TX["송신기"]
-        A1["FEC 부호기"] --> A2["인터리빙과 매핑"] --> A3["IFFT"] --> A4["GI 삽입"] --> A5["심볼 파형 성형"] --> A6["IQ 변조"] --> A7["HPA"]
+        A1["FEC 부호기"] --> A2["인터리빙과 매핑"] --> A3["IFFT"] --> A4["GI 삽입"] --> A5["심볼 파형 성형"] --> A6["IQ 변조"] --> A8["상향 변환(혼합기)"] --> A7["HPA"]
     end
     subgraph RX["수신기"]
-        B1["LNA"] --> B2["AGC 증폭기"] --> B3["IQ 검파"] --> B4["GI 제거"] --> B5["FFT"] --> B6["디매핑과 디인터리빙"] --> B7["FEC 복호기"]
-        B1 -.-> C1["수신 레벨 검출"] -.-> B2
+        B1["LNA"] --> B8["하향 변환(혼합기)"] --> B2["AGC 증폭기"] --> B3["IQ 검파"] --> B4["GI 제거"] --> B5["FFT"] --> B6["디매핑과 디인터리빙"] --> B7["FEC 복호기"]
+        B2 -.-> C1["수신 레벨 검출"] -.-> B2
         B3 -.-> C2["AFC와 클록 복원"]
     end
     A7 -- "무선 채널" --> B1
@@ -1129,7 +1149,7 @@ flowchart LR
 
 *그림 50. OFDM 물리 계층의 송신기와 수신기 블록도*
 
-그림 50의 송신기에서 **FEC 부호기**는 1.7절의 길쌈 부호로 중복을 더하고, **인터리빙(interleaving)** 은 이웃한 비트를 서로 멀리 떨어진 부반송파에 흩어 놓아 특정 주파수가 페이딩으로 약해져도 오류가 몰리지 않게 하며, **매핑**은 비트 묶음을 BPSK\~64-QAM의 성상도 점으로 바꾼다. **IFFT(inverse fast Fourier transform)** 는 부반송파들의 값을 한꺼번에 시간 영역의 OFDM 심볼로 바꾸고, **GI(guard interval) 삽입**은 순환 전치를 붙인다. 이어서 심볼 파형을 다듬고, **IQ 변조**(동위상 성분과 직교 성분을 이용한 변조)로 반송파에 올린 뒤 **HPA(high power amplifier, 고출력 증폭기)** 로 증폭해 안테나로 보낸다. 수신기는 이 과정을 거꾸로 한다. **LNA(low noise amplifier, 저잡음 증폭기)** 와 **AGC(automatic gain control)** 증폭기로 신호의 크기를 맞추고, IQ 검파로 기저대역 신호를 얻은 뒤 **AFC(automatic frequency control)** 와 클록 복원으로 주파수와 시간을 맞춘다. GI를 제거하고 **FFT**로 부반송파 값을 꺼낸 다음, 디매핑과 디인터리빙, FEC 복호로 원래 비트를 복원한다.
+그림 50의 송신기에서 **FEC 부호기**는 1.7절의 길쌈 부호로 중복을 더하고, **인터리빙(interleaving)** 은 이웃한 비트를 서로 멀리 떨어진 부반송파에 흩어 놓아 특정 주파수가 페이딩으로 약해져도 오류가 몰리지 않게 하며, **매핑**은 비트 묶음을 BPSK\~64-QAM의 성상도 점으로 바꾼다. **IFFT(inverse fast Fourier transform)** 는 부반송파들의 값을 한꺼번에 시간 영역의 OFDM 심볼로 바꾸고, **GI(guard interval) 삽입**은 순환 전치를 붙인다. 이어서 심볼 파형을 다듬고, **IQ 변조**(동위상 성분과 직교 성분을 이용한 변조)로 중간 주파수의 반송파에 올린 다음, 혼합기(mixer)와 국부 발진기로 무선 주파수까지 올리고(상향 변환) **HPA(high power amplifier, 고출력 증폭기)** 로 증폭해 안테나로 보낸다. 수신기는 이 과정을 거꾸로 한다. **LNA(low noise amplifier, 저잡음 증폭기)** 로 증폭한 신호를 혼합기로 중간 주파수까지 내리고(하향 변환), 수신 레벨 검출기가 이득을 조절하는 **AGC(automatic gain control)** 증폭기로 신호의 크기를 맞춘다. 이어서 IQ 검파로 기저대역 신호를 얻은 뒤 **AFC(automatic frequency control)** 와 클록 복원으로 주파수와 시간을 맞춘다. GI를 제거하고 **FFT**로 부반송파 값을 꺼낸 다음, 디매핑과 디인터리빙, FEC 복호로 원래 비트를 복원한다.
 
 ![그림 51. OFDM 부반송파의 배치와 순환 전치를 이용한 심볼 동기](../../images/Week13_13-2_p37.png)
 
@@ -1137,7 +1157,7 @@ flowchart LR
 
 **부반송파.** 그림 51의 위쪽처럼 OFDM 채널의 부반송파는 역할이 나뉜다. 데이터를 싣는 **데이터 부반송파**, 수신기가 위상과 주파수 오차를 추적하도록 알려진 값을 싣는 **파일럿 부반송파**, 비워 두는 **널 부반송파**가 있다. 널 부반송파는 채널 양 끝의 보호 대역(guard band)과, 송수신기의 국부 발진기 누설(LO leakage)이 생기는 가운데(DC)에 둔다. 802.11a/g/p는 64개의 FFT 위치 가운데 데이터 48개와 파일럿 4개, 모두 52개를 쓴다.
 
-**순환 전치와 심볼 동기.** 각 OFDM 심볼의 앞에는 그 심볼의 뒷부분 $T_G$ 길이를 복사해 붙인 **순환 전치(CP, cyclic prefix)** 가 있다. 다중 경로로 늦게 도착한 앞 심볼의 꼬리는 CP 구간에만 걸치므로, 수신기가 CP를 버리면 심볼 간 간섭이 사라진다. 그림 51의 아래쪽에서 CP(구간 B)는 같은 심볼의 끝부분(구간 $B'$)과 똑같다. 수신기는 길이 $T_G$인 두 창 W1과 W2를 $T_{sub}$(유효 심볼 길이)만큼 떨어뜨려 두고 신호를 따라 밀어 가며(sliding window) 두 창의 상관을 계산한다. 두 창이 각각 B와 $B'$에 정확히 놓일 때 상관이 최대가 되므로, 그 위치에서 심볼의 시작 시점을 찾는다. 20 MHz 채널에서 $T_{sub} = 3.2$ µs, $T_G = 0.8$ µs로 심볼 하나가 4 µs이다.
+**순환 전치와 심볼 동기.** 각 OFDM 심볼의 앞에는 그 심볼의 뒷부분 $T_G$ 길이를 복사해 붙인 **순환 전치(CP, cyclic prefix)** 가 있다. 다중 경로로 늦게 도착한 앞 심볼의 꼬리는 CP 구간에만 걸치므로, 수신기가 CP를 버리면 심볼 간 간섭이 사라진다. 그림 51의 아래쪽에서 CP(구간 B)는 같은 심볼의 끝부분(구간 $`B'`$)과 똑같다. 수신기는 길이 $T_G$인 두 창 W1과 W2를 $T_{sub}$(유효 심볼 길이)만큼 떨어뜨려 두고 신호를 따라 밀어 가며(sliding window) 두 창의 상관을 계산한다. 두 창이 각각 B와 $B'$에 정확히 놓일 때 상관이 최대가 되므로, 그 위치에서 심볼의 시작 시점을 찾는다. 20 MHz 채널에서 $T_{sub} = 3.2$ µs, $T_G = 0.8$ µs로 심볼 하나가 4 µs이다.
 
 | 변조 | 부호화율 | 부반송파당 부호화 비트 | OFDM 심볼당 부호화 비트 | OFDM 심볼당 데이터 비트 | 속도(20 MHz, Mb/s) | 속도(10 MHz, Mb/s) | 속도(5 MHz, Mb/s) |
 |:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|
@@ -1213,16 +1233,16 @@ WAVE 프로토콜의 특징은 다음과 같다.
 - **데이터 평면:** 아래에서부터 물리 계층(PHY), 채널 조정 기능을 포함한 WAVE MAC, LLC 부계층이 있고, 그 위에 두 갈래의 네트워크 계층이 있다. 한쪽은 IPv6와 UDP/TCP 같은 전송 프로토콜, 다른 쪽은 WSMP의 네트워킹 프로토콜과 전송 프로토콜이다. 맨 위에는 상위 계층 표준(higher layer standards), 예를 들어 11주차의 SAE J2735 메시지가 온다.
 - **관리 평면:** 물리 계층 관리 개체(PLME), MAC 관리 개체(MLME), 다중 채널 동작을 위한 MLME 확장(MLME extension), WAVE 관리 개체(WME, WAVE management entity), 보안 서비스(WAVE security services)가 있다. 각 계층과는 서비스 접점(SAP)으로 연결된다. 예를 들어 MLMEX SAP는 MLME 확장의 SAP, WME SAP는 WME의 SAP, SEC SAP는 보안 서비스의 SAP이다.
 
-그림 오른쪽의 괄호는 각 표준이 맡는 범위이다. IEEE 802.11p는 물리 계층과 MAC을, IEEE 1609.4는 WAVE MAC의 채널 조정과 MLME 확장을, IEEE 1609.3은 LLC 위의 네트워킹 서비스(IPv6, WSMP, WME)를, IEEE 1609.2는 보안 서비스를 맡는다.
+그림 오른쪽의 괄호는 각 표준이 맡는 범위이다. IEEE 802.11p는 물리 계층과 MAC을, IEEE 1609.4는 WAVE MAC의 채널 조정과 MLME 확장을, IEEE 1609.3은 LLC 부계층과 그 위의 네트워킹 서비스(IPv6, WSMP, WME)를, IEEE 1609.2는 보안 서비스를 맡는다.
 
 | 표준 | 내용 |
 |:-----|:-----|
-| IEEE 802.11p(2010) | WAVE를 위한 IEEE 802.11의 6번째 개정(Amendment 6) [11] |
-| IEEE 1609.2(2016) | 응용 메시지와 관리 메시지의 보안 서비스 [12] |
-| IEEE 1609.3(2016) | 네트워킹 서비스 [13] |
-| IEEE 1609.4(2016) | 다중 채널 동작 [14] |
-| IEEE 1609.11(2010) | ITS를 위한 무선 전자 결제 데이터 교환 프로토콜 [15] |
-| IEEE 1609.12(2016) | 식별자 할당 [16] |
+| IEEE 802.11p(2010) | WAVE를 위한 IEEE 802.11의 6번째 개정(Amendment 6) [12] |
+| IEEE 1609.2(2016) | 응용 메시지와 관리 메시지의 보안 서비스 [13] |
+| IEEE 1609.3(2016) | 네트워킹 서비스 [14] |
+| IEEE 1609.4(2016) | 다중 채널 동작 [15] |
+| IEEE 1609.11(2010, 2011년 발행) | ITS를 위한 무선 전자 결제 데이터 교환 프로토콜 [16] |
+| IEEE 1609.12(2016) | 식별자 할당 [17] |
 
 *표 24. WAVE를 이루는 표준*
 
@@ -1254,7 +1274,7 @@ WAVE의 물리 계층은 2.13절의 802.11a OFDM을 10 MHz 채널로 줄여 쓴�
 
 *그림 56. 미국의 WAVE 채널 배치와 채널별 송신 전력 한도*
 
-그림 56은 미국 연방통신위원회(FCC)가 정한 5.9 GHz 대역의 채널 배치이다 [17]. 채널 번호 $n$의 중심 주파수는 $5000 + 5n$ MHz이므로, 예를 들어 채널 172의 중심 주파수는 $5000 + 5 \times 172 = 5860$ MHz이다. 맨 아래의 5 MHz(5.850\~5.855 GHz)는 보호 대역으로 남겨 둔다.
+그림 56은 미국 연방통신위원회(FCC)가 정한 5.9 GHz 대역의 채널 배치이다 [18]. 채널 번호 $n$의 중심 주파수는 $5000 + 5n$ MHz이므로, 예를 들어 채널 172의 중심 주파수는 $5000 + 5 \times 172 = 5860$ MHz이다. 맨 아래의 5 MHz(5.850\~5.855 GHz)는 보호 대역으로 남겨 둔다.
 
 | 채널 | 중심 주파수(GHz) | 용도 | 송신 전력 한도 |
 |:-----|:-----|:-----|:-----|
@@ -1268,11 +1288,11 @@ WAVE의 물리 계층은 2.13절의 802.11a OFDM을 10 MHz 채널로 줄여 쓴�
 
 *표 26. 미국 WAVE 채널의 용도와 송신 전력 한도*
 
-> **용어 정의:** **dBm**은 1 mW를 기준으로 한 전력의 데시벨 표현으로, $P[\text{dBm}] = 10 \log_{10}(P / 1\ \text{mW})$이다. 33 dBm은 $10^{3.3} \approx 2{,}000$ mW, 즉 약 2 W이고, 23 dBm은 약 0.2 W, 40 dBm은 10 W, 44.8 dBm은 약 30 W이다.
+> **용어 정의:** **dBm**은 1 mW를 기준으로 한 전력의 데시벨 표현으로, $`P[\text{dBm}] = 10 \log_{10}(P / 1\ \text{mW})`$이다. 33 dBm은 $10^{3.3} \approx 2{,}000$ mW, 즉 약 2 W이고, 23 dBm은 약 0.2 W, 40 dBm은 10 W, 44.8 dBm은 약 30 W이다.
 
 제어 채널 178은 모든 장치가 WSA와 안전 메시지를 듣기 위해 모이는 채널이므로 가장 높은 출력을 허용하고, 채널 172는 지연이 짧고 가용성이 높아야 하는 차량 간 안전 통신에, 채널 184는 교차로의 고출력 공공 안전 통신에 전용으로 배정한다. 나머지 서비스 채널은 거리에 따라 중거리(33 dBm)와 단거리(23 dBm)로 나누어 공유한다.
 
-> **참고:** 이 채널 배치는 미국의 원래 계획이다. FCC는 2020년에 이 대역의 아래쪽 45 MHz를 비면허 와이파이 용도로 돌리고 위쪽 30 MHz를 C-V2X에 배정했다 [18]. 각국의 주파수 정책은 1주차에서 다루었다.
+> **참고:** 이 채널 배치는 미국의 원래 계획이다. FCC는 2020년에 이 대역의 아래쪽 45 MHz를 비면허 와이파이 용도로 돌리고 위쪽 30 MHz를 C-V2X에 배정했다 [19]. 각국의 주파수 정책은 1주차에서 다루었다.
 
 ### 3.5 IEEE 802.11p MAC과 EDCA 매개변수
 
@@ -1323,7 +1343,7 @@ AC_VI의 CWmin은 $(15 + 1)/2 - 1 = 7$, AC_VO의 CWmin은 $(15 + 1)/4 - 1 = 3$, 
 
 *그림 58. 동기 구간, 보호 구간, 시간 슬롯 0과 1*
 
-장치에 무선 송수신기가 하나뿐이면 한순간에 한 채널만 쓸 수 있다. IEEE 1609.4는 시간을 나누어 한 송수신기로 제어 채널과 서비스 채널을 번갈아 쓰게 한다 [14].
+장치에 무선 송수신기가 하나뿐이면 한순간에 한 채널만 쓸 수 있다. IEEE 1609.4는 시간을 나누어 한 송수신기로 제어 채널과 서비스 채널을 번갈아 쓰게 한다 [15].
 
 - **동기 구간(sync interval):** 협정 세계시(UTC)의 매초 시작에 맞추어 시간을 일정한 동기 구간으로 나눈다. 기본값은 100 ms이므로 1초에 동기 구간이 10개 있다.
 - **시간 슬롯:** 동기 구간은 CCH 구간(시간 슬롯 0)과 SCH 구간(시간 슬롯 1)으로 나뉘며, 기본값은 각각 50 ms이다.
@@ -1494,7 +1514,7 @@ TPID는 두 값씩 짝을 이루며, 앞의 값은 정보 요소 확장이 없�
 
 일반 WSM도 같은 방식으로 내려간다(그림 70). 상위 계층이 WSM-WaveShortMessage.req로 데이터를 넘기면, WSMP는 N-Header(Subtype 0, 선택 지시자, 버전, 선택적인 정보 요소 확장, TPID 0)와 T-Header(PSID, WSM 길이)를 붙여 WSM을 만들고 DL-UNITDATAX.req로 LLC에 넘긴다. LLC는 Type = 0x88DC를 붙여 MA-UNITDATAX.req로 MAC에 넘긴다.
 
-> **용어 정의:** **이더타입(EtherType)** 은 프레임에 실린 데이터가 어떤 네트워크 계층 프로토콜의 것인지 알려 주는 2옥텟의 값이다. WAVE의 LLC는 WSMP 데이터에 0x88DC, IPv6 데이터에 0x86DD를 붙이므로, 수신 측 LLC는 이 값을 보고 데이터를 WSMP나 IPv6로 올린다 [13].
+> **용어 정의:** **이더타입(EtherType)** 은 프레임에 실린 데이터가 어떤 네트워크 계층 프로토콜의 것인지 알려 주는 2옥텟의 값이다. WAVE의 LLC는 WSMP 데이터에 0x88DC, IPv6 데이터에 0x86DD를 붙이므로, 수신 측 LLC는 이 값을 보고 데이터를 WSMP나 IPv6로 올린다 [14].
 
 ### 3.11 WAVE의 통신 절차
 
@@ -1538,7 +1558,7 @@ TPID는 두 값씩 짝을 이루며, 앞의 값은 정보 요소 확장이 없�
 
 > **용어 정의:** **PSID(provider service identifier, 제공자 서비스 식별자)** 는 WSA와 WSM이 어떤 응용 서비스의 것인지 나타내는 식별자이다. ETSI와 ISO 표준에서는 같은 값을 **AID(ITS application identifier)** 라 부른다.
 
-IEEE 1609.12는 WAVE 식별자의 할당을 정한 표준이며(2012년 9월 21일부터 유효), ETSI, ISO, SAE, IEEE 표준이 쓰는 PSID의 할당에 관한 규범적 요구사항을 담고 있다 [16]. PSID는 가변 길이이며, 첫 옥텟의 앞 비트들이 길이를 알려 주는 **p-부호화(p-encoding)** 로 나타낸다.
+IEEE 1609.12는 WAVE 식별자의 할당을 정한 표준이며(2012년 9월 21일부터 유효), ETSI, ISO, SAE, IEEE 표준이 쓰는 PSID의 할당에 관한 규범적 요구사항을 담고 있다 [17]. PSID는 가변 길이이며, 첫 옥텟의 앞 비트들이 길이를 알려 주는 **p-부호화(p-encoding)** 로 나타낸다.
 
 | 첫 옥텟의 앞 비트(b7 b6 b5 b4) | PSID 길이 | p-부호화 값의 범위(16진수) | 값의 개수 |
 |:-----|:-----|:-----|:-----|
@@ -1560,18 +1580,31 @@ x는 0과 1 어느 것이어도 되는 비트이다. 값의 개수는 길이 표
 
 옥텟은 첫 옥텟부터 차례로 전송된다. 짧은 PSID는 자주 쓰는 핵심 서비스에 배정하여 메시지를 짧게 만든다.
 
-| PSID 값 | p-부호화 값 | 응용 분야 | 관련 표준 |
+| PSID 값 | p-부호화 값 | 응용 분야 | 관련 표준 또는 기관 |
 |:-----|:-----|:-----|:-----|
 | 0x00 | 0x00 | 시스템(system) | ISO 15628 |
 | 0x01 | 0x01 | 전자 요금 징수(electronic fee collection) | ISO 14906 |
 | 0x02\~0x13 | 0x02\~0x13 | 화물 관리, 대중교통, 교통 정보, 주차 관리 등 DSRC 응용 | ISO 15628 등 |
+| 0x14, 0x15 | 0x14, 0x15 | 전자 요금 징수의 준수 확인 통신 응용, 위치 보강 통신 응용 | ISO TS 12813, ISO TS 13141 |
 | 0x20 | 0x20 | 차량 간 안전과 인지(vehicle to vehicle safety and awareness) | SAE J2735 |
+| 0x21, 0x22 | 0x21, 0x22 | 센서가 제한된 차량의 차량 간 안전과 인지, 궤도 차량의 안전과 인지 | SAE J2735 |
 | 0x23 | 0x23 | WAVE 보안 관리 | IEEE 1609.2 |
 | 0x24 | 0x24 | CA 기본 서비스(cooperative awareness) | ETSI EN 302 637-2 |
 | 0x25 | 0x25 | DEN 기본 서비스(decentralized environmental notification) | ETSI EN 302 637-3 |
+| 0x26 | 0x26 | 공통 응용의 오작동 보고(misbehavior reporting) | CAMP |
+| 0x27 | 0x27 | 취약 도로 이용자(VRU) 안전 응용 | SAE DSRC TC |
 | 0x7F | 0x7F | 시험(testing) | IEEE P1609 WG |
-| 0x80\~0x85 | 0x80-00\~0x80-05 | GPS 보정, 교차로 안전, 여행자 정보와 노변 표지, 프로브 교환, 긴급 차량 | SAE J2735 |
+| 0x80\~0x85 | 0x80-00\~0x80-05 | 차분 GPS 보정(비압축, 압축), 교차로 안전과 인지, 여행자 정보와 노변 표지, 이동 프로브 교환, 도로 위의 긴급 차량과 이상 거동 차량 | SAE J2735 |
+| 0x86 | 0x80-06 | 원격 ITS 스테이션 관리 프로토콜(RMPE) | ISO 24102-2 |
 | 0x87 | 0x80-07 | WAVE 서비스 광고(WSA) | IEEE 1609.3 |
+| 0x88 | 0x80-08 | 보안 관리 정보의 피어 간 배포 | CAMP |
+| 0x01-00 | 0x80-80 | 인증서 폐기 목록(CRL) 응용 | CAMP |
+| 0x3E-80\~0x40-1F | 0xBE-00\~0xBF-9F | 예약(416개) | IEEE P1609 WG |
+| 0x40-20\~0x40-5F | 0xBF-A0\~0xBF-DF | 사설 용도(64개) | IEEE P1609 WG |
+| 0x40-60\~0x40-7F | 0xBF-E0\~0xBF-FF | 시험(32개) | IEEE P1609 WG |
+| 0x40-80, 0x40-81 | 0xC0-00-00, 0xC0-00-01 | CAM 처리기, DENM 처리기(둘 다 사용 중단, deprecated) | ETSI |
+| 0x20-40-81 | 0xE0-00-00-01 | ITS 스테이션 내부 관리 통신 프로토콜(IICP) | ISO 24102-4 |
+| 0x10-20-40-7E | 0xEF-FF-FF-FE | IPv6 라우팅 | IEEE 1609.3 |
 
 *표 36. IEEE 1609.12의 주요 PSID 할당*
 
@@ -1579,13 +1612,13 @@ x는 0과 1 어느 것이어도 되는 비트이다. 값의 개수는 길이 표
 
 ### 3.13 WAVE 전자 결제 서비스
 
-DSRC의 하이패스 같은 전자 요금 징수를 WAVE에서도 할 수 있도록, IEEE 1609.11은 **WAVE EPS(electronic payment service, 전자 결제 서비스)** 를 정한다 [15].
+DSRC의 하이패스 같은 전자 요금 징수를 WAVE에서도 할 수 있도록, IEEE 1609.11은 **WAVE EPS(electronic payment service, 전자 결제 서비스)** 를 정한다 [16].
 
 ![그림 73. RSU와 OBU의 WAVE EPS 구조](../../images/Week13_13-3_p39.png)
 
 *그림 73. RSU와 OBU의 WAVE EPS 구조*
 
-그림 73에서 요금을 받는 RSU 쪽은 **수취인(payee)**, 요금을 내는 OBU 쪽은 **지불인(payer)** 이다. 양쪽 모두 응용(payee 또는 payer application), 결제 서비스(payment service), WAVE 스택으로 이루어지며, 응용은 응용 핵심부(application core)와 **WIAL(WAVE interface application layer)** 로 나뉜다. 응용 핵심부의 내용은 표준의 범위 밖(out of scope)이고, 응용 핵심부와 WIAL 사이는 DSRC 요금 징수의 응용 인터페이스 표준인 ISO 14906을 [19], 수취인과 지불인의 WIAL 사이는 DSRC 응용 계층 표준인 ISO 15628을 따른다 [9]. 즉 WAVE EPS는 DSRC 시대의 요금 징수 응용을 그대로 두고, 그 아래의 통신만 WAVE로 바꾼 구조이다.
+그림 73에서 요금을 받는 RSU 쪽은 **수취인(payee)**, 요금을 내는 OBU 쪽은 **지불인(payer)** 이다. 양쪽 모두 응용(payee 또는 payer application), 결제 서비스(payment service), WAVE 스택으로 이루어지며, 응용은 응용 핵심부(application core)와 **WIAL(WAVE interface application layer)** 로 나뉜다. 수취인과 지불인의 응용 핵심부 사이에서 직접 오가는 내용은 표준의 범위 밖(out of scope)이고, 응용 핵심부와 WIAL 사이는 DSRC 요금 징수의 응용 인터페이스 표준인 ISO 14906을 [20], 수취인과 지불인의 WIAL 사이는 DSRC 응용 계층 표준인 ISO 15628을 따른다 [9]. 즉 WAVE EPS는 DSRC 시대의 요금 징수 응용을 그대로 두고, 그 아래의 통신만 WAVE로 바꾼 구조이다.
 
 ![그림 74. RSU가 BST를 WSA에 담아 보내는 초기화 절차](../../images/Week13_13-3_p40.png)
 
@@ -1710,7 +1743,7 @@ UTAC는 1945년에 프랑스 파리 근교 Linas-Montlhéry 지역의 시험장(
 | 특수 차량 | 차량을 개조하여 은밀 방호, 시스템 통합, 배출가스 저감 같은 능력을 더하고, 방탄과 방폭 기능을 갖춘 방호 차량을 만든다. |
 | 감사 | 기업의 성과를 평가하거나 인증을 준비하도록 돕고, 자동차 생산자, 제조사, 공급사를 위한 감사원을 둔다. |
 | 교육 | 도로 위험 관리, 친환경 운전, 출퇴근 안전 교육과 정부 기관의 특수 자격 교육을 하며, 교육 과정은 프랑스의 교육 품질 인증(Qualiopi)을 받았다. |
-| 행사 | 기업 대상(BtoB) 행사와, Linas-Montlhéry에서 해마다 14회 이상 여는 대중 대상(BtoC) 행사, 후원을 한다. |
+| 행사 | 보도 발표와 제품 발표, 교육, 영화와 방송과 패션 촬영, 워크숍 같은 기업 대상(BtoB) 행사를 전담 팀과 시설로 열고, Linas-Montlhéry의 유산을 살려 해마다 14회 이상의 대중 대상(BtoC) 행사를 열며, 후원과 VIP 초청 같은 협력을 제공한다. |
 
 *표 38. UTAC의 업무 분야*
 
@@ -1753,7 +1786,7 @@ UTAC는 1945년에 프랑스 파리 근교 Linas-Montlhéry 지역의 시험장(
 
 *그림 84. 영국 Millbrook 시험장의 트랙 배치*
 
-UTAC는 2021년 2월에 유럽에서 가장 큰 차량 시험 연구소 가운데 하나인 영국의 Millbrook 인수를 마쳐(2020년 12월 발표) 더 많은 나라에 다양한 서비스를 제공할 기반을 마련했고, 2019년에는 전기차 관련 시험소를 완공하는 등 미래차의 시험과 인증 기반을 넓혔다. 그림 84의 Millbrook 시험장은 승용차와 대형 차량의 시험을 위해 특별히 만든 시설이다. 일반 도로 트랙은 까다로운 유럽 도로를 모사하며 고속 서킷, 많은 특수 노면, 시뮬레이션으로 유명한 Millbrook Hill Route를 포함하고, 오프로드 트랙에는 민간 차량과 군용 차량의 능력을 시험하는 장애물이 많다.
+UTAC는 2021년 2월에 유럽에서 가장 큰 차량 시험 연구소 가운데 하나인 영국의 Millbrook 인수를 마쳐(2020년 12월 발표) [21] 더 많은 나라에 다양한 서비스를 제공할 기반을 마련했고, 2019년에는 전기차 관련 시험소를 완공하는 등 미래차의 시험과 인증 기반을 넓혔다. 그림 84의 Millbrook 시험장은 승용차와 대형 차량의 시험을 위해 특별히 만든 시설이다. 일반 도로 트랙은 까다로운 유럽 도로와 고속 서킷, 많은 특수 노면을 모사하며 유명한 Millbrook Hill Route를 포함하고, 오프로드 트랙에는 민간 차량과 군용 차량의 능력을 시험하는 장애물이 많다.
 
 ### 4.5 시험 시설
 
@@ -1975,7 +2008,7 @@ UTAC는 2021년 2월에 유럽에서 가장 큰 차량 시험 연구소 가운�
     <details>
     <summary>정답</summary>
 
-    두 절차 모두 BST와 VST의 교환으로 초기화하고, 과금 정보를 읽고 차감한 뒤 영수증을 저장하고 연결을 해제하는 흐름이 같으며, 응용은 ISO 14906과 ISO 15628을 따른다. 다른 점은 메시지를 싣는 수단이다. 하이패스는 5.8 GHz DSRC의 TDMA 슬롯(FCMS, MDS, ACTS)으로, WAVE EPS는 5.9 GHz WAVE의 WSA(BST)와 WSM(VST와 결제 메시지)으로 보낸다.
+    두 절차 모두 BST와 VST의 교환으로 초기화하고, 과금 정보를 읽고 차감한 뒤 영수증을 저장하고 연결을 해제하는 흐름이 같다. WAVE EPS는 이 DSRC 요금 징수 응용(ISO 14906, ISO 15628)을 그대로 쓴다. 다른 점은 메시지를 싣는 수단이다. 하이패스는 5.8 GHz DSRC의 TDMA 슬롯(FCMS, MDS, ACTS)으로, WAVE EPS는 5.9 GHz WAVE의 WSA(BST)와 WSM(VST와 결제 메시지)으로 보낸다.
 
     </details>
 
@@ -2004,12 +2037,14 @@ UTAC는 2021년 2월에 유럽에서 가장 큰 차량 시험 연구소 가운�
 8. EN 12253:2004, *Road transport and traffic telematics - Dedicated short-range communication - Physical layer using microwave at 5.8 GHz*, European Committee for Standardization, 2004.
 9. ISO 15628:2013, *Intelligent transport systems - Dedicated short range communication (DSRC) - DSRC application layer*, International Organization for Standardization, 2013.
 10. ARIB STD-T75, *Dedicated Short-Range Communication System*, Association of Radio Industries and Businesses, 2001.
-11. IEEE Std 802.11p-2010, *Amendment 6: Wireless Access in Vehicular Environments*, 2010.
-12. IEEE Std 1609.2-2016, *IEEE Standard for Wireless Access in Vehicular Environments - Security Services for Applications and Management Messages*, 2016.
-13. IEEE Std 1609.3-2016, *IEEE Standard for Wireless Access in Vehicular Environments (WAVE) - Networking Services*, 2016.
-14. IEEE Std 1609.4-2016, *IEEE Standard for Wireless Access in Vehicular Environments (WAVE) - Multi-Channel Operation*, 2016.
-15. IEEE Std 1609.11-2010, *IEEE Standard for Wireless Access in Vehicular Environments (WAVE) - Over-the-Air Electronic Payment Data Exchange Protocol for Intelligent Transportation Systems (ITS)*, 2010.
-16. IEEE Std 1609.12-2016, *IEEE Standard for Wireless Access in Vehicular Environments (WAVE) - Identifier Allocations*, 2016.
-17. Federal Communications Commission, *Amendment of the Commission's Rules Regarding Dedicated Short-Range Communication Services in the 5.850-5.925 GHz Band (5.9 GHz Band)*, Memorandum Opinion and Order, FCC 06-110, Jul. 2006.
-18. Federal Communications Commission, *Use of the 5.850-5.925 GHz Band*, First Report and Order, FCC 20-164, ET Docket No. 19-138, Nov. 2020.
-19. ISO 14906:2018, *Electronic fee collection - Application interface definition for dedicated short-range communication*, International Organization for Standardization, 2018.
+11. S. Shankar N., D. Dash, H. El Madi, and G. Gopalakrishnan, "WiGig and IEEE 802.11ad - For multi-gigabyte-per-second WPAN and WLAN," arXiv:1211.7356, Nov. 2012. https://arxiv.org/abs/1211.7356
+12. IEEE Std 802.11p-2010, *Amendment 6: Wireless Access in Vehicular Environments*, 2010.
+13. IEEE Std 1609.2-2016, *IEEE Standard for Wireless Access in Vehicular Environments - Security Services for Applications and Management Messages*, 2016.
+14. IEEE Std 1609.3-2016, *IEEE Standard for Wireless Access in Vehicular Environments (WAVE) - Networking Services*, 2016.
+15. IEEE Std 1609.4-2016, *IEEE Standard for Wireless Access in Vehicular Environments (WAVE) - Multi-Channel Operation*, 2016.
+16. IEEE Std 1609.11-2010, *IEEE Standard for Wireless Access in Vehicular Environments (WAVE) - Over-the-Air Electronic Payment Data Exchange Protocol for Intelligent Transportation Systems (ITS)*, 2010.
+17. IEEE Std 1609.12-2016, *IEEE Standard for Wireless Access in Vehicular Environments (WAVE) - Identifier Allocations*, 2016.
+18. Federal Communications Commission, *Amendment of the Commission's Rules Regarding Dedicated Short-Range Communication Services in the 5.850-5.925 GHz Band (5.9 GHz Band)*, Memorandum Opinion and Order, FCC 06-110, Jul. 2006.
+19. Federal Communications Commission, *Use of the 5.850-5.925 GHz Band*, First Report and Order, FCC 20-164, ET Docket No. 19-138, Nov. 2020.
+20. ISO 14906:2018, *Electronic fee collection - Application interface definition for dedicated short-range communication*, International Organization for Standardization, 2018.
+21. Spectris plc, "Divestment of Millbrook completed," regulatory announcement, London Stock Exchange, Feb. 2, 2021. https://www.sharesmagazine.co.uk/news/market/LSE20210202071511_3865205/Divestment-of-Millbrook-completed

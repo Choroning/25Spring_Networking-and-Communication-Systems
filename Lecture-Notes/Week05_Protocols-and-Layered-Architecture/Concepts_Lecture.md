@@ -173,7 +173,7 @@ The starting point of the Internet is ARPANET.
 
 *Figure 3. ARPANET connection maps of 1969, 1970, 1972, and 1977*
 
-Figure 3 draws the nodes and links of ARPANET by year on a map of the United States. In 1969 there were only four nodes in the west: UCLA, UCSB, SRI, and the University of Utah. By 1970, MIT, Harvard, and others in the east were connected, creating links across the continent. In 1972, nodes clustered in the west and east, forming the two regions marked with circles, and by 1977 dozens of nodes, including satellite circuits, formed a mesh spanning the entire United States.
+Figure 3 draws the nodes and links of ARPANET by year on a map of the United States. In 1969 there were only four nodes in the west: UCLA, UCSB, SRI, and the University of Utah. By 1970, MIT, BBN, and Harvard in the east were connected, creating links across the continent, and the two regions where nodes clustered, in the west and east, are marked with circles. In 1972, the nodes in both regions had increased greatly and nodes had also appeared inland (Illinois, Tinker, and others), and by 1977 dozens of nodes, including satellite circuits, formed a mesh spanning the entire United States.
 
 ### 1.6 The Seven OSI Layers and the Five TCP/IP Layers
 
@@ -199,7 +199,7 @@ The two representative layered protocol architectures are the OSI model and TCP/
 
 *Table 4. Comparison of the nature of the OSI model and TCP/IP*
 
-> **Key Point:** The OSI model is a reference that describes communication functions in a finely divided way, while TCP/IP is the set of protocols that actually runs the Internet. The two models correspond exactly at the transport layer and the network (internet) layer, and the OSI session, presentation, and application layers are merged into a single application layer in TCP/IP.
+> **Key Point:** The OSI model is a reference that describes communication functions in a finely divided way, while TCP/IP is the set of protocols that actually runs the Internet. Although the layer boundaries of the two models do not match exactly, their transport layers and network (internet) layers broadly correspond, and the OSI session, presentation, and application layers are merged into a single application layer in TCP/IP.
 
 ---
 
@@ -317,7 +317,7 @@ In a network made up of several sub networks, the three protocols divide their r
 
 *Figure 5. Data transfer from host A to host B viewed through the TCP/IP layers*
 
-In Figure 5, host A and host B each have TCP, IP, a network access protocol, and a physical layer. Host A is attached to network 1, host B to network 2, and router J connects the two networks. Router J has only an IP layer and an attachment to each of the two networks (NAP 1 and NAP 2, network access protocol). The three kinds of addresses shown in the figure are as follows.
+In Figure 5, host A and host B each have TCP, IP, a network access protocol, and a physical layer. Host A is attached to network 1, host B to network 2, and router J connects the two networks. Router J has only an IP layer and a network access protocol for each of the two networks (NAP 1 and NAP 2, network access protocol). The three kinds of addresses shown in the figure are as follows.
 
 - **Port or service access point (SAP):** An address that identifies an application (App X, App Y) within a host.
 - **Global network address:** An address that identifies a host across the entire Internet, that is, the IP address.
@@ -337,7 +337,9 @@ The two dashed lines in the figure are logical connections. The upper dashed lin
 
 TCP splits the data stream received from the application into pieces of a certain size and attaches a TCP header to each piece, creating a **TCP segment**.
 
-$$\text{TCP segment} = \text{TCP header (segment header)} + \text{segmented user data}$$
+```math
+\text{TCP segment} = \text{TCP header (segment header)} + \text{segmented user data}
+```
 
 The structure of the TCP header is as follows. Each row is 32 bits (4 bytes).
 
@@ -393,7 +395,7 @@ The structure of the TCP header is as follows. Each row is 32 bits (4 bytes).
 
 > **Note:** The current TCP standard (RFC 9293) shortens the reserved field to 4 bits and adds the CWR and ECE flags used for congestion notification, defining the flags as 8 bits [3], [4]. The overall header size and the positions of the other fields are unchanged.
 
-**Computing the header length.** A TCP header without options is 20 bytes, so Offset is $20 / 4 = 5$, or `0101` in binary. With 12 bytes of options, the header is $20 + 12 = 32$ bytes and Offset is $32 / 4 = 8$, that is, `1000`. Since Offset is 4 bits, its maximum value is 15, and the maximum header length is $15 \times 4 = 60$ bytes. This is why options are at most 40 bytes ($60 - 20 = 40$).
+**Computing the header length.** A TCP header without options is 20 bytes, so Offset is $20 / 4 = 5$, or `0101` in binary. With 12 bytes of options, the header is $20 + 12 = 32$ bytes and Offset is $32 / 4 = 8$, that is, `1000`. Since Offset is 4 bits, its maximum value is 15, and the maximum header length is $15 \times 4 = 60$ bytes. This is why options are at most 40 bytes ($`60 - 20 = 40`$).
 
 **Three-way handshake.** Before sending data, TCP establishes a connection by exchanging three segments. This is called the **three-way handshake**. Let the client's initial sequence number be 1000 and the server's initial sequence number be 5000.
 
@@ -422,7 +424,9 @@ sequenceDiagram
 
 > **Definition:** An **IP datagram** is the basic unit in which data are delivered by the IP protocol; it is also called an IP packet. The IP header contains the address information of the source and destination hosts.
 
-$$\text{IP datagram} = \text{IP header} + \text{TCP segment}$$
+```math
+\text{IP datagram} = \text{IP header} + \text{TCP segment}
+```
 
 The total length of an IP datagram is 20-65,535 bytes, of which the header is 20-60 bytes. The structure of the IPv4 header is as follows.
 
@@ -471,7 +475,9 @@ The total length of an IP datagram is 20-65,535 bytes, of which the header is 20
 
 To cross an actual network (for example, Ethernet), the IP datagram is wrapped again in the header and trailer of the network access layer. As the unit of capacity of network transmission, this unit is sometimes broadly called a **packet**, but since it is the unit of the network access layer (data link layer), its precise name is **frame**.
 
-$$\text{frame} = \text{frame header} + \text{IP datagram} + \text{trailer}$$
+```math
+\text{frame} = \text{frame header} + \text{IP datagram} + \text{trailer}
+```
 
 > **Note:** The lecture material explains packet as a blend of package and bucket, but packet is the word pack with a diminutive suffix and means a small package. As a communication term, it was first used in the mid-1960s by Donald Davies of the National Physical Laboratory (NPL) in the United Kingdom to describe sending data divided into small parcels [7].
 
@@ -492,7 +498,7 @@ The Ethernet frame header has the following fields.
 
 Figure 9 shows what an Ethernet frame carries and in what order. The UDP packet at the top consists, in order, of DA<sub>MAC</sub> (6 bytes), SA<sub>MAC</sub> (6 bytes), EType `0x0800` (2 bytes), the IP header (20-60 bytes, Protocol field 17), the UDP header (8 bytes), UDP data, and CRC (4 bytes). The UDP header is 8 bytes, made of four 16-bit fields: source port (SP<sub>UDP</sub>), destination port (DP<sub>UDP</sub>), UDP length, and UDP checksum. In the TCP packet at the bottom, the Protocol field of the IP header is 6, and a TCP header of 20-60 bytes takes the place of the UDP header. THL (TCP header length) in the TCP header is the same field as Offset in Table 7. The UDP header is much shorter than the TCP header because UDP does not perform sequence numbering, acknowledgment, or flow control.
 
-**Computing the frame size.** The data part (IP datagram) of an Ethernet frame is at most 1500 bytes. With an IP header (20 bytes) and a TCP header (20 bytes) without options, the user data TCP can carry in one frame are $1500 - 20 - 20 = 1460$ bytes. The whole frame is then $6 + 6 + 2 + 20 + 20 + 1460 + 4 = 1518$ bytes, and the share of user data is $1460 / 1518 \approx 96.2\%$. The remaining 3.8% is the headers and trailers of each layer, that is, the overhead paid for using a layered structure.
+**Computing the frame size.** The data part (IP datagram) of an Ethernet frame is at most 1500 bytes. With an IP header (20 bytes) and a TCP header (20 bytes) without options, the user data TCP can carry in one frame are $1500 - 20 - 20 = 1460$ bytes. The whole frame is then $6 + 6 + 2 + 20 + 20 + 1460 + 4 = 1518$ bytes, and the share of user data is $`1460 / 1518 \approx 96.2\%`$. The remaining 3.8% is the headers and trailers of each layer, that is, the overhead paid for using a layered structure.
 
 ### 2.12 The Role of the Router and Protocol Data Units
 
@@ -536,7 +542,7 @@ Representative application protocols running over TCP/IP are as follows.
 |:-----|:-----|:-----|
 | SMTP (Simple Mail Transfer Protocol) | The standard for transferring e-mail on the Internet. | Standardized in 1982 as RFC 821, and updated in 2008 as RFC 5321, which includes Extended SMTP (ESMTP) [9]. |
 | FTP (File Transfer Protocol) | A communication protocol for computers to exchange files over TCP/IP networks. | First published in 1971 and developed so that computers connected to a network could exchange data smoothly. A derivative, FTPS, applies TLS encryption to FTP [10]. |
-| TELNET | An Internet protocol for connecting to a remote host computer and using it like a terminal. | Because it does not encrypt data, it has today been largely replaced by SSH [11]. |
+| TELNET | An Internet protocol for connecting to a remote host computer and using it like a terminal [11]. | Because it does not encrypt data, it has today been largely replaced by SSH. |
 
 *Table 11. Representative TCP/IP application protocols*
 
@@ -876,7 +882,7 @@ Steps 14-20 at the receiver are the exact reverse of steps 1-7 at the sender. If
 
 **True/False Check:**
 
-| Statement | Verdict and Reason |
+| Statement | Judgment and Reason |
 |:-----|:-----|
 | A router decides the next path by looking at the port number in the TCP header. | **F.** A router is a layer 3 device that decides the path by the destination IP address in the IP header. |
 | The physical layer adds no header or trailer to the PDU. | **T.** It transmits the PDU of the data link layer as bits, unchanged. |
@@ -1021,4 +1027,4 @@ Steps 14-20 at the receiver are the exact reverse of steps 1-7 at the sender. If
 10. P. Ford-Hutchinson, "Securing FTP with TLS," RFC 4217, Oct. 2005.
 11. J. Postel and J. Reynolds, "Telnet Protocol Specification," RFC 854, May 1983.
 12. ISO/IEC 7498-1:1994, *Information technology - Open Systems Interconnection - Basic Reference Model: The Basic Model*, International Organization for Standardization, 1994.
-13. W. Stallings, *Data and Computer Communications*, 10th ed. Upper Saddle River, NJ, USA: Pearson, 2014.
+13. W. Stallings, *Data and Computer Communications*, 10th ed. Boston, MA, USA: Pearson, 2014.

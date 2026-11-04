@@ -156,11 +156,11 @@ The CAN specification defines only the physical layer and the data link layer of
 
 To convert the decimal number 220 to binary, write 220 as a sum of powers of 2. Since $220 = 128 + 64 + 16 + 8 + 4$, the result is as follows.
 
-$$
+```math
 220 = 1 \times 2^7 + 1 \times 2^6 + 0 \times 2^5 + 1 \times 2^4 + 1 \times 2^3 + 1 \times 2^2 + 0 \times 2^1 + 0 \times 2^0 = 11011100_2
-$$
+```
 
-To convert to hexadecimal, group the binary digits four at a time from the right. A 4-bit group represents 0-15, so it corresponds exactly to one hexadecimal digit. Since $1101_2 = 13 = \text{D}$ and $1100_2 = 12 = \text{C}$, $220 = 11011100_2 = \text{DC}_{16}$. Checking in reverse, $13 \times 16 + 12 = 208 + 12 = 220$.
+To convert to hexadecimal, group the binary digits four at a time from the right. A 4-bit group represents 0-15, so it corresponds exactly to one hexadecimal digit. Since $1101_2 = 13 = \text{D}$ and $1100_2 = 12 = \text{C}$, $`220 = 11011100_2 = \text{DC}_{16}`$. Checking in reverse, $13 \times 16 + 12 = 208 + 12 = 220$.
 
 | Binary | Decimal | Hex | Binary | Decimal | Hex |
 |:-----|:-----|:-----|:-----|:-----|:-----|
@@ -175,7 +175,7 @@ To convert to hexadecimal, group the binary digits four at a time from the right
 
 *Table 3. Correspondence between 4-bit binary numbers and hexadecimal digits*
 
-A byte of all 1s is $11111111_2 = 255 = \text{FF}_{16}$. A byte represents 256 states, but because counting starts at 0, its largest value is 255, not 256. CAN data is handled in bytes, and one byte fits exactly into two hexadecimal digits, so CAN tools display identifiers and data in hexadecimal. The notation for hexadecimal differs between tools. These notes use the 0x prefix as in `0xDC`, Kvaser CanKing uses the $ prefix as in `$123`, and CANoe in hexadecimal display mode shows the value without a prefix, as in `DC`.
+A byte of all 1s is $`11111111_2 = 255 = \text{FF}_{16}`$. A byte represents 256 states, but because counting starts at 0, its largest value is 255, not 256. CAN data is handled in bytes, and one byte fits exactly into two hexadecimal digits, so CAN tools display identifiers and data in hexadecimal. The notation for hexadecimal differs between tools. The C language family uses the `0x` prefix as in `0xDC`, Kvaser CanKing uses the `$` prefix as in `$123`, and CANoe in hexadecimal display mode shows the value without a prefix, as in `DC`. Below, hexadecimal values are written with the 0x prefix.
 
 ### 1.4 Bit Order and Byte Order
 
@@ -254,7 +254,7 @@ UART represents signal 0 as 0 V and signal 1 as the circuit's supply voltage, 5 
 
 *Figure 6. Structure of a UART frame and a UART waveform measured with a logic analyzer*
 
-In the upper part of Figure 6, the receiver starts its clock at the falling edge of the start bit (Receiver starts its clock), and on reaching the stop bit it generates an internal signal that a byte is in the receive buffer. The data bits are 1, 0, 1, 0, 1, 0, 1, 0 from the LSB, so rewritten from the MSB the byte is $01010101_2 = \text{0x55}$. The lower part is an actual UART waveform measured with a logic analyzer, in which the same structure, starting with a start bit and ending with a stop bit, repeats for each byte.
+In the upper part of Figure 6, the receiver starts its clock at the falling edge of the start bit (Receiver starts its clock), and on reaching the stop bit it generates an internal signal that a byte is in the receive buffer. The data bits are 1, 0, 1, 0, 1, 0, 1, 0 from the LSB, so rewritten from the MSB the byte is $01010101_2 = \text{0x55}$. The lower part is an actual UART waveform measured with a logic analyzer, in which the same structure, starting with a start bit and ending with a stop bit, repeats for each byte. The values 0xAA and 0xDC above the waveform are two consecutive bytes decoded by the logic analyzer. 0xAA (1010 1010) is sent from the LSB in the order 0, 1, 0, 1, 0, 1, 0, 1, so the start bit (0) and the first data bit (0) join to hold Low for two bit times, after which High and Low alternate bit by bit.
 
 | Item | UART | CAN |
 |:-----|:-----|:-----|
@@ -277,11 +277,11 @@ In the upper part of Figure 6, the receiver starts its clock at the falling edge
 
 Both signals in Figure 7 send 10 pulses per second, so their baud rate is 10 baud. The left signal has two levels (0 and 1), so each pulse carries 1 bit and the bit rate is 10 bps. The right signal has four levels (00, 01, 10, 11), so each pulse carries 2 bits and the bit rate is 20 bps. With $M$ signal levels, the following relation holds (Week 4).
 
-$$
+```math
 \text{Bit rate (bps)} = \text{Baud rate (baud)} \times \log_2 M
-$$
+```
 
-UART and CAN use two-level signals ($M = 2$, $\log_2 2 = 1$), so their baud rate and bit rate are equal. CAN tools therefore mix the two units for the same speed, as in "500 kBaud" (CANoe) and "500 kbit/s" (CanKing).
+UART and CAN use two-level signals ($M = 2$, $`\log_2 2 = 1`$), so their baud rate and bit rate are equal. CAN tools therefore mix the two units for the same speed, as in "500 kBaud" (CANoe) and "500 kbit/s" (CanKing).
 
 > **Note:** Among the explanations quoted in the lecture material, the sentence stating that in systems whose symbols carry several bits "the baud rate is typically much higher than the bit rate" has the relation reversed. When one symbol carries several bits, $\log_2 M > 1$ in the formula above, so the bit rate is higher than the baud rate.
 
@@ -291,7 +291,24 @@ In general, the faster the communication speed, the shorter the possible communi
 
 *Figure 8. Maximum data rate versus CAN bus length*
 
-Figure 8 plots the bus length (m) on the horizontal axis and the data rate (kbit/s) on the vertical axis, both on logarithmic scales. A bus of about 40 m or less can use 1000 kbit/s (1 Mbit/s), but as the bus gets longer the maximum speed falls, reaching about 5 kbit/s at 10,000 m (10 km). The dotted line in the shortest range extends above 1 Mbit/s, whereas the maximum speed of the classical CAN specification is 1 Mbit/s. Speed and length are inversely related because of CAN arbitration and acknowledgment. A bit sent by one node must reach the farthest node on the bus and the result must return within one bit time (Week 3), so a longer bus requires a longer bit time, that is, a lower speed. For example, the bit time is 1 µs at 1 Mbit/s and 2 µs at 500 kbit/s.
+Figure 8 plots the bus length (m) on the horizontal axis and the data rate (kbit/s) on the vertical axis, both on logarithmic scales. A bus of up to a few tens of meters can use 1000 kbit/s (1 Mbit/s), but as the bus gets longer the maximum speed falls, dropping below 10 kbit/s at a few kilometers. The dotted line in the shortest range extends above 1 Mbit/s (to 1600 kbit/s), whereas the maximum speed of the classical CAN specification is 1 Mbit/s. Speed and length are inversely related because of CAN arbitration and acknowledgment. A bit sent by one node must reach the farthest node on the bus and the result must return within one bit time (Week 3), so a longer bus requires a longer bit time, that is, a lower speed. For example, the bit time is 1 µs at 1 Mbit/s and 2 µs at 500 kbit/s.
+
+| Bit rate | Bus length | Nominal bit time |
+|:-----|:-----|:-----|
+| 1 Mbit/s | 30 m | 1 µs |
+| 800 kbit/s | 50 m | 1.25 µs |
+| 500 kbit/s | 100 m | 2 µs |
+| 250 kbit/s | 250 m | 4 µs |
+| 125 kbit/s | 500 m | 8 µs |
+| 62.5 kbit/s | 1000 m | 16 µs |
+| 20 kbit/s | 2500 m | 50 µs |
+| 10 kbit/s | 5000 m | 100 µs |
+
+*Table 5. Maximum bus length and nominal bit time by bit rate*
+
+In Table 5, the nominal bit time is the reciprocal of the bit rate, and the product of the bit rate and the bus length is roughly constant (30-62.5 Mbit/s × m). The same table is also covered in Week 9.
+
+> **Note:** The lecture material gives a bit time of 20 µs in the 1000 m row, but 20 µs is the bit time of 50 kbit/s ($`1 / 50000\ \text{s} = 20\ \mu\text{s}`$). The bit time of 62.5 kbit/s is $`1 / 62500\ \text{s} = 16\ \mu\text{s}`$.
 
 ### 1.8 CAN Topology and Signal Levels
 
@@ -310,7 +327,7 @@ The CAN signal levels are defined as follows.
 
 - A twisted pair of two wires is used, and data is expressed by the voltage difference between the two signal lines (**differential signaling**).
 - Data 0 is **dominant** and data 1 is **recessive**. When two nodes send different values at the same time, the bus becomes dominant, so dominant has priority over recessive.
-- The receiver reads 0 (dominant) when the differential voltage $V_{diff} = V_{CAN\_H} - V_{CAN\_L}$ is 0.9 V or more (up to about 5 V) and 1 (recessive) when it is 0.5 V or less. The range between 0.5 V and 0.9 V is a margin in which neither value is guaranteed [3].
+- The receiver reads 0 (dominant) when the differential voltage $`V_{diff} = V_{CAN\_H} - V_{CAN\_L}`$ is 0.9 V or more (up to about 5 V) and 1 (recessive) when it is 0.5 V or less. The range between 0.5 V and 0.9 V is a margin in which neither value is guaranteed [3].
 
 ![Figure 10. Voltages of CAN_H and CAN_L in the recessive and dominant states](../../images/Week10_p25.png)
 
@@ -341,7 +358,7 @@ The data field is at most 8 bytes, and the 4-bit DLC (data length code) in the c
 | 0 | 1 | 1 | 1 | 7 |
 | 1 | 0 | 0 | 0 | 8 |
 
-*Table 5. DLC values and the number of data bytes*
+*Table 6. DLC values and the number of data bytes*
 
 Four DLC bits can represent 0-15. In classical CAN, 9-15 are interpreted as 8 bytes, and CAN FD uses these values for data lengths longer than 8 bytes (Section 2.3) [4].
 
@@ -360,7 +377,7 @@ The upper band of Figure 11 divides a standard data frame into the SOF, arbitrat
 | RTR (remote transmission request) | 1 | Indicates whether the frame is a data frame (dominant) or a remote frame (recessive). |
 | SRR (substitute remote request) | 1 | A bit in the extended frame (CAN 2.0B) that takes the place of the RTR of the standard frame (CAN 2.0A); it is always recessive. |
 
-*Table 6. Fields related to arbitration*
+*Table 7. Fields related to arbitration*
 
 ```text
 Standard (CAN 2.0A) : SOF | ID (11)      | RTR | IDE | r0 | DLC (4) | Data ...
@@ -411,9 +428,9 @@ Node 1 sends 1 at ID5, reads 0, and loses. Node 2 and Node 3 have identical 11-b
 
 The **CRC field (cyclic redundancy check field)** consists of a 15-bit CRC sequence and a 1-bit CRC delimiter. The transmitter divides the bits from the SOF through the data field (the bits before stuff bits are inserted) by the following generator polynomial and sends the remainder as the CRC sequence [1].
 
-$$
+```math
 g(x) = x^{15} + x^{14} + x^{10} + x^{8} + x^{7} + x^{4} + x^{3} + 1
-$$
+```
 
 Listing the coefficients of this polynomial from $x^{15}$ to $x^0$ gives 1100 0101 1001 1001 (16 bits). The CRC delimiter is always recessive and is followed by the ACK field. The principle of computing a CRC by division is examined with a small polynomial in Section 1.12.
 
@@ -436,7 +453,7 @@ Error frames and overload frames (Section 2.2) are not preceded by an interframe
 
 > **Definition:** A **CRC (cyclic redundancy check)** is an error detection method in which the bit string to be sent is divided by a generator polynomial, the remainder is appended and sent, and the receiver divides by the same polynomial and detects an error by whether the remainder is 0.
 
-The division of a CRC uses **modulo-2 arithmetic**. There are no carries or borrows, and both addition and subtraction are exclusive OR (XOR) ($0 \oplus 0 = 0$, $0 \oplus 1 = 1$, $1 \oplus 0 = 1$, $1 \oplus 1 = 0$). A bit string is regarded as a polynomial whose coefficients are its bits. For example, 1101 is $x^3 + x^2 + 1$.
+The division of a CRC uses **modulo-2 arithmetic**. There are no carries or borrows, and both addition and subtraction are exclusive OR (XOR) ($0 \oplus 0 = 0$, $0 \oplus 1 = 1$, $1 \oplus 0 = 1$, $`1 \oplus 1 = 0`$). A bit string is regarded as a polynomial whose coefficients are its bits. For example, 1101 is $x^3 + x^2 + 1$.
 
 **Computing a CRC.** Find the CRC of the data $k(x) = x^3 + 1$ (1001) with the generator polynomial $g(x) = x^3 + x^2 + 1$ (1101).
 
@@ -510,7 +527,7 @@ If the third bit from the left is flipped during transmission and 1011011 is rec
 
 *Figure 18. Checking 1011011 with one flipped bit*
 
-The method works for the following reason. Let $q(x)$ be the quotient and $r(x)$ the remainder of dividing $f(x) = x^3 k(x)$ by $g(x)$; then $f(x) = q(x) g(x) + r(x)$. In modulo 2, addition and subtraction are the same, so the transmitted string $f(x) + r(x) = q(x) g(x)$ is divisible by $g(x)$. If an error pattern $e(x)$ is added during transmission, the remainder of the received string becomes the remainder of $e(x)$ divided by $g(x)$. In the example above, $e(x) = x^4$ (0010000), and substituting $x^3 = x^2 + 1$ (modulo $g(x)$) into $x^4 = x \cdot x^3$ gives $x^3 + x = x^2 + x + 1$, which matches the remainder 111. Only error patterns divisible by $g(x)$ go undetected, so a 15th-degree polynomial as in CAN detects most errors.
+The method works for the following reason. Let $q(x)$ be the quotient and $r(x)$ the remainder of dividing $f(x) = x^3 k(x)$ by $g(x)$; then $f(x) = q(x) g(x) + r(x)$. In modulo 2, addition and subtraction are the same, so the transmitted string $f(x) + r(x) = q(x) g(x)$ is divisible by $g(x)$. If an error pattern $e(x)$ is added during transmission, the remainder of the received string becomes the remainder of $e(x)$ divided by $g(x)$. In the example above, $e(x) = x^4$ (0010000), and substituting $x^3 = x^2 + 1$ (modulo $`g(x)`$) into $x^4 = x \cdot x^3$ gives $x^4 = x^3 + x$, and substituting $x^3 = x^2 + 1$ once more gives $x^2 + x + 1$, which matches the remainder 111. Only error patterns divisible by $g(x)$ go undetected, so a 15th-degree polynomial as in CAN detects most errors.
 
 > **[Computer Networks]** The CRC is the error detection method used by Ethernet and most other link layer protocols. If the generator polynomial has degree $r$, the CRC has $r$ bits, and if the constant term of the generator polynomial is 1, every burst error of length $r$ or less is detected. The principle of the CRC was also covered in Week 7.
 
@@ -538,7 +555,7 @@ This part organizes the knowledge needed to interpret the practice screens. It c
 | EOF (end of frame) | 7 | Seven recessive bits marking the end of the frame. |
 | IFS (interframe space) | 3 or more | The waiting interval before the next frame (Section 1.11). |
 
-*Table 7. Fields of a standard CAN data frame*
+*Table 8. Fields of a standard CAN data frame*
 
 ![Figure 19. Bit values of each field of a standard CAN frame and the CAN_H and CAN_L waveforms](../../images/Week10_p40.png)
 
@@ -546,7 +563,7 @@ This part organizes the knowledge needed to interpret the practice screens. It c
 
 Figure 19 writes the bits of one standard data frame field by field. The SOF is 0, the identifier (green) is 00000010100, that is, 0x014, the RTR (light blue), IDE, and r0 are all 0, the DLC (yellow) is 0001, that is, 1 byte, and the data (red) is 00000001, that is, 0x01. Then follow the 15-bit CRC, the CRC delimiter 1, the ACK slot 0 (the value overwritten with dominant by the receiver), the ACK delimiter 1, the EOF 1111111, and the IFS 111. In the waveform below, the colored intervals are dominant bits in which CAN_H and CAN_L separate, and the other intervals are recessive bits in which the two lines come together.
 
-> **Caution:** Figure 19 shows the bit string before stuff bits are inserted. On the real bus, the 0 of the SOF and the first four identifier bits 0000 form five consecutive identical values, so a 1 of the opposite value is inserted after them as a stuff bit (bit stuffing in Week 3). Section 3.4 computes the stuff bit positions of a frame actually sent.
+> **Caution:** Figure 19 shows the bit string before stuff bits are inserted. On the real bus, a stuff bit of the opposite value is inserted whenever five identical values occur in a row (bit stuffing in Week 3), so a stuff bit 1 is inserted three times between the SOF and the end of the data field of this frame: first after the 0 of the SOF and the first four identifier bits 0000, second after the last two identifier bits 00 and the three 0s of RTR, IDE, and r0, and third after the first five 0s of the data byte 00000001. In addition, the CRC cells of the figure (010000110000000) differ from the CRC of this frame; dividing the bits from the SOF to the end of the data field by the generator polynomial of Section 1.11 gives the CRC 111 0111 0101 0011 (0x7753). Section 3.4 computes the CRC and the stuff bit positions of a frame actually sent.
 
 ### 2.2 Types of CAN Frames
 
@@ -559,7 +576,7 @@ CAN has four types of frames.
 | Error frame | A node that detected an error notifies all nodes that the frame contains an error. | Consists of an error flag (6 dominant bits for an error active node, 6 recessive bits for an error passive node) and an error delimiter (8 recessive bits). |
 | Overload frame | When a receiver is not ready to receive the next frame, it extends the waiting time between data frames or remote frames. | Consists of an overload flag (6 dominant bits) and an overload delimiter (8 recessive bits). |
 
-*Table 8. The four types of CAN frames*
+*Table 9. The four types of CAN frames*
 
 The error flag of an error active node sends six dominant bits in a row, deliberately violating the bit stuffing rule (at most five identical values). All other nodes receiving the frame at that moment therefore also detect a stuff error and discard the frame, and the transmitter sends the frame again [1]. A remote frame loses arbitration against a data frame with the same identifier (Example 2 in Section 1.10). In today's vehicles, each ECU mostly sends data frames at fixed periods, and CAN FD has no remote frames [4].
 
@@ -590,7 +607,7 @@ The colored bands in the figure divide the frame into two phases. The arbitratio
 |:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|
 | Number of data bytes | Same as DLC | 12 | 16 | 20 | 24 | 32 | 48 | 64 |
 
-*Table 9. DLC and number of data bytes in CAN FD*
+*Table 10. DLC and number of data bytes in CAN FD*
 
 The detailed frame format of CAN FD was covered in Week 9.
 
@@ -598,7 +615,7 @@ The detailed frame format of CAN FD was covered in Week 9.
 
 > **Definition:** **OBD-II (On-Board Diagnostics II)** is a standard for diagnosing vehicle faults. Diagnostic equipment is connected to the 16-pin OBD connector on the driver's side of the vehicle to read the vehicle state and fault codes, and repair shops use it to diagnose vehicles. OBD-II communication over CAN is defined by ISO 15765-4.
 
-OBD-II was mandated to monitor emission-related faults: the United States made it mandatory from model-year 1996 passenger cars, and the European Union from 2001 for gasoline cars and from 2004 for diesel cars. In the United States, using CAN (ISO 15765-4) for OBD-II communication has been mandatory since model year 2008 [6]. Vehicle state information readable through OBD-II includes engine speed (RPM), vehicle speed, battery voltage, diagnostic trouble codes (DTCs), and coolant temperature.
+OBD-II was mandated to monitor emission-related faults: the United States made it mandatory from model-year 1996 passenger cars, and the European Union from 2001 for gasoline cars and from 2003 for diesel cars. In the United States, using CAN (ISO 15765-4) for OBD-II communication has been mandatory since model year 2008 [6]. Vehicle state information readable through OBD-II includes engine speed (RPM), vehicle speed, battery voltage, diagnostic trouble codes (DTCs), and coolant temperature.
 
 OBD-II communication over CAN consists of requests and responses. When the diagnostic equipment sends a request data frame with identifier 0x7DF, the ECU that holds the information sends a response data frame with an identifier in the range 0x7E8-0x7EF. The requested information is specified by a service (mode) number and a PID (parameter identifier) [6], [7].
 
@@ -628,7 +645,7 @@ The first byte 04 of the response is the number of valid bytes that follow, 0x41
 | 7 | ISO 9141-2 K-Line | 15 | ISO 9141-2 L-Line |
 | 8 | Vendor option | 16 | Battery power |
 
-*Table 10. Pin assignment of the OBD-II connector*
+*Table 11. Pin assignment of the OBD-II connector*
 
 Vehicles using CAN communicate with diagnostic equipment over pin 6 (CAN High) and pin 14 (CAN Low). J1850 and ISO 9141-2 are diagnostic communication methods used before CAN (Week 3), and the battery power on pin 16 lets the diagnostic equipment operate without a separate power supply.
 
@@ -699,9 +716,9 @@ CAN can be connected with just two wires, and connections between pieces of equi
 | 7 | CAN_H | The CAN High line of the bus (goes high when dominant). |
 | 9 | (CAN_V+) | Optional external power supply. |
 
-*Table 11. Pin assignment of a DB-9 connector for CAN*
+*Table 12. Pin assignment of a DB-9 connector for CAN*
 
-Table 11 follows the recommendation of CiA 303-1, and the signals in parentheses are optional [8]. The left of Figure 25 shows this assignment as a connector drawing, the middle shows a DB-9 cable, and the right shows the pin numbers of the male and female connectors and the description of each pin. Male and female connectors mate face to face, so their pin numbers are mirrored left to right.
+Table 12 follows the recommendation of CiA 303-1, and the signals in parentheses are optional [8]. The left of Figure 25 shows this assignment as a connector drawing, the middle shows a DB-9 cable, and the right shows the pin numbers of the male and female connectors and the description of each pin. Male and female connectors mate face to face, so their pin numbers are mirrored left to right.
 
 The transmission medium is two ordinary wires twisted together.
 
@@ -765,7 +782,7 @@ The left of Figure 29 is the signal list of the message Acceleration_Info1 (iden
 | Veh_Acc_Yaxis | 32 | 16 | Intel | Unsigned |
 | Reserved_8 | 48 | 8 | Intel | Signed |
 
-*Table 12. Signal definitions of the message Acceleration_Info1*
+*Table 13. Signal definitions of the message Acceleration_Info1*
 
 Each item of a signal definition means the following.
 
@@ -773,7 +790,7 @@ Each item of a signal definition means the following.
 - **Byte order:** Determines whether a signal spanning several bytes is read in little endian (Intel) or big endian (Motorola) (Section 1.4).
 - **Value type:** Determines whether the bit string is read as an unsigned integer or as a signed integer in two's complement.
 
-Signals named Reserved are positions not used now and kept for later functions. The message in Table 12 does not use byte 7, so its four signals fit in 7 of the 8 bytes.
+Signals named Reserved are positions not used now and kept for later functions. The message in Table 13 does not use byte 7, so its four signals fit in 7 of the 8 bytes.
 
 ### 2.10 Message Conversion: Factor and Offset
 
@@ -781,9 +798,9 @@ A CAN data frame can send at most 8 bytes, so the data it can carry is limited. 
 
 > **Definition:** The integer carried on the bus is called the **raw value**, and the value with an actual unit is called the **physical value**. The two are converted by the following linear function.
 
-$$
+```math
 \text{Physical value} = \text{Raw value} \times \text{Factor} + \text{Offset}, \qquad \text{Raw value} = \frac{\text{Physical value} - \text{Offset}}{\text{Factor}}
-$$
+```
 
 For example, acceleration data contains fractions, so in a program it is represented as a double and needs 8 bytes. Converting the value with a factor and offset so that it falls within the range of an unsigned short (0-65535) means only 2 bytes are needed. An 8-byte data field holds only one double, but up to four 2-byte raw values.
 
@@ -799,7 +816,7 @@ Figure 30 is the layout of the message vehicle_status2 (identifier 0x301). Bytes
 | lateral_acceleration | C3 43 | 0x43C3 (0100 0011 1100 0011) | 17347 |
 | yawrate | E5 43 | 0x43E5 (0100 0011 1110 0101) | 17381 |
 
-*Table 13. Raw values read from the data bytes of vehicle_status2*
+*Table 14. Raw values read from the data bytes of vehicle_status2*
 
 ![Figure 31. Definition of the signal longitudinal_acceleration](../../images/Week10_p59.png)
 
@@ -807,9 +824,9 @@ Figure 30 is the layout of the message vehicle_status2 (identifier 0x301). Bytes
 
 According to the definition in Figure 31, longitudinal_acceleration is 16 bits long, in Intel byte order, and unsigned, with factor 0.01, offset -10.23, unit m/s², minimum -10.23, and maximum 10.23. The initial value (Init. Value) is used before the message is first received, and the value table (Value Table) is used to give names to raw values, as in 0: not ready, 1: active. Converting the raw value 17313 with this definition gives the following.
 
-$$
+```math
 17313 \times 0.01 + (-10.23) = 173.13 - 10.23 = 162.9\ \text{m/s}^2
-$$
+```
 
 > **Note:** The procedure of this calculation is correct, but the result 162.9 m/s² far exceeds the maximum of 10.23 m/s² defined for this signal. Under this definition, the meaningful raw values run from 0 (-10.23 m/s²) to 2046 (+10.23 m/s²). The raw value 0x43A1 (17313) equals the value obtained by encoding -1.9689668 with factor 0.0001274 and offset -4.174643 in the example of Section 2.11, and interpreted with the definition of Figure 31 it falls outside the defined range, so the data bytes of Figure 30 and the definition of Figure 31 do not match each other. If the receiver uses a definition different from the sender's, out-of-range values like this appear, so it is a good habit to check that an interpreted value lies within the defined range.
 
@@ -823,9 +840,9 @@ The factor and offset are determined in the following order.
 
 If the raw value has $n$ bits, the general formula is as follows.
 
-$$
+```math
 \text{Factor} = \frac{y_{max} - y_{min}}{2^n - 1}, \qquad \text{Offset} = y_{min}
-$$
+```
 
 **Example.** The data to send ranges from -4.174643 to +4.174516, and 2 bytes are used. Two bytes can represent 0-65535.
 
@@ -833,9 +850,9 @@ $$
 2. The range of raw values is $\Delta x = 65535 - 0 = 65535$.
 3. The factor is $8.349159 / 65535 = 0.0001274$. The raw value 0 must correspond to the minimum -4.174643, so the offset is -4.174643.
 
-$$
+```math
 y = \frac{4.174516 - (-4.174643)}{65535} x - 4.174643 = 0.0001274 x - 4.174643
-$$
+```
 
 ![Figure 32. Factor and offset obtained from the linear function connecting the physical range and the raw range](../../images/Week10_p62.png)
 
@@ -845,15 +862,15 @@ As a check, at $x = 65535$, $y = 65535 \times 0.0001274 - 4.174643 = 8.349159 - 
 
 **Encoding and decoding.** When the data to send is -1.9689668, the transmitting node computes the raw value as follows.
 
-$$
+```math
 \text{Transmitting node: } \frac{-1.9689668 - (-4.174643)}{0.0001274} = \frac{2.2056762}{0.0001274} = 17313 = \text{0x43A1}
-$$
+```
 
 Converting 17313 to hexadecimal gives 0x43A1 because $17313 = 4 \times 4096 + 3 \times 256 + 10 \times 16 + 1$. Sent in Intel order, the data bytes are A1 43, the same as the first two bytes in Figure 30. The receiving node recovers the original value as follows.
 
-$$
+```math
 \text{Receiving node: } 17313 \times 0.0001274 - 4.174643 = 2.2056762 - 4.174643 = -1.9689668
-$$
+```
 
 In this example the raw value comes out exactly as an integer, so the value is recovered exactly, but in general the raw value is rounded to the nearest integer, so the recovered value has an error of up to half the factor (about 0.0000637 here). That is, the factor is the **resolution** of the signal. More bits improve the resolution but take up more room in the frame, so the number of bits is chosen to match the required range and precision.
 
@@ -867,7 +884,7 @@ When a CAN database is loaded into a monitoring tool, the tool splits the data b
 
 *Figure 33. A trace screen showing the physical values of signals with a CAN database applied*
 
-The left of Figure 33 is a trace screen with a CAN database applied, and the right enlarges the signals of the three messages marked with dotted lines. Each signal is shown as physical value, raw value (hexadecimal), and description, in that order. Comparing raw and physical values shows whether each signal fits the conversion in Table 14. Because one pair of values does not determine both factor and offset, the conversions in Table 14, apart from LONG_ACCEL and LAT_ACCEL whose definition is known, are formulas that satisfy the observed values.
+The left of Figure 33 is a trace screen with a CAN database applied, and the right enlarges the signals of the three messages marked with dotted lines. Each signal is shown as physical value, raw value (hexadecimal), and description, in that order. Comparing raw and physical values shows whether each signal fits the conversion in Table 15. Because one pair of values does not determine both factor and offset, the conversions in Table 15, apart from LONG_ACCEL and LAT_ACCEL whose definition is known, are formulas that satisfy the observed values.
 
 | Signal | Description | Raw value | Physical value | Conversion |
 |:-----|:-----|:-----|:-----|:-----|
@@ -882,9 +899,9 @@ The left of Figure 33 is a trace screen with a CAN database applied, and the rig
 | SAS_Speed | Steering wheel rotation speed | 0xA3 = 163 | 652 | $163 \times 4$ |
 | SAS_Angle | Steering wheel angle | 0x17A1 = 6049 | 604.9 | $6049 \times 0.1$ |
 
-*Table 14. Relations between raw and physical values found in the signals of Figure 33*
+*Table 15. Relations between raw and physical values found in the signals of Figure 33*
 
-In Table 14, LONG_ACCEL and LAT_ACCEL use the same factor 0.01 and offset -10.23 as Figure 31, and the physical value is near 0 when the raw value is near 1023. The wheel speed signals use a factor of 0.125 (1/8 km/h) without an offset. Signals ending in _DIAG (diagnosis mode) and _STAT (signal state) report with 0 and 1 whether the sensor is in diagnosis mode and whether the value is valid, and the receiver uses the value only when the state is valid.
+In Table 15, LONG_ACCEL and LAT_ACCEL use the same factor 0.01 and offset -10.23 as Figure 31, and the physical value is near 0 when the raw value is near 1023. The wheel speed signals use a factor of 0.125 (1/8 km/h) without an offset. Signals ending in _DIAG (diagnosis mode) and _STAT (signal state) report with 0 and 1 whether the sensor is in diagnosis mode and whether the value is valid, and the receiver uses the value only when the state is valid.
 
 ---
 
@@ -909,7 +926,7 @@ The practice consists of two parts. First, on a bench, the voltage waveforms of 
 | CAN database (DBC file) | Definitions of the CAN messages and signals of the test vehicle. |
 | Test vehicle | A passenger car modified for autonomous driving, set up so that its internal CAN information can be viewed with external equipment. |
 
-*Table 15. Equipment and software used in the practice*
+*Table 16. Equipment and software used in the practice*
 
 ![Figure 34. A CAN distribution box, a logic analyzer, and two Kvaser USB-CAN interfaces](../../images/Week10_p70.png)
 
@@ -924,7 +941,7 @@ UART sends signals with voltage levels between 3.3 V and 0 V, so a logic analyze
 1. **Connect the equipment:** Connect the USB-UART converter module to a USB port of the PC. Connect the logic analyzer probes at two points: one to the line on which the UART signal leaves (TX) and the other to the module's ground (GND). A voltage is always a difference relative to some reference point, so the voltage level of the signal line must be measured relative to ground.
 2. **Configure communication:** In ComMaster, set the communication speed (Baudrate) to 9600, data bits (Data Bits) to 8, stop bits (Stop Bits) to 1, parity (Parity) to none (None), and the device (Device) to the COM port of the converter module (for example, COM5), and press Open Com to open the port.
 3. **Start measuring:** Press the start button in Logic 2 to begin logging.
-4. **Send data:** Type AB in ComMaster's Send Data box, set the format (Format) to HEX, and press Send. Although the explanation so far was based on binary, here one byte, 0xAB, is sent in hexadecimal.
+4. **Send data:** Type AB in ComMaster's Send Data box, set the format (Format) to HEX, and press Send. Because the format is HEX, what is sent is not the characters A and B but the single hexadecimal byte 0xAB.
 5. **Zoom in on the waveform:** Stop the measurement and zoom in on the waveform. Because the signal changes very fast, it first appears only as a single line, and zooming in slowly reveals a waveform alternating between High (3.3 V) and 0 V.
 
 ![Figure 35. 0xAB sent with ComMaster and the UART waveform measured and decoded by the logic analyzer](../../images/Week10_p78.png)
@@ -959,7 +976,7 @@ Next, the same logic analyzer is used to check the voltage levels of a CAN signa
 
 The settings window in Figure 37 contains bus statistics (Bus Statistics: received messages, transmitted messages, error frames, error counters), bus configuration (Bus Configuration: CAN channel, CAN mode, access mode, Silent Mode), bus parameters (Bus Parameters: bus speed, SJW, bit timing), and bus status. The bus speed list contains 1000, 500, 250, 125, 100, 83.333, 62.5, 50, and 33.333 kbit/s, each written with a sample point position of 75.0%. Silent Mode only listens to the bus and sends no bit at all, including the ACK; it corresponds to the bus monitoring mode of the standard and is used to observe the bus of a running vehicle without disturbing it [4].
 
-**Bit timing.** At a bus speed of 33.333 kbit/s, one bit lasts $1 / 33333 \approx 30$ µs. A CAN controller handles a bit by dividing it into small units called **time quanta (tq)**. The values Tseg1 = 14 and Tseg2 = 5 on the screen mean that after the synchronization segment (sync segment) of 1 tq at the very start of the bit, the segment before the sample point is 14 tq and the segment after it is 5 tq. One bit is therefore $1 + 14 + 5 = 20$ tq, and 1 tq is $30 / 20 = 1.5$ µs. The sample point lies at $(1 + 14)/20 = 75\%$ of the bit from its start, which is the 75.0% shown on the screen. The value is read late in the bit to give the signal time to make the round trip on the bus and settle. SJW (synchronization jump width) = 4 means that the bit segments can be lengthened or shortened by at most 4 tq at a time during resynchronization [1].
+**Bit timing.** At a bus speed of 33.333 kbit/s, one bit lasts $1 / 33333 \approx 30$ µs. A CAN controller handles a bit by dividing it into small units called **time quanta (tq)**. The values Tseg1 = 14 and Tseg2 = 5 on the screen mean that after the synchronization segment (sync segment) of 1 tq at the very start of the bit, the segment before the sample point is 14 tq and the segment after it is 5 tq. One bit is therefore $1 + 14 + 5 = 20$ tq, and 1 tq is $30 / 20 = 1.5$ µs. The sample point lies at $`(1 + 14)/20 = 75\%`$ of the bit from its start, which is the 75.0% shown on the screen. The value is read late in the bit to give the signal time to make the round trip on the bus and settle. SJW (synchronization jump width) = 4 means that the bit segments can be lengthened or shortened by at most 4 tq at a time during resynchronization [1].
 
 Now a virtual message is sent from one CanKing. Set the following in the CAN Message window and press the Send button to transmit the CAN data.
 
@@ -988,7 +1005,7 @@ After a message is sent from CanKing, stopping the measurement and zooming in sh
 
 - **Symmetric waveforms:** In dominant bits, CAN_H rises to about 3.8 V and CAN_L falls to about 1.2 V, so the two lines move symmetrically about 2.5 V. The differential voltage is about $3.8 - 1.2 = 2.6$ V, which lies within the dominant output range of high-speed CAN transceivers (1.5-3.0 V with a 60 Ω load) [3]. In recessive bits, the two lines come back together at about 2.5 V and the differential voltage is close to 0.
 - **Measurement relative to ground:** The logic analyzer measures each line separately relative to ground, so the common voltage of 2.5 V on both lines is visible. The CAN transceiver ignores this common voltage and decides each bit only from the difference between the two lines (Section 1.8).
-- **A denser signal than UART:** Again all the data is sent in a short time, so the signal first appears as a single line, and zooming in reveals a waveform much denser than the UART signal. This is because the bit rate of 33.333 kbit/s is about 3.5 times the UART's 9600 bit/s, and one frame contains more than 100 bits.
+- **A denser signal than UART:** As with UART, all the data is sent in a short time, so the signal first appears as a single line, and zooming in reveals a waveform much denser than the UART signal. This is because the bit rate of 33.333 kbit/s is about 3.5 times the UART's 9600 bit/s, and one frame contains more than 100 bits.
 
 Professional tools with an oscilloscope or CAN analysis functions can also mark which field each interval on the screen is and which value it represents. Doing the same by hand goes as follows. Write each field of the sent frame in binary from the MSB, and compute the 15-bit CRC from these bits (Section 1.11).
 
@@ -1015,7 +1032,7 @@ From the SOF through the CRC there are $1 + 11 + 1 + 1 + 1 + 4 + 64 + 15 = 98$ b
 2. Where the last bit 1 of D3 = 1101 0001 is followed by the first four bits 1111 of D4 = 1111 0010: a 0 is inserted after the five 1s.
 3. The five 0s in the middle of CRC = 011 1100 0001 0111: a 1 is inserted after them.
 
-The bits on the bus from the SOF through the CRC are therefore $98 + 3 = 101$ bits, and adding the 1-bit CRC delimiter, 2 ACK bits, and 7 EOF bits makes the whole frame 111 bits. With a bit time of 30 µs, one frame occupies the bus for $111 \times 30\ \mu\text{s} = 3.33$ ms. Sending the same frame at the vehicle's 500 kbit/s takes $111 \times 2\ \mu\text{s} = 222$ µs.
+The bits on the bus from the SOF through the CRC are therefore $98 + 3 = 101$ bits, and adding the 1-bit CRC delimiter, 2 ACK bits, and 7 EOF bits makes the whole frame 111 bits. With a bit time of 30 µs, one frame occupies the bus for $`111 \times 30\ \mu\text{s} = 3.33`$ ms. Sending the same frame at the vehicle's 500 kbit/s takes $`111 \times 2\ \mu\text{s} = 222`$ µs.
 
 ### 3.5 CAN Monitoring Setup of the Test Vehicle
 
@@ -1058,7 +1075,7 @@ The procedure for starting CAN monitoring with CANoe is as follows.
 
 *Figure 45. The Simulation Setup and Measurement Setup windows of CANoe*
 
-Simulation Setup on the left of Figure 45 shows the CAN channels and the CAN nodes attached to them. At this point only the CANoe device connected to the PC is attached, so only one network block (Network CAN 1) appears. The tree in the middle (Networks, CAN Networks, CAN1, CAN2) manages, for each channel, the nodes (Nodes), interactive generator (Interactive Generator), replay blocks (Replay blocks), databases (Databases), and channels (Channels). Measurement Setup on the right shows the measurement items, in which data received from the bus flows from the input on the left (Online) to the analysis blocks on the right. Start (the lightning icon) and Stop on the ribbon at the top start and stop the measurement, and dec/hex under Appearance selects whether values are shown in decimal or hexadecimal.
+Simulation Setup on the left of Figure 45 shows the CAN channels and the CAN nodes attached to them. At this point only the CANoe device connected to the PC is attached, so only one network block appears (Figure 45 shows the Network CAN2 block on the CAN2 tab). The tree in the middle (Networks, CAN Networks, CAN1, CAN2) manages, for each channel, the nodes (Nodes), interactive generator (Interactive Generator), replay blocks (Replay blocks), databases (Databases), and channels (Channels). Measurement Setup on the right shows the measurement items, in which data received from the bus flows from the input on the left (Online) to the analysis blocks on the right. Start (the lightning icon) and Stop on the ribbon at the top start and stop the measurement, and dec/hex under Appearance selects whether values are shown in decimal or hexadecimal.
 
 5. **Check the channel settings:** Opening the hardware settings of channel CAN1 under CAN Networks in Simulation Setup lets one check and change the device settings and speed.
 
@@ -1080,7 +1097,7 @@ In Figure 46, channel CAN 1 has device type (Type) VN1610, controller (Controlle
 | Graphics | Shows the values of selected signals as graphs over time. |
 | Logging | Records received data to a file. |
 
-*Table 16. Main blocks of the CANoe Measurement Setup*
+*Table 17. Main blocks of the CANoe Measurement Setup*
 
 ### 3.7 Monitoring without a CAN Database
 
@@ -1128,16 +1145,16 @@ In Figure 49, messages are displayed by name (VCU1_ADCU and so on), and below ea
 | | vcu_HazardCtl, vcu_LeftTurnCtl, vcu_RightTurnCtl, vcu_LeftTurnState, vcu_RightTurnState | On and blinking states of the hazard lights and the left and right turn signals |
 | | vcu_VB | Battery voltage |
 | VCU3_ADCU (0x32) | vcu_APS, vcu_BPS, vcu_VS | Accelerator pedal position, brake pedal position, vehicle speed |
-| | vcu_SAS_Angle, vcu_SAS_Speed, vcu_LONG_ACCEL | Steering angle, steering speed, acceleration |
+| | vcu_SAS_Angle, vcu_SAS_Speed, vcu_LONG_ACCEL | Steering angle, steering speed, acceleration (the name vcu_LONG_ACCEL denotes longitudinal acceleration, but its description field in the DB reads "Lateral acceleration speed") |
 | VCU4_ADCU (0x33) | vcu_CANErr_ADCU, vcu_CANErr_LDWS, vcu_CANErr_AEB, vcu_CANErr_MDPS, and others | Whether there is a CAN communication error with each controller |
 
-*Table 17. Messages and signals defined in the CAN database of the test vehicle*
+*Table 18. Messages and signals defined in the CAN database of the test vehicle*
 
 AliveCnt (alive counter), the last signal of VCU1_ADCU and VCU2_ADCU, is a counter the transmitting node increments by 1 each time it sends the message. If this value stops changing, the receiving node can conclude that the transmitting node has stopped. Names in VCU4_ADCU such as LDWS (lane departure warning system), AEB (autonomous emergency braking), and MDPS (motor-driven power steering) refer to other controllers of the vehicle.
 
 vcu_SAS_Angle and vcu_SAS_Speed of identifier 0x32 (VCU3_ADCU) are the steering-related data. Turning the wheel to the right makes the negative value of SAS_Angle keep growing, and turning it to the left gives positive values. SAS_Speed grows the faster the wheel is turned. In this way, importing the CAN database file shows what each piece of CAN information represents.
 
-Comparing the raw and physical values in the Trace window with the data bytes reveals the signal layout of VCU3_ADCU. For example, the VCU3_ADCU data in Figure 49 is 00 00 00 08 FA 01 FA 03, and vcu_SAS_Angle has raw value FA08 and physical value -152.8 deg. Table 18 is the layout obtained by matching raw and physical values in this frame, the frame in Figure 50 (00 00 00 D1 11 12 F9 03), and the frame in Section 3.10 (0F 00 11 84 00 00 02 04).
+Comparing the raw and physical values in the Trace window with the data bytes reveals the signal layout of VCU3_ADCU. For example, the VCU3_ADCU data in Figure 49 is 00 00 00 08 FA 01 FA 03, and vcu_SAS_Angle has raw value FA08 and physical value -152.8 deg. Table 19 is the layout obtained by matching raw and physical values in this frame, the frame in Figure 50 (00 00 00 D1 11 12 F9 03), and the frame in Section 3.10 (0F 00 11 84 00 00 02 04).
 
 | Byte | Signal | Conversion | Observed example |
 |:-----|:-----|:-----|:-----|
@@ -1147,7 +1164,7 @@ Comparing the raw and physical values in the Trace window with the data bytes re
 | 5 | vcu_SAS_Speed | Raw value × 4 deg/s | 0x12 = 18 → 72 deg/s |
 | 6-7 | vcu_LONG_ACCEL | Intel, unsigned 16 bits, × 0.01 - 10.23 m/s² | F9 03 → 0x03F9 = 1017 → -0.06 m/s² |
 
-*Table 18. Signal layout of VCU3_ADCU confirmed from observed values*
+*Table 19. Signal layout of VCU3_ADCU confirmed from observed values*
 
 Byte 1 is vcu_BPS (brake pedal position); all observed values were 0, so its factor cannot be determined. A signed value such as vcu_SAS_Angle is read in **two's complement**. If the most significant bit of a 16-bit value is 1, the value is negative, and it equals the unsigned value minus $2^{16} = 65536$. 0xFA08 is 64008 as an unsigned value, so $64008 - 65536 = -1528$, and multiplying by the factor 0.1 gives -152.8 deg.
 
@@ -1176,7 +1193,7 @@ for name, value in decode_vcu3(frame).items():
 
 - `intel_unsigned` takes `length_bytes` bytes of `data` starting at byte `start_byte` and reads them as an unsigned little endian (`"little"`) integer, because the Intel byte order is little endian.
 - `intel_signed` does the same but reads a two's complement integer with `signed=True`.
-- `decode_vcu3` reads the raw value of each signal according to the layout of Table 18, multiplies by the factor, adds the offset, and returns a dictionary of signal names and physical values.
+- `decode_vcu3` reads the raw value of each signal according to the layout of Table 19, multiplies by the factor, adds the offset, and returns a dictionary of signal names and physical values.
 - `bytes.fromhex` turns the hexadecimal string seen in the Trace window into 8 bytes of data. These data are a VCU3_ADCU frame received while driving in Section 3.10.
 - The final loop prints, for each signal, the name padded to 24 characters and the value to two decimal places.
 
@@ -1245,7 +1262,7 @@ Finally, the vehicle is driven with logging on and the data is checked. The grap
 | Engage reverse, back up, then switch to drive mode | The changed gear state is displayed. |
 | Turn the wheel to the left to pull in | The steering angle (vcu_SAS_Angle) changes to a positive value. |
 
-*Table 19. Driving actions and changes in CAN data while driving*
+*Table 20. Driving actions and changes in CAN data while driving*
 
 For example, when the right turn signal was switched on, the VCU2_ADCU data was 00 00 04 00 00 00 00 F8. The 0x04 in byte 2 is 0000 0100 in binary, so only bit 2 is 1, and at this time vcu_RightTurnCtl was displayed as 1. That is, information that needs only 0 and 1, such as an on/off state, is packed as one-bit signals, several to a byte. The last byte F8 (248) is the AliveCnt. The VCU3_ADCU data at the same moment, 0F 00 11 84 00 00 02 04, means accelerator pedal 6.0%, vehicle speed 17 km/h, steering angle 13.2 deg, and acceleration 0.03 m/s², as decoded by the code in Section 3.8.
 
@@ -1268,11 +1285,11 @@ Sections 3.2-3.4 show the electrical appearance of CAN signals, and Sections 3.5
 | On a vehicle without a CAN database, the byte containing the steering angle is to be found. | Find the bytes that change while turning the wheel, and compare raw values with actual angles at several angles to estimate the byte order, sign, factor, and offset (Sections 3.7 and 3.8). |
 | The engine speed of a vehicle is read with diagnostic equipment. | Connect to pins 6 and 14 of the OBD-II connector, request service 0x01, PID 0x0C with identifier 0x7DF, and compute $(256A + B)/4$ from the response on 0x7E8 (Section 2.4). |
 
-*Table 20. Concept application cases*
+*Table 21. Concept application cases*
 
 **True/False Check:**
 
-| Statement | Judgment and reason |
+| Statement | Judgment and Reason |
 |:-----|:-----|
 | The binary number 11111111 is the decimal number 256. | **F.** $11111111_2 = 255$. One byte represents 256 states, 0-255. |
 | UART sends the data bits MSB first. | **F.** UART sends the LSB first. 0xAB goes out in the order 1, 1, 0, 1, 0, 1, 0, 1. |
@@ -1381,7 +1398,7 @@ Sections 3.2-3.4 show the electrical appearance of CAN signals, and Sections 3.5
    <details>
    <summary>Answer</summary>
 
-   In the idle (recessive) state both lines are about 2.5 V. In a dominant bit, CAN_H rises to about 3.5-3.8 V and CAN_L falls to about 1.2-1.5 V, so the two lines move symmetrically about 2.5 V. The receiver decides not from the voltage of each line relative to ground but from the difference between the two lines, $V_{CAN\_H} - V_{CAN\_L}$: 0.9 V or more is 0 (dominant) and 0.5 V or less is 1 (recessive).
+   In the idle (recessive) state both lines are about 2.5 V. In a dominant bit, CAN_H rises to about 3.5-3.8 V and CAN_L falls to about 1.2-1.5 V, so the two lines move symmetrically about 2.5 V. The receiver decides not from the voltage of each line relative to ground but from the difference between the two lines, $`V_{CAN\_H} - V_{CAN\_L}`$: 0.9 V or more is 0 (dominant) and 0.5 V or less is 1 (recessive).
 
    </details>
 
@@ -1390,7 +1407,7 @@ Sections 3.2-3.4 show the electrical appearance of CAN signals, and Sections 3.5
    <details>
    <summary>Answer</summary>
 
-   The bit time at 33.333 kbit/s is about 30 µs, so $111 \times 30\ \mu\text{s} = 3.33$ ms. The bit time at 500 kbit/s is 2 µs, so $111 \times 2\ \mu\text{s} = 222$ µs. An IFS of 3 more bits is needed between frames.
+   The bit time at 33.333 kbit/s is about 30 µs, so $`111 \times 30\ \mu\text{s} = 3.33`$ ms. The bit time at 500 kbit/s is 2 µs, so $`111 \times 2\ \mu\text{s} = 222`$ µs. An IFS of 3 more bits is needed between frames.
 
    </details>
 
@@ -1424,6 +1441,6 @@ Sections 3.2-3.4 show the electrical appearance of CAN signals, and Sections 3.5
 4. ISO 11898-1:2015, *Road vehicles - Controller area network (CAN) - Part 1: Data link layer and physical signalling*, International Organization for Standardization, 2015.
 5. Vector Informatik GmbH, *Vector E-Learning*. https://elearning.vector.com/
 6. CSS Electronics, "OBD2 Explained - A Simple Intro," *CSS Electronics*. https://www.csselectronics.com/pages/obd2-explained-simple-intro
-7. SAE International, *SAE J1979: E/E Diagnostic Test Modes*, Warrendale, PA, USA.
+7. SAE International, *SAE J1979: E/E Diagnostic Test Modes*, J1979_201702, Warrendale, PA, USA, 2017.
 8. CAN in Automation, *CiA 303-1: Cabling and connector pin assignment*, version 1.9.0, Nuremberg, Germany, 2017.
 9. CSS Electronics, "CAN DBC File Explained - A Simple Intro," *CSS Electronics*. https://www.csselectronics.com/pages/can-dbc-file-database-intro

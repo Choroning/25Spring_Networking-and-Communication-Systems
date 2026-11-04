@@ -249,7 +249,7 @@ LANs mainly use contention or round robin methods.
 
 | Method | Bus topology | Ring topology | Switched topology |
 |:-----|:-----|:-----|:-----|
-| Round robin | Token bus (IEEE 802.4), polling (IEEE 802.11) | Token ring (IEEE 802.5, FDDI) | Request/priority (IEEE 802.12) |
+| Round robin | Token bus (IEEE 802.4), polling (IEEE 802.11) | Token ring (IEEE 802.5, FDDI) | Demand priority (IEEE 802.12) |
 | Reservation | DQDB (IEEE 802.6) | | |
 | Contention | CSMA/CD (IEEE 802.3), CSMA (IEEE 802.11) | | CSMA/CD (IEEE 802.3) |
 
@@ -328,6 +328,8 @@ In Figure 6, the TCP header plus the application data is a **TCP segment**, addi
 
 > **Definition:** **CSMA/CD (carrier sense multiple access with collision detection)** is a contention-based MAC technique in which a station listens to the medium before sending, keeps listening while sending, and stops transmitting immediately when it detects a collision. Ethernet and IEEE 802.3 LANs use this method.
 
+> **Note:** Some sources state that CSMA/CD is also used in IEEE 802.11 wireless LANs, but 802.11 uses CSMA/CA, which tries to avoid collisions instead of detecting them (Section 1.9).
+
 CSMA/CD was developed for use in commercial networks such as offices and in industrial environments, and it operates across the physical layer and the MAC layer. Carrier sensing and collision detection are done with physical layer signals, while the MAC layer decides when to transmit and when to retransmit. The three parts of the name mean the following.
 
 | Abbreviation | Name | Meaning |
@@ -391,11 +393,11 @@ CSMA is therefore **effective when the transmission time is much longer than the
 
 **A worked example.** On a 1 km bus on which signals travel at $2 \times 10^8$ m/s, the end-to-end propagation delay is as follows.
 
-$$
+```math
 \tau = \frac{1000\ \text{m}}{2 \times 10^8\ \text{m/s}} = 5 \times 10^{-6}\ \text{s} = 5\ \mu\text{s}
-$$
+```
 
-The transmission time of a 1,000-bit frame at 10 Mbps is $T = 1000 / 10^7 = 100\ \mu$s. The 5 µs interval in which a collision can occur is only 5% of the 100 µs transmission time. The smaller the ratio $a = \tau / T = 0.05$, the more efficient CSMA is.
+The transmission time of a 1,000-bit frame at 10 Mbps is $`T = 1000 / 10^7 = 100\ \mu`$s. The 5 µs interval in which a collision can occur is only 5% of the 100 µs transmission time. The smaller the ratio $a = \tau / T = 0.05$, the more efficient CSMA is.
 
 ### 2.4 Persistence Methods of CSMA
 
@@ -500,23 +502,23 @@ flowchart TD
 The time needed to detect a collision is longest when the two stations are farthest apart. Consider A and D at the two ends of the bus, and let $\tau$ be the end-to-end propagation delay of the bus.
 
 1. At time 0, A starts transmitting.
-2. Just before A's signal reaches D (immediately before time $\tau$), D's frame becomes ready. D judges the medium idle and starts transmitting, and it immediately collides with A's signal and detects the collision.
+2. Just before A's signal reaches D (immediately before time $`\tau`$), D's frame becomes ready. D judges the medium idle and starts transmitting, and it immediately collides with A's signal and detects the collision.
 3. The signal sent by D (the collision) reaches A after another maximum propagation delay $\tau$.
-4. A therefore detects the collision only **almost twice the maximum propagation delay ($2\tau$)** after it began transmitting.
+4. A therefore detects the collision only **almost twice the maximum propagation delay ($`2\tau`$)** after it began transmitting.
 
 An important condition follows from this result. For A to detect the collision, it must still be transmitting at time $2\tau$. If A finished transmitting before then, it would believe it had succeeded even though its frame was destroyed by the collision. Therefore **the transmission time of a frame must be at least $2\tau$**, and this is why CSMA/CD has a minimum frame length.
 
-$$
+```math
 L_{min} = R \times 2\tau
-$$
+```
 
 Here $R$ is the data rate (bps).
 
-**A worked example.** On a 500 m bus with a signal speed of $2 \times 10^8$ m/s, $\tau = 500 / (2 \times 10^8) = 2.5\ \mu$s and $2\tau = 5\ \mu$s. At 10 Mbps, the minimum frame length is as follows.
+**A worked example.** On a 500 m bus with a signal speed of $2 \times 10^8$ m/s, $`\tau = 500 / (2 \times 10^8) = 2.5\ \mu`$s and $`2\tau = 5\ \mu`$s. At 10 Mbps, the minimum frame length is as follows.
 
-$$
+```math
 L_{min} = 10^7\ \text{bps} \times 5 \times 10^{-6}\ \text{s} = 50\ \text{bits}
-$$
+```
 
 > **Note:** The actual 10 Mbps Ethernet specification considers networks extended up to 2.5 km by joining several segments with repeaters, together with the delays of the repeaters, and sets the upper bound on the round-trip time, the **slot time**, to 512 bit times (51.2 µs at 10 Mbps). An Ethernet frame is therefore at least 512 bits, that is, 64 bytes [6].
 
@@ -528,13 +530,13 @@ A broadband bus has a **headend** at one end of a single cable. Stations transmi
 
 *Figure 10. Collision detection time on a broadband bus*
 
-In Figure 10 the curved side of the cable faces the headend, and the neighboring stations A and B are at the end farthest from the headend. Let $\tau$ be the propagation delay between a station and the headend.
+In Figure 10 the curved side of the cable faces the headend, and the neighboring stations A and B are at the end farthest from the headend. Let $\tau$ be the propagation delay between a station and the headend. Because A and B are at the end farthest from the headend, $\tau$ equals the end-to-end propagation delay of the cable.
 
 1. $t_0$: A starts transmitting.
 2. $t_1$: A's signal must go to the headend and come back before B can hear it, so B may judge the medium idle until nearly $2\tau$ after A started. B starts transmitting just before the leading edge of A's signal arrives at its receiver, then senses A's signal almost immediately and stops.
 3. $t_2$: The signal sent by B also takes another $2\tau$ to reach A through the headend. A detects the collision at this point.
 
-In the worst case, collision detection therefore takes **four times the end-to-end delay ($4\tau$)**, twice as long as the $2\tau$ of a baseband bus.
+In the worst case, collision detection therefore takes **four times the end-to-end delay ($`4\tau`$)**, twice as long as the $2\tau$ of a baseband bus.
 
 ### 2.8 Efficiency and Binary Exponential Backoff
 
@@ -550,15 +552,15 @@ In the worst case, collision detection therefore takes **four times the end-to-e
 
 The binary exponential backoff of Ethernet and IEEE 802.3 works as follows [6].
 
-- When a frame suffers its $n$th collision, the station chooses an integer $r$ uniformly at random from $0$ to $2^{k} - 1$, where $k = \min(n, 10)$.
+- When a frame suffers its $`n`$th collision, the station chooses an integer $r$ uniformly at random from $0$ to $2^{k} - 1$, where $k = \min(n, 10)$.
 - It waits $r \times$ the slot time (512 bit times) and then tries again.
 - It makes at most 16 attempts; if all fail, it gives up and reports an error to the higher layer.
 
 | Number of collisions $n$ | Range | Maximum wait at 10 Mbps |
 |:-----|:-----|:-----|
-| 1 | 0-1 | $1 \times 51.2 = 51.2\ \mu$s |
-| 2 | 0-3 | $3 \times 51.2 = 153.6\ \mu$s |
-| 3 | 0-7 | $7 \times 51.2 = 358.4\ \mu$s |
+| 1 | 0-1 | $`1 \times 51.2 = 51.2\ \mu`$s |
+| 2 | 0-3 | $`3 \times 51.2 = 153.6\ \mu`$s |
+| 3 | 0-7 | $`7 \times 51.2 = 358.4\ \mu`$s |
 | 10-15 | 0-1023 | $1023 \times 51.2 \approx 52.4$ ms |
 | 16 | Give up | |
 
@@ -677,7 +679,7 @@ Depending on the literature, routers are also called by the following names.
 In Figure 14, end system A is on LAN 1 and B is on LAN 2; the two LANs are attached to routers X and Y respectively, and X and Y are connected by a LAN, a WAN, or a point-to-point link. Data is sent from A to B as follows.
 
 1. The IP of A recognizes that B is on another network. It can tell this from B's global network address (IP address).
-2. A puts the data in an IP datagram, carries it in a MAC frame of LAN 1, and sends it to router X.
+2. A puts the data in an IP datagram, carries it in a MAC frame of LAN 1, and sends it to router X. The IP datagram carries the global address of the final destination B as additional address information, while the destination address of the MAC frame is the MAC address of router X.
 3. X determines the route. If B is on a network directly attached to X, X sends to it directly; otherwise it chooses the next router (Y here) so that the datagram passes through one or more routers.
 4. X wraps the IP data unit in the packet format of the intermediate network (such as an X.25 packet) and sends it to Y.
 5. Y extracts the IP data unit from the packet of the intermediate network, builds a new LLC PDU and MAC frame suited to LAN 2, and sends them to B.
@@ -725,11 +727,11 @@ In Figure 15, the LAN switch and the hub gather several stations at one point, a
 
 CRC treats bit strings as polynomials. Each bit of a $k$-bit string is regarded as a coefficient of a polynomial, with the leftmost bit as the coefficient of $x^{k-1}$ and the rightmost bit as the coefficient of $x^0$. For example, the bit string 110011 is the following polynomial.
 
-$$
+```math
 1 \cdot x^5 + 1 \cdot x^4 + 0 \cdot x^3 + 0 \cdot x^2 + 1 \cdot x^1 + 1 \cdot x^0 = x^5 + x^4 + x + 1
-$$
+```
 
-The coefficients are computed with **modulo-2 arithmetic**. Addition and subtraction are both the exclusive OR (XOR) without carries or borrows ($0+0=0$, $0+1=1$, $1+0=1$, $1+1=0$), so addition and subtraction are the same. Polynomial division follows the same rules, and on bit strings it amounts to repeating XOR with the digits aligned.
+The coefficients are computed with **modulo-2 arithmetic**. Addition and subtraction are both the exclusive OR (XOR) without carries or borrows ($0+0=0$, $0+1=1$, $1+0=1$, $`1+1=0`$), so addition and subtraction are the same. Polynomial division follows the same rules, and on bit strings it amounts to repeating XOR with the digits aligned.
 
 > **[Digital Logic Design]** XOR (exclusive OR) is the operation that outputs 1 when its two inputs differ. Because modulo-2 addition equals XOR, a CRC can be computed quickly in hardware with only a shift register and XOR gates.
 
@@ -740,15 +742,15 @@ The CRC field is generated with the following symbols.
 - $p(x)$: the $m$-bit CRC (the remainder)
 - $c(x)$: the $(k + m)$-bit frame actually transmitted
 
-$$
+```math
 p(x) = \mathrm{Rem}\left[\frac{x^m d(x)}{g(x)}\right], \qquad c(x) = x^m d(x) + p(x)
-$$
+```
 
 $x^m d(x)$ is the data with $m$ zeros appended, and adding the remainder $p(x)$ fills those $m$ positions with the CRC. **The resulting $c(x)$ is exactly divisible by $g(x)$ with no remainder.** The reason is as follows. Let $q(x)$ be the quotient of $x^m d(x)$ divided by $g(x)$, so that $x^m d(x) = q(x) g(x) + p(x)$. Adding $p(x)$ to both sides, and noting that $p(x) + p(x) = 0$ in modulo 2,
 
-$$
+```math
 c(x) = x^m d(x) + p(x) = q(x) g(x)
-$$
+```
 
 is obtained. The receiver divides the received bit string by $g(x)$ and judges that there is no error if the remainder is 0 and that there is an error otherwise.
 
@@ -763,9 +765,9 @@ Let us find the CRC that protects the data $d = 110011$ with the generator polyn
 
 **Step 1: form $x^4 d(x)$.** Multiply the data by $x^4$. On bit strings this is the same as appending four zeros.
 
-$$
+```math
 x^4 d(x) = x^4 (x^5 + x^4 + x + 1) = x^9 + x^8 + x^5 + x^4 \quad \rightarrow \quad 1100110000
-$$
+```
 
 **Step 2: divide by $g(x)$ to obtain the remainder.** Polynomial division repeatedly eliminates the highest-order term.
 
@@ -793,17 +795,17 @@ After the first XOR in Figure 16, 1100110000 XOR 1100100000 = 0000010000 remains
 
 **Step 3: build the frame to be transmitted.**
 
-$$
+```math
 c(x) = x^4 d(x) + p(x) = x^9 + x^8 + x^5 + x^4 + x^3 + 1 \quad \rightarrow \quad 110011\ 1001
-$$
+```
 
 The 10 bits 1100111001, the data 110011 followed by the CRC 1001, are sent.
 
 **Step 4: check at the receiver.** Dividing the error-free 1100111001 by 11001 gives the remainder 0000, so the receiver judges that there is no error. Writing the received bit string as $r(x) = c(x) + e(x)$, $e(x)$ is the **error polynomial**, which has a 1 at each position where an error occurred. Because $c(x)$ is divisible by $g(x)$, the following holds.
 
-$$
+```math
 \mathrm{Rem}\left[\frac{r(x)}{g(x)}\right] = \mathrm{Rem}\left[\frac{e(x)}{g(x)}\right]
-$$
+```
 
 That is, the remainder depends only on the pattern of the error. For example, if the bit at position $x^5$ is flipped during transmission and 1100011001 is received, the remainder is 1011, the same as the remainder of $x^5$ divided by $g(x)$, and the error is detected. The remainders for a single-bit error at each of the ten positions are as follows.
 
@@ -842,9 +844,9 @@ Let us find the probability that an error occurs in a 1,000-bit frame on a link 
 2. The probability that all 1,000 bits are transmitted without error is the product of independent events, $(1 - p)^{1000}$.
 3. The probability that the 1,000 bits are transmitted with at least one error is the complement.
 
-$$
+```math
 P_{error} = 1 - (1 - p)^{1000} = 1 - 0.99999000005 \approx 9.99995 \times 10^{-6}
-$$
+```
 
 This value is almost the same as $np = 1000 \times 10^{-8} = 10^{-5}$. When $np$ is much smaller than 1, $1 - (1 - p)^n \approx np$ is a good approximation.
 
@@ -929,7 +931,7 @@ A working group is active while work remains to complete and maintain its standa
 
 | Status | Working groups |
 |:-----|:-----|
-| Active | 802.1 higher layer LAN protocols, 802.3 Ethernet, 802.11 wireless LAN, 802.15 WPAN, 802.16 broadband wireless access, 802.18 radio regulatory TAG, 802.19 coexistence TAG, 802.21 media independent handoff, 802.22 wireless regional area networks, 802.24 vertical applications TAG |
+| Active | 802.1 higher layer LAN protocols, 802.3 Ethernet, 802.11 wireless LAN, 802.15 WPAN, 802.16 broadband wireless access, 802.18 radio regulatory TAG, 802.19 coexistence TAG, 802.21 media independent handover, 802.22 wireless regional area networks, 802.24 vertical applications TAG |
 | Inactive | 802.17 resilient packet ring, 802.20 mobile broadband wireless access (MBWA) |
 | Disbanded | 802.2 LLC, 802.4 token bus, 802.5 token ring, 802.6 MAN, 802.7 broadband TAG, 802.8 fiber optic TAG, and others |
 
@@ -1001,7 +1003,7 @@ UTP (unshielded twisted pair) is twisted pair without shielding, and STP (shield
 | CSMA | A station listens before sending, and the methods are nonpersistent, 1-persistent, and p-persistent according to what is done when the medium is busy. |
 | CSMA/CD | A station keeps listening while sending, stops immediately on detecting a collision, sends a jamming signal, and backs off; most systems use the 1-persistent method. |
 | Collision detection time | The worst case is $2\tau$ on a baseband bus and $4\tau$ on a broadband bus, and the frame transmission time must exceed it. |
-| Binary exponential backoff | After the $n$th collision a station waits a number of slots chosen from $0$ to $2^{\min(n,10)} - 1$, and it gives up after 16 failures. |
+| Binary exponential backoff | After the $`n`$th collision a station waits a number of slots chosen from $0$ to $2^{\min(n,10)} - 1$, and it gives up after 16 failures. |
 | Bridges and routers | A bridge connects LANs with the same MAC at layer 2, and a router connects different networks at layer 3. |
 | CRC | The sender appends $p(x) = \mathrm{Rem}[x^m d(x) / g(x)]$ to send a frame divisible by $g(x)$, and the receiver checks whether the remainder is 0. |
 | BER and frame errors | The error probability of an $n$-bit frame is $1 - (1-p)^n$, which is approximated by $np$ when $np \ll 1$. |
@@ -1054,7 +1056,7 @@ UTP (unshielded twisted pair) is twisted pair without shielding, and STP (shield
    <details>
    <summary>Answer</summary>
 
-   $\tau = 2000 / (2 \times 10^8) = 10\ \mu$s, so the worst-case collision detection time is $2\tau = 20\ \mu$s. The transmission time of a frame must be longer than this, so $L_{min} = 10^7 \times 20 \times 10^{-6} = 200$ bits.
+   $`\tau = 2000 / (2 \times 10^8) = 10\ \mu`$s, so the worst-case collision detection time is $`2\tau = 20\ \mu`$s. The transmission time of a frame must be longer than this, so $L_{min} = 10^7 \times 20 \times 10^{-6} = 200$ bits.
 
    </details>
 
@@ -1072,7 +1074,7 @@ UTP (unshielded twisted pair) is twisted pair without shielding, and STP (shield
    <details>
    <summary>Answer</summary>
 
-   $k = \min(5, 10) = 5$, so an integer from 0 to $2^5 - 1 = 31$ is chosen. The slot time is 51.2 µs, so the maximum waiting time is $31 \times 51.2 = 1587.2\ \mu$s, about 1.59 ms.
+   $k = \min(5, 10) = 5$, so an integer from 0 to $2^5 - 1 = 31$ is chosen. The slot time is 51.2 µs, so the maximum waiting time is $`31 \times 51.2 = 1587.2\ \mu`$s, about 1.59 ms.
 
    </details>
 
@@ -1119,7 +1121,7 @@ UTP (unshielded twisted pair) is twisted pair without shielding, and STP (shield
 ## References
 
 1. W. Stallings, *Local and Metropolitan Area Networks*, 6th ed. Upper Saddle River, NJ, USA: Prentice Hall, 2000.
-2. IEEE Std 802.2-1998, *IEEE Standard for Information Technology - Local and Metropolitan Area Networks - Part 2: Logical Link Control*, IEEE, 1998.
+2. ISO/IEC 8802-2:1998 (IEEE Std 802.2, 1998 Edition), *Information technology - Telecommunications and information exchange between systems - Local and metropolitan area networks - Specific requirements - Part 2: Logical Link Control*, IEEE, 1998.
 3. IEEE Std 802-2014, *IEEE Standard for Local and Metropolitan Area Networks: Overview and Architecture*, IEEE, 2014.
 4. A. S. Tanenbaum and D. J. Wetherall, *Computer Networks*, 5th ed. Boston, MA, USA: Pearson, 2011.
 5. N. Abramson, "The ALOHA System: Another alternative for computer communications," in *Proc. AFIPS Fall Joint Computer Conference*, 1970, pp. 281-285.

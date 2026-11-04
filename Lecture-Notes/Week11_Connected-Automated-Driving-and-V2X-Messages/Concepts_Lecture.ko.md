@@ -78,7 +78,7 @@
 
 그림 1에서 스마트카 집합은 자율주행차와 커넥티드카의 대부분을 포함하고, CAV는 자율주행차와 커넥티드카가 겹치는 영역에 놓인다. 오른쪽의 ITS 집합은 교통 체계 전체를 지능화하는 사업이며, 그 안의 **C-ITS(Cooperative ITS)** 는 차량과 인프라가 실시간으로 정보를 공유하는 협력형 교통 체계이다. CAV는 C-ITS와도 겹치므로, 커넥티드 자율주행은 차량 기술과 교통 체계 기술이 만나는 지점에 있다. ITS와 C-ITS는 1.6절과 1.7절에서 자세히 정의한다.
 
-> **참고:** 자율주행 레벨(레벨 0\~5)과 운전 작업의 정의는 2주차에서 다룬다. 이 정리본에서 **운전 작업(DDT, dynamic driving task)** 은 차량을 실시간으로 조향, 가속, 감속하고 주변 환경을 감시하여 대응하는 모든 작업을 말한다 [1].
+> **참고:** 자율주행 레벨(레벨 0\~5)과 운전 작업의 정의는 2주차에서 다룬다. **운전 작업(DDT, dynamic driving task)** 은 차량을 실시간으로 조향, 가속, 감속하고 주변 환경을 감시하여 대응하는 모든 작업을 말한다 [1].
 
 ### 1.2 유럽 C2C-CC의 기술 분류
 
@@ -190,7 +190,7 @@ C2C-CC는 커넥티드 자율주행 기술을 두 가지 축으로 분류한다.
 
 ### 1.5 자동차 산업과 ITS 산업
 
-커넥티드 자율주행은 자동차 산업과 ITS 산업이 함께 만드는 기술이지만 두 산업의 규모는 크게 다르다. 한국자동차연구원의 자료에 따르면 국내 자동차 산업의 규모는 연 250조 원, ITS 산업은 연 1조 원 수준이다 [10]. 자동차 산업은 규모가 훨씬 크므로 연구 개발, 양산, 생산의 각 단계에 걸쳐 많은 인력이 필요하다. 새로운 기술은 연구 개발 인력이, 성숙한 기술은 양산과 생산 인력이 주로 맡는다. 한편 커넥티드카 시장은 기대보다 늦게 성숙하고 있으므로, 이 분야의 산업 전망은 그 지연을 고려해 판단해야 한다.
+커넥티드 자율주행은 자동차 산업과 ITS 산업이 함께 만드는 기술이지만 두 산업의 규모는 크게 다르다. 한국자동차연구원의 자료에 따르면 국내 자동차 산업의 규모는 연 250조 원, ITS 산업은 연 1조 원 수준이다 [10]. 자동차 산업은 규모가 훨씬 크므로 연구 개발, 양산, 생산의 각 단계에 걸쳐 많은 인력이 필요하다. 새로운 기술은 석사, 박사급의 연구 개발 인력이, 성숙한 기술은 학부 이상의 양산과 생산 인력이 주로 맡는다. 한편 커넥티드카 시장은 기대보다 늦게 성숙하고 있으므로, 이 분야의 산업 전망은 그 지연을 고려해 판단해야 한다.
 
 ![그림 4. 제품 수명 주기에 따른 원가 결정 비율과 원가 발생 비율, 자동차 산업과 ITS 산업의 연간 규모](../../images/Week11_11-1_p12.png)
 
@@ -265,7 +265,7 @@ flowchart TD
 
 *그림 8. 안전 기술의 발전에 따른 교통사고 감소 효과의 개념*
 
-그림 8은 한 완성차 업체의 자료로, 2000년부터 미래(20XX년)까지 교통사고 사망자의 감소율(%)을 안전 기술별로 쌓아 보여 준다. 위쪽 띠는 **수동 안전(passive safety)**, 즉 에어백과 안전띠처럼 충돌이 일어난 뒤 피해를 줄이는 기술의 기여이다. 가운데 띠는 **능동 안전(active safety)**, 즉 ABS, 전자식 주행 안정 제어, 긴급 제동처럼 충돌 자체를 막는 차량 단독 기술의 기여이다. 두 기술만으로는 감소율이 -100%에 이르지 못하며, 남은 부분(빨간 띠)을 채우는 것이 **도로와 차량의 협력 안전 시스템(road-vehicle cooperative safety systems)**, 즉 V2X 기반 안전 시스템이다. 그래프 아래의 "Toward zero accidents"라는 목표에 다가가려면 차량 혼자 볼 수 없는 위험을 통신으로 알아야 한다는 것이 이 그림의 교훈이다.
+그림 8은 한 완성차 업체의 자료로, 2000년부터 미래(20XX년)까지 교통사고 감소율(%)을 안전 기술별로 쌓아 보여 준다. 위쪽 띠는 **수동 안전(passive safety)**, 즉 에어백과 안전띠처럼 충돌이 일어난 뒤 피해를 줄이는 기술의 기여이다. 가운데 띠는 **능동 안전(active safety)**, 즉 ABS, 전자식 주행 안정 제어, 긴급 제동처럼 충돌 자체를 막는 차량 단독 기술의 기여이다. 두 기술만으로는 감소율이 -100%에 이르지 못하며, 남은 부분(빨간 띠)을 채우는 것이 **도로와 차량의 협력 안전 시스템(road-vehicle cooperative safety systems)**, 즉 V2X 기반 안전 시스템이다. 그래프 아래의 "Toward zero accidents"라는 목표에 다가가려면 차량 혼자 볼 수 없는 위험을 통신으로 알아야 한다는 것이 이 그림의 교훈이다.
 
 일본은 이러한 관점에서 1991년부터 운수성(2001년 이후 국토교통성) 주도로 **ASV(Advanced Safety Vehicle, 첨단 안전 차량)** 프로젝트를 5년 단위로 진행해 왔다 [11].
 
@@ -302,13 +302,13 @@ flowchart TD
 | 약어 | 용어 | 정의 |
 |:-----|:-----|:-----|
 | LV | 선두 차량(leading vehicle) | 군집의 맨 앞 차량이다. LV의 운전자는 V2V로 FV와 PFV를 관리, 감독하며, 자기 판단으로 군집을 형성하거나 합류시키고, 이탈, 분리, 해산시킨다. POCF의 통신을 위해 BO와 통신할 수도 있다. |
-| FV | 추종 차량(following vehicle) | LV 뒤에서 V2V로 연결되어 달리는 차량이다. 종방향은 CACC로 제어하고, 차로 유지 같은 횡방향 제어를 함께 쓸 수 있다. |
+| FV | 추종 차량(following vehicle) | LV 뒤에서 V2V로 연결되어 달리는 차량이다. 종방향은 CACC로 제어하고, 차로 유지 보조(LKAS)나 부분 자동 차로 변경(PALS) 같은 횡방향 제어를 함께 쓸 수 있다. POCF의 통신을 위해 BO와 통신할 수도 있다. |
 | TV | 후미 차량(trailing vehicle) | FV 가운데 맨 뒤의 차량이다. |
 | PV | 군집 차량(platoon vehicle) | LV와 FV(TV 포함)를 함께 부르는 말이다. |
 | OV | 기타 차량(other vehicle) | 군집에 참여하지 않지만 긴급 제동이나 끼어들기(cut-in)로 군집에 영향을 줄 수 있는 차량이다. |
-| PLV | 잠재적 선두 차량(potential leading vehicle) | 지금은 선두가 아니지만 앞으로 LV가 될 수 있는 차량이다. |
-| PFV | 잠재적 추종 차량(potential following vehicle) | 지금은 군집에 속하지 않지만 형성이나 합류 때 FV가 될 수 있는 차량이다. |
-| PPV | 잠재적 군집 차량(potential platoon vehicle) | PLV와 PFV를 함께 부르는 말이다. |
+| PLV | 잠재적 선두 차량(potential leading vehicle) | 지금은 군집을 이끌고 있지 않지만 이끌 수 있는 차량, 또는 LV였다가 이탈이나 해산으로 군집을 떠난 차량이다. 군집에서 LV가 될 수 있다. |
+| PFV | 잠재적 추종 차량(potential following vehicle) | 지금은 군집에 속하지 않지만 속할 수 있는 차량, 또는 FV였다가 이탈이나 해산으로 군집을 떠난 차량이다. 합류하거나 군집을 형성하면 FV가 된다. |
+| PPV | 잠재적 군집 차량(potential platoon vehicle) | PLV와 PFV를 함께 부르는 말로, 군집에 포함될 수 있는 차량이다. 군집에 들어가면 LV나 FV(TV)가 된다. |
 
 *표 9. 군집주행 관련 차량 용어*
 
@@ -354,11 +354,13 @@ POCF는 군집의 형성(form)부터 해산(dissolve)까지 모드와 전이를 
 
 표 10에서 Mercedes-Benz와 Toyota는 V2X를 센서 구성에 포함한다. Mercedes-Benz의 Car-to-X 통신은 다른 차량과 인프라에서 위험 정보를 받아 운전자에게 알리는 기능이다.
 
+> **참고:** 표 10의 Toyota 열은 강의자료의 구성을 따른 것이다. Toyota의 설명에 따르면 Toyota Safety Sense는 전방 카메라와 전방 레이더로 물체와 차선을 감지하고, TSS 3.0의 능동 운전 보조(Proactive Driving Assist)도 이 전방 카메라와 레이더를 쓴다 [15]. 표의 초음파 센서, 후방 카메라, V2X는 TSS 3.0의 구성 요소로 제시되어 있지 않다.
+
 ![그림 12. Mercedes-Benz DRIVE PILOT의 센서 구성](../../images/Week11_11-1_p28.png)
 
 *그림 12. Mercedes-Benz DRIVE PILOT의 센서 구성*
 
-그림 12는 Mercedes-Benz S-Class의 DRIVE PILOT 센서 구성이다. 3차원 환경을 촬영하는 카메라, 레이저로 3차원 환경을 측정하는 라이다, 전자기파로 거리와 속도를 재는 레이더, 음파로 가까운 주변을 감지하는 초음파 센서, 운전자의 주의 상태를 감지하는 운전자 카메라, 고정밀 위치를 측정하는 안테나 배열, 노면의 젖음 상태를 감지하는 노면 습도 센서로 이루어진다. DRIVE PILOT은 2021년 12월 독일에서 UN 규정 R157에 따른 레벨 3 조건부 자동화 시스템 승인을 받았으며, 처음에는 고속도로의 정체 구간에서 최고 60 km/h까지 운전 작업을 맡았다 [15], [16].
+그림 12는 Mercedes-Benz S-Class의 DRIVE PILOT 센서 구성이다. 3차원 환경을 촬영하는 카메라, 레이저로 3차원 환경을 측정하는 라이다, 전자기파로 거리와 속도를 재는 레이더, 음파로 가까운 주변을 감지하는 초음파 센서, 운전자의 주의 상태를 감지하는 운전자 카메라, 고정밀 위치를 측정하는 안테나 배열, 노면의 젖음 상태를 감지하는 노면 습도 센서로 이루어진다. DRIVE PILOT은 2021년 12월 독일에서 UN 규정 R157에 따른 레벨 3 조건부 자동화 시스템 승인을 받았으며, 처음에는 고속도로의 정체 구간에서 최고 60 km/h까지 운전 작업을 맡았다 [16], [17].
 
 ![그림 13. BMW 차량의 ADAS 센서 배치](../../images/Week11_11-1_p29.png)
 
@@ -429,7 +431,7 @@ V2X는 레벨 3부터 1개씩 들어가며, 레벨이 높아질수록 라이다�
 
 그림 16은 원격 주행용 통신 플랫폼 업체 DriveU의 개념도이다. 로봇, 버스, 승용차, 트럭, 배달 로봇 같은 차량에는 안테나, 자율주행 컴퓨터(AD PC), 모뎀, 바이 와이어 구동 장치(DBW, drive-by-wire), CAN 버스가 들어 있다. 차량은 4K 영상과 센서 데이터를 관제 센터의 운전자 노드(driver node)로 올려 보내고, 운전자 노드는 제어 명령을 차량으로 내려보낸다. 상향 링크는 대용량이고 하향 링크는 짧은 지연이 중요하므로, 어떤 네트워크 상황에서도 지연이 짧고 용량이 큰 연결이 필요하다.
 
-> **참고:** 3GPP는 원격 주행에 필요한 통신 성능으로 최대 종단 간 지연 5 ms, 신뢰도 99.999%, 차량에서 서버 방향 25 Mbps, 서버에서 차량 방향 1 Mbps의 전송 속도를 제시한다 [17]. 영상을 올리는 방향의 전송 속도가 큰 것은 그림 16의 데이터 흐름과 일치한다.
+> **참고:** 3GPP는 원격 주행에 필요한 통신 성능으로 최대 종단 간 지연 5 ms, 신뢰도 99.999%, 차량에서 서버 방향 25 Mbps, 서버에서 차량 방향 1 Mbps의 전송 속도를 제시한다 [18]. 영상을 올리는 방향의 전송 속도가 큰 것은 그림 16의 데이터 흐름과 일치한다.
 
 원격 주행 서비스는 기술과 인프라의 준비 정도에 따라 단계적으로 구현된다.
 
@@ -489,7 +491,7 @@ flowchart LR
 
 ### 2.3 커넥티드카 서비스의 분류
 
-Frost & Sullivan이 2020년에 정리한 커넥티드카 서비스의 현재와 미래(인포테인먼트, 스마트폰 통합, 전기차 서비스, 내비게이션, 텔레매틱스)는 1주차의 표 2에서 다루었다. Frost & Sullivan은 2019년 자료에서 완성차 업체가 판매할 수 있는 커넥티드 서비스를 일곱 분야로 나누었다 [18].
+Frost & Sullivan이 2020년에 정리한 커넥티드카 서비스의 현재와 미래(인포테인먼트, 스마트폰 통합, 전기차 서비스, 내비게이션, 텔레매틱스)는 1주차의 표 2에서 다루었다. Frost & Sullivan은 2019년 자료에서 완성차 업체가 판매할 수 있는 커넥티드 서비스를 일곱 분야로 나누었다 [19].
 
 | 분야 | 서비스의 예 |
 |:-----|:-----|
@@ -503,7 +505,7 @@ Frost & Sullivan이 2020년에 정리한 커넥티드카 서비스의 현재와 
 
 *표 14. 완성차 업체가 판매할 수 있는 커넥티드 서비스의 일곱 분야*
 
-같은 자료는 커넥티드카 서비스를 다시 네 가지로 크게 묶었다 [18].
+같은 자료는 커넥티드카 서비스를 다시 네 가지로 크게 묶었다 [19].
 
 | 분류 | 서비스의 예 |
 |:-----|:-----|
@@ -520,7 +522,7 @@ Frost & Sullivan이 2020년에 정리한 커넥티드카 서비스의 현재와 
 
 > **용어 정의:** **HMI(human-machine interface)** 는 사람과 기계가 정보를 주고받는 접점이다. 차량에서는 디스플레이, 버튼, 터치스크린, 음성 인식, 헤드업 디스플레이 등이 HMI에 해당한다.
 
-Frost & Sullivan은 2020년에 유럽에서 판매되는 15개 완성차 업체(Audi, BMW, DS, Fiat, Honda, Hyundai, JLR, Kia, Mercedes-Benz, Nissan, Porsche, PSA, Renault, Toyota, Volkswagen)의 HMI 채택 현황을 조사했다 [19].
+Frost & Sullivan은 2020년에 유럽에서 판매되는 15개 완성차 업체(Audi, BMW, DS, Fiat, Honda, Hyundai, JLR, Kia, Mercedes-Benz, Nissan, Porsche, PSA, Renault, Toyota, Volkswagen)의 HMI 채택 현황을 조사했다 [20].
 
 | HMI 요소 | 채택 업체 수 (15개 중) | 채택 업체 또는 미채택 업체 |
 |:-----|--:|:-----|
@@ -538,7 +540,7 @@ Frost & Sullivan은 2020년에 유럽에서 판매되는 15개 완성차 업체(
 
 *표 16. 유럽 15개 완성차 업체의 HMI 채택 현황 (2020년)*
 
-표 16에서 화면, 터치스크린, 음성 인식은 이미 모든 업체의 기본 사양이고, 헤드업 디스플레이와 디지털 비서가 빠르게 퍼지고 있다. 터치패드와 제스처는 아직 일부 업체만 쓴다.
+표 16에서 화면, 터치스크린, 음성 인식은 이미 모든 업체의 기본 사양이고, 헤드업 디스플레이(9개 업체)와 디지털 비서(11개 업체)도 절반 이상의 업체가 채택했다. 터치패드와 제스처는 아직 일부 업체만 쓴다.
 
 커넥티드카가 제공하는 정보가 많아질수록 HMI 설계의 중요성이 커진다.
 
@@ -546,9 +548,9 @@ Frost & Sullivan은 2020년에 유럽에서 판매되는 15개 완성차 업체(
 
 *그림 19. 정보 과잉으로 운전자의 주의가 분산되는 상황을 풍자한 그림*
 
-그림 19는 유럽의 AIDE(Adaptive Integrated Driver-vehicle InterfacE) 프로젝트가 피해야 할 상황으로 제시한 그림이다 [20]. 운전자 앞의 수많은 화면과 장치가 "WARNING! BLACK ICE AHEAD!!!"(전방 블랙아이스 경고)와 "ATTENTION! INCOMING FAX MESSAGE!!!"(팩스 수신)를 동시에 띄우고, 음악까지 흘러나온다. 생명과 직결된 경고와 사소한 알림이 같은 무게로 쏟아지면 운전자는 정작 중요한 경고를 놓친다. AIDE는 이 문제를 **HMI 통합(HMI integration)** 으로 해결하려 했다. ACC와 충돌 경고 같은 능동 안전 응용, 내비게이션과 미디어 플레이어 같은 인포테인먼트 응용, 개인 휴대 기기 같은 차량 밖 장치, 무선 온라인 서비스를 하나의 HMI 관리 체계로 묶고, 운전자의 부하와 상황에 따라 정보의 우선순위와 표시 시점을 조정하는 것이다.
+그림 19는 유럽의 AIDE(Adaptive Integrated Driver-vehicle InterfacE) 프로젝트가 피해야 할 상황으로 제시한 그림이다 [21]. 운전자 앞의 수많은 화면과 장치가 "WARNING! BLACK ICE AHEAD!!!"(전방 블랙아이스 경고)와 "ATTENTION! INCOMING FAX MESSAGE!!!"(팩스 수신)를 동시에 띄우고, 음악까지 흘러나온다. 생명과 직결된 경고와 사소한 알림이 같은 무게로 쏟아지면 운전자는 정작 중요한 경고를 놓친다. AIDE는 이 문제를 **HMI 통합(HMI integration)** 으로 해결하려 했다. ACC와 충돌 경고 같은 능동 안전 응용, 내비게이션과 미디어 플레이어 같은 인포테인먼트 응용, 개인 휴대 기기 같은 차량 밖 장치, 무선 온라인 서비스를 하나의 HMI 관리 체계로 묶고, 운전자의 부하와 상황에 따라 정보의 우선순위와 표시 시점을 조정하는 것이다.
 
-한국 산업 표준 KS C 5077(자동차 디스플레이 장치: 운전자 인터페이스 요구사항)은 주행 중 디스플레이에 제공할 수 있는 정보의 형태를 정보의 특성별로 규정한다 [21].
+한국 산업 표준 KS C 5077(자동차 디스플레이 장치: 운전자 인터페이스 요구사항)은 주행 중 디스플레이에 제공할 수 있는 정보의 형태를 정보의 특성별로 규정한다 [22].
 
 | 번호 | 특성 | 정보 종류 | 문자, 심벌 | 정지 화상 | 음향 | 동화상 | 비고 |
 |:-----|:-----|:-----|:--:|:--:|:--:|:--:|:-----|
@@ -573,7 +575,7 @@ Frost & Sullivan은 2020년에 유럽에서 판매되는 15개 완성차 업체(
 
 *표 17. KS C 5077의 주행 중 정보 제공 기준 (○ 가능, X 불가, - 해당 없음)*
 
-표 17의 원칙은 운전자의 시선을 오래 붙잡는 동화상을 엄격히 제한하는 것이다. 동화상은 긴급 상황 안내, 주행 정보와 경로 안내, 긴급 교통과 날씨 정보, 주행을 돕는 차량 외부 영상에만 허용되고, 오락성 정보는 어떤 형태로도 주행 중에 제공할 수 없다. 뉴스는 소리로만 들을 수 있다.
+표 17의 원칙은 운전자의 시선을 오래 붙잡는 동화상을 엄격히 제한하는 것이다. 동화상은 비상 정보(국가 비상사태, 재난 상황 안내), 주행 정보와 경로 안내, 교통 정보, 긴급 날씨 정보, 주행을 돕는 차량 외부 영상에만 허용되고, 오락성 정보는 어떤 형태로도 주행 중에 제공할 수 없다. 뉴스는 소리로만 들을 수 있다.
 
 ### 2.5 커넥티드카 보안
 
@@ -583,7 +585,7 @@ Frost & Sullivan은 2020년에 유럽에서 판매되는 15개 완성차 업체(
 
 *그림 20. 커넥티드카의 해킹 지점과 미래의 잠재적 위협 지점*
 
-그림 20은 Frost & Sullivan의 2018년 자동차 사이버 보안 위협 분석이다 [18]. 초록 점선은 2018년까지 가장 많이 해킹된 지점이고, 빨간 원의 번호는 앞으로 위협이 될 지점이다.
+그림 20은 Frost & Sullivan의 2018년 자동차 사이버 보안 위협 분석이다 [19]. 초록 점선은 2018년까지 가장 많이 해킹된 지점이고, 빨간 원의 번호는 앞으로 위협이 될 지점이다.
 
 | 구분 | 지점 |
 |:-----|:-----|
@@ -592,11 +594,11 @@ Frost & Sullivan은 2020년에 유럽에서 판매되는 15개 완성차 업체(
 
 *표 18. 커넥티드카의 해킹 지점과 잠재적 위협 지점*
 
-차량 내부 네트워크인 CAN은 메시지에 송신자 인증이 없으므로(3주차, 9주차), 외부에서 한 ECU에 침입하면 다른 ECU를 속이는 메시지를 보낼 수 있다. V2X에서는 가짜 BSM이나 가짜 신호 정보가 사고로 이어질 수 있으므로, 메시지마다 인증서로 전자 서명을 붙이는 보안 체계(IEEE 1609.2)를 쓴다 [22]. IEEE 1609.2가 WAVE 구조에서 차지하는 위치는 13주차 3.2절에서, C-ITS 인증 관리 체계와 차량 사이버 보안 규정은 14주차 3.3절과 3.5절에서 다룬다.
+차량 내부 네트워크인 CAN은 메시지에 송신자 인증이 없으므로(3주차, 9주차), 외부에서 한 ECU에 침입하면 다른 ECU를 속이는 메시지를 보낼 수 있다. V2X에서는 가짜 BSM이나 가짜 신호 정보가 사고로 이어질 수 있으므로, 메시지마다 인증서로 전자 서명을 붙이는 보안 체계(IEEE 1609.2)를 쓴다 [23]. IEEE 1609.2가 WAVE 구조에서 차지하는 위치는 13주차 3.2절에서, C-ITS 인증 관리 체계와 차량 사이버 보안 규정은 14주차 3.3절과 3.5절에서 다룬다.
 
 ### 2.6 차량용 안전 시스템과 자율주행 셔틀의 분류
 
-Frost & Sullivan은 2014년 유럽 ADAS 시장 분석에서 차량용 안전 시스템을 그림 21처럼 분류했다 [23].
+Frost & Sullivan은 2014년 유럽 ADAS 시장 분석에서 차량용 안전 시스템을 그림 21처럼 분류했다 [24].
 
 ```mermaid
 flowchart TD
@@ -613,7 +615,7 @@ flowchart TD
 
 *그림 21. 차량용 안전 시스템의 분류*
 
-자율주행 셔틀은 커넥티드 자율주행이 상용 서비스로 먼저 도입되는 분야이다. Frost & Sullivan은 2019년 자율주행 셔틀 시장을 그림 22처럼 정의했다 [24].
+자율주행 셔틀은 커넥티드 자율주행이 상용 서비스로 먼저 도입되는 분야이다. Frost & Sullivan은 2019년 자율주행 셔틀 시장을 그림 22처럼 정의했다 [25].
 
 ```mermaid
 flowchart TD
@@ -650,7 +652,7 @@ flowchart TD
 
 *표 19. Waymo, Tesla, 42dot의 센서 구성과 서비스*
 
-그림 23 가운데의 Tesla 센서 배치는 번호로 표시되어 있다. ① 뒤쪽 번호판 위의 카메라, ② 앞뒤 범퍼의 초음파 센서(장착 차량), ③ 양쪽 도어 필러의 카메라, ④ 룸미러 위 앞유리의 카메라 3개, ⑤ 양쪽 앞 펜더의 카메라, ⑥ 앞 범퍼 뒤의 레이더(장착 차량)이다. 오른쪽의 42dot은 현대자동차그룹의 소프트웨어 기업으로, 기아 니로 기반의 택시와 소형 셔틀을 운행했다. Waymo와 Tesla의 센서 구성은 3주차 4절에서 자세히 비교했다.
+그림 23 가운데의 Tesla 센서 배치는 번호로 표시되어 있다. ① 뒤쪽 번호판 위의 카메라, ② 앞뒤 범퍼의 초음파 센서(장착 차량), ③ 양쪽 도어 필러의 카메라, ④ 룸미러 위 앞유리의 카메라 3개, ⑤ 양쪽 앞 펜더의 카메라, ⑥ 앞 범퍼 뒤의 레이더(장착 차량)이다. 이 배치는 레이더와 초음파 센서를 장착한 차량 기준이며, Tesla는 2021년부터 레이더를, 2022년 10월부터 초음파 센서를 신차에서 빼고 카메라만 쓰는 Tesla Vision으로 전환했다 [26]. 오른쪽의 42dot은 현대자동차그룹의 소프트웨어 기업으로, 기아 니로 기반의 택시와 소형 셔틀을 운행했다. Waymo와 Tesla의 센서 구성은 3주차 4절에서 자세히 비교했다.
 
 ### 2.8 커넥티드 자율주행 서비스: 안전과 편의
 
@@ -721,11 +723,11 @@ flowchart TD
 
 > **용어 정의:** **종방향(longitudinal)** 은 차량의 진행 방향, **횡방향(lateral)** 은 진행 방향에 수직인 좌우 방향이다. **RMSE(root mean square error, 평균 제곱근 오차)** 는 추정값과 참값의 차이를 제곱하여 평균한 뒤 제곱근을 취한 값으로, 오차의 전형적인 크기를 나타낸다.
 
-$N$개의 프레임에서 추정 위치를 $\hat{x}_i$, 참 위치를 $x_i$라 하면 RMSE는 다음과 같다.
+$N$개의 프레임에서 추정 위치를 $`\hat{x}_i`$, 참 위치를 $x_i$라 하면 RMSE는 다음과 같다.
 
-$$
+```math
 \text{RMSE} = \sqrt{\frac{1}{N}\sum_{i=1}^{N}\left(\hat{x}_i - x_i\right)^2}
-$$
+```
 
 그림 28의 오른쪽 그래프는 약 2,800개 프레임에서 측정한 프레임별 오차이고, 왼쪽 막대그래프는 그 RMSE이다.
 
@@ -742,24 +744,24 @@ $$
 
 개선율은 $(\text{기존 RMSE} - \text{융합 RMSE}) / \text{기존 RMSE}$로 계산한다. 종방향에서 카메라 대비 개선율은 다음과 같다.
 
-$$
+```math
 \frac{1.91 - 0.27}{1.91} = \frac{1.64}{1.91} \approx 0.859 = 85.9\%
-$$
+```
 
 같은 방법으로 나머지를 계산하면 표 22와 같다.
 
 | 비교 | 종방향 개선율 | 횡방향 개선율 |
 |:-----|--:|--:|
-| 카메라 대비 | $(1.91 - 0.27)/1.91 \approx 86\%$ | $(0.16 - 0.12)/0.16 = 25\%$ |
-| 레이더 대비 | $(0.57 - 0.27)/0.57 \approx 53\%$ | $(0.26 - 0.12)/0.26 \approx 54\%$ |
+| 카메라 대비 | $`(1.91 - 0.27)/1.91 \approx 86\%`$ | $`(0.16 - 0.12)/0.16 = 25\%`$ |
+| 레이더 대비 | $`(0.57 - 0.27)/0.57 \approx 53\%`$ | $`(0.26 - 0.12)/0.26 \approx 54\%`$ |
 
 *표 22. 융합 방식의 위치 오차 개선율*
 
-> **참고:** 강의자료는 융합 방식의 정확도가 종방향에서 카메라, 레이더 대비 86%, 52%, 횡방향에서 27%, 56% 향상되었다고 제시한다. 표 22의 값과 조금 다른 것은 그림에 표시된 RMSE가 소수 둘째 자리로 반올림된 값이기 때문이다. 예를 들어 횡방향 카메라 RMSE가 0.164 m, 융합 RMSE가 0.120 m라면 개선율은 약 27%가 된다. 어느 쪽이든 융합이 단일 방식보다 정확하다는 결론은 같다.
+> **참고:** 이 실험의 결과는 융합 방식의 정확도가 종방향에서 카메라, 레이더 대비 86%, 52%, 횡방향에서 27%, 56% 향상된 것으로 보고되어 있다. 표 22의 값과 조금 다른 것은 그림에 표시된 RMSE가 소수 둘째 자리로 반올림된 값이기 때문이다. 예를 들어 횡방향 카메라 RMSE가 0.164 m, 융합 RMSE가 0.120 m라면 개선율은 약 27%가 된다. 어느 쪽이든 융합이 단일 방식보다 정확하다는 결론은 같다.
 
 ### 2.11 미국과 유럽의 V2V, V2I 표준 비교
 
-미국과 유럽은 V2X 표준을 따로 만들었지만 많은 부분이 비슷하다 [25].
+미국과 유럽은 V2X 표준을 따로 만들었지만 많은 부분이 비슷하다 [27].
 
 - 전체 아키텍처가 비슷하다.
 - 보안 프로토콜과 물리 계층 표준은 거의 같다(둘 다 IEEE 802.11p 기반).
@@ -770,7 +772,7 @@ $$
 
 ### 2.12 유럽 C2C-CC의 협력 주행 단계와 서비스
 
-1.2절의 Day 1, Day 2, Day 3+ 분류는 각각 **인지 주행(awareness driving)**, **감지 주행(sensing driving)**, **협력 주행(cooperative driving)** 의 단계에 대응한다. 인지 주행에서 차량은 서로의 존재와 상태를 알리고, 감지 주행에서는 자기 센서로 감지한 객체까지 공유하며, 협력 주행에서는 앞으로의 궤적과 기동을 공유하고 조정한다. C2C-CC는 그다음 단계로 차량들이 기동을 동기화하는 동기화 협력 주행(synchronised cooperative driving)을 제시한다 [2]. 아래 Day 3/4는 협력 주행과 그 이후 단계를 함께 가리킨다.
+1.2절의 Day 1, Day 2, Day 3+ 분류는 각각 **인지 주행(awareness driving)**, **감지 주행(sensing driving)**, **협력 주행(cooperative driving)** 의 단계에 대응한다. 인지 주행에서 차량은 서로의 존재와 상태를 알리고, 감지 주행에서는 자기 센서로 감지한 객체까지 공유하며, 협력 주행에서는 앞으로의 궤적과 기동을 공유하고 조정한다. C2C-CC의 V2X 로드맵은 그다음 단계로, 레벨 4, 5의 차량들이 주행 궤적을 서로 교환하고 동기화하여 최적의 주행 패턴을 얻는 동기화 협력 주행(synchronized cooperative driving)을 두고, 최종 목표를 사고 없는 주행으로 제시했다 [28]. 아래 Day 3/4는 협력 주행과 그 이후 단계를 함께 가리킨다.
 
 ![그림 29. Day 1 인지 주행 서비스의 예](../../images/Week11_11-2_p35.png)
 
@@ -808,7 +810,7 @@ Day 3/4의 협력 주행은 궤적과 기동의 공유에서 시작한다. 그�
 
 협력 주행의 다음 수준은 조정과 협상이다. 그림 32의 왼쪽 **고속도로 협력 합류(cooperative merging on highways)** 에서는 합류하려는 차량이 의도를 알리면, 관련 차량들이 정보를 교환하여 충분한 시간 여유를 두고 간격을 벌리고 합류 기동을 조정한다. 오른쪽 **I2V 지원 협력 합류(I2V assisted cooperative merging)** 에서는 인프라가 전체 교통 흐름을 최적화하는 방향으로 통행 우선권을 조정하는 정보를 제안한다(그림의 "leave space for merging"은 합류 공간을 비워 두라는 안내이다).
 
-유럽의 C-ITS 실증 플랫폼인 C-Roads는 서비스마다 사용하는 메시지와 표준을 정리했다 [26].
+유럽의 C-ITS 실증 플랫폼인 C-Roads는 서비스마다 사용하는 메시지와 표준을 정리했다 [29].
 
 | 약어 | 서비스 | 묶음 | 시기 | 통신 | 분류 | 네트워크 | 메시지 | 표준 |
 |:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|
@@ -821,7 +823,7 @@ Day 3/4의 협력 주행은 궤적과 기동의 공유에서 시작한다. 그�
 
 *표 24. C-Roads의 C-ITS 서비스와 메시지, 표준*
 
-> **용어 정의:** **RHS(road hazard signalling, 도로 위험 신호)** 는 ETSI TS 101 539-1이 정한 V2X 응용으로, 도로 위의 위험 상황을 DENM으로 알리는 서비스들의 요구사항을 규정한다 [27].
+> **용어 정의:** **RHS(road hazard signalling, 도로 위험 신호)** 는 ETSI TS 101 539-1이 정한 V2X 응용으로, 도로 위의 위험 상황을 DENM으로 알리는 서비스들의 요구사항을 규정한다 [30].
 
 표 24에서 V2V 안전 서비스는 대부분 사건을 알리는 DENM을 쓰고, 긴급 차량이나 저속 차량처럼 차량 자신의 상태가 정보인 경우에는 CAM도 함께 쓴다. 차량 내 표지(VSGN)는 표에 CAM으로 적혀 있지만, 그 표준 칸의 IVI 데이터 구조는 표 3의 IVIM 메시지로 전달된다 [7].
 
@@ -833,7 +835,7 @@ Day 3/4의 협력 주행은 궤적과 기동의 공유에서 시작한다. 그�
 
 ### 3.1 센서 기반 자율주행에서 커넥티드 자동화로
 
-미국의 부품 업체 Delphi(현재 Aptive)는 자율주행 레벨별 기능과 기술을 다음과 같이 전망했다 [28].
+미국의 부품 업체 Delphi(현재 Aptive)는 자율주행 레벨별 기능과 기술을 다음과 같이 전망했다 [31].
 
 | 레벨 | 이름 | 기능 | 기술 | 시기 |
 |:-----|:-----|:-----|:-----|:-----|
@@ -845,7 +847,7 @@ Day 3/4의 협력 주행은 궤적과 기동의 공유에서 시작한다. 그�
 
 *표 25. Delphi의 자율주행 레벨별 기능과 기술 전망*
 
-> **참고:** 강의자료는 레벨 4를 "Full"로 표기하지만, SAE J3016에서 레벨 4는 고도 자동화(high driving automation)이고 완전 자동화(full driving automation)는 레벨 5이다 [1].
+> **참고:** Delphi의 전망 자료는 레벨 4를 "Full"로 표기하지만, SAE J3016에서 레벨 4는 고도 자동화(high driving automation)이고 완전 자동화(full driving automation)는 레벨 5이다 [1].
 
 표 25에서 V2X는 레벨 2부터 기술 목록에 들어가 레벨이 높아져도 계속 유지된다. 그림 25의 센서 구성만으로는 NLOS 영역과 먼 거리를 볼 수 없으므로, 자동화가 높아질수록 통신의 역할이 커진다.
 
@@ -853,7 +855,7 @@ Day 3/4의 협력 주행은 궤적과 기동의 공유에서 시작한다. 그�
 
 *그림 33. 자율주행차, 커넥티드카, 커넥티드 자율주행차의 관계*
 
-그림 33은 미국 교통부 ITS 합동 프로그램 사무국(ITS JPO)의 개념도이다 [29]. 위쪽의 **자율주행차(autonomous vehicle)** 는 내부 센서만으로 다른 차량과 고립되어 동작하고, 아래쪽의 **커넥티드카(connected vehicle)** 는 가까운 차량과 인프라와 통신한다. 두 흐름이 만나는 가운데의 **커넥티드 자율주행차(connected automated vehicle)** 는 자율주행 능력과 커넥티드 능력을 함께 활용하여 가장 큰 효과를 낸다.
+그림 33은 미국 교통부 ITS 합동 프로그램 사무국(ITS JPO)의 개념도이다 [32]. 위쪽의 **자율주행차(autonomous vehicle)** 는 내부 센서만으로 다른 차량과 고립되어 동작하고, 아래쪽의 **커넥티드카(connected vehicle)** 는 가까운 차량과 인프라와 통신한다. 두 흐름이 만나는 가운데의 **커넥티드 자율주행차(connected automated vehicle)** 는 자율주행 능력과 커넥티드 능력을 함께 활용하여 가장 큰 효과를 낸다.
 
 ### 3.2 SAE J3216 협력 운전 자동화의 기능 사례
 
@@ -919,7 +921,7 @@ SAE J3216은 1.3절의 협력 등급마다 구체적인 기능 사례를 제시�
 
 > **용어 정의:** **지오펜스(geofence)** 는 지도 위에 설정한 가상의 경계로, 차량이 그 안에 들어오면 특정 규칙(예: 낮춘 제한 속도)이 적용된다.
 
-> **참고:** 표 29의 합의 추구 사례는 강의자료에서 전송 방식이 "단방향"으로 적혀 있지만, 합의 추구는 의도를 보내고 동의를 받는 양방향 교환이어야 성립한다. 표 28의 합류 사례처럼 C-ADS 1 → C-ADS 2의 제안과 C-ADS 2 → C-ADS 1의 동의가 함께 오가는 것으로 이해해야 한다.
+> **참고:** SAE J3216의 표는 표 29의 합의 추구 사례의 전송 방식을 "One-way"(단방향)로 적지만, 합의 추구는 의도를 보내고 동의를 받는 양방향 교환이어야 성립한다. 표 28의 합류 사례처럼 C-ADS 1 → C-ADS 2의 제안과 C-ADS 2 → C-ADS 1의 동의가 함께 오가는 것으로 이해해야 한다.
 
 **협력 차량 추종.**
 
@@ -939,7 +941,7 @@ SAE J3216은 1.3절의 협력 등급마다 구체적인 기능 사례를 제시�
 
 ### 3.3 V2X 메시지의 계층상 위치
 
-V2X 메시지는 프로토콜 스택의 어디에 놓이는가. 미국의 DSRC(WAVE) 스택을 기준으로 보면 그림 39와 같다 [30].
+V2X 메시지는 프로토콜 스택의 어디에 놓이는가. 미국의 DSRC(WAVE) 스택을 기준으로 보면 그림 39와 같다 [33].
 
 ```mermaid
 flowchart TB
@@ -961,7 +963,7 @@ flowchart TB
 
 그림 39에서 V2X 메시지는 응용 계층의 아래쪽인 **메시지 부계층(message sublayer)** 에 놓인다. SAE J2735가 메시지의 형식(무엇을 어떤 비트로 보내는가)을 정하고, SAE J2945/1이 그 메시지를 언제, 얼마나 자주, 어떤 성능으로 보내야 하는지를 정한다. 안전 메시지는 IP를 거치지 않고 가벼운 **WSMP(WAVE short message protocol)** 로 바로 전달되어 지연과 오버헤드를 줄이고, 인터넷 서비스 같은 비안전 응용은 TCP/UDP와 IPv6를 쓴다. 보안 서비스(IEEE 1609.2)는 여러 계층에 걸쳐 메시지의 서명과 검증을 맡는다.
 
-같은 구조를 IEEE 1609 표준의 관점에서 보면 다음과 같다 [31].
+같은 구조를 IEEE 1609 표준의 관점에서 보면 다음과 같다 [34].
 
 | 계층 | 구성 요소 | 표준 |
 |:-----|:-----|:-----|
@@ -977,7 +979,7 @@ flowchart TB
 
 ### 3.4 커넥티드카 메시지 교환 방식
 
-SAE의 응용과 IEEE 1609의 통신 계층은 그림 40처럼 역할을 나눈다 [32].
+SAE의 응용과 IEEE 1609의 통신 계층은 그림 40처럼 역할을 나눈다 [35].
 
 ```mermaid
 flowchart LR
@@ -1047,12 +1049,12 @@ RSU가 보내는 WSA에 **WRA(WAVE router advertisement)** 가 들어 있으면,
 
 | 지역 | 표준 | 내용 |
 |:-----|:-----|:-----|
-| 미국 | SAE J2735 V2X Communications Message Set Dictionary | V2X 메시지, 데이터 프레임, 데이터 요소의 정의 [33] |
-| 미국 | SAE J2945 DSRC Performance Requirements for V2V Safety Awareness | V2V 안전 인지를 위한 성능 요구사항(J2945/1: BSM의 전송 규칙) [34] |
-| 미국 | SAE J3224 V2X Sensor-Sharing for Cooperative and Automated Driving | 협력 자율주행을 위한 센서 데이터 공유(SDSM) [35] |
-| 유럽 | ETSI TS 102 637-1 | Part 1: 기능 요구사항 [36] |
-| 유럽 | ETSI TS 102 637-2 | Part 2: 협력 인지 기본 서비스(CAM)의 명세 [36] |
-| 유럽 | ETSI TS 102 637-3 | Part 3: 분산 환경 알림 기본 서비스(DENM)의 명세 [36] |
+| 미국 | SAE J2735 V2X Communications Message Set Dictionary | V2X 메시지, 데이터 프레임, 데이터 요소의 정의 [36] |
+| 미국 | SAE J2945 DSRC Performance Requirements for V2V Safety Awareness | V2V 안전 인지를 위한 성능 요구사항(J2945/1: BSM의 전송 규칙) [37] |
+| 미국 | SAE J3224 V2X Sensor-Sharing for Cooperative and Automated Driving | 협력 자율주행을 위한 센서 데이터 공유(SDSM) [38] |
+| 유럽 | ETSI TS 102 637-1 | Part 1: 기능 요구사항 [39] |
+| 유럽 | ETSI TS 102 637-2 | Part 2: 협력 인지 기본 서비스(CAM)의 명세 [39] |
+| 유럽 | ETSI TS 102 637-3 | Part 3: 분산 환경 알림 기본 서비스(DENM)의 명세 [39] |
 
 *표 32. 미국과 유럽의 V2X 메시지 규격*
 
@@ -1060,7 +1062,7 @@ RSU가 보내는 WSA에 **WRA(WAVE router advertisement)** 가 들어 있으면,
 
 > **용어 정의:** SAE J2735는 메시지를 세 단계로 정의한다. **데이터 요소(data element)** 는 속도, 위도처럼 더 나눌 수 없는 값이고, **데이터 프레임(data frame)** 은 위치(위도, 경도, 고도)처럼 데이터 요소를 묶은 구조이며, **메시지(message)** 는 데이터 프레임과 데이터 요소를 모아 하나의 전송 단위로 만든 것이다. 이 정의는 추상 구문 표기법인 ASN.1로 쓰이고, 전송할 때는 비트 단위로 빈틈없이 압축하는 UPER(unaligned packed encoding rules)로 인코딩한다.
 
-한국은 국가기술표준원이 KS R 1600 시리즈로 협력형 자율주행 시스템을 위한 V2X 메시지를 표준화하고 있다 [37].
+한국은 국가기술표준원이 KS R 1600 시리즈로 협력형 자율주행 시스템을 위한 V2X 메시지를 표준화하고 있다 [40].
 
 | 표준 번호 | 표준명 | 주요 내용 | 제정 시기 |
 |:-----|:-----|:-----|:-----|
@@ -1076,17 +1078,17 @@ RSU가 보내는 WSA에 **WRA(WAVE router advertisement)** 가 들어 있으면,
 
 표 33의 3\~7부는 2024년 말까지 의견 수렴과 심의 절차를 마치고 2025년 상반기에 제정 고시할 계획이었다. 각 부가 다루는 메시지가 SAE J2735의 메시지 이름과 같으므로, 한국 표준이 미국 메시지 체계를 바탕으로 만들어지고 있음을 알 수 있다. 표의 약어는 BSM(Basic Safety Message), SPaT(Signal Phase and Timing), MAP(Map Data), NMEA(National Marine Electronics Association), RTCM(Radio Technical Commission for Maritime Services), PVD(Probe Vehicle Data), PDM(Probe Data Management), TIM(Traveler Information Message), RSA(Road Side Alert), PSM(Pedestrian Safety Message), CSR(Common Safety Request), EVA(Emergency Vehicle Alert), ICA(Intersection Collision Avoidance)이다.
 
-> **참고:** KS R 1600은 PSM을 보행자 안전 메시지(Pedestrian Safety Message)로 부르지만, SAE J2735의 이름은 개인 안전 메시지(Personal Safety Message)이다. 보행자뿐 아니라 자전거 이용자, 휠체어 이용자 같은 VRU 전체를 대상으로 하기 때문이다 [33].
+> **참고:** KS R 1600은 PSM을 보행자 안전 메시지(Pedestrian Safety Message)로 부르지만, SAE J2735의 이름은 개인 안전 메시지(Personal Safety Message)이다. 보행자뿐 아니라 자전거 이용자, 휠체어 이용자 같은 VRU 전체를 대상으로 하기 때문이다 [36].
 
 ![그림 44. 미국과 유럽의 V2X 프로토콜 스택 비교](../../images/Week11_11-3_p19.png)
 
 *그림 44. 미국과 유럽의 V2X 프로토콜 스택 비교*
 
-그림 44는 2.11절에서 본 미국과 유럽의 표준을 스택으로 비교한다 [25]. 미국의 응용 계층(SAE J2735 메시지 집합과 J2945의 데이터 성능 요구사항)은 유럽에서 응용(Applications)과 퍼실리티(Facilities) 계층에 해당한다. 유럽의 퍼실리티 계층은 CAM과 DENM 같은 공통 메시지를 생성하고 관리하는 계층이다. 미국의 IEEE 1609.3, 1609.4 네트워크 계층은 유럽의 네트워킹과 전송(Networking & Transport) 계층에, IEEE 802.11p 물리 계층은 유럽의 접속(Access) 계층에 대응한다. 유럽은 계층마다 분산 혼잡 제어(DCC, decentralized congestion control) 기능을 두고(DCC Facilities, DCC NET, DCC Access), 관리(Management)와 보안(Security) 개체가 모든 계층과 서비스 접근점(SAP)으로 연결된다. 미국은 보안 기능을 IEEE 1609.2로 스택 옆에 둔다.
+그림 44는 2.11절에서 본 미국과 유럽의 표준을 스택으로 비교한다 [27]. 미국의 응용 계층(SAE J2735 메시지 집합과 J2945의 데이터 성능 요구사항)은 유럽에서 응용(Applications)과 퍼실리티(Facilities) 계층에 해당한다. 유럽의 퍼실리티 계층은 CAM과 DENM 같은 공통 메시지를 생성하고 관리하는 계층이다. 미국의 IEEE 1609.3, 1609.4 네트워크 계층은 유럽의 네트워킹과 전송(Networking & Transport) 계층에, IEEE 802.11p 물리 계층은 유럽의 접속(Access) 계층에 대응한다. 유럽은 계층마다 분산 혼잡 제어(DCC, decentralized congestion control) 기능을 두고(DCC Facilities, DCC NET, DCC Access), 관리(Management)와 보안(Security) 개체가 모든 계층과 서비스 접근점(SAP)으로 연결된다. 미국은 보안 기능을 IEEE 1609.2로 스택 옆에 둔다.
 
 ### 3.6 SAE J2735 메시지 목록
 
-SAE J2735가 정의하는 메시지는 다음과 같다 [33]. 통신 열은 메시지가 주로 쓰이는 방향이다.
+SAE J2735가 정의하는 메시지는 다음과 같다 [36]. 통신 열은 메시지가 주로 쓰이는 방향이다.
 
 | 번호 | 약어 | 메시지 이름 | 통신 | 설명 |
 |:-----|:-----|:-----|:-----|:-----|
@@ -1124,7 +1126,7 @@ SAE J2735가 정의하는 메시지는 다음과 같다 [33]. 통신 열은 메�
 
 *표 34. SAE J2735 정의 메시지 목록*
 
-> **참고:** J2735의 모든 메시지는 전송할 때 **MessageFrame**이라는 공통 틀에 싸인다. MessageFrame은 메시지 종류를 나타내는 번호(messageId)와 메시지 본문(value)으로 이루어지며, 수신기는 이 번호를 보고 본문을 어떤 메시지로 해석할지 정한다. 예를 들어 J2735의 2016년판에서 MAP은 18, SPaT는 19, BSM은 20, TIM은 31, PSM은 32이다 [33].
+> **참고:** J2735의 모든 메시지는 전송할 때 **MessageFrame**이라는 공통 틀에 싸인다. MessageFrame은 메시지 종류를 나타내는 번호(messageId)와 메시지 본문(value)으로 이루어지며, 수신기는 이 번호를 보고 본문을 어떤 메시지로 해석할지 정한다. 예를 들어 J2735의 2016년판에서 MAP은 18, SPaT는 19, BSM은 20, TIM은 31, PSM은 32이다 [36].
 
 이 가운데 자주 쓰이는 메시지의 목적, 핵심 내용, 전송 시점을 정리하면 다음과 같다.
 
@@ -1149,7 +1151,7 @@ SAE J2735가 정의하는 메시지는 다음과 같다 [33]. 통신 열은 메�
 
 ### 3.7 기본 안전 메시지(BSM)
 
-**BSM(Basic Safety Message)** 은 V2V 안전 응용의 기본 메시지이다. 모든 차량이 자신의 상태를 주변에 계속 알리면, 각 차량은 받은 BSM으로 주변 차량의 위치와 움직임을 추적하여 전방 충돌 경고, 교차로 충돌 경고, 차로 변경 경고 같은 응용을 실행한다. SAE J2945/1은 BSM을 보통 초당 10회(100 ms 간격) 방송하고, 채널이 혼잡하면 전송 간격을 늘려 혼잡을 제어하도록 규정한다 [34].
+**BSM(Basic Safety Message)** 은 V2V 안전 응용의 기본 메시지이다. 모든 차량이 자신의 상태를 주변에 계속 알리면, 각 차량은 받은 BSM으로 주변 차량의 위치와 움직임을 추적하여 전방 충돌 경고, 교차로 충돌 경고, 차로 변경 경고 같은 응용을 실행한다. SAE J2945/1은 BSM을 보통 초당 10회(100 ms 간격) 방송하고, 채널이 혼잡하면 전송 간격을 늘려 혼잡을 제어하도록 규정한다 [37].
 
 BSM은 두 부분으로 나뉜다.
 
@@ -1163,7 +1165,7 @@ BSM은 두 부분으로 나뉜다.
 
 *표 36. BSM의 구성*
 
-**Part 1(핵심 데이터)** 은 매번 보내는 최소한의 차량 상태이다. 필드와 단위는 다음과 같다 [33].
+**Part 1(핵심 데이터)** 은 매번 보내는 최소한의 차량 상태이다. 필드와 단위는 다음과 같다 [36].
 
 | 필드 | 형식 | 의미 | 값의 범위와 단위 |
 |:-----|:-----|:-----|:-----|
@@ -1201,7 +1203,7 @@ J2735는 대역폭을 아끼기 위해 실수 대신 정수와 단위(분해능)
 
 **Part 2(선택 확장)** 는 필요할 때만 덧붙인다. VehicleSafetyExtensions에는 사건 플래그(events, 예: 급제동이나 비상등), 지나온 경로(pathHistory), 예측 경로(pathPrediction), 외부 등화(lights), 시각(timestamp), 차량 높이(height)가 들어간다. 지나온 경로와 예측 경로는 커브 길에서 앞차가 같은 차로에 있는지를 판단하는 데 쓰인다. SpecialVehicleExtensions는 긴급 차량의 상세 정보(EmergencyDetails), 사건 설명(EventDescription), 트레일러 정보(TrailerData)를 담는다. SupplementalVehicleExtensions는 기본 차량 등급(classification), 상세 분류(classDetails), 차량 데이터(vehicleData), 고장 차량 상태(status), 미국 연방도로청의 차량 등급(fhwaVehicleClass), 트레일러(trailers), 지역 확장(regional, 1\~4개)을 담는다. 이 확장에서 기상 보고(WeatherReport), 기상 탐측(WeatherProbe), 장애물 감지(ObstacleDetection), 속도 이력(SpeedProfile), RTCM 패키지(RTCMpackage)는 deprecated1\~5라는 이름으로 남아 있으며, 더 이상 쓰지 않도록 폐기된 항목이다.
 
-유럽의 CAM과 미국의 BSM은 목적이 같으므로 데이터 요소가 대부분 대응한다. 2013년의 비교 결과는 다음과 같다 [25].
+유럽의 CAM과 미국의 BSM은 목적이 같으므로 데이터 요소가 대부분 대응한다. 2013년의 비교 결과는 다음과 같다 [27].
 
 | CAM | BSM | 대응 |
 |:-----|:-----|:-----|
@@ -1224,7 +1226,7 @@ J2735는 대역폭을 아끼기 위해 실수 대신 정수와 단위(분해능)
 
 *표 39. CAM과 BSM의 데이터 요소 대응*
 
-가장 중요한 차량 동역학 데이터는 두 메시지에서 같거나 비슷하게 정의된다. 다만 유럽의 CAM은 다양한 차종(대형 차량, 긴급 차량 등)의 요구를 계속 반영해 왔지만, 당시 미국의 BSM은 승용차에 초점을 두었으므로, 대형 차량 관련 DSRC 활동이 진행되면 미국이 유럽에서 배울 점이 있다는 것이 당시의 평가였다.
+비교 그림에서 BSM의 Steering wheel angle과 Event flags(선택), CAM의 선택 요소(Optional elements)와 LaneCount에는 대응 관계가 표시되어 있지 않다. 가장 중요한 차량 동역학 데이터는 두 메시지에서 같거나 비슷하게 정의된다. 다만 유럽의 CAM은 다양한 차종(대형 차량, 긴급 차량 등)의 요구를 계속 반영해 왔지만, 당시 미국의 BSM은 승용차에 초점을 두었으므로, 대형 차량 관련 DSRC 활동이 진행되면 미국이 유럽에서 배울 점이 있다는 것이 당시의 평가였다.
 
 ### 3.8 프로브 차량 데이터(PVD)
 
@@ -1270,7 +1272,7 @@ flowchart LR
 
 *그림 45. MAP과 SPaT를 결합하여 차로별 신호를 찾는 과정*
 
-**SPaT 메시지의 구성.** SPaT는 하나 이상의 교차로 상태를 담는다 [33].
+**SPaT 메시지의 구성.** SPaT는 하나 이상의 교차로 상태를 담는다 [36].
 
 | 수준 | 데이터 요소 | 형식 | 비고 |
 |:-----|:-----|:-----|:-----|
@@ -1296,13 +1298,13 @@ states의 각 항목(MovementState)은 신호 그룹 번호(signalGroup)와 그 
 
 시각은 **TimeMark** 형식으로, 현재 시(hour)의 시작부터 센 0.1초 단위의 값(0\~35999)이다. 예를 들어 현재 시각이 14시 25분 30.0초이면 현재의 TimeMark는 다음과 같다.
 
-$$
+```math
 (25 \times 60 + 30) \times 10 = 1530 \times 10 = 15300
-$$
+```
 
 이때 어떤 신호 그룹의 minEndTime이 15450, likelyTime이 15520이면, 현시는 빨라야 $(15450 - 15300)/10 = 15.0$초 뒤에 끝나고, 가장 가능성 높은 종료는 $(15520 - 15300)/10 = 22.0$초 뒤이다. 이 신호 그룹이 녹색이고 정지선까지 300 m 남은 차량이 녹색 안에 통과하려면 15초 안에 도착해야 하므로, 평균 $300 / 15 = 20$ m/s(72 km/h) 이상이 필요하다. 제한 속도가 그보다 낮으면 GLOSA 응용은 무리하게 가속하지 말고 다음 녹색에 맞추어 감속하도록 안내한다.
 
-**MAP 메시지의 구성.** MAP은 교차로와 도로 구간의 형상을 기술한다 [33].
+**MAP 메시지의 구성.** MAP은 교차로와 도로 구간의 형상을 기술한다 [36].
 
 | 수준 | 데이터 요소 | 내용 |
 |:-----|:-----|:-----|
@@ -1322,7 +1324,7 @@ $$
 
 MAP의 차로 중심선은 기준점에서 동쪽과 북쪽으로 몇 cm 떨어져 있는지로 나타내므로, 위도와 경도를 점마다 보내는 것보다 데이터가 훨씬 작다. connectsTo의 signalGroup이 SPaT의 MovementState에 있는 signalGroup과 같은 번호이므로, 이 번호가 그림 45에서 두 메시지를 잇는 열쇠이다.
 
-교차로의 형상은 공사가 없으면 바뀌지 않지만 신호 상태는 매 순간 바뀐다. 그래서 실제 배치에서는 SPaT를 초당 10회 정도, MAP을 초당 1회 정도 방송하는 것이 일반적이다 [38].
+교차로의 형상은 공사가 없으면 바뀌지 않지만 신호 상태는 매 순간 바뀐다. 그래서 미국의 연결 교차로(connected intersection) 구현 지침인 CTI 4501은 SPaT를 평균 초당 10회, MAP을 평균 초당 1회(각각 10초 동안 ±1개) 방송하도록 규정한다 [41].
 
 ### 3.10 원격 관리 관련 법령
 
@@ -1335,13 +1337,13 @@ MAP의 차로 중심선은 기준점에서 동쪽과 북쪽으로 몇 cm 떨어�
 | 면허와 자격 | 정부의 면허나 승인을 받아야 하며, 이를 통해 운영의 신뢰성을 보장한다. | 특정 자격 요건을 충족하고 관련 면허를 보유해야 하며, 기술 전문성과 법적 지식이 요구된다. |
 | 원격 감시 | 차량이 자율적으로 작동하는 동안 원격으로 상태를 감시하고 기술 문제가 생기면 대응한다. | 차량을 원격으로 감시하고 비정상 상황에서 긴급 조치를 취하며, 필요하면 차량을 원격으로 제어하거나 정지시킨다. |
 | 법적 책임 | 사고와 문제에 법적 책임을 지고 보험에 가입할 의무가 있으며, 사용자를 대신해 운영 중의 사고와 손해를 보상한다. | 기술적 안전성과 법규 준수를 보장하고, 운영 중의 기술 문제에 법적 책임을 지며 규제 요건을 충족해야 한다. |
-| 데이터와 규정 준수 | 운행 데이터를 기록하고 보존하여 규제 기관과 협력하고, 소프트웨어와 하드웨어를 지속적으로 갱신하고 검토한다. | 기술 상태와 운영 데이터를 기록, 분석하여 규제 기관에 보고하고, 소프트웨어와 하드웨어를 정기적으로 점검하고 갱신한다. |
+| 데이터와 규정 준수 | 운행 데이터를 기록하고 보존하여 규제 기관과 협력하며 운행이 관련 법규에 맞도록 관리하고, 소프트웨어와 하드웨어를 지속적으로 갱신하고 검토한다. | 기술 상태와 운영 데이터를 기록, 분석하여 규제 기관에 보고하고, 기술적 안전성과 성능을 계속 개선하는 데 데이터를 활용하며, 소프트웨어와 하드웨어를 정기적으로 점검하고 갱신한다. |
 
 *표 44. 영국 NUIC 운영자와 독일 기술 감독자의 비교*
 
 > **용어 정의:** **NUIC(no-user-in-charge)** 는 차량 안에 운전 책임을 지는 사용자가 없는 운행을 뜻한다. 이 경우 운전자 대신 책임을 지는 조직이 NUIC 운영자이다.
 
-> **참고:** 강의자료는 근거 법령을 Automated and Electric Vehicles Act 2018로만 적는다. 이 법은 자율주행 중 사고가 났을 때 보험사가 일차로 배상하는 책임 구조를 정한 법이다 [39]. NUIC 운영자의 면허 제도는 이후 제정된 Automated Vehicles Act 2024에 도입되었다 [40]. 또 독일 법의 기술 감독자는 차량을 원격으로 비활성화하거나 차량이 제안한 대체 주행 기동을 승인할 수 있지만, 조향과 가감속을 원격에서 계속 조작하는 원격 운전자는 아니다 [41]. 표 44의 "원격으로 제어"는 이러한 비활성화와 기동 승인을 뜻하는 것으로 이해해야 한다.
+> **참고:** 표 44의 영국 근거 법령 가운데 Automated and Electric Vehicles Act 2018은 자율주행 중 사고가 났을 때 보험사가 일차로 배상하는 책임 구조를 정한 법이다 [42]. NUIC 운영자의 면허 제도는 이후 제정된 Automated Vehicles Act 2024에 도입되었다. 이 법에서 자율주행 중 차량의 주행에 대한 책임은 차량의 승인을 받은 자율주행 주체(ASDE, authorised self-driving entity)가 지고, NUIC 운영자는 자기가 감독하는 운전자 없는 운행에서 문제를 감지하고 대응하는 책임을 진다 [43]. 또 독일 법의 기술 감독자는 차량을 원격으로 비활성화하거나 차량이 제안한 대체 주행 기동을 승인할 수 있지만, 조향과 가감속을 원격에서 계속 조작하는 원격 운전자는 아니다 [44]. 표 44의 "원격으로 제어"는 이러한 비활성화와 기동 승인을 뜻하는 것으로 이해해야 한다.
 
 두 제도의 공통점은 운전자가 사라진 자리에 면허를 가진 사람이나 조직을 두어 원격 감시, 사고 책임, 데이터 기록을 맡긴다는 것이다. 이 원격 감시와 개입은 V2N 통신과 1.14절의 원격 주행 기술이 있어야 가능하므로, 법 제도와 통신 기술이 함께 발전해야 한다.
 
@@ -1510,7 +1512,7 @@ MAP의 차로 중심선은 기준점에서 동쪽과 북쪽으로 몇 cm 떨어�
 ## 참고 문헌
 
 1. SAE International, *Taxonomy and Definitions for Terms Related to Driving Automation Systems for On-Road Motor Vehicles*, SAE J3016_202104, 2021.
-2. CAR 2 CAR Communication Consortium, *Guidance for Day 2 and Beyond Roadmap*, 2021.
+2. CAR 2 CAR Communication Consortium, *Guidance for Day 2 and Beyond Roadmap*, C2CCC_WP_2072, Version 1.2, 2021. https://www.car-2-car.org/fileadmin/documents/General_Documents/C2CCC_WP_2072_RoadmapDay2AndBeyond_V1.2.pdf
 3. ETSI EN 302 637-2 V1.4.1, *Intelligent Transport Systems (ITS); Vehicular Communications; Basic Set of Applications; Part 2: Specification of Cooperative Awareness Basic Service*, 2019.
 4. ETSI EN 302 637-3 V1.3.1, *Intelligent Transport Systems (ITS); Vehicular Communications; Basic Set of Applications; Part 3: Specifications of Decentralized Environmental Notification Basic Service*, 2019.
 5. ETSI TS 103 324 V2.1.1, *Intelligent Transport Systems (ITS); Vehicular Communications; Basic Set of Applications; Collective Perception Service*, 2023.
@@ -1519,34 +1521,37 @@ MAP의 차로 중심선은 기준점에서 동쪽과 북쪽으로 몇 cm 떨어�
 8. SAE International, *Taxonomy and Definitions for Terms Related to Cooperative Driving Automation for On-Road Motor Vehicles*, SAE J3216_202107, 2021.
 9. 국토교통부, 차세대 지능형 교통체계(C-ITS) 서비스 소개 자료.
 10. 한국자동차연구원, 자동차 산업과 ITS 산업 비교, 자율주행차 레벨별 부품 구성 전망 자료.
-11. Ministry of Land, Infrastructure, Transport and Tourism (MLIT), Japan, *Advanced Safety Vehicle (ASV) Project*, Phase 3-7 reports.
+11. Ministry of Land, Infrastructure, Transport and Tourism (MLIT), Japan, "ASV (Advanced Safety Vehicle)." https://www.mlit.go.jp/jidosha/anzen/01asv/
 12. ISO 4272:2022, *Intelligent transport systems - Truck platooning systems (TPS) - Functional and operational requirements and test procedures*, International Organization for Standardization, 2022.
 13. G. J. L. Naus, R. P. A. Vugts, J. Ploeg, M. J. G. van de Molengraft, and M. Steinbuch, "String-stable CACC design and experimental validation: A frequency-domain approach," *IEEE Transactions on Vehicular Technology*, vol. 59, no. 9, pp. 4268-4279, 2010.
 14. T. Robinson, E. Chan, and E. Coelingh, "Operating platoons on public motorways: An introduction to the SARTRE platooning programme," in *Proc. 17th ITS World Congress*, Busan, Korea, 2010.
-15. Mercedes-Benz Group, "Mercedes-Benz receives world's first internationally valid system approval for conditionally automated driving," press release, Dec. 2021.
-16. UNECE, *UN Regulation No. 157: Uniform provisions concerning the approval of vehicles with regard to Automated Lane Keeping Systems*, 2021.
-17. 3GPP TS 22.186, *Enhancement of 3GPP support for V2X scenarios; Stage 1*, Release 16.
-18. Frost & Sullivan, *Global Connected Car Market Outlook, 2019*, 2019.
-19. Frost & Sullivan, *Global Connected Car Market Outlook, 2020*, 2020.
-20. Volvo Technology, AIDE (Adaptive Integrated Driver-vehicle InterfacE) project presentation, EU FP6 Integrated Project, 2006.
-21. KS C 5077:2014, 자동차 디스플레이 장치: 운전자 인터페이스 요구사항, 국가기술표준원, 2014.
-22. IEEE Std 1609.2-2022, *IEEE Standard for Wireless Access in Vehicular Environments - Security Services for Application and Management Messages*, 2022.
-23. Frost & Sullivan, *Analysis of ADAS Market in Europe*, 2014.
-24. Frost & Sullivan, *Global Shared and Autonomous Mobility Industry Outlook, 2020*, 2020.
-25. Honda R&D Americas, "US-EU V2V/V2I standards compare/contrast" and "CAM-BSM compare & contrast: Overview," 2013.
-26. C-Roads Platform, *C-ITS service list: Messages and standards*.
-27. ETSI TS 101 539-1 V1.1.1, *Intelligent Transport Systems (ITS); V2X Applications; Part 1: Road Hazard Signalling (RHS) application requirements specification*, 2013.
-28. Delphi Automotive, presentation at the Automated Vehicles Symposium.
-29. U.S. Department of Transportation, ITS Joint Program Office, presentation material at the Automated Vehicles Symposium.
-30. J. B. Kenney, "Dedicated short-range communications (DSRC) standards in the United States," *Proceedings of the IEEE*, vol. 99, no. 7, pp. 1162-1182, 2011.
-31. A. Marroquin et al., "A general overview of vehicle-to-X (V2X) beacon-based cooperative vehicular networks," 2019.
-32. JMC Rota, presentation at the SIP-adus Workshop 2021, Breakout Workshop: Connected Vehicles, 2021.
-33. SAE International, *V2X Communications Message Set Dictionary*, SAE J2735.
-34. SAE International, *On-Board System Requirements for V2V Safety Communications*, SAE J2945/1_201603, 2016.
-35. SAE International, *V2X Sensor-Sharing for Cooperative and Automated Driving*, SAE J3224_202208, 2022.
-36. ETSI TS 102 637-1, -2, -3, *Intelligent Transport Systems (ITS); Vehicular Communications; Basic Set of Applications; Parts 1-3*, 2010-2011.
-37. 국가기술표준원, KS R 1600-1\~7, 협력형 자율주행 시스템을 위한 V2X 메시지 명세.
-38. Institute of Transportation Engineers, *Connected Intersections (CI) Implementation Guide*, ITE CTI 4501.
-39. *Automated and Electric Vehicles Act 2018*, United Kingdom, 2018.
-40. *Automated Vehicles Act 2024*, United Kingdom, 2024.
-41. *Gesetz zur Änderung des Straßenverkehrsgesetzes und des Pflichtversicherungsgesetzes - Gesetz zum autonomen Fahren*, *Bundesgesetzblatt*, Teil I, Germany, 2021.
+15. Toyota Motor North America, "The Evolution of Safety at Toyota - Part 2: Toyota Safety Sense for All," *Toyota USA Newsroom*, Jun. 24, 2025. https://pressroom.toyota.com/the-evolution-of-safety-at-toyota-part-2-toyota-safety-sense-for-all/
+16. Mercedes-Benz Group, "Mercedes-Benz receives world's first internationally valid system approval for conditionally automated driving," press release, Dec. 2021. https://group.mercedes-benz.com/innovation/product-innovation/autonomous-driving/system-approval-for-conditionally-automated-driving.html
+17. UNECE, *UN Regulation No. 157: Uniform provisions concerning the approval of vehicles with regard to Automated Lane Keeping Systems*, 2021.
+18. 3GPP TS 22.186, *Enhancement of 3GPP support for V2X scenarios; Stage 1*, Release 16.
+19. Frost & Sullivan, *Global Connected Car Market Outlook, 2019*, 2019.
+20. Frost & Sullivan, *Global Connected Car Market Outlook, 2020*, 2020.
+21. J. Engström, J. Arfwidsson, A. Amditis, L. Andreone, K. Bengler, P. C. Cacciabue, W. Janssen, H. Kußmann, and F. Nathan, "Towards the automotive HMI of the future: Mid-term results of the AIDE project," in *Advanced Microsystems for Automotive Applications 2006*, Springer, 2006. https://doi.org/10.1007/3-540-33410-6_28
+22. KS C 5077:2014, 자동차 디스플레이 장치: 운전자 인터페이스 요구사항, 국가기술표준원, 2014.
+23. IEEE Std 1609.2-2022, *IEEE Standard for Wireless Access in Vehicular Environments - Security Services for Application and Management Messages*, 2022.
+24. Frost & Sullivan, *Analysis of ADAS Market in Europe*, 2014.
+25. Frost & Sullivan, *Global Shared and Autonomous Mobility Industry Outlook, 2020*, 2020.
+26. F. Lambert, "Tesla announces it's moving away from ultrasonic sensors in favor of 'Tesla Vision'," *Electrek*, Oct. 4, 2022. https://electrek.co/2022/10/04/tesla-moving-away-ultrasonic-sensors-in-favor-tesla-vision/
+27. Honda R&D Americas, "US-EU V2V/V2I standards compare/contrast" and "CAM-BSM compare & contrast: Overview," 2013.
+28. K. Sjöberg, P. Andres, T. Buburuzan, and A. Brakemeier, "Cooperative intelligent transport systems in Europe: Current deployment status and outlook," *IEEE Vehicular Technology Magazine*, vol. 12, no. 2, pp. 89-97, 2017.
+29. C-Roads Platform, *C-ITS service list: Messages and standards*.
+30. ETSI TS 101 539-1 V1.1.1, *Intelligent Transport Systems (ITS); V2X Applications; Part 1: Road Hazard Signalling (RHS) application requirements specification*, 2013.
+31. Delphi Automotive, presentation at the Automated Vehicles Symposium.
+32. U.S. Department of Transportation, ITS Joint Program Office, presentation material at the Automated Vehicles Symposium.
+33. J. B. Kenney, "Dedicated short-range communications (DSRC) standards in the United States," *Proceedings of the IEEE*, vol. 99, no. 7, pp. 1162-1182, 2011.
+34. A. Marroquin et al., "A general overview of vehicle-to-X (V2X) beacon-based cooperative vehicular networks," Sep. 2019. https://www.researchgate.net/publication/335966938_A_General_Overview_of_Vehicle-to-X_V2X_Beacon-Based_Cooperative_Vehicular_Networks
+35. JMC Rota, presentation at the SIP-adus Workshop 2021, Breakout Workshop: Connected Vehicles, 2021.
+36. SAE International, *V2X Communications Message Set Dictionary*, SAE J2735.
+37. SAE International, *On-Board System Requirements for V2V Safety Communications*, SAE J2945/1_201603, 2016.
+38. SAE International, *V2X Sensor-Sharing for Cooperative and Automated Driving*, SAE J3224_202208, 2022.
+39. ETSI TS 102 637-1, -2, -3, *Intelligent Transport Systems (ITS); Vehicular Communications; Basic Set of Applications; Parts 1-3*, 2010-2011.
+40. 국가기술표준원, KS R 1600-1\~7, 협력형 자율주행 시스템을 위한 V2X 메시지 명세.
+41. AASHTO, ITE, NEMA, and SAE, *Connected Intersections (CI) Implementation Guide*, CTI 4501 v01.01, Institute of Transportation Engineers, 2022. https://www.ite.org/ITEORG/assets/File/Standards/CTI%204501v0101.pdf
+42. *Automated and Electric Vehicles Act 2018*, United Kingdom, 2018. https://www.legislation.gov.uk/ukpga/2018/18
+43. *Automated Vehicles Act 2024*, United Kingdom, 2024. https://www.legislation.gov.uk/ukpga/2024/10
+44. *Gesetz zur Änderung des Straßenverkehrsgesetzes und des Pflichtversicherungsgesetzes - Gesetz zum autonomen Fahren*, *Bundesgesetzblatt*, Teil I, p. 3108, Germany, 2021.

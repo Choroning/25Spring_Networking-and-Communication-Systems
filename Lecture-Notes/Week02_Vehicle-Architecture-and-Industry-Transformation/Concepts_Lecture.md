@@ -68,7 +68,7 @@
 
 ### 1.1 Definitions of Autonomous Driving Levels
 
-The standards that divide the levels of autonomous driving technology are the Levels 0-5 of SAE International and the Levels 0-4 that the U.S. National Highway Traffic Safety Administration (NHTSA) proposed in 2013 [1], [2]. Levels 0-3 of the two correspond to each other, and SAE splits NHTSA's Level 4 into Level 4, with a limited operational design domain (ODD), and Level 5, with no limit. NHTSA adopted the SAE levels in 2016 [3]. Systems at Levels 0-2 are **vehicle automation systems** that assist the driver, and systems at Level 3 and above are **automated driving systems (ADS)** in which the system takes over the entire driving task.
+The standards that divide the levels of autonomous driving technology are the Levels 0-5 of SAE International and the Levels 0-4 that the U.S. National Highway Traffic Safety Administration (NHTSA) proposed in 2013 [1], [2]. Levels 0-3 of the two correspond to each other, and SAE splits NHTSA's Level 4 into Level 4, with a limited operational design domain (ODD), and Level 5, with no limit. NHTSA adopted the SAE levels in 2016 [3]. Systems at Levels 1-2 are **vehicle automation systems** that assist the driver (Level 0 has no driving automation system), and systems at Level 3 and above are **automated driving systems (ADS)** in which the system takes over the entire driving task.
 
 | SAE Level | NHTSA Level | NHTSA Name | Driver's Hands, Feet, and Eyes |
 |:-----|:-----|:-----|:-----|
@@ -190,7 +190,7 @@ The business areas of the autonomous vehicle ecosystem can be divided into four 
 
 *Table 5. The four business sectors of the autonomous vehicle ecosystem*
 
-Automakers partner with different companies in each sector. For example, Google was linked with Velodyne's LiDAR, the software and HD maps of its subsidiary Waymo, and Uber's ride-hailing service, and Ford was linked with hardware from Velodyne and Aptiv, V2X from Autotalks, AI from Argo, and HD maps from Civil Maps and DeepMap. GM was linked with hardware from LG and Strobe, software and HD maps from Cruise, cloud from IBM Watson, and ride hailing from Lyft, and Volvo was linked with hardware from Autoliv, Aptiv, and Veoneer, software from Zenuity, cloud from Cisco, HD maps from TomTom, and ride hailing from Uber. Software, cloud, and fleet management services (sectors 2-4) lie outside the traditional domain of automakers and parts suppliers, and it is in these areas that new companies enter the ecosystem.
+Automakers partner with different companies in each sector. For example, BMW was linked with hardware from HELLA, Innoviz, Continental, and Aptiv, AI and cloud from IBM Watson, HD maps from HERE, and mobility services such as Car2Go and ParkNow, and Google was linked with Velodyne's LiDAR, the software and HD maps of its subsidiary Waymo, and Uber's ride-hailing service. Ford was linked with hardware from Velodyne, Princeton Lightwave, Aptiv, and Continental, V2X from Autotalks, AI from Argo, HD maps from Civil Maps and DeepMap, and mobility services from Chariot and TransLoc. GM was linked with hardware from Veoneer, LG, and Strobe, software and HD maps from Cruise, outside-vehicle communication from OnStar, cloud from IBM Watson, and ride hailing and sharing from Lyft and Maven, and Volvo was linked with hardware from HELLA, Autoliv, Aptiv, and Veoneer, software from Zenuity, cloud from Cisco, HD maps from TomTom, and ride hailing from Uber and its automated driving pilot program DriveMe. Software, cloud, and fleet management services (sectors 2-4) lie outside the traditional domain of automakers and parts suppliers, and it is in these areas that new companies enter the ecosystem.
 
 ### 1.7 Big Tech Entering the Automotive Industry
 
@@ -218,7 +218,7 @@ In Table 6, some companies such as Tesla and Waymo span several areas, while Int
 **The case of Intel.** Intel approached the automotive market in the following steps.
 
 1. In March 2017 it acquired Mobileye, a camera company for autonomous driving, for USD 15.3 billion (about 17 trillion won at the time). Through Mobileye it pursues camera sensors and high-performance automotive processors (AP), and Mobileye's revenue in 2020 was USD 967 million [7]. The staff of the mega chip design center being built to develop semiconductors for autonomous vehicles numbers about 6,000.
-2. It announced an investment of 110 trillion won to build two new semiconductor fabs in Europe that would mainly produce automotive chips. In September 2021, Intel CEO Pat Gelsinger forecast that semiconductors would grow from 4% of the bill of materials of a premium vehicle in 2019 to 12% in 2025 and 20% in 2030 [8].
+2. It announced an investment of 110 trillion won to build two new semiconductor fabs in Europe that would mainly produce automotive chips. In September 2021, Intel CEO Pat Gelsinger forecast that semiconductors would grow from 4% of the bill of materials of a premium vehicle in 2019 to 12% in 2025 and 20% in 2030 [8]. Intel promotes an automated driving platform that spans the data center, 5G, HMI, and in-vehicle computing.
 3. In February 2022 it formed a group dedicated to automotive within Intel Foundry Services (IFS). The group is responsible for the Open Central Compute Architecture, a computing platform on which automakers can build next-generation solutions; the Automotive-Grade Foundry Platform, manufacturing technology that satisfies automotive applications and customer requirements; and Transition to Advanced Technologies, providing design services and IP to help automakers move to advanced process and packaging technologies.
 
 > **Definition:** An **AP (application processor)** is a high-performance processor that runs an operating system and complex applications, and a **foundry** is a business that manufactures semiconductors designed by other companies on commission.
@@ -306,7 +306,7 @@ This section uses the project for developing automated driving parts and systems
 
 *Figure 6. Structure of the project for developing automated driving parts and systems for large buses*
 
-The project consists of three sub-projects and an overall coordination part.
+The project develops automated driving components and systems for large buses and runs pilot operations of eco-friendly hydrogen automated buses, and it consists of three sub-projects and an overall coordination part.
 
 | Component | Content |
 |:-----|:-----|
@@ -413,7 +413,7 @@ Figure 9 distinguishes the types of network by line color. Blue is CAN, green is
 | CAN (Automated CAN) | Front, rear, left, and right multi-purpose cameras, long-range radar (LRR), left and right door ultrasonic sensors, SSVM, KATECH controller, HAV-DCU, LiDAR processing unit, both GWs |
 | CAN FD | Five medium-range radars (MRR), HAV-DCU, both GWs |
 | Ethernet | Four corner LiDARs (front left and right, rear left and right) and three Wide VFOV LiDARs (front, left, right) connected to the LiDAR hub, the LiDAR processing unit, an additional LiDAR (point cloud), ADR, HVI, HAV-DCU, the map and positioning unit (GPS), V2X OBU, Display 4 (BIS), the edge logger, two shadow reduction devices |
-| Video and USB | Six SSVM cameras (front left and right, rear left and right, front, rear) are connected to the SSVM with six-channel video, and Displays 1 (HVI), 2 (SSVM), and 3 (navigation) are connected by USB to the HVI, the SSVM, and the map and positioning unit, respectively. |
+| Video and USB | Six SSVM cameras (front left and right, rear left and right, front, rear) are connected to the SSVM with six-channel video, and the SSVM is connected to the ADR with six-channel AHD video (SSVM data). Displays 1 (HVI), 2 (SSVM), and 3 (navigation) are connected by USB to the HVI, the SSVM, and the map and positioning unit, respectively. |
 | Vehicle | The KATECH controller is connected to the vehicle's body and chassis CAN and controls the actual vehicle. |
 
 *Table 11. Components of the large-bus network topology*
@@ -640,7 +640,7 @@ As in Figure 20, in FBW the commands the pilot gives with the side stick and the
 
 In the conventional steering system on the left of Figure 21, the rotation of the steering wheel is transmitted through the column shaft to the rack and pinion, which turns the front wheels. The SBW in the middle has no column shaft. The angle sensor of the steering wheel reads the rotation angle and sends it as a signal, and a DC motor moves the rack according to the command computed by the controller, turning the wheels. A motor is also placed on the steering wheel side to convey the road reaction force to the driver. The right is the SBW developed by the Korean parts supplier Mando.
 
-**BBW (brake-by-wire).** By-wire applied to braking. Instead of transmitting the force on the brake pedal directly through hydraulics, sensors read the pedal's movement and an electronic control unit determines the braking force at each wheel. Mando's BBW configuration includes an integrated dynamic brake (IDB), an electronic parking brake with a motor on the caliper (MoC), ABS and ESC, and caliper brakes.
+**BBW (brake-by-wire).** By-wire applied to braking. Instead of transmitting the force on the brake pedal directly through hydraulics, sensors read the pedal's movement and an electronic control unit determines the braking force at each wheel. Mando's BBW configuration includes an integrated dynamic brake (IDB), an electronic parking brake with a motor on the caliper (MoC), ABS and ESC, caliper brakes, and a premium caliper with an emphasis on design.
 
 | System | Target | Mechanical Linkage Removed | Signal Flow |
 |:-----|:-----|:-----|:-----|
@@ -682,13 +682,13 @@ The Volvo S80 uses two CAN buses with different speeds. In Figure 22, red is the
 
 *Table 15. CAN module configuration of the Volvo S80*
 
-> **Note:** In Volvo's service documentation, TCM is the Transmission Control Module and ETM is the Electronic Throttle Module [16], [17]. Some materials expand the two abbreviations the other way around, but Table 15 follows Volvo's terminology. In addition, from the 2005 model year Volvo raised the speed of the high-speed bus to 500 kbit/s [16].
+> **Note:** In Volvo's service documentation, TCM is the Transmission Control Module and ETM is the Electronic Throttle Module [16], [17]. Some materials expand the two abbreviations the other way around, but Table 15 follows Volvo's terminology. In addition, in 2005 Volvo raised the speed of the high-speed bus to 500 kbit/s [16].
 
 This configuration shows the principle of dividing buses according to the nature of the functions. Powertrain and chassis functions where real-time behavior matters, such as the engine, transmission, and brakes, are placed on the high-speed bus, and body and comfort functions that need no fast response, such as audio, climate control, and doors, are placed on the low-speed bus, while the CEM, as a gateway, forwards information between the two buses. For example, to display engine speed on the instrument cluster (DIM), the CEM must move the message that the ECM sent on the high-speed bus to the low-speed bus.
 
 ### 3.9 IVN Classification by Real-Time Capability and Data Rate
 
-When vehicle networks were first introduced, SAE classified them into Class A, B, and C by data rate and real-time capability. This classification was defined in 1994, and Class D, above 1 Mbit/s, was added later [18].
+When vehicle networks were first introduced, SAE classified them into Class A, B, and C by data rate and real-time capability. Class D, above 1 Mbit/s, was added later [18].
 
 | Class | Data Rate | Information Carried | Applications | Representative Protocols |
 |:-----|:-----|:-----|:-----|:-----|
@@ -851,7 +851,7 @@ Figure 24 shows how government autonomous driving projects progress from Level 3
 
 > **Definition:** **TOPS (tera operations per second)** is a unit of AI computing performance meaning one trillion operations per second. 240 TOPS is $2.4 \times 10^{14}$ operations per second. **LSAD (low-speed automated driving)** is an automated driving system that operates at low speed within a defined area.
 
-The computing module of Major Project 2 has several of the vehicle communication interfaces that are the subject of this course. Eight camera channels are connected through GMSL2 serialized links (MAX9295 and MAX9296 SERDES, link rate 6 Gbit/s), and it has three automotive Ethernet 100BASE-T1 ports (100 Mbit/s), 1000BASE-T Ethernet for LiDAR connection, wireless interfaces (GNSS, LTE), and a display output.
+The system of Major Project 1 was validated through driver usability evaluation, VILS (vehicle-in-the-loop simulation) evaluation, which combines a real vehicle with a virtual environment, and real-vehicle evaluation on a proving ground (PG). The computing module of Major Project 2 has several of the vehicle communication interfaces that are the subject of this course. Eight camera channels are connected through GMSL2 serialized links (MAX9295 and MAX9296 SERDES, link rate 6 Gbit/s), and the camera sensor and ISP pairs are AR0231 with AP0200 (30 fps) and AR0233 with GW5200 (60 fps). The module also has three automotive Ethernet 100BASE-T1 ports (100 Mbit/s), 1000BASE-T Ethernet connecting four 16-channel 360° mechanical LiDARs, wireless interfaces (GNSS on the GPS L1 and GLONASS bands, and LTE Cat 4 with 150 Mbit/s downlink and 75 Mbit/s uplink), and a display output.
 
 > **Definition:** A **SERDES (serializer/deserializer)** is a circuit that converts parallel data into a high-speed serial signal for transmission and converts it back to parallel at the receiving end. **GMSL (gigabit multimedia serial link)** is an automotive serial link that transmits large data such as camera video over a single coaxial cable at several Gbit/s.
 
@@ -998,7 +998,7 @@ Connect each situation with the concept that serves as the basis for judgment.
 5. Frost & Sullivan, *Global Autonomous Driving Industry Outlook, 2018*, 2018.
 6. Frost & Sullivan, *Global Autonomous Driving Industry Outlook, 2019*, 2019.
 7. Intel Corporation, *2020 Annual Report on Form 10-K*, Santa Clara, CA, USA, 2021.
-8. Intel Corporation, "Intel CEO Pat Gelsinger keynote at IAA Mobility 2021," Munich, Germany, Sep. 2021.
+8. Intel Corporation, "Intel CEO predicts chips will be more than 20% of premium vehicle BOM by 2030," press release, *Business Wire*, Sep. 7, 2021. https://www.businesswire.com/news/home/20210907005345/en
 9. Macrotrends and Investing.com, company financial data (revenue and operating income for 2021, market capitalization as of Apr. 2022).
 10. 전자신문, 한국자동차연구원, 금융감독원, 국내 자동차 부품사 경영 실적 자료(2019, 2020년).
 11. IEEE Std 802.3bw-2015, *Physical Layer Specifications and Management Parameters for 100 Mb/s Operation over a Single Balanced Twisted Pair Cable (100BASE-T1)*, 2015.

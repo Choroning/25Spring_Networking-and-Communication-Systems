@@ -69,7 +69,7 @@
 
 ## 1. Connected Automated Driving in the United States
 
-Connected automated driving cannot be completed with the technology of a single country. For vehicles and infrastructure to exchange messages, spectrum, message standards, security systems, infrastructure investment, and laws and institutions must all fit together. This week organizes, case by case, the projects and pilot deployments through which the United States, Europe, Japan, and Korea have prepared for connected automated driving. This section first compares the trajectories of several countries at a glance and then covers the United States.
+Connected automated driving cannot be completed with the technology of a single country. For vehicles and infrastructure to exchange messages, spectrum, message standards, security systems, infrastructure investment, and laws and institutions must all fit together. The United States, Europe, Japan, and Korea have each prepared for connected automated driving through different projects and pilot deployments, and these processes can be compared case by case. Section 1 first compares the trajectories of several countries at a glance and then covers the United States.
 
 > **Definition:** **Connected automated driving** is automated driving that uses not only the vehicle's own sensors but also information received through V2X communication. **C-ITS (Cooperative Intelligent Transport Systems)** is a cooperative transport system in which vehicles exchange information with each other and with infrastructure in real time to prevent accidents and improve traffic flow. The background of both concepts was covered in Weeks 1 and 11.
 
@@ -103,9 +103,9 @@ Connected automated driving followed roughly the same sequence in each country. 
 | Japan | 1998-2004 VICS, ETC | 2004-2006 Smartway, DSSS basic research and component tests | 2007-2010 Smartway, DSSS, ITS Safety 2010 public road tests | 2011- ITS Spot (ETC2.0) at 1,600 sites, DSSS at 15 sites |
 | Korea | 2007-2012 u-Transportation, Smart Highway | 2008-2014 Smart Highway (pilot tests on the test road) | 2015-2017 C-ITS pilot project | 2018-present C-ITS demonstration project |
 
-*Table 1. Development stages of connected automated driving in major countries (Standard ITS no. 19 [1])*
+*Table 1. Development stages of connected automated driving in major countries*
 
-In Table 1 the four countries went through the same stages at different times. Japan connected roads and vehicles first with VICS and ETC, the United States started from VII after securing dedicated spectrum in 1999, and Europe carried on multinational projects through the EU research framework programmes (FP). Korea went through national R&D programs such as u-Transportation and Smart Highway from around 2007 and entered the C-ITS pilot project in 2014.
+In Table 1 the four countries went through the same stages at different times. Japan connected roads and vehicles first with VICS and ETC, the United States started from VII after securing dedicated spectrum in 1999, and Europe carried on multinational projects through the EU research framework programmes (FP). Korea went through national R&D programs such as u-Transportation and Smart Highway from around 2007 and entered the C-ITS pilot project in July 2014 (Table 1 shows the pilot project as 2015-2017, but the project itself began in July 2014; see Section 3.9).
 
 > **Definition:** **VICS (Vehicle Information and Communication System)** is Japan's road traffic information system, and **ETC (Electronic Toll Collection)** is a wireless toll collection system corresponding to Korea's Hi-pass. **ETC2.0** is a Japanese service that extends ETC units to exchange not only tolls but also traffic and safety information, and **ITS Spot** is its roadside equipment. **DSSS (Driving Safety Support Systems)** is the safe driving support system of the Japanese National Police Agency that gives drivers hazard information at places such as intersections.
 
@@ -133,17 +133,17 @@ Connected vehicle development in the United States proceeded with two parallel s
 | Projects | 2011- | Connected Vehicle, Safety Pilot Model Deployment |
 | Projects | 2015- | CV Pilots Deployment Project |
 
-*Table 2. The U.S. Connected Vehicle development roadmap (Standard ITS no. 19 [1])*
+*Table 2. The U.S. Connected Vehicle development roadmap*
 
 The flow in Table 2 follows the sequence from proof of concept through demonstration sites and pilot projects to commercialization. An authorization act is a law that sets, for a span of several years, the framework of the budget the federal government spends on road and transportation programs, and ITS research funding is also based on these acts.
 
-> **Note:** MAP-21 (Moving Ahead for Progress in the 21st Century Act) is a two-year authorization act enacted in July 2012 that funded surface transportation programs for fiscal years 2013 and 2014 [2]. A roadmap that shows the period of MAP-21 as 2012-2022 therefore does not match the period in which the law applied.
+> **Note:** MAP-21 (Moving Ahead for Progress in the 21st Century Act) is a two-year authorization act enacted in July 2012 that funded surface transportation programs for fiscal years 2013 and 2014 [1]. A roadmap that shows the period of MAP-21 as 2012-2022 therefore does not match the period in which the law applied.
 
 ### 1.4 Institutionalization and Related Agencies
 
-The U.S. Department of Transportation published the automated driving guidelines *Automated Driving Systems 2.0* (2017) [3], *Automated Vehicles 3.0* (2018) [4], and *Automated Vehicles 4.0* (2020) [5] in turn, setting the direction for institutionalizing automated driving. The content of the three documents was covered in Week 1.
+The U.S. Department of Transportation published the automated driving guidelines *Automated Driving Systems 2.0* (2017) [2], *Automated Vehicles 3.0* (2018) [3], and *Automated Vehicles 4.0* (2020) [4] in turn, setting the direction for institutionalizing automated driving. The content of the three documents was covered in Week 1.
 
-Within the U.S. Department of Transportation, ITS programs are coordinated by the **ITS JPO (Intelligent Transportation Systems Joint Program Office)**. The ITS JPO has department-wide authority to coordinate ITS programs and initiatives among the following DOT operating administrations [6].
+Within the U.S. Department of Transportation, ITS programs are coordinated by the **ITS JPO (Intelligent Transportation Systems Joint Program Office)**. The ITS JPO has department-wide authority to coordinate ITS programs and initiatives among the following DOT operating administrations [5].
 
 | Abbreviation | Agency | Main Responsibility |
 |:-----|:-----|:-----|
@@ -160,7 +160,7 @@ V2X spans vehicles (NHTSA), roads (FHWA), commercial vehicles (FMCSA), transit (
 
 ### 1.5 Early Roadmaps and Outlooks
 
-**Research tracks.** Automation research at the U.S. Department of Transportation was organized into five research tracks [7].
+**Research tracks.** Automation research at the U.S. Department of Transportation was organized into five research tracks [6].
 
 | Research Track | Areas |
 |:-----|:-----|
@@ -174,7 +174,7 @@ V2X spans vehicles (NHTSA), roads (FHWA), commercial vehicles (FMCSA), transit (
 
 > **Definition:** **CACC (Cooperative Adaptive Cruise Control)** adds V2V communication to ACC, which measures the distance to the vehicle ahead only by radar, so that the acceleration and deceleration of the vehicle ahead are received directly and a shorter, more stable gap can be kept. **Speed harmonization** is a traffic management technique that gives recommended speeds to vehicles approaching congestion to reduce speed differences, and **platooning** is driving in which several vehicles connected by communication travel in a line at short gaps.
 
-**Draft program plan.** The DOT planned research activities for 2016-2023 in three groups. The plan was presented as a draft, and each activity was marked as ongoing or committed, under consideration, or a future possibility [7].
+**Draft program plan.** The DOT planned research activities for 2016-2023 in three groups. The plan was presented as a draft, and each activity was marked as ongoing or committed, under consideration, or a future possibility.
 
 | Group | Activities (Performers) |
 |:-----|:-----|
@@ -188,7 +188,7 @@ For 2022-2023, when the three groups end, the initial deployment of CA applicati
 
 > **Definition:** **EAD (Eco-Approach and Departure)** is an environmental application that receives signal information and adjusts the speed of arrival at an intersection to avoid unnecessary stops and hard acceleration. **AMS (Analysis, Modeling, and Simulation)** refers to tools that analyze, model, and simulate the effects on the transportation system. **CA PATH** is the transportation research program of the University of California, Berkeley (Partners for Advanced Transportation Technology), and **Volpe** is the National Transportation Systems Center under the DOT.
 
-**Deployment scenarios.** The Texas A&M Transportation Institute (TTI) presented two scenarios for how fast automated driving functions would spread [8].
+**Deployment scenarios.** The Texas A&M Transportation Institute (TTI) presented two scenarios for how fast automated driving functions would spread [7].
 
 ![Figure 2. Evolutionary and revolutionary scenarios for the spread of automated driving](../../images/Week12_12-1_p10.png)
 
@@ -207,9 +207,9 @@ In Figure 2 the horizontal axis is driving speed and the vertical axis is drivin
 
 The evolutionary scenario assumed that existing driver assistance functions would be upgraded gradually, and the revolutionary scenario assumed that institutions and technology would mesh quickly so that self-driving vehicles would spread within ten years. It is worth noting that both scenarios take the V2V mandate as their starting point. In reality, as seen in Week 1, the proposed U.S. rule mandating V2V was withdrawn in 2023, so the spread of connected functions has been slower than either scenario assumed.
 
-**Multidisciplinary approach.** Early U.S. research on automated driving took a multidisciplinary approach that covered not only engineering but also philosophy, ethics, and law. For example, philosophers such as Professor Shannon Vallor of Santa Clara University and Professor John Sullins of Sonoma State University took part in automated driving research events at Stanford University and addressed ethical problems such as what an automated vehicle should decide in an unavoidable crash.
+**Multidisciplinary approach.** Early U.S. research on automated driving took a multidisciplinary approach that covered not only engineering but also philosophy, ethics, and law. Philosophers such as Professor Shannon Vallor of Santa Clara University and Professor John Sullins of Sonoma State University studied ethical problems such as what an automated vehicle should decide in an unavoidable crash, and the Center for Automotive Research at Stanford (CARS) held a workshop on programming ethics into automated vehicles in June 2015 that invited philosophers such as Professor Vallor as speakers together with engineers [8].
 
-**Consumer preferences.** The J.D. Power 2015 U.S. Tech Choice Study showed that preferred automated driving technologies differ by generation [9]. When preferences for three technologies, traffic jam assist, limited self-driving, and full self-driving, were measured with MaxDiff scores (average 100), Generation Y (88) and Generation X (85) preferred more complex and advanced self-driving technologies that handle all or part of the driving, while Boomers (87) and Pre-Boomers (97) preferred to ease in step by step, starting from functions such as traffic jam assist.
+**Consumer preferences.** The J.D. Power 2015 U.S. Tech Choice Study showed that preferred automated driving technologies differ by generation [9]. The study measured preferences for three technologies, traffic jam assist, limited self-driving, and full self-driving, with MaxDiff scores (average 100), and the scores for traffic jam assist were 88 for Generation Y, 85 for Generation X, 87 for Boomers, and 97 for Pre-Boomers, highest in the oldest generation. The study interpreted this result to mean that Generation Y and Generation X prefer the more complex and advanced self-driving technologies that handle all or part of the driving, while the older generations prefer to ease into full self-driving step by step, starting from simpler functions such as traffic jam assist.
 
 > **Definition:** **MaxDiff (maximum difference scaling)** is a survey technique that repeatedly asks respondents to choose the most and least preferred items from a set, and scores the relative preference of the items. When the average is scaled to 100, a value above 100 means the item is preferred more than average.
 
@@ -256,13 +256,13 @@ The evolutionary scenario assumed that existing driver assistance functions woul
 | 35 | Cooperative Automated Driving Systems (CADS) | 2020-05 ~ 2023-02 | Development and testing of cooperative automated driving systems |
 | 36 | Connected Intersections Program (CIP) | 2021-03 ~ 2024 (planned) | Development and performance evaluation of connected intersection technology |
 
-*Table 7. Main projects of the CAMP consortium (campllc.org [10])*
+*Table 7. Main projects of the CAMP consortium*
 
 Reading Table 7 in chronological order shows how the center of U.S. V2X research moved. In the late 1990s and early 2000s, sensor-based collision warning (FCW, PBA) was central; communication-based safety services (VSC, EEBL, CICAS-V) appeared around 2005. After 2013, projects on security (V2V-CS, SCMS) and interoperability needed to actually deploy V2V increased, and after 2015 automation (AVR, CACC, ADB, CADS) and C-V2X were added.
 
 > **Definition:** **SCMS (Security Credential Management System)** is a public key infrastructure that issues and revokes the certificates used to attach digital signatures to V2X messages. A receiving vehicle verifies the signature to confirm that the message came from a legitimate device and was not forged. **CIB (Crash Imminent Braking)** is a function that brakes automatically when a crash is imminent.
 
-**VSC series projects.** VSC is a series of projects that defined, developed, and evaluated V2V and V2I safety services. The automakers that took part in each stage are shown in Table 8 [11].
+**VSC series projects.** VSC is a series of projects that defined, developed, and evaluated V2V and V2I safety services. The automakers that took part in each stage are shown in Table 8.
 
 | Project | Period | Content and Participating Companies |
 |:-----|:-----|:-----|
@@ -325,7 +325,7 @@ The VSC-A (Vehicle Safety Communications-Applications) project developed and tes
 
 Table 10 shows that one application can reduce several crash types and that several applications can be used together for one crash type. For example, IMA is used in all three scenarios at non-signalized junctions (3, 4, 8), and EEBL and FCW are used together for a decelerating lead vehicle (5).
 
-**Euro NCAP and EEBL.** V2X safety functions such as EEBL also began to be reflected in Europe's new car safety assessment. In the *Euro NCAP 2025 Roadmap* announced on September 12, 2017, Euro NCAP presented its plan for introducing assessment items up to 2025 [12].
+**Euro NCAP and EEBL.** V2X safety functions such as EEBL also began to be reflected in Europe's new car safety assessment. In the *Euro NCAP 2025 Roadmap* announced on September 12, 2017, Euro NCAP presented its plan for introducing assessment items up to 2025 [11].
 
 > **Definition:** **Euro NCAP (European New Car Assessment Programme)** is a program that assesses the crash safety and active safety functions of new cars sold in Europe and publishes the results as star ratings. It is not a legal requirement, but because it strongly influences consumer purchases, automakers actively equip their cars with the functions that are assessed in order to obtain high ratings.
 
@@ -335,7 +335,7 @@ Table 10 shows that one application can reduce several crash types and that seve
 
 Figure 3 shows the assessment items for 2018-2025 in three groups. Roadmap 2020 includes autonomous emergency braking for cyclists (AEB VRU cyclist), far-side protection, and the mobile progressive deformable barrier test. The safety rating of Roadmap 2025 includes driver monitoring, AEB for pedestrians when backing over, AEB at junctions and crossings, head-on AEB, automatic emergency steering (AES), V2X, whiplash and rear-end crash protection, a revised subsystem for pedestrians and cyclists, rescue, extrication and safety, and child presence detection. The automated driving (AD) part of Roadmap 2025 includes the grading of AD functions. As highlighted by the green circles, Euro NCAP decided to newly include automatic emergency steering, V2X, and the grading of automated driving functions.
 
-The V2X item of the roadmap (planned for 2024) explains that V2X communication has the potential to improve traffic safety and efficiency, and gives as examples of safety-related functions "Emergency electronic brake lights", "Motorcycle is approaching", and "Roadwork ahead". It stresses that to provide a benefit beyond on-board sensors, V2X must identify a potential risk earlier than any of the surrounding sensors can see the danger. For automated driving functions, it names parking, city driving, inter-urban driving, traffic jam, and highway driving as the functions to be assessed, and states that assessment will be phased in, starting with continued assistance systems such as highway assist and traffic jam assist. Automatic emergency steering (2020, 2022) was introduced as a technology that can reduce single-vehicle crashes, small overlap crashes, and crashes involving vulnerable road users beyond what AEB achieves, and a revision of UNECE Regulation 79 was expected to permit emergency steering functions around 2020.
+The V2X item of the roadmap (planned for 2024) explains that V2X communication has the potential to improve traffic safety and efficiency, and gives as examples of safety-related functions "Emergency electronic brake lights", "Motorcycle is approaching", and "Roadwork ahead". It stresses that to provide a benefit beyond on-board sensors, V2X must identify a potential risk earlier than any of the surrounding sensors can see the danger. For automated driving functions, it names parking, city driving, inter-urban driving, traffic jam, and highway driving as the functions to be assessed, and states that assessment will be phased in, starting with continued assistance systems such as highway assist and traffic jam assist, possibly as early as 2018-2019. Automatic emergency steering (2020, 2022) was introduced as a technology that can reduce single-vehicle crashes, small overlap crashes, and crashes involving vulnerable road users beyond what AEB achieves, and a revision of UNECE Regulation 79 was expected to permit emergency steering functions around 2020. As a first step, Euro NCAP planned to include driver-initiated within-lane steering support in the overall rating from 2020.
 
 > **Definition:** **AEB (Autonomous Emergency Braking)** is a function that brakes automatically when a collision risk is detected, and **AES (Automatic Emergency Steering)** is a function that steers automatically to avoid a collision. A **VRU (Vulnerable Road User)** is a road user such as a pedestrian, cyclist, or powered two-wheeler rider who is easily injured seriously in a crash.
 
@@ -368,15 +368,15 @@ The SPMD proceeded in four stages.
 | 3. Model deployment execution | Maintenance of the installed equipment and software updates | 2012-08 | 2013-08 |
 | 4. Post-model deployment evaluation | Analysis of the data collected in stage 3 | 2013-08 | 2014-08 |
 
-*Table 12. Stages and schedule of the SPMD (U.S. DOT)*
+*Table 12. Stages and schedule of the SPMD*
 
 > **Definition:** A **VAD (Vehicle Awareness Device)** is a simple device that only sends messages containing its own vehicle's position and speed and gives no warnings. An **ASD (Aftermarket Safety Device)** is a device installed later in vehicles already sold; it exchanges messages and also warns the driver. An **RSU (Roadside Unit)** is a device installed at the roadside that communicates with vehicles.
 
-The data collected in the SPMD can be downloaded by anyone from the open data portal of the U.S. Department of Transportation [13]. These data were later used as the basis for estimating safety benefits when the V2V mandate rulemaking was considered.
+The data collected in the SPMD can be downloaded by anyone from the open data portal of the U.S. Department of Transportation [12]. These data were later used as the basis for estimating safety benefits when the V2V mandate rulemaking was considered.
 
 ### 1.9 Connected Vehicle Applications
 
-The U.S. Department of Transportation classified the applications to be implemented with connected vehicles into seven groups by purpose.
+The U.S. Department of Transportation classified the applications to be implemented with connected vehicles into seven groups by purpose [13].
 
 | Group | Representative Applications |
 |:-----|:-----|
@@ -388,7 +388,7 @@ The U.S. Department of Transportation classified the applications to be implemen
 | Mobility | Advanced traveler information system, intelligent traffic signal system (I-SIG), signal priority (transit, freight), mobile accessible pedestrian signal (PED-SIG), emergency vehicle preemption (PREEMPT), dynamic speed harmonization (SPD-HARM), queue warning (Q-WARN), CACC, incident scene pre-arrival staging guidance for emergency responders (RESP-STG), incident scene work zone alerts (INC-ZONE), emergency communications and evacuation (EVAC), connection protection (T-CONNECT), dynamic transit operations (T-DISP), dynamic ridesharing (D-RIDE), freight-specific dynamic travel planning, drayage optimization |
 | Smart roadside | Wireless inspection, smart truck parking |
 
-*Table 13. Classification of connected vehicle applications by the U.S. DOT [14]*
+*Table 13. Classification of connected vehicle applications by the U.S. DOT*
 
 Table 13 makes it clear that connected vehicles are not a technology for safety alone. The position and speed information that vehicles send (probe data) is used by road agencies for traffic studies and pavement management, signal information is used to save fuel and reduce emissions, and the efficiency of transit and freight transport is also improved.
 
@@ -396,7 +396,7 @@ Table 13 makes it clear that connected vehicles are not a technology for safety 
 
 ### 1.10 Connected Vehicle Pilot Deployment Program
 
-If the SPMD verified the effects of V2V safety applications, the **CV Pilot Deployment Program** is a pilot deployment program that applies connected vehicle technology to solving the traffic problems of real regions. The goals of the program are to combine connected vehicle and mobile device technologies to improve safety, to advance mobility and system productivity, and to reduce environmental impacts [15].
+If the SPMD verified the effects of V2V safety applications, the **CV Pilot Deployment Program** is a pilot deployment program that applies connected vehicle technology to solving the traffic problems of real regions. The goals of the program are to combine connected vehicle and mobile device technologies to improve safety, to advance mobility and system productivity, and to reduce environmental impacts [14].
 
 | Phase | Duration | Content |
 |:-----|:-----|:-----|
@@ -424,7 +424,7 @@ As Figure 5 shows, there is a progress gate between phases. After Phase 1, the p
 
 ### 1.11 The New York City Pilot
 
-The New York City Department of Transportation (NYCDOT) pilot evaluated the following [15].
+The New York City Department of Transportation (NYCDOT) pilot evaluated the following [14].
 
 1. Reduce crashes.
 2. Reduce pedestrian injuries.
@@ -455,7 +455,7 @@ flowchart LR
 
 ### 1.12 The Wyoming Pilot
 
-The pilot of the Wyoming Department of Transportation (WYDOT) targeted the freight corridor of the interstate highway (I-80), where heavy snow and strong winds in winter cause frequent crashes. Its objectives are shown in Table 15 [15].
+The pilot of the Wyoming Department of Transportation (WYDOT) targeted the freight corridor of the interstate highway (I-80), where heavy snow and strong winds in winter cause frequent crashes. Its objectives are shown in Table 15 [14].
 
 | Area | Objectives |
 |:-----|:-----|
@@ -476,7 +476,7 @@ The vehicle system on the left of Figure 8 includes snowplows, heavy trucks, pat
 
 ### 1.13 The Tampa Pilot
 
-The pilot in Tampa, Florida was led by the Tampa-Hillsborough Expressway Authority (THEA). It targeted the downtown reversible express lanes (Selmon Reversible Express Lanes), whose direction is switched during rush hours, and the surrounding downtown streets [16].
+The pilot in Tampa, Florida was led by the Tampa-Hillsborough Expressway Authority (THEA). It targeted the downtown reversible express lanes (Selmon Reversible Express Lanes), whose direction is switched during rush hours, and the surrounding downtown streets [15].
 
 ![Figure 9. Deployment area and applications of the Tampa pilot](../../images/Week12_12-1_p45.png)
 
@@ -495,7 +495,7 @@ Figure 9 shows the applications deployed at each location downtown. The exit of 
 
 > **Definition:** **I-SIG (Intelligent Traffic Signal System)** is an application that optimizes signal timing in real time with the position and speed information sent by vehicles. **TSP (Transit Signal Priority)** is an application that extends or advances the green signal when a bus approaches, and **PED-SIG** is an application in which pedestrians such as the visually impaired tell the signal controller of their intention to cross through a smartphone and receive enough crossing time.
 
-The Tampa system consists of the traffic management center (traffic operators, traffic server, master server, transit server, research staff), roadside equipment (signal controllers, RSUs, DSRC antennas), passenger cars, buses, and streetcars with on-board units (OBU), pedestrians' handheld devices, and an operational data environment (ODE) data center that stores the collected data.
+The Tampa system consists of the traffic management center (traffic operators, traffic server, master server, transit server, research staff), roadside equipment (signal controllers, RSUs, DSRC antennas), passenger cars, buses, and streetcars with on-board units (OBU), pedestrians' handheld devices, satellite positioning (GPS) that provides location, and an operational data environment (ODE) data center that stores the collected data.
 
 The three pilots are worth comparing because they applied the same technology to different regional problems.
 
@@ -510,13 +510,13 @@ The three pilots are worth comparing because they applied the same technology to
 
 ### 1.14 C-V2X Projects in the United States
 
-Early U.S. connected vehicle programs all used DSRC, but from 2018 pilots of cellular-based C-V2X also began. In June 2018, Panasonic, Qualcomm, and Ford announced that they would jointly pursue the first U.S. deployment of C-V2X in Colorado [17]. The characteristics of this project are as follows.
+Early U.S. connected vehicle programs all used DSRC, but from 2018 pilots of cellular-based C-V2X also began. In June 2018, Panasonic, Qualcomm, and Ford announced that they would jointly pursue the first U.S. deployment of C-V2X in Colorado [16]. The characteristics of this project are as follows.
 
 1. It was designed to be compatible with 5G and to complement ADAS sensors such as cameras, radar, and lidar.
 2. It was designed to provide the C-V2X direct device-to-device (D2D) communication mode that does not go through a base station.
-3. Evaluation started on roads around Panasonic's facility in Denver and was planned to expand to parts of the I-70 mountain corridor, and the roadside and vehicle units used the Qualcomm 9150 C-V2X chipset.
+3. Evaluation was to start around Panasonic's CityNOW headquarters in Denver and expand to selected sections of the I-70 corridor later the same year, and the roadside and vehicle units used the Qualcomm 9150 C-V2X chipset.
 
-Qualcomm summarized the advantages of C-V2X as follows [18]. Range and reliability are enhanced for direct communication without network assistance, relative speeds of up to 500 km/h are supported, it is more cost-efficient than other technologies, and it has an evolution path to 5G NR. It is also self-managed for reduced cost and complexity, synergistic with the cellular modem, able to leverage the cellular ecosystem, and able to reuse the upper layers defined by SAE and ETSI. The communication modes of C-V2X and its comparison with DSRC are covered in Week 14.
+Qualcomm summarized the advantages of C-V2X as follows [17]. Range and reliability are enhanced for direct communication without network assistance, relative speeds of up to 500 km/h are supported, it is more cost-efficient than other technologies, and it has an evolution path to 5G NR. It is also self-managed for reduced cost and complexity, synergistic with the cellular modem, able to leverage the cellular ecosystem, and able to reuse the upper layers defined by SAE and ETSI. The communication modes of C-V2X and its comparison with DSRC are covered in Week 14.
 
 > **Definition:** **C-V2X (Cellular V2X)** is the V2X technology defined by 3GPP on the basis of LTE and 5G. It can use both the PC5 interface for direct communication between devices and the Uu interface through a base station. **D2D (Device-to-Device)** communication is communication exchanged directly between devices without going through a base station, and was used with the same meaning as PC5 direct communication.
 
@@ -528,9 +528,9 @@ To drive the development of the automated and connected vehicle industry, the U.
 
 *Figure 10. Progress of the Smart City Challenge and the proposals of Columbus*
 
-The numbers on the left of Figure 10 summarize the progress of the program. 78 cities applied, 7 cities (Austin, Columbus, Denver, Kansas City, Pittsburgh, Portland, San Francisco) became finalists in March 2016, the finalists secured about USD 500 million in partnerships with more than 150 partner organizations, and Columbus, Ohio was finally selected as the one winning city. The photographs on the right are services proposed by Columbus: truck platooning with platoon signal priority at the top and electric automated shuttles connecting the first and last mile at the bottom. Columbus proposed automated public transit and truck platooning linked with large retailers and others [19].
+The numbers on the left of Figure 10 summarize the progress of the program. 78 cities applied, 7 cities (Austin, Columbus, Denver, Kansas City, Pittsburgh, Portland, San Francisco) became finalists in March 2016, the finalists secured about USD 500 million in partnerships with more than 150 partner organizations, and Columbus, Ohio was finally selected as the one winning city. The photographs on the right are services proposed by Columbus: truck platooning with platoon signal priority at the top and electric automated shuttles connecting the first and last mile at the bottom. Columbus proposed automated public transit and truck platooning linked with large retailers and others.
 
-> **Note:** The USD 500 million was not a budget given to the winning city but the total of support pledged to the seven finalists by partner organizations. The winner, Columbus, received up to USD 40 million from the DOT and up to USD 10 million from the private sponsor Vulcan [20].
+> **Note:** The USD 500 million was not a budget given to the winning city but the total of support pledged to the seven finalists by partner organizations. The winner, Columbus, received up to USD 40 million from the DOT and USD 10 million from the private sponsor Vulcan [18].
 
 The lessons from the U.S. cases are as follows. First, V2V between vehicles of different manufacturers became possible because competing companies jointly developed pre-competitive common technology (messages, security, test methods). Second, staged demonstrations involving real drivers and regional transportation agencies, such as the SPMD and the CV pilots, confirmed the effects and operational problems. Third, even when the technology is ready, a change in the V2V mandate or spectrum policy changes the path of deployment, so the technology roadmap and the institutional roadmap must be viewed together.
 
@@ -563,9 +563,9 @@ Because Europe must deal with roads and spectrum shared by many countries, it ch
 | Projects | Mid-2010s | C-ITS Corridor (Netherlands, Germany, Austria) |
 | Projects | 2016-2017 | Horizon 2020 ART calls |
 
-*Table 18. EU institutions and projects related to C-ITS ("국외 C-ITS 정책 및 기술개발 동향" [21])*
+*Table 18. EU institutions and projects related to C-ITS*
 
-EU projects also followed the sequence of proof of concept, demonstration sites, pilot projects, and commercialization. CVIS, SAFESPOT, COOPERS, and COMeSafety were carried out under FP6, Drive C2X, FOTsis, and COMeSafety2 under FP7, and C-ITS Platform and C-Roads, GEAR 2030, the Round Table on Connected and Automated Driving (RT-CAD), and the Horizon 2020 ART calls under Horizon 2020. Throughout this flow, C2C-CC, a consortium of automakers, led the standards on the vehicle side.
+EU projects also followed the sequence of proof of concept, demonstration sites, pilot projects, and commercialization [19]. CVIS, SAFESPOT, COOPERS, and COMeSafety were carried out under FP6, Drive C2X, FOTsis, and COMeSafety2 under FP7, and C-ITS Platform and C-Roads, GEAR 2030, the Round Table on Connected and Automated Driving (RT-CAD), and the Horizon 2020 ART calls under Horizon 2020. Throughout this flow, C2C-CC, a consortium of automakers, led the standards on the vehicle side.
 
 > **Definition:** **CVIS (Cooperative Vehicle-Infrastructure Systems)** studied a cooperative communication platform between vehicles and infrastructure, **SAFESPOT** studied cooperative safety systems in which vehicles and roads share information to widen safety margins, and **COOPERS (Co-operative Systems for Intelligent Road Safety)** studied cooperative traffic management in which road operators give vehicles real-time traffic information. **COMeSafety** is a support project that gathered the results of these projects into a common European ITS communication architecture. **Drive C2X** and **FOTsis** are FOTs that tested cooperative systems on real roads in several countries, and **C-Roads** is a platform for member states to deploy C-ITS services interoperably.
 
@@ -593,7 +593,7 @@ This structure is linked to the classification of crash response technologies th
 
 ### 2.3 The EU Automated Vehicle Project Roadmap
 
-ERTRAC, the European road transport research advisory council, organized the projects related to automated driving carried out by the EU in 2005-2020 into four areas [22].
+ERTRAC, the European road transport research advisory council, organized the projects related to automated driving carried out by the EU in 2005-2020 into four areas [20].
 
 ![Figure 12. Roadmap of EU projects related to automated vehicles](../../images/Week12_12-2_p04.png)
 
@@ -624,7 +624,7 @@ Table 20 shows the sequence from technological research through large-scale demo
 
 ### 2.4 C2C-CC and Penetration Rate
 
-**C2C-CC (CAR 2 CAR Communication Consortium)** is a consortium of European automakers, suppliers, and research institutes that created standards for V2V and V2I communication. In 2006-2011 it did the following [23].
+**C2C-CC (CAR 2 CAR Communication Consortium)** is a consortium of European automakers, suppliers, and research institutes that created standards for V2V and V2I communication; it was founded in 2002 and is still active [21]. In 2006-2011 it did the following [22].
 
 1. It standardized the interfaces and protocols of V2V and V2I.
 2. It developed and established a European industry standard.
@@ -640,7 +640,7 @@ The participants included automakers such as Audi, Daimler, Honda, Renault, Volk
 
 Figure 13 shows the forms of communication envisioned by C2C-CC. The two vehicles in the middle communicate car to car, and they communicate car to infrastructure with public infrastructure on the left such as speed limit signs, hazard signs, and parking signs. The upper right is home-to-car communication that connects a home and a vehicle by wireless LAN, the lower right is car-to-enterprise communication that connects a vehicle with businesses such as fast food restaurants and gas stations, and the top is car-to-mobile device communication that connects a handheld device and a vehicle.
 
-**Penetration rate and services.** V2V is effective only when there are partners to communicate with, so the required penetration rate of on-board units differs by type of service. Services using C2C communication must secure the following penetration rates [22].
+**Penetration rate and services.** V2V is effective only when there are partners to communicate with, so the required penetration rate of on-board units differs by type of service. Services using C2C communication must secure the following penetration rates [20].
 
 | Service | Required Market Penetration |
 |:-----|-----:|
@@ -663,7 +663,7 @@ In Figure 14 the horizontal axis is the number of years since units began to be 
 
 As the labels below the horizontal axis indicate, business cars are first resold after about 2 years and private cars after about 4 years, and the first cars are scrapped after about 10 years, so there is a limit to how fast the vehicle fleet is replaced. Therefore, even if all new cars are equipped, it takes time for existing vehicles to be replaced, and reaching a penetration rate close to the 90% needed for active safety requires 10 years or more, corresponding to the service life of vehicles. This is why the discussion of a V2V mandate matters, and also why aftermarket devices and infrastructure (V2I) are deployed together so as not to wait for fleet replacement.
 
-**Day 1, 2, 3 classification.** C2C-CC also presented a roadmap that divides C-ITS services by introduction time into Day 1 (awareness driving), Day 2 (sensing driving), and Day 3+ (cooperative driving) [24].
+**Day 1, 2, 3 classification.** C2C-CC also presented a roadmap that divides C-ITS services by introduction time into Day 1 (awareness driving), Day 2 (sensing driving), and Day 3+ (cooperative driving) [21].
 
 | Stage | Character | Services | Messages |
 |:-----|:-----|:-----|:-----|
@@ -677,7 +677,7 @@ As the stage rises, support grows from security (the EU certificate management s
 
 ### 2.5 Bosch's Vision of Automated Driving
 
-The supplier Bosch presented the stages from driver assistance functions to high and full automation as follows [25].
+The supplier Bosch presented the stages from driver assistance functions to high and full automation as follows.
 
 | Period | Function |
 |:-----|:-----|
@@ -701,7 +701,7 @@ Bosch's vision is injury-free driving. In the graph on the left of Figure 15, th
 
 ### 2.6 Horizon 2020 ART
 
-Horizon 2020 issued calls for projects in the area of **ART (Automated Road Transport)** every year from 2016 to 2019 [26].
+Horizon 2020 issued calls for projects in the area of **ART (Automated Road Transport)** every year from 2016 to 2019 [23].
 
 | Call | Topic | Examples of Selected Projects |
 |:-----|:-----|:-----|
@@ -722,7 +722,7 @@ The change in call topics shows that vehicle technology and public road pilots c
 
 ### 2.7 The EU C-V2X Demonstration, AdaptIVe, and City Pilot
 
-**C-V2X demonstration.** In July 2018, Qualcomm, 5GAA, BMW Group, Groupe PSA, and Ford Motor Company jointly held near Paris, France, Europe's first demonstration of C-V2X direct communication between vehicles of multiple manufacturers [27]. The demonstration took place at the UTAC Montlhéry proving ground (UTAC is covered in the Week 13 appendix), and the following six services were tested among passenger cars, motorcycles, and roadside infrastructure.
+**C-V2X demonstration.** In July 2018, Qualcomm, 5GAA, BMW Group, Groupe PSA, and Ford Motor Company jointly held near Paris, France, Europe's first demonstration of C-V2X direct communication between vehicles of multiple manufacturers [24]. The demonstration took place at the UTAC Montlhéry proving ground (UTAC is covered in the Week 13 appendix), and the following six services were tested among passenger cars, motorcycles, and roadside infrastructure.
 
 1. Emergency Electronic Brake Light
 2. Intersection Collision Warning
@@ -733,7 +733,7 @@ The change in call topics shows that vehicle technology and public road pilots c
 
 The demonstration used the Qualcomm 9150 C-V2X chipset, and the participating companies aimed to be commercially ready for industry deployment in early 2020.
 
-**AdaptIVe.** AdaptIVe is a large pan-European project that developed and demonstrated automated driving functions in several operating environments [28].
+**AdaptIVe.** AdaptIVe is a large pan-European project that developed and demonstrated automated driving functions in several operating environments [25].
 
 | Item | Content |
 |:-----|:-----|
@@ -745,7 +745,7 @@ The demonstration used the Qualcomm 9150 C-V2X chipset, and the participating co
 
 *Table 25. Overview of the AdaptIVe project*
 
-> **Note:** Eight countries are listed as participants, and the official project materials also state that 28 partners from 8 countries took part [28]. Counting the participating countries as six therefore does not match the list.
+> **Note:** Eight countries are listed as participants, and the official project materials also state that 28 partners from 8 countries took part [25]. Counting the participating countries as six therefore does not match the list.
 
 The applications of AdaptIVe fall into three branches by operating environment. In special areas such as parking lots and garages they cover parking assistance, multi-level garages, and low-speed stop and go; in cities, city cruise, city chauffeur, and supervised city control; and on highways, entering and exiting the highway, lane following, lane changes, filtering in, overtaking, danger spot intervention, and stop and go. As a common function in all three environments, a safe stop brings the vehicle to a safe halt when the system can no longer drive. The demonstration vehicles included passenger cars of several manufacturers and a heavy truck.
 
@@ -755,13 +755,13 @@ The applications of AdaptIVe fall into three branches by operating environment. 
 
 *Figure 16. The CityPilot functions of the Mercedes-Benz Future Bus*
 
-Figure 16 shows the route and functions of the Future Bus. The route is a bus rapid transit (BRT) line of about 20 km from Amsterdam Schiphol Airport to Haarlem. The bus has precise positioning that combines satellite positioning and cameras, detection of pedestrians and vehicles with stereo cameras and radar, automatic approach to bus stops (stopping close against the platform), and connectivity-based driving that communicates with traffic lights to drive smoothly in step with the signals. The bus made an automated demonstration run on this route in July 2016, and commercial operation was planned to follow after further preparation [29].
+Figure 16 shows the route and functions of the Future Bus. The route is a bus rapid transit (BRT) line of about 20 km from Amsterdam Schiphol Airport to Haarlem. The bus has precise positioning that combines satellite positioning and cameras, detection of pedestrians and vehicles with stereo cameras and radar, automatic approach to bus stops (stopping within 10 cm of the kerb), and connectivity-based driving that communicates with traffic lights up to 200 m ahead to drive smoothly in step with the signals. The route has tight bends, tunnels, traffic lights, and pedestrian crossings, and the bus drives at up to 70 km/h, the usual speed on BRT routes. The bus made an automated demonstration run on this route in July 2016, and commercial operation was planned to follow after further preparation [26].
 
 > **Definition:** **BRT (Bus Rapid Transit)** is a bus system with dedicated roads or lanes and signal priority that runs as fast and punctually as a subway. Because it is a dedicated space separated from other vehicles, it is a good environment in which to introduce automated buses first.
 
 ### 2.8 Japan's SIP Automated Driving Framework
 
-As introduced in Week 1, Japan's SIP Automated Driving (SIP-adus, Automated Driving for Universal Services) is a cross-ministry governance framework under the Prime Minister's office (Cabinet Office), pursued in phase 1 (2014-2018) and phase 2 (2018-2022). The Ministry of Internal Affairs and Communications, the Ministry of Economy, Trade and Industry, the National Police Agency, the Ministry of Land, Infrastructure, Transport and Tourism, and others participate, and the program director (PD) comes from a private company [30].
+As introduced in Week 1, Japan's SIP Automated Driving (SIP-adus, Automated Driving for Universal Services) is a cross-ministry governance framework under the Prime Minister's office (Cabinet Office), pursued in phase 1 (2014-2018) and phase 2 (2018-2022). The Ministry of Internal Affairs and Communications, the Ministry of Economy, Trade and Industry, the National Police Agency, the Ministry of Land, Infrastructure, Transport and Tourism, and others participate, and the program director (PD) comes from a private company [27].
 
 ```mermaid
 flowchart TD
@@ -810,13 +810,13 @@ The bottom of Figure 19 is the scenario for private cars. The targets were Level
 
 > **Definition:** A **CPS (Cyber-Physical System)** is a system that gathers information about the real world with sensors, analyzes it in cyberspace, and controls the real world with the results. **Society 5.0** is the Japanese national vision defined in Week 1.
 
-**Eight strategic fields and ten technology fields.** Following the reference architecture of Society 5.0, SIP-adus built the architecture of its automated driving strategy in eight layers: strategy, rules, organization, business, functions, data, data collection, and technology (assets). This reference architecture is applied to mobility systems that transport people and things; security and authentication span all layers, and the architecture extends along the time and space axes. SIP-adus also created and pursued separate roadmaps for ten technology fields: maps (high-definition 3D maps, dynamic maps), communication infrastructure, perception technology, decision technology, human factors, functional safety, cybersecurity, software talent, social acceptance, and safety assessment [30]. The content of each field was covered in Week 1.
+**Eight strategic fields and ten technology fields.** Following the reference architecture of Society 5.0, SIP-adus built the architecture of its automated driving strategy in eight layers: strategy, rules, organization, business, functions, data, data collection, and technology (assets). This reference architecture is applied to mobility systems that transport people and things; security and authentication span all layers, and the architecture extends along the time and space axes. SIP-adus also created and pursued separate roadmaps for ten technology fields: maps (high-definition 3D maps, dynamic maps), communication infrastructure, perception technology, decision technology, human factors, functional safety, cybersecurity, software talent, social acceptance, and safety assessment [27]. The content of each field was covered in Week 1.
 
 ### 2.9 The Dynamic Map and DMP
 
 Automated vehicles use high-definition maps to know the road structure and conditions beyond the range their sensors see. Japan chose a public-private division of roles in which industry builds the base part of the map jointly.
 
-**DMP.** Japan established **Dynamic Map Platform (DMP)** as a company that creates, maintains, and provides high-definition 3D maps with a relative accuracy of 25 cm (equivalent to map information level 500) [31]. The company was founded in June 2016 as a planning company and changed its business to an operating company in June 2017, and its president is Hiroyuki Inahata (稲畑 廣行). Its shareholders consist of an investment fund (INCJ and others), map and surveying companies (Mitsubishi Electric, ZENRIN, PASCO, Aisan Technology, Toyota Mapmaster, Increment P), and automakers (Toyota, Nissan, Honda, Subaru, Mitsubishi Motors, Mazda, Suzuki, and others).
+**DMP.** Japan established **Dynamic Map Platform (DMP)** as a company that creates, maintains, and provides high-definition 3D maps with a relative accuracy of 25 cm (equivalent to map information level 500) [28]. The company was founded in June 2016 as a planning company and changed its business to an operating company in June 2017, and its president is Hiroyuki Inahata (稲畑 廣行). Its shareholders consist of an investment fund (INCJ and others), map and surveying companies (Mitsubishi Electric, ZENRIN, PASCO, Aisan Technology, Toyota Mapmaster, Increment P), and automakers (Toyota, Nissan, Honda, Subaru, Mitsubishi Motors, Mazda, Suzuki, Isuzu, Hino, Daihatsu).
 
 ![Figure 20. Role of the dynamic map company in Japan](../../images/Week12_12-2_p23.png)
 
@@ -841,7 +841,7 @@ The bottom of Figure 20 is the process of creating the base map. A survey vehicl
 
 *Table 26. The four layers of the dynamic map*
 
-The information of each layer is linked by location, so that semi-static, semi-dynamic, and dynamic information are overlaid on the static map. This structure follows the same idea as the four layers (permanent static, transient static, transient dynamic, and highly dynamic information) of the **LDM (Local Dynamic Map)** defined by the European ETSI [32].
+The information of each layer is linked by location, so that semi-static, semi-dynamic, and dynamic information are overlaid on the static map. This structure follows the same idea as the four layers (permanent static, transient static, transient dynamic, and highly dynamic information) of the **LDM (Local Dynamic Map)** defined by the European ETSI [29].
 
 > **Definition:** An **LDM (Local Dynamic Map)** is a data store in which a vehicle or roadside unit gathers static map information about its surroundings and dynamic information received through V2X and sensors, referenced by location. The C-AHS project in Section 3.6 also uses this concept.
 
@@ -853,7 +853,7 @@ Japan has allocated the area around 5.8 GHz mainly to ETC (corresponding to Kore
 
 *Figure 22. International status of ITS frequencies*
 
-Figure 22 is the arrangement of ITS frequencies in each country compiled by Japan's Ministry of Internal Affairs and Communications [33], [34]. The scale at the top is 5,730-5,930 MHz.
+Figure 22 is the arrangement of ITS frequencies in each country compiled by Japan's Ministry of Internal Affairs and Communications [30]. The scale at the top is 5,730-5,930 MHz, and above it the 3GPP E-UTRA operating bands 46d (5,725-5,925 MHz) and 47 (5,855-5,925 MHz) are marked.
 
 1. **Japan:** ETC and ETC2.0 are placed in two blocks in the 5.8 GHz band, and as in the enlarged view on the left, a band for safety lies between LTE bands in the 700 MHz band (730-790 MHz). Wireless LAN (RLAN) channels also use part of the 5.8 GHz band.
 2. **United States:** V2V safety, I2V, VRU, control, and public safety channels were placed in the 5.9 GHz band, and the figure marks the direction, discussed by the FCC from December 2019 to April 2020, of turning the lower band into unlicensed (Wi-Fi) use and the upper band into cellular V2X use.
@@ -864,7 +864,7 @@ The text box in Figure 22 explains that discussions on introducing V2X systems i
 
 ### 2.11 Commercialization Scenarios and Demonstration Types
 
-The Japanese government's Public-Private ITS Initiative/Roadmaps 2020 presented scenarios for commercializing automated driving in three branches, private vehicles, logistics services, and transport services (public transport), divided into short, medium, and long term [35].
+The Japanese government's Public-Private ITS Initiative/Roadmaps 2020 presented scenarios for commercializing automated driving in three branches, private vehicles, logistics services, and transport services (public transport), divided into short, medium, and long term [31].
 
 | Branch | By FY2020 | Short Term (FY2021-2022) | Medium Term (FY2023-2025) |
 |:-----|:-----|:-----|:-----|
@@ -874,11 +874,11 @@ The Japanese government's Public-Private ITS Initiative/Roadmaps 2020 presented 
 
 *Table 27. Japan's scenarios for commercialization and service implementation of automated driving*
 
-In Table 27, private vehicles raise the level step by step, while logistics and transport services start from Level 4 in restricted areas and widen the areas. This is the same idea as paths A and B of SIP phase 2 in Section 2.8.
+In Table 27, private vehicles raise the level step by step, while logistics and transport services start from Level 4 in restricted areas and widen the areas. This is the same idea as paths A and B of SIP phase 2 in Section 2.8. The long-term (FY2026 and later) goals are the reduction of traffic accidents, alleviation of congestion, and strengthening of industrial competitiveness for private vehicles, innovative streamlining of logistics responding to the era of population decrease for logistics services, and a society in which elderly people can move freely around the country for transport services.
 
-**Nationwide demonstrations.** Japan pursued demonstrations nationwide in many forms, such as automated driving services based at expressway rest areas, last-mile automated driving, the Smart Mobility Challenge, roads within airports, smart cities, and demonstrations by individual local governments [35]. As of March 2020 (including plans), demonstrations were under way or planned in many places across the country.
+**Nationwide demonstrations.** Japan pursued demonstrations nationwide in many forms, such as automated driving services based at expressway rest areas, last-mile automated driving, the Smart Mobility Challenge, roads within airports, smart cities, and demonstrations by individual local governments [31]. The demonstration map as of March 2020 (including plans) shows automated driving services based at roadside rest areas and similar hubs (MLIT and Cabinet Office: Kamikoani in Akita, Taiki in Hokkaido, Hitachiota in Ibaraki, Higashiomi in Shiga), last-mile automated driving (MLIT and METI: Eiheiji in Fukui, Chatan in Okinawa), truck platooning on expressways (platooning with driverless following vehicles on the Shin-Tomei Expressway and platooning with drivers on the Joshin-etsu Expressway), the Smart Mobility Challenge (Otsu in Shiga, Oita in Oita), a feasibility study of medium-sized automated buses, the SIP demonstration on general roads in the Tokyo waterfront area, automated driving in restricted airport zones (Narita, Haneda, Chubu, Kansai, and Saga airports), smart cities (Utsunomiya in Tochigi, Kashiwa in Chiba, Shimoda in Shizuoka, Kasugai in Aichi, Chiyoda and Koto in Tokyo), and individual demonstrations by local governments, private companies, and universities (17 sites, such as Kiryu in Gunma and Kuwana in Mie).
 
-**Classification of demonstration types.** Because the vehicle platform needed differs by demonstration area, KATECH presented a decision procedure that divides demonstrations into five types according to the character of the operating space [11].
+**Classification of demonstration types.** Because the vehicle platform needed differs by demonstration area, KATECH presented a decision procedure that divides demonstrations into five types according to the character of the operating space.
 
 ```mermaid
 flowchart TD
@@ -919,7 +919,7 @@ Even for the same type, the required vehicle platform differs depending on the c
 
 ### 2.12 Mobility for Low-Density and Urban Areas
 
-Japan seeks to solve the social problems caused by aging and rural depopulation with automated mobility. ITS Japan viewed population distribution in two types and presented an operating plan for each [36].
+Japan seeks to solve the social problems caused by aging and rural depopulation with automated mobility. ITS Japan viewed population distribution in two types and presented an operating plan for each.
 
 ![Figure 24. Mobility concept for low-density areas](../../images/Week12_12-2_p28.png)
 
@@ -975,7 +975,7 @@ Multiplying the options adopted for the three components gives $2 \times 2 \time
 
 The difference between following driving and convoy formation lies in how tightly the vehicles are coupled. In following driving, a following vehicle tracks the vehicle ahead and can leave or join the line while traveling, whereas in convoy formation several vehicles are bound into a single line and move together. The automated driving operation company was chosen as the responsible party because a business model was assumed in which the operator of the lead vehicle takes responsibility for the operation of the whole line.
 
-**NEDO's truck platooning vehicle.** NEDO's Energy ITS project developed a heavy truck platooning vehicle [37].
+**NEDO's truck platooning vehicle.** NEDO's Energy ITS project developed a heavy truck platooning vehicle.
 
 ![Figure 28. Configuration of NEDO's truck platooning vehicle](../../images/Week12_12-2_p34.png)
 
@@ -1000,21 +1000,21 @@ As seen in Section 1.2, Korea moved through national R&D programs such as u-Tran
 
 ### 3.1 The Autonomous Driving Technology Development Innovation Program
 
-The **Autonomous Driving Technology Development Innovation Program** is a cross-ministry R&D program in which four ministries, the Ministry of Trade, Industry and Energy, the Ministry of Science and ICT, the Ministry of Land, Infrastructure and Transport, and the Korean National Police Agency, invest about KRW 1.1 trillion (KRW 1.0974 trillion) over seven years from 2021 to 2027. It consists of about 84 subprojects, and the **Korea Autonomous Driving Development Innovation Foundation (KADIF)**, launched in March 2021, manages the program [38]. The goal is to complete the foundation for commercializing converged Level 4+ automated driving by 2027.
+The **Autonomous Driving Technology Development Innovation Program** is a cross-ministry R&D program in which four ministries, the Ministry of Trade, Industry and Energy, the Ministry of Science and ICT, the Ministry of Land, Infrastructure and Transport, and the Korean National Police Agency, invest about KRW 1.1 trillion (KRW 1.0974 trillion) over seven years from 2021 to 2027. It consists of about 84 subprojects, and the **Korea Autonomous Driving Development Innovation Foundation (KADIF)**, launched in March 2021, manages the program [32]. The goal is to complete the foundation for commercializing converged Level 4+ automated driving by 2027.
 
 | Field | Main Outputs | Technologies and Yearly Targets |
 |:-----|:-----|:-----|
 | Vehicle-converged new technology | Sensors, vehicle platforms | Four major perception and prediction sensors (2022 design, 2023 first prototype, 2024 second prototype, 2025 production of thermal imaging cameras, vari-focal cameras, lidar, and radar), AI computing platform (design, system integration, integration in a test vehicle, verification in an actual vehicle), automated vehicle platforms (2022 design of vans and buses, 2023 design of sedans and trucks, 2024 prototypes, 2025 van, 2026 medium bus, 2027 sedan and truck), automated driving safety design (accident risk analysis, verification of risk factors, safety standards compliant with SOTIF) |
 | ICT-converged new technology | AI software, vehicle communication and security | Ultra-high-speed automated driving communication (2023 V2X infrastructure cooperative driving technology, 2024 advancement, 2026 V2X communication demonstration in actual vehicles), automated driving simulation, automated driving AI software (connected software design, AI cooperative automated driving, AI software demonstration in actual vehicles), automated driving network security (V2X communication security technology, advancement, 2027 security demonstration on actual vehicle platforms), verification of virtual software architecture |
-| Road-traffic-converged new technology | Digital infrastructure, integrated control center, traffic safety facilities | Digital transportation infrastructure, integrated control center, automated driving test beds, integrated mobility center |
-| Automated driving services | Seven major public services | Support for the transportation-disadvantaged, emergency management, real-time traffic management, shared vehicles, emergency vehicle support, urban environment management, traffic patrol |
-| Automated driving ecosystem | International standards, legal system, licensing system | International standards and legal system, driving and collision safety assessment, security stability assessment, assessment of the driving ability of automated driving software |
+| Road-traffic-converged new technology | Digital infrastructure, integrated control center, traffic safety facilities | Digital transportation infrastructure (2023 infrastructure information linkage standard, 2024 digital transportation infrastructure platform, 2025 application of the infrastructure platform standard), integrated control center (control center data standard, control system platform, integrated control cooperation standard), automated driving test beds (2023 selection of living lab target cities, 2024 open living lab design, 2025 site construction, 2026 operation, 2027 advanced operation), integrated mobility center (transportation management platform, mobility center prototype, integrated operation manual, mobility center international standard) |
+| Automated driving services | Seven major public services | Support for the transportation-disadvantaged, emergency management, real-time traffic management, shared vehicles, emergency vehicle support, urban environment management, traffic patrol (each service proceeds through service technology development, service system development, and service demonstration) |
+| Automated driving ecosystem | International standards, legal system, licensing system | International standards and legal system (2022 one standard and five legal items, 2023 three standards and eight legal items, 2024 five standards and fifteen legal items), driving and collision safety assessment (2023 safety test scenarios, 2024 safety test evaluation system, 2025 dynamic safety test evaluation criteria, 2026 draft urban road infrastructure safety standards), security stability assessment (2023 security level system, 2024 cybersecurity evaluation criteria, 2026 reorganization of legislation for automated driving), assessment of the driving ability of automated driving software (2024 driving ability evaluation guideline, 2025 driver coping ability scenarios, 2027 construction of a driving ability evaluation system) |
 
 *Table 32. The five fields of the Autonomous Driving Technology Development Innovation Program*
 
 > **Definition:** **SOTIF (Safety Of The Intended Functionality)** is a safety concept that deals with hazards that can arise even without a failure, because of the perception limits of sensors or unforeseen situations, and it is standardized as ISO 21448. It complements functional safety (ISO 26262), which deals with hazards caused by component failures.
 
-The program proceeds in two steps. Step 1 (2021-2024) is a technology development step that secures the core component technologies of automated driving, and step 2 (2025-2027) is a step that advances and commercializes the technology through living lab demonstrations and infrastructure verification. After the launch ceremony in March 2021, subprojects were started in turn: 53 in June 2021, 12 in May 2022, 18 in 2023, 3 in 2024, and 2 in 2025, and the results are verified in the order of simulation, test beds (2025-2026), and living labs (2026-2027).
+The program proceeds in two steps. Step 1 (2021-2024) is a technology development step that secures the core component technologies of automated driving, and step 2 (2025-2027) is a step that advances and commercializes the technology through living lab demonstrations and infrastructure verification. The program passed its preliminary feasibility study in April 2020, and after the launch ceremony in March 2021, subprojects were started in turn: 53 in June 2021, 12 in May 2022, 18 in 2023, 3 in 2024, and 2 in 2025, and the results are verified in the order of simulation, test beds (2025-2026), and living labs (2026-2027). An expert council has also been operated since 2021.
 
 > **Definition:** A **living lab** is an approach that uses real living spaces as laboratories to test and improve technologies and services in the environment in which ordinary citizens use them. It is closer to actual operating conditions than a test bed.
 
@@ -1034,12 +1034,12 @@ The equipment in Figure 29 is used for the following purposes.
 4. **Temperature-controlled driving simulator:** It reproduces driving situations under various temperature conditions.
 5. **EMC chamber:** It tests the electromagnetic emissions of electronic devices and their immunity to external electromagnetic waves.
 6. **50 m radar chamber:** It tests the detection range and accuracy of radar in a space that prevents radio reflections.
-7. **Full car load simulator:** It tests the power system by emulating the electrical load of the whole vehicle.
+7. **Full car load simulator:** It tests the vehicle and its components by emulating in the laboratory the loads acting on the whole vehicle.
 8. **V2X station vehicle, data acquisition (DAQ) equipment:** They record V2X communication and vehicle data on real roads.
 
 > **Definition:** **HILS (Hardware-In-the-Loop Simulation)** is a test method in which the hardware under test is actually connected while the rest of the system is replaced by real-time simulation. It is safer and easier to repeat than tests in actual vehicles. **EMC (Electromagnetic Compatibility)** is the property of a device not to cause electromagnetic interference to other devices and to operate normally under external interference.
 
-The national projects related to automated driving that KATECH carried out or took part in are shown in Table 33 [11].
+The national projects related to automated driving that KATECH carried out or took part in are shown in Table 33.
 
 | Project | Budget | Period | Performers |
 |:-----|-----:|:-----|:-----|
@@ -1062,7 +1062,7 @@ The projects in Table 33 range from core vehicle components (computing modules, 
 
 ### 3.3 Infrastructure-Linked Automated Driving: Fusing Traffic Safety Facility Information
 
-Automated vehicles recognize traffic safety facilities such as traffic signals, safety signs, and road markings with cameras. However, recognition can fail when signs are hidden or road markings are worn, so automated driving becomes safer if infrastructure delivers the information of traffic safety facilities digitally and directly. Within the Autonomous Driving Technology Development Innovation Program, the Korean National Police Agency pursued three projects on traffic safety infrastructure technology for Level 4 automated driving [11].
+Automated vehicles recognize traffic safety facilities such as traffic signals, safety signs, and road markings with cameras. However, recognition can fail when signs are hidden or road markings are worn, so automated driving becomes safer if infrastructure delivers the information of traffic safety facilities digitally and directly. Within the Autonomous Driving Technology Development Innovation Program, the Korean National Police Agency pursued three projects on traffic safety infrastructure technology for Level 4 automated driving.
 
 | Project | Lead Institution | Period | Budget | Participants |
 |:-----|:-----|:-----|-----:|:-----|
@@ -1072,7 +1072,7 @@ Automated vehicles recognize traffic safety facilities such as traffic signals, 
 
 *Table 34. Projects of the Korean National Police Agency on traffic safety infrastructure for Level 4 automated driving*
 
-The budget of (KNPA 3) is given as KRW 7.5 billion (Table 33) or about KRW 7.37 billion (KRW 7.0 billion government, KRW 0.374 billion private) depending on the project material. Of the three projects, (KNPA 3) builds a system that collects and processes the information of traffic safety facilities in real time and delivers it to automated vehicles.
+The budget of (KNPA 3) is given both as KRW 7.5 billion (Table 33) and as about KRW 7.374 billion (KRW 7.0 billion of government funding and KRW 0.374 billion of private funding). The Korean National Police Agency, the Korea Institute of Police Technology (KIPoT), and KADIF are involved in the three projects. Of the three projects, (KNPA 3) builds a system that collects and processes the information of traffic safety facilities in real time and delivers it to automated vehicles.
 
 ![Figure 30. Configuration of the infrastructure-linked safe driving guide service of the (KNPA 3) project](../../images/Week12_12-3_p10.png)
 
@@ -1121,13 +1121,13 @@ The (KNPA 3) project proceeds in stages over six years. The key points of the ye
 
 *Table 36. Yearly plan of the (KNPA 3) project*
 
-The key results of step 1 (year 3) include two test vehicles, the infrastructure service platform (ISF), the linking system between field devices and the ISF, 30 cumulative evaluation scenarios, a demonstration linking the offline digital twin with the traffic safety center, a prototype of the WAVE and LTE hybrid terminal, and an HMI display. As final results, guidelines for the real-time linking system, a definition document for the safe driving guide service, 50 evaluation scenarios, 10 safe driving scenarios, definition documents for optimal information provision and collection, information usage guidelines, and a prototype of the WAVE and cellular hybrid terminal were planned.
+The key results of step 1 (year 3) include two test vehicles, the infrastructure service platform (ISF), the linking system between field devices and the ISF, 30 cumulative evaluation scenarios, a demonstration linking the offline digital twin with the traffic safety center, a prototype of the WAVE and LTE hybrid terminal, and an HMI display. As final results, two test vehicle platforms for traffic safety facility infrastructure information, the traffic safety facility infrastructure information service platform, guidelines for the real-time linking system, a definition document for the safe driving guide service, 50 evaluation scenarios, 10 safe driving scenarios, definition documents for optimal information provision and collection, an evaluation report on the applicability and validity of traffic safety facility information for vehicles, information usage guidelines, a prototype of the WAVE and cellular hybrid terminal, and an HMI display providing traffic safety facility information were planned.
 
 > **Definition:** A **digital twin** is a model that reproduces real roads and facilities identically in virtual space. It makes it possible to test the flow of information and the effects of services in advance without closing actual roads.
 
 ### 3.4 V2V-Based Cooperative Vehicle Control
 
-The (MOTIE 25) project of the Ministry of Trade, Industry and Energy, development of cooperative vehicle control technology based on fusion of surrounding environment information, aims at cooperative automated driving that goes beyond the limits of the vehicle's own sensors by sharing the sensor information of surrounding vehicles over V2V [11].
+The (MOTIE 25) project of the Ministry of Trade, Industry and Energy, development of cooperative vehicle control technology based on fusion of surrounding environment information, aims at cooperative automated driving that goes beyond the limits of the vehicle's own sensors by sharing the sensor information of surrounding vehicles over V2V.
 
 ![Figure 31. Current state and goals of the cooperative vehicle control project](../../images/Week12_12-3_p15.png)
 
@@ -1153,13 +1153,13 @@ The lower left of Figure 31 shows the expansion of the perception area. With the
 
 > **Definition:** An **MRM (Minimal Risk Maneuver)** is the maneuver that an automated driving system performs in a failure or limit situation to bring the vehicle to the minimal risk condition (MRC). A **cooperative MRM (C-MRM)** performs the MRM more safely in cooperation with surrounding vehicles, for example when surrounding vehicles slow down or make room while a failed vehicle pulls over to the shoulder.
 
-This project refers to SAE J3216 for the terms and classification of cooperative driving automation (CDA) [39]. J3216 divides the level of cooperation into four classes: status-sharing (class A), intent-sharing (class B), agreement-seeking (class C), and prescriptive (class D), and the details are covered in Week 11.
+This project refers to SAE J3216 for the terms and classification of cooperative driving automation (CDA) [33]. J3216 divides the level of cooperation into four classes: status-sharing (class A), intent-sharing (class B), agreement-seeking (class C), and prescriptive (class D), and the details are covered in Week 11.
 
 The final goals of the project are threefold.
 
 1. Develop an N2N cooperative control module centered on the N2N (many vehicles to many vehicles) control module of the V2V-based automated driving system.
 2. Install and link V2V-based data fusion software for the own and surrounding vehicles on the cognition range expansion (CRE) module of a Ministry of Science and ICT project.
-3. Improve performance with peripheral modules such as the V2V-CRE module, the RTK/INS positioning module, and the high-definition map module, and verify with actual vehicles on proving grounds (PG), public roads, and living labs.
+3. Improve performance with peripheral modules such as the V2V-CRE module, the RTK/INS positioning module, and the LLM module, and verify with actual vehicles on proving grounds (PG), public roads, and living labs.
 
 | Technology Area | Content | Participants |
 |:-----|:-----|:-----|
@@ -1176,29 +1176,29 @@ The final goals of the project are threefold.
 
 **Design of the vehicle platform in year 1.** In designing the cooperative automated driving vehicle platform, KATECH carried out the following.
 
-1. **Securing test vehicles and components:** It secured two electrically driven test vehicles and purchased 10 sets of lidar, 8 sets of radar, and 10 sets of cameras.
-2. **Designing the automated driving system architecture:** Together with the participating institutions it fixed the sensor layout, designed the network topology of in-vehicle CAN, Ethernet (UDP, TCP/IP), and serial communication, and designed the power supply and wiring. Power consumption was calculated on the basis of 5 lidars (75 W each), 5 radars (27 W each), and 7 cameras (16 W each).
+1. **Securing test vehicles and components:** It secured two electrically driven test vehicles and, together with the participating institutions, secured 10 sets of lidar and 8 sets of radar, while the procurement of 10 sets of cameras was in progress.
+2. **Designing the automated driving system architecture:** Together with the participating institutions it fixed the sensor layout, designed the network topology of in-vehicle CAN, Ethernet (UDP, TCP/IP), and serial communication, and designed the power supply and wiring. The power distribution diagram takes the 12 V supply that the LDC (low-voltage DC-DC converter) produces from the high-voltage battery and splits it through a DC isolator into two auxiliary 12 V batteries: one feeds 5 lidars, 5 radars, 7 cameras, the GNSS/INS, and the V2X OBU, and the other feeds the controller (CADM, 12 V/500 W) and an inverter (laptop 300 W, other devices 100 W). The lines to the sensor groups are labeled 75 W for the lidars, 27 W for the radars, and 16 W for the cameras.
 3. **Writing the modification specification:** It created a vehicle integrated management modification specification covering a layout that secures sensor performance, minimal changes to the vehicle exterior, maintenance and repair of the installed systems, and verification methods for individual requirements.
 
-The total power consumption of the sensors is as follows.
+Reading each labeled value as the power of the whole sensor group, the total power consumption of the sensors is as follows.
 
-$$
-5 \times 75 + 5 \times 27 + 7 \times 16 = 375 + 135 + 112 = 622\ \text{W}
-$$
+```math
+75 + 27 + 16 = 118\ \text{W}
+```
 
-This value is the power of the sensors alone, and the power of the controllers, network devices, and communication modules is added to it. On a 12 V system, the sensors alone require a current of about $622 / 12 \approx 52$ A, so a modified vehicle needs a separate auxiliary battery and power distribution design. Network topologies such as CAN and Ethernet were covered in Weeks 3, 6, and 9.
+If each labeled value is instead read as the power of a single sensor, the total becomes $5 \times 75 + 5 \times 27 + 7 \times 16 = 375 + 135 + 112 = 622$ W, so an actual design must confirm which reading is correct from the device specifications. The 118 W of the group reading corresponds to about $118 / 12 \approx 9.8$ A at 12 V, and the total labeled power including the controller and inverter loads, $118 + 500 + 300 + 100 = 1018$ W, corresponds to about $1018 / 12 \approx 85$ A. Because the currents are this large, a modified vehicle needs a separate auxiliary battery and power distribution design. Network topologies such as CAN and Ethernet were covered in Weeks 3, 6, and 9.
 
 ### 3.5 UTIS-Linked Communication Technology
 
 KATECH also developed **UTIS-linked communication technology and an urban traffic safety support service**. The project builds a service system that supports traffic safety in cities using UTIS.
 
-> **Definition:** **UTIS (Urban Traffic Information System)** is the traffic information system that the Korean National Police Agency built on urban roads. Roadside equipment (RSE) at the roadside and on-board equipment (OBE) in vehicles communicate wirelessly, so that the driving speed and position measured by vehicles are collected at the center and the traffic information processed by the center is sent back down to vehicles [40].
+> **Definition:** **UTIS (Urban Traffic Information System)** is the traffic information system that the Korean National Police Agency built on urban roads. Roadside equipment (RSE, the same as an RSU) at the roadside and on-board equipment (OBE) in vehicles communicate wirelessly, so that the driving speed and position measured by vehicles are collected at the center and the traffic information processed by the center is sent back down to vehicles.
 
-UTIS already has roadside equipment and communication networks installed throughout cities, so linking it with V2X services makes it possible to provide urban traffic safety services without laying all new infrastructure. The results of this project were introduced in a demonstration video.
+UTIS already has roadside equipment and communication networks installed throughout cities, so linking it with V2X services makes it possible to provide urban traffic safety services without laying all new infrastructure.
 
 ### 3.6 The Smart Road System for Cooperative Automated Driving
 
-The **Development of Advanced Infra Systems for Automated Driving (C-AHS)** of the Ministry of Land, Infrastructure and Transport is a project that developed a system in which road infrastructure supports automated vehicles [41].
+The **Development of Advanced Infra Systems for Automated Driving (C-AHS)** of the Ministry of Land, Infrastructure and Transport is a project that developed a system in which road infrastructure supports automated vehicles.
 
 | Item | Content |
 |:-----|:-----|
@@ -1226,7 +1226,7 @@ The test vehicle in Figure 32 is equipped with a camera sensor, a radar sensor, 
 The system in Figure 33 consists of four elements.
 
 1. **LDM (Local Dynamic Map):** It manages road incident, weather and traffic, and road characteristic information overlaid on a precise map.
-2. **CGPS system:** Reference stations at the Seoul tollgate, Osan IC, North Yeoju, and the Yeoju test road generate correction information for satellite positioning and distribute it through the communication center and receiving stations.
+2. **CGPS system:** Reference stations at the Seoul tollgate, Osan IC, North Yeoju IC, and the Yeoju test road generate correction information for satellite positioning and distribute it through the communication center and receiving stations.
 3. **Hybrid V2X communication:** It delivers the LDM information and positioning correction information of the main control center by hybrid V2X communication between roadside units and vehicles.
 4. **CAV (connected and automated vehicle):** It controls the vehicle by combining precise positioning, the LDM, and vehicle sensors.
 
@@ -1275,7 +1275,7 @@ The evaluation concept is as follows. When the roadside equipment sends informat
 
 > **Definition:** **RSA (Roadside Alert)** is an SAE J2735 message that briefly announces hazardous situations (work zones, crashes, road surface hazards, etc.) from the roadside.
 
-The comprehensive performance evaluation section, made up of 10 services (one round trip), was driven 22 round trips, and after vehicle-level considerations such as power, communication speed, and vibration were applied, an integrated test of the LDM, V2X, and vehicles was carried out. The results are shown in Table 40.
+The first comprehensive performance evaluation section is about 7 km from Yangji IC to Deokpyeong IC. The comprehensive performance evaluation section, made up of 10 services (one round trip), was driven 22 round trips, and after vehicle-level considerations such as power, communication speed, and vibration were applied, an integrated test of the LDM, V2X, and vehicles was carried out. The results are shown in Table 40.
 
 | Symbol | Judgment Criterion | Result (Times) | Ratio (%) |
 |:-----|:-----|-----:|-----:|
@@ -1290,7 +1290,7 @@ The total number of trials is $10 \times 22 = 220$ because 10 services were driv
 
 ### 3.7 Public Road Test Sections and Proving Grounds
 
-Korea has several public road sections and proving grounds (PG) where automated driving and V2X can be tested [11].
+Korea has several public road sections and proving grounds (PG) where automated driving and V2X can be tested.
 
 | Public Road Test Section | Size |
 |:-----|-----:|
@@ -1319,13 +1319,13 @@ Korea has several public road sections and proving grounds (PG) where automated 
 
 *Table 42. Proving grounds for automated driving of Korean institutions and companies*
 
-> **Note:** The area of K-City itself was reported to be about 360,000 m² [42], so the 2,145,000 m² in Table 42 is best read as the size of the whole KATRI proving ground complex in which K-City is located.
+> **Note:** The area of K-City itself was reported to be about 320,000 m² [34], so the 2,145,000 m² in Table 42 is best read as the size of the whole KATRI proving ground complex in which K-City is located.
 
 Proving grounds allow dangerous scenarios to be tested repeatedly in a controlled environment without ordinary vehicles, and public road sections allow systems to be verified amid real traffic and infrastructure. The two environments complement each other.
 
 ### 3.8 K-City
 
-**K-City (an experimental city for automated driving)** is a dedicated proving ground for automated driving built at the Korea Automobile Testing and Research Institute (KATRI) of the Korea Transportation Safety Authority in Hwaseong, Gyeonggi Province [43].
+**K-City (an experimental city for automated driving)** is a dedicated proving ground for automated driving built at the Korea Automobile Testing and Research Institute (KATRI) of the Korea Transportation Safety Authority in Hwaseong, Gyeonggi Province.
 
 ![Figure 37. Overall view of K-City, the experimental city for automated driving](../../images/Week12_12-3_p29.png)
 
@@ -1345,18 +1345,20 @@ K-City reproduces real road environments in five zones.
 
 It is important that communication shadow and GPS blockage zones were built on purpose. Connected automated driving depends on communication and satellite positioning, so how the system responds when these are cut off must be tested.
 
+The basic design plan of K-City set out the review items for each zone as follows. The urban road zone has a new four-lane signalized intersection (120 m), a bus-only lane widened from two to four lanes (260 m), building facades formed by four building blocks, and a new two-lane bus and taxi stopping facility (170 m). The community road zone has a signalized intersection with added sidewalks and bicycle paths (400 m), a roadside parking facility on a road widened from two to four lanes (70 m), and a school site with a school zone. The suburban road zone has a new two-lane signalized intersection (75 m), a roundabout, a new tunnel section (100 m), a new connecting section at a non-signalized intersection (60 m), a tree-lined road with green space, and narrow alleys. The high-speed road zone has a merge within a connecting ramp (170 m), smart tolling systems at two sites, noise barriers, guardrails, and a median, and tollgates at two sites (five main lanes plus four ramp lanes). The automated parking facility converts the existing parking facility and adds a two-story parking structure, and the road traffic facilities include field systems such as the signal control system, the CCTV system, and roadside units (RSU), together with the center hardware and software.
+
 **The Hwaseong experimental city for automated driving project.** The K-City construction project is outlined as follows.
 
 1. **Period:** June 2016-June 2019
 2. **Purpose:** Demonstrate automated driving performance in various automated driving scenarios and evaluate safety in case of failures.
 3. **Scope:** In line with 2020, the expected time of automated vehicle commercialization, it includes highway-based automated driving technology and automated parking technology.
-4. **Cooperation:** In cooperation with SK Telecom, it builds a proving ground with 3D high-definition maps, quantum cryptography, 5G, and AI functions. SK Telecom demonstrated cooperative driving of two 5G automated vehicles in early February 2018, and the Korea Transportation Safety Authority built the K-City infrastructure.
+4. **Cooperation:** In cooperation with SK Telecom, it builds a proving ground with 3D high-definition maps, quantum cryptography, 5G, and AI functions. SK Telecom demonstrated cooperative driving of two 5G automated vehicles in early February 2018 [35], and the Korea Transportation Safety Authority built the K-City infrastructure.
 
-K-City was completed in December 2018 and opened to companies, universities, and research institutes developing automated vehicles [42].
+K-City was completed in December 2018 and opened to companies, universities, and research institutes developing automated vehicles.
 
 ### 3.9 C-ITS Pilot and Demonstration Projects
 
-**C-ITS pilot project.** The Ministry of Land, Infrastructure and Transport carried out the C-ITS pilot project around Daejeon and Sejong from July 2014 to July 2017 [44]. It defined 15 services that needed to be introduced first and applied them to an 87.8 km section of expressways, national roads, urban roads, and so on.
+**C-ITS pilot project.** The Ministry of Land, Infrastructure and Transport carried out the C-ITS pilot project around Daejeon and Sejong from July 2014 to July 2017. It defined 15 services that needed to be introduced first and applied them to an 87.8 km section of expressways, national roads, urban roads, and so on.
 
 ![Figure 38. Construction area of the C-ITS pilot project](../../images/Week12_12-3_p30a.png)
 
@@ -1364,9 +1366,9 @@ K-City was completed in December 2018 and opened to companies, universities, and
 
 Adding the section lengths in Figure 38 gives the total length. Expressways total 26.0 km, the Daejeon-Dangjin line (18.5 km) plus the Honam branch line (7.5 km); national roads total 2.9 km on National Route 1; and urban roads total 58.9 km, downtown Sejong (13.1 km) plus downtown Daejeon (45.8 km).
 
-$$
+```math
 26.0 + 2.9 + 58.9 = 87.8\ \text{km}
-$$
+```
 
 ![Figure 39. Service concept of the C-ITS pilot project](../../images/Week12_12-3_p30b.png)
 
@@ -1407,7 +1409,7 @@ The three demonstration projects tested different environments (dense downtown, 
 
 ### 3.10 Pangyo Zero City
 
-The **Pangyo Zero City automated driving demonstration complex project** built an automated driving demonstration complex in the second Pangyo Techno Valley (Zero City) in Seongnam, Gyeonggi Province [45].
+The **Pangyo Zero City automated driving demonstration complex project** built an automated driving demonstration complex in the second Pangyo Techno Valley (Zero City) in Seongnam, Gyeonggi Province.
 
 1. **Period:** November 2015-December 2019
 2. **Goal:** Create a 5G pilot network and infrastructure to make the world's first 5G automated driving demonstration complex targeting a residential area.
@@ -1418,7 +1420,7 @@ The **Pangyo Zero City automated driving demonstration complex project** built a
 
 *Figure 41. The LTE-WAVE hybrid V2X network of Pangyo Zero City*
 
-In Figure 41, the automated driving control center communicates with the V2X terminals of vehicles over LTE, and vehicles communicate with each other and with roadside units over WAVE. LTE is used for wide-area control and information provision and WAVE for direct communication that requires low latency, a configuration that uses the strengths of both methods together. The technical differences between WAVE and LTE-V2X are covered in Weeks 13 and 14.
+In Figure 41, the automated driving control center communicates with the V2X terminals of vehicles over LTE, and vehicles communicate with each other directly over WAVE. LTE is used for wide-area control and information provision and WAVE for direct communication that requires low latency, a configuration that uses the strengths of both methods together. The technical differences between WAVE and LTE-V2X are covered in Weeks 13 and 14.
 
 ### 3.11 Comparison and Lessons from the Cases of Each Country
 
@@ -1429,7 +1431,7 @@ Comparing the cases of the four regions by the same criteria gives Table 46.
 | Driving bodies | DOT (ITS JPO) and an automaker consortium (CAMP) | EU research frameworks (FP, Horizon 2020) and an automaker consortium (C2C-CC) | Cross-ministry framework under the Cabinet Office (SIP-adus), PD from industry | Cross-ministry program (KADIF), MOLIT and the National Police Agency, research institutes (KATECH, KATRI) |
 | Representative demonstrations | SPMD (Ann Arbor), CV pilots (New York City, Wyoming, Tampa) | Drive C2X, FOTsis, C-Roads, AdaptIVe | Tokyo waterfront FOT, regional shuttle and platooning demonstrations | C-ITS pilot (Daejeon, Sejong), demonstrations (Seoul, Jeju, expressways), K-City, Pangyo Zero City |
 | Distinctive approach | Joint industry development of pre-competitive common technology, pilots that solve regional problems | Securing multinational standards and spectrum, staged services of Day 1, 2, 3 | Joint construction of the cooperative area of the dynamic map, separate paths for service and private vehicles | Building nationwide infrastructure, linking infrastructure information (traffic safety facilities, LDM) with vehicles |
-| Trend of communication methods | Transition from DSRC to C-V2X | Parallel discussion of ITS-G5 (WAVE family) and C-V2X | Safety communication in the 760 MHz band, ETC2.0 at 5.8 GHz | Hybrid WAVE and LTE demonstrations, then unification on LTE-V2X |
+| Trend of communication methods | Transition from DSRC to C-V2X | Parallel discussion of ITS-G5 (based on IEEE 802.11p) and C-V2X | Safety communication in the 760 MHz band, ETC2.0 at 5.8 GHz | Hybrid WAVE and LTE demonstrations, then unification on LTE-V2X |
 
 *Table 46. Comparison of how each country pursues connected automated driving*
 
@@ -1583,12 +1585,12 @@ Connect each situation with the concept that serves as the basis for judgment.
 
    </details>
 
-10. **Cooperative vehicle control:** State the problems that KATECH's cooperative vehicle control project aims to solve, and calculate the sensor power of the test vehicle with 5 lidars (75 W each), 5 radars (27 W each), and 7 cameras (16 W each).
+10. **Cooperative vehicle control:** State the problems that KATECH's cooperative vehicle control project aims to solve, and, taking the labeled powers of the sensor groups in the test vehicle's power distribution diagram (lidars 75 W, radars 27 W, cameras 16 W) as the power of each whole group, calculate the total sensor power and the current at 12 V.
 
     <details>
     <summary>Answer</summary>
 
-    It aims to solve the problem that cooperative automated driving services are cut off in areas without infrastructure, the limited perception area of the vehicle's own sensors, and the lack of verification of cooperative control technology in driving limit situations. To this end it develops metadata for sharing sensor data over V2V, perception area expansion through fusion of surrounding vehicle data, and multi-vehicle cooperative control (non-signalized intersections, diverging and merging, work zones, yielding to emergency vehicles, cooperative MRM). The sensor power is $5 \times 75 + 5 \times 27 + 7 \times 16 = 375 + 135 + 112 = 622$ W.
+    It aims to solve the problem that cooperative automated driving services are cut off in areas without infrastructure, the limited perception area of the vehicle's own sensors, and the lack of verification of cooperative control technology in driving limit situations. To this end it develops metadata for sharing sensor data over V2V, perception area expansion through fusion of surrounding vehicle data, and multi-vehicle cooperative control (non-signalized intersections, diverging and merging, work zones, yielding to emergency vehicles, cooperative MRM). The total sensor power is $75 + 27 + 16 = 118$ W, and the current at 12 V is $118 / 12 \approx 9.8$ A.
 
     </details>
 
@@ -1616,48 +1618,38 @@ Connect each situation with the concept that serves as the basis for judgment.
 
 ## References
 
-1. *Standard ITS*, no. 19.
-2. Federal Highway Administration, "Moving Ahead for Progress in the 21st Century Act (MAP-21): A summary of highway provisions," 2012. https://www.fhwa.dot.gov/map21/summaryinfo.cfm
-3. U.S. Department of Transportation and NHTSA, *Automated Driving Systems 2.0: A Vision for Safety*, Washington, DC, USA, 2017.
-4. U.S. Department of Transportation, *Preparing for the Future of Transportation: Automated Vehicles 3.0*, Washington, DC, USA, 2018.
-5. U.S. Department of Transportation, *Ensuring American Leadership in Automated Driving Technologies: Automated Vehicles 4.0*, Washington, DC, USA, 2020.
-6. U.S. Department of Transportation, ITS Joint Program Office, "About the ITS JPO." https://www.its.dot.gov
-7. U.S. Department of Transportation, ITS Joint Program Office, automation program research tracks and draft program plan.
-8. Texas A&M Transportation Institute, evolutionary and revolutionary scenarios for automated vehicle deployment.
+1. Federal Highway Administration, "Moving Ahead for Progress in the 21st Century Act (MAP-21): A summary of highway provisions," 2012. https://www.fhwa.dot.gov/map21/summaryinfo.cfm
+2. U.S. Department of Transportation and NHTSA, *Automated Driving Systems 2.0: A Vision for Safety*, Washington, DC, USA, 2017.
+3. U.S. Department of Transportation, *Preparing for the Future of Transportation: Automated Vehicles 3.0*, Washington, DC, USA, 2018.
+4. National Science and Technology Council and U.S. Department of Transportation, *Ensuring American Leadership in Automated Vehicle Technologies: Automated Vehicles 4.0*, Washington, DC, USA, Jan. 2020. https://www.transportation.gov/av/4
+5. U.S. Department of Transportation, ITS Joint Program Office, "About the ITS JPO." https://www.its.dot.gov
+6. U.S. Department of Transportation, ITS Joint Program Office, "Automated Vehicle Research," ITS Research Fact Sheets, 2016. https://webarchive.library.unt.edu/web/20161031210410/http://www.its.dot.gov/factsheets/AutomationUSDOT.htm
+7. J. Zmud *et al.*, *Paths of Automated and Connected Vehicle Deployment: Strategic Roadmap for State and Local Transportation Agencies*, Texas A&M Transportation Institute, College Station, TX, USA, Sep. 2015. https://tti.tamu.edu/tti-publication/paths-of-automated-and-connected-vehicle-deployment-strategic-roadmap-for-state-and-local-transportation-agencies
+8. Center for Automotive Research at Stanford (CARS), "June 5 Towards Programming Ethics in Automated Vehicles Workshop Video Available," 2015. https://cars.stanford.edu/events/june-5-towards-programming-ethics-automated-vehicles-workshop-video-available
 9. J.D. Power, *2015 U.S. Tech Choice Study*, 2015.
 10. Crash Avoidance Metrics Partners LLC (CAMP), project list. https://www.campllc.org
-11. 한국자동차연구원, 커넥티드 자율주행 기술 개발 과제와 시험 기반 소개 자료.
-12. Euro NCAP, *Euro NCAP 2025 Roadmap: In Pursuit of Vision Zero*, Sep. 2017.
-13. U.S. Department of Transportation, "Safety Pilot Model Deployment Data," data.transportation.gov. https://data.transportation.gov/Automobiles/Safety-Pilot-Model-Deployment-Data/deww-aa3r
-14. U.S. Department of Transportation, ITS Joint Program Office, connected vehicle applications catalog.
-15. U.S. Department of Transportation, ITS Joint Program Office, "Connected Vehicle Pilot Deployment Program," presentation at SXSW, Mar. 2018.
-16. U.S. Department of Transportation, Tampa (THEA) Connected Vehicle Pilot Deployment Program report, FHWA-JPO-17-462, Oct. 2017.
-17. Qualcomm Technologies, press release on the first U.S. deployment of C-V2X with Panasonic and Ford in Colorado, Jun. 2018. https://www.qualcomm.com/news/releases/2018/06/panasonic-qualcomm-and-ford-join-forces-first-us-deployment-c-v2x-vehicle
-18. Qualcomm Technologies, "5G NR-based C-V2X," presentation material.
-19. 한국교통연구원; City of Columbus, Smart City Challenge oral presentation, 2016.
-20. The White House, fact sheet announcing Columbus, Ohio as the winner of the Smart City Challenge, Jun. 23, 2016. https://obamawhitehouse.archives.gov/the-press-office/2016/06/23/fact-sheet-obama-administration-announces-columbus-oh-winner-40-million
-21. "국외 C-ITS 정책 및 기술개발 동향."
-22. ERTRAC, *Automated Driving Roadmap*, Brussels, Belgium, 2015.
-23. CAR 2 CAR Communication Consortium, *C2C-CC Manifesto: Overview of the C2C-CC System*, version 1.1, Aug. 2007.
-24. CAR 2 CAR Communication Consortium, C-ITS roadmap for Day 1, Day 2, and Day 3+ services.
-25. Robert Bosch GmbH, automated driving roadmap and injury-free driving vision, presentation material.
-26. European Commission, *Horizon 2020 Work Programme 2016-2017* and *Horizon 2020 Work Programme 2018-2020*, Smart, green and integrated transport: Automated Road Transport calls.
-27. 5GAA, "5GAA C-V2X Workshop and Demonstration, 10 July 2018, Paris, France." https://5gaa.org/5gaa-c-v2x-workshop-and-demonstration-10-july-2018-paris-france/
-28. AdaptIVe Consortium, "The project." https://www.adaptive-ip.eu/index.php/consortium.html
-29. Daimler AG, Mercedes-Benz Future Bus with CityPilot, press release, Jul. 2016.
-30. Cabinet Office, Government of Japan, *SIP Automated Driving for Universal Services (SIP-adus) R&D Plan*, 2018.
-31. Study Group on Business for Automated Driving (METI and MLIT, Japan), *Report and Policy on Initiatives toward Realizing Automated Driving*, version 4.0, May 2020.
-32. ETSI, *Intelligent Transport Systems (ITS); Vehicular Communications; Basic Set of Applications; Local Dynamic Map (LDM); Rationale for and guidance on standardization*, ETSI TR 102 863 V1.1.1, Jun. 2011.
-33. Ministry of Internal Affairs and Communications, Japan, *Initiatives for an Automated Driving Society*, 2020.
-34. ITU-R, *Examples of arrangements for Intelligent Transport Systems deployments under the mobile service*, Report ITU-R M.2444-0, 2018.
-35. IT Strategic Headquarters, Government of Japan, *Public-Private ITS Initiative/Roadmaps 2020*, 2020.
-36. ITS Japan, mobility concepts for low-density areas and integrated regional cities.
-37. KATS 기술보고서, 일본 NEDO의 트럭 군집주행 사례.
-38. 관계부처 합동(산업통상자원부, 과학기술정보통신부, 국토교통부, 경찰청), 자율주행기술개발혁신사업 착수와 사업단 출범 보도자료, 2021년.
-39. SAE International, *Taxonomy and Definitions for Terms Related to Cooperative Driving Automation for On-Road Motor Vehicles*, SAE J3216, 2020.
-40. 경찰청, 도시교통정보시스템(UTIS) 소개 자료.
-41. 한국도로공사, 스마트 자율협력주행 도로시스템 개발(C-AHS) 자료.
-42. 국토교통부, 자율주행 실험도시 K-City 준공 보도자료, 2018년 12월.
-43. 한국교통안전공단 자동차안전연구원(KATRI), K-City 소개 자료.
-44. 국토교통부, 차세대 ITS(C-ITS) 시범사업 자료.
-45. 경기도, 판교 제로시티 자율주행 실증단지 구축 사업 자료.
+11. Euro NCAP, *Euro NCAP 2025 Roadmap: In Pursuit of Vision Zero*, Sep. 2017.
+12. U.S. Department of Transportation, "Safety Pilot Model Deployment Data," data.transportation.gov. https://data.transportation.gov/Automobiles/Safety-Pilot-Model-Deployment-Data/deww-aa3r
+13. U.S. Department of Transportation, ITS Joint Program Office, "Connected Vehicle Pilot Deployment Program: Connected Vehicle Applications," 2016. https://www.its.dot.gov/pilots/cv_pilot_apps.htm
+14. U.S. Department of Transportation, ITS Joint Program Office, and Tampa Hillsborough Expressway Authority, "How to Bring Connected Vehicles (CVs) to Your Town," presented at SXSW 2018, Austin, TX, USA, Mar. 2018. https://schedule.sxsw.com/2018/events/PP76150
+15. Tampa Hillsborough Expressway Authority, *Connected Vehicle Pilot Deployment Program: Data Management Plan, Tampa (THEA)*, U.S. Department of Transportation, Rep. FHWA-JPO-17-462, Oct. 2017.
+16. Qualcomm Technologies, "Panasonic, Qualcomm and Ford Join Forces on First U.S. Deployment for C-V2X Vehicle Communications in Colorado," press release, Jun. 2018. https://www.qualcomm.com/news/releases/2018/06/panasonic-qualcomm-and-ford-join-forces-first-us-deployment-c-v2x-vehicle
+17. Qualcomm Technologies, "5G NR based C-V2X," presentation. https://www.qualcomm.com/media/documents/files/5g-nr-based-c-v2x-presentation.pdf
+18. The White House, "FACT SHEET: Obama Administration Announces Columbus, OH Winner of the \$40 Million Smart City Challenge to Pioneer the Future of Transportation," Jun. 23, 2016. https://obamawhitehouse.archives.gov/the-press-office/2016/06/23/fact-sheet-obama-administration-announces-columbus-oh-winner-40-million
+19. 조순기, "국외 C-ITS 정책 및 기술개발 동향," *교통 기술과 정책*, vol. 12, no. 2, 2015. https://koreascience.kr/article/JAKO201515964635984.pdf
+20. ERTRAC Task Force Connectivity and Automated Driving, *Automated Driving Roadmap*, version 5.0, Brussels, Belgium, Jul. 2015.
+21. CAR 2 CAR Communication Consortium, *Guidance for Day 2 and Beyond Roadmap*, C2CCC_WP_2072, Jul. 2021. https://www.car-2-car.org/fileadmin/documents/General_Documents/C2CCC_WP_2072_RoadmapDay2AndBeyond_V1.2.pdf
+22. CAR 2 CAR Communication Consortium, *C2C-CC Manifesto: Overview of the C2C-CC System*, version 1.1, Aug. 2007.
+23. European Commission, *Horizon 2020 Work Programme 2016-2017* and *Horizon 2020 Work Programme 2018-2020*, Smart, green and integrated transport: Automated Road Transport calls.
+24. 5GAA, "5GAA C-V2X Workshop and Demonstration, 10 July 2018, Paris, France." https://5gaa.org/5gaa-c-v2x-workshop-and-demonstration-10-july-2018-paris-france/
+25. AdaptIVe Consortium, *AdaptIVe Final Report*, Deliverable D1.0, 2017. https://www.adaptive-ip.eu/files/adaptive/content/downloads/AdaptIVe-SP1-v1-0-DL-D1-0-Final_Report.pdf
+26. Daimler AG, "World premiere: Mercedes-Benz Future Bus with CityPilot," press release, Jul. 2016.
+27. Cabinet Office, Government of Japan, *SIP Automated Driving for Universal Services (SIP-adus) R&D Plan*, 2018.
+28. 自動走行ビジネス検討会, "自動走行の実現に向けた取組報告と方針 Version 4.0," 経済産業省, 国土交通省, May 2020.
+29. ETSI, *Intelligent Transport Systems (ITS); Vehicular Communications; Basic Set of Applications; Local Dynamic Map (LDM); Rationale for and guidance on standardization*, ETSI TR 102 863 V1.1.1, Jun. 2011.
+30. ITU-R, *Examples of arrangements for Intelligent Transport Systems deployments under the mobile service*, Report ITU-R M.2444-0, 2018.
+31. IT Strategic Headquarters, Government of Japan, *Public-Private ITS Initiative/Roadmaps 2020*, 2020.
+32. 자율주행기술개발혁신사업단(KADIF), "자율주행기술개발 혁신사업." https://www.kadif.kr/business/selfDrivingTech.php
+33. SAE International, *Taxonomy and Definitions for Terms Related to Cooperative Driving Automation for On-Road Motor Vehicles*, SAE J3216, 2020.
+34. The Korea Herald, "Korea partially opens test bed road for autonomous vehicles," Nov. 6, 2017. https://www.koreaherald.com/article/1493812
+35. 데일리안, "SKT-한국교통안전공단, 5G자율주행차 협력 운행 성공," Feb. 5, 2018. https://www.dailian.co.kr/news/view/691494/
