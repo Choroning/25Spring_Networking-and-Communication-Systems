@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-11-04
+> **최종 수정일:** 2026-11-10
 
 > **학습 목표:**
 > 1. OSI 참조 모델에 비추어 IEEE 802.11, DSRC, WAVE, ETSI와 ISO의 ITS 스테이션, 3GPP V2X의 프로토콜 스택을 비교할 수 있다

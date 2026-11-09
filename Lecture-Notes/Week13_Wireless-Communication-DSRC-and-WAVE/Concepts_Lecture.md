@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-04
+> **Last Updated:** 2026-11-10
 
 > **Learning Objectives:**
 > 1. Compare the protocol stacks of IEEE 802.11, DSRC, WAVE, the ETSI and ISO ITS stations, and 3GPP V2X against the OSI reference model
@@ -305,7 +305,7 @@ In Figure 10, the three axes are time, frequency, and power (or code). TDM lines
 
 **OFDM** is a multi-carrier modulation scheme that uses orthogonality. It splits a high-speed data flow into many low-speed flows and transmits them in parallel, each on a different **subcarrier**.
 
-> **Definition:** Two signals (vectors) being **orthogonal** means that their inner product is 0, which implies that they are independent and one signal does not interfere with detecting the other.
+> **Definition:** Two signals (vectors) are **orthogonal** when their inner product is 0, which implies that they are independent and one signal does not interfere with detecting the other.
 
 If the symbol length is $T$ and the subcarrier frequencies are chosen as integer multiples of $1/T$ ($`k/T`$), the inner product of two different subcarriers $k \neq m$ is 0, as follows.
 
