@@ -23,7 +23,7 @@
 ## 📝 레포지토리 소개
 
 - `Lecture-Notes/`에는 주차(`Week##`)별 강의 노트가 있으며, 한 주차에 다룬 여러 강의자료와 부록은 그 주차의 강의 노트 하나에 함께 정리했습니다.
-- `Coursework/`에는 세 번의 과제 문제지와 제출한 보고서, 과제 해설이 있습니다.
+- `Coursework/`에는 세 번의 과제 안내문과 과제 해설이 있습니다.
 - 모든 강의 노트와 과제 해설은 영어(`.md`)와 한국어(`.ko.md`) 파일이 짝을 이룹니다.
 
 > **🤖 생성형 AI 도구 사용**
@@ -61,7 +61,7 @@
 ```plaintext
 25Spring_Networking-and-Communication-Systems
 ├── Lecture-Notes               주차별 강의 노트
-├── Coursework                  과제 문제지, 제출 보고서, 과제 해설
+├── Coursework                  과제 안내문과 과제 해설
 ├── images                      강의 노트와 과제 해설의 그림
 ├── Course-Information.ko.md    수업 운영 정보
 ├── Course-Information.md

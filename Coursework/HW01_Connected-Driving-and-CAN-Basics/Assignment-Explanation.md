@@ -2,14 +2,14 @@
 
 [Repository Guide](../../README.md) | [English](Assignment-Explanation.md) | [한국어](Assignment-Explanation.ko.md)
 
-> **Last Updated:** 2026-11-04
+> **Last Updated:** 2026-11-16
 
 > **Learning Objectives:**
-> 1. Explain why autonomous vehicles must evolve into connected automated driving with V2X communication, linking the reasons to the limits of sensors
-> 2. Explain which modules connect to automotive Ethernet in an autonomous vehicle network architecture and why, in terms of data volume
-> 3. Distinguish driving automation levels 0-5 by how the DDT, OEDR, DDT fallback, and ODD are divided
+> 1. Explain why autonomous vehicles must evolve into connected automated driving with V2X communication, and its uses for safety and convenience
+> 2. Identify the modules connected to automotive Ethernet in an autonomous vehicle network architecture and explain why
+> 3. Explain the criteria that separate driving automation levels 0-5 and the differences between the levels
 > 4. Explain the pin assignment of the 9-pin connector for CAN and how termination resistors are wired and what they do
-> 5. Explain bus and ring topologies, bit stuffing, and ID-based arbitration with examples
+> 5. Explain bus and ring topologies, bit stuffing, and how the priority of CAN IDs is decided, with examples
 
 ---
 
@@ -41,14 +41,17 @@
 
 ## 1. Assignment Layout
 
-This is an essay assignment on the material of weeks 2 and 3. The handout has seven questions: the first three ask about the relationship between autonomous vehicles and communication, and the last four ask about the basics of the CAN bus and LANs.
+> **Try It First:** This document contains the answers and solutions. Solve the problems in the [assignment handout](Original/Assignment.md) yourself before reading on.
+
+This is an essay assignment on the material of weeks 2 and 3. The assignment has seven questions: the first three ask about the relationship between autonomous vehicles and communication, and the last four ask about the basics of the CAN bus and LANs. The original questions and their points are in the [assignment handout](Original/Assignment.md), and each of Sections 2-8 also opens with the question it answers.
 
 ```text
 Coursework/HW01_Connected-Driving-and-CAN-Basics/
 ├── Original/
-│   └── Assignment-Weeks-2-3.pdf    # assignment handout
-└── Solution/
-    └── Assignment-Report.pdf       # submitted report
+│   ├── Assignment.ko.md            # assignment handout (Korean)
+│   └── Assignment.md               # assignment handout (English)
+├── Assignment-Explanation.ko.md    # assignment explanation (Korean)
+└── Assignment-Explanation.md       # assignment explanation (English)
 ```
 
 *Figure 1. Directory layout of HW1*
@@ -70,6 +73,10 @@ Coursework/HW01_Connected-Driving-and-CAN-Basics/
 <br>
 
 ## 2. Toward Connected Automated Driving (Question 1)
+
+**Question 1.1** Explain three or more reasons why autonomous vehicles need to evolve into connected automated driving with V2X communication.
+
+**Question 1.2** Then explain the uses of connected automated driving with safety and convenience in mind.
 
 > **Definition:** **V2X (vehicle to everything)** collectively refers to wireless communication in which a vehicle exchanges information with other vehicles (V2V), road infrastructure (V2I), pedestrians (V2P), and networks (V2N). **Connected automated driving** is a way of driving in which an autonomous vehicle adds information received over V2X to the information from its own sensors when it decides and drives, and when it cooperates with C-ITS (cooperative intelligent transport systems) infrastructure it is also called **cooperative automated driving**.
 
@@ -107,9 +114,13 @@ Safety messages are small, a few hundred bytes or less, such as position, speed,
 
 ## 3. Use of Automotive Ethernet (Question 2)
 
+**Question 2.1** In the network architecture of an autonomous vehicle, list two module components connected to Automotive Ethernet. (Core module components of an autonomous vehicle: among RADAR, LIDAR, Camera, HVI, ADR, DCU, the Map module, the Positioning module, the V2X OBU, the BIS display, the ESU, and others, which modules use Automotive Ethernet?)
+
+**Question 2.2** Explain why these components use Automotive Ethernet.
+
 ### 3.1 Modules Connected to Automotive Ethernet
 
-The question asks for two modules that use automotive Ethernet among RADAR, LIDAR, Camera, HVI, ADR, DCU, the map module, the positioning module, the V2X OBU, the BIS display, and the ESU. The answer is read from the network topology of the autonomous driving system for large buses covered in Week 2.
+Which of the listed modules use automotive Ethernet is read from the network topology of the autonomous driving system for large buses covered in Week 2.
 
 ![Figure 2. Network topology of the autonomous driving system for large buses](../../images/HW01_Network-Topology.png)
 
@@ -149,7 +160,7 @@ Computing the amount of data a lidar produces makes the difference clear. The 64
 
 This is more than 50 times the 1 Mbit/s bandwidth of CAN, so it cannot be sent over CAN but fits on 100 Mbit/s Ethernet. If the lidar instead completes object recognition internally and sends only distance, azimuth, and object type, the data shrinks to about 5 kB per second (40 kbit/s), and CAN is sufficient. The radars and the multi cameras in Figure 2 are connected to CAN because they send only such processed object information.
 
-The map/positioning module uses Ethernet for the same reason. A precision map holds lane-level road geometry and attributes, so its data is large, and while the vehicle moves, the map information for the route ahead and the precise position must be sent to the controller continuously. Ethernet also has the advantages that its switched point-to-point links do not share bandwidth between links, that it transmits and receives at the same time in full duplex, and that it can be used directly for IP-based higher-layer protocols and software updates.
+The map/positioning module uses Ethernet for the same reason. A precision map holds lane-level road geometry and attributes, so its data is large, and while the vehicle moves, the map information for the route ahead and the precise position must be sent to the controller continuously. Ethernet also has the advantages that its switched point-to-point links do not share bandwidth between links, that it transmits and receives at the same time in full duplex, and that it can be used directly for IP-based higher-layer protocols and software updates. It also supports QoS and TSN (time-sensitive networking), so it can deliver high-priority real-time data within a bounded delay (Week 9).
 
 > **Key Point:** Modules that send raw data (point clouds, video, maps) connect to Ethernet, and modules that send processed object information or control commands connect to CAN and CAN FD. The bandwidth requirement decides the choice of network.
 
@@ -158,6 +169,10 @@ The map/positioning module uses Ethernet for the same reason. A precision map ho
 <br>
 
 ## 4. Autonomous Driving Levels (Question 3)
+
+**Question 3.1** Derive the key keywords that separate the stages of the autonomous driving levels (SAE levels = ISO levels).
+
+**Question 3.2** Based on these, explain the differences between the levels.
 
 ### 4.1 Key Criteria That Separate the Levels
 
@@ -199,6 +214,10 @@ Summarized with the example from Week 2, if during an automatic lane change the 
 <br>
 
 ## 5. Wiring CAN Lines (Question 4)
+
+**Question 4.1** Draw the pin assignment of the 9-pin connector widely used in CAN communication.
+
+**Question 4.2** Explain how to wire termination resistors to a CAN bus.
 
 ### 5.1 Pin Assignment of the 9-Pin Connector
 
@@ -265,6 +284,8 @@ This value is used to check the wiring. Measuring the resistance between CAN_H a
 
 ## 6. Bus and Ring Topologies (Question 5)
 
+**Question 5.** Draw the bus and ring topologies of a LAN (local area network), and explain the characteristics of each.
+
 A **topology** is the shape in which stations (nodes) are connected to each other through the transmission medium (Week 6).
 
 ```text
@@ -310,6 +331,8 @@ In a **ring topology**, repeaters are joined by point-to-point links into a clos
 
 ## 7. Bit Stuffing (Question 6)
 
+**Question 6.** Explain bit stuffing, an error detection method, with an example.
+
 CAN uses NRZ (non-return-to-zero) coding, which represents bits 1 and 0 only by high and low voltage. With NRZ the signal does not change while identical bits continue, so the edges a receiver uses to realign the bit boundaries disappear. CAN has no separate clock line, and receivers synchronize on the edges of the signal, so if there is no edge for a long time they miscount the bits.
 
 **Bit stuffing** is the rule that prevents this [6].
@@ -349,6 +372,8 @@ The rule is also used for error detection. If six identical bits appear in a row
 <br>
 
 ## 8. Priority of CAN IDs (Question 7)
+
+**Question 7.** In the screening method based on CAN IDs, explain how the priority of IDs is assigned.
 
 A CAN frame carries no address of a sending or receiving node, but an **identifier (ID)** that indicates the content of the message. Communication is broadcast, with every node receiving every frame, so each node checks the ID of each frame it receives and accepts only the messages it needs. Filtering messages by ID in this way is the screening (acceptance filtering) based on IDs.
 

@@ -23,7 +23,7 @@ This repository archives lecture notes and coursework for the Networking and Com
 ## 📝 About This Repository
 
 - `Lecture-Notes/` holds lecture notes by week (`Week##`), and the several lecture decks and appendices covered in one week are organized together in that week's single lecture note.
-- `Coursework/` holds the three assignment handouts, the submitted reports, and the assignment explanations.
+- `Coursework/` holds the three assignment handouts and the assignment explanations.
 - Every lecture note and assignment explanation comes as an English (`.md`) and Korean (`.ko.md`) pair.
 
 > **🤖 Use of Generative AI Tools**
@@ -61,7 +61,7 @@ A major elective course on the wired in-vehicle communication of autonomous vehi
 ```plaintext
 25Spring_Networking-and-Communication-Systems
 ├── Lecture-Notes               Lecture notes by week
-├── Coursework                  Assignment handouts, submitted reports, and explanations
+├── Coursework                  Assignment handouts and explanations
 ├── images                      Figures in the lecture notes and assignment explanations
 ├── Course-Information.ko.md    Course operations
 ├── Course-Information.md

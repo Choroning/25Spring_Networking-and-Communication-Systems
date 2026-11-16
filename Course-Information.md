@@ -2,7 +2,7 @@
 
 [Repository Guide](README.md) | [English](Course-Information.md) | [한국어](Course-Information.ko.md)
 
-> **Last Updated:** 2026-11-04
+> **Last Updated:** 2026-11-16
 
 ## Table of Contents
 
@@ -68,7 +68,7 @@
 | Assignments | 10% |
 
 - The weights follow the `DSC-211012` syllabus. No assessment method was entered in the `DAMO423-00` syllabus.
-- **Assignments:** The syllabus states that assignments are distributed as needed. Three assignments were given, and their handouts consist of essay questions on the material of weeks 2 and 3, weeks 4 and 5, and weeks 6, 7, and 8, respectively. The handouts, the submitted reports, and the assignment explanations are in [`Coursework`](Coursework/README.md).
+- **Assignments:** The syllabus states that assignments are distributed as needed. Three assignments were given, and their handouts consist of essay questions on the material of weeks 2 and 3, weeks 4 and 5, and weeks 6, 7, and 8, respectively. The handouts and the assignment explanations are in [`Coursework`](Coursework/README.md).
 
 ---
 

@@ -2,12 +2,12 @@
 
 [Repository Guide](../../README.md) | [English](Assignment-Explanation.md) | [한국어](Assignment-Explanation.ko.md)
 
-> **Last Updated:** 2026-11-04
+> **Last Updated:** 2026-11-16
 
 > **Learning Objectives:**
-> 1. Distinguish network interconnection devices by the layer they operate at and their function
+> 1. Explain the kinds of network interconnection devices and the characteristics of each
 > 2. Name the factors for choosing topologies and transmission media, and choose a topology that fits given conditions with reasons
-> 3. Explain the two-level addressing of LLC and the nine combinations of group addresses
+> 3. Explain what group addresses in LLC are and how they are used
 > 4. Compute a CRC with a generator polynomial and check it at the receiver
 > 5. Explain the characteristics of automotive CAN and LIN, the structure of the CAN 2.0A frame, and the differences between CAN and CAN FD
 
@@ -39,14 +39,17 @@
 
 ## 1. Assignment Layout
 
-This is an essay assignment on the material of weeks 6, 7, and 8. The handout has ten questions: questions 1-3 ask about topologies and transmission media from Week 6, and questions 4-6 ask about LLC, CRC, and MAC from Week 7. The CAN, LIN, and CAN FD of questions 7-10, which the handout groups under week 8, are covered in Week 9.
+> **Try It First:** This document contains the answers and solutions. Solve the problems in the [assignment handout](Original/Assignment.md) yourself before reading on.
+
+This is an essay assignment on the material of weeks 6, 7, and 8. The assignment has ten questions: questions 1-3 ask about topologies and transmission media from Week 6, and questions 4-6 ask about LLC, CRC, and MAC from Week 7. The CAN, LIN, and CAN FD of questions 7-10, which the handout groups under week 8, are covered in Week 9. The original questions and their points are in the [assignment handout](Original/Assignment.md), and each of Sections 2-11 also opens with the question it answers.
 
 ```text
 Coursework/HW03_Topologies-LLC-CRC-and-CAN/
 ├── Original/
-│   └── Assignment-Weeks-6-7-8.pdf  # assignment handout
-└── Solution/
-    └── Assignment-Report.pdf       # submitted report
+│   ├── Assignment.ko.md            # assignment handout (Korean)
+│   └── Assignment.md               # assignment handout (English)
+├── Assignment-Explanation.ko.md    # assignment explanation (Korean)
+└── Assignment-Explanation.md       # assignment explanation (English)
 ```
 
 *Figure 1. Directory layout of HW3*
@@ -71,6 +74,8 @@ Coursework/HW03_Topologies-LLC-CRC-and-CAN/
 <br>
 
 ## 2. Network Interconnection Devices (Question 1)
+
+**Question 1.** List three kinds of network gateways and explain their characteristics in three lines or fewer.
 
 Week 6 introduces the devices that join networks to networks and segments to segments under the broad name **gateway**. The devices are distinguished by how far up the OSI layers they interpret, and the higher the layer, the more information a device looks at and the more intelligently it forwards, but the more expensive and slower it becomes.
 
@@ -100,6 +105,8 @@ Choosing three devices for a model answer gives the following.
 
 ## 3. Choosing a Topology (Question 2)
 
+**Question 2.** Write the three factors for choosing a topology, and choose the most suitable topology when there is much signal noise and the network must be built simply, and explain why.
+
 The three factors for choosing a topology are **reliability**, **expandability**, and **performance**. Reliability is how well communication continues when faults occur, expandability is how easily stations can be added or the coverage enlarged, and performance is the data rate and delay. Week 6 summarizes the three topologies as follows.
 
 | Topology | Characteristic | Strengths and Weaknesses |
@@ -118,6 +125,8 @@ When signal noise is high and the configuration must be simple, the **star topol
 
 However, a star stops entirely if the central device fails, so the central device must be highly reliable.
 
+> **Note:** The conditions in the question can be read in two ways. Read as building a simple network in an environment with much noise, the answer is the star, as above. Read as putting simplicity first even if some noise arises, one can choose the bus, in which all stations share one medium so that the cabling and configuration are the simplest. Even then, the limitation of the bus, that noise or a fault at one point affects the whole bus, should be stated as well.
+
 > **Caution:** Robustness to noise depends more on the transmission medium and the signaling method than on the topology. Automotive CAN is a bus, but it sends differential signals, which represent bits by the voltage difference between two wires, over a twisted pair, so even if the same noise enters both wires the voltage difference stays the same and it is robust to noise (Week 9). In a topology question, the decision rests on how far noise has an effect and how simple the configuration is.
 
 ---
@@ -125,6 +134,8 @@ However, a star stops entirely if the central device fails, so the central devic
 <br>
 
 ## 4. Choosing a Transmission Medium (Question 3)
+
+**Question 3.** Write the five deciding factors for choosing a transmission medium.
 
 The five deciding factors for choosing a transmission medium are as follows.
 
@@ -155,6 +166,8 @@ Week 6 compares the representative media as follows. Twisted pair is inexpensive
 <br>
 
 ## 5. Group Addresses in LLC (Question 4)
+
+**Question 4.** Explain group addresses in LLC (logical link control).
 
 The IEEE 802 reference model divides the data link layer of a LAN into two sublayers, **LLC (logical link control)** and **MAC (medium access control)**, with the physical layer beneath them. LLC provides one or more **service access points (SAPs)** to the upper layer and handles error control and flow control. MAC assembles and disassembles frames and controls access to the shared medium.
 
@@ -188,6 +201,8 @@ In real IEEE 802 addresses, a group address has its least significant bit of the
 <br>
 
 ## 6. CRC Calculation (Question 5)
+
+**Question 5.** This is a CRC (cyclic redundancy check) calculation problem. The original data bit string is 101011, and the given CRC generator polynomial $g(x)$ is $x^4 + x + 1$, that is, 10011. Find the bit frame $c(x)$ to transmit.
 
 ### 6.1 Principle of the CRC
 
@@ -288,6 +303,8 @@ Substituting $x = 1$ into the $g(x) = x^4 + x + 1$ of this question gives $1 + 1
 
 ## 7. MAC (Question 6)
 
+**Question 6.** Explain what MAC (medium access control) is in three lines or fewer.
+
 A model answer is as follows.
 
 MAC (medium access control) is the means of deciding who transmits when, so that the capacity of the medium is used efficiently when several devices share one transmission medium. By where control is exercised, it divides into centralized control, in which a central controller grants the right to transmit, and distributed control, in which the stations decide together. By how control is exercised, it divides into synchronous control, which allocates capacity permanently, and asynchronous control, which allocates it dynamically as needed (round robin, reservation, contention).
@@ -313,6 +330,8 @@ In the analogy of Week 7, reservation corresponds to an intersection with traffi
 
 ## 8. Characteristics of Automotive CAN (Question 7)
 
+**Question 7.** Explain the characteristics of automotive CAN communication.
+
 **CAN (controller area network)** is a serial bus whose development as an in-vehicle network Bosch began in 1983 and which was standardized as ISO 11898 in 1993. It has a two-layer structure that defines only the physical layer and the data link layer, and it has the following characteristics.
 
 1. **Multi-master broadcast:** Any node on the bus can start transmitting when the bus is idle. Frames carry a message ID instead of node addresses, and every node receives every frame and then filters by ID to accept only the messages it needs.
@@ -328,13 +347,15 @@ These characteristics can be checked numerically from the viewpoint of load and 
 \text{Bus load} = \frac{1000 \times 111\ \text{bit/s}}{500000\ \text{bit/s}} = 22.2\%
 ```
 
-Week 9 recommends keeping traffic at about 50% of the total bandwidth or less, but the bus loads of high-end models keep rising, such as KH 75.9%, VI 53.6%, Benz 37.9%, and Infiniti M35 47.5%. Under high load, low-priority messages must wait until higher-priority messages finish, and the waiting time depends on which messages are on the bus at that moment. Therefore, even when the total traffic is nearly constant, the transmission delay of each message varies widely, which is called **jitter**, and jitter degrades the response of control loops. This limit is the background for the introduction of CAN FD, time-triggered FlexRay, and automotive Ethernet.
+Week 9 recommends keeping traffic at about 50% of the total bandwidth or less, but the bus loads of high-end models keep rising, such as KH 75.9%, VI 53.6%, Benz 37.9%, and Infiniti M35 47.5%. Under high load, low-priority messages must wait until higher-priority messages finish, and the waiting time depends on which messages are on the bus at that moment. Therefore, even when the total traffic is nearly constant, the transmission delay of each message varies widely, which is called **jitter**, and jitter degrades the response of control loops. This limit is the background for the introduction of CAN FD, time-triggered FlexRay, and automotive Ethernet. CAN FD keeps the arbitration unchanged, sends the data phase at up to 8 Mbit/s, and extends the payload to 64 bytes (Section 11).
 
 ---
 
 <br>
 
 ## 9. Master and Slave in LIN (Question 8)
+
+**Question 8.** Explain the concepts of master and slave in automotive LIN communication, focusing on the role of each.
 
 **LIN (local interconnect network)** is a subnetwork for connecting body devices that do not need fast communication, such as windows, mirrors, seats, wipers, and rain sensors, at low cost. It uses a single wire with a data rate of at most 20 kbit/s and is implemented with the UART/SCI interface found in most microcontrollers. The current standard is ISO 17987 [5]. A LIN cluster consists of one **master node** and several **slave nodes** (2-16 members on the bus), and because the master directs all communication, **no arbitration is needed**, unlike CAN.
 
@@ -375,6 +396,8 @@ The master node contains not only the master task but also a **slave task**. The
 
 ## 10. The CAN 2.0A Message Frame (Question 9)
 
+**Question 9.** Draw and explain the structure of the CAN 2.0A message frame.
+
 CAN 2.0A is the standard format, which uses an 11-bit ID, and CAN 2.0B is the extended format, which uses a 29-bit ID. A CAN 2.0A data frame is structured as follows [6].
 
 ```text
@@ -414,6 +437,8 @@ The behavior of the ACK slot is how the sending node judges the result. The send
 <br>
 
 ## 11. CAN and CAN FD (Question 10)
+
+**Question 10.** Explain the differences between CAN and CAN FD.
 
 **CAN FD (CAN with flexible data-rate)** is an extension published by Bosch in 2012 and included in ISO 11898-1:2015, which keeps the arbitration of classical CAN unchanged and increases the length and speed of the data field [7], [8].
 

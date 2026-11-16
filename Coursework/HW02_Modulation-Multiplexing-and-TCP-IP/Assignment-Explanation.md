@@ -2,14 +2,14 @@
 
 [Repository Guide](../../README.md) | [English](Assignment-Explanation.md) | [한국어](Assignment-Explanation.ko.md)
 
-> **Last Updated:** 2026-11-04
+> **Last Updated:** 2026-11-16
 
 > **Learning Objectives:**
 > 1. Compare which property of the carrier ASK, FSK, and PSK change and the strengths and weaknesses of each method
-> 2. Explain through aliasing why the sampling rate must exceed twice the highest frequency of a signal, and compute alias frequencies
+> 2. Explain why the sampling rate must exceed twice the highest frequency of a signal, and compute the frequency recovered when the condition is violated
 > 3. Explain the differences between FDM and TDM and between synchronous and asynchronous TDM
 > 4. Map the functions of the five TCP/IP layers to the seven OSI layers and explain what each field of the IPv4 header does
-> 5. Compare the roles of the network layer and the transport layer in terms of scope, addresses, data units, and reliability
+> 5. Compare the characteristics and roles of the network layer and the transport layer
 
 ---
 
@@ -17,13 +17,13 @@
 
 - [1. Assignment Layout](#1-assignment-layout)
 - [2. ASK, FSK, and PSK (Question 1)](#2-ask-fsk-and-psk-question-1)
-- [3. Sampling Rate and Aliasing (Question 2)](#3-sampling-rate-and-aliasing-question-2)
+- [3. Condition on the Sampling Rate (Question 2)](#3-condition-on-the-sampling-rate-question-2)
 - [4. FDM and TDM (Question 3)](#4-fdm-and-tdm-question-3)
 - [5. The Five TCP/IP Layers and the Seven OSI Layers (Question 4)](#5-the-five-tcpip-layers-and-the-seven-osi-layers-question-4)
 - [6. The IP Header (Question 5)](#6-the-ip-header-question-5)
   - [6.1 Why the IP Header Is Added](#61-why-the-ip-header-is-added)
   - [6.2 Fields of the IPv4 Header](#62-fields-of-the-ipv4-header)
-  - [6.3 A Fragmentation Example](#63-a-fragmentation-example)
+  - [6.3 An Example of Computing Header Field Values](#63-an-example-of-computing-header-field-values)
 - [7. The Network Layer and the Transport Layer (Question 6)](#7-the-network-layer-and-the-transport-layer-question-6)
 - [Summary](#summary)
 - [Self-Check Questions](#self-check-questions)
@@ -35,14 +35,17 @@
 
 ## 1. Assignment Layout
 
-This is an essay assignment on the material of weeks 4 and 5. The handout has six questions: the first three ask about signal encoding and multiplexing from Week 4, and the last three ask about the layered protocol architecture from Week 5.
+> **Try It First:** This document contains the answers and solutions. Solve the problems in the [assignment handout](Original/Assignment.md) yourself before reading on.
+
+This is an essay assignment on the material of weeks 4 and 5. The assignment has six questions: the first three ask about signal encoding and multiplexing from Week 4, and the last three ask about the layered protocol architecture from Week 5. The original questions and their points are in the [assignment handout](Original/Assignment.md), and each of Sections 2-7 also opens with the question it answers.
 
 ```text
 Coursework/HW02_Modulation-Multiplexing-and-TCP-IP/
 ├── Original/
-│   └── Assignment-Weeks-4-5.pdf    # assignment handout
-└── Solution/
-    └── Assignment-Report.pdf       # submitted report
+│   ├── Assignment.ko.md            # assignment handout (Korean)
+│   └── Assignment.md               # assignment handout (English)
+├── Assignment-Explanation.ko.md    # assignment explanation (Korean)
+└── Assignment-Explanation.md       # assignment explanation (English)
 ```
 
 *Figure 1. Directory layout of HW2*
@@ -63,6 +66,8 @@ Coursework/HW02_Modulation-Multiplexing-and-TCP-IP/
 <br>
 
 ## 2. ASK, FSK, and PSK (Question 1)
+
+**Question 1.** Explain the characteristics of each of the amplitude modulation method (amplitude-shift keying; ASK), the frequency modulation method (frequency-shift keying; FSK), and the phase modulation method (phase-shift keying; PSK).
 
 To send digital data over a medium that carries only analog signals, such as a telephone line or radio, a property of the **carrier**, a sine wave of fixed frequency, is changed according to the data. This process is called **modulation**. As shown below, the carrier has three properties, amplitude $A$, frequency $f$, and phase $\phi$, and the three basic methods differ in which one they change.
 
@@ -100,7 +105,9 @@ For example, QPSK ($`M = 4`$) at 2,400 baud gives $R = 2400 \times 2 = 4800$ bps
 
 <br>
 
-## 3. Sampling Rate and Aliasing (Question 2)
+## 3. Condition on the Sampling Rate (Question 2)
+
+**Question 2.** When sampling a signal to encode an analog signal into digital form, explain why the sampling rate must be at least twice the frequency of the analog signal. Include a figure and an explanation.
 
 **Pulse code modulation (PCM)**, which sends analog information digitally, consists of **sampling**, which measures the value of the signal at regular intervals, **quantization**, which rounds each measurement to a fixed step, and **encoding**, which represents the step in bits. The number of measurements per second is called the **sampling rate** $f_s$.
 
@@ -140,6 +147,8 @@ Telephone voice in Week 4 is a typical example. Most of the energy of a voice si
 <br>
 
 ## 4. FDM and TDM (Question 3)
+
+**Question 3.** Explain the characteristics of frequency-division multiplexing (FDM) and time-division multiplexing (TDM), and present their differences.
 
 **Multiplexing** is the technique of carrying several low-speed channels together over one high-speed link, and separating them back into the original channels at the receiver is called **demultiplexing**. The two representative methods differ in the axis along which they divide the resources of the link.
 
@@ -182,6 +191,7 @@ TDM splits into two by how slots are assigned.
 | Protection between channels | Guard bands | Guard time between slots and synchronization |
 | Signals mainly handled | Analog signals | Digital signals |
 | Condition | Signal bandwidth much smaller than medium bandwidth | Signal data rate much smaller than medium data rate |
+| Delay | Each user always has its own band, so it never waits for a turn | Each user must wait for its own slot, so delay must be considered |
 | Weaknesses | Bandwidth is lost to guard bands, and each channel needs filters and modulators | Sender and receiver need precise time synchronization, and synchronous TDM wastes empty slots |
 
 *Table 3. Comparison of FDM and TDM*
@@ -193,6 +203,8 @@ TDM splits into two by how slots are assigned.
 <br>
 
 ## 5. The Five TCP/IP Layers and the Seven OSI Layers (Question 4)
+
+**Question 4.** List the five layers of TCP/IP and explain the characteristics of each. Describe where each of the five layers falls in comparison with the OSI 7 layers.
 
 When communication functions are divided into layers, each layer uses the services of the layer directly below to provide services to the layer directly above, and changing the implementation of one layer does not affect the others. The **OSI model** is a seven-layer reference model created by ISO, and **TCP/IP** is the protocol architecture actually used on the internet, which became the de facto standard. Week 5 divides TCP/IP into five layers: physical, network access, internet, transport, and application.
 
@@ -227,6 +239,8 @@ Physical layer     0 1 1 0 1 0 0 1 ...                                bits
 <br>
 
 ## 6. The IP Header (Question 5)
+
+**Question 5.** Explain why the IP header is added in an IP datagram and what its role is.
 
 ### 6.1 Why the IP Header Is Added
 
@@ -281,9 +295,9 @@ The IPv4 header is 20 bytes without options and up to 60 bytes with options [2].
 
 > **Note:** Identification is not a value that distinguishes source hosts but a value that distinguishes each datagram sent by the source. Hosts are distinguished by the source IP address, and the role of Identification is to keep the fragments of different datagrams from the same source from being mixed up.
 
-### 6.3 A Fragmentation Example
+### 6.3 An Example of Computing Header Field Values
 
-As an example, consider a 4,000-byte datagram made of a 20-byte header and 3,980 bytes of data that must cross a network with an MTU of 1,500 bytes. Each fragment also needs a 20-byte header, so it can carry at most $1500 - 20 = 1480$ bytes of data. Because the offset is in units of 8 bytes, the data length of every fragment except the last must be a multiple of 8, and 1480 is $8 \times 185$, so the condition holds.
+An example shows how the values of the header fields are set when fragmentation occurs. Consider a 4,000-byte datagram made of a 20-byte header and 3,980 bytes of data that must cross a network with an MTU of 1,500 bytes. Each fragment also needs a 20-byte header, so it can carry at most $1500 - 20 = 1480$ bytes of data. Because the offset is in units of 8 bytes, the data length of every fragment except the last must be a multiple of 8, and 1480 is $8 \times 185$, so the condition holds.
 
 | Fragment | Data Range (bytes) | Data Length | Total Length | Fragmentation Offset | MF |
 |:-----|:-----|:-----|:-----|:-----|:-----|
@@ -301,6 +315,8 @@ Adding the data lengths of the three fragments gives $1480 + 1480 + 1020 = 3980$
 
 ## 7. The Network Layer and the Transport Layer (Question 6)
 
+**Question 6.** Among the OSI 7 layers, explain the differences in the characteristics and roles of the network layer and the transport layer.
+
 Both layers deliver data from the sender to the receiver, but their scopes of responsibility differ. The network layer moves data **from host to host** across several networks, and the transport layer delivers the arriving data reliably **to the right process within the host**.
 
 | Aspect | Network Layer (OSI Layer 3) | Transport Layer (OSI Layer 4) |
@@ -309,15 +325,15 @@ Both layers deliver data from the sender to the receiver, but their scopes of re
 | Where it runs | On the end hosts and every router on the path | Only on the end hosts |
 | Address | Logical address (IP address) | Port number (for example, HTTP 80, HTTPS 443, SMTP 25) |
 | Data unit | Packet (IP datagram) | Segment (TCP), datagram (UDP) |
-| Key functions | Routing, forwarding, fragmentation | Multiplexing and demultiplexing, connection management, error control, flow control, congestion control |
+| Key functions | Routing, forwarding, fragmentation | Multiplexing and demultiplexing, connection management (the TCP three-way handshake), error control, flow control (window-based), congestion control |
 | Reliability | IP is best-effort delivery and guarantees neither arrival, order, nor absence of duplicates | TCP guarantees reliability with sequence numbers, acknowledgments (ACK), and retransmission, and UDP does not |
-| Representative protocols and devices | IP, ICMP, ARP; routers | TCP, UDP |
+| Representative protocols and devices | IP, ICMP, ARP; routers | TCP, UDP; L4 switches |
 
 *Table 7. Comparison of the network layer and the transport layer*
 
 The intermediate nodes on the path (routers) act as relays that process only layers 1-3, and layer 4 and above run only between the end systems. This is why the transport layer is called the lowest layer that handles end-to-end communication. If the source and destination are connected directly by a single point-to-point link, no path needs to be chosen, so they can communicate with the data link layer alone and no network layer.
 
-The size and complexity of the transport layer depend on the type of service the network layer provides [5]. If the network layer provides a reliable service that guarantees order and arrival, like a virtual circuit, a minimal transport layer is enough. Conversely, on top of an unreliable service that delivers datagrams without guarantees, like IP, the transport layer must handle loss, reordering, and duplication itself, so a complex transport protocol like TCP is needed.
+The size and complexity of the transport layer depend on the type of service the network layer provides [5]. If the network layer provides a reliable service that guarantees order and arrival, like a virtual circuit, a minimal transport layer is enough. Conversely, on top of an unreliable service that delivers datagrams without guarantees, like IP, the transport layer must handle loss, reordering, and duplication itself, so a complex transport protocol like TCP is needed. In addition, the network layer provides the functional and procedural means to deliver the quality of service (QoS) that the transport layer requires, and the transport layer also takes part in optimizing quality of service such as transmission delay (Week 5).
 
 > **Note:** The Week 5 lecture material states that "at least layer 4 is required for the virtual circuit function of layer 3," but the original meaning is that a minimal transport layer is enough when the network layer provides a reliable virtual circuit service [5]. The more responsibility for reliability the network layer takes, the simpler the transport layer becomes.
 
