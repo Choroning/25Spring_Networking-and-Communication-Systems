@@ -1234,7 +1234,7 @@ To save bandwidth, J2735 sends values as integers with units (resolutions) inste
 | Field | Received integer | Calculation | Physical quantity |
 |:-----|--:|:-----|:-----|
 | speed | 1000 | $1000 \times 0.02$ m/s | 20 m/s = 72 km/h |
-| heading | 7200 | $7200 \times 0.0125°$ | 90° (east) |
+| heading | 7200 | $7200 \times 0.0125^\circ$ | 90° (east) |
 | lat | 366105000 | $366105000 \times 10^{-7}$° | 36.6105° N |
 | long | 1272850000 | $1272850000 \times 10^{-7}$° | 127.2850° E |
 | elev | 523 | $523 \times 0.1$ m | 52.3 m |
@@ -1518,7 +1518,7 @@ What the two regimes share is that, where the driver has disappeared, a licensed
    <details>
    <summary>Answer</summary>
 
-   The speed is $1250 \times 0.02 = 25$ m/s, that is, $25 \times 3.6 = 90$ km/h. The heading is $14400 \times 0.0125 = 180°$, which is south, 180° clockwise from north. The longitudinal acceleration is $-500 \times 0.01 = -5$ m/s², a strong deceleration. The secMark means that the message was generated 12.345 s into the current minute. This vehicle is driving south at 90 km/h while braking hard at -5 m/s², so following vehicles should raise a forward collision warning.
+   The speed is $1250 \times 0.02 = 25$ m/s, that is, $25 \times 3.6 = 90$ km/h. The heading is $14400 \times 0.0125 = 180^\circ$, which is south, 180° clockwise from north. The longitudinal acceleration is $-500 \times 0.01 = -5$ m/s², a strong deceleration. The secMark means that the message was generated 12.345 s into the current minute. This vehicle is driving south at 90 km/h while braking hard at -5 m/s², so following vehicles should raise a forward collision warning.
 
    </details>
 

@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-17
+> **Last Updated:** 2026-11-18
 
 > **Learning Objectives:**
 > 1. Distinguish repeaters, hubs, bridges, switches, routers, and gateways by operating layer and function, and apply the five bridge operations to an example
@@ -961,7 +961,7 @@ The left of Figure 24 is an aerial photograph of the main proving ground, with m
 N \cos\theta = mg, \qquad N \sin\theta = \frac{mv^2}{r}
 ```
 
-Dividing the two equations gives $\tan\theta = v^2 / (rg)$, so the neutral speed is $v = \sqrt{rg\tan\theta}$. Substituting $r = 216$ m, $\theta = 33°$, and $g = 9.81$ m/s² gives $rg = 2118.96$ and $\tan 33° = 0.6494$, so $v = \sqrt{2118.96 \times 0.6494} = \sqrt{1376.1} \approx 37.1$ m/s, or about 134 km/h (83 mph). The official neutral speed of 86 mph (38.4 m/s) is slightly higher than this result. The radius that gives 86 mph at a 33° bank is $r = v^2 / (g\tan\theta) = 38.4^2 / (9.81 \times 0.6494) \approx 232$ m, so the official value cannot be reproduced from the 216 m radius and the 33° maximum bank in the table alone.
+Dividing the two equations gives $\tan\theta = v^2 / (rg)$, so the neutral speed is $v = \sqrt{rg\tan\theta}$. Substituting $r = 216$ m, $\theta = 33^\circ$, and $g = 9.81$ m/s² gives $rg = 2118.96$ and $\tan 33^\circ = 0.6494$, so $v = \sqrt{2118.96 \times 0.6494} = \sqrt{1376.1} \approx 37.1$ m/s, or about 134 km/h (83 mph). The official neutral speed of 86 mph (38.4 m/s) is slightly higher than this result. The radius that gives 86 mph at a 33° bank is $r = v^2 / (g\tan\theta) = 38.4^2 / (9.81 \times 0.6494) \approx 232$ m, so the official value cannot be reproduced from the 216 m radius and the 33° maximum bank in the table alone.
 
 The facilities of the main proving ground are as follows.
 
