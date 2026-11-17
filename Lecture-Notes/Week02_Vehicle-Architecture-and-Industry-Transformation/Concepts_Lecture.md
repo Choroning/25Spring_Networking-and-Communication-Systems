@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-17
+> **Last Updated:** 2026-11-18
 
 > **Learning Objectives:**
 > 1. Define the SAE levels of driving automation with the concepts of DDT, OEDR, ODD, and fallback, and distinguish Levels 2, 3, and 4 by the degree of driver involvement
@@ -116,6 +116,8 @@ SAE J3016 defines the levels with the following terms [1].
 > **Definition:** The **DDT (dynamic driving task)** is all of the real-time operational and tactical functions required to operate a vehicle on the road, excluding strategic functions such as trip planning.
 
 > **Definition:** **OEDR (object and event detection and response)** is the subtask of the DDT that monitors surrounding objects and events and responds appropriately.
+
+SAE J3016 also defines separate concepts for situations in which whoever is performing the DDT can no longer continue driving.
 
 > **Definition:** The **DDT fallback** is the response that takes over the DDT or reaches an MRC when the system fails or leaves its ODD.
 
@@ -337,15 +339,17 @@ The project develops automated driving components and systems for large buses an
 
 *Table 8. Structure of the automated large-bus project*
 
-A **demand-company technical committee** of ten automakers and tier-1 suppliers, Hyundai Motor, Hyundai Mobis, Mando, Zyle Daewoo Bus, Tata Daewoo, Edison Motors, Songgwa Motors, Woojin Industrial Systems, Master Electric Vehicle, and Kwanglim, took part in the project and reviewed the development results.
-
 > **Definition:** An **SSVM (smart surround view monitoring)** system combines images from several cameras around the vehicle into a top-down view.
 
 > **Definition:** An **HMI (human-machine interface)** is the display and controls through which the driver and the system exchange information.
 
+Whereas SSVM and HMI are devices that the driver sees, the following two devices record and process driving data inside the vehicle.
+
 > **Definition:** An **ADR** is a device that records driving data including camera video.
 
 > **Definition:** The **HAV-DCU** is the integrated controller (domain control unit) responsible for perception and decision-making in a highly automated vehicle.
+
+A **demand-company technical committee** of ten automakers and tier-1 suppliers, Hyundai Motor, Hyundai Mobis, Mando, Zyle Daewoo Bus, Tata Daewoo, Edison Motors, Songgwa Motors, Woojin Industrial Systems, Master Electric Vehicle, and Kwanglim, took part in the project and reviewed the development results.
 
 The developed parts and systems were verified in the following order.
 
@@ -435,6 +439,8 @@ The detailed drawings of the network and power architectures are classified mate
 
 Figure 9 distinguishes the types of network by line color. Blue is CAN, green is CAN FD, red is Ethernet, gray is the vehicle's body and chassis CAN (B/C-CAN), and yellow is USB.
 
+> **Definition:** **BroadR-Reach** is an automotive Ethernet technology that transmits 100 Mbit/s over a single twisted pair and was standardized as IEEE 802.3bw (100BASE-T1) [11].
+
 | Area | Components and Connections |
 |:-----|:-----|
 | Center | Two gateways (GW) and routing units (ESU #1, ESU #2) are connected by an Ethernet backbone (BroadR-Reach) and gather and forward the data of each network. |
@@ -445,8 +451,6 @@ Figure 9 distinguishes the types of network by line color. Blue is CAN, green is
 | Vehicle | The KATECH controller is connected to the vehicle's body and chassis CAN and controls the actual vehicle. |
 
 *Table 11. Components of the large-bus network topology*
-
-> **Definition:** **BroadR-Reach** is an automotive Ethernet technology that transmits 100 Mbit/s over a single twisted pair and was standardized as IEEE 802.3bw (100BASE-T1) [11].
 
 > **Definition:** **HVI (human-vehicle interface)** is used with the same meaning as HMI.
 
@@ -575,6 +579,10 @@ An **IVN (in-vehicle network)** applies a communication network to the vehicle. 
 - **Digital serial communication is used:** Information is converted into bits of 0 and 1 and sent one after another over a single line.
 - **The communication medium is shared:** Several ECUs use the same wires together.
 
+> **Definition:** **Serial communication** sends data one bit at a time over one line. Serial communication uses fewer wires and suits environments such as vehicles where wiring must be reduced.
+
+> **Definition:** **Parallel communication** sends several bits simultaneously over several lines.
+
 ```mermaid
 flowchart TB
     subgraph TOP[" "]
@@ -609,10 +617,6 @@ flowchart TB
 *Figure 17. Infotainment devices sharing a CAN bus*
 
 In Figure 17, the display, remote control, MMI head unit, test module, CD changer, mobile telephone, traffic information receiver (TMC), navigation, and digital radio (DAB) are all connected to a single CAN bus with two wires. Adding a new device also requires only connecting two wires to the bus.
-
-> **Definition:** **Serial communication** sends data one bit at a time over one line. Serial communication uses fewer wires and suits environments such as vehicles where wiring must be reduced.
-
-> **Definition:** **Parallel communication** sends several bits simultaneously over several lines.
 
 > **Definition:** **TMC (Traffic Message Channel)** is a service that carries traffic information on FM radio signals.
 
@@ -869,11 +873,13 @@ The Autonomous Driving Technology Research Institute pursues research in three f
 
 > **Definition:** An **LDM (local dynamic map)** is a map that manages dynamic information such as nearby vehicles, signals, and construction zones in real time on top of a static map.
 
+> **Definition:** **UI/UX** stands for user interface and user experience.
+
+The NCAP systems of the cooperative automation area are the safety functions tested in new car safety assessment, of which automatic emergency braking is a representative example.
+
 > **Definition:** **NCAP (New Car Assessment Program)** is a program that tests the safety of new cars and publishes ratings.
 
 > **Definition:** **AEB(S)** is an autonomous emergency braking system.
-
-> **Definition:** **UI/UX** stands for user interface and user experience.
 
 ![Figure 24. Staged framework of government autonomous driving projects](../../images/Week02_p73.png)
 

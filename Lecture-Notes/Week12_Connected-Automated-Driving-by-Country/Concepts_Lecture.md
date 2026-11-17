@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-17
+> **Last Updated:** 2026-11-18
 
 > **Learning Objectives:**
 > 1. Compare the development of connected automated driving in the United States, Europe, Japan, and Korea by dividing it into the stages of proof of concept, field operational tests, pre-deployment, and deployment, with years and representative projects
@@ -94,6 +94,8 @@ As the map shows, V2X is not a technology of the automotive industry alone but a
 
 > **Definition:** **5GAA (5G Automotive Association)** is an association formed by automotive, telecommunications, and semiconductor companies to promote C-V2X.
 
+Among the standards bodies in Figure 1, 3GPP and 5GAA belong to the cellular side, whereas the following two are regional bodies that make automotive standards in the United States and telecommunication standards in Europe, respectively.
+
 > **Definition:** **SAE (SAE International)** is the U.S. society of automotive engineers that developed the standards for automation levels (J3016) and V2X messages (J2735).
 
 > **Definition:** **ETSI (European Telecommunications Standards Institute)** is the European standards body for telecommunications.
@@ -105,6 +107,8 @@ Connected automated driving followed roughly the same sequence in each country. 
 > **Definition:** **Proof of concept** is the stage that checks whether an idea is technically feasible.
 
 > **Definition:** An **FOT (Field Operational Test)** is a test in which ordinary drivers use a system on real roads so that its effects and problems can be measured.
+
+Whereas the stages up to the field operational test confirm the effects of a technology, the remaining two stages carry the confirmed technology into actual service.
 
 > **Definition:** **Pre-deployment** is the stage of pilot operation in a certain area, including the operating organization, just before actual deployment.
 
@@ -124,6 +128,8 @@ In Table 1 the four countries went through the same stages at different times. J
 > **Definition:** **VICS (Vehicle Information and Communication System)** is Japan's road traffic information system.
 
 > **Definition:** **ETC (Electronic Toll Collection)** is a wireless toll collection system corresponding to Korea's Hi-pass.
+
+In the deployment stage of Table 1, Japan extended the ETC unit beyond toll collection and made it the basis of connected services.
 
 > **Definition:** **ETC2.0** is a Japanese service that extends ETC units to exchange not only tolls but also traffic and safety information.
 
@@ -217,6 +223,8 @@ For 2022-2023, when the three groups end, the initial deployment of CA applicati
 > **Definition:** **EAD (Eco-Approach and Departure)** is an environmental application that receives signal information and adjusts the speed of arrival at an intersection to avoid unnecessary stops and hard acceleration.
 
 > **Definition:** **AMS (Analysis, Modeling, and Simulation)** refers to tools that analyze, model, and simulate the effects on the transportation system.
+
+The activities in Table 5 were divided among university research programs, federal research centers, and private companies.
 
 > **Definition:** **CA PATH** is the transportation research program of the University of California, Berkeley (Partners for Advanced Transportation Technology).
 
@@ -347,6 +355,8 @@ The VSC-A (Vehicle Safety Communications-Applications) project developed and tes
 > **Definition:** **EEBL (Emergency Electronic Brake Lights)** is an application in which a vehicle that brakes hard announces it over V2V so that following vehicles know about the braking even when their view is blocked.
 
 > **Definition:** **BSW (Blind Spot Warning)** and LCW (Lane Change Warning) warn about vehicles in the adjacent lane when changing lanes.
+
+VSC-A also prepared an application for each crash type outside the representative scenarios.
 
 > **Definition:** **DNPW (Do Not Pass Warning)** warns when a vehicle is coming in the opposite lane while trying to pass.
 
@@ -507,6 +517,8 @@ flowchart LR
 
 > **Definition:** The **BSM (Basic Safety Message)** is a status message that a vehicle broadcasts to its surroundings about 10 times per second, and it underlies V2V safety applications.
 
+Whereas the BSM is a V2V message exchanged between vehicles, the other three messages are V2I messages that the roadside unit sends to vehicles.
+
 > **Definition:** **SPaT (Signal Phase and Timing)** is a message that contains the current phase of a traffic signal and the remaining time.
 
 > **Definition:** **MAP** is a message that contains geometric information such as the lane layout and stop bar positions of an intersection.
@@ -640,6 +652,8 @@ EU projects also followed the sequence of proof of concept, demonstration sites,
 > **Definition:** **SAFESPOT** is a project that studied cooperative safety systems in which vehicles and roads share information to widen safety margins.
 
 > **Definition:** **COOPERS (Co-operative Systems for Intelligent Road Safety)** is a project that studied cooperative traffic management in which road operators give vehicles real-time traffic information.
+
+Whereas the three FP6 research projects developed the technology of cooperative systems, the projects that followed gathered the results into a common architecture, tested them on real roads, and carried them into deployment in the member states.
 
 > **Definition:** **COMeSafety** is a support project that gathered the results of these projects into a common European ITS communication architecture.
 
@@ -1168,6 +1182,12 @@ The information flow in Figure 30 is as follows.
 4. The service information is delivered to the V2X OBU of automated vehicles through the I2X interface device and V2X roadside units.
 5. With this information, automated vehicles expand or maintain their operational design domain (ODD), resolve perception blind spots that the sensors cannot see, and present information to the driver through the HMI.
 
+> **Definition:** An **edge platform** is a computing device that processes data first near the site before sending it to the central server, reducing latency.
+
+> **Definition:** The **ODD (Operational Design Domain)** is the range of conditions under which an automated driving system is designed to operate properly (Weeks 1 and 2).
+
+> **Definition:** The **HMI (Human-Machine Interface)** refers to the displays, sounds, and controls through which people and machines exchange information.
+
 There are four safe driving guide services.
 
 | No. | Service | Applicable Situation |
@@ -1179,13 +1199,7 @@ There are four safe driving guide services.
 
 *Table 35. Safe driving guide services of the (KNPA 3) project*
 
-> **Definition:** The **ODD (Operational Design Domain)** is the range of conditions under which an automated driving system is designed to operate properly (Weeks 1 and 2).
-
 > **Definition:** The **DDT (Dynamic Driving Task)** is the driving work performed in real time, such as steering, acceleration and deceleration, and monitoring the surroundings.
-
-> **Definition:** The **HMI (Human-Machine Interface)** refers to the displays, sounds, and controls through which people and machines exchange information.
-
-> **Definition:** An **edge platform** is a computing device that processes data first near the site before sending it to the central server, reducing latency.
 
 **Three development items.** The (KNPA 3) project develops the following three items.
 
@@ -1359,13 +1373,15 @@ flowchart LR
 
 In Figure 34, information received through V2X passes through the WAVE module and is organized into the LDM, and the high-precision positioning module fuses satellite positioning, correction information, and vehicle sensors to fit the vehicle's exact position onto the map. In the control platform (DCU), the local task manager decides the task suited to the service situation, the distance keeper and lane keeper functions produce targets based on the dynamic obstacle map, and the longitudinal and lateral control logic send commands to the ESC and MDPS.
 
+> **Definition:** **TIM** is the traveler information message defined in Section 1.11.
+
 > **Definition:** **ASN.1 (Abstract Syntax Notation One)** is a standard notation that defines the structure of messages independently of machines and encodes them into binary data; V2X messages such as SAE J2735 use this method.
+
+The LDM processing module reconstructs the decoded information into map form and passes it to the positioning module and the control platform, and the positioning module adds the values of the vehicle's inertial sensor to compute the position.
 
 > **Definition:** **ADASIS (ADAS Interface Specification)** is a standard interface that delivers road-ahead information from the map to ADAS controllers.
 
 > **Definition:** An **IMU (Inertial Measurement Unit)** is an inertial measurement device that measures acceleration and angular velocity.
-
-> **Definition:** **TIM** is the traveler information message defined in Section 1.11.
 
 **Comprehensive performance evaluation.** The project carried out a comprehensive performance evaluation to check whether cooperative automated driving services actually succeed.
 

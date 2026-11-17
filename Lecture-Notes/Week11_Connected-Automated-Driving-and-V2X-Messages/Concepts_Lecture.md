@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-17
+> **Last Updated:** 2026-11-18
 
 > **Learning Objectives:**
 > 1. Explain the relationships among smart cars, connected cars, automated vehicles, CAVs, ITS, and C-ITS, and compare the Day phases of the European C2C-CC with the cooperation classes of the US SAE J3216
@@ -80,6 +80,8 @@ The literature on connected automated driving uses several terms that look alike
 
 > **Definition:** A **connected car** is a vehicle that exchanges data with external networks, other vehicles, and road infrastructure through communication.
 
+Automated driving and connected functions are independent of each other, so a vehicle may have only one of them, and a vehicle that has both is given a name of its own.
+
 > **Definition:** A **connected automated vehicle (CAV)** is a vehicle that has both automated driving and connected functions.
 
 In Figure 1, the smart car set contains most of the automated vehicle and connected car sets, and the CAV lies where automated vehicles and connected cars overlap. The ITS set on the right is the program of making the whole transportation system intelligent, and **C-ITS (Cooperative ITS)** inside it is a cooperative transportation system in which vehicles and infrastructure share information in real time. Because the CAV also overlaps C-ITS, connected automated driving sits where vehicle technology and transportation system technology meet. ITS and C-ITS are defined in detail in Sections 1.6 and 1.7.
@@ -124,11 +126,13 @@ From left to right, Table 2 progresses from disseminating risk information to co
 
 > **Definition:** A **vulnerable road user (VRU)** is a road user who has no vehicle body for protection, such as a pedestrian, a cyclist, or a rider of a powered two-wheeler (PTW).
 
-> **Definition:** **ASIL (automotive safety integrity level)** is the safety integrity level (A-D) defined by ISO 26262, the functional safety standard for road vehicles.
+> **Definition:** **CACC (cooperative adaptive cruise control)** adds vehicle-to-vehicle communication to ACC, which keeps the gap to the preceding vehicle with radar, so that shorter and more stable gaps can be kept.
+
+The supporting-functions row of Table 2 deals with the means that let a receiver trust the messages it receives. Its two pillars are security, which guarantees that a message has not been forged, and functional safety, which guarantees the safety of the function that produced the message.
 
 > **Definition:** The **EU CCMS** is the European Union's security credential management system that issues and manages the certificates used to sign European C-ITS messages.
 
-> **Definition:** **CACC (cooperative adaptive cruise control)** adds vehicle-to-vehicle communication to ACC, which keeps the gap to the preceding vehicle with radar, so that shorter and more stable gaps can be kept.
+> **Definition:** **ASIL (automotive safety integrity level)** is the safety integrity level (A-D) defined by ISO 26262, the functional safety standard for road vehicles.
 
 The European messages in Table 2 are as follows. European standards append M (for message) to the message name (the SPAT message is SPATEM).
 
@@ -1090,7 +1094,9 @@ When the WSA from the RSU contains a **WAVE router advertisement (WRA)**, the OB
 
 > **Note:** ETSI TS 102 637-2 and -3 were later revised into the European Standards (EN) 302 637-2 (CAM) and 302 637-3 (DENM) [3], [4].
 
-> **Definition:** SAE J2735 defines messages at three levels. A **data element** is a value that cannot be divided further, such as speed or latitude.
+SAE J2735 defines messages at three levels.
+
+> **Definition:** A **data element** is a value that cannot be divided further, such as speed or latitude.
 
 > **Definition:** A **data frame** is a structure that groups data elements, such as a position (latitude, longitude, elevation).
 

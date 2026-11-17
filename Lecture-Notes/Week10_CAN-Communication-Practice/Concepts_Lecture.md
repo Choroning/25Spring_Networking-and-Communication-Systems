@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-17
+> **Last Updated:** 2026-11-18
 
 > **Learning Objectives:**
 > 1. Convert between binary and hexadecimal, and distinguish bit order (MSB first, LSB first) from byte order (little endian, big endian)
@@ -154,17 +154,15 @@ The CAN specification defines only the physical layer and the data link layer of
 
 > **Definition:** **Binary** represents a number by a sequence of the two digits (states) 0 and 1, and the weight of the $k$-th position from the right (counting from 0) is $2^k$.
 
-> **Definition:** **Hexadecimal** represents a number with the 16 digits 0-9 and a-f (a is 10, f is 15), and the weight of each position is $16^k$.
-
 > **Definition:** A **bit** is the smallest unit of information, representing one 0 or 1 in binary.
-
-> **Definition:** A **byte** is 8 bits and represents $2^8 = 256$ states, that is, values 0-255.
 
 To convert the decimal number 220 to binary, write 220 as a sum of powers of 2. Since $220 = 128 + 64 + 16 + 8 + 4$, the result is as follows.
 
 ```math
 220 = 1 \times 2^7 + 1 \times 2^6 + 0 \times 2^5 + 1 \times 2^4 + 1 \times 2^3 + 1 \times 2^2 + 0 \times 2^1 + 0 \times 2^0 = 11011100_2
 ```
+
+> **Definition:** **Hexadecimal** represents a number with the 16 digits 0-9 and a-f (a is 10, f is 15), and the weight of each position is $16^k$.
 
 To convert to hexadecimal, group the binary digits four at a time from the right. A 4-bit group represents 0-15, so it corresponds exactly to one hexadecimal digit. Since $1101_2 = 13 = \text{D}$ and $1100_2 = 12 = \text{C}$, $`220 = 11011100_2 = \text{DC}_{16}`$. Checking in reverse, $13 \times 16 + 12 = 208 + 12 = 220$.
 
@@ -180,6 +178,8 @@ To convert to hexadecimal, group the binary digits four at a time from the right
 | 0111 | 7 | 7 | 1111 | 15 | F |
 
 *Table 3. Correspondence between 4-bit binary numbers and hexadecimal digits*
+
+> **Definition:** A **byte** is 8 bits and represents $2^8 = 256$ states, that is, values 0-255.
 
 A byte of all 1s is $`11111111_2 = 255 = \text{FF}_{16}`$. A byte represents 256 states, but because counting starts at 0, its largest value is 255, not 256. CAN data is handled in bytes, and one byte fits exactly into two hexadecimal digits, so CAN tools display identifiers and data in hexadecimal. The notation for hexadecimal differs between tools. The C language family uses the `0x` prefix as in `0xDC`, Kvaser CanKing uses the `$` prefix as in `$123`, and CANoe in hexadecimal display mode shows the value without a prefix, as in `DC`. Below, hexadecimal values are written with the 0x prefix.
 

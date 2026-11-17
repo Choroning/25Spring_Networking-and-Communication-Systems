@@ -167,6 +167,8 @@ OSI의 계층 개념은 서울의 학교와 로마의 학교 학생들이 편지
 
 > **용어 정의:** **SINR(signal-to-interference-plus-noise ratio)** 은 잡음 전력 $N$까지 포함한 $S/(I+N)$이다. SIR과 SINR은 값이 클수록 수신기가 신호를 정확히 해석할 수 있다.
 
+SIR과 SINR이 원하는 신호와 방해 요소의 상대적인 크기를 나타낸다면, 수신기가 받아들일 수 있는 신호의 절대적인 세기에는 다음과 같은 하한이 있다.
+
 > **용어 정의:** **수신 감도(receiver sensitivity)** 는 수신기가 정해진 오류율 이하로 신호를 받을 수 있는 최소 수신 전력이다.
 
 > **용어 정의:** **이중화(duplexing)** 는 한 링크에서 양방향 통신을 하는 방법으로, 시간을 나누는 TDD와 주파수를 나누는 FDD가 있다.
@@ -203,6 +205,8 @@ OSI의 계층 개념은 서울의 학교와 로마의 학교 학생들이 편지
 > **용어 정의:** **거리에 따른 감쇠(distance attenuation)** 는 전파가 퍼져 나가면서 단위 면적당 에너지가 줄어 수신 전력이 거리에 따라 작아지는 현상이다.
 
 > **용어 정의:** **섀도잉(shadowing)** 은 나무나 건물 같은 장애물이 전파를 가려 생기는 감쇠이다.
+
+앞의 두 현상이 수신 신호의 평균 세기를 낮춘다면, 다음 두 현상은 같은 신호가 여러 경로로 나뉘어 도착하면서 생긴다.
 
 > **용어 정의:** **다중 경로(multipath)** 는 직접파와 건물, 지면에서 반사된 파가 서로 다른 경로와 지연으로 수신기에 도착하는 현상이다.
 
@@ -380,19 +384,23 @@ MAC 헤더의 첫 필드인 **프레임 제어(Frame Control)** 는 16비트이�
 
 > **용어 정의:** **SA(source address)** 는 최초 출발지의 주소이다.
 
+무선 구간에서는 프레임이 최종 목적지에 닿기 전에 AP를 거칠 수 있으므로, 최초 출발지와 최종 목적지 외에 이 무선 구간의 수신기와 송신기도 따로 적는다.
+
 > **용어 정의:** **RA(receiver address)** 는 이 무선 구간의 수신기 주소이다.
 
 > **용어 정의:** **TA(transmitter address)** 는 이 무선 구간의 송신기 주소이다.
+
+표 7에서 주소 1은 언제나 이 프레임을 받을 무선 수신기(RA)이고, 주소 2는 언제나 이 프레임을 보낸 무선 송신기(TA)이다. 예를 들어 단말이 AP로 보내는 프레임(To DS = 1)에서 무선 수신기는 AP(BSSID)이고, 최종 목적지 DA는 주소 3에 따로 적는다.
 
 > **용어 정의:** **BSS(basic service set)** 는 하나의 AP 또는 서로 통신하는 단말들로 이루어진 기본 단위이다.
 
 > **용어 정의:** **BSSID**는 BSS의 식별자로, 인프라 구조에서는 AP의 MAC 주소이다.
 
+BSS는 AP를 중심으로 이루어질 수도 있고 AP 없이 단말끼리 이루어질 수도 있으며, 여러 AP를 서로 이어 더 넓은 망을 만들 수도 있다.
+
 > **용어 정의:** **IBSS(independent BSS)** 는 AP 없이 단말끼리 직접 통신하는 애드혹(ad hoc) 네트워크이다.
 
 > **용어 정의:** **WDS(wireless distribution system)** 는 AP들을 무선으로 이어 만든 분배 시스템이다.
-
-표 7에서 주소 1은 언제나 이 프레임을 받을 무선 수신기(RA)이고, 주소 2는 언제나 이 프레임을 보낸 무선 송신기(TA)이다. 예를 들어 단말이 AP로 보내는 프레임(To DS = 1)에서 무선 수신기는 AP(BSSID)이고, 최종 목적지 DA는 주소 3에 따로 적는다.
 
 > **참고:** 프레임 본체(Frame Body)의 최대 길이는 표준의 판과 물리 계층에 따라 다르다. 원래의 IEEE 802.11은 상위 계층 데이터(MSDU)를 최대 2,304옥텟으로 정했고, 이후 여러 MSDU를 묶는 집성 기능이 도입되면서 더 길어졌다 [4]. 일부 자료는 BSS를 Base Station Sub-system으로, IBSS를 Internet BSS로 풀어 쓰지만, IEEE 802.11에서 BSS는 basic service set, IBSS는 independent BSS이다.
 
@@ -765,9 +773,13 @@ MDS와 ACTS의 합은 1개 이상 8개 이하이므로($`1 \le n + k \le 8`$), F
 
 그림 31은 노변 측 RFCU와 차량 측 OBU 사이의 통신 절차이다. 양쪽 모두 ETCS 응용, 7계층의 I-KE와 T-KE, LLC, MAC으로 이루어진다.
 
-> **용어 정의:** 계층 사이의 서비스 요청은 네 종류의 서비스 프리미티브(service primitive)로 나타낸다. **request(.req)** 는 위 계층이 아래 계층에 서비스를 요청하는 것이다.
+계층 사이의 서비스 요청은 네 종류의 서비스 프리미티브(service primitive)로 나타낸다.
+
+> **용어 정의:** **request(.req)** 는 위 계층이 아래 계층에 서비스를 요청하는 것이다.
 
 > **용어 정의:** **indication(.ind)** 은 아래 계층이 위 계층에 상대편의 요청이 왔음을 알리는 것이다.
+
+request와 indication이 요청을 상대편까지 전하는 쌍이라면, 나머지 두 프리미티브는 그 결과를 요청한 쪽으로 되돌려 주는 쌍이다.
 
 > **용어 정의:** **response(.res)** 는 indication에 대한 위 계층의 응답이다.
 
@@ -980,15 +992,17 @@ TGp가 만든 IEEE 802.11p가 3절의 WAVE의 물리 계층과 MAC 계층이다.
 
 > **용어 정의:** **SAP(service access point)** 는 한 계층이 위 계층에 서비스를 제공하는 접점이다.
 
+> **용어 정의:** **PLCP(physical layer convergence procedure)** 부계층은 MAC의 프레임을 물리 계층의 프레임으로 바꾼다.
+
+> **용어 정의:** **PMD(physical medium dependent)** 부계층은 실제 무선 신호의 변조와 송수신을 맡는다.
+
+데이터를 전달하는 부계층과 별도로, 각 부계층에는 그 설정과 상태를 맡는 관리 개체가 하나씩 있고 단말 전체를 맡는 관리 개체가 이들을 묶는다.
+
 > **용어 정의:** **MLME(MAC sublayer management entity)** 는 MAC 부계층의 관리 개체이다.
 
 > **용어 정의:** **PLME(physical layer management entity)** 는 물리 계층의 관리 개체이다.
 
 > **용어 정의:** **SME(station management entity)** 는 단말 전체를 관리하는 개체이다.
-
-> **용어 정의:** **PLCP(physical layer convergence procedure)** 부계층은 MAC의 프레임을 물리 계층의 프레임으로 바꾼다.
-
-> **용어 정의:** **PMD(physical medium dependent)** 부계층은 실제 무선 신호의 변조와 송수신을 맡는다.
 
 ![그림 40. IEEE 802.11 MAC의 구조](../../images/Week13_13-2_p22.png)
 
@@ -1787,9 +1801,11 @@ UTAC는 1945년에 프랑스 파리 근교 Linas-Montlhéry 지역의 시험장(
 
 > **용어 정의:** **NVH(noise, vibration, harshness)** 는 차량의 소음, 진동, 불쾌한 충격감을 묶어 부르는 말이다.
 
-> **용어 정의:** **CAV(connected and automated vehicle)** 는 커넥티드 자율주행차이다.
+표 37의 안전 분야와 커넥티드 모빌리티 분야에는 운전을 돕거나 대신하는 지능화된 차량 기능을 시험하는 시설이 있다.
 
 > **용어 정의:** **ADAS(advanced driver assistance systems)** 는 첨단 운전자 보조 시스템이다.
+
+> **용어 정의:** **CAV(connected and automated vehicle)** 는 커넥티드 자율주행차이다.
 
 | 업무 | 내용 |
 |:-----|:-----|

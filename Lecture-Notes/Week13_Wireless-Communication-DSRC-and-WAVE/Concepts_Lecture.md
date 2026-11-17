@@ -167,6 +167,8 @@ The physical layer converts bits into actual signals and sends them over the med
 
 > **Definition:** The **SINR (signal-to-interference-plus-noise ratio)** is $S/(I+N)$, which also includes the noise power $N$. The larger the SIR or SINR, the more accurately the receiver can interpret the signal.
 
+Whereas SIR and SINR express the relative size of the desired signal and the disturbances, the absolute strength of a signal that a receiver can accept has the following lower limit.
+
 > **Definition:** The **receiver sensitivity** is the minimum received power at which the receiver can receive a signal below a specified error rate.
 
 > **Definition:** **Duplexing** is the way two-way communication is carried on one link: TDD divides time and FDD divides frequency.
@@ -203,6 +205,8 @@ Figure 5 shows the typical problems of wireless communication between a base sta
 > **Definition:** **Distance attenuation** is the decrease of received power with distance, because the energy per unit area falls as the wave spreads out.
 
 > **Definition:** **Shadowing** is attenuation caused by obstacles such as trees or buildings blocking the wave.
+
+Whereas the two phenomena above lower the average strength of the received signal, the next two arise because the same signal arrives split over several paths.
 
 > **Definition:** **Multipath** is the arrival at the receiver of the direct wave and waves reflected from buildings and the ground over different paths with different delays.
 
@@ -380,19 +384,23 @@ The meaning of the four address fields depends on the combination of the To DS a
 
 > **Definition:** The **SA (source address)** is the address of the original source.
 
+On a wireless hop, a frame may pass through an AP before it reaches its final destination, so the receiver and the transmitter of this wireless hop are also recorded, in addition to the original source and the final destination.
+
 > **Definition:** The **RA (receiver address)** is the address of the receiver on this wireless hop.
 
 > **Definition:** The **TA (transmitter address)** is the address of the transmitter on this wireless hop.
+
+In Table 7, Address 1 is always the wireless receiver of the frame (RA), and Address 2 is always the wireless transmitter that sent the frame (TA). For example, in a frame a terminal sends to the AP (To DS = 1), the wireless receiver is the AP (BSSID), and the final destination DA is written separately in Address 3.
 
 > **Definition:** A **BSS (basic service set)** is the basic unit made of one AP or of terminals communicating with each other.
 
 > **Definition:** The **BSSID** is the identifier of a BSS, which in an infrastructure network is the MAC address of the AP.
 
+A BSS may be built around an AP or formed by terminals alone without an AP, and several APs may also be linked to build a wider network.
+
 > **Definition:** An **IBSS (independent BSS)** is an ad hoc network in which terminals communicate directly without an AP.
 
 > **Definition:** A **WDS (wireless distribution system)** is a distribution system built by connecting APs wirelessly.
-
-In Table 7, Address 1 is always the wireless receiver of the frame (RA), and Address 2 is always the wireless transmitter that sent the frame (TA). For example, in a frame a terminal sends to the AP (To DS = 1), the wireless receiver is the AP (BSSID), and the final destination DA is written separately in Address 3.
 
 > **Note:** The maximum length of the Frame Body depends on the edition of the standard and the physical layer. The original IEEE 802.11 set the maximum upper-layer data unit (MSDU) at 2,304 octets, and it grew longer when aggregation of several MSDUs was introduced [4]. Some materials expand BSS as Base Station Sub-system and IBSS as Internet BSS, but in IEEE 802.11 a BSS is a basic service set and an IBSS is an independent BSS.
 
@@ -765,9 +773,13 @@ Since the number of MDS and ACTS slots together is at least 1 and at most 8 ($`1
 
 Figure 31 shows the communication procedure between the roadside RFCU and the vehicle OBU. Both consist of the ETCS application, the layer 7 I-KE and T-KE, LLC, and MAC.
 
-> **Definition:** Service requests between layers are expressed with four kinds of service primitives. A **request (.req)** is an upper layer asking a lower layer for a service.
+Service requests between layers are expressed with four kinds of service primitives.
+
+> **Definition:** A **request (.req)** is an upper layer asking a lower layer for a service.
 
 > **Definition:** An **indication (.ind)** is a lower layer informing an upper layer that a request from the other side has arrived.
+
+Whereas request and indication form the pair that carries a request to the peer, the other two primitives form the pair that returns the result to the requesting side.
 
 > **Definition:** A **response (.res)** is the upper layer's answer to an indication.
 
@@ -980,15 +992,17 @@ In Figure 39, the data link layer contains the MAC sublayer, and the physical la
 
 > **Definition:** An **SAP (service access point)** is the point at which a layer provides its service to the layer above.
 
+> **Definition:** The **PLCP (physical layer convergence procedure)** sublayer converts MAC frames into physical layer frames.
+
+> **Definition:** The **PMD (physical medium dependent)** sublayer handles the modulation and transmission and reception of the actual radio signal.
+
+Apart from the sublayers that carry data, each sublayer has a management entity that handles its configuration and state, and a station-wide management entity ties them together.
+
 > **Definition:** The **MLME (MAC sublayer management entity)** is the management entity of the MAC sublayer.
 
 > **Definition:** The **PLME (physical layer management entity)** is the management entity of the physical layer.
 
 > **Definition:** The **SME (station management entity)** manages the whole station.
-
-> **Definition:** The **PLCP (physical layer convergence procedure)** sublayer converts MAC frames into physical layer frames.
-
-> **Definition:** The **PMD (physical medium dependent)** sublayer handles the modulation and transmission and reception of the actual radio signal.
 
 ![Figure 40. Architecture of the IEEE 802.11 MAC](../../images/Week13_13-2_p22.png)
 
@@ -1787,9 +1801,11 @@ The sites in Figure 80 are the Mortefontaine and Linas-Montlhéry test centers i
 
 > **Definition:** **NVH (noise, vibration, harshness)** is a collective term for a vehicle's noise, vibration, and unpleasant shocks.
 
-> **Definition:** A **CAV (connected and automated vehicle)** is a connected autonomous vehicle.
+The safety and connected mobility areas of Table 37 have facilities that test intelligent vehicle functions that assist or take over driving.
 
 > **Definition:** **ADAS (advanced driver assistance systems)** are systems that assist the driver.
+
+> **Definition:** A **CAV (connected and automated vehicle)** is a connected autonomous vehicle.
 
 | Service | Description |
 |:-----|:-----|

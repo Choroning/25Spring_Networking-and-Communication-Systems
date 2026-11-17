@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-17
+> **Last Updated:** 2026-11-18
 
 > **Learning Objectives:**
 > 1. Explain the four keywords of the future vehicle industry, C.A.S.E., and interpret the market outlook of each area together with its source
@@ -126,6 +126,8 @@ Table 3 shows that Level 0 vehicles, which have no autonomous driving function a
 
 > **Definition:** **MaaS (Mobility-as-a-Service)** is the concept of bundling several modes of transport into one service that offers route search, booking, and payment at once.
 
+All three services connect users with means of transport through a platform, so their market size is usually expressed as the value of the transactions made on the platform.
+
 > **Definition:** **GMV (gross merchandise value)** is the total amount of transactions made through a platform.
 
 | Segment | 2019 GMV (USD billion) | 2020 GMV (USD billion) | Year-over-Year Growth |
@@ -143,15 +145,19 @@ Table 4 is based on Frost & Sullivan data with 2019 as the base year [3]. Becaus
 
 > **Definition:** An **ICE (internal combustion engine)** vehicle is driven by an internal combustion engine alone. Electrified vehicles (xEV) include all of the following BEVs, PHEVs, FHEVs, MHEVs, and FCEVs.
 
+Electrified vehicles are divided by how they obtain power into pure electric vehicles that use only a battery, hydrogen vehicles that generate electricity with a fuel cell, and hybrid vehicles that use both an engine and an electric motor.
+
 > **Definition:** A **BEV (battery electric vehicle)** is a pure electric vehicle driven only by a battery and electric motors.
+
+> **Definition:** An **FCEV (fuel cell electric vehicle)** is a hydrogen vehicle that runs on electricity produced by a hydrogen fuel cell.
+
+Hybrid vehicles are further divided into three kinds according to whether they can be charged from an external power source and how large a role the electric motor plays.
 
 > **Definition:** A **PHEV (plug-in hybrid electric vehicle)** is a hybrid that can be charged from an external power source.
 
 > **Definition:** An **FHEV (full hybrid electric vehicle)** is a hybrid that can drive short distances on its electric motor alone.
 
 > **Definition:** An **MHEV (mild hybrid electric vehicle)** is a hybrid whose electric motor only assists the engine.
-
-> **Definition:** An **FCEV (fuel cell electric vehicle)** is a hydrogen vehicle that runs on electricity produced by a hydrogen fuel cell.
 
 According to one market forecast, electrified vehicles (including electric and hydrogen vehicles) account for 28.6% of the entire passenger car market in 2025. This value equals 100% minus the 2025 ICE share of 71.4%.
 
@@ -289,13 +295,15 @@ World production in 2021 was about 76.42 million units, with China first at 26.0
 
 **Restructuring of the supply chain.** About 70% of future vehicle parts are electrical and electronic parts. After the financial crisis, the United States pushed to convert more than 20% of its parts suppliers into producers of eco-friendly vehicle parts, whereas in Korea only 5% of parts makers produce electrical and electronic parts. Building on world-class software competitiveness, the United States is preparing to produce **software-defined vehicles (SDV)** centered on software-based parts.
 
+> **Definition:** An **SDV** is a vehicle whose functions and performance are defined by software rather than hardware and whose functions change through software updates even after release.
+
+The supply chain for automotive parts is a hierarchy in which suppliers deliver parts tier by tier up to the automaker at the top.
+
 > **Definition:** An **automaker (OEM)** is a company that designs, assembles, and sells vehicles.
 
 > **Definition:** A **tier-1 supplier** delivers modules or systems directly to automakers.
 
 > **Definition:** A **tier-2 supplier** delivers parts to tier-1 suppliers.
-
-> **Definition:** An **SDV** is a vehicle whose functions and performance are defined by software rather than hardware and whose functions change through software updates even after release.
 
 The change in the supply chain goes hand in hand with the change in the vehicle's electrical/electronic (E/E) architecture. Table 12 compares the existing and future structures; the key point is that computation is centralized in order to increase functionality.
 
@@ -396,6 +404,8 @@ Automotive communication is divided into the network inside the vehicle and wire
 
 > **Definition:** **Vehicle-to-everything (V2X)** communication is a wireless communication network that connects the vehicle with road infrastructure, other vehicles, pedestrians, and so on.
 
+Vehicle control runs as a cycle in which sensors measure the state, ECUs compute control commands from those values, and actuators move according to the commands. The IVN carries the signals among these three kinds of devices.
+
 > **Definition:** An **ECU (electronic control unit)** is a small in-vehicle computer that reads sensor values, computes, and controls actuators.
 
 > **Definition:** A **sensor** is a device that converts a physical quantity such as temperature, speed, or position into an electrical signal.
@@ -485,6 +495,8 @@ The difference between the two methods can be seen in the number of connections.
 Figure 5 shows the major ECUs in one vehicle. The engine control unit, transmission control, power steering, airbags, electrical drives (mirrors, seats, sunroof, wipers, windows), climate control, dashboard, diagnosis unit, telematics and infotainment (GPS, navigation, eCall, tracking and car alarm), audio, TV module, connectivity, ADAS (adaptive cruise control, parking sensors, blind spot detection, radar, lane change assistance), keyless entry and central locking, immobilizer, ABS, ESP, TPMS, electro-hydraulic brakes, traction control, trunk latches, HID and LED lighting, and bus interface protection are scattered throughout the body.
 
 > **Definition:** **ADAS (advanced driver assistance systems)** are advanced systems that assist the driver.
+
+Whereas ADAS assists the driver by assessing the driving situation, the following three devices are safety systems that monitor and correct the state of the vehicle itself.
 
 > **Definition:** **ABS (anti-lock braking system)** is a braking system that prevents the wheels from locking during hard braking.
 
@@ -677,6 +689,8 @@ There are three representative V2X communication standards for vehicles.
 > **Definition:** **WAVE (Wireless Access in Vehicular Environments)** is a vehicle communication method that uses IEEE 802.11p, an adaptation of the wireless LAN (Wi-Fi) technology IEEE 802.11 to the vehicle environment, as its physical and MAC layers, and it corresponds to DSRC (Dedicated Short Range Communications) in the broad sense.
 
 > **Definition:** **C-V2X (Cellular V2X)** is the V2X technology defined by the mobile communication standards body 3GPP on the basis of LTE and 5G.
+
+The difference between the two methods stems from the standards they started from. WAVE extends the wireless LAN standards and C-V2X extends the cellular standards, so each is standardized by one of the following bodies.
 
 > **Definition:** The **IEEE** is the Institute of Electrical and Electronics Engineers, based in the United States, which makes communication standards such as Wi-Fi.
 

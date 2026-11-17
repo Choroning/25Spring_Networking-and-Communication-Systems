@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-17
+> **Last Updated:** 2026-11-18
 
 > **Learning Objectives:**
 > 1. Explain CAN differential signaling and the meaning of dominant and recessive bits, and explain why termination resistors are needed
@@ -334,13 +334,13 @@ A CAN frame contains no address of a receiving node. A frame sent by one node re
 
 > **Definition:** In CAN, the nodes that receive and use a message are called **consumers**.
 
-> **Definition:** An **acceptance filter** is hardware inside a CAN controller that compares the identifier of each received frame with preset values, passes only the needed messages to the CPU, and discards the rest.
-
 ![Figure 11. Broadcast communication in which every station receives the producer's frame and filters it](../../images/Week03_p17.png)
 
 *Figure 11. Broadcast communication in which every station receives the producer's frame and filters it*
 
 In Figure 11, station 2, as the producer, sends Frame1 to the bus. Stations 1, 3, and 4 all receive Frame1, and each station's filter decides whether to pass the message. Only messages that pass the filter go up to each station's application processing (local intelligence). Frame2 of station 1 and Frame3 of station 4 are frames waiting for their turn to be sent (dashed lines).
+
+> **Definition:** An **acceptance filter** is hardware inside a CAN controller that compares the identifier of each received frame with preset values, passes only the needed messages to the CPU, and discards the rest.
 
 The advantages of broadcast communication are as follows.
 

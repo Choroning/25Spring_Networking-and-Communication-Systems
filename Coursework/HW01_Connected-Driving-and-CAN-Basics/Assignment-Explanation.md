@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Assignment-Explanation.md) | [한국어](Assignment-Explanation.ko.md)
 
-> **Last Updated:** 2026-11-17
+> **Last Updated:** 2026-11-18
 
 > **Learning Objectives:**
 > 1. Explain why autonomous vehicles must evolve into connected automated driving with V2X communication, and its uses for safety and convenience
@@ -183,6 +183,8 @@ The driving automation levels are defined by SAE J3016 [2], which separates the 
 > **Definition:** The **DDT (dynamic driving task)** is all of the real-time operational and tactical functions needed to operate a vehicle on the road. It consists of sustained lateral (steering) and longitudinal (acceleration and deceleration) vehicle motion control and OEDR.
 
 > **Definition:** **OEDR (object and event detection and response)** is the part of the DDT that monitors the surroundings and responds to situations.
+
+Whereas DDT and OEDR divide up the work needed for driving under normal conditions, the other two keywords deal with situations in which the system cannot continue driving and with the range in which the system is designed to operate.
 
 > **Definition:** The **DDT fallback** is the work of taking over driving or bringing the vehicle to a minimal risk condition (MRC) when a system failure or a departure from the operating conditions occurs.
 

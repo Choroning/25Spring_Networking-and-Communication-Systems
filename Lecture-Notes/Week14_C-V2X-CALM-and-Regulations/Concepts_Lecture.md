@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-17
+> **Last Updated:** 2026-11-18
 
 > **Learning Objectives:**
 > 1. Explain the evolution of mobile communication generations and the 3GPP standardization procedure, and compare the three 5G service categories and key performance indicators with those of 4G
@@ -95,6 +95,8 @@ Mobile communication has advanced by one generation roughly every ten years. Fig
 
 > **Definition:** **Digital mobile communication** converts the voice into a bit stream of 0s and 1s before sending it. Digital systems allow error correction and encryption and can accommodate more users on the same frequency.
 
+The shift from analog to digital separates the first and second generations, and the representative technologies of these two generations in Table 1 are as follows.
+
 > **Definition:** **AMPS (Advanced Mobile Phone System)** is the first-generation analog standard of the United States.
 
 > **Definition:** **GSM (Global System for Mobile communications)** is a second-generation time-division standard that started in Europe.
@@ -120,6 +122,8 @@ flowchart LR
 In Figure 2, within the CDMA family that started from the American AMPS, IS-95 is a standard of the U.S. Telecommunications Industry Association (TIA), and the third-generation CDMA2000 and EV-DO were managed by a standards body called 3GPP2. The family that started from the European GSM (GPRS, EDGE, WCDMA, HSPA) was managed by 3GPP, and China's third-generation standard TD-SCDMA was also included in the 3GPP specifications. IEEE created the WiMAX family based on its wireless MAN standard IEEE 802.16. Third-generation standards were developed to meet the ITU requirements called IMT-2000, fourth-generation standards IMT-Advanced, and fifth-generation standards IMT-2020. From the fourth generation onward, the LTE family of 3GPP became the de facto single worldwide standard, and 5G is also developed by 3GPP.
 
 > **Definition:** **GPRS (General Packet Radio Service)** and EDGE (Enhanced Data rates for GSM Evolution) are technologies that add packet data transmission to GSM networks.
+
+After packet transmission was added to the GSM network, 3GPP changed the radio access method to wideband CDMA for the third generation, and then raised its data rates and carried it on to the fourth generation.
 
 > **Definition:** **WCDMA (Wideband CDMA)** is the third-generation standard of 3GPP.
 
@@ -300,6 +304,8 @@ The radio access technology of 5G consists of two branches. One is the **evoluti
 
 > **Definition:** The core network of 5G is called the **5GC (5G Core)**; early in standardization, the 5GC was also called the NGCN (Next Generation Core Network).
 
+Between the core network and the terminals are the base stations, whose names depend on the radio access technology they use and the core network they connect to.
+
 > **Definition:** An LTE base station is called an **eNB**.
 
 > **Definition:** An NR base station is called a **gNB**.
@@ -363,15 +369,17 @@ flowchart LR
 
 *Figure 11. Simplified ProSe architecture without roaming*
 
+> **Definition:** **UE (User Equipment)** is the 3GPP name for a device; not only a smartphone but also a communication module installed in a vehicle is a UE.
+
 Figure 11 is the ProSe architecture. Each of the two devices connects to the LTE radio access network (E-UTRAN) through the radio interface **Uu**, and the E-UTRAN connects to the core network (EPC) through the S1 interface. The direct interface between the two devices is **PC5**. The **ProSe Function** is a network function that grants authorization and configuration to devices that may use ProSe; it connects to devices through the PC3 interface and to the EPC through the PC4 interface [8].
 
 > **Definition:** In mobile communication standards, an **interface** or reference point is the name of a connection between two functional elements and the protocols over it.
 
+Among the interfaces in Figure 11, the following two correspond to the radio links themselves.
+
 > **Definition:** **Uu** is the radio interface between a device and a base station.
 
 > **Definition:** **PC5** is the direct interface between two devices.
-
-> **Definition:** **UE (User Equipment)** is the 3GPP name for a device; not only a smartphone but also a communication module installed in a vehicle is a UE.
 
 > **Note:** The original material distinguishes the sidelink (SL) as LTE D2D communication, PC5 as 5G D2D communication, and Uu as V2I communication, but this is a simplification. In 3GPP, sidelink names the radio link between devices itself and PC5 names the reference point between devices in the architecture, and both LTE and NR use both terms (LTE sidelink, NR sidelink, LTE PC5, NR PC5). The PC5 in Figure 11 is also in an LTE (E-UTRAN) architecture. Uu is the radio interface between a device and a base station, so it is used not only for V2I but for every communication that goes through a base station (such as V2N) [8], [9].
 
@@ -412,6 +420,8 @@ sequenceDiagram
 > **Definition:** A **resource pool** is a predefined set of time intervals and frequency ranges to be used for sidelink transmission.
 
 > **Definition:** The **SIB (System Information Block)** is system information that a base station periodically broadcasts to all devices in the cell, containing information such as the resource pool configuration.
+
+In Table 10, the advantages and disadvantages of the two modes depend on whether the terminal is where it can receive the base station's signal.
 
 > **Definition:** **Coverage** is the area that a base station's signal reaches.
 
@@ -677,6 +687,8 @@ The upper part of Figure 25 (blue) consists of the applications (safety and non-
 > **Definition:** In the radio protocol stack of LTE and NR, the **PHY** is the physical layer that modulates signals and sends them as radio waves.
 
 > **Definition:** **MAC (Medium Access Control)** is the layer that shares radio resources.
+
+Above PHY and MAC are two more layers that prepare the data for the radio link.
 
 > **Definition:** **RLC (Radio Link Control)** is the layer responsible for segmenting and retransmitting packets.
 
@@ -1302,6 +1314,8 @@ Regulation in Korea is led by the Ministry of Land, Infrastructure and Transport
 
 > **Definition:** The **PADS (Partially Automated Driving System)** is a partially automated driving system that takes over driving from the driver under certain conditions.
 
+Whereas the first subordinate statute sets the safety standards for individual devices, the other two provide the basis for the program that assesses the safety of new vehicles and the system that permits the test driving of automated vehicles.
+
 > **Definition:** The **NCAP (New Car Assessment Program)** is a program that assesses the crash safety and assistance system performance of new cars and publishes the results to consumers.
 
 > **Definition:** A **temporary operation permit** is a permit issued by MOLIT that lets autonomous vehicles, for which safety standards do not yet exist, drive on roads for testing.
@@ -1550,6 +1564,8 @@ Around 2015, the U.S. Department of Transportation presented the following sched
 > **Definition:** An **ANPRM (advance notice of proposed rulemaking)** is a preliminary notice that seeks opinions before a rule is made.
 
 > **Definition:** An **NPRM (notice of proposed rulemaking)** announces a concrete proposed rule.
+
+In the schedule of Table 48, V2V rulemaking was handled by the agency responsible for vehicle safety and the V2I guidance by the agency responsible for highways.
 
 > **Definition:** **NHTSA** is the U.S. National Highway Traffic Safety Administration.
 
