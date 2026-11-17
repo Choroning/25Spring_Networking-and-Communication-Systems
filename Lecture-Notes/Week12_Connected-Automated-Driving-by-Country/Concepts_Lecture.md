@@ -59,6 +59,7 @@
   - [3.10 Pangyo Zero City](#310-pangyo-zero-city)
   - [3.11 Comparison and Lessons from the Cases of Each Country](#311-comparison-and-lessons-from-the-cases-of-each-country)
 - [Concept Applications](#concept-applications)
+- [Glossary](#glossary)
 - [Summary](#summary)
 - [Self-Check Questions](#self-check-questions)
 - [References](#references)
@@ -90,11 +91,7 @@ Figure 1 gathers the worldwide activities surrounding C-ITS and V2X into a singl
 
 As the map shows, V2X is not a technology of the automotive industry alone but an ecosystem in which telecommunications, roads, insurance, and government are intertwined. Therefore, in each country technology development projects proceed together with standardization, pilot deployments, and institutionalization.
 
-> **Definition:** **3GPP (3rd Generation Partnership Project)** is the international standards organization that develops cellular standards such as LTE and 5G.
-
-> **Definition:** **5GAA (5G Automotive Association)** is an association formed by automotive, telecommunications, and semiconductor companies to promote C-V2X.
-
-Among the standards bodies in Figure 1, 3GPP and 5GAA belong to the cellular side, whereas the following two are regional bodies that make automotive standards in the United States and telecommunication standards in Europe, respectively.
+Among the standards bodies in Figure 1, **3GPP** and **5GAA** belong to the cellular side, whereas the following two are regional bodies that make automotive standards in the United States and telecommunication standards in Europe, respectively.
 
 > **Definition:** **SAE (SAE International)** is the U.S. society of automotive engineers that developed the standards for automation levels (J3016) and V2X messages (J2735).
 
@@ -104,15 +101,9 @@ Among the standards bodies in Figure 1, 3GPP and 5GAA belong to the cellular sid
 
 Connected automated driving followed roughly the same sequence in each country. First the concept is verified in laboratories and proving grounds, then it is tested on public roads, and then it moves to deployment through a large-scale pilot operation just before actual deployment.
 
-> **Definition:** **Proof of concept** is the stage that checks whether an idea is technically feasible.
-
 > **Definition:** An **FOT (Field Operational Test)** is a test in which ordinary drivers use a system on real roads so that its effects and problems can be measured.
 
-Whereas the stages up to the field operational test confirm the effects of a technology, the remaining two stages carry the confirmed technology into actual service.
-
-> **Definition:** **Pre-deployment** is the stage of pilot operation in a certain area, including the operating organization, just before actual deployment.
-
-> **Definition:** **Deployment** is the stage of permanent operation as a service.
+Whereas the stages up to the field operational test confirm the effects of a technology, the remaining two stages carry the confirmed technology into actual service. **Pre-deployment** is the stage of pilot operation in a certain area, including the operating organization, just before actual deployment, and **deployment** is the stage of permanent operation as a service.
 
 | Country | 01 Proof of Concept | 02 FOT (Public Roads) | 03 Pre-Deployment | Deployment |
 |:-----|:-----|:-----|:-----|:-----|
@@ -125,17 +116,9 @@ Whereas the stages up to the field operational test confirm the effects of a tec
 
 In Table 1 the four countries went through the same stages at different times. Japan connected roads and vehicles first with VICS and ETC, the United States started from VII after securing dedicated spectrum in 1999, and Europe carried on multinational projects through the EU research framework programmes (FP). Korea went through national R&D programs such as u-Transportation and Smart Highway from around 2007 and entered the C-ITS pilot project in July 2014 (Table 1 shows the pilot project as 2015-2017, but the project itself began in July 2014; see Section 3.9).
 
-> **Definition:** **VICS (Vehicle Information and Communication System)** is Japan's road traffic information system.
-
-> **Definition:** **ETC (Electronic Toll Collection)** is a wireless toll collection system corresponding to Korea's Hi-pass.
-
-In the deployment stage of Table 1, Japan extended the ETC unit beyond toll collection and made it the basis of connected services.
+In the deployment stage of Table 1, Japan extended the unit of **ETC**, the wireless toll collection system corresponding to Korea's Hi-pass, beyond toll collection and made it the basis of connected services.
 
 > **Definition:** **ETC2.0** is a Japanese service that extends ETC units to exchange not only tolls but also traffic and safety information.
-
-> **Definition:** **ITS Spot** is the roadside equipment of ETC2.0.
-
-> **Definition:** **DSSS (Driving Safety Support Systems)** is the safe driving support system of the Japanese National Police Agency that gives drivers hazard information at places such as intersections.
 
 ### 1.3 The U.S. Connected Vehicle Development Roadmap
 
@@ -204,10 +187,6 @@ V2X spans vehicles (NHTSA), roads (FHWA), commercial vehicles (FMCSA), transit (
 
 > **Definition:** **CACC (Cooperative Adaptive Cruise Control)** adds V2V communication to ACC, which measures the distance to the vehicle ahead only by radar, so that the acceleration and deceleration of the vehicle ahead are received directly and a shorter, more stable gap can be kept.
 
-> **Definition:** **Speed harmonization** is a traffic management technique that gives recommended speeds to vehicles approaching congestion to reduce speed differences.
-
-> **Definition:** **Platooning** is driving in which several vehicles connected by communication travel in a line at short gaps.
-
 **Draft program plan.** The DOT planned research activities for 2016-2023 in three groups. The plan was presented as a draft, and each activity was marked as ongoing or committed, under consideration, or a future possibility.
 
 | Group | Activities (Performers) |
@@ -220,15 +199,7 @@ V2X spans vehicles (NHTSA), roads (FHWA), commercial vehicles (FMCSA), transit (
 
 For 2022-2023, when the three groups end, the initial deployment of CA applications was planned. Table 5 shows a structure in which proof of concept, applied research, and policy preparation proceed in parallel and then converge into deployment.
 
-> **Definition:** **EAD (Eco-Approach and Departure)** is an environmental application that receives signal information and adjusts the speed of arrival at an intersection to avoid unnecessary stops and hard acceleration.
-
-> **Definition:** **AMS (Analysis, Modeling, and Simulation)** refers to tools that analyze, model, and simulate the effects on the transportation system.
-
-The activities in Table 5 were divided among university research programs, federal research centers, and private companies.
-
-> **Definition:** **CA PATH** is the transportation research program of the University of California, Berkeley (Partners for Advanced Transportation Technology).
-
-> **Definition:** **Volpe** is the National Transportation Systems Center under the DOT.
+The activities in Table 5 were divided among university research programs, federal research centers, and private companies. Among university research programs, **CA PATH**, the transportation research program of the University of California, Berkeley, took part, and among federal research centers, **Volpe**, the National Transportation Systems Center under the DOT.
 
 **Deployment scenarios.** The Texas A&M Transportation Institute (TTI) presented two scenarios for how fast automated driving functions would spread [7].
 
@@ -304,8 +275,6 @@ Reading Table 7 in chronological order shows how the center of U.S. V2X research
 
 > **Definition:** **SCMS (Security Credential Management System)** is a public key infrastructure that issues and revokes the certificates used to attach digital signatures to V2X messages. A receiving vehicle verifies the signature to confirm that the message came from a legitimate device and was not forged.
 
-> **Definition:** **CIB (Crash Imminent Braking)** is a function that brakes automatically when a crash is imminent.
-
 **VSC series projects.** VSC is a series of projects that defined, developed, and evaluated V2V and V2I safety services. The automakers that took part in each stage are shown in Table 8.
 
 | Project | Period | Content and Participating Companies |
@@ -350,19 +319,9 @@ The V2V services are mainly collision warnings that require knowledge of the pos
 
 The VSC-A (Vehicle Safety Communications-Applications) project developed and tested V2V safety applications by mapping them to actual crash types. Representative scenarios are a stopped lead vehicle with forward collision warning (FCW), a lane change with blind spot warning (BSW), and a decelerating lead vehicle with emergency electronic brake lights (EEBL). In the last scenario, when the vehicle two cars ahead brakes hard, the EEBL message it sends lets a driver know in advance about braking that is hidden behind the car directly ahead.
 
-> **Definition:** **FCW (Forward Collision Warning)** is an application that warns when there is a risk of colliding with the vehicle ahead.
-
 > **Definition:** **EEBL (Emergency Electronic Brake Lights)** is an application in which a vehicle that brakes hard announces it over V2V so that following vehicles know about the braking even when their view is blocked.
 
-> **Definition:** **BSW (Blind Spot Warning)** and LCW (Lane Change Warning) warn about vehicles in the adjacent lane when changing lanes.
-
-VSC-A also prepared an application for each crash type outside the representative scenarios.
-
-> **Definition:** **DNPW (Do Not Pass Warning)** warns when a vehicle is coming in the opposite lane while trying to pass.
-
-> **Definition:** **IMA (Intersection Movement Assist)** warns of the risk of collision with crossing vehicles at intersections.
-
-> **Definition:** **CLW (Control Loss Warning)** warns that a nearby vehicle has lost control, for example by skidding.
+VSC-A also prepared an application for each crash type outside the representative scenarios. Examples are **DNPW**, which warns of a vehicle in the opposite lane while trying to pass, **IMA**, which warns of the risk of collision with crossing vehicles at intersections, and **CLW**, which warns that a nearby vehicle has lost control.
 
 | No. | Crash Scenario | Corresponding V2V Application |
 |:-----|:-----|:-----|
@@ -377,8 +336,6 @@ VSC-A also prepared an application for each crash type outside the representativ
 
 *Table 10. V2V safety applications that VSC-A mapped to crash scenarios*
 
-> **Definition:** **LTAP/OD (Left Turn Across Path, Opposite Direction)** is the crash type in which a left-turning vehicle crosses the path of a vehicle coming straight from the opposite direction and collides with it.
-
 Table 10 shows that one application can reduce several crash types and that several applications can be used together for one crash type. For example, IMA is used in all three scenarios at non-signalized junctions (3, 4, 8), and EEBL and FCW are used together for a decelerating lead vehicle (5).
 
 **Euro NCAP and EEBL.** V2X safety functions such as EEBL also began to be reflected in Europe's new car safety assessment. In the *Euro NCAP 2025 Roadmap* announced on September 12, 2017, Euro NCAP presented its plan for introducing assessment items up to 2025 [11].
@@ -392,12 +349,6 @@ Table 10 shows that one application can reduce several crash types and that seve
 Figure 3 shows the assessment items for 2018-2025 in three groups. Roadmap 2020 includes autonomous emergency braking for cyclists (AEB VRU cyclist), far-side protection, and the mobile progressive deformable barrier test. The safety rating of Roadmap 2025 includes driver monitoring, AEB for pedestrians when backing over, AEB at junctions and crossings, head-on AEB, automatic emergency steering (AES), V2X, whiplash and rear-end crash protection, a revised subsystem for pedestrians and cyclists, rescue, extrication and safety, and child presence detection. The automated driving (AD) part of Roadmap 2025 includes the grading of AD functions. As highlighted by the green circles, Euro NCAP decided to newly include automatic emergency steering, V2X, and the grading of automated driving functions.
 
 The V2X item of the roadmap (planned for 2024) explains that V2X communication has the potential to improve traffic safety and efficiency, and gives as examples of safety-related functions "Emergency electronic brake lights", "Motorcycle is approaching", and "Roadwork ahead". It stresses that to provide a benefit beyond on-board sensors, V2X must identify a potential risk earlier than any of the surrounding sensors can see the danger. For automated driving functions, it names parking, city driving, inter-urban driving, traffic jam, and highway driving as the functions to be assessed, and states that assessment will be phased in, starting with continued assistance systems such as highway assist and traffic jam assist, possibly as early as 2018-2019. Automatic emergency steering (2020, 2022) was introduced as a technology that can reduce single-vehicle crashes, small overlap crashes, and crashes involving vulnerable road users beyond what AEB achieves, and a revision of UNECE Regulation 79 was expected to permit emergency steering functions around 2020. As a first step, Euro NCAP planned to include driver-initiated within-lane steering support in the overall rating from 2020.
-
-> **Definition:** **AEB (Autonomous Emergency Braking)** is a function that brakes automatically when a collision risk is detected.
-
-> **Definition:** **AES (Automatic Emergency Steering)** is a function that steers automatically to avoid a collision.
-
-> **Definition:** A **VRU (Vulnerable Road User)** is a road user such as a pedestrian, cyclist, or powered two-wheeler rider who is easily injured seriously in a crash.
 
 ### 1.8 Safety Pilot Model Deployment
 
@@ -433,8 +384,6 @@ The SPMD proceeded in four stages.
 > **Definition:** A **VAD (Vehicle Awareness Device)** is a simple device that only sends messages containing its own vehicle's position and speed and gives no warnings.
 
 > **Definition:** An **ASD (Aftermarket Safety Device)** is a device installed later in vehicles already sold; it exchanges messages and also warns the driver.
-
-> **Definition:** An **RSU (Roadside Unit)** is a device installed at the roadside that communicates with vehicles.
 
 The data collected in the SPMD can be downloaded by anyone from the open data portal of the U.S. Department of Transportation [12]. These data were later used as the basis for estimating safety benefits when the V2V mandate rulemaking was considered.
 
@@ -517,13 +466,7 @@ flowchart LR
 
 > **Definition:** The **BSM (Basic Safety Message)** is a status message that a vehicle broadcasts to its surroundings about 10 times per second, and it underlies V2V safety applications.
 
-Whereas the BSM is a V2V message exchanged between vehicles, the other three messages are V2I messages that the roadside unit sends to vehicles.
-
-> **Definition:** **SPaT (Signal Phase and Timing)** is a message that contains the current phase of a traffic signal and the remaining time.
-
-> **Definition:** **MAP** is a message that contains geometric information such as the lane layout and stop bar positions of an intersection.
-
-> **Definition:** **TIM (Traveler Information Message)** contains traveler information such as speed limits, work zones, detours, and road surface conditions. MAP, SPaT, and TIM support V2I safety applications, and BSM supports V2V safety applications.
+Whereas the BSM is a V2V message exchanged between vehicles, the other three messages are V2I messages that the roadside unit sends to vehicles. **SPaT** contains the current phase of a traffic signal and the remaining time, **MAP** contains geometric information such as the lane layout and stop bar positions of an intersection, and **TIM** contains traveler information such as speed limits, work zones, detours, and road surface conditions. MAP, SPaT, and TIM support V2I safety applications, and BSM supports V2V safety applications.
 
 ### 1.12 The Wyoming Pilot
 
@@ -570,8 +513,6 @@ Figure 9 shows the applications deployed at each location downtown. The exit of 
 > **Definition:** **I-SIG (Intelligent Traffic Signal System)** is an application that optimizes signal timing in real time with the position and speed information sent by vehicles.
 
 > **Definition:** **TSP (Transit Signal Priority)** is an application that extends or advances the green signal when a bus approaches.
-
-> **Definition:** **PED-SIG** is an application in which pedestrians such as the visually impaired tell the signal controller of their intention to cross through a smartphone and receive enough crossing time.
 
 The Tampa system consists of the traffic management center (traffic operators, traffic server, master server, transit server, research staff), roadside equipment (signal controllers, RSUs, DSRC antennas), passenger cars, buses, and streetcars with on-board units (OBU), pedestrians' handheld devices, satellite positioning (GPS) that provides location, and an operational data environment (ODE) data center that stores the collected data.
 
@@ -647,17 +588,7 @@ Because Europe must deal with roads and spectrum shared by many countries, it ch
 
 EU projects also followed the sequence of proof of concept, demonstration sites, pilot projects, and commercialization [19]. CVIS, SAFESPOT, COOPERS, and COMeSafety were carried out under FP6, Drive C2X, FOTsis, and COMeSafety2 under FP7, and C-ITS Platform and C-Roads, GEAR 2030, the Round Table on Connected and Automated Driving (RT-CAD), and the Horizon 2020 ART calls under Horizon 2020. Throughout this flow, C2C-CC, a consortium of automakers, led the standards on the vehicle side.
 
-> **Definition:** **CVIS (Cooperative Vehicle-Infrastructure Systems)** is a project that studied a cooperative communication platform between vehicles and infrastructure.
-
-> **Definition:** **SAFESPOT** is a project that studied cooperative safety systems in which vehicles and roads share information to widen safety margins.
-
-> **Definition:** **COOPERS (Co-operative Systems for Intelligent Road Safety)** is a project that studied cooperative traffic management in which road operators give vehicles real-time traffic information.
-
-Whereas the three FP6 research projects developed the technology of cooperative systems, the projects that followed gathered the results into a common architecture, tested them on real roads, and carried them into deployment in the member states.
-
-> **Definition:** **COMeSafety** is a support project that gathered the results of these projects into a common European ITS communication architecture.
-
-> **Definition:** **Drive C2X** and FOTsis are FOTs that tested cooperative systems on real roads in several countries.
+Whereas the three FP6 research projects (CVIS, SAFESPOT, and COOPERS) developed the technology of cooperative systems, the projects that followed gathered the results into a common architecture (COMeSafety), tested them on real roads (Drive C2X and FOTsis), and carried them into deployment in the member states (C-Roads).
 
 > **Definition:** **C-Roads** is a platform for member states to deploy C-ITS services interoperably.
 
@@ -901,8 +832,6 @@ The stages in Figure 19 rise from bottom to top.
 The bottom of Figure 19 is the scenario for private cars. The targets were Level 2 on ordinary roads by 2020, Level 2-3 on expressways around 2020, and Level 4 on expressways around 2025.
 
 > **Definition:** A **CPS (Cyber-Physical System)** is a system that gathers information about the real world with sensors, analyzes it in cyberspace, and controls the real world with the results.
-
-> **Definition:** **Society 5.0** is the Japanese national vision defined in Week 1.
 
 **Eight strategic fields and ten technology fields.** Following the reference architecture of Society 5.0, SIP-adus built the architecture of its automated driving strategy in eight layers: strategy, rules, organization, business, functions, data, data collection, and technology (assets). This reference architecture is applied to mobility systems that transport people and things; security and authentication span all layers, and the architecture extends along the time and space axes. SIP-adus also created and pursued separate roadmaps for ten technology fields: maps (high-definition 3D maps, dynamic maps), communication infrastructure, perception technology, decision technology, human factors, functional safety, cybersecurity, software talent, social acceptance, and safety assessment [27]. The content of each field was covered in Week 1.
 
@@ -1154,8 +1083,6 @@ The national projects related to automated driving that KATECH carried out or to
 
 The projects in Table 33 range from core vehicle components (computing modules, network processors, sensor evaluation) through service vehicles such as buses, shuttles, and heavy trucks to the cooperation of infrastructure and vehicles (fusion of traffic safety facility information, cooperative vehicle control, perception enhancement). The last three projects are directly related to connected automated driving and are covered in detail in Sections 3.3 and 3.4.
 
-> **Definition:** **T-Car** is a test vehicle platform for integrating and evaluating automated driving components and systems.
-
 ### 3.3 Infrastructure-Linked Automated Driving: Fusing Traffic Safety Facility Information
 
 Automated vehicles recognize traffic safety facilities such as traffic signals, safety signs, and road markings with cameras. However, recognition can fail when signs are hidden or road markings are worn, so automated driving becomes safer if infrastructure delivers the information of traffic safety facilities digitally and directly. Within the Autonomous Driving Technology Development Innovation Program, the Korean National Police Agency pursued three projects on traffic safety infrastructure technology for Level 4 automated driving.
@@ -1184,10 +1111,6 @@ The information flow in Figure 30 is as follows.
 
 > **Definition:** An **edge platform** is a computing device that processes data first near the site before sending it to the central server, reducing latency.
 
-> **Definition:** The **ODD (Operational Design Domain)** is the range of conditions under which an automated driving system is designed to operate properly (Weeks 1 and 2).
-
-> **Definition:** The **HMI (Human-Machine Interface)** refers to the displays, sounds, and controls through which people and machines exchange information.
-
 There are four safe driving guide services.
 
 | No. | Service | Applicable Situation |
@@ -1199,15 +1122,11 @@ There are four safe driving guide services.
 
 *Table 35. Safe driving guide services of the (KNPA 3) project*
 
-> **Definition:** The **DDT (Dynamic Driving Task)** is the driving work performed in real time, such as steering, acceleration and deceleration, and monitoring the surroundings.
-
 **Three development items.** The (KNPA 3) project develops the following three items.
 
 1. **Real-time traffic safety facility information management and operation server:** It collects the information of traffic safety facilities (embedded road markings, attached safety signs, traffic signals) and auxiliary traffic safety facilities through the I2X interface device (cellular, wired, RSU) and the infrastructure edge platform (receiving information, reprocessing big data, distributing). The service platform keeps a traffic safety facility database, a database of dynamic object information from the infrastructure edge, and a database of vehicle status information (PVD) of ordinary and automated vehicles, and provides the safe driving guide services of safe speed advice, route recommendation, lane change advice, and speed limits.
 2. **Evaluation platform linking traffic safety facilities and automated vehicles:** It develops 10 driving safety scenarios from the vehicle and road viewpoints (driving on curves, vehicle reaction time in unexpected situations, throughput, deviations of speed and headway) and 50 evaluation scenarios linking traffic safety facility and vehicle information (use case definitions, reflecting the ODD and DDT), and builds two vehicle platforms for linked evaluation (vehicle 1 IONIQ Electric, vehicle 2 IONIQ 5) equipped with video sensors, lidar, radar, V2X communication modules, precise positioning modules, automated driving controllers, and infrastructure information display devices.
 3. **Validity analysis and usage guidelines for traffic safety facility information:** From the viewpoints of automated vehicles and infrastructure, it defines the optimal information to be exchanged with the traffic safety center, analyzes the type, priority, time delay, and accuracy of information, and improves the format and period of information. It also develops V2X terminals and an information display HMI, carries out public road demonstrations on the Daegu test bed, and creates usage guidelines that improve the stability of ordinary and automated vehicles.
-
-> **Definition:** **PVD (Probe Vehicle Data)** is a probe information message that vehicles send periodically, containing position, speed, and status.
 
 > **Definition:** The **I2X interface device** is a device that connects traffic safety facilities and communication networks in order to send infrastructure (I) information to vehicles and other devices (X).
 
@@ -1226,8 +1145,6 @@ The (KNPA 3) project proceeds in stages over six years. The key points of the ye
 *Table 36. Yearly plan of the (KNPA 3) project*
 
 The key results of step 1 (year 3) include two test vehicles, the infrastructure service platform (ISF), the linking system between field devices and the ISF, 30 cumulative evaluation scenarios, a demonstration linking the offline digital twin with the traffic safety center, a prototype of the WAVE and LTE hybrid terminal, and an HMI display. As final results, two test vehicle platforms for traffic safety facility infrastructure information, the traffic safety facility infrastructure information service platform, guidelines for the real-time linking system, a definition document for the safe driving guide service, 50 evaluation scenarios, 10 safe driving scenarios, definition documents for optimal information provision and collection, an evaluation report on the applicability and validity of traffic safety facility information for vehicles, information usage guidelines, a prototype of the WAVE and cellular hybrid terminal, and an HMI display providing traffic safety facility information were planned.
-
-> **Definition:** A **digital twin** is a model that reproduces real roads and facilities identically in virtual space. It makes it possible to test the flow of information and the effects of services in advance without closing actual roads.
 
 ### 3.4 V2V-Based Cooperative Vehicle Control
 
@@ -1278,12 +1195,6 @@ The final goals of the project are threefold.
 
 *Table 38. Technology areas of the cooperative vehicle control project*
 
-> **Definition:** **RTK (Real-Time Kinematic)** is a technology that reduces satellite positioning errors to the level of a few centimeters with correction information from a reference station.
-
-> **Definition:** An **INS (Inertial Navigation System)** is a device that estimates changes in position with accelerometers and gyroscopes.
-
-> **Definition:** **Sidelink** refers to the direct device-to-device communication link (PC5) in C-V2X that does not go through a base station.
-
 **Design of the vehicle platform in year 1.** In designing the cooperative automated driving vehicle platform, KATECH carried out the following.
 
 1. **Securing test vehicles and components:** It secured two electrically driven test vehicles and, together with the participating institutions, secured 10 sets of lidar and 8 sets of radar, while the procurement of 10 sets of cameras was in progress.
@@ -1327,10 +1238,6 @@ The **Development of Advanced Infra Systems for Automated Driving (C-AHS)** of t
 
 The test vehicle in Figure 32 is equipped with a camera sensor, a radar sensor, a V2X communication module, an automated control ECU, and a user interface, and the automated control ECU controls the motor driven power steering (MDPS) and electronic stability control (ESC). In the same project, other participating companies also built their own test vehicles (company R, company H, company S), equipped with components such as front cameras, around view cameras, side cameras, front and rear-side radars, lidar, and industrial PCs.
 
-> **Definition:** **MDPS (Motor Driven Power Steering)** is a device that assists steering with an electric motor; because the steering angle can be controlled by electrical signals, it is used for lateral control in automated driving.
-
-> **Definition:** **ESC (Electronic Stability Control)** is a device that prevents skidding by adjusting the braking force of each wheel separately, and in automated driving it is used to carry out deceleration commands.
-
 ![Figure 33. Configuration of the smart road system for cooperative automated driving](../../images/Week12_12-3_p21.png)
 
 *Figure 33. Configuration of the smart road system for cooperative automated driving*
@@ -1343,8 +1250,6 @@ The system in Figure 33 consists of four elements.
 4. **CAV (connected and automated vehicle):** It controls the vehicle by combining precise positioning, the LDM, and vehicle sensors.
 
 > **Definition:** A **CGPS system** is a system in which reference stations whose positions are precisely known compute the errors of satellite signals and generate and distribute correction information. Vehicles apply this correction information to improve positioning accuracy.
-
-> **Definition:** **CDGPS (Carrier-phase Differential GPS)** is a correction method that also uses the carrier phase of satellite signals and can achieve an accuracy of a few centimeters.
 
 > **Definition:** A **CAV (Connected and Automated Vehicle)** is a connected automated vehicle.
 
@@ -1373,15 +1278,7 @@ flowchart LR
 
 In Figure 34, information received through V2X passes through the WAVE module and is organized into the LDM, and the high-precision positioning module fuses satellite positioning, correction information, and vehicle sensors to fit the vehicle's exact position onto the map. In the control platform (DCU), the local task manager decides the task suited to the service situation, the distance keeper and lane keeper functions produce targets based on the dynamic obstacle map, and the longitudinal and lateral control logic send commands to the ESC and MDPS.
 
-> **Definition:** **TIM** is the traveler information message defined in Section 1.11.
-
-> **Definition:** **ASN.1 (Abstract Syntax Notation One)** is a standard notation that defines the structure of messages independently of machines and encodes them into binary data; V2X messages such as SAE J2735 use this method.
-
 The LDM processing module reconstructs the decoded information into map form and passes it to the positioning module and the control platform, and the positioning module adds the values of the vehicle's inertial sensor to compute the position.
-
-> **Definition:** **ADASIS (ADAS Interface Specification)** is a standard interface that delivers road-ahead information from the map to ADAS controllers.
-
-> **Definition:** An **IMU (Inertial Measurement Unit)** is an inertial measurement device that measures acceleration and angular velocity.
 
 **Comprehensive performance evaluation.** The project carried out a comprehensive performance evaluation to check whether cooperative automated driving services actually succeed.
 
@@ -1396,8 +1293,6 @@ flowchart LR
 *Figure 35. Steps for checking service success in the comprehensive performance evaluation*
 
 The evaluation concept is as follows. When the roadside equipment sends information such as TIM and RSA generated by the center LDM to the on-board equipment, the evaluation first checks whether the vehicle received the information, then whether the controller and display terminal used the information, and then whether the vehicle actually moved in accordance with the information in the control section so that the service succeeded. The result of each step is judged by collecting and analyzing logs on the vehicle side.
-
-> **Definition:** **RSA (Roadside Alert)** is an SAE J2735 message that briefly announces hazardous situations (work zones, crashes, road surface hazards, etc.) from the roadside.
 
 The first comprehensive performance evaluation section is about 7 km from Yangji IC to Deokpyeong IC. The comprehensive performance evaluation section, made up of 10 services (one round trip), was driven 22 round trips, and after vehicle-level considerations such as power, communication speed, and vibration were applied, an integrated test of the LDM, V2X, and vehicles was carried out. The results are shown in Table 40.
 
@@ -1597,6 +1492,69 @@ Connect each situation with the concept that serves as the basis for judgment.
 | In Japan's dynamic map, signal timing information belongs to the dynamic layer. | **T.** V2X information that changes in less than 1 second (surrounding vehicles, pedestrians, signal timing) is the dynamic layer. |
 | The winning city of the Smart City Challenge received USD 500 million from the DOT. | **F.** USD 500 million is the total of partnership pledges secured by the finalists, and the winner, Columbus, received up to USD 40 million from the DOT. |
 | The C-ITS pilot project of the Ministry of Land, Infrastructure and Transport tested 15 services on an 87.8 km section around Daejeon and Sejong. | **T.** It was carried out in 2014-2017 on a section combining 26.0 km of expressways, 2.9 km of national roads, and 58.9 km of urban roads. |
+
+---
+
+<br>
+
+## Glossary
+
+| English | Korean | One-Line Definition |
+|:-----|:-----|:-----|
+| 3GPP (3rd Generation Partnership Project) | 3GPP | The international standards organization that develops cellular standards such as LTE and 5G. |
+| 5GAA (5G Automotive Association) | 5GAA | An association formed by automotive, telecommunications, and semiconductor companies to promote C-V2X. |
+| Proof of Concept | 개념 검증 | The stage that checks whether an idea is technically feasible. |
+| Pre-deployment | 사전 배치 | The stage of pilot operation in a certain area, including the operating organization, just before actual deployment. |
+| Deployment | 배치 | The stage of permanent operation as a service. |
+| VICS (Vehicle Information and Communication System) | VICS | Japan's road traffic information system. |
+| ETC (Electronic Toll Collection) | ETC | A wireless toll collection system corresponding to Korea's Hi-pass. |
+| ITS Spot | ITS Spot | The roadside equipment of ETC2.0. |
+| DSSS (Driving Safety Support Systems) | DSSS | The safe driving support system of the Japanese National Police Agency that gives drivers hazard information at places such as intersections. |
+| Speed Harmonization | 속도 조화 | A traffic management technique that gives recommended speeds to vehicles approaching congestion to reduce speed differences. |
+| Platooning | 군집주행 | Driving in which several vehicles connected by communication travel in a line at short gaps. |
+| EAD (Eco-Approach and Departure) | EAD | An environmental application that receives signal information and adjusts the speed of arrival at an intersection to avoid unnecessary stops and hard acceleration. |
+| AMS (Analysis, Modeling, and Simulation) | AMS | Tools that analyze, model, and simulate the effects on the transportation system. |
+| CA PATH | CA PATH | The transportation research program of the University of California, Berkeley (Partners for Advanced Transportation Technology). |
+| Volpe | Volpe | The National Transportation Systems Center under the DOT. |
+| CIB (Crash Imminent Braking) | CIB | A function that brakes automatically when a crash is imminent. |
+| FCW (Forward Collision Warning) | FCW | An application that warns when there is a risk of colliding with the vehicle ahead. |
+| BSW (Blind Spot Warning) | BSW | An application that, together with LCW (Lane Change Warning), warns about vehicles in the adjacent lane when changing lanes. |
+| DNPW (Do Not Pass Warning) | DNPW | An application that warns when a vehicle is coming in the opposite lane while trying to pass. |
+| IMA (Intersection Movement Assist) | IMA | An application that warns of the risk of collision with crossing vehicles at intersections. |
+| CLW (Control Loss Warning) | CLW | An application that warns that a nearby vehicle has lost control, for example by skidding. |
+| LTAP/OD (Left Turn Across Path, Opposite Direction) | LTAP/OD | The crash type in which a left-turning vehicle crosses the path of a vehicle coming straight from the opposite direction and collides with it. |
+| AEB (Autonomous Emergency Braking) | AEB | A function that brakes automatically when a collision risk is detected. |
+| AES (Automatic Emergency Steering) | AES | A function that steers automatically to avoid a collision. |
+| VRU (Vulnerable Road User) | 취약 도로 이용자 | A road user such as a pedestrian, cyclist, or powered two-wheeler rider who is easily injured seriously in a crash. |
+| RSU (Roadside Unit) | 노변 기지국 | A device installed at the roadside that communicates with vehicles. |
+| SPaT (Signal Phase and Timing) | SPaT | A message that contains the current phase of a traffic signal and the remaining time. |
+| MAP | MAP | A message that contains geometric information such as the lane layout and stop bar positions of an intersection. |
+| TIM (Traveler Information Message) | TIM | A message that contains traveler information such as speed limits, work zones, detours, and road surface conditions. MAP, SPaT, and TIM support V2I safety applications, and BSM supports V2V safety applications. |
+| PED-SIG | PED-SIG | An application in which pedestrians such as the visually impaired tell the signal controller of their intention to cross through a smartphone and receive enough crossing time. |
+| CVIS (Cooperative Vehicle-Infrastructure Systems) | CVIS | A project that studied a cooperative communication platform between vehicles and infrastructure. |
+| SAFESPOT | SAFESPOT | A project that studied cooperative safety systems in which vehicles and roads share information to widen safety margins. |
+| COOPERS (Co-operative Systems for Intelligent Road Safety) | COOPERS | A project that studied cooperative traffic management in which road operators give vehicles real-time traffic information. |
+| COMeSafety | COMeSafety | A support project that gathered the results of these projects into a common European ITS communication architecture. |
+| Drive C2X | Drive C2X | An FOT that, together with FOTsis, tested cooperative systems on real roads in several countries. |
+| Society 5.0 | Society 5.0 | The Japanese national vision defined in Week 1. |
+| T-Car | T-Car | A test vehicle platform for integrating and evaluating automated driving components and systems. |
+| ODD (Operational Design Domain) | 운행 설계 영역 | The range of conditions under which an automated driving system is designed to operate properly (Weeks 1 and 2). |
+| HMI (Human-Machine Interface) | HMI | The displays, sounds, and controls through which people and machines exchange information. |
+| DDT (Dynamic Driving Task) | 동적 운전 작업 | The driving work performed in real time, such as steering, acceleration and deceleration, and monitoring the surroundings. |
+| PVD (Probe Vehicle Data) | PVD | A probe information message that vehicles send periodically, containing position, speed, and status. |
+| Digital Twin | 디지털 트윈 | A model that reproduces real roads and facilities identically in virtual space. It makes it possible to test the flow of information and the effects of services in advance without closing actual roads. |
+| RTK (Real-Time Kinematic) | RTK | A technology that reduces satellite positioning errors to the level of a few centimeters with correction information from a reference station. |
+| INS (Inertial Navigation System) | 관성 항법 장치 | A device that estimates changes in position with accelerometers and gyroscopes. |
+| Sidelink | 사이드링크 | The direct device-to-device communication link (PC5) in C-V2X that does not go through a base station. |
+| MDPS (Motor Driven Power Steering) | MDPS | A device that assists steering with an electric motor; because the steering angle can be controlled by electrical signals, it is used for lateral control in automated driving. |
+| ESC (Electronic Stability Control) | ESC | A device that prevents skidding by adjusting the braking force of each wheel separately, and in automated driving it is used to carry out deceleration commands. |
+| CDGPS (Carrier-phase Differential GPS) | CDGPS | A correction method that also uses the carrier phase of satellite signals and can achieve an accuracy of a few centimeters. |
+| ASN.1 (Abstract Syntax Notation One) | ASN.1 | A standard notation that defines the structure of messages independently of machines and encodes them into binary data; V2X messages such as SAE J2735 use this method. |
+| ADASIS (ADAS Interface Specification) | ADASIS | A standard interface that delivers road-ahead information from the map to ADAS controllers. |
+| IMU (Inertial Measurement Unit) | IMU | An inertial measurement device that measures acceleration and angular velocity. |
+| RSA (Roadside Alert) | RSA | An SAE J2735 message that briefly announces hazardous situations (work zones, crashes, road surface hazards, etc.) from the roadside. |
+
+*Table 48. Glossary*
 
 ---
 

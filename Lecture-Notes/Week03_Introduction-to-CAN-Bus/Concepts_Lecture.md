@@ -50,6 +50,7 @@
   - [4.4 GM Cruise](#44-gm-cruise)
   - [4.5 Comparison of the Three Sensor Configurations](#45-comparison-of-the-three-sensor-configurations)
 - [Concept Applications](#concept-applications)
+- [Glossary](#glossary)
 - [Summary](#summary)
 - [Self-Check Questions](#self-check-questions)
 - [References](#references)
@@ -125,7 +126,7 @@ Figure 2 shows how the OSI data link and physical layers are subdivided in CAN. 
 
 A high-speed CAN bus is a twisted pair made of two wires, **CAN_H** and **CAN_L**. The receiver decides each bit not from the voltage of one wire but from the voltage difference between the two wires.
 
-> **Definition:** **Differential signaling** puts signals that change in opposite directions on two wires, and the receiver determines the value from the difference of the two voltages, $`V_{diff} = V_{CAN\_H} - V_{CAN\_L}`$.
+**Differential signaling** puts signals that change in opposite directions on two wires, and the receiver determines the value from the difference of the two voltages, $`V_{diff} = V_{CAN\_H} - V_{CAN\_L}`$.
 
 A CAN bus has only two states.
 
@@ -328,11 +329,7 @@ In Figure 10, the yellow parts are the identifier and the gray parts are the RTR
 
 A CAN frame contains no address of a receiving node. A frame sent by one node reaches every node on the bus, and each node decides by itself, from the identifier, whether it needs the message.
 
-> **Definition:** **Broadcast communication** is a method in which every node in the network receives the message sent by one node.
-
-> **Definition:** In CAN, the node that sends a message is called the **producer**.
-
-> **Definition:** In CAN, the nodes that receive and use a message are called **consumers**.
+> **Definition:** **Broadcast communication** is a method in which every node in the network receives the message sent by one node. In CAN, the node that sends a message is called the producer, and the nodes that receive and use it are called consumers.
 
 ![Figure 11. Broadcast communication in which every station receives the producer's frame and filters it](../../images/Week03_p17.png)
 
@@ -356,9 +353,7 @@ Because many nodes share one bus, the case in which two or more nodes try to tra
 - **CD (collision detection):** Each transmitting node compares, bit by bit, the bit it sent with the bit it reads from the bus.
 - **AMP (arbitration on message priority):** When the comparison disagrees, only one node remains, according to the priority of the identifier.
 
-> **Definition:** **Bit-wise arbitration** is the process in which nodes that started transmitting at the same time send their identifiers one bit at a time from the most significant bit, and a node that sent recessive (1) but reads dominant (0) on the bus stops transmitting at once and becomes a receiver.
-
-> **Definition:** The frame of the remaining node is not damaged at all, so this arbitration is called **non-destructive arbitration**.
+> **Definition:** **Bit-wise arbitration** is the process in which nodes that started transmitting at the same time send their identifiers one bit at a time from the most significant bit, and a node that sent recessive (1) but reads dominant (0) on the bus stops transmitting at once and becomes a receiver. The frame of the remaining node is not damaged at all, so this arbitration is called non-destructive arbitration.
 
 Because of the wired-AND property of Table 4, 0 wins over 1. Therefore, at the first position where the identifier bits differ, the node with 0 wins, and in the end **the node with the smallest identifier value takes the bus.**
 
@@ -902,8 +897,6 @@ An autonomous vehicle perceives its surroundings with sensors such as cameras, L
 
 > **Definition:** **LIDAR (light detection and ranging)** is a sensor that fires laser pulses and measures the distance to surrounding objects as three-dimensional points from the return time.
 
-> **Definition:** **RADAR (radio detection and ranging)** measures the distance and relative speed of objects with radio waves and is robust to rain and fog.
-
 > **Definition:** An **HD map (high-definition map)** is a map for autonomous driving that contains lanes, signs, and road boundaries with centimeter-level precision.
 
 ### 4.1 Technology Competitiveness of Autonomous Driving Companies
@@ -1038,6 +1031,22 @@ Waymo and Cruise chose an approach that mounts many LIDARs, radars, and cameras 
 | A termination resistor is attached at every node. | **F.** 120 Ω resistors are attached only at the two physical ends of the bus. |
 | If six consecutive bits of the same value appear, the receiver declares a stuff error. | **T.** The transmitter inserts an opposite bit after every five, so six in a row violate the rule. |
 | A WAN transmits by broadcasting, so it needs no routing. | **F.** A WAN performs long-distance transmission over chained point-to-point links, so routing is essential. |
+
+---
+
+<br>
+
+## Glossary
+
+| English | Korean | One-Line Definition |
+|:-----|:-----|:-----|
+| Differential Signaling | 차동 신호 방식 | A method that puts signals changing in opposite directions on two wires, so that the receiver determines the value from the difference of the two voltages, $`V_{diff} = V_{CAN\_H} - V_{CAN\_L}`$. |
+| Producer | 생산자 | In CAN, the node that sends a message. |
+| Consumer | 소비자 | In CAN, a node that receives and uses a message. |
+| Non-destructive Arbitration | 비파괴적 중재 | The name given to bit-wise arbitration because the frame of the remaining node is not damaged at all. |
+| RADAR (radio detection and ranging) | 레이더 | A sensor that measures the distance and relative speed of objects with radio waves and is robust to rain and fog. |
+
+*Table 24. Glossary*
 
 ---
 

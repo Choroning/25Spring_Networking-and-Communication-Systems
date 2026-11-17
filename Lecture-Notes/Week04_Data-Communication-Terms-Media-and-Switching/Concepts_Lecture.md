@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-17
+> **Last Updated:** 2026-11-18
 
 > **Learning Objectives:**
 > 1. Distinguish information, data, signal, signaling, and transmission, and explain the four combinations of encoding data into signals
@@ -49,6 +49,7 @@
   - [4.5 Major Facility: Hydrogen and Fuel Cell Test Facility](#45-major-facility-hydrogen-and-fuel-cell-test-facility)
   - [4.6 Major Facility: Truck Platooning](#46-major-facility-truck-platooning)
 - [Concept Applications](#concept-applications)
+- [Glossary](#glossary)
 - [Summary](#summary)
 - [Self-Check Questions](#self-check-questions)
 - [References](#references)
@@ -89,8 +90,6 @@ This distinction applies to both data and signals.
 - **Analog signal:** A continuously varying electromagnetic wave transmitted through wire, optical fiber, or the atmosphere.
 - **Digital signal:** A sequence of voltage pulses carried over a wire. It is less sensitive to noise than an analog signal and cheaper to implement, but it is affected by signal attenuation.
 
-> **Definition:** **Attenuation** is the phenomenon in which a signal loses energy and weakens while passing through a medium.
-
 ![Figure 1. Attenuation of a digital signal seen at the transmitting and receiving ends](../../images/Week04_p06.png)
 
 *Figure 1. Attenuation of a digital signal seen at the transmitting and receiving ends*
@@ -128,8 +127,6 @@ The left side of Figure 3 is the case in which a telephone converts a human voic
 
 *Table 2. Comparison of signal conversion for analog and digital data*
 
-> **Definition:** The **spectrum** is the range of frequency components a signal contains. Voice spans roughly a few hundred Hz to a few kHz.
-
 ### 1.4 Analog Transmission and Digital Transmission
 
 A signal weakens while it passes through a medium, so it must be processed along the way. Depending on the processing, transmission is analog or digital.
@@ -157,17 +154,11 @@ The considerations differ for each encoding combination.
 
 ### 1.6 Analog Encoding of Digital Data: Modulation
 
-To send digital data over a medium that passes only analog signals, such as a telephone line or radio, a sine wave of fixed frequency must be varied according to the data.
-
-> **Definition:** A **carrier** is a sine wave of fixed frequency used to carry data.
-
-> **Definition:** The frequency of the carrier is called the **carrier frequency**.
+To send digital data over a medium that passes only analog signals, such as a telephone line or radio, a sine wave of fixed frequency must be varied according to the data. This sine wave used to carry data is called the **carrier**, and its frequency the **carrier frequency**.
 
 > **Definition:** **Modulation** is the changing of one or more of the amplitude, frequency, and phase of the carrier according to the data.
 
 A sine wave is determined by three characteristics, amplitude, frequency, and phase, so digital data is encoded into an analog signal by changing one or a combination of these. A scheme that changes amplitude and phase together (quadrature amplitude modulation, QAM) is an example.
-
-> **Definition:** The **bandwidth of the signal** is the range of frequencies the signal contains around the carrier frequency. Its unit is Hz.
 
 **(1) Amplitude-shift keying (ASK).** The amplitude of the carrier is changed according to the bit stream of the transmitted data.
 
@@ -206,9 +197,7 @@ On the left of Figure 5, the waveform is dense (high frequency) where the bit is
 
 In Figure 6, the amplitude and frequency are constant, and the phase shifts by 180° at the points where the waveform appears to break abruptly. The simplest binary PSK (BPSK) gives 0 and 1 different phases (for example, 0° and 180°), so the phase is inverted whenever the bit value changes. Differential PSK (DPSK) inverts the phase relative to the previous signal for a 1 and keeps it for a 0. In Figure 6, the phase breaks only where a bit of 1 (the 3rd, 4th, 6th, and 10th) begins, so the waveform of Figure 6 is differential PSK.
 
-> **Definition:** A **symbol** is the unit of signal that carries data information, that is, a signal element distinguished at one time.
-
-> **Definition:** The **baud rate (signaling rate)** is the number of symbols transmitted per second, in baud.
+> **Definition:** The **baud rate (signaling rate)** is the number of symbols transmitted per second, in baud. Here a symbol is the unit of signal that carries data information, that is, a signal element distinguished at one time.
 
 > **Definition:** The **data rate** is the number of bits transmitted per second, in bps.
 
@@ -299,11 +288,7 @@ In Figure 8, NRZ stays high throughout the consecutive 1s of the 4th and 5th bit
 
 ### 1.8 Digital Encoding of Analog Information: Sampling and PCM
 
-To send analog information such as voice digitally, the continuous signal must be measured at regular intervals and converted into numbers.
-
-> **Definition:** **Sampling** is measuring the value of a continuous signal at regular time intervals.
-
-> **Definition:** In sampling, the number of measurements per second is called the **sampling rate**.
+To send analog information such as voice digitally, the continuous signal must be measured at regular intervals and converted into numbers. Measuring the value of a continuous signal at regular time intervals is called **sampling**, and the number of measurements per second the **sampling rate**.
 
 > **Key Point:** **Sampling theorem.** If a signal is sampled at a rate higher than twice its highest frequency, the original signal can be completely reconstructed from the samples alone. In practice, the signal is filtered so that all of its frequency components lie below some upper bound of $B$ Hz, and it is then sampled at $2B$ samples per second. Because the highest frequency of the signal is below $B$, this rate is higher than twice the highest frequency.
 
@@ -335,9 +320,7 @@ This 64 kbps is the basic unit of one voice channel in the digital telephone net
 
 ### 1.9 Multiplexing: FDM and TDM
 
-> **Definition:** **Multiplexing** is the process of combining two or more low-rate channels into one high-rate channel so that several users share one transmission line.
-
-> **Definition:** The process of separating the original channels again at the receiving side is called **demultiplexing (demuxing)**.
+> **Definition:** **Multiplexing** is the process of combining two or more low-rate channels into one high-rate channel so that several users share one transmission line. The process of separating the original channels again at the receiving side is called demultiplexing (demuxing).
 
 **(1) Frequency-division multiplexing (FDM).** The total frequency bandwidth of a transmission line is divided into several smaller bands so that several users can use it simultaneously. It is used mainly for transmitting analog signals.
 
@@ -380,10 +363,6 @@ In Figure 12, the multiplexer sends the data of sources 1, 2, 3, 4, 5, and 6 one
 ### 2.1 Classification and Performance Factors of Transmission Media
 
 > **Definition:** A **transmission medium** is the physical path between a transmitter and a receiver. Transmission media are divided into guided media and unguided media.
-
-> **Definition:** **Guided media** are transmission media, such as wires and optical fibers, that lead the signal along a defined path.
-
-> **Definition:** **Unguided media** are transmission media, such as the atmosphere or outer space, through which the signal spreads out.
 
 The characteristics of a transmission medium are determined by the type of medium and the transmission frequency. The factors that affect the data rate and transmission distance are as follows.
 
@@ -558,9 +537,7 @@ The considerations in using microwaves are as follows.
 
 ### 3.1 Communications Networks
 
-> **Definition:** A **communications network** is a collection of nodes that passes data from node to node to the destination.
-
-> **Definition:** Devices at the edge of the network that send and receive data, such as computers, terminals, and telephones, are called **stations**.
+> **Definition:** A **communications network** is a collection of nodes that passes data from node to node to the destination. Devices at the edge of the network that send and receive data, such as computers, terminals, and telephones, are called stations.
 
 ![Figure 20. A communications network of stations A-F and switching nodes 1-7](../../images/Week04_p54.png)
 
@@ -685,7 +662,7 @@ Figures 23 and 24 show, in time order from (a) to (e), the left station sending 
 
 *Table 12. Comparison of virtual circuits and datagrams*
 
-> **Note:** A virtual circuit decides the route first, like circuit switching, but does not monopolize the links on that route. Only the route is fixed, and the links are shared with packets of other virtual circuits, which is why it is called a virtual circuit.
+A virtual circuit decides the route first, like circuit switching, but does not monopolize the links on that route. Only the route is fixed, and the links are shared with packets of other virtual circuits, which is why it is called a virtual circuit.
 
 ### 3.5 Multirate Circuit Switching and ISDN
 
@@ -819,8 +796,6 @@ JARI conducts the following research on hydrogen and fuel cells, fuel cell vehic
 
 *Figure 30. Air flow simulation results and drag coefficients for platooning of three trucks*
 
-> **Definition:** **Platooning** is a driving method in which several vehicles, connected by communication, travel together in a line while keeping short gaps between them. The leading vehicle cuts through the air, reducing the air resistance on the following vehicles and saving fuel.
-
 JARI researches autonomous driving and platooning as part of developing energy-saving ITS technologies. The results in Figure 30 are as follows.
 
 - **Air flow simulation (left graph):** Shows, for each inter-vehicle gap, the rate at which the total running resistance decreases when three trucks platoon. The improvement is about 24% at a gap of 2 m, about 15% at 4 m, about 10% at 8 m, and about 9% at 12 m, and an improvement of about 8.5% remains even at 24 m. The shorter the gap, the larger the effect. The condition noted in the figure is 80 km/h with a gap of 4-12 m.
@@ -854,6 +829,30 @@ Platooning can keep short gaps safely only if acceleration and braking are synch
 | Synchronous TDM assigns slots even to terminals that have no data. | **T.** The slots are fixed, so capacity is wasted, and asynchronous TDM compensates for this. |
 | Multimode fiber has a thinner core than single-mode fiber. | **F.** The core of multimode fiber, 50 µm or more, is thicker than that of single-mode fiber (about 9 µm). |
 | In the datagram approach, packets of the same message always take the same path. | **F.** The route of each packet is decided independently, so packets may take different paths and their order may change. |
+
+---
+
+<br>
+
+## Glossary
+
+| English | Korean | One-Line Definition |
+|:-----|:-----|:-----|
+| Attenuation | 감쇠 | The phenomenon in which a signal loses energy and weakens while passing through a medium. |
+| Spectrum | 스펙트럼 | The range of frequency components a signal contains. Voice spans roughly a few hundred Hz to a few kHz. |
+| Carrier | 반송파 | A sine wave of fixed frequency used to carry data. |
+| Carrier Frequency | 반송 주파수 | The frequency of the carrier. |
+| Bandwidth of the Signal | 신호의 대역폭 | The range of frequencies the signal contains around the carrier frequency. Its unit is Hz. |
+| Symbol | 심볼 | The unit of signal that carries data information, that is, a signal element distinguished at one time. |
+| Sampling | 샘플링 | Measuring the value of a continuous signal at regular time intervals. |
+| Sampling Rate | 샘플링 속도 | The number of measurements per second in sampling. |
+| Demultiplexing (demuxing) | 역다중화 | The process of separating the original channels again at the receiving side. |
+| Guided Media | 유도 매체 | Transmission media, such as wires and optical fibers, that lead the signal along a defined path. |
+| Unguided Media | 비유도 매체 | Transmission media, such as the atmosphere or outer space, through which the signal spreads out. |
+| Station | 단말 | Devices at the edge of the network that send and receive data, such as computers, terminals, and telephones,. |
+| Platooning | 군집 주행 | A driving method in which several vehicles, connected by communication, travel together in a line while keeping short gaps between them. The leading vehicle cuts through the air, reducing the air resistance on the following vehicles and saving fuel. |
+
+*Table 17. Glossary*
 
 ---
 
