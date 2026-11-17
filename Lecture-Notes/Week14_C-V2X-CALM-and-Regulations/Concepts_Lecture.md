@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-04
+> **Last Updated:** 2026-11-17
 
 > **Learning Objectives:**
 > 1. Explain the evolution of mobile communication generations and the 3GPP standardization procedure, and compare the three 5G service categories and key performance indicators with those of 4G
@@ -67,7 +67,11 @@
 
 Week 1 briefly introduced C-V2X as a cellular-based vehicle communication method, and Week 13 covered DSRC and WAVE, which are based on wireless LAN. This section first summarizes the mobile communication background needed to understand C-V2X (the evolution of generations, the standards body 3GPP, 5G NR, and direct communication between devices), and then covers the operation scenarios, transmission modes, standardization roadmap, comparison with IEEE 802.11p, and use cases of C-V2X in turn.
 
-> **Definition:** **C-V2X (Cellular Vehicle-to-Everything)** is the vehicle communication technology defined by the mobile communication standards body 3GPP on the basis of LTE and 5G NR. It includes both communication in which the vehicle goes through a base station and direct communication without a base station with nearby vehicles, roadside units, and pedestrian devices. The LTE-based version is called **LTE-V2X**, and the 5G NR-based version is called **NR-V2X** (or 5G-V2X).
+> **Definition:** **C-V2X (Cellular Vehicle-to-Everything)** is the vehicle communication technology defined by the mobile communication standards body 3GPP on the basis of LTE and 5G NR. It includes both communication in which the vehicle goes through a base station and direct communication without a base station with nearby vehicles, roadside units, and pedestrian devices.
+
+> **Definition:** The LTE-based version of C-V2X is called **LTE-V2X**.
+
+> **Definition:** The 5G NR-based version of C-V2X is called **NR-V2X** (or 5G-V2X).
 
 ### 1.1 Evolution of Mobile Communication
 
@@ -87,7 +91,15 @@ Mobile communication has advanced by one generation roughly every ten years. Fig
 
 *Table 1. Features of each mobile communication generation*
 
-> **Definition:** **Analog mobile communication** carries the waveform of the voice signal directly on a carrier, while **digital mobile communication** converts the voice into a bit stream of 0s and 1s before sending it. Digital systems allow error correction and encryption and can accommodate more users on the same frequency. **AMPS (Advanced Mobile Phone System)** is the first-generation analog standard of the United States, **GSM (Global System for Mobile communications)** is a second-generation time-division standard that started in Europe, and **CDMA (code division multiple access)** is a multiple access method that lets users share the same frequency at the same time by multiplying each user's signal by a different code; in the second generation, the American IS-95 standard used it.
+> **Definition:** **Analog mobile communication** carries the waveform of the voice signal directly on a carrier.
+
+> **Definition:** **Digital mobile communication** converts the voice into a bit stream of 0s and 1s before sending it. Digital systems allow error correction and encryption and can accommodate more users on the same frequency.
+
+> **Definition:** **AMPS (Advanced Mobile Phone System)** is the first-generation analog standard of the United States.
+
+> **Definition:** **GSM (Global System for Mobile communications)** is a second-generation time-division standard that started in Europe.
+
+> **Definition:** **CDMA (code division multiple access)** is a multiple access method that lets users share the same frequency at the same time by multiplying each user's signal by a different code; in the second generation, the American IS-95 standard used it.
 
 Standards from several camps competed in each generation. Figure 2 summarizes the lineage of the standards by generation [2].
 
@@ -107,7 +119,13 @@ flowchart LR
 
 In Figure 2, within the CDMA family that started from the American AMPS, IS-95 is a standard of the U.S. Telecommunications Industry Association (TIA), and the third-generation CDMA2000 and EV-DO were managed by a standards body called 3GPP2. The family that started from the European GSM (GPRS, EDGE, WCDMA, HSPA) was managed by 3GPP, and China's third-generation standard TD-SCDMA was also included in the 3GPP specifications. IEEE created the WiMAX family based on its wireless MAN standard IEEE 802.16. Third-generation standards were developed to meet the ITU requirements called IMT-2000, fourth-generation standards IMT-Advanced, and fifth-generation standards IMT-2020. From the fourth generation onward, the LTE family of 3GPP became the de facto single worldwide standard, and 5G is also developed by 3GPP.
 
-> **Definition:** **GPRS (General Packet Radio Service)** and **EDGE (Enhanced Data rates for GSM Evolution)** are technologies that add packet data transmission to GSM networks, and **WCDMA (Wideband CDMA)** is the third-generation standard of 3GPP. **HSPA (High Speed Packet Access)** is an enhancement that raises the downlink (HSDPA) and uplink (HSUPA) data rates of WCDMA. **LTE (Long Term Evolution)** is the fourth-generation radio access technology of 3GPP, and LTE-Advanced is LTE improved to meet the IMT-Advanced requirements.
+> **Definition:** **GPRS (General Packet Radio Service)** and EDGE (Enhanced Data rates for GSM Evolution) are technologies that add packet data transmission to GSM networks.
+
+> **Definition:** **WCDMA (Wideband CDMA)** is the third-generation standard of 3GPP.
+
+> **Definition:** **HSPA (High Speed Packet Access)** is an enhancement that raises the downlink (HSDPA) and uplink (HSUPA) data rates of WCDMA.
+
+> **Definition:** **LTE (Long Term Evolution)** is the fourth-generation radio access technology of 3GPP, and LTE-Advanced is LTE improved to meet the IMT-Advanced requirements.
 
 ### 1.2 3GPP and the Mobile Communication Standardization Procedure
 
@@ -143,7 +161,9 @@ flowchart LR
 
 *Figure 4. 3GPP's international standardization procedure for mobile communication*
 
-> **Definition:** Among 3GPP documents, a **TS (Technical Specification)** contains normative content that equipment must follow, and a **TR (Technical Report)** contains the results of studying requirements, scenarios, and candidate technologies before a new feature is standardized. TR 36.885, TR 38.885, and TR 22.886, which this section cites, are technical reports that studied V2X.
+> **Definition:** Among 3GPP documents, a **TS (Technical Specification)** contains normative content that equipment must follow.
+
+> **Definition:** Among 3GPP documents, a **TR (Technical Report)** contains the results of studying requirements, scenarios, and candidate technologies before a new feature is standardized. TR 36.885, TR 38.885, and TR 22.886, which this section cites, are technical reports that studied V2X.
 
 ### 1.3 Usage Scenarios and Key Capabilities of 5G NR
 
@@ -227,7 +247,11 @@ The representative use cases and performance targets of each of the three 5G cat
 
 In Table 5, V2V and V2P are placed in URLLC, while V2I, which exchanges data with road infrastructure, is placed in mMTC. Messages between vehicles and between vehicles and pedestrians are directly tied to collision avoidance, so latency and reliability matter most, whereas massive connectivity matters for V2I, which connects many roadside devices and sensors.
 
-> **Definition:** The **user plane** is the path through which a user's actual data passes, and the **control plane** is the path through which control signals such as connection setup and mobility management pass. **99.99999% availability** means that the fraction of time during which the service does not work correctly is $10^{-7}$ or less.
+> **Definition:** The **user plane** is the path through which a user's actual data passes.
+
+> **Definition:** The **control plane** is the path through which control signals such as connection setup and mobility management pass.
+
+> **Definition:** **99.99999% availability** means that the fraction of time during which the service does not work correctly is $10^{-7}$ or less.
 
 ### 1.4 5G Spectrum
 
@@ -270,7 +294,17 @@ The bandwidth is obtained by subtracting the lower edge of the assigned range fr
 
 The radio access technology of 5G consists of two branches. One is the **evolution of LTE**, developed from LTE-A Pro, which maintains backward compatibility with existing LTE devices. The other is **NR**, newly designed without compatibility constraints. As on the right of Figure 7, the two technologies are tightly interworked, and the evolution of LTE operates at low frequencies of roughly 10 GHz or less, while NR operates over a wide range from below 1 GHz up to about 100 GHz. The 5G standards take the form in which the LTE evolution standards and the new RAT standard share one core network.
 
-> **Definition:** The **core network** is the central part of a mobile network that ties base stations together and handles authentication, mobility management, and Internet connection. The core network of LTE is the **EPC (Evolved Packet Core)** and that of 5G is the **5GC (5G Core)**; early in standardization, the 5GC was also called the **NGCN (Next Generation Core Network)**. An LTE base station is called an **eNB**, an NR base station a **gNB**, and an LTE base station connected to the 5GC an **ng-eNB**.
+> **Definition:** The **core network** is the central part of a mobile network that ties base stations together and handles authentication, mobility management, and Internet connection.
+
+> **Definition:** The core network of LTE is called the **EPC (Evolved Packet Core)**.
+
+> **Definition:** The core network of 5G is called the **5GC (5G Core)**; early in standardization, the 5GC was also called the NGCN (Next Generation Core Network).
+
+> **Definition:** An LTE base station is called an **eNB**.
+
+> **Definition:** An NR base station is called a **gNB**.
+
+> **Definition:** An LTE base station connected to the 5GC is called an **ng-eNB**.
 
 3GPP studied several network deployment options depending on how LTE and NR are combined and which core network they connect to [6]. **SA (Standalone)** is a configuration in which LTE or 5G operates independently, and **NSA (Non-Standalone)** is a configuration that combines LTE and 5G networks.
 
@@ -299,7 +333,9 @@ In Figures 8 and 9, the pink lines are the interfaces between the EPC and base s
 
 ### 1.6 Proximity-based Services (ProSe) and D2D Communication
 
-> **Definition:** **D2D (Device-to-Device) communication** is communication that devices exchange directly without going through a base station or core network. **ProSe (Proximity-based Services)** are services, defined by 3GPP in Release 12, that nearby devices provide to each other through D2D communication.
+> **Definition:** **D2D (Device-to-Device) communication** is communication that devices exchange directly without going through a base station or core network.
+
+> **Definition:** **ProSe (Proximity-based Services)** are services, defined by 3GPP in Release 12, that nearby devices provide to each other through D2D communication.
 
 ProSe consists of two functions [7], [8].
 
@@ -329,7 +365,13 @@ flowchart LR
 
 Figure 11 is the ProSe architecture. Each of the two devices connects to the LTE radio access network (E-UTRAN) through the radio interface **Uu**, and the E-UTRAN connects to the core network (EPC) through the S1 interface. The direct interface between the two devices is **PC5**. The **ProSe Function** is a network function that grants authorization and configuration to devices that may use ProSe; it connects to devices through the PC3 interface and to the EPC through the PC4 interface [8].
 
-> **Definition:** In mobile communication standards, an **interface** or **reference point** is the name of a connection between two functional elements and the protocols over it. **Uu** is the radio interface between a device and a base station, and **PC5** is the direct interface between two devices. **UE (User Equipment)** is the 3GPP name for a device; not only a smartphone but also a communication module installed in a vehicle is a UE.
+> **Definition:** In mobile communication standards, an **interface** or reference point is the name of a connection between two functional elements and the protocols over it.
+
+> **Definition:** **Uu** is the radio interface between a device and a base station.
+
+> **Definition:** **PC5** is the direct interface between two devices.
+
+> **Definition:** **UE (User Equipment)** is the 3GPP name for a device; not only a smartphone but also a communication module installed in a vehicle is a UE.
 
 > **Note:** The original material distinguishes the sidelink (SL) as LTE D2D communication, PC5 as 5G D2D communication, and Uu as V2I communication, but this is a simplification. In 3GPP, sidelink names the radio link between devices itself and PC5 names the reference point between devices in the architecture, and both LTE and NR use both terms (LTE sidelink, NR sidelink, LTE PC5, NR PC5). The PC5 in Figure 11 is also in an LTE (E-UTRAN) architecture. Uu is the radio interface between a device and a base station, so it is used not only for V2I but for every communication that goes through a base station (such as V2N) [8], [9].
 
@@ -367,7 +409,11 @@ sequenceDiagram
 
 *Table 10. The two methods of D2D resource allocation*
 
-> **Definition:** A **resource pool** is a predefined set of time intervals and frequency ranges to be used for sidelink transmission. The **SIB (System Information Block)** is system information that a base station periodically broadcasts to all devices in the cell, containing information such as the resource pool configuration. **Coverage** is the area that a base station's signal reaches.
+> **Definition:** A **resource pool** is a predefined set of time intervals and frequency ranges to be used for sidelink transmission.
+
+> **Definition:** The **SIB (System Information Block)** is system information that a base station periodically broadcasts to all devices in the cell, containing information such as the resource pool configuration.
+
+> **Definition:** **Coverage** is the area that a base station's signal reaches.
 
 > **Note:** Release 14, which introduced V2X, adapted the two D2D methods to the vehicular environment and defined them as sidelink transmission mode 3 (scheduled by the base station) and mode 4 (autonomous selection by the device) [10]. A mode 4 device senses the resources that other devices are using, selects resources that are likely to be free, and reuses them repeatedly for a certain period. In NR-V2X the same concepts are called resource allocation mode 1 and mode 2 [11].
 
@@ -389,7 +435,9 @@ Figure 14 shows seven scenarios in which two devices (UE1 and UE2) communicate d
 
 *Table 11. ProSe direct communication scenarios without relay*
 
-> **Definition:** A **PLMN (Public Land Mobile Network)** is a public mobile network operated by one mobile operator. It is identified by the combination of the country code MCC (Mobile Country Code) and the operator code MNC (Mobile Network Code); the networks of SK Telecom, KT, and LG U+ in Korea are each one PLMN. A **cell** is the area served by one base station.
+> **Definition:** A **PLMN (Public Land Mobile Network)** is a public mobile network operated by one mobile operator. It is identified by the combination of the country code MCC (Mobile Country Code) and the operator code MNC (Mobile Network Code); the networks of SK Telecom, KT, and LG U+ in Korea are each one PLMN.
+
+> **Definition:** A **cell** is the area served by one base station.
 
 Scenarios 1E-1G are especially important in V2X, where vehicles subscribed to different operators must also communicate directly. Vehicle safety messages must be delivered regardless of which operator the other vehicle is subscribed to.
 
@@ -432,7 +480,11 @@ In V2I of Figure 17, the base station itself acts as the roadside unit (E-UTRAN 
 - **Scenario 3A:** A vehicle sends a V2X message over the sidelink. A UE-type roadside unit (UE (RSU)) that receives it forwards it to the base station over the uplink, and the base station broadcasts it to multiple UEs in the area over the downlink.
 - **Scenario 3B:** A vehicle sends a V2X message to the base station over the uplink. The base station forwards it to one or more UE-type roadside units, and the roadside units send it to nearby UEs over the sidelink.
 
-> **Definition:** A **roadside unit (RSU)** is a device installed at the roadside that communicates with vehicles. In C-V2X there are **UE-type RSUs**, which use PC5 in the same way as a device, and **eNB-type RSUs**, in which a base station also serves as the RSU.
+> **Definition:** A **roadside unit (RSU)** is a device installed at the roadside that communicates with vehicles. In C-V2X there are UE-type and eNB-type RSUs.
+
+> **Definition:** A **UE-type RSU** is an RSU that uses PC5 in the same way as a device.
+
+> **Definition:** An **eNB-type RSU** is an RSU in which a base station also serves as the RSU.
 
 | Scenario | Links used | Advantage | Limitation |
 |:-----|:-----|:-----|:-----|
@@ -499,7 +551,9 @@ C-V2X has two complementary transmission modes [15].
 
 On the left of Figure 22, two vehicles communicate through a base station (eNodeB) by V2N, and on the right, vehicles, a roadside unit, and a pedestrian communicate directly over PC5. 3GPP also defines a method in which the base station coordinates resources even for direct communication (mode 3 of Section 1.6).
 
-> **Definition:** **Licensed spectrum** is a frequency band for which the government has granted exclusive use rights to a specific operator, and an **ITS band** is a band designated for intelligent transport systems. The allocation of the 5.9 GHz band differs by country and was summarized in Week 1.
+> **Definition:** **Licensed spectrum** is a frequency band for which the government has granted exclusive use rights to a specific operator.
+
+> **Definition:** An **ITS band** is a band designated for intelligent transport systems. The allocation of the 5.9 GHz band differs by country and was summarized in Week 1.
 
 C-V2X direct communication has three characteristics that let it manage itself without a network (self-managed) [15].
 
@@ -511,7 +565,9 @@ C-V2X direct communication has three characteristics that let it manage itself w
 
 *Table 16. Self-managed characteristics of C-V2X direct communication*
 
-> **Definition:** A **USIM (Universal Subscriber Identity Module)** is the chip (SIM card) that holds the information used to authenticate a mobile subscriber. **GNSS (Global Navigation Satellite System)** is the collective name for satellite navigation systems such as GPS, Galileo, GLONASS, and BeiDou, which provide not only position but also precise time information.
+> **Definition:** A **USIM (Universal Subscriber Identity Module)** is the chip (SIM card) that holds the information used to authenticate a mobile subscriber.
+
+> **Definition:** **GNSS (Global Navigation Satellite System)** is the collective name for satellite navigation systems such as GPS, Galileo, GLONASS, and BeiDou, which provide not only position but also precise time information.
 
 Time synchronization is needed because the sidelink divides time into intervals of fixed length and shares resources by these intervals. All devices must agree on the start times of the intervals to use the same resource pool without overlapping. GNSS is already required for positioning in every V2X technology, including IEEE 802.11p, and the time is obtained as part of the position calculation and requires fewer satellites than positioning does [15].
 
@@ -537,7 +593,11 @@ Figure 23 shows V2X technology evolving in three stages while maintaining backwa
 
 *Table 17. Evolution of C-V2X toward 5G for autonomous driving*
 
-> **Definition:** **Broadcast** sends to all devices in range, **unicast** sends to one specific device, and **multicast** sends to a specific group of devices (for example, the vehicles of a platoon). Because the sidelink of Rel-14 and Rel-15 supports only broadcast, every message is delivered to everyone nearby. Communication with a specific partner, such as two vehicles negotiating their driving plans, requires unicast.
+> **Definition:** **Broadcast** is communication sent to all devices in range.
+
+> **Definition:** **Unicast** is communication sent to one specific device.
+
+> **Definition:** **Multicast** is communication sent to a specific group of devices (for example, the vehicles of a platoon). Because the sidelink of Rel-14 and Rel-15 supports only broadcast, every message is delivered to everyone nearby. Communication with a specific partner, such as two vehicles negotiating their driving plans, requires unicast.
 
 5G NR provides new radio technologies for both direct and network communications [15].
 
@@ -554,7 +614,9 @@ Figure 23 shows V2X technology evolving in three stages while maintaining backwa
 
 LDPC codes for the data channels and polar codes for the control channels are defined in the NR channel coding specification [17]. Thanks to these technologies, PC5 direct communication gains higher data rates and URLLC capabilities and is designed to work without network assistance in the ITS spectrum, and Uu network communication also gains higher data rates and URLLC capabilities in licensed spectrum.
 
-> **Definition:** **OFDM (orthogonal frequency division multiplexing)** divides a wide band into many narrow **subcarriers** that do not interfere with each other and sends data over them in parallel. A **numerology** is the combination of subcarrier spacing and the symbol length and slot length determined by it.
+> **Definition:** **OFDM (orthogonal frequency division multiplexing)** divides a wide band into many narrow subcarriers that do not interfere with each other and sends data over them in parallel.
+
+> **Definition:** A **numerology** is the combination of subcarrier spacing and the symbol length and slot length determined by it.
 
 The subcarrier spacing of NR is $\Delta f = 15 \times 2^\mu$ kHz, one slot consists of 14 OFDM symbols, and the slot length is $1 / 2^\mu$ ms [18]. The wider the subcarrier spacing, the shorter the symbols and slots, and the lower the latency.
 
@@ -594,7 +656,9 @@ With 5G-V2X, connected cars gain the following capabilities. They rely on wideba
 
 As Figure 24 shows, 5G NR C-V2X complements rather than replaces Rel-14. Rel-14 C-V2X handles automotive safety (do not pass warning (DNPW), intersection movement assist (IMA) at a blind intersection, and blind curve and local hazard warning), and Rel-16 5G NR C-V2X handles autonomous driving (real-time local updates, intention and trajectory sharing, high throughput sensor sharing, and coordinated driving). As in the lower part of the figure, one vehicle uses broadcast messages over the Rel-14/15 sidelink for safety use cases and multicast messages over the Rel-16+ sidelink for advanced use cases, and the upper layers map each use case to the appropriate transport.
 
-> **Definition:** **DNPW (Do Not Pass Warning)** warns a vehicle about to overtake that a vehicle is approaching in the opposite lane, and **IMA (Intersection Movement Assist)** warns of the risk of collision with crossing vehicles at an intersection where the view is blocked.
+> **Definition:** **DNPW (Do Not Pass Warning)** warns a vehicle about to overtake that a vehicle is approaching in the opposite lane.
+
+> **Definition:** **IMA (Intersection Movement Assist)** warns of the risk of collision with crossing vehicles at an intersection where the view is blocked.
 
 ### 1.11 Upper Layer Architecture of C-V2X
 
@@ -610,7 +674,13 @@ C-V2X newly defines only the radio segment (lower layers) and reuses the upper l
 
 The upper part of Figure 25 (blue) consists of the applications (safety and non-safety), the message and facilities layer, UDP/TCP and IPv6, the IEEE, ETSI, and ISO transport and network layers, and security services; this part reuses and adapts other standards. The lower part (green) is the scope of 3GPP and consists of ProSe signaling, the path that does not use IP (Non-IP), PDCP, RLC, MAC, and PHY. In addition, the network architecture and system design of LTE Direct were also enhanced to support V2X. The SAE J2735 messages of the message layer were covered in Week 11, and the IEEE 1609 family in Week 13.
 
-> **Definition:** In the radio protocol stack of LTE and NR, the **PHY** is the physical layer that modulates signals and sends them as radio waves, **MAC (Medium Access Control)** is the layer that shares radio resources, **RLC (Radio Link Control)** is the layer responsible for segmenting and retransmitting packets, and **PDCP (Packet Data Convergence Protocol)** is the layer responsible for header compression and ciphering.
+> **Definition:** In the radio protocol stack of LTE and NR, the **PHY** is the physical layer that modulates signals and sends them as radio waves.
+
+> **Definition:** **MAC (Medium Access Control)** is the layer that shares radio resources.
+
+> **Definition:** **RLC (Radio Link Control)** is the layer responsible for segmenting and retransmitting packets.
+
+> **Definition:** **PDCP (Packet Data Convergence Protocol)** is the layer responsible for header compression and ciphering.
 
 ### 1.12 Comparison of IEEE 802.11p and C-V2X
 
@@ -754,7 +824,11 @@ Figure 31 is the early stage CALM architecture. At the bottom are the various co
 
 The network interface above them (ISO 21210) handles routing and media switching based on IPv6. At the top are three kinds of applications. Non-CALM-aware applications based on ISO 15628 (the DSRC application layer) and IP (Internet) applications connect through convergence layers, while CALM-aware applications run directly over Internet standards such as TCP/UDP. The management entity on the left (CME, CALM Management Entity) handles the CALM manager and the registration of ingress and egress interfaces, the network manager (NME) and the interface manager (IME, ISO 24102) manage each layer, and application management is defined by ISO 24101. In the legend, the red dots are data SAPs that exchange data, and the teal dots are management SAPs that exchange management information. The legend at the bottom distinguishes by color CALM media (light blue), external media (gray), CALM network elements (dark green), the LSAP of ISO 21218 (orange), and applications (beige).
 
-> **Definition:** A **SAP (Service Access Point)** is the logical point at which one layer provides services to the layer above or beside it. Data and commands pass between layers only through SAPs. A **CALM-aware application** knows the management functions of CALM and states its communication requirements directly, while a **non-CALM-aware application** is an existing application that does not know CALM.
+> **Definition:** A **SAP (Service Access Point)** is the logical point at which one layer provides services to the layer above or beside it. Data and commands pass between layers only through SAPs.
+
+> **Definition:** A **CALM-aware application** knows the management functions of CALM and states its communication requirements directly.
+
+> **Definition:** A **non-CALM-aware application** is an existing application that does not know CALM.
 
 The goals of CALM can be summarized in the following six points.
 
@@ -765,7 +839,11 @@ The goals of CALM can be summarized in the following six points.
 5. It supports both ITS-dedicated non-IP communication and IPv6-based Internet communication.
 6. It supports non-IP vehicle-to-vehicle (V2V) communication.
 
-> **Definition:** **Handover** is passing the connection of a moving device from one base station or access technology to another without interruption, and **roaming** is using another operator's network outside the network of the operator one has subscribed to. **M5** (CALM-M5, ITS-M5) is the vehicular communication medium of CALM (ISO 21215) that operates in the 5 GHz band on the basis of IEEE 802.11p.
+> **Definition:** **Handover** is passing the connection of a moving device from one base station or access technology to another without interruption.
+
+> **Definition:** **Roaming** is using another operator's network outside the network of the operator one has subscribed to.
+
+> **Definition:** **M5** (CALM-M5, ITS-M5) is the vehicular communication medium of CALM (ISO 21215) that operates in the 5 GHz band on the basis of IEEE 802.11p.
 
 ### 2.2 Communication Environment and Communication Scenarios of CALM
 
@@ -775,7 +853,11 @@ The goals of CALM can be summarized in the following six points.
 
 Figure 32 is the communication environment that CALM covers. Through V2I communication, the vehicle connects with beacons (CALM-M5, CEN-DSRC, CALM-IR), broadcast transmitters, cellular networks (GSM-GPRS, UMTS), terrestrial broadcasting (RDS, DAB), WiMAX, wireless LAN hot spots, and info-broadcasters, and it also connects with satellite positioning (GPS, Galileo), satellite communication, and the driver's PDA and smartphone. Vehicles perform V2V communication with each other over M5, infrared, and millimeter wave (MM). The phrase on the CALM logo in the figure (continuous communications for vehicles) expresses the goal of keeping a vehicle's communication uninterrupted by switching among several media in this way.
 
-> **Definition:** **CEN-DSRC** is the 5.8 GHz dedicated short-range communication defined by the European Committee for Standardization (CEN), used mainly for toll collection. **RDS (Radio Data System)** is a technology that carries data such as traffic information on FM broadcasts, and **DAB (Digital Audio Broadcasting)** is digital radio broadcasting.
+> **Definition:** **CEN-DSRC** is the 5.8 GHz dedicated short-range communication defined by the European Committee for Standardization (CEN), used mainly for toll collection.
+
+> **Definition:** **RDS (Radio Data System)** is a technology that carries data such as traffic information on FM broadcasts.
+
+> **Definition:** **DAB (Digital Audio Broadcasting)** is digital radio broadcasting.
 
 CALM defines eight communication scenarios depending on whether an ITS station is in a vehicle or at the roadside and whether it forwards the communication of other stations.
 
@@ -792,7 +874,9 @@ CALM defines eight communication scenarios depending on whether an ITS station i
 
 *Table 26. Communication scenarios of CALM*
 
-> **Definition:** A **hop** is one transfer of a packet from one node to the next. A **single-hop** link connects two stations directly, and going through a forwarding station makes it multi-hop communication.
+> **Definition:** A **hop** is one transfer of a packet from one node to the next.
+
+> **Definition:** A **single-hop** link connects two stations directly, and going through a forwarding station makes it multi-hop communication.
 
 ### 2.3 Implementation Forms of ITS Stations
 
@@ -831,7 +915,9 @@ WG16 (communications) of ISO TC204 set up sub-working groups (SWGs) according to
 
 The communication media handled by the lower layers are divided by communication range into dedicated short range communication (DSRC), medium area communication, and wide area communication. Individual applications at the top use this structure through the application interface (application IF).
 
-> **Definition:** **Probe data** are data such as speed, position, and road surface conditions collected by treating moving vehicles as a kind of mobile sensor. **Lawful intercept** is a function that lets investigative agencies examine communication content through procedures defined by law.
+> **Definition:** **Probe data** are data such as speed, position, and road surface conditions collected by treating moving vehicles as a kind of mobile sensor.
+
+> **Definition:** **Lawful intercept** is a function that lets investigative agencies examine communication content through procedures defined by law.
 
 ### 2.5 ITS Station Reference Architecture: ISO 21217
 
@@ -984,7 +1070,9 @@ The main contents of ISO 21218 are as follows.
 
 *Table 35. Main contents of ISO 21218*
 
-> **Definition:** A **CI (communication interface)** is an instance of a communication device implementing one access technology (for example, one 5.9 GHz radio module). A **VCI (virtual communication interface)** is a logical interface created on one CI, corresponding to one unicast link with a specific peer or one broadcast link.
+> **Definition:** A **CI (communication interface)** is an instance of a communication device implementing one access technology (for example, one 5.9 GHz radio module).
+
+> **Definition:** A **VCI (virtual communication interface)** is a logical interface created on one CI, corresponding to one unicast link with a specific peer or one broadcast link.
 
 ### 2.10 Localized Message: ISO/TS 16460
 
@@ -1028,7 +1116,9 @@ LM NPDU
 
 The LM NPDU consists of a network header (N-Header), a transport header (T-Header), and a body. The first three fields of the N-Header take $4 + 1 + 3 = 8$ bits, exactly one octet, and the TPID (Transport Protocol Identifier) of the T-Header also takes $7 + 1 = 8$ bits, one octet. If an extensions flag is 1, extension fields follow; if it is 0, they are omitted. Depending on the value of the subtype or TPID, the fields needed for that feature follow, and finally the length of the user data (1-2 octets) and the user data come.
 
-> **Definition:** An **NPDU (network protocol data unit)** is the data unit exchanged by the network layer. An **octet** means 8 bits, and communication specifications use this word instead of byte.
+> **Definition:** An **NPDU (network protocol data unit)** is the data unit exchanged by the network layer.
+
+> **Definition:** An **octet** means 8 bits, and communication specifications use this word instead of byte.
 
 The subtype field selects the networking feature.
 
@@ -1085,7 +1175,9 @@ Because FNTP omits procedures such as the IP header, address resolution, and rou
 
 In Figure 41, the functions of FSAP are distributed over several entities. The FSAP manager in the management entity uses protocol stack selection (EN ISO 17423, ISO 24102-6) and station-internal management communications (ISO 24102-4), the FSAP communication handler in the facilities layer creates and interprets messages, and FSAP security support in the security entity protects the messages. Messages are delivered through FNTP (ISO 29281-1) in the networking & transport layer and ITS-M5 (ISO 21215) in the access layer. The entities are connected by the MA, MF, SF, NF, MN, and MI SAPs.
 
-> **Definition:** **Service advertisement** is a method in which a station providing a service (for example, the roadside unit of a parking lot) periodically announces which services it provides on which channel, and a station that wants to use them joins a service after seeing that information. The **ITS-AID (ITS Application Identifier)** is a number that distinguishes ITS applications and uses the same numbering system as the PSID of IEEE WAVE. The FSAM of FSAP corresponds to the WSA (WAVE Service Advertisement) of WAVE seen in Week 13.
+> **Definition:** **Service advertisement** is a method in which a station providing a service (for example, the roadside unit of a parking lot) periodically announces which services it provides on which channel, and a station that wants to use them joins a service after seeing that information.
+
+> **Definition:** The **ITS-AID (ITS Application Identifier)** is a number that distinguishes ITS applications and uses the same numbering system as the PSID of IEEE WAVE. The FSAM of FSAP corresponds to the WSA (WAVE Service Advertisement) of WAVE seen in Week 13.
 
 ### 2.12 ITS Station Management Standards: ISO 24102
 
@@ -1149,7 +1241,11 @@ ISO 24102-6 (path and flow management) defines the functions that decide which o
 
 In Figure 43, the communication profile selection and path selection functions inside the ITS-S management entity take three inputs: the ITS-S application requirements and objectives on the left (for example, tolerable latency, required data rate, and cost), the communication protocol status on the right (the link status reported by the protocols of each layer through the MF, MN, and MI SAPs), and the set of rules at the bottom (regulations and policies).
 
-> **Definition:** A **flow** is a sequence of packets of one application session with the same requirements, and a **path** is the route that packets take from the source to the destination. A **communication profile** is the combination of protocols and access technology used to send one flow (for example, FNTP over M5, or IPv6 over LTE).
+> **Definition:** A **flow** is a sequence of packets of one application session with the same requirements.
+
+> **Definition:** A **path** is the route that packets take from the source to the destination.
+
+> **Definition:** A **communication profile** is the combination of protocols and access technology used to send one flow (for example, FNTP over M5, or IPv6 over LTE).
 
 ![Figure 44. Concept of the ITS-S path and the ITS-S anchor segment](../../images/Week14_p100.png)
 
@@ -1200,7 +1296,15 @@ Regulation in Korea is led by the Ministry of Land, Infrastructure and Transport
 - **Regulations on vehicle safety assessment tests:** The basis of the New Car Assessment Program (NCAP), which assesses and publishes the safety of new cars.
 - **Enforcement rules of the Motor Vehicle Management Act:** The regulations under them on the safe operation requirements and test operation of autonomous vehicles define the criteria for temporary operation permits for autonomous vehicles.
 
-> **Definition:** The **AEBS (Advanced Emergency Braking System)** brakes by itself when it detects a collision risk, the **LDWS (Lane Departure Warning System)** warns when the vehicle leaves its lane, and the **PADS (Partially Automated Driving System)** is a partially automated driving system that takes over driving from the driver under certain conditions. The **NCAP (New Car Assessment Program)** is a program that assesses the crash safety and assistance system performance of new cars and publishes the results to consumers. A **temporary operation permit** is a permit issued by MOLIT that lets autonomous vehicles, for which safety standards do not yet exist, drive on roads for testing.
+> **Definition:** The **AEBS (Advanced Emergency Braking System)** brakes by itself when it detects a collision risk.
+
+> **Definition:** The **LDWS (Lane Departure Warning System)** warns when the vehicle leaves its lane.
+
+> **Definition:** The **PADS (Partially Automated Driving System)** is a partially automated driving system that takes over driving from the driver under certain conditions.
+
+> **Definition:** The **NCAP (New Car Assessment Program)** is a program that assesses the crash safety and assistance system performance of new cars and publishes the results to consumers.
+
+> **Definition:** A **temporary operation permit** is a permit issued by MOLIT that lets autonomous vehicles, for which safety standards do not yet exist, drive on roads for testing.
 
 The right of Figure 45 is the standards system. Companies such as Hyundai Motor, Toyota, Ford, Bosch, Continental, Verizon, Qualcomm, Hyundai Mobis, and Denso take part in developing ISO standards. Vehicle-related standards are divided between two technical committees.
 
@@ -1213,7 +1317,9 @@ The right of Figure 45 is the standards system. Companies such as Hyundai Motor,
 
 The CALM of Section 2 is a standard created by WG16 of TC204, and the CAN standard (ISO 11898) of Weeks 3 and 9 is handled by SC31 of TC22. In Korea, the Korean Standards Association under the Korean Agency for Technology and Standards of the Ministry of Trade, Industry and Energy appoints standardization coordinators and, together with the Intelligent Transport Society of Korea and the Korean Society of Automotive Engineers, runs an autonomous driving standardization forum consisting of six subcommittees. This forum establishes association standards, and testing laboratories obtain KOLAS accreditation.
 
-> **Definition:** An **association standard** is a standard agreed on by an industry association rather than a national standard. **KOLAS (Korea Laboratory Accreditation Scheme)** is Korea's accreditation scheme that recognizes the competence of testing and calibration laboratories according to international criteria.
+> **Definition:** An **association standard** is a standard agreed on by an industry association rather than a national standard.
+
+> **Definition:** **KOLAS (Korea Laboratory Accreditation Scheme)** is Korea's accreditation scheme that recognizes the competence of testing and calibration laboratories according to international criteria.
 
 ### 3.2 UN/ECE WP.29
 
@@ -1262,7 +1368,11 @@ To find and fix in advance the regulations that block the commercialization of a
 
 *Table 44. Short-term tasks of the regulatory reform roadmap for autonomous vehicles*
 
-> **Definition:** **Point cloud data** is a set of three-dimensional points measured by lidar and is the raw material for building high-definition road maps. A **regulatory sandbox** is a system that lets new technologies or services be tested for a certain period in a certain area with existing regulations waived or deferred. The **Autonomous Vehicle Act** is the short name of the Act on the Promotion and Support of Commercialization of Autonomous Vehicles.
+> **Definition:** **Point cloud data** is a set of three-dimensional points measured by lidar and is the raw material for building high-definition road maps.
+
+> **Definition:** A **regulatory sandbox** is a system that lets new technologies or services be tested for a certain period in a certain area with existing regulations waived or deferred.
+
+> **Definition:** The **Autonomous Vehicle Act** is the short name of the Act on the Promotion and Support of Commercialization of Autonomous Vehicles.
 
 Task 5 of Table 44 is directly tied to the security of C-ITS communication. For a vehicle that receives a V2X message to trust it and brake, it must be able to verify that the vehicle or roadside unit that sent the message is a legitimate participant holding a valid certificate.
 
@@ -1274,7 +1384,9 @@ Short-term task 1 is to allow over-the-air updates of vehicle software.
 - **Improvement:** Electronic control units and the like can be updated or maintained by OTA without visiting a repair shop. OTA is excluded from the scope of the maintenance business (by 2022).
 - **Effect:** Using OTA increases user convenience and strengthens the vehicle safety management system.
 
-> **Definition:** **OTA (over-the-air)** is a technology that remotely sends a device's software, firmware, and settings over wireless communication to update them. **Firmware** is low-level software embedded in hardware such as an ECU that directly controls the device.
+> **Definition:** **OTA (over-the-air)** is a technology that remotely sends a device's software, firmware, and settings over wireless communication to update them.
+
+> **Definition:** **Firmware** is low-level software embedded in hardware such as an ECU that directly controls the device.
 
 ![Figure 46. Flow of an OTA update](../../images/Week14_p105.png)
 
@@ -1410,7 +1522,9 @@ The middle of Figure 49 is the **SUMS (Software Update Management System)**, whi
 
 An update that has passed these checks is managed with the RXSWIN, and campaign management on the right (orchestration, deployment, monitoring, reporting, error management) deploys it to vehicles through a cloud broker. This requires supporting systems such as code documentation, source code management, a software homologation center, the cyber security management system (CSMS), a digital twin, and a campaign monitoring and deployment system, and software update governance at the top controls the whole.
 
-> **Definition:** The **RXSWIN (R X Software Identification Number)** is a number that identifies the vehicle software relevant to type approval under UN Regulation X. When an update changes software relevant to type approval, the RXSWIN changes too, so authorities and manufacturers use this number to track whether a vehicle is in an approved state. A **digital twin** is a virtual model that replicates the hardware and software configuration of a real vehicle and is used to test an update before sending it to real vehicles.
+> **Definition:** The **RXSWIN (R X Software Identification Number)** is a number that identifies the vehicle software relevant to type approval under UN Regulation X. When an update changes software relevant to type approval, the RXSWIN changes too, so authorities and manufacturers use this number to track whether a vehicle is in an approved state.
+
+> **Definition:** A **digital twin** is a virtual model that replicates the hardware and software configuration of a real vehicle and is used to test an update before sending it to real vehicles.
 
 ![Figure 50. SUMS and CSMS of UN R156](../../images/Week14_p111.png)
 
@@ -1433,7 +1547,13 @@ Around 2015, the U.S. Department of Transportation presented the following sched
 
 *Table 48. Connected vehicle milestones of the United States (2015 plan)*
 
-> **Definition:** An **ANPRM (advance notice of proposed rulemaking)** is a preliminary notice that seeks opinions before a rule is made, and an **NPRM (notice of proposed rulemaking)** announces a concrete proposed rule. **NHTSA** is the U.S. National Highway Traffic Safety Administration, and **FHWA** is the U.S. Federal Highway Administration.
+> **Definition:** An **ANPRM (advance notice of proposed rulemaking)** is a preliminary notice that seeks opinions before a rule is made.
+
+> **Definition:** An **NPRM (notice of proposed rulemaking)** announces a concrete proposed rule.
+
+> **Definition:** **NHTSA** is the U.S. National Highway Traffic Safety Administration.
+
+> **Definition:** **FHWA** is the U.S. Federal Highway Administration.
 
 However, this plan was not realized. Citing the emergence of new V2V communication methods and the change in the 5.9 GHz rules by the U.S. Federal Communications Commission (FCC), NHTSA formally withdrew the proposed V2V mandate in November 2023 [43].
 

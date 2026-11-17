@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-04
+> **Last Updated:** 2026-11-17
 
 > **Learning Objectives:**
 > 1. Convert between binary and hexadecimal, and distinguish bit order (MSB first, LSB first) from byte order (little endian, big endian)
@@ -68,7 +68,9 @@ This part revisits CAN, covered in Week 3 and Week 9, from the viewpoint needed 
 
 ### 1.1 Features of CAN
 
-> **Definition:** **CAN (Controller Area Network)** is a serial bus communication protocol created by Bosch to connect the electronic control units in a vehicle, and it is internationally standardized as ISO 11898. An **ECU (electronic control unit)** is a microcontroller-based controller that takes charge of one vehicle function by reading sensor values and controlling actuators (Week 3).
+> **Definition:** **CAN (Controller Area Network)** is a serial bus communication protocol created by Bosch to connect the electronic control units in a vehicle, and it is internationally standardized as ISO 11898.
+
+> **Definition:** An **ECU (electronic control unit)** is a microcontroller-based controller that takes charge of one vehicle function by reading sensor values and controlling actuators (Week 3).
 
 As vehicles became more electronic, an ECU appeared for each function such as the engine, transmission, brakes, steering, and body, and their number grew greatly. Conventional **point-to-point connection** runs a separate wire for every pair of ECUs that must communicate. If $n$ ECUs are all connected to each other, the number of links is $n(n-1)/2$, which is 45 for 10 ECUs and 1,225 for 50 ECUs, so it grows in proportion to the square of the number of ECUs. To solve this problem, a network with a **bus topology**, in which several nodes share one transmission medium, became necessary, and CAN is the representative one.
 
@@ -150,9 +152,13 @@ The CAN specification defines only the physical layer and the data link layer of
 
 ### 1.3 Encoding Information: Binary, Hexadecimal, Bits, and Bytes
 
-> **Definition:** **Binary** represents a number by a sequence of the two digits (states) 0 and 1, and the weight of the $k$-th position from the right (counting from 0) is $2^k$. **Hexadecimal** represents a number with the 16 digits 0-9 and a-f (a is 10, f is 15), and the weight of each position is $16^k$.
+> **Definition:** **Binary** represents a number by a sequence of the two digits (states) 0 and 1, and the weight of the $k$-th position from the right (counting from 0) is $2^k$.
 
-> **Definition:** A **bit** is the smallest unit of information, representing one 0 or 1 in binary. A **byte** is 8 bits and represents $2^8 = 256$ states, that is, values 0-255.
+> **Definition:** **Hexadecimal** represents a number with the 16 digits 0-9 and a-f (a is 10, f is 15), and the weight of each position is $16^k$.
+
+> **Definition:** A **bit** is the smallest unit of information, representing one 0 or 1 in binary.
+
+> **Definition:** A **byte** is 8 bits and represents $2^8 = 256$ states, that is, values 0-255.
 
 To convert the decimal number 220 to binary, write 220 as a sum of powers of 2. Since $220 = 128 + 64 + 16 + 8 + 4$, the result is as follows.
 
@@ -179,7 +185,9 @@ A byte of all 1s is $`11111111_2 = 255 = \text{FF}_{16}`$. A byte represents 256
 
 ### 1.4 Bit Order and Byte Order
 
-> **Definition:** The **most significant bit (MSB)** is the leftmost position of a bit string written in binary, the bit with the largest weight. The **least significant bit (LSB)** is the rightmost position, the bit with weight $2^0$.
+> **Definition:** The **most significant bit (MSB)** is the leftmost position of a bit string written in binary, the bit with the largest weight.
+
+> **Definition:** The **least significant bit (LSB)** is the rightmost position, the bit with weight $2^0$.
 
 When storing or transmitting a bit string, one must decide which end to handle first. Listing 220 from the MSB gives 1 1 0 1 1 1 0 0, and listing it from the LSB reverses the order to 0 0 1 1 1 0 1 1.
 
@@ -198,7 +206,11 @@ LSB first :  0 0 1 1 1 0 1 1
 
 In communication, the end from which the bits of a byte are sent is called the **bit order**. UART sends the LSB first (Sections 1.6 and 3.2), and CAN sends the identifier and each data byte MSB first (Section 3.4) [1]. Because the receiver reassembles the bits in the same order, the value itself does not change.
 
-> **Definition:** **Endianness** is the **byte order** in which a value of two or more bytes is placed in memory or in a message. **Little endian** places the least significant byte first (at the lower address or earlier in the message), and **big endian** places the most significant byte first.
+> **Definition:** **Endianness** is the byte order in which a value of two or more bytes is placed in memory or in a message.
+
+> **Definition:** **Little endian** places the least significant byte first (at the lower address or earlier in the message).
+
+> **Definition:** **Big endian** places the most significant byte first.
 
 ```text
 16-bit value 0x43A1 (= 17313)
@@ -240,7 +252,7 @@ The various ways of representing 0 and 1 as voltages (NRZ, Manchester codes, and
 
 ### 1.6 UART
 
-> **Definition:** **UART (Universal Asynchronous Receiver/Transmitter)** is a simple serial communication method that sends data one bit at a time between two devices, or the circuit that implements it. It is **asynchronous**, with no separate clock line, so the transmitter and receiver agree on the same communication speed in advance.
+> **Definition:** **UART (Universal Asynchronous Receiver/Transmitter)** is a simple serial communication method that sends data one bit at a time between two devices, or the circuit that implements it. It is asynchronous, with no separate clock line, so the transmitter and receiver agree on the same communication speed in advance.
 
 UART represents signal 0 as 0 V and signal 1 as the circuit's supply voltage, 5 V (or 3.3 V). The frame that sends one byte is as follows.
 
@@ -269,7 +281,9 @@ In the upper part of Figure 6, the receiver starts its clock at the falling edge
 
 ### 1.7 Communication Speed and Communication Distance
 
-> **Definition:** The **baud rate** is the number of pulses (signal elements, symbols) that can be sent per second, that is, the number of times per second the signal level can change, in baud. The **bit rate** is the number of bits that can be sent per second, in bps (bit/s). The bit rate is the same as the data rate in Week 4.
+> **Definition:** The **baud rate** is the number of pulses (signal elements, symbols) that can be sent per second, that is, the number of times per second the signal level can change, in baud.
+
+> **Definition:** The **bit rate** is the number of bits that can be sent per second, in bps (bit/s). The bit rate is the same as the data rate in Week 4.
 
 ![Figure 7. Bit rates that differ with the number of signal levels at the same baud rate](../../images/Week10_p18.png)
 
@@ -740,7 +754,9 @@ A termination resistor is made by connecting a 120 Ω resistor between the CAN_H
 
 Receiving CAN signals as they are shows the identifiers and data bytes only in hexadecimal, so it is hard to tell which byte contains which information. The CAN database solves this.
 
-> **Definition:** A **CAN DB (CAN database)** is a database that organizes, for each identifier, the information a data frame carries (message name, position and length of each signal, conversion method, unit, and so on). A **DBC file (CAN dbc file)** is the CAN database file format created by Vector, used as a de facto industry standard.
+> **Definition:** A **CAN DB (CAN database)** is a database that organizes, for each identifier, the information a data frame carries (message name, position and length of each signal, conversion method, unit, and so on).
+
+> **Definition:** A **DBC file (CAN dbc file)** is the CAN database file format created by Vector, used as a de facto industry standard.
 
 Each vehicle can have a different CAN database, and because that information is an asset of the manufacturer, it is generally not published.
 
@@ -767,7 +783,9 @@ BO_ 769 vehicle_status2: 8 Vector__XXX
 
 ### 2.9 Messages and Signals
 
-> **Definition:** A **message** is one data frame with a unique identifier in CAN communication. A **signal** is an individual piece of information to be sent over CAN (speed, acceleration, switch state, and so on), and one message can contain several signals.
+> **Definition:** A **message** is one data frame with a unique identifier in CAN communication.
+
+> **Definition:** A **signal** is an individual piece of information to be sent over CAN (speed, acceleration, switch state, and so on), and one message can contain several signals.
 
 ![Figure 29. Signal list and layout of the message Acceleration_Info1 in a CAN database editor](../../images/Week10_p56.png)
 
@@ -796,7 +814,9 @@ Signals named Reserved are positions not used now and kept for later functions. 
 
 A CAN data frame can send at most 8 bytes, so the data it can carry is limited. Real values are therefore not sent as they are but converted to integers with a **factor** and an **offset**, which lets one frame carry more signals and increases network efficiency.
 
-> **Definition:** The integer carried on the bus is called the **raw value**, and the value with an actual unit is called the **physical value**. The two are converted by the following linear function.
+> **Definition:** The integer carried on the bus is called the **raw value**.
+
+> **Definition:** The value with an actual unit is called the **physical value**. The raw value and the physical value are converted by the following linear function.
 
 ```math
 \text{Physical value} = \text{Raw value} \times \text{Factor} + \text{Offset}, \qquad \text{Raw value} = \frac{\text{Physical value} - \text{Offset}}{\text{Factor}}

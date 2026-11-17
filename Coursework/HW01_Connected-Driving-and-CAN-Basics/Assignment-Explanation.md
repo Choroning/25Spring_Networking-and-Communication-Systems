@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Assignment-Explanation.md) | [한국어](Assignment-Explanation.ko.md)
 
-> **Last Updated:** 2026-11-16
+> **Last Updated:** 2026-11-17
 
 > **Learning Objectives:**
 > 1. Explain why autonomous vehicles must evolve into connected automated driving with V2X communication, and its uses for safety and convenience
@@ -78,7 +78,9 @@ Coursework/HW01_Connected-Driving-and-CAN-Basics/
 
 **Question 1.2** Then explain the uses of connected automated driving with safety and convenience in mind.
 
-> **Definition:** **V2X (vehicle to everything)** collectively refers to wireless communication in which a vehicle exchanges information with other vehicles (V2V), road infrastructure (V2I), pedestrians (V2P), and networks (V2N). **Connected automated driving** is a way of driving in which an autonomous vehicle adds information received over V2X to the information from its own sensors when it decides and drives, and when it cooperates with C-ITS (cooperative intelligent transport systems) infrastructure it is also called **cooperative automated driving**.
+> **Definition:** **V2X (vehicle to everything)** collectively refers to wireless communication in which a vehicle exchanges information with other vehicles (V2V), road infrastructure (V2I), pedestrians (V2P), and networks (V2N).
+
+> **Definition:** **Connected automated driving** is a way of driving in which an autonomous vehicle adds information received over V2X to the information from its own sensors when it decides and drives, and when it cooperates with C-ITS (cooperative intelligent transport systems) infrastructure it is also called cooperative automated driving.
 
 ### 2.1 Why V2X Communication Is Needed
 
@@ -178,7 +180,13 @@ The map/positioning module uses Ethernet for the same reason. A precision map ho
 
 The driving automation levels are defined by SAE J3016 [2], which separates the levels by who performs the work needed for driving. The key keywords are the following four.
 
-> **Definition:** The **DDT (dynamic driving task)** is all of the real-time operational and tactical functions needed to operate a vehicle on the road. It consists of sustained **lateral (steering) and longitudinal (acceleration and deceleration) vehicle motion control** and **OEDR (object and event detection and response)**, that is, monitoring the surroundings and responding to situations. The **DDT fallback** is the work of taking over driving or bringing the vehicle to a **minimal risk condition (MRC)** when a system failure or a departure from the operating conditions occurs. The **ODD (operational design domain)** is the set of conditions under which the system is designed to work (road type, speed range, weather, time of day, and so on).
+> **Definition:** The **DDT (dynamic driving task)** is all of the real-time operational and tactical functions needed to operate a vehicle on the road. It consists of sustained lateral (steering) and longitudinal (acceleration and deceleration) vehicle motion control and OEDR.
+
+> **Definition:** **OEDR (object and event detection and response)** is the part of the DDT that monitors the surroundings and responds to situations.
+
+> **Definition:** The **DDT fallback** is the work of taking over driving or bringing the vehicle to a minimal risk condition (MRC) when a system failure or a departure from the operating conditions occurs.
+
+> **Definition:** The **ODD (operational design domain)** is the set of conditions under which the system is designed to work (road type, speed range, weather, time of day, and so on).
 
 These criteria are also expressed intuitively through the hands (steering), feet (acceleration and braking), and eyes (monitoring the surroundings) as hands-off, feet-off, and eyes-off (Week 2). As the level rises, the driver's work passes to the system in the order of first hands or feet, then both, and finally the eyes, and levels 4 and 5 no longer assume any human response to a request to take over.
 

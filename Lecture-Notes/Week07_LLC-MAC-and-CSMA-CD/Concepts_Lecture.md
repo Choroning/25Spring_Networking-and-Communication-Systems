@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-04
+> **Last Updated:** 2026-11-17
 
 > **Learning Objectives:**
 > 1. Explain why the IEEE 802 reference model divides the OSI data link layer into LLC and MAC, and describe the functions of each sublayer
@@ -79,7 +79,9 @@ The left side of Figure 1 is the seven-layer OSI model and the right side is the
 
 The reason for splitting the data link layer in two lies in the nature of LANs. Traditional data link protocols (such as HDLC) assume a point-to-point link in which two devices are connected by a dedicated line. In a LAN, several stations share one transmission medium, so an additional function is needed to decide who may use the medium and when. Because this medium-sharing function differs with the topology and the transmission medium, it is separated out as MAC, while the link control functions that do not depend on the medium are made common in LLC. The same LLC can then run on top of many kinds of MAC.
 
-> **Definition:** A **station** is a device (a computer, a controller, and so on) attached to a LAN that sends and receives frames. A **transmission medium** is the physical path over which signals travel (coaxial cable, twisted pair, optical fiber, or radio).
+> **Definition:** A **station** is a device (a computer, a controller, and so on) attached to a LAN that sends and receives frames.
+
+> **Definition:** A **transmission medium** is the physical path over which signals travel (coaxial cable, twisted pair, optical fiber, or radio).
 
 ### 1.2 The Three Layers of the Reference Model
 
@@ -91,7 +93,9 @@ The reason for splitting the data link layer in two lies in the nature of LANs. 
 
 *Table 1. Functions of each layer of the IEEE 802 reference model*
 
-> **Definition:** A **service access point (SAP)** is a logical point at which a layer provides services to the layer immediately above it. The SAP of LLC is called an **LSAP (LLC service access point)**, and it serves as a number that distinguishes the several higher-layer processes using LLC within one station.
+> **Definition:** A **service access point (SAP)** is a logical point at which a layer provides services to the layer immediately above it.
+
+> **Definition:** The SAP of LLC is called an **LSAP (LLC service access point)**, and it serves as a number that distinguishes the several higher-layer processes using LLC within one station.
 
 ### 1.3 Principles of LLC
 
@@ -340,7 +344,9 @@ CSMA/CD was developed for use in commercial networks such as offices and in indu
 
 *Table 7. Composition of the name CSMA/CD*
 
-> **Definition:** A **carrier** originally means the reference signal that carries information; here it refers to the presence of any transmitted signal on the medium. A **collision** is the state in which two or more stations transmit at the same time and their signals overlap so that a receiver cannot read either correctly.
+> **Definition:** A **carrier** originally means the reference signal that carries information; here it refers to the presence of any transmitted signal on the medium.
+
+> **Definition:** A **collision** is the state in which two or more stations transmit at the same time and their signals overlap so that a receiver cannot read either correctly.
 
 CSMA/CD did not appear all at once; it was refined through ALOHA and CSMA. The following sections trace this development in order.
 
@@ -379,7 +385,9 @@ Techniques similar to CSMA/CD are called **random access** or **contention** tec
 
 ### 2.3 CSMA
 
-> **Definition:** **CSMA (carrier sense multiple access)** is a contention method in which a station listens to the medium before sending. This principle is called **listen before talk (LBT)**.
+> **Definition:** **CSMA (carrier sense multiple access)** is a contention method in which a station listens to the medium before sending.
+
+> **Definition:** This principle is called **listen before talk (LBT)**.
 
 CSMA operates as follows.
 
@@ -497,7 +505,9 @@ flowchart TD
 
 ### 2.6 Collision Detection Time on a Baseband Bus
 
-> **Definition:** **Baseband** transmission puts a digital signal on the medium as it is, without modulation, and the signal spreads in both directions along the bus. **Broadband** transmission modulates the signal onto a carrier and places it in a particular frequency band (Week 6).
+> **Definition:** **Baseband** transmission puts a digital signal on the medium as it is, without modulation, and the signal spreads in both directions along the bus.
+
+> **Definition:** **Broadband** transmission modulates the signal onto a carrier and places it in a particular frequency band (Week 6).
 
 The time needed to detect a collision is longest when the two stations are farthest apart. Consider A and D at the two ends of the bus, and let $\tau$ be the end-to-end propagation delay of the bus.
 
@@ -548,7 +558,9 @@ In the worst case, collision detection therefore takes **four times the end-to-e
 - When traffic is heavy, the 1-persistent method causes frequent collisions, but in CSMA/CD collisions are detected at once and the transmissions are aborted, so little time is wasted.
 - **Random backoff** keeps the stations involved in the previous collision from colliding again.
 
-> **Definition:** **Backoff** is the random time a station that suffered a collision waits before sending again. **Binary exponential backoff** doubles the range from which the waiting time is chosen each time the collisions repeat.
+> **Definition:** **Backoff** is the random time a station that suffered a collision waits before sending again.
+
+> **Definition:** **Binary exponential backoff** doubles the range from which the waiting time is chosen each time the collisions repeat.
 
 The binary exponential backoff of Ethernet and IEEE 802.3 works as follows [6].
 
@@ -713,7 +725,9 @@ LAN switches and traditional bridges are both layer 2 devices, but they differ i
 - **Concurrent processing:** A bridge processes one frame at a time, whereas a switch processes several frames simultaneously between several ports.
 - **Forwarding method:** A bridge performs only store-and-forward, whereas a switch can use both store-and-forward and cut-through.
 
-> **Definition:** **Store-and-forward** receives the entire frame, checks it for errors with the FCS, and only then sends it out. **Cut-through** reads only the leading part of the frame, that is, the destination address, and starts sending it out immediately. Cut-through has a shorter delay but can forward frames that contain errors.
+> **Definition:** **Store-and-forward** receives the entire frame, checks it for errors with the FCS, and only then sends it out.
+
+> **Definition:** **Cut-through** reads only the leading part of the frame, that is, the destination address, and starts sending it out immediately. Cut-through has a shorter delay but can forward frames that contain errors.
 
 ![Figure 15. An example arrangement of networking devices](../../images/Week07_p63.png)
 
@@ -723,7 +737,9 @@ In Figure 15, the LAN switch and the hub gather several stations at one point, a
 
 ### 3.5 Principle of CRC
 
-> **Definition:** The **FCS (frame check sequence)** is a field placed at the end of a frame so that the receiver can detect errors. The **CRC (cyclic redundancy check)** is the most common method for generating the FCS, and the FCS field contains the bit string produced by the CRC technique.
+> **Definition:** The **FCS (frame check sequence)** is a field placed at the end of a frame so that the receiver can detect errors.
+
+> **Definition:** The **CRC (cyclic redundancy check)** is the most common method for generating the FCS, and the FCS field contains the bit string produced by the CRC technique.
 
 CRC treats bit strings as polynomials. Each bit of a $k$-bit string is regarded as a coefficient of a polynomial, with the leftmost bit as the coefficient of $x^{k-1}$ and the rightmost bit as the coefficient of $x^0$. For example, the bit string 110011 is the following polynomial.
 

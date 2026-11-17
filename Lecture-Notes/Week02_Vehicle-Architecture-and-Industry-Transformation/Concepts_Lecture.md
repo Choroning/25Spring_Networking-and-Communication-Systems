@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-04
+> **Last Updated:** 2026-11-17
 
 > **Learning Objectives:**
 > 1. Define the SAE levels of driving automation with the concepts of DDT, OEDR, ODD, and fallback, and distinguish Levels 2, 3, and 4 by the degree of driver involvement
@@ -113,7 +113,13 @@ At Level 3, when the system issues a request to intervene, the person in the dri
 
 SAE J3016 defines the levels with the following terms [1].
 
-> **Definition:** The **DDT (dynamic driving task)** is all of the real-time operational and tactical functions required to operate a vehicle on the road, excluding strategic functions such as trip planning. **OEDR (object and event detection and response)** is the subtask of the DDT that monitors surrounding objects and events and responds appropriately. The **DDT fallback** is the response that takes over the DDT or reaches an MRC when the system fails or leaves its ODD. The **DDT fallback-ready user** is the person who must be ready to respond to a request to intervene at Level 3.
+> **Definition:** The **DDT (dynamic driving task)** is all of the real-time operational and tactical functions required to operate a vehicle on the road, excluding strategic functions such as trip planning.
+
+> **Definition:** **OEDR (object and event detection and response)** is the subtask of the DDT that monitors surrounding objects and events and responds appropriately.
+
+> **Definition:** The **DDT fallback** is the response that takes over the DDT or reaches an MRC when the system fails or leaves its ODD.
+
+> **Definition:** The **DDT fallback-ready user** is the person who must be ready to respond to a request to intervene at Level 3.
 
 <table>
 <tr><th rowspan="2">Category</th><th rowspan="2">Level</th><th rowspan="2">Name</th><th rowspan="2">Narrative Definition</th><th colspan="2">DDT</th><th rowspan="2">DDT Fallback</th><th rowspan="2">ODD</th></tr>
@@ -151,7 +157,11 @@ As the level rises, the system takes on more work, so the number and variety of 
 
 *Table 3. Outlook of the average number of sensors by level of automation*
 
-> **Definition:** **Radar** is a sensor that emits radio waves to measure the distance and relative speed of objects. **μbolo** is short for microbolometer and refers to a thermal camera or infrared sensor for night vision. **Dead reckoning** is a method of estimating the current position by accumulating the distance and direction traveled from wheel speeds and inertial sensors. A value written with a slash, such as "2/3" in the table, means two or three.
+> **Definition:** **Radar** is a sensor that emits radio waves to measure the distance and relative speed of objects.
+
+> **Definition:** **μbolo** is short for microbolometer and refers to a thermal camera or infrared sensor for night vision.
+
+> **Definition:** **Dead reckoning** is a method of estimating the current position by accumulating the distance and direction traveled from wheel speeds and inertial sensors. A value written with a slash, such as "2/3" in the table, means two or three.
 
 Level 1 uses about 7 sensors, but Level 5 uses about 30, more than four times as many. In particular, LiDAR, surround cameras, and dead reckoning are added from Level 3, because from Level 3 the system takes on OEDR and must monitor all of its surroundings by itself. As sensors increase, the bandwidth demanded of the in-vehicle network that gathers sensor data also grows.
 
@@ -170,9 +180,11 @@ Frost & Sullivan divided autonomous vehicles into six platforms and summarized t
 
 *Table 4. Evolution roadmap of autonomous vehicle platforms*
 
-> **Definition:** **Deterministic software** always produces the same output for the same input within a fixed time. Learning-based AI recognizes well but its behavior is hard to predict fully, so deterministic software is used alongside it for functions with strict time constraints such as braking. **Redundancy** is a design that provides two or more parts or paths with the same role so that the function continues even if one fails.
+> **Definition:** **Deterministic software** always produces the same output for the same input within a fixed time. Learning-based AI recognizes well but its behavior is hard to predict fully, so deterministic software is used alongside it for functions with strict time constraints such as braking.
 
-The E/E row of Table 4 relates directly to this course. A structure that used separate ECUs and protocols for each function changes, through the consolidation of ECUs and protocols (CAN FD, Ethernet), into a structure centered on domain controllers. This change is revisited in Section 1.9.
+> **Definition:** **Redundancy** is a design that provides two or more parts or paths with the same role so that the function continues even if one fails.
+
+The E/E row of Table 4 relates directly to vehicle communication. A structure that used separate ECUs and protocols for each function changes, through the consolidation of ECUs and protocols (CAN FD, Ethernet), into a structure centered on domain controllers. This change is revisited in Section 1.9.
 
 ### 1.6 Business Sectors of the Autonomous Vehicle Ecosystem
 
@@ -221,7 +233,9 @@ In Table 6, some companies such as Tesla and Waymo span several areas, while Int
 2. It announced an investment of 110 trillion won to build two new semiconductor fabs in Europe that would mainly produce automotive chips. In September 2021, Intel CEO Pat Gelsinger forecast that semiconductors would grow from 4% of the bill of materials of a premium vehicle in 2019 to 12% in 2025 and 20% in 2030 [8]. Intel promotes an automated driving platform that spans the data center, 5G, HMI, and in-vehicle computing.
 3. In February 2022 it formed a group dedicated to automotive within Intel Foundry Services (IFS). The group is responsible for the Open Central Compute Architecture, a computing platform on which automakers can build next-generation solutions; the Automotive-Grade Foundry Platform, manufacturing technology that satisfies automotive applications and customer requirements; and Transition to Advanced Technologies, providing design services and IP to help automakers move to advanced process and packaging technologies.
 
-> **Definition:** An **AP (application processor)** is a high-performance processor that runs an operating system and complex applications, and a **foundry** is a business that manufactures semiconductors designed by other companies on commission.
+> **Definition:** An **AP (application processor)** is a high-performance processor that runs an operating system and complex applications.
+
+> **Definition:** A **foundry** is a business that manufactures semiconductors designed by other companies on commission.
 
 ### 1.8 Comparing the Scale of Big Tech and Automakers
 
@@ -248,7 +262,9 @@ By contrast, Korean parts suppliers have low profitability. The revenue of 110 K
 
 ### 1.9 E/E Architecture and the SDV
 
-> **Definition:** The **E/E (electrical/electronic) architecture** is the overall structure that determines how a vehicle's ECUs, sensors, actuators, wiring, communication networks, and power supply are placed and connected. An **MCU (microcontroller unit)** is a low-cost control chip that contains a processor, memory, and I/O on one chip.
+> **Definition:** The **E/E (electrical/electronic) architecture** is the overall structure that determines how a vehicle's ECUs, sensors, actuators, wiring, communication networks, and power supply are placed and connected.
+
+> **Definition:** An **MCU (microcontroller unit)** is a low-cost control chip that contains a processor, memory, and I/O on one chip.
 
 The E/E architecture of the vehicle is evolving toward the **software-defined vehicle (SDV)**. As in Figure 3, the change can be divided into three stages.
 
@@ -266,7 +282,11 @@ The E/E architecture of the vehicle is evolving toward the **software-defined ve
 
 As in Figure 4, the transition to the SDV is a change from a system of about 100 low-cost, low-speed MCUs to a system of 3-5 high-performance APs. The software stack on the left stacks firmware (an operating system or RTOS, drivers, HAL, libraries, middleware, and the application layer) and a user interface on top of the hardware, and the right is the OSI reference model, which divides communication functions into seven layers. Because a high-performance AP handles many functions on one chip, the software on it must likewise be designed in layers to manage the complexity. The OSI model is covered in detail in Week 5.
 
-> **Definition:** An **RTOS (real-time operating system)** guarantees that tasks finish within fixed time limits, and a **HAL (hardware abstraction layer)** hides hardware differences so that the software above depends less on the hardware. **Middleware** is software between the operating system and applications that provides common functions such as communication and data management.
+> **Definition:** An **RTOS (real-time operating system)** guarantees that tasks finish within fixed time limits.
+
+> **Definition:** A **HAL (hardware abstraction layer)** hides hardware differences so that the software above depends less on the hardware.
+
+> **Definition:** **Middleware** is software between the operating system and applications that provides common functions such as communication and data management.
 
 A change in E/E architecture is in fact a change in the supply structure.
 
@@ -319,7 +339,13 @@ The project develops automated driving components and systems for large buses an
 
 A **demand-company technical committee** of ten automakers and tier-1 suppliers, Hyundai Motor, Hyundai Mobis, Mando, Zyle Daewoo Bus, Tata Daewoo, Edison Motors, Songgwa Motors, Woojin Industrial Systems, Master Electric Vehicle, and Kwanglim, took part in the project and reviewed the development results.
 
-> **Definition:** An **SSVM (smart surround view monitoring)** system combines images from several cameras around the vehicle into a top-down view. An **HMI (human-machine interface)** is the display and controls through which the driver and the system exchange information. An **ADR** is a device that records driving data including camera video, and the **HAV-DCU** is the integrated controller (domain control unit) responsible for perception and decision-making in a highly automated vehicle.
+> **Definition:** An **SSVM (smart surround view monitoring)** system combines images from several cameras around the vehicle into a top-down view.
+
+> **Definition:** An **HMI (human-machine interface)** is the display and controls through which the driver and the system exchange information.
+
+> **Definition:** An **ADR** is a device that records driving data including camera video.
+
+> **Definition:** The **HAV-DCU** is the integrated controller (domain control unit) responsible for perception and decision-making in a highly automated vehicle.
 
 The developed parts and systems were verified in the following order.
 
@@ -344,7 +370,9 @@ Starting from testing each part on its own, the verification checks the function
 
 *Table 9. Automated driving parts and applications for passenger cars and heavy vehicles*
 
-> **Definition:** **Platooning** is a driving mode in which several trucks travel in a line at short gaps, coordinating acceleration and braking through V2V communication. **Multimodal public transport** is public transport that links several modes such as buses, rail, and shared vehicles.
+> **Definition:** **Platooning** is a driving mode in which several trucks travel in a line at short gaps, coordinating acceleration and braking through V2V communication.
+
+> **Definition:** **Multimodal public transport** is public transport that links several modes such as buses, rail, and shared vehicles.
 
 ### 2.3 Main Parts
 
@@ -418,7 +446,13 @@ Figure 9 distinguishes the types of network by line color. Blue is CAN, green is
 
 *Table 11. Components of the large-bus network topology*
 
-> **Definition:** **BroadR-Reach** is an automotive Ethernet technology that transmits 100 Mbit/s over a single twisted pair and was standardized as IEEE 802.3bw (100BASE-T1) [11]. **HVI (human-vehicle interface)** is used with the same meaning as HMI, and an **OBU (on-board unit)** is the in-vehicle device responsible for V2X communication. A **BIS (bus information system)** shows bus operation information to passengers.
+> **Definition:** **BroadR-Reach** is an automotive Ethernet technology that transmits 100 Mbit/s over a single twisted pair and was standardized as IEEE 802.3bw (100BASE-T1) [11].
+
+> **Definition:** **HVI (human-vehicle interface)** is used with the same meaning as HMI.
+
+> **Definition:** An **OBU (on-board unit)** is the in-vehicle device responsible for V2X communication.
+
+> **Definition:** A **BIS (bus information system)** shows bus operation information to passengers.
 
 In Figure 9 the HAV-DCU has two processing blocks attached, ASN.1 and ADASIS. **ASN.1 (Abstract Syntax Notation One)** is a notation for defining and encoding the structure of V2X messages, and the V2X messages of SAE J2735 are encoded in this way [12]. **ADASIS (ADAS Interface Specification)** is a standard interface that delivers map data to ADAS controllers in the form of information about the road ahead of the vehicle (the electronic horizon) [13]. In other words, the HAV-DCU interprets messages received over V2X and map information and uses them for decisions. V2X messages are covered in Week 11.
 
@@ -484,7 +518,9 @@ flowchart LR
 
 *Table 12. Components of the large-bus automated driving software*
 
-> **Definition:** **RTI (request to intervene)** is the SAE J3016 request by which a Level 3 system tells the fallback-ready user to take over driving. It is different from the RTI (road traffic information) in the Volvo case of Section 3.8. **Euler angles** represent the attitude of an object by three angles, roll, pitch, and yaw.
+> **Definition:** **RTI (request to intervene)** is the SAE J3016 request by which a Level 3 system tells the fallback-ready user to take over driving. It is different from the RTI (road traffic information) in the Volvo case of Section 3.8.
+
+> **Definition:** **Euler angles** represent the attitude of an object by three angles, roll, pitch, and yaw.
 
 This structure follows the typical flow of automated driving software from perception through decision-making to control. Each component can run on a different ECU or process, so the data flows between components become the requirements of the network design (Section 2.7).
 
@@ -574,7 +610,13 @@ flowchart TB
 
 In Figure 17, the display, remote control, MMI head unit, test module, CD changer, mobile telephone, traffic information receiver (TMC), navigation, and digital radio (DAB) are all connected to a single CAN bus with two wires. Adding a new device also requires only connecting two wires to the bus.
 
-> **Definition:** **Serial communication** sends data one bit at a time over one line, and **parallel communication** sends several bits simultaneously over several lines. Serial communication uses fewer wires and suits environments such as vehicles where wiring must be reduced. **TMC (Traffic Message Channel)** is a service that carries traffic information on FM radio signals, and **DAB (Digital Audio Broadcasting)** is digital radio broadcasting.
+> **Definition:** **Serial communication** sends data one bit at a time over one line. Serial communication uses fewer wires and suits environments such as vehicles where wiring must be reduced.
+
+> **Definition:** **Parallel communication** sends several bits simultaneously over several lines.
+
+> **Definition:** **TMC (Traffic Message Channel)** is a service that carries traffic information on FM radio signals.
+
+> **Definition:** **DAB (Digital Audio Broadcasting)** is digital radio broadcasting.
 
 ### 3.4 Evolution of Network Methods
 
@@ -741,7 +783,9 @@ KATECH is a research institute established jointly by the government and industr
 
 There are four regional divisions: Daegyeong, Gwangju, Jeonnam, and Dongnam. The Cheonan headquarters consists of 14 research buildings, 3 support and auxiliary buildings, and a test track 1 km long and 30 m wide, with a total area of about 250,000 m² (75,600 pyeong). The research buildings include an environmental research building, comprehensive research buildings, an autonomous driving test building, a complex vibration laboratory, a reliability laboratory, a collision avoidance system research building, a vibration test building, electromagnetic compatibility test buildings, and an exhaust gas and engine research building.
 
-> **Definition:** **ODA (official development assistance)** is aid that governments of developed countries provide for the development of developing countries. **Root technologies** are process technologies underlying manufacturing, such as casting, molding, welding, and heat treatment.
+> **Definition:** **ODA (official development assistance)** is aid that governments of developed countries provide for the development of developing countries.
+
+> **Definition:** **Root technologies** are process technologies underlying manufacturing, such as casting, molding, welding, and heat treatment.
 
 ### 4.3 Main Roles and Organization
 
@@ -807,7 +851,9 @@ The institute has more than 1,500 kinds of modern equipment for technology devel
 
 *Table 21. Representative equipment of KATECH by field*
 
-> **Definition:** A **dynamometer** is test equipment that rotates a motor or vehicle while measuring force, rotational speed, and power. **Radiated immunity** is the ability of electronic equipment to operate correctly even when exposed to electromagnetic waves arriving from outside.
+> **Definition:** A **dynamometer** is test equipment that rotates a motor or vehicle while measuring force, rotational speed, and power.
+
+> **Definition:** **Radiated immunity** is the ability of electronic equipment to operate correctly even when exposed to electromagnetic waves arriving from outside.
 
 ### 4.6 Autonomous Driving Technology Research Institute
 
@@ -821,7 +867,13 @@ The Autonomous Driving Technology Research Institute pursues research in three f
 
 *Table 22. Research fields of the Autonomous Driving Technology Research Institute*
 
-> **Definition:** An **LDM (local dynamic map)** is a map that manages dynamic information such as nearby vehicles, signals, and construction zones in real time on top of a static map. **NCAP (New Car Assessment Program)** is a program that tests the safety of new cars and publishes ratings, and **AEB(S)** is an autonomous emergency braking system. **UI/UX** stands for user interface and user experience.
+> **Definition:** An **LDM (local dynamic map)** is a map that manages dynamic information such as nearby vehicles, signals, and construction zones in real time on top of a static map.
+
+> **Definition:** **NCAP (New Car Assessment Program)** is a program that tests the safety of new cars and publishes ratings.
+
+> **Definition:** **AEB(S)** is an autonomous emergency braking system.
+
+> **Definition:** **UI/UX** stands for user interface and user experience.
 
 ![Figure 24. Staged framework of government autonomous driving projects](../../images/Week02_p73.png)
 
@@ -849,11 +901,15 @@ Figure 24 shows how government autonomous driving projects progress from Level 3
 
 *Table 23. Major autonomous driving projects of KATECH*
 
-> **Definition:** **TOPS (tera operations per second)** is a unit of AI computing performance meaning one trillion operations per second. 240 TOPS is $2.4 \times 10^{14}$ operations per second. **LSAD (low-speed automated driving)** is an automated driving system that operates at low speed within a defined area.
+> **Definition:** **TOPS (tera operations per second)** is a unit of AI computing performance meaning one trillion operations per second. 240 TOPS is $2.4 \times 10^{14}$ operations per second.
 
-The system of Major Project 1 was validated through driver usability evaluation, VILS (vehicle-in-the-loop simulation) evaluation, which combines a real vehicle with a virtual environment, and real-vehicle evaluation on a proving ground (PG). The computing module of Major Project 2 has several of the vehicle communication interfaces that are the subject of this course. Eight camera channels are connected through GMSL2 serialized links (MAX9295 and MAX9296 SERDES, link rate 6 Gbit/s), and the camera sensor and ISP pairs are AR0231 with AP0200 (30 fps) and AR0233 with GW5200 (60 fps). The module also has three automotive Ethernet 100BASE-T1 ports (100 Mbit/s), 1000BASE-T Ethernet connecting four 16-channel 360° mechanical LiDARs, wireless interfaces (GNSS on the GPS L1 and GLONASS bands, and LTE Cat 4 with 150 Mbit/s downlink and 75 Mbit/s uplink), and a display output.
+> **Definition:** **LSAD (low-speed automated driving)** is an automated driving system that operates at low speed within a defined area.
 
-> **Definition:** A **SERDES (serializer/deserializer)** is a circuit that converts parallel data into a high-speed serial signal for transmission and converts it back to parallel at the receiving end. **GMSL (gigabit multimedia serial link)** is an automotive serial link that transmits large data such as camera video over a single coaxial cable at several Gbit/s.
+The system of Major Project 1 was validated through driver usability evaluation, VILS (vehicle-in-the-loop simulation) evaluation, which combines a real vehicle with a virtual environment, and real-vehicle evaluation on a proving ground (PG). The computing module of Major Project 2 has several vehicle communication interfaces. Eight camera channels are connected through GMSL2 serialized links (MAX9295 and MAX9296 SERDES, link rate 6 Gbit/s), and the camera sensor and ISP pairs are AR0231 with AP0200 (30 fps) and AR0233 with GW5200 (60 fps). The module also has three automotive Ethernet 100BASE-T1 ports (100 Mbit/s), 1000BASE-T Ethernet connecting four 16-channel 360° mechanical LiDARs, wireless interfaces (GNSS on the GPS L1 and GLONASS bands, and LTE Cat 4 with 150 Mbit/s downlink and 75 Mbit/s uplink), and a display output.
+
+> **Definition:** A **SERDES (serializer/deserializer)** is a circuit that converts parallel data into a high-speed serial signal for transmission and converts it back to parallel at the receiving end.
+
+> **Definition:** **GMSL (gigabit multimedia serial link)** is an automotive serial link that transmits large data such as camera video over a single coaxial cable at several Gbit/s.
 
 ---
 

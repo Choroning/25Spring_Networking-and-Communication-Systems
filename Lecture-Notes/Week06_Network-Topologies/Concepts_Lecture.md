@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-04
+> **Last Updated:** 2026-11-17
 
 > **Learning Objectives:**
 > 1. Distinguish repeaters, hubs, bridges, switches, routers, and gateways by operating layer and function, and apply the five bridge operations to an example
@@ -1002,7 +1002,11 @@ The upper photograph of Figure 25 shows a test vehicle braking on a wetted surfa
 
 *Table 20. Surfaces of the straight line wet grip track*
 
-> **Definition:** The **friction coefficient** $\mu$ is the maximum force a tire can exert on the road without slipping, divided by the weight of the car. The larger the value, the better the car stops; ice is around 0.1. A **weir** is a dam that holds water at a set depth, and **aquaplaning** is the phenomenon in which a film of water forms between tire and road so that the tire rides on the water.
+> **Definition:** The **friction coefficient** $\mu$ is the maximum force a tire can exert on the road without slipping, divided by the weight of the car. The larger the value, the better the car stops; ice is around 0.1.
+
+> **Definition:** A **weir** is a dam that holds water at a set depth.
+
+> **Definition:** **Aquaplaning** is the phenomenon in which a film of water forms between tire and road so that the tire rides on the water.
 
 **Computing braking distance.** If friction is constant, the maximum deceleration is $\mu g$, so the distance to stop from speed $v$ is $d = v^2 / (2\mu g)$. Braking from 80 km/h ($80 / 3.6 = 22.2$ m/s) gives $v^2 = 493.8$, so:
 
@@ -1177,12 +1181,12 @@ The left of Figure 26 is an aerial photograph of the highway test area (ASSURED 
 
 10. **Structured cabling and neutral speed:** (a) State which UTP star LAN specification the 90 m limit on the fixed wiring of a horizontal cable in a structured cabling system relates to. (b) Find the neutral speed in km/h for the MIRA circuit with a bend radius of 216 m and a bank of 33°.
 
-   <details>
-   <summary>Answer</summary>
+    <details>
+    <summary>Answer</summary>
 
-   (a) It relates to the specification that UTP can connect a station and a hub (or switch) over up to about 100 m. With 90 m of horizontal cable, the whole channel stays within 100 m even after adding the patch cords at both ends. (b) $v = \sqrt{rg\tan\theta} = \sqrt{216 \times 9.81 \times 0.6494} \approx 37.1$ m/s, and $37.1 \times 3.6 \approx 134$ km/h.
+    (a) It relates to the specification that UTP can connect a station and a hub (or switch) over up to about 100 m. With 90 m of horizontal cable, the whole channel stays within 100 m even after adding the patch cords at both ends. (b) $v = \sqrt{rg\tan\theta} = \sqrt{216 \times 9.81 \times 0.6494} \approx 37.1$ m/s, and $37.1 \times 3.6 \approx 134$ km/h.
 
-   </details>
+    </details>
 
 ---
 

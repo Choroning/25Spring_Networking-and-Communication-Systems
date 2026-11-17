@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-04
+> **Last Updated:** 2026-11-17
 
 > **Learning Objectives:**
 > 1. Explain CAN differential signaling and the meaning of dominant and recessive bits, and explain why termination resistors are needed
@@ -129,7 +129,9 @@ A high-speed CAN bus is a twisted pair made of two wires, **CAN_H** and **CAN_L*
 
 A CAN bus has only two states.
 
-> **Definition:** The **dominant** state is the state in which a transceiver pulls CAN_H up and CAN_L down to create a voltage difference between the two wires, and it represents logic 0. The **recessive** state is the state in which no transceiver drives the bus, so the two wires stay at the same voltage, and it represents logic 1.
+> **Definition:** The **dominant** state is the state in which a transceiver pulls CAN_H up and CAN_L down to create a voltage difference between the two wires, and it represents logic 0.
+
+> **Definition:** The **recessive** state is the state in which no transceiver drives the bus, so the two wires stay at the same voltage, and it represents logic 1.
 
 ![Figure 3. Voltages of CAN_H and CAN_L in the recessive and dominant states](../../images/Week03_p10.png)
 
@@ -326,7 +328,11 @@ In Figure 10, the yellow parts are the identifier and the gray parts are the RTR
 
 A CAN frame contains no address of a receiving node. A frame sent by one node reaches every node on the bus, and each node decides by itself, from the identifier, whether it needs the message.
 
-> **Definition:** **Broadcast communication** is a method in which every node in the network receives the message sent by one node. In CAN, the node that sends a message is called the **producer**, and the nodes that receive and use it are called **consumers**.
+> **Definition:** **Broadcast communication** is a method in which every node in the network receives the message sent by one node.
+
+> **Definition:** In CAN, the node that sends a message is called the **producer**.
+
+> **Definition:** In CAN, the nodes that receive and use a message are called **consumers**.
 
 > **Definition:** An **acceptance filter** is hardware inside a CAN controller that compares the identifier of each received frame with preset values, passes only the needed messages to the CPU, and discards the rest.
 
@@ -350,7 +356,9 @@ Because many nodes share one bus, the case in which two or more nodes try to tra
 - **CD (collision detection):** Each transmitting node compares, bit by bit, the bit it sent with the bit it reads from the bus.
 - **AMP (arbitration on message priority):** When the comparison disagrees, only one node remains, according to the priority of the identifier.
 
-> **Definition:** **Bit-wise arbitration** is the process in which nodes that started transmitting at the same time send their identifiers one bit at a time from the most significant bit, and a node that sent recessive (1) but reads dominant (0) on the bus stops transmitting at once and becomes a receiver. The frame of the remaining node is not damaged at all, so the arbitration is called **non-destructive**.
+> **Definition:** **Bit-wise arbitration** is the process in which nodes that started transmitting at the same time send their identifiers one bit at a time from the most significant bit, and a node that sent recessive (1) but reads dominant (0) on the bus stops transmitting at once and becomes a receiver.
+
+> **Definition:** The frame of the remaining node is not damaged at all, so this arbitration is called **non-destructive arbitration**.
 
 Because of the wired-AND property of Table 4, 0 wins over 1. Therefore, at the first position where the identifier bits differ, the node with 0 wins, and in the end **the node with the smallest identifier value takes the bus.**
 
@@ -766,7 +774,9 @@ Figure 31 plots distance (m) on the horizontal axis and data rate (bps) on the v
 
 ### 3.2 LAN
 
-> **Definition:** A **LAN (local area network)** is a network of hosts located at short distances, such as in a single building or on a campus. A **host** is a computer or device that is connected to a network and sends and receives data.
+> **Definition:** A **LAN (local area network)** is a network of hosts located at short distances, such as in a single building or on a campus.
+
+> **Definition:** A **host** is a computer or device that is connected to a network and sends and receives data.
 
 A LAN can connect all hosts with a single transmission cable, and because the distance is short, it transmits by broadcasting, in which all hosts receive the data sent by one host. Its speed is usually tens of Mbps to a few Gbps, and it mainly uses bus and ring topologies (Section 3.5).
 
@@ -890,7 +900,11 @@ Figure 38 shows the networks that connect these ECUs and their representative ap
 
 An autonomous vehicle perceives its surroundings with sensors such as cameras, LIDAR, and RADAR, makes decisions with a high-performance computing module, and determines its position and route with maps. Each company combines these components differently.
 
-> **Definition:** **LIDAR (light detection and ranging)** is a sensor that fires laser pulses and measures the distance to surrounding objects as three-dimensional points from the return time. **RADAR (radio detection and ranging)** measures the distance and relative speed of objects with radio waves and is robust to rain and fog. An **HD map (high-definition map)** is a map for autonomous driving that contains lanes, signs, and road boundaries with centimeter-level precision.
+> **Definition:** **LIDAR (light detection and ranging)** is a sensor that fires laser pulses and measures the distance to surrounding objects as three-dimensional points from the return time.
+
+> **Definition:** **RADAR (radio detection and ranging)** measures the distance and relative speed of objects with radio waves and is robust to rain and fog.
+
+> **Definition:** An **HD map (high-definition map)** is a map for autonomous driving that contains lanes, signs, and road boundaries with centimeter-level precision.
 
 ### 4.1 Technology Competitiveness of Autonomous Driving Companies
 

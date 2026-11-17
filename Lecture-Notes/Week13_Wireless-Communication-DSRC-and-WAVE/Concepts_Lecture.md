@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-10
+> **Last Updated:** 2026-11-18
 
 > **Learning Objectives:**
 > 1. Compare the protocol stacks of IEEE 802.11, DSRC, WAVE, the ETSI and ISO ITS stations, and 3GPP V2X against the OSI reference model
@@ -163,7 +163,13 @@ The physical layer converts bits into actual signals and sends them over the med
 2. **Transmitter and receiver:** The key question is how far a signal reaches. The transmission distance is determined by free-space propagation, attenuation, fading, shadowing, interference, SIR and SINR, the interference range, path loss models, and the transmit power and receiver sensitivity.
 3. **Efficiency of data transmission:** This covers modulation and coding, duplexing, and multiplexing, which let the same bandwidth carry more data.
 
-> **Definition:** The **SIR (signal-to-interference ratio)** is the ratio $S/I$ of the desired signal power $S$ to the interference power $I$ from other transmitters, and the **SINR (signal-to-interference-plus-noise ratio)** is $S/(I+N)$, which also includes the noise power $N$. The larger the value, the more accurately the receiver can interpret the signal. The **receiver sensitivity** is the minimum received power at which the receiver can receive a signal below a specified error rate. **Duplexing** is the way two-way communication is carried on one link: TDD divides time and FDD divides frequency.
+> **Definition:** The **SIR (signal-to-interference ratio)** is the ratio $S/I$ of the desired signal power $S$ to the interference power $I$ from other transmitters.
+
+> **Definition:** The **SINR (signal-to-interference-plus-noise ratio)** is $S/(I+N)$, which also includes the noise power $N$. The larger the SIR or SINR, the more accurately the receiver can interpret the signal.
+
+> **Definition:** The **receiver sensitivity** is the minimum received power at which the receiver can receive a signal below a specified error rate.
+
+> **Definition:** **Duplexing** is the way two-way communication is carried on one link: TDD divides time and FDD divides frequency.
 
 ### 1.5 Fundamentals of Radio Propagation
 
@@ -194,7 +200,15 @@ The higher the frequency, the more radio waves travel in straight lines like lig
 
 Figure 5 shows the typical problems of wireless communication between a base station and a terminal.
 
-> **Definition:** **Distance attenuation** is the decrease of received power with distance, because the energy per unit area falls as the wave spreads out. **Shadowing** is attenuation caused by obstacles such as trees or buildings blocking the wave. **Multipath** is the arrival at the receiver of the direct wave and waves reflected from buildings and the ground over different paths with different delays, and the rapid fluctuation of received strength as these waves reinforce or cancel each other depending on their phases is called **fading**. **Interference** is the mixing of signals from other transmitters on the same or nearby frequencies into the desired signal.
+> **Definition:** **Distance attenuation** is the decrease of received power with distance, because the energy per unit area falls as the wave spreads out.
+
+> **Definition:** **Shadowing** is attenuation caused by obstacles such as trees or buildings blocking the wave.
+
+> **Definition:** **Multipath** is the arrival at the receiver of the direct wave and waves reflected from buildings and the ground over different paths with different delays.
+
+> **Definition:** The rapid fluctuation of received strength as the multipath waves reinforce or cancel each other depending on their phases is called **fading**.
+
+> **Definition:** **Interference** is the mixing of signals from other transmitters on the same or nearby frequencies into the desired signal.
 
 Because vehicles move fast, the reinforcement and cancellation of multipath waves change within short times, and the Doppler effect also shifts the frequency slightly. This is why the physical layer of vehicular communication must be more robust than that of indoor wireless LANs.
 
@@ -270,7 +284,7 @@ b = \log_2 M
 
 ### 1.7 Coding and Code Rate
 
-> **Definition:** **Channel coding** is a technique that transforms the original data by adding extra bits (redundancy) so that errors in the data can be detected and corrected. Representative examples are **linear block codes** and **convolutional codes**.
+> **Definition:** **Channel coding** is a technique that transforms the original data by adding extra bits (redundancy) so that errors in the data can be detected and corrected. Representative examples are linear block codes and convolutional codes.
 
 Every channel code converts $k$ information bits that one actually wants to send into an $n$-bit codeword ($`n > k`$). The ratio of the number of information bits to the codeword length is called the **code rate**.
 
@@ -362,7 +376,21 @@ The meaning of the four address fields depends on the combination of the To DS a
 
 *Table 7. Meaning of the address fields by the To DS and From DS bits*
 
-> **Definition:** The **DA (destination address)** is the final destination, the **SA (source address)** is the original source, the **RA (receiver address)** is the receiver on this wireless hop, and the **TA (transmitter address)** is the transmitter on this wireless hop. A **BSS (basic service set)** is the basic unit made of one AP or of terminals communicating with each other, and the **BSSID** is the identifier of a BSS, which in an infrastructure network is the MAC address of the AP. An **IBSS (independent BSS)** is an ad hoc network in which terminals communicate directly without an AP. A **WDS (wireless distribution system)** is a distribution system built by connecting APs wirelessly.
+> **Definition:** The **DA (destination address)** is the address of the final destination.
+
+> **Definition:** The **SA (source address)** is the address of the original source.
+
+> **Definition:** The **RA (receiver address)** is the address of the receiver on this wireless hop.
+
+> **Definition:** The **TA (transmitter address)** is the address of the transmitter on this wireless hop.
+
+> **Definition:** A **BSS (basic service set)** is the basic unit made of one AP or of terminals communicating with each other.
+
+> **Definition:** The **BSSID** is the identifier of a BSS, which in an infrastructure network is the MAC address of the AP.
+
+> **Definition:** An **IBSS (independent BSS)** is an ad hoc network in which terminals communicate directly without an AP.
+
+> **Definition:** A **WDS (wireless distribution system)** is a distribution system built by connecting APs wirelessly.
 
 In Table 7, Address 1 is always the wireless receiver of the frame (RA), and Address 2 is always the wireless transmitter that sent the frame (TA). For example, in a frame a terminal sends to the AP (To DS = 1), the wireless receiver is the AP (BSSID), and the final destination DA is written separately in Address 3.
 
@@ -626,7 +654,7 @@ In Figure 25, (a) has no extension header, so the Next Header of the IPv6 header
 
 ### 2.1 Characteristics of DSRC
 
-> **Definition:** **DSRC (Dedicated Short Range Communication)** is short-range two-way wireless communication between roadside units and vehicles. The roadside device is called an **RSU (roadside unit)** or **RSE (roadside equipment)**, and the vehicle device an **OBU (on-board unit)** or **OBE (on-board equipment)**.
+> **Definition:** **DSRC (Dedicated Short Range Communication)** is short-range two-way wireless communication between roadside units and vehicles. The roadside device is called an RSU (roadside unit) or RSE (roadside equipment), and the vehicle device an OBU (on-board unit) or OBE (on-board equipment).
 
 DSRC has the following characteristics.
 
@@ -669,7 +697,9 @@ Korean DSRC uses **TDMA (time division multiple access)** for communication betw
 
 *Table 10. Basic communication specifications of Korean DSRC*
 
-> **Definition:** **OOK (on-off keying)** is the simplest form of ASK, turning the carrier (or light) on for bit 1 and off for 0. The **BER (bit error rate)** is the fraction of transmitted bits that are wrong; $10^{-5}$ means one wrong bit in 100,000 bits.
+> **Definition:** **OOK (on-off keying)** is the simplest form of ASK, turning the carrier (or light) on for bit 1 and off for 0.
+
+> **Definition:** The **BER (bit error rate)** is the fraction of transmitted bits that are wrong; $10^{-5}$ means one wrong bit in 100,000 bits.
 
 | Region | Europe (CEN) | Japan | Korea |
 |:-----|:-----|:-----|:-----|
@@ -735,7 +765,13 @@ Since the number of MDS and ACTS slots together is at least 1 and at most 8 ($`1
 
 Figure 31 shows the communication procedure between the roadside RFCU and the vehicle OBU. Both consist of the ETCS application, the layer 7 I-KE and T-KE, LLC, and MAC.
 
-> **Definition:** Service requests between layers are expressed with four kinds of service primitives. A **request (.req)** is an upper layer asking a lower layer for a service, an **indication (.ind)** is a lower layer informing an upper layer that a request from the other side has arrived, a **response (.res)** is the upper layer's answer to an indication, and a **confirm (.conf, .cfm)** reports the result back to the requesting side.
+> **Definition:** Service requests between layers are expressed with four kinds of service primitives. A **request (.req)** is an upper layer asking a lower layer for a service.
+
+> **Definition:** An **indication (.ind)** is a lower layer informing an upper layer that a request from the other side has arrived.
+
+> **Definition:** A **response (.res)** is the upper layer's answer to an indication.
+
+> **Definition:** A **confirm (.conf, .cfm)** reports the result back to the requesting side.
 
 1. The ETCS application on each side registers with its own I-KE (RegApp).
 2. The MAC of the RFCU broadcasts the FCMS. The management entity of the OBU finds the FCMS and obtains the frame information with MLME-SCAN.req and MLME-SCAN.conf, and starts a connection with MLME-ASSOCIATE.req.
@@ -908,7 +944,11 @@ IEEE 802.11p, produced by TGp, is the physical and MAC layer of WAVE in Section 
 
 *Table 17. Comparison of the characteristics of IEEE 802.11 wireless LAN standards*
 
-> **Definition:** **DSSS (direct sequence spread spectrum)** spreads each bit over a wide band by multiplying it by a fast code sequence. **CCK (complementary code keying)** is the DSSS code scheme 802.11b uses for 5.5 Mbps and 11 Mbps. **MIMO (multiple input multiple output)** is a technology that uses several antennas for transmission and reception to send several data flows (spatial streams) at the same time; 4×4 means four transmit and four receive antennas.
+> **Definition:** **DSSS (direct sequence spread spectrum)** spreads each bit over a wide band by multiplying it by a fast code sequence.
+
+> **Definition:** **CCK (complementary code keying)** is the DSSS code scheme 802.11b uses for 5.5 Mbps and 11 Mbps.
+
+> **Definition:** **MIMO (multiple input multiple output)** is a technology that uses several antennas for transmission and reception to send several data flows (spatial streams) at the same time; 4×4 means four transmit and four receive antennas.
 
 The 3.7 GHz row of Table 17 is the amendment (802.11y) that uses the 802.11a scheme at high power in the U.S. 3.65-3.7 GHz band, reaching up to 5 km outdoors. 802.11n raised speeds with MIMO and 40 MHz channel bonding, and 802.11ac with up to 160 MHz and eight streams. 802.11ad delivers up to about 6.75 Gbit/s with 2,160 MHz-wide channels in the 60 GHz band [11].
 
@@ -938,7 +978,17 @@ The 3.7 GHz row of Table 17 is the amendment (802.11y) that uses the 802.11a sch
 
 In Figure 39, the data link layer contains the MAC sublayer, and the physical layer contains the PLCP and PMD sublayers. Next to each sublayer is a management entity that manages its configuration and state.
 
-> **Definition:** An **SAP (service access point)** is the point at which a layer provides its service to the layer above. The **MLME (MAC sublayer management entity)** is the management entity of the MAC sublayer, the **PLME (physical layer management entity)** that of the physical layer, and the **SME (station management entity)** manages the whole station. The **PLCP (physical layer convergence procedure)** sublayer converts MAC frames into physical layer frames, and the **PMD (physical medium dependent)** sublayer handles the modulation and transmission and reception of the actual radio signal.
+> **Definition:** An **SAP (service access point)** is the point at which a layer provides its service to the layer above.
+
+> **Definition:** The **MLME (MAC sublayer management entity)** is the management entity of the MAC sublayer.
+
+> **Definition:** The **PLME (physical layer management entity)** is the management entity of the physical layer.
+
+> **Definition:** The **SME (station management entity)** manages the whole station.
+
+> **Definition:** The **PLCP (physical layer convergence procedure)** sublayer converts MAC frames into physical layer frames.
+
+> **Definition:** The **PMD (physical medium dependent)** sublayer handles the modulation and transmission and reception of the actual radio signal.
 
 ![Figure 40. Architecture of the IEEE 802.11 MAC](../../images/Week13_13-2_p22.png)
 
@@ -1186,7 +1236,7 @@ In the transmitter of Figure 50, the **FEC coder** adds redundancy with the conv
 **Calculating the data rate.** The 54 Mbps of 64-QAM, code rate 3/4, at 20 MHz is computed step by step as follows.
 
 1. The subcarrier spacing is the bandwidth divided by the FFT size: $20 \text{ MHz} / 64 = 312.5$ kHz.
-2. The number of symbols sent per second is the reciprocal of the symbol duration: $1 \text{ s} / 4 \text{ µs} = 250{,}000$.
+2. The number of symbols sent per second is the reciprocal of the symbol duration: $1 \text{ s} / 4\ \mu\text{s} = 250{,}000$.
 3. The coded bits per symbol are the number of data subcarriers times the bits per subcarrier: $48 \times 6 = 288$ bits.
 4. The data rate is the product of the number of symbols, the coded bits per symbol, and the code rate: $250{,}000 \times 288 \times 3/4 = 54{,}000{,}000$ bps $= 54$ Mbps.
 
@@ -1556,7 +1606,7 @@ Since service information repeats as many times as Service Info Count indicates,
 
 ### 3.12 PSID
 
-> **Definition:** The **PSID (provider service identifier)** is an identifier that indicates which application service a WSA or WSM belongs to. In ETSI and ISO standards the same value is called the **AID (ITS application identifier)**.
+> **Definition:** The **PSID (provider service identifier)** is an identifier that indicates which application service a WSA or WSM belongs to. In ETSI and ISO standards the same value is called the AID (ITS application identifier).
 
 IEEE 1609.12 is the standard for the allocation of WAVE identifiers (active since September 21, 2012), and it contains normative requirements for the allocation of PSIDs used in ETSI, ISO, SAE, and IEEE standards [17]. PSIDs have variable length and are expressed with **p-encoding**, in which the leading bits of the first octet indicate the length.
 
@@ -1692,7 +1742,11 @@ UTAC was founded in 1945 based on the proving ground in the Linas-Montlhéry are
 - In 2019 it established the autonomous vehicle research center TEQMO and provides research and development, testing, expert consulting, and type approval services for the related technologies.
 - It pursues a variety of research and development on 5G-ITS and autonomous driving technologies on a dedicated 12 km test track near Paris.
 
-> **Definition:** **Type approval** is a system in which an accredited body tests and approves that a vehicle or component meets regulatory requirements such as safety and environmental standards before it is sold. **Euro NCAP (European New Car Assessment Programme)** is Europe's new car safety rating program, which evaluates the crash safety and safety assistance functions of new cars and publishes them as star ratings, and **ISO/IEC 17025** is the international standard for the competence of testing and calibration laboratories.
+> **Definition:** **Type approval** is a system in which an accredited body tests and approves that a vehicle or component meets regulatory requirements such as safety and environmental standards before it is sold.
+
+> **Definition:** **Euro NCAP (European New Car Assessment Programme)** is Europe's new car safety rating program, which evaluates the crash safety and safety assistance functions of new cars and publishes them as star ratings.
+
+> **Definition:** **ISO/IEC 17025** is the international standard for the competence of testing and calibration laboratories.
 
 ![Figure 78. Track layout of the proving ground built by SIMCA in 1956](../../images/Week13_Appendix_p03.png)
 
@@ -1729,7 +1783,13 @@ The sites in Figure 80 are the Mortefontaine and Linas-Montlhéry test centers i
 
 *Table 37. UTAC's test facilities by domain*
 
-> **Definition:** **EMC (electromagnetic compatibility)** is the property of an electronic device that it neither causes electromagnetic disturbance to its surroundings nor malfunctions because of electromagnetic waves around it. **NVH (noise, vibration, harshness)** is a collective term for a vehicle's noise, vibration, and unpleasant shocks. A **CAV (connected and automated vehicle)** is a connected autonomous vehicle, and **ADAS (advanced driver assistance systems)** are systems that assist the driver.
+> **Definition:** **EMC (electromagnetic compatibility)** is the property of an electronic device that it neither causes electromagnetic disturbance to its surroundings nor malfunctions because of electromagnetic waves around it.
+
+> **Definition:** **NVH (noise, vibration, harshness)** is a collective term for a vehicle's noise, vibration, and unpleasant shocks.
+
+> **Definition:** A **CAV (connected and automated vehicle)** is a connected autonomous vehicle.
+
+> **Definition:** **ADAS (advanced driver assistance systems)** are systems that assist the driver.
 
 | Service | Description |
 |:-----|:-----|

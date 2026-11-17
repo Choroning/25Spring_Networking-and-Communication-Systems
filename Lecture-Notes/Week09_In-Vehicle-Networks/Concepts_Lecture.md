@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-04
+> **Last Updated:** 2026-11-17
 
 > **Learning Objectives:**
 > 1. Compare the in-vehicle networks of each domain (LIN, CAN, FlexRay, MOST, TTEthernet) by speed, cost, and communication method, and explain the difference between event-triggered and time-triggered communication
@@ -92,7 +92,9 @@ The **electrical and electronic (E/E) system** of a vehicle is the entirety of t
 
 *Table 1. The three components of an automotive E/E system*
 
-> **Definition:** **AUTOSAR (AUTomotive Open System ARchitecture)** is a standard architecture for ECU software created jointly by vehicle manufacturers and suppliers. It places a standardized basic software layer between the application software and the hardware so that the same application software can be moved to different ECUs. **GENIVI** is an organization that created an open-source software platform for in-vehicle infotainment (IVI) systems.
+> **Definition:** **AUTOSAR (AUTomotive Open System ARchitecture)** is a standard architecture for ECU software created jointly by vehicle manufacturers and suppliers. It places a standardized basic software layer between the application software and the hardware so that the same application software can be moved to different ECUs.
+
+> **Definition:** **GENIVI** is an organization that created an open-source software platform for in-vehicle infotainment (IVI) systems.
 
 These three components come together in a vehicle. A standard software platform runs on a 32-bit high-performance microcontroller (semiconductors from Infineon, ST, Freescale, and others), the software is built with development tools from companies such as Vector, Elektrobit, and ETAS, and suppliers such as Hyundai Mobis, Mando, and Bosch deliver the result as highly reliable automotive ECUs. What connects these ECUs to each other is the in-vehicle network (IVN) (Week 3).
 
@@ -131,7 +133,9 @@ With CAN, whose maximum speed is 1 Mbit/s, more than 90% of the bandwidth would 
 
 The theoretical maximum speed of CAN is 1 Mbps, but real vehicles mainly use 250 kbps or 500 kbps to leave margin for bus length and noise.
 
-> **Definition:** **Bus load** is the fraction of total time during which the bus is busy carrying frames. **Jitter** is the degree to which the arrival times of periodically sent messages deviate from their original period, that is, the variation of the delay.
+> **Definition:** **Bus load** is the fraction of total time during which the bus is busy carrying frames.
+
+> **Definition:** **Jitter** is the degree to which the arrival times of periodically sent messages deviate from their original period, that is, the variation of the delay.
 
 Vehicle CAN communication has two characteristics.
 
@@ -150,7 +154,9 @@ For this reason, CAN design **recommends keeping the traffic at or below about 5
 
 The communication methods of vehicle networks fall into two kinds according to how the moment of sending a message is determined.
 
-> **Definition:** **Event-triggered communication** sends a message when an event to report (a change in a value, a request) occurs. **Time-triggered communication** sends messages only at fixed times according to a timetable defined in advance.
+> **Definition:** **Event-triggered communication** sends a message when an event to report (a change in a value, a request) occurs.
+
+> **Definition:** **Time-triggered communication** sends messages only at fixed times according to a timetable defined in advance.
 
 | Aspect | Event-triggered | Time-triggered |
 |:-----|:-----|:-----|
@@ -298,7 +304,7 @@ LIN has the following features [3].
 - **A dramatic reduction in hardware platform cost:** Thanks to the features above, the cost per node is very low.
 - **Predictability:** The delay of a single transmission is guaranteed.
 
-> **Definition:** A **UART (universal asynchronous receiver/transmitter)** and an **SCI (serial communication interface)** are hardware units that transmit serially, one byte at a time, using start and stop bits without a separate clock line. The two names refer to the same kind of unit, depending on the manufacturer.
+> **Definition:** A **UART (universal asynchronous receiver/transmitter)** is a hardware unit that transmits serially, one byte at a time, using start and stop bits without a separate clock line. Depending on the manufacturer, the same kind of unit is also called an SCI (serial communication interface).
 
 ### 1.9 Roles of the Master and Slaves
 
@@ -764,7 +770,9 @@ Because of the harsh electromagnetic and environmental conditions in vehicles, a
 
 *Table 18. Comparison of Ethernet physical layers*
 
-> **Definition:** **Baud** is the number of symbols (signal levels) sent per second. **PAM-n (pulse amplitude modulation)** is modulation using n voltage levels, in which one symbol carries at most $\log_2 n$ bits.
+> **Definition:** **Baud** is the number of symbols (signal levels) sent per second.
+
+> **Definition:** **PAM-n (pulse amplitude modulation)** is modulation using n voltage levels, in which one symbol carries at most $\log_2 n$ bits.
 
 In Table 18, BroadR-Reach sends 100 Mbit/s at 66.6 MBaud, so one symbol carries $100 / 66.67 = 1.5$ bits. Three-level PAM-3 can carry at most $\log_2 3 \approx 1.58$ bits per symbol, so this is feasible. Compared with 100BASE-TX, which uses 125 MBaud because of its 4B/5B code, the lower symbol rate narrows the frequency band of the signal and correspondingly reduces electromagnetic radiation, which makes it easier to meet the EMC (electromagnetic compatibility) requirements of vehicles.
 
@@ -902,7 +910,11 @@ The IEEE standards used for automotive Ethernet fall into three groups.
 
 *Table 22. IEEE standards related to automotive Ethernet*
 
-> **Definition:** **AVB (Audio Video Bridging)** is a set of IEEE 802.1 standards for delivering audio and video streams over Ethernet without interruption within bounded delay. **TSN (time-sensitive networking)** extends its scope to control data in vehicles and industry. **RS FEC (Reed-Solomon forward error correction)** is an error-correcting code added so that the receiver can correct errors without retransmission.
+> **Definition:** **AVB (Audio Video Bridging)** is a set of IEEE 802.1 standards for delivering audio and video streams over Ethernet without interruption within bounded delay.
+
+> **Definition:** **TSN (time-sensitive networking)** extends its scope to control data in vehicles and industry.
+
+> **Definition:** **RS FEC (Reed-Solomon forward error correction)** is an error-correcting code added so that the receiver can correct errors without retransmission.
 
 ---
 

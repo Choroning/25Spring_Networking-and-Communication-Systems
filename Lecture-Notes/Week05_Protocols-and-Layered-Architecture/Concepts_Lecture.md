@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-04
+> **Last Updated:** 2026-11-17
 
 > **Learning Objectives:**
 > 1. Define a protocol and its three elements (syntax, semantics, timing), and explain why communication functions are divided into layers
@@ -83,7 +83,7 @@ Communication requires a great many functions, so instead of building them as on
 - An upper layer performs its functions based on the services provided by the lower layer, without considering the details of how the lower layer implements them.
 - Changing the implementation inside one layer does not affect, and is not affected by, the other layers.
 
-> **Definition:** A **protocol architecture** is a structure that divides communication functions into layers and defines the tasks each layer module performs. The whole layered structure is also called a **protocol stack**.
+> **Definition:** A **protocol architecture** is a structure that divides communication functions into layers and defines the tasks each layer module performs. The whole layered structure is also called a protocol stack.
 
 ```text
        System A                                     System B
@@ -103,7 +103,9 @@ In Figure 1, the layers of one system are stacked so that each exchanges service
 
 ### 1.3 Peers and P2P
 
-> **Definition:** A **peer** means a colleague: computers connected to a network can share data or peripherals with one another as equals. In a protocol architecture, two entities at the same layer in different systems are called **peer entities**, and the horizontal dashed lines in Figure 1 are the relationships between peer entities.
+> **Definition:** A **peer** means a colleague: computers connected to a network can share data or peripherals with one another as equals.
+
+> **Definition:** In a protocol architecture, two entities at the same layer in different systems are called **peer entities**, and the horizontal dashed lines in Figure 1 are the relationships between peer entities.
 
 > **Definition:** **P2P (peer to peer)** is a method in which multiple individual users connected to the Internet exchange data directly without going through a central server.
 
@@ -1002,12 +1004,12 @@ Steps 14-20 at the receiver are the exact reverse of steps 1-7 at the sender. If
 
 10. **Tracing the 20 steps:** In the configuration of Figure 14, a TCP segment sent by the server was damaged and failed the checksum check at the workstation. Explain, citing step numbers, what happens at which step and how the sender recovers.
 
-   <details>
-   <summary>Answer</summary>
+    <details>
+    <summary>Answer</summary>
 
-   At step 18, TCP at the workstation checks the checksum, finds that it does not match, discards the segment, and sends no ACK. TCP at the server has kept a copy of the segment since step 4, so if no ACK arrives within the set time, it resends the segment from the copy. The retransmitted segment again goes through steps 5-13 to reach the workstation, and if the checksum matches this time, an ACK comes back and the server deletes the copy.
+    At step 18, TCP at the workstation checks the checksum, finds that it does not match, discards the segment, and sends no ACK. TCP at the server has kept a copy of the segment since step 4, so if no ACK arrives within the set time, it resends the segment from the copy. The retransmitted segment again goes through steps 5-13 to reach the workstation, and if the checksum matches this time, an ACK comes back and the server deletes the copy.
 
-   </details>
+    </details>
 
 ---
 

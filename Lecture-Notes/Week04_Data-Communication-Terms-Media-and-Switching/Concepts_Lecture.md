@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-04
+> **Last Updated:** 2026-11-17
 
 > **Learning Objectives:**
 > 1. Distinguish information, data, signal, signaling, and transmission, and explain the four combinations of encoding data into signals
@@ -78,7 +78,9 @@ There are two kinds of transmission. **Analog transmission** amplifies a weakene
 
 ### 1.2 Analog and Digital
 
-> **Definition:** **Analog** means that a value varies continuously, and **digital** means that a value takes only a few discrete values.
+> **Definition:** **Analog** means that a value varies continuously.
+
+> **Definition:** **Digital** means that a value takes only a few discrete values.
 
 This distinction applies to both data and signals.
 
@@ -109,7 +111,9 @@ flowchart LR
 
 *Figure 2. The four combinations of encoding data into signals and their devices*
 
-> **Definition:** A **modem (modulator-demodulator)** is a device that converts digital data into an analog signal (modulation) and back (demodulation). A **codec (coder-decoder)** is a device that converts analog data into a digital bit stream and back.
+> **Definition:** A **modem (modulator-demodulator)** is a device that converts digital data into an analog signal (modulation) and back (demodulation).
+
+> **Definition:** A **codec (coder-decoder)** is a device that converts analog data into a digital bit stream and back.
 
 ![Figure 3. Examples of sending analog data and digital data as analog signals](../../images/Week04_p09.png)
 
@@ -155,7 +159,11 @@ The considerations differ for each encoding combination.
 
 To send digital data over a medium that passes only analog signals, such as a telephone line or radio, a sine wave of fixed frequency must be varied according to the data.
 
-> **Definition:** A **carrier** is a sine wave of fixed frequency used to carry data, and its frequency is called the **carrier frequency**. **Modulation** is the changing of one or more of the amplitude, frequency, and phase of the carrier according to the data.
+> **Definition:** A **carrier** is a sine wave of fixed frequency used to carry data.
+
+> **Definition:** The frequency of the carrier is called the **carrier frequency**.
+
+> **Definition:** **Modulation** is the changing of one or more of the amplitude, frequency, and phase of the carrier according to the data.
 
 A sine wave is determined by three characteristics, amplitude, frequency, and phase, so digital data is encoded into an analog signal by changing one or a combination of these. A scheme that changes amplitude and phase together (quadrature amplitude modulation, QAM) is an example.
 
@@ -198,7 +206,11 @@ On the left of Figure 5, the waveform is dense (high frequency) where the bit is
 
 In Figure 6, the amplitude and frequency are constant, and the phase shifts by 180° at the points where the waveform appears to break abruptly. The simplest binary PSK (BPSK) gives 0 and 1 different phases (for example, 0° and 180°), so the phase is inverted whenever the bit value changes. Differential PSK (DPSK) inverts the phase relative to the previous signal for a 1 and keeps it for a 0. In Figure 6, the phase breaks only where a bit of 1 (the 3rd, 4th, 6th, and 10th) begins, so the waveform of Figure 6 is differential PSK.
 
-> **Definition:** A **symbol** is the unit of signal that carries data information, that is, a signal element distinguished at one time. The **baud rate (signaling rate)** is the number of symbols transmitted per second, in baud. The **data rate** is the number of bits transmitted per second, in bps.
+> **Definition:** A **symbol** is the unit of signal that carries data information, that is, a signal element distinguished at one time.
+
+> **Definition:** The **baud rate (signaling rate)** is the number of symbols transmitted per second, in baud.
+
+> **Definition:** The **data rate** is the number of bits transmitted per second, in bps.
 
 If a symbol takes one of $M$ states, it can carry $\log_2 M$ bits, so the two rates are related as follows [1].
 
@@ -289,7 +301,9 @@ In Figure 8, NRZ stays high throughout the consecutive 1s of the 4th and 5th bit
 
 To send analog information such as voice digitally, the continuous signal must be measured at regular intervals and converted into numbers.
 
-> **Definition:** **Sampling** is measuring the value of a continuous signal at regular time intervals, and the number of measurements per second is called the **sampling rate**.
+> **Definition:** **Sampling** is measuring the value of a continuous signal at regular time intervals.
+
+> **Definition:** In sampling, the number of measurements per second is called the **sampling rate**.
 
 > **Key Point:** **Sampling theorem.** If a signal is sampled at a rate higher than twice its highest frequency, the original signal can be completely reconstructed from the samples alone. In practice, the signal is filtered so that all of its frequency components lie below some upper bound of $B$ Hz, and it is then sampled at $2B$ samples per second. Because the highest frequency of the signal is below $B$, this rate is higher than twice the highest frequency.
 
@@ -321,7 +335,9 @@ This 64 kbps is the basic unit of one voice channel in the digital telephone net
 
 ### 1.9 Multiplexing: FDM and TDM
 
-> **Definition:** **Multiplexing** is the process of combining two or more low-rate channels into one high-rate channel so that several users share one transmission line. The process of separating the original channels again at the receiving side is called **demultiplexing (demuxing)**.
+> **Definition:** **Multiplexing** is the process of combining two or more low-rate channels into one high-rate channel so that several users share one transmission line.
+
+> **Definition:** The process of separating the original channels again at the receiving side is called **demultiplexing (demuxing)**.
 
 **(1) Frequency-division multiplexing (FDM).** The total frequency bandwidth of a transmission line is divided into several smaller bands so that several users can use it simultaneously. It is used mainly for transmitting analog signals.
 
@@ -363,7 +379,11 @@ In Figure 12, the multiplexer sends the data of sources 1, 2, 3, 4, 5, and 6 one
 
 ### 2.1 Classification and Performance Factors of Transmission Media
 
-> **Definition:** A **transmission medium** is the physical path between a transmitter and a receiver. It is divided into **guided media**, such as wires and optical fibers, which lead the signal along a defined path, and **unguided media**, such as the atmosphere or outer space, through which the signal spreads out.
+> **Definition:** A **transmission medium** is the physical path between a transmitter and a receiver. Transmission media are divided into guided media and unguided media.
+
+> **Definition:** **Guided media** are transmission media, such as wires and optical fibers, that lead the signal along a defined path.
+
+> **Definition:** **Unguided media** are transmission media, such as the atmosphere or outer space, through which the signal spreads out.
 
 The characteristics of a transmission medium are determined by the type of medium and the transmission frequency. The factors that affect the data rate and transmission distance are as follows.
 
@@ -421,7 +441,9 @@ The performance of the two cables is compared numerically as follows.
 
 *Table 7. Attenuation (dB/100 m) and near-end crosstalk (dB) of UTP and STP*
 
-> **Definition:** The **decibel (dB)** is a unit that expresses the ratio of two powers logarithmically, $10 \log_{10}(P_1 / P_2)$. **Near-end crosstalk (NEXT)** is the leakage of a signal sent on one pair into an adjacent pair at the same end, also called cross-talk interference. NEXT is the ratio of the sent signal to the leaked signal, so a larger value means less crosstalk, which is better.
+> **Definition:** The **decibel (dB)** is a unit that expresses the ratio of two powers logarithmically, $10 \log_{10}(P_1 / P_2)$.
+
+> **Definition:** **Near-end crosstalk (NEXT)** is the leakage of a signal sent on one pair into an adjacent pair at the same end, also called cross-talk interference. NEXT is the ratio of the sent signal to the leaked signal, so a larger value means less crosstalk, which is better.
 
 **Reading Table 7.** The attenuation of Cat 5 UTP at 100 MHz is 22.0 dB per 100 m. The ratio of received to transmitted power is $10^{-22.0/10} = 10^{-2.2} \approx 0.0063$, so after 100 m only about 0.63% of the transmitted power remains. At the same frequency, 150 Ω STP has 12.3 dB, so $10^{-1.23} \approx 0.059$, that is, about 5.9% remains. The following tendencies can be read from the table.
 
@@ -536,7 +558,9 @@ The considerations in using microwaves are as follows.
 
 ### 3.1 Communications Networks
 
-> **Definition:** A **communications network** is a collection of nodes that passes data from node to node to the destination. Devices at the edge of the network that send and receive data, such as computers, terminals, and telephones, are called **stations**.
+> **Definition:** A **communications network** is a collection of nodes that passes data from node to node to the destination.
+
+> **Definition:** Devices at the edge of the network that send and receive data, such as computers, terminals, and telephones, are called **stations**.
 
 ![Figure 20. A communications network of stations A-F and switching nodes 1-7](../../images/Week04_p54.png)
 
@@ -629,7 +653,9 @@ Packet switching suits short, intermittent data traffic and is the most widely u
 
 There are two ways in which a packet-switching network handles packets.
 
-> **Definition:** In the **datagram** approach, each packet is handled independently of the others. Even packets of the same message may take different routes. In the **virtual circuit** approach, a preplanned route is established before any packets are sent, and all packets follow that route.
+> **Definition:** In the **datagram** approach, each packet is handled independently of the others. Even packets of the same message may take different routes.
+
+> **Definition:** In the **virtual circuit** approach, a preplanned route is established before any packets are sent, and all packets follow that route.
 
 The properties of datagrams are as follows.
 
@@ -684,7 +710,7 @@ ISDN is a typical example of multirate circuit switching. The basic rate interfa
 
 ### 3.7 Cell Relay and the Spectrum of Switching Techniques
 
-> **Definition:** **Cell relay** is a method that puts data into small fixed-length packets called cells and transmits them with statistical multiplexing. It is also called **ATM (asynchronous transfer mode)**.
+> **Definition:** **Cell relay** is a method that puts data into small fixed-length packets called cells and transmits them with statistical multiplexing. It is also called ATM (asynchronous transfer mode).
 
 - It evolved from frame relay. Like frame relay, it reduces error control at the nodes, and in addition it fixes the length.
 - It is more advanced than multirate circuit switching (MRCS), because it can provide any rate by adjusting the number of cells rather than a few fixed rates.

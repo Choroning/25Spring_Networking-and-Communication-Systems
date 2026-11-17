@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-04
+> **Last Updated:** 2026-11-17
 
 > **Learning Objectives:**
 > 1. Explain the relationships among smart cars, connected cars, automated vehicles, CAVs, ITS, and C-ITS, and compare the Day phases of the European C2C-CC with the cooperation classes of the US SAE J3216
@@ -74,7 +74,13 @@ The literature on connected automated driving uses several terms that look alike
 
 *Figure 1. Relationships among terms related to connected automated driving*
 
-> **Definition:** A **smart car** is the broadest concept, covering vehicles equipped with advanced sensors, electronic control, and information and communication technology to improve safety and convenience. An **automated vehicle** is a vehicle in which a system performs part or all of the driving task, and a **connected car** is a vehicle that exchanges data with external networks, other vehicles, and road infrastructure through communication. A **connected automated vehicle (CAV)** is a vehicle that has both automated driving and connected functions.
+> **Definition:** A **smart car** is the broadest concept, covering vehicles equipped with advanced sensors, electronic control, and information and communication technology to improve safety and convenience.
+
+> **Definition:** An **automated vehicle** is a vehicle in which a system performs part or all of the driving task.
+
+> **Definition:** A **connected car** is a vehicle that exchanges data with external networks, other vehicles, and road infrastructure through communication.
+
+> **Definition:** A **connected automated vehicle (CAV)** is a vehicle that has both automated driving and connected functions.
 
 In Figure 1, the smart car set contains most of the automated vehicle and connected car sets, and the CAV lies where automated vehicles and connected cars overlap. The ITS set on the right is the program of making the whole transportation system intelligent, and **C-ITS (Cooperative ITS)** inside it is a cooperative transportation system in which vehicles and infrastructure share information in real time. Because the CAV also overlaps C-ITS, connected automated driving sits where vehicle technology and transportation system technology meet. ITS and C-ITS are defined in detail in Sections 1.6 and 1.7.
 
@@ -116,7 +122,13 @@ The second axis is the maturity of the technology. Europe deploys C-ITS services
 
 From left to right, Table 2 progresses from disseminating risk information to coordinated automation. The axes of progress are trustworthiness (functional safety), accuracy (position and time), and timeliness (update frequency), and the final goals are accident-free road transport and optimal traffic flow.
 
-> **Definition:** A **vulnerable road user (VRU)** is a road user who has no vehicle body for protection, such as a pedestrian, a cyclist, or a rider of a powered two-wheeler (PTW). **ASIL (automotive safety integrity level)** is the safety integrity level (A-D) defined by ISO 26262, the functional safety standard for road vehicles. The **EU CCMS** is the European Union's security credential management system that issues and manages the certificates used to sign European C-ITS messages. **CACC (cooperative adaptive cruise control)** adds vehicle-to-vehicle communication to ACC, which keeps the gap to the preceding vehicle with radar, so that shorter and more stable gaps can be kept.
+> **Definition:** A **vulnerable road user (VRU)** is a road user who has no vehicle body for protection, such as a pedestrian, a cyclist, or a rider of a powered two-wheeler (PTW).
+
+> **Definition:** **ASIL (automotive safety integrity level)** is the safety integrity level (A-D) defined by ISO 26262, the functional safety standard for road vehicles.
+
+> **Definition:** The **EU CCMS** is the European Union's security credential management system that issues and manages the certificates used to sign European C-ITS messages.
+
+> **Definition:** **CACC (cooperative adaptive cruise control)** adds vehicle-to-vehicle communication to ACC, which keeps the gap to the preceding vehicle with radar, so that shorter and more stable gaps can be kept.
 
 The European messages in Table 2 are as follows. European standards append M (for message) to the message name (the SPAT message is SPATEM).
 
@@ -140,7 +152,11 @@ The European messages in Table 2 are as follows. European standards append M (fo
 
 In SAE J3216, SAE International defines **cooperative driving automation (CDA)** and divides the ways in which a vehicle cooperates with other vehicles or infrastructure into four classes (Class A-D) [8]. Whereas the levels of driving automation (Levels 0-5) describe how much of the driving task the vehicle takes on by itself, the cooperation classes describe what it exchanges with other parties. The two classifications are independent axes, so they are combined into a matrix as in Table 4.
 
-> **Definition:** An **automated driving system (ADS)** performs the entire driving task at Levels 3-5, and a **cooperative ADS (C-ADS)** is an ADS with CDA features. A **traffic control device (TCD)** is a traffic safety facility such as a traffic light, a sign, or a road marking.
+> **Definition:** An **automated driving system (ADS)** performs the entire driving task at Levels 3-5.
+
+> **Definition:** A **cooperative ADS (C-ADS)** is an ADS with CDA features.
+
+> **Definition:** A **traffic control device (TCD)** is a traffic safety facility such as a traffic light, a sign, or a road marking.
 
 | Cooperation class | Example at Level 0 (no automation) | Level 1 (driver assistance: longitudinal or lateral control) | Level 2 (partial automation: longitudinal and lateral control) | Levels 3-5 (ADS) |
 |:-----|:-----|:-----|:-----|:-----|
@@ -184,7 +200,11 @@ The existing services that the Korean Ministry of Land, Infrastructure and Trans
 
 *Table 5. The 15 C-ITS services of MOLIT*
 
-> **Definition:** A **signal phase** is the state of a signal that gives the right of way to vehicles or pedestrians in a particular direction at an intersection (green, yellow, red, and so on) and its sequence. A **roadside unit (RSU)** is a device installed at the roadside that communicates with vehicles, and an **on-board unit (OBU)** is a communication terminal installed in a vehicle. Roadside equipment (RSE) is used with the same meaning as RSU.
+> **Definition:** A **signal phase** is the state of a signal that gives the right of way to vehicles or pedestrians in a particular direction at an intersection (green, yellow, red, and so on) and its sequence.
+
+> **Definition:** A **roadside unit (RSU)** is a device installed at the roadside that communicates with vehicles. Roadside equipment (RSE) is used with the same meaning as RSU.
+
+> **Definition:** An **on-board unit (OBU)** is a communication terminal installed in a vehicle.
 
 Most services in Table 5 show on the terminal screen the distance to the event (e.g., 300 m, 200 m), the speed limit, and the current speed together. For example, the road hazard section screen shows, under a title indicating that an incident has occurred, a hazard 300 m ahead, a speed limit of 40, and a current speed of 70 km/h, and the school zone screen shows a school zone 200 m ahead and a speed limit of 30. How the services were operated in actual pilot projects is covered in Week 12.
 
@@ -394,7 +414,9 @@ The higher the automation level, the more sensors of more kinds a vehicle carrie
 
 *Table 11. Forecast sensor configuration by automation level*
 
-> **Definition:** **Dead reckoning** estimates the current position by integrating travel distance and direction from wheel speeds and an inertial measurement unit (IMU). It can keep estimating the position in tunnels where GNSS signals are lost. **GNSS (global navigation satellite system)** is the general term for satellite navigation systems, including GPS.
+> **Definition:** **Dead reckoning** estimates the current position by integrating travel distance and direction from wheel speeds and an inertial measurement unit (IMU). It can keep estimating the position in tunnels where GNSS signals are lost.
+
+> **Definition:** **GNSS (global navigation satellite system)** is the general term for satellite navigation systems, including GPS.
 
 One V2X unit is included from Level 3 on, and the numbers of lidars and surround cameras grow with the level. The representative functions by level are as follows.
 
@@ -516,7 +538,9 @@ The same report grouped connected car services again into four broad categories 
 
 *Table 15. The four major categories of connected car services*
 
-> **Definition:** **Usage-based insurance (UBI)** sets premiums from actual driving data such as distance driven and the number of hard brakings. **First notice of loss (FNOL)** is the procedure of first notifying the insurer after an accident, which a connected car can perform automatically by detecting the crash.
+> **Definition:** **Usage-based insurance (UBI)** sets premiums from actual driving data such as distance driven and the number of hard brakings.
+
+> **Definition:** **First notice of loss (FNOL)** is the procedure of first notifying the insurer after an accident, which a connected car can perform automatically by detecting the crash.
 
 ### 2.4 Connected Car HMI
 
@@ -680,7 +704,9 @@ Sensor-based recognition has three strengths. First, because the sensors measure
 
 *Figure 26. An object in an NLOS area that the onboard sensors cannot recognize because a building blocks it*
 
-> **Definition:** **Line of sight (LOS)** is the state in which nothing blocks the path between a sensor and an object, so the object is directly visible, and **non-line of sight (NLOS)** is the state in which a building or another vehicle blocks the object so it is not directly visible.
+> **Definition:** **Line of sight (LOS)** is the state in which nothing blocks the path between a sensor and an object, so the object is directly visible.
+
+> **Definition:** **Non-line of sight (NLOS)** is the state in which a building or another vehicle blocks the object so it is not directly visible.
 
 Sensor-based recognition suffers recognition errors from environmental factors such as weather and lighting, and, as in Figure 26, it cannot recognize objects in NLOS areas, such as a vehicle or pedestrian emerging from behind a building. Its recognition distance is limited, and it is also limited in determining the type and size of objects.
 
@@ -721,7 +747,11 @@ Figure 28 shows experimental results measuring how accurately the relative posit
 
 *Figure 28. Longitudinal and lateral position errors of camera, radar, V2X, and fusion*
 
-> **Definition:** **Longitudinal** is the vehicle's direction of travel, and **lateral** is the left-right direction perpendicular to it. The **root mean square error (RMSE)** is obtained by squaring the differences between estimates and true values, averaging them, and taking the square root; it represents the typical size of the error.
+> **Definition:** **Longitudinal** is the vehicle's direction of travel.
+
+> **Definition:** **Lateral** is the left-right direction perpendicular to the direction of travel.
+
+> **Definition:** The **root mean square error (RMSE)** is obtained by squaring the differences between estimates and true values, averaging them, and taking the square root; it represents the typical size of the error.
 
 With estimated positions $`\hat{x}_i`$ and true positions $x_i$ over $N$ frames, the RMSE is as follows.
 
@@ -1060,7 +1090,11 @@ When the WSA from the RSU contains a **WAVE router advertisement (WRA)**, the OB
 
 > **Note:** ETSI TS 102 637-2 and -3 were later revised into the European Standards (EN) 302 637-2 (CAM) and 302 637-3 (DENM) [3], [4].
 
-> **Definition:** SAE J2735 defines messages at three levels. A **data element** is a value that cannot be divided further, such as speed or latitude; a **data frame** is a structure that groups data elements, such as a position (latitude, longitude, elevation); and a **message** gathers data frames and data elements into one transmission unit. These definitions are written in the abstract syntax notation ASN.1 and are encoded for transmission with UPER (unaligned packed encoding rules), which packs them bit by bit without gaps.
+> **Definition:** SAE J2735 defines messages at three levels. A **data element** is a value that cannot be divided further, such as speed or latitude.
+
+> **Definition:** A **data frame** is a structure that groups data elements, such as a position (latitude, longitude, elevation).
+
+> **Definition:** A **message** gathers data frames and data elements into one transmission unit. These definitions are written in the abstract syntax notation ASN.1 and are encoded for transmission with UPER (unaligned packed encoding rules), which packs them bit by bit without gaps.
 
 In Korea, the Korean Agency for Technology and Standards (KATS) is standardizing V2X messages for cooperative automated driving systems as the KS R 1600 series [40].
 
@@ -1147,7 +1181,11 @@ The purpose, key content, and transmission timing of frequently used messages ar
 
 *Table 35. Purpose and transmission timing of major messages*
 
-> **Definition:** A **probe vehicle** is a vehicle that acts as a moving sensor, collecting data such as speed, position, and road surface condition as it drives. **NMEA** and **RTCM** were originally the names of organizations for marine electronic equipment and maritime radio communication, and their standards are widely used for the output sentence format of GNSS receivers and for the format of position correction information, respectively.
+> **Definition:** A **probe vehicle** is a vehicle that acts as a moving sensor, collecting data such as speed, position, and road surface condition as it drives.
+
+> **Definition:** **NMEA** was originally the name of an organization for marine electronic equipment, and its standard is widely used for the output sentence format of GNSS receivers.
+
+> **Definition:** **RTCM** was originally the name of an organization for maritime radio communication, and its standard is widely used for the format of position correction information.
 
 ### 3.7 Basic Safety Message (BSM)
 

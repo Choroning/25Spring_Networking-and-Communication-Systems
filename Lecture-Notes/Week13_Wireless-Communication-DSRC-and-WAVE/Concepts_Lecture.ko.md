@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-11-10
+> **최종 수정일:** 2026-11-18
 
 > **학습 목표:**
 > 1. OSI 참조 모델에 비추어 IEEE 802.11, DSRC, WAVE, ETSI와 ISO의 ITS 스테이션, 3GPP V2X의 프로토콜 스택을 비교할 수 있다
@@ -163,7 +163,13 @@ OSI의 계층 개념은 서울의 학교와 로마의 학교 학생들이 편지
 2. **송신기와 수신기:** 신호가 얼마나 멀리 도달하는지가 핵심이다. 전송 거리는 자유 공간 전파, 감쇠, 페이딩, 섀도잉, 간섭, SIR과 SINR, 간섭 범위, 경로 손실 모델, 송신 전력과 수신 감도로 정해진다.
 3. **데이터 전송의 효율:** 같은 주파수 대역폭으로 더 많은 데이터를 보내기 위한 변조와 부호화, 이중화와 다중화를 다룬다.
 
-> **용어 정의:** **SIR(signal-to-interference ratio)** 은 원하는 신호의 전력 $S$와 다른 송신기에서 온 간섭 전력 $I$의 비 $S/I$이고, **SINR(signal-to-interference-plus-noise ratio)** 은 잡음 전력 $N$까지 포함한 $S/(I+N)$이다. 값이 클수록 수신기가 신호를 정확히 해석할 수 있다. **수신 감도(receiver sensitivity)** 는 수신기가 정해진 오류율 이하로 신호를 받을 수 있는 최소 수신 전력이다. **이중화(duplexing)** 는 한 링크에서 양방향 통신을 하는 방법으로, 시간을 나누는 TDD와 주파수를 나누는 FDD가 있다.
+> **용어 정의:** **SIR(signal-to-interference ratio)** 은 원하는 신호의 전력 $S$와 다른 송신기에서 온 간섭 전력 $I$의 비 $S/I$이다.
+
+> **용어 정의:** **SINR(signal-to-interference-plus-noise ratio)** 은 잡음 전력 $N$까지 포함한 $S/(I+N)$이다. SIR과 SINR은 값이 클수록 수신기가 신호를 정확히 해석할 수 있다.
+
+> **용어 정의:** **수신 감도(receiver sensitivity)** 는 수신기가 정해진 오류율 이하로 신호를 받을 수 있는 최소 수신 전력이다.
+
+> **용어 정의:** **이중화(duplexing)** 는 한 링크에서 양방향 통신을 하는 방법으로, 시간을 나누는 TDD와 주파수를 나누는 FDD가 있다.
 
 ### 1.5 무선 전파의 기초
 
@@ -194,7 +200,15 @@ OSI의 계층 개념은 서울의 학교와 로마의 학교 학생들이 편지
 
 그림 5는 기지국과 단말 사이에서 일어나는 무선 통신의 대표적인 문제를 보여 준다.
 
-> **용어 정의:** **거리에 따른 감쇠(distance attenuation)** 는 전파가 퍼져 나가면서 단위 면적당 에너지가 줄어 수신 전력이 거리에 따라 작아지는 현상이다. **섀도잉(shadowing)** 은 나무나 건물 같은 장애물이 전파를 가려 생기는 감쇠이다. **다중 경로(multipath)** 는 직접파와 건물, 지면에서 반사된 파가 서로 다른 경로와 지연으로 수신기에 도착하는 현상이며, 이 파들이 위상에 따라 서로 보강되거나 상쇄되어 수신 세기가 빠르게 요동치는 것을 **페이딩(fading)** 이라 한다. **간섭(interference)** 은 같거나 가까운 주파수를 쓰는 다른 송신기의 신호가 원하는 신호에 섞이는 현상이다.
+> **용어 정의:** **거리에 따른 감쇠(distance attenuation)** 는 전파가 퍼져 나가면서 단위 면적당 에너지가 줄어 수신 전력이 거리에 따라 작아지는 현상이다.
+
+> **용어 정의:** **섀도잉(shadowing)** 은 나무나 건물 같은 장애물이 전파를 가려 생기는 감쇠이다.
+
+> **용어 정의:** **다중 경로(multipath)** 는 직접파와 건물, 지면에서 반사된 파가 서로 다른 경로와 지연으로 수신기에 도착하는 현상이다.
+
+> **용어 정의:** 다중 경로로 도착한 파들이 위상에 따라 서로 보강되거나 상쇄되어 수신 세기가 빠르게 요동치는 것을 **페이딩(fading)** 이라 한다.
+
+> **용어 정의:** **간섭(interference)** 은 같거나 가까운 주파수를 쓰는 다른 송신기의 신호가 원하는 신호에 섞이는 현상이다.
 
 차량은 빠르게 움직이므로 다중 경로의 보강과 상쇄가 짧은 시간 안에 바뀌고, 도플러 효과로 주파수도 조금씩 어긋난다. 차량 통신의 물리 계층이 실내 무선 LAN보다 더 견고해야 하는 이유이다.
 
@@ -270,7 +284,7 @@ b = \log_2 M
 
 ### 1.7 부호화와 부호화율
 
-> **용어 정의:** **부호화(channel coding)** 는 데이터의 오류를 검출하고 정정할 수 있도록 원래 데이터에 여분의 비트(중복, redundancy)를 더해 변환하는 기술이다. 대표적으로 **선형 블록 부호(linear block code)** 와 **길쌈 부호(convolutional code)** 가 있다.
+> **용어 정의:** **부호화(channel coding)** 는 데이터의 오류를 검출하고 정정할 수 있도록 원래 데이터에 여분의 비트(중복, redundancy)를 더해 변환하는 기술이다. 대표적으로 선형 블록 부호(linear block code)와 길쌈 부호(convolutional code)가 있다.
 
 모든 채널 부호는 실제로 보내려는 정보 비트 $k$개를 $n$비트의 부호어(codeword)로 바꾼다($`n > k`$). 정보 비트 수와 부호어 길이의 비를 **부호화율(code rate)** 이라 한다.
 
@@ -362,7 +376,21 @@ MAC 헤더의 첫 필드인 **프레임 제어(Frame Control)** 는 16비트이�
 
 *표 7. To DS와 From DS 비트에 따른 주소 필드의 뜻*
 
-> **용어 정의:** **DA(destination address)** 는 최종 목적지, **SA(source address)** 는 최초 출발지, **RA(receiver address)** 는 이 무선 구간의 수신기, **TA(transmitter address)** 는 이 무선 구간의 송신기 주소이다. **BSS(basic service set)** 는 하나의 AP 또는 서로 통신하는 단말들로 이루어진 기본 단위이고, **BSSID**는 BSS의 식별자로 인프라 구조에서는 AP의 MAC 주소이다. **IBSS(independent BSS)** 는 AP 없이 단말끼리 직접 통신하는 애드혹(ad hoc) 네트워크이다. **WDS(wireless distribution system)** 는 AP들을 무선으로 이어 만든 분배 시스템이다.
+> **용어 정의:** **DA(destination address)** 는 최종 목적지의 주소이다.
+
+> **용어 정의:** **SA(source address)** 는 최초 출발지의 주소이다.
+
+> **용어 정의:** **RA(receiver address)** 는 이 무선 구간의 수신기 주소이다.
+
+> **용어 정의:** **TA(transmitter address)** 는 이 무선 구간의 송신기 주소이다.
+
+> **용어 정의:** **BSS(basic service set)** 는 하나의 AP 또는 서로 통신하는 단말들로 이루어진 기본 단위이다.
+
+> **용어 정의:** **BSSID**는 BSS의 식별자로, 인프라 구조에서는 AP의 MAC 주소이다.
+
+> **용어 정의:** **IBSS(independent BSS)** 는 AP 없이 단말끼리 직접 통신하는 애드혹(ad hoc) 네트워크이다.
+
+> **용어 정의:** **WDS(wireless distribution system)** 는 AP들을 무선으로 이어 만든 분배 시스템이다.
 
 표 7에서 주소 1은 언제나 이 프레임을 받을 무선 수신기(RA)이고, 주소 2는 언제나 이 프레임을 보낸 무선 송신기(TA)이다. 예를 들어 단말이 AP로 보내는 프레임(To DS = 1)에서 무선 수신기는 AP(BSSID)이고, 최종 목적지 DA는 주소 3에 따로 적는다.
 
@@ -626,7 +654,7 @@ IPv6 주소는 16비트씩 여덟 묶음을 16진수로 쓰고 콜론으로 구�
 
 ### 2.1 DSRC의 특징
 
-> **용어 정의:** **DSRC(Dedicated Short Range Communication, 단거리 전용 통신)** 는 도로변의 노변 기지국과 차량 사이에서 양방향으로 주고받는 근거리 무선 통신이다. 노변 쪽 장치를 **RSU(roadside unit)** 또는 **RSE(roadside equipment)**, 차량 쪽 장치를 **OBU(on-board unit)** 또는 **OBE(on-board equipment)** 라 한다.
+> **용어 정의:** **DSRC(Dedicated Short Range Communication, 단거리 전용 통신)** 는 도로변의 노변 기지국과 차량 사이에서 양방향으로 주고받는 근거리 무선 통신이다. 노변 쪽 장치를 RSU(roadside unit) 또는 RSE(roadside equipment), 차량 쪽 장치를 OBU(on-board unit) 또는 OBE(on-board equipment)라 한다.
 
 DSRC의 특징은 다음과 같다.
 
@@ -669,7 +697,9 @@ DSRC의 특징은 다음과 같다.
 
 *표 10. 국내 DSRC의 기본 통신 규격*
 
-> **용어 정의:** **OOK(on-off keying)** 는 ASK의 가장 단순한 형태로, 비트 1이면 반송파(또는 빛)를 켜고 0이면 끄는 방식이다. **BER(bit error rate, 비트 오류율)** 은 전송한 비트 가운데 틀린 비트의 비율로, $10^{-5}$은 10만 비트 중 1비트가 틀린다는 뜻이다.
+> **용어 정의:** **OOK(on-off keying)** 는 ASK의 가장 단순한 형태로, 비트 1이면 반송파(또는 빛)를 켜고 0이면 끄는 방식이다.
+
+> **용어 정의:** **BER(bit error rate, 비트 오류율)** 은 전송한 비트 가운데 틀린 비트의 비율로, $10^{-5}$은 10만 비트 중 1비트가 틀린다는 뜻이다.
 
 | 지역 | 유럽(CEN) | 일본 | 한국 |
 |:-----|:-----|:-----|:-----|
@@ -735,7 +765,13 @@ MDS와 ACTS의 합은 1개 이상 8개 이하이므로($`1 \le n + k \le 8`$), F
 
 그림 31은 노변 측 RFCU와 차량 측 OBU 사이의 통신 절차이다. 양쪽 모두 ETCS 응용, 7계층의 I-KE와 T-KE, LLC, MAC으로 이루어진다.
 
-> **용어 정의:** 계층 사이의 서비스 요청은 네 종류의 서비스 프리미티브(service primitive)로 나타낸다. **request(.req)** 는 위 계층이 아래 계층에 서비스를 요청하는 것, **indication(.ind)** 은 아래 계층이 위 계층에 상대편의 요청이 왔음을 알리는 것, **response(.res)** 는 indication에 대한 위 계층의 응답, **confirm(.conf, .cfm)** 은 요청한 쪽에 결과를 확인해 주는 것이다.
+> **용어 정의:** 계층 사이의 서비스 요청은 네 종류의 서비스 프리미티브(service primitive)로 나타낸다. **request(.req)** 는 위 계층이 아래 계층에 서비스를 요청하는 것이다.
+
+> **용어 정의:** **indication(.ind)** 은 아래 계층이 위 계층에 상대편의 요청이 왔음을 알리는 것이다.
+
+> **용어 정의:** **response(.res)** 는 indication에 대한 위 계층의 응답이다.
+
+> **용어 정의:** **confirm(.conf, .cfm)** 은 요청한 쪽에 결과를 확인해 주는 것이다.
 
 1. 양쪽의 ETCS 응용이 각자의 I-KE에 응용을 등록한다(RegApp).
 2. RFCU의 MAC이 FCMS를 방송한다. OBU의 관리 개체는 MLME-SCAN.req와 MLME-SCAN.conf로 FCMS를 찾아 프레임 정보를 얻고, MLME-ASSOCIATE.req로 연결을 시작한다.
@@ -908,7 +944,11 @@ TGp가 만든 IEEE 802.11p가 3절의 WAVE의 물리 계층과 MAC 계층이다.
 
 *표 17. IEEE 802.11 무선 LAN 표준의 특성 비교*
 
-> **용어 정의:** **DSSS(direct sequence spread spectrum, 직접 수열 확산 스펙트럼)** 는 각 비트를 빠른 부호열에 곱해 넓은 대역으로 퍼뜨려 보내는 방식이다. **CCK(complementary code keying)** 는 802.11b가 5.5 Mbps와 11 Mbps에 쓰는 DSSS의 부호 방식이다. **MIMO(multiple input multiple output)** 는 송신과 수신에 여러 안테나를 써서 여러 데이터 흐름(공간 스트림)을 동시에 보내는 기술이며, 4×4는 송신 안테나 4개와 수신 안테나 4개를 뜻한다.
+> **용어 정의:** **DSSS(direct sequence spread spectrum, 직접 수열 확산 스펙트럼)** 는 각 비트를 빠른 부호열에 곱해 넓은 대역으로 퍼뜨려 보내는 방식이다.
+
+> **용어 정의:** **CCK(complementary code keying)** 는 802.11b가 5.5 Mbps와 11 Mbps에 쓰는 DSSS의 부호 방식이다.
+
+> **용어 정의:** **MIMO(multiple input multiple output)** 는 송신과 수신에 여러 안테나를 써서 여러 데이터 흐름(공간 스트림)을 동시에 보내는 기술이며, 4×4는 송신 안테나 4개와 수신 안테나 4개를 뜻한다.
 
 표 17의 3.7 GHz 행은 미국의 3.65\~3.7 GHz 대역에서 802.11a 방식을 고출력으로 쓰는 개정(802.11y)으로, 실외 5 km까지 닿는다. 802.11n은 MIMO와 40 MHz 대역 결합으로, 802.11ac는 최대 160 MHz와 8개 스트림으로 속도를 높였다. 802.11ad는 60 GHz 대역의 2,160 MHz 폭 채널로 최대 약 6.75 Gbit/s를 낸다 [11].
 
@@ -938,7 +978,17 @@ TGp가 만든 IEEE 802.11p가 3절의 WAVE의 물리 계층과 MAC 계층이다.
 
 그림 39에서 데이터 링크 계층에는 MAC 부계층이, 물리 계층에는 PLCP 부계층과 PMD 부계층이 있다. 각 부계층 옆에는 그 부계층의 설정과 상태를 관리하는 관리 개체가 있다.
 
-> **용어 정의:** **SAP(service access point)** 는 한 계층이 위 계층에 서비스를 제공하는 접점이다. **MLME(MAC sublayer management entity)** 는 MAC 부계층의 관리 개체, **PLME(physical layer management entity)** 는 물리 계층의 관리 개체, **SME(station management entity)** 는 단말 전체를 관리하는 개체이다. **PLCP(physical layer convergence procedure)** 부계층은 MAC의 프레임을 물리 계층의 프레임으로 바꾸고, **PMD(physical medium dependent)** 부계층은 실제 무선 신호의 변조와 송수신을 맡는다.
+> **용어 정의:** **SAP(service access point)** 는 한 계층이 위 계층에 서비스를 제공하는 접점이다.
+
+> **용어 정의:** **MLME(MAC sublayer management entity)** 는 MAC 부계층의 관리 개체이다.
+
+> **용어 정의:** **PLME(physical layer management entity)** 는 물리 계층의 관리 개체이다.
+
+> **용어 정의:** **SME(station management entity)** 는 단말 전체를 관리하는 개체이다.
+
+> **용어 정의:** **PLCP(physical layer convergence procedure)** 부계층은 MAC의 프레임을 물리 계층의 프레임으로 바꾼다.
+
+> **용어 정의:** **PMD(physical medium dependent)** 부계층은 실제 무선 신호의 변조와 송수신을 맡는다.
 
 ![그림 40. IEEE 802.11 MAC의 구조](../../images/Week13_13-2_p22.png)
 
@@ -1186,7 +1236,7 @@ flowchart LR
 **전송 속도의 계산.** 64-QAM, 부호화율 3/4, 20 MHz의 54 Mbps를 단계별로 계산하면 다음과 같다.
 
 1. 부반송파 간격은 대역폭을 FFT 크기로 나눈 값이다. $20 \text{ MHz} / 64 = 312.5$ kHz.
-2. 1초에 보내는 심볼 수는 심볼 길이의 역수이다. $1 \text{ s} / 4 \text{ µs} = 250{,}000$개.
+2. 1초에 보내는 심볼 수는 심볼 길이의 역수이다. $1 \text{ s} / 4\ \mu\text{s} = 250{,}000$개.
 3. 심볼당 부호화 비트는 데이터 부반송파 수와 부반송파당 비트 수의 곱이다. $48 \times 6 = 288$비트.
 4. 데이터 전송 속도는 심볼 수, 심볼당 부호화 비트, 부호화율의 곱이다. $250{,}000 \times 288 \times 3/4 = 54{,}000{,}000$ bps $= 54$ Mbps.
 
@@ -1556,7 +1606,7 @@ TPID는 두 값씩 짝을 이루며, 앞의 값은 정보 요소 확장이 없�
 
 ### 3.12 PSID
 
-> **용어 정의:** **PSID(provider service identifier, 제공자 서비스 식별자)** 는 WSA와 WSM이 어떤 응용 서비스의 것인지 나타내는 식별자이다. ETSI와 ISO 표준에서는 같은 값을 **AID(ITS application identifier)** 라 부른다.
+> **용어 정의:** **PSID(provider service identifier, 제공자 서비스 식별자)** 는 WSA와 WSM이 어떤 응용 서비스의 것인지 나타내는 식별자이다. ETSI와 ISO 표준에서는 같은 값을 AID(ITS application identifier) 라 부른다.
 
 IEEE 1609.12는 WAVE 식별자의 할당을 정한 표준이며(2012년 9월 21일부터 유효), ETSI, ISO, SAE, IEEE 표준이 쓰는 PSID의 할당에 관한 규범적 요구사항을 담고 있다 [17]. PSID는 가변 길이이며, 첫 옥텟의 앞 비트들이 길이를 알려 주는 **p-부호화(p-encoding)** 로 나타낸다.
 
@@ -1692,7 +1742,11 @@ UTAC는 1945년에 프랑스 파리 근교 Linas-Montlhéry 지역의 시험장(
 - 2019년에 자율주행차 연구소 TEQMO를 세우고, 관련 기술의 연구개발, 시험, 전문가 컨설팅, 형식 승인 서비스를 제공한다.
 - 파리 근교의 총길이 12 km 전용 시험 트랙에서 5G-ITS와 자율주행 기술의 다양한 연구개발을 추진한다.
 
-> **용어 정의:** **형식 승인(type approval)** 은 차량이나 부품이 판매되기 전에 안전, 환경 같은 법규 기준을 만족하는지 공인 기관이 시험하여 승인하는 제도이다. **Euro NCAP(European New Car Assessment Programme)** 은 신차의 충돌 안전성과 안전 보조 기능을 평가하여 별점으로 공개하는 유럽의 신차 안전도 평가 제도이고, **ISO/IEC 17025**는 시험소와 교정 기관의 능력에 관한 국제 표준이다.
+> **용어 정의:** **형식 승인(type approval)** 은 차량이나 부품이 판매되기 전에 안전, 환경 같은 법규 기준을 만족하는지 공인 기관이 시험하여 승인하는 제도이다.
+
+> **용어 정의:** **Euro NCAP(European New Car Assessment Programme)** 은 신차의 충돌 안전성과 안전 보조 기능을 평가하여 별점으로 공개하는 유럽의 신차 안전도 평가 제도이다.
+
+> **용어 정의:** **ISO/IEC 17025**는 시험소와 교정 기관의 능력에 관한 국제 표준이다.
 
 ![그림 78. SIMCA가 1956년에 세운 시험장의 트랙 구성](../../images/Week13_Appendix_p03.png)
 
@@ -1729,7 +1783,13 @@ UTAC는 1945년에 프랑스 파리 근교 Linas-Montlhéry 지역의 시험장(
 
 *표 37. UTAC의 분야별 시험 시설*
 
-> **용어 정의:** **EMC(electromagnetic compatibility, 전자파 적합성)** 는 전자 장치가 주변에 전자파 장해를 일으키지 않고 주변의 전자파에도 오동작하지 않는 성질이다. **NVH(noise, vibration, harshness)** 는 차량의 소음, 진동, 불쾌한 충격감을 묶어 부르는 말이다. **CAV(connected and automated vehicle)** 는 커넥티드 자율주행차이고, **ADAS(advanced driver assistance systems)** 는 첨단 운전자 보조 시스템이다.
+> **용어 정의:** **EMC(electromagnetic compatibility, 전자파 적합성)** 는 전자 장치가 주변에 전자파 장해를 일으키지 않고 주변의 전자파에도 오동작하지 않는 성질이다.
+
+> **용어 정의:** **NVH(noise, vibration, harshness)** 는 차량의 소음, 진동, 불쾌한 충격감을 묶어 부르는 말이다.
+
+> **용어 정의:** **CAV(connected and automated vehicle)** 는 커넥티드 자율주행차이다.
+
+> **용어 정의:** **ADAS(advanced driver assistance systems)** 는 첨단 운전자 보조 시스템이다.
 
 | 업무 | 내용 |
 |:-----|:-----|

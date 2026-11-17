@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-04
+> **Last Updated:** 2026-11-17
 
 > **Learning Objectives:**
 > 1. Explain the four keywords of the future vehicle industry, C.A.S.E., and interpret the market outlook of each area together with its source
@@ -71,7 +71,7 @@ The transformation of the future vehicle industry is often summarized as **C.A.S
 
 *Table 1. Missions, 2020 status, and 2030 forecasts of the four C.A.S.E. keywords*
 
-Table 1 is based on data compiled by SBD Automotive [1]. In Table 1, connected and autonomous functions spread fastest. Both either presuppose communication or become more effective when combined with it, so automotive communication, the subject of this course, can be said to lie at the center of the transformation toward future vehicles.
+Table 1 is based on data compiled by SBD Automotive [1]. In Table 1, connected and autonomous functions spread fastest. Both either presuppose communication or become more effective when combined with it, so automotive communication can be said to lie at the center of the transformation toward future vehicles.
 
 ### 1.2 Connected: The Connected Car Market and Services
 
@@ -81,7 +81,9 @@ In North America and Europe, an average of 90% of new cars were expected to have
 
 Services delivered through connected cars fall into six broad groups: infotainment, smartphone integration, electric vehicle services, navigation, telematics, and autonomous driving services. The present and future of the first five, as summarized by Frost & Sullivan in 2020, are shown in Table 2 [2].
 
-> **Definition:** **Infotainment** combines information and entertainment and refers to functions that provide music, video, and information services inside the car. **Telematics** combines telecommunication and informatics and refers to technology that attaches communication to a vehicle to provide services such as automatic crash notification, remote diagnostics, and location tracking.
+> **Definition:** **Infotainment** combines information and entertainment and refers to functions that provide music, video, and information services inside the car.
+
+> **Definition:** **Telematics** combines telecommunication and informatics and refers to technology that attaches communication to a vehicle to provide services such as automatic crash notification, remote diagnostics, and location tracking.
 
 | Service | Current | Future |
 |:-----|:-----|:-----|
@@ -93,7 +95,9 @@ Services delivered through connected cars fall into six broad groups: infotainme
 
 *Table 2. Present and future of connected car services*
 
-> **Definition:** **eCall** is the European emergency call system in which a vehicle that has crashed automatically calls an emergency center and reports its location. **RTTI** stands for real-time traffic information.
+> **Definition:** **eCall** is the European emergency call system in which a vehicle that has crashed automatically calls an emergency center and reports its location.
+
+> **Definition:** **RTTI** stands for real-time traffic information.
 
 The physical layer of connected cars, that is, the communication means that actually carries the signals, is mostly the cellular network. A vehicle obtains communication capability either by the **embedded** method, which mounts a communication module directly in the vehicle, or by **tethering**, which borrows the communication function of a device such as a smartphone, and around 2020 the ratio of the two was about 6:4 [2]. The difference between the two methods is covered in detail in Section 3.2.
 
@@ -116,7 +120,13 @@ Table 3 shows that Level 0 vehicles, which have no autonomous driving function a
 
 ### 1.4 Shared: The Shared Mobility Market Outlook
 
-> **Definition:** **DRT (demand-responsive transport)** is a transport service that runs without fixed routes and timetables, changing its route according to passenger requests. **eHailing** is a service for calling a vehicle and driver through an app such as Uber. **MaaS (Mobility-as-a-Service)** is the concept of bundling several modes of transport into one service that offers route search, booking, and payment at once. **GMV (gross merchandise value)** is the total amount of transactions made through a platform.
+> **Definition:** **DRT (demand-responsive transport)** is a transport service that runs without fixed routes and timetables, changing its route according to passenger requests.
+
+> **Definition:** **eHailing** is a service for calling a vehicle and driver through an app such as Uber.
+
+> **Definition:** **MaaS (Mobility-as-a-Service)** is the concept of bundling several modes of transport into one service that offers route search, booking, and payment at once.
+
+> **Definition:** **GMV (gross merchandise value)** is the total amount of transactions made through a platform.
 
 | Segment | 2019 GMV (USD billion) | 2020 GMV (USD billion) | Year-over-Year Growth |
 |:-----|-----:|-----:|-----:|
@@ -131,7 +141,17 @@ Table 4 is based on Frost & Sullivan data with 2019 as the base year [3]. Becaus
 
 ### 1.5 Electric: The Market Outlook for Engine Vehicles and Electrified Vehicles
 
-> **Definition:** An **ICE (internal combustion engine)** vehicle is driven by an internal combustion engine alone. Electrified vehicles (xEV) include all of the following. A **BEV (battery electric vehicle)** is a pure electric vehicle driven only by a battery and electric motors; a **PHEV (plug-in hybrid electric vehicle)** is a hybrid that can be charged from an external power source; an **FHEV (full hybrid electric vehicle)** is a hybrid that can drive short distances on its electric motor alone; an **MHEV (mild hybrid electric vehicle)** is a hybrid whose electric motor only assists the engine; and an **FCEV (fuel cell electric vehicle)** is a hydrogen vehicle that runs on electricity produced by a hydrogen fuel cell.
+> **Definition:** An **ICE (internal combustion engine)** vehicle is driven by an internal combustion engine alone. Electrified vehicles (xEV) include all of the following BEVs, PHEVs, FHEVs, MHEVs, and FCEVs.
+
+> **Definition:** A **BEV (battery electric vehicle)** is a pure electric vehicle driven only by a battery and electric motors.
+
+> **Definition:** A **PHEV (plug-in hybrid electric vehicle)** is a hybrid that can be charged from an external power source.
+
+> **Definition:** An **FHEV (full hybrid electric vehicle)** is a hybrid that can drive short distances on its electric motor alone.
+
+> **Definition:** An **MHEV (mild hybrid electric vehicle)** is a hybrid whose electric motor only assists the engine.
+
+> **Definition:** An **FCEV (fuel cell electric vehicle)** is a hydrogen vehicle that runs on electricity produced by a hydrogen fuel cell.
 
 According to one market forecast, electrified vehicles (including electric and hydrogen vehicles) account for 28.6% of the entire passenger car market in 2025. This value equals 100% minus the 2025 ICE share of 71.4%.
 
@@ -152,7 +172,9 @@ Autonomous driving cannot be commercialized by technology alone; safety standard
 
 **United States.** The U.S. Department of Transportation (DOT) published the autonomous driving guidelines *Automated Driving Systems 2.0* (2017) [4], *Automated Vehicles 3.0* (2018) [5], and *Automated Vehicles 4.0* (2020) [6], which set out directions for system safety, the operational design domain (ODD), the minimal risk condition (MRC), data, and laws and institutions. The DOT also leads support for research and development, testing, demonstration, and infrastructure. It publishes maps of planned and operational connected vehicle deployments and runs a research and development roadmap that proceeds from proof of concept through applied research to policy and deployment preparation.
 
-> **Definition:** The **ODD (operational design domain)** is the range of conditions (road type, speed, weather, time of day, etc.) under which an automated driving system is designed to operate properly. The **MRC (minimal risk condition)** is the state in which the vehicle has been brought to a safe stop when the system can no longer continue driving. Both terms are revisited in Week 2.
+> **Definition:** The **ODD (operational design domain)** is the range of conditions (road type, speed, weather, time of day, etc.) under which an automated driving system is designed to operate properly.
+
+> **Definition:** The **MRC (minimal risk condition)** is the state in which the vehicle has been brought to a safe stop when the system can no longer continue driving. Both terms are revisited in Week 2.
 
 **Europe.** ERTRAC, the European road transport research advisory council, presented separate development roadmaps for passenger cars, freight vehicles, and urban mobility in its *Connected Automated Driving Roadmap* (2019) [7]. EPoSS, the technology platform for smart systems, presented in its 2015 roadmap the research and development, demonstration, and commercialization stages for each of eight activity fields: technology inside the car, infrastructure, big data, system integration and validation, system design, standardization, legal frameworks, and awareness measures [8]. The milestones of the EPoSS roadmap are conditional automated driving (Level 3) at low speeds in simple environments in 2020, highly automated driving (Level 4) on highways in 2025, and highly automated driving (Level 4) in cities in 2030. Throughout the 2010s the European Union carried out a series of projects: highly automated driving projects such as HAVEit, InteractIVe, AdaptIVe, and L3Pilot, driver assistance and platooning projects such as SARTRE and ENSEMBLE, infrastructure connectivity and cooperative driving projects such as DRIVE C2X and AUTONET, and networking, coordination, and support projects such as EuroFOT, CARTRE, SCOUT, and ARCADE. The EU also held the European Conference on Connected and Automated Driving (EUCAD) in 2017 and 2019.
 
@@ -267,7 +289,13 @@ World production in 2021 was about 76.42 million units, with China first at 26.0
 
 **Restructuring of the supply chain.** About 70% of future vehicle parts are electrical and electronic parts. After the financial crisis, the United States pushed to convert more than 20% of its parts suppliers into producers of eco-friendly vehicle parts, whereas in Korea only 5% of parts makers produce electrical and electronic parts. Building on world-class software competitiveness, the United States is preparing to produce **software-defined vehicles (SDV)** centered on software-based parts.
 
-> **Definition:** An **automaker (OEM)** is a company that designs, assembles, and sells vehicles. A **tier-1 supplier** delivers modules or systems directly to automakers, and a **tier-2 supplier** delivers parts to tier-1 suppliers. An **SDV** is a vehicle whose functions and performance are defined by software rather than hardware and whose functions change through software updates even after release.
+> **Definition:** An **automaker (OEM)** is a company that designs, assembles, and sells vehicles.
+
+> **Definition:** A **tier-1 supplier** delivers modules or systems directly to automakers.
+
+> **Definition:** A **tier-2 supplier** delivers parts to tier-1 suppliers.
+
+> **Definition:** An **SDV** is a vehicle whose functions and performance are defined by software rather than hardware and whose functions change through software updates even after release.
 
 The change in the supply chain goes hand in hand with the change in the vehicle's electrical/electronic (E/E) architecture. Table 12 compares the existing and future structures; the key point is that computation is centralized in order to increase functionality.
 
@@ -283,7 +311,11 @@ The change in the supply chain goes hand in hand with the change in the vehicle'
 
 *Table 12. Existing and future structures of the vehicle E/E architecture*
 
-> **Definition:** **AUTOSAR (AUTomotive Open System ARchitecture)** is a standard architecture for vehicle ECU software, and a **hypervisor** is software that lets several operating systems run simultaneously on one piece of hardware. **OTA (over-the-air)** is the method of updating software remotely over wireless communication. The stages of E/E architecture evolution are covered in detail in Week 2.
+> **Definition:** **AUTOSAR (AUTomotive Open System ARchitecture)** is a standard architecture for vehicle ECU software.
+
+> **Definition:** A **hypervisor** is software that lets several operating systems run simultaneously on one piece of hardware.
+
+> **Definition:** **OTA (over-the-air)** is the method of updating software remotely over wireless communication. The stages of E/E architecture evolution are covered in detail in Week 2.
 
 **Electric and autonomous vehicles.** In electric vehicles, major countries are investing in large-scale EV infrastructure (charging infrastructure) while encouraging **reshoring** (the return of manufacturing to the home country) of their companies operating abroad and an exit strategy from China. The commercialization of autonomous vehicles is behind earlier expectations, but major countries are enacting or revising laws and institutions and widening the scope of permitted test driving.
 
@@ -360,9 +392,15 @@ Automotive communication belongs to the electrical/electronic system among these
 
 Automotive communication is divided into the network inside the vehicle and wireless networks with the outside.
 
-> **Definition:** An **in-vehicle network (IVN)** is a communication network, mostly wired, that connects the ECUs, sensors, actuators, and other devices inside a vehicle. **Vehicle-to-everything (V2X)** communication is a wireless communication network that connects the vehicle with road infrastructure, other vehicles, pedestrians, and so on.
+> **Definition:** An **in-vehicle network (IVN)** is a communication network, mostly wired, that connects the ECUs, sensors, actuators, and other devices inside a vehicle.
 
-> **Definition:** An **ECU (electronic control unit)** is a small in-vehicle computer that reads sensor values, computes, and controls actuators. A **sensor** is a device that converts a physical quantity such as temperature, speed, or position into an electrical signal, and an **actuator** is a device that receives an electrical signal and produces an actual action, such as a motor, valve, or lamp.
+> **Definition:** **Vehicle-to-everything (V2X)** communication is a wireless communication network that connects the vehicle with road infrastructure, other vehicles, pedestrians, and so on.
+
+> **Definition:** An **ECU (electronic control unit)** is a small in-vehicle computer that reads sensor values, computes, and controls actuators.
+
+> **Definition:** A **sensor** is a device that converts a physical quantity such as temperature, speed, or position into an electrical signal.
+
+> **Definition:** An **actuator** is a device that receives an electrical signal and produces an actual action, such as a motor, valve, or lamp.
 
 ```mermaid
 flowchart TD
@@ -446,7 +484,13 @@ The difference between the two methods can be seen in the number of connections.
 
 Figure 5 shows the major ECUs in one vehicle. The engine control unit, transmission control, power steering, airbags, electrical drives (mirrors, seats, sunroof, wipers, windows), climate control, dashboard, diagnosis unit, telematics and infotainment (GPS, navigation, eCall, tracking and car alarm), audio, TV module, connectivity, ADAS (adaptive cruise control, parking sensors, blind spot detection, radar, lane change assistance), keyless entry and central locking, immobilizer, ABS, ESP, TPMS, electro-hydraulic brakes, traction control, trunk latches, HID and LED lighting, and bus interface protection are scattered throughout the body.
 
-> **Definition:** **ADAS (advanced driver assistance systems)** are advanced systems that assist the driver; **ABS (anti-lock braking system)** is a braking system that prevents the wheels from locking during hard braking; **ESP (electronic stability program)** is a stability control system that prevents the body from skidding; and **TPMS (tire pressure monitoring system)** monitors tire pressure.
+> **Definition:** **ADAS (advanced driver assistance systems)** are advanced systems that assist the driver.
+
+> **Definition:** **ABS (anti-lock braking system)** is a braking system that prevents the wheels from locking during hard braking.
+
+> **Definition:** **ESP (electronic stability program)** is a stability control system that prevents the body from skidding.
+
+> **Definition:** **TPMS (tire pressure monitoring system)** monitors tire pressure.
 
 ### 2.5 Composition of the In-Vehicle Network
 
@@ -467,7 +511,9 @@ Several protocols with different uses and speeds are used together in an in-vehi
 
 Figure 6 is an example of the IVN configuration of a real vehicle [22]. The central **gateway** connects the different networks. The OBD-II diagnostic port, the cellular module, and, through an Ethernet switch, cameras and ECUs are connected to the gateway. The low-speed CAN bus connects the radio, GPS, infotainment, and telematics, as well as body control ECUs such as door, light, and climate control. The high-speed CAN bus connects safety systems such as ABS, SRS (airbags), and EBA (emergency brake assist) and powertrain ECUs such as engine, transmission, and oil supply control. The domain controller is linked to the gateway by CAN and sits between the low-speed and high-speed CAN buses, and ECUs connected by LIN hang below it as a sub-network. In addition, ECUs are attached to a separate CAN bus and a FlexRay bus that branch from the gateway. In the legend of the figure, CAN-High (red line) and CAN-Low (blue line) denote the high-speed and low-speed CAN buses, respectively. ISO 11898 high-speed CAN and low-speed fault-tolerant CAN both carry signals as the voltage difference between two wires, CAN_H and CAN_L, a principle covered in Week 3.
 
-> **Definition:** A **gateway** is a device that converts and forwards messages between networks with different protocols or speeds. **OBD-II (On-Board Diagnostics II)** is the standard diagnostic interface for reading a vehicle's fault diagnosis information with external equipment.
+> **Definition:** A **gateway** is a device that converts and forwards messages between networks with different protocols or speeds.
+
+> **Definition:** **OBD-II (On-Board Diagnostics II)** is the standard diagnostic interface for reading a vehicle's fault diagnosis information with external equipment.
 
 The operation of CAN is covered in detail in Week 3, and LIN, FlexRay, automotive Ethernet, and CAN FD in Week 9.
 
@@ -568,7 +614,11 @@ Combining wireless communication with autonomous vehicles brings the following b
 
 Safety services and convenience services place different demands on communication. Safety services must deliver small data within a fixed time (for example, 10 ms) without fail, so **latency** is critical. Convenience services must deliver large data such as video and internet content quickly, so **throughput** is critical.
 
-> **Definition:** **C-ITS (Cooperative Intelligent Transport Systems)** is a cooperative traffic system in which vehicles exchange information with other vehicles and road infrastructure in real time to prevent accidents. **Latency** is the time from the moment data is sent to the moment it is received, and **throughput** is the amount of data that can be sent per unit time.
+> **Definition:** **C-ITS (Cooperative Intelligent Transport Systems)** is a cooperative traffic system in which vehicles exchange information with other vehicles and road infrastructure in real time to prevent accidents.
+
+> **Definition:** **Latency** is the time from the moment data is sent to the moment it is received.
+
+> **Definition:** **Throughput** is the amount of data that can be sent per unit time.
 
 ![Figure 7. Examples of connected automated driving services](../../images/Week01_p76.png)
 
@@ -594,7 +644,9 @@ flowchart LR
 
 *Figure 8. Two forms of LiDAR output and their data volumes*
 
-> **Definition:** **LiDAR** is a sensor that measures distance by emitting a laser and timing the reflection that returns. A **point cloud** is the set of points made up of the 3D coordinates of the reflection points measured by the LiDAR.
+> **Definition:** **LiDAR** is a sensor that measures distance by emitting a laser and timing the reflection that returns.
+
+> **Definition:** A **point cloud** is the set of points made up of the 3D coordinates of the reflection points measured by the LiDAR.
 
 As in Figure 8, the Velodyne HDL-64, a 360-degree rotating LiDAR, outputs about 2.2 million points per second. By contrast, if object recognition is completed inside the sensor, as in the ibeo SCALA, and only perception information such as distance, azimuth, and object type is output, the data volume is only about 5 kB per second. The perception data output by sensors other than LiDAR is also small enough to be carried on CAN.
 
@@ -622,7 +674,13 @@ There are three representative V2X communication standards for vehicles.
 
 *Table 23. Advantages and disadvantages of V2X communication methods for vehicles*
 
-> **Definition:** **WAVE (Wireless Access in Vehicular Environments)** is a vehicle communication method that uses IEEE 802.11p, an adaptation of the wireless LAN (Wi-Fi) technology IEEE 802.11 to the vehicle environment, as its physical and MAC layers, and it corresponds to DSRC (Dedicated Short Range Communications) in the broad sense. **C-V2X (Cellular V2X)** is the V2X technology defined by the mobile communication standards body 3GPP on the basis of LTE and 5G. The **IEEE** is the Institute of Electrical and Electronics Engineers, based in the United States, which makes communication standards such as Wi-Fi, and **3GPP (3rd Generation Partnership Project)** is the international standards body that makes mobile communication standards.
+> **Definition:** **WAVE (Wireless Access in Vehicular Environments)** is a vehicle communication method that uses IEEE 802.11p, an adaptation of the wireless LAN (Wi-Fi) technology IEEE 802.11 to the vehicle environment, as its physical and MAC layers, and it corresponds to DSRC (Dedicated Short Range Communications) in the broad sense.
+
+> **Definition:** **C-V2X (Cellular V2X)** is the V2X technology defined by the mobile communication standards body 3GPP on the basis of LTE and 5G.
+
+> **Definition:** The **IEEE** is the Institute of Electrical and Electronics Engineers, based in the United States, which makes communication standards such as Wi-Fi.
+
+> **Definition:** **3GPP (3rd Generation Partnership Project)** is the international standards body that makes mobile communication standards.
 
 | Item | WAVE | C-V2X | Cellular |
 |:-----|:-----|:-----|:-----|
