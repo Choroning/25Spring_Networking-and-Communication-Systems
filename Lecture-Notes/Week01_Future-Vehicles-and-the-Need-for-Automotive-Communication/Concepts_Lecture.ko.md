@@ -676,7 +676,7 @@ Frost & Sullivan은 2019년에 V2X 프로토콜의 구도를 다음과 같이 �
 
 | 구분 | C-V2X | DSRC | 하이브리드 |
 |:-----|:-----|:-----|:-----|
-| 무엇인가 | 4G, LTE, 5G 대역의 이동통신망 접속을 바탕으로 한 셀룰러 기반 V2X | IEEE 802.11p 와이파이를 바탕으로 한 V2V, V2I 통신 | 두 방식을 함께 쓰는 혼합형 |
+| 정의 | 4G, LTE, 5G 대역의 이동통신망 접속을 바탕으로 한 셀룰러 기반 V2X | IEEE 802.11p 와이파이를 바탕으로 한 V2V, V2I 통신 | 두 방식을 함께 쓰는 혼합형 |
 | 완성차 업체 | Audi, BMW Group, Ford, Geely, Honda, Lexus, Mercedes-Benz, PSA Group | GM, JLR, Toyota, Volkswagen | 미정 |
 | 공급 업체 | Qualcomm, Quectel, Keysight, LG이노텍 | Qualcomm, Savari | Autotalks, Qorvo |
 | 시기 | 2019\~2020년 준비 완료, 규제 기관의 지원 필요 | 시험을 거쳐 이르면 2019년 배치 | 2019년 하이브리드 칩 출시 |

@@ -92,7 +92,7 @@ In Figure 1, the smart car set contains most of the automated vehicle and connec
 
 > **Definition:** The **CAR 2 CAR Communication Consortium (C2C-CC)** is a consortium formed by European vehicle manufacturers, suppliers, and research organizations to standardize and deploy vehicle-to-vehicle communication and C-ITS.
 
-The C2C-CC classifies connected automated driving technologies along two axes. The first axis is time measured relative to a crash.
+The C2C-CC classifies connected automated driving technologies by two criteria. The first criterion is time measured relative to a crash.
 
 ![Figure 2. Roles of safety technologies and communication methods in the time phases before and after a crash](../../images/Week11_11-1_p04.png)
 
@@ -112,7 +112,7 @@ The horizontal axis of Figure 2 is time, and the star in the middle is the momen
 
 The curves at the bottom of Figure 2 show how useful each communication method is in each phase. **Car-to-car communication** plays its largest role in the support and intervention phases, when a crash is imminent, because nearby vehicles must then exchange information with short latency. **Cellular communication** plays a large role in the information phase, which gathers wide-area information, and in the eCall phase, which contacts a rescue center after the accident. In other words, the suitable communication method depends on the time remaining before a crash.
 
-The second axis is the maturity of the technology. Europe deploys C-ITS services step by step, dividing them into Day 1, Day 2, and Day 3+ [2].
+The second criterion is the maturity of the technology. Europe deploys C-ITS services step by step, dividing them into Day 1, Day 2, and Day 3+ [2].
 
 | Item | Day 1: awareness driving | Day 2: sensing driving | Day 3+: cooperative driving |
 |:-----|:-----|:-----|:-----|
@@ -122,7 +122,7 @@ The second axis is the maturity of the technology. Europe deploys C-ITS services
 
 *Table 2. Use cases, communication services, and supporting functions in the C2C-CC Day 1, Day 2, and Day 3+ phases*
 
-From left to right, Table 2 progresses from disseminating risk information to coordinated automation. The axes of progress are trustworthiness (functional safety), accuracy (position and time), and timeliness (update frequency), and the final goals are accident-free road transport and optimal traffic flow.
+From left to right, Table 2 progresses from disseminating risk information to coordinated automation. The items that improve are trustworthiness (functional safety), accuracy (position and time), and timeliness (update frequency), and the final goals are accident-free road transport and optimal traffic flow.
 
 > **Definition:** A **vulnerable road user (VRU)** is a road user who has no vehicle body for protection, such as a pedestrian, a cyclist, or a rider of a powered two-wheeler (PTW).
 

@@ -676,7 +676,7 @@ In 2019, Frost & Sullivan summarized the landscape of V2X protocols as follows [
 
 | Item | C-V2X | DSRC | Hybrid |
 |:-----|:-----|:-----|:-----|
-| What | Cellular-based V2X relying on network access in the 4G, LTE, and 5G bands | V2V and V2I communication relying on IEEE 802.11p Wi-Fi | A mix of the two methods |
+| Definition | Cellular-based V2X relying on network access in the 4G, LTE, and 5G bands | V2V and V2I communication relying on IEEE 802.11p Wi-Fi | A mix of the two methods |
 | Automakers | Audi, BMW Group, Ford, Geely, Honda, Lexus, Mercedes-Benz, PSA Group | GM, JLR, Toyota, Volkswagen | Unknown |
 | Suppliers | Qualcomm, Quectel, Keysight, LG Innotek | Qualcomm, Savari | Autotalks, Qorvo |
 | When | Ready in 2019-2020, regulatory support required | Deployed as early as 2019 after trials | Hybrid chips introduced in 2019 |

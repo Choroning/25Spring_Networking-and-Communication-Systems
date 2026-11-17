@@ -634,7 +634,7 @@ C-V2X는 무선 구간(하위 계층)만 새로 정의하고, 자동차 산업�
 
 ### 1.13 C-V2X 유즈케이스
 
-5GAA는 커넥티드 협조형 주행을 위한 C-V2X 유즈케이스의 진화를 두 축으로 정리했다 [20]. 협력(cooperation)의 축은 운전자에게 경고만 하는 단계(connected driver warning), 운전을 보조하는 단계(connected driver assistance), 차량끼리 협조하여 주행하는 단계(connected cooperative driving)로 나아가고, 자동화(automation)의 축은 교통 효율과 안전, 고급 안전, 자율주행으로 나아간다.
+5GAA는 커넥티드 협조형 주행을 위한 C-V2X 유즈케이스의 진화를 두 방향으로 정리했다 [20]. 협력(cooperation) 방향은 운전자에게 경고만 하는 단계(connected driver warning), 운전을 보조하는 단계(connected driver assistance), 차량끼리 협조하여 주행하는 단계(connected cooperative driving)로 나아가고, 자동화(automation) 방향은 교통 효율과 안전, 고급 안전, 자율주행으로 나아간다.
 
 | 자동화 단계 | 유즈케이스 |
 |:-----|:-----|

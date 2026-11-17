@@ -634,7 +634,7 @@ In Table 21, C-V2X is rated more favorably than 802.11p in direct communication 
 
 ### 1.13 C-V2X Use Cases
 
-5GAA organized the evolution of C-V2X use cases for connected cooperative driving along two axes [20]. The cooperation axis advances from only warning the driver (connected driver warning) to assisting driving (connected driver assistance) to vehicles driving cooperatively with each other (connected cooperative driving), and the automation axis advances from traffic efficiency and safety to advanced safety to automated driving.
+5GAA organized the evolution of C-V2X use cases for connected cooperative driving along two directions [20]. The cooperation direction advances from only warning the driver (connected driver warning) to assisting driving (connected driver assistance) to vehicles driving cooperatively with each other (connected cooperative driving), and the automation direction advances from traffic efficiency and safety to advanced safety to automated driving.
 
 | Automation stage | Use cases |
 |:-----|:-----|
