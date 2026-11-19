@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-18
+> **Last Updated:** 2026-11-19
 
 > **Learning Objectives:**
 > 1. Compare the protocol stacks of IEEE 802.11, DSRC, WAVE, the ETSI and ISO ITS stations, and 3GPP V2X against the OSI reference model
@@ -1431,8 +1431,8 @@ The three channel access modes in Figure 59 are as follows.
 
 The alternating access procedure in Figure 60 is as follows.
 
-1. The WME of IEEE 1609.3 requests channel access for the CCH interval from the MLME extension of 1609.4 with MLMEX-CHSTART.req and receives confirmation with MLMEX-CHSTART.cfm. It makes the same request for the SCH interval. The request carries the channel identifier (Channel Identifier), time slot (Time Slot), supported rate set (OperationalRateSet), EDCA parameter set, and whether immediate access is wanted (ImmediateAccess, a value of 0-255, where 0 means immediate access is not requested).
-2. During the guard interval (GI) at the start of time slot 0, the MLME extension sends PLME-SET.req to the 802.11 PLME to change the channel starting frequency (dot11ChannelStartingFactor) if needed, set the current frequency (dot11CurrentFrequency) to the CCH, and set the channel width (dot11PhyOFDMChannelWidth) if needed. Each request is confirmed with PLME-SET.cfm.
+1. The WME of IEEE 1609.3 requests channel access for the CCH interval from the MLME extension of 1609.4 with MLMEX-CHSTART.req and receives confirmation with MLMEX-CHSTART.cfm. It makes the same request for the SCH interval. The request specifies the channel and time slot, the EDCA parameters, and whether immediate access is wanted.
+2. During the guard interval (GI) at the start of time slot 0, the MLME extension sends PLME-SET.req to the 802.11 PLME to switch the current frequency to the CCH (changing the channel starting frequency and the channel width as well if needed). Each request is confirmed with PLME-SET.cfm.
 3. During the guard interval at the start of time slot 1, the current frequency is changed to the SCH in the same way. Steps 2 and 3 then repeat every sync interval.
 
 With immediate access, once the WME sends one MLMEX-CHSTART.req, the MLME extension immediately switches the frequency to the SCH with PLME-SET.req without waiting for time slot 1 and uses the SCH until time slot 1 ends.
@@ -1454,9 +1454,9 @@ A device with a GPS receiver obtains UTC directly from GPS, but a device where t
 
 The timing advertisement (TA) procedure in Figure 62 is as follows.
 
-1. When the WME of the timing provider receives WME-TimingAdvertisementService.req, it sends MLMEX-TA.req to the MLME extension. The request carries the destination MAC address, the repeat rate (Repeat Rate), the channel identifier, the time slot, and the contents to advertise (TimingAdvertisementContents). On receiving the confirmation (.cfm), the WME informs the upper layer with WME-Notification.ind.
-2. At every repeat interval, the MLME extension sends MLME-TIMING_ADVERTISEMENT.req to the 802.11 MLME, and the MLME broadcasts a TA frame. The request carries the peer MAC address, capability information, the Time Advertisement element, country, power constraint, extended capabilities, and vendor-specific information.
-3. The MLME of the timing user receives the TA frame and passes up the timestamp, local time, received channel power indicator (RCPI), source MAC address, channel identifier, and advertised contents with MLME-TIMING_ADVERTISEMENT.ind, and the MLME extension delivers them to the WME with MLMEX-TA.ind.
+1. When the WME of the timing provider receives WME-TimingAdvertisementService.req, it sends MLMEX-TA.req to the MLME extension, specifying the repeat rate (Repeat Rate), the channel, and the contents to advertise. On receiving the confirmation (.cfm), the WME informs the upper layer with WME-Notification.ind.
+2. At every repeat interval, the MLME extension sends MLME-TIMING_ADVERTISEMENT.req to the 802.11 MLME, and the MLME broadcasts a TA frame carrying the Time Advertisement element.
+3. The MLME of the timing user receives the TA frame and passes up the timestamp, local time, and advertised contents with MLME-TIMING_ADVERTISEMENT.ind, and the MLME extension delivers them to the WME with MLMEX-TA.ind.
 
 | Field | Size (octets) | Content |
 |:-----|:-----|:-----|
@@ -1591,13 +1591,7 @@ Figure 71 is the procedure by which a service provider and a user connect a serv
 - **Provider side:** When the higher layer requests a service with WME-ProviderService.req, the WME records the service information in the management information base (WME-MIB) (WME-Set.req) and returns a confirmation (.cfm). The WME starts channel access with MLMEX-CHSTART.req and passes the WSA to WSMP with WSM-WaveShortMessage.req. If the service uses IP, it registers the transmit parameters of IP packets with MLMEX-REGISTERTXPROFILE.req. Through WSMP, LLC, and MAC/PHY, the WSM containing the WSA is broadcast.
 - **User side:** The higher layer registers the services it is interested in with WME-UserService.req in advance. When the WSM containing the WSA comes up to the WME through MA-UNITDATA.ind, DL-UNITDATA.ind, and WSM-WaveShortMessage.ind, the WME checks whether it matches a registered service, records the available service information (AvailableServiceInfo), and accesses that service channel with MLMEX-CHSTART.req. If the service uses IP, it also registers a transmit profile and informs the higher layer with WME-Notification.ind. The service is then provided.
 
-The main parameters the provider passes when registering a service with WME-ProviderService.req are as follows.
-
-- Values that identify the service: local service index (Local Service Index), action (Action, such as add or delete), provider service identifier (PSID), and provider service context (Provider Service Context)
-- Where and how to send: destination MAC address, WSA type (secured or not), service channel identifier, identifier of the channel on which to send the WSA, channel access mode, and repeat rate (Repeat Rate)
-- IP service information: whether the service is an IP service, IPv6 address, service port, and provider MAC address
-- Acceptance conditions on the user side: RCPI threshold (WSAs weaker than this are ignored), WSA count threshold, and its counting interval
-- Others: information elements indicator and signature lifetime (SignatureLifetime)
+The parameters the provider passes with WME-ProviderService.req include the service identifier (PSID) and the provider service context (Provider Service Context), the channel and repeat rate for sending the WSA, whether it is secured, IP service information, and the acceptance conditions on the user side (WSAs weaker than the received channel power indicator (RCPI) threshold are ignored).
 
 ![Figure 72. WSA generation at the service provider and the structure of the Service Info Segment](../../images/Week13_13-3_p36.png)
 
@@ -1694,7 +1688,7 @@ In Figure 73, the RSU side, which receives the toll, is the **payee**, and the O
 
 **Initialization: exchange of BST and VST.** Like Hi-Pass in Section 2.6, WAVE EPS starts communication by exchanging a BST and a VST.
 
-1. In Figure 74, the payee application core of the RSU registers the application with RegisterApplicationRSU.req. The request carries the application identifier (AID), whether the application is mandatory, its priority, and an optional equipment ID (EID), profiles, and parameters.
+1. In Figure 74, the payee application core of the RSU registers the application, identified by its application identifier (AID) and an optional equipment ID (EID), with RegisterApplicationRSU.req.
 2. The I-KE of the WIAL creates the **BST (beacon service table)** with Initialization.req and passes it to the T-KE. The BST consists of a beacon ID, the time, the profile, a profile list, a mandatory application list (AID, optional EID and parameters), and a non-mandatory application list.
 3. The T-KE registers the BST in the provider service context (ProviderServiceContext) of a WSA with WME-ProviderService.req, and the WAVE stack repeatedly broadcasts the WSA containing the BST.
 4. In Figure 75, when the WAVE stack of the OBU receives the WSA, it informs the T-KE with WME-Notification, and the T-KE passes it to the I-KE with Initialization.ind (BST). The I-KE notifies the payer application with NotifyApplicationOBU.req and creates the **VST (vehicle service table)** with Initialization.res. The VST consists of the profile, an application list (AID, optional EID and parameters), and the OBE configuration (equipment class, manufacturer ID, OBE status).

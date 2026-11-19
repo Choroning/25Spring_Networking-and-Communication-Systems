@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-18
+> **Last Updated:** 2026-11-19
 
 > **Learning Objectives:**
 > 1. Convert between binary and hexadecimal, and distinguish bit order (MSB first, LSB first) from byte order (little endian, big endian)
@@ -959,10 +959,8 @@ In Figure 34, the black box on the left is the CAN distribution box (Pin 2: CAN_
 UART sends signals with voltage levels between 3.3 V and 0 V, so a logic analyzer can measure these voltages directly. The procedure is as follows.
 
 1. **Connect the equipment:** Connect the USB-UART converter module to a USB port of the PC. Connect the logic analyzer probes at two points: one to the line on which the UART signal leaves (TX) and the other to the module's ground (GND). A voltage is always a difference relative to some reference point, so the voltage level of the signal line must be measured relative to ground.
-2. **Configure communication:** In ComMaster, set the communication speed (Baudrate) to 9600, data bits (Data Bits) to 8, stop bits (Stop Bits) to 1, parity (Parity) to none (None), and the device (Device) to the COM port of the converter module (for example, COM5), and press Open Com to open the port.
-3. **Start measuring:** Press the start button in Logic 2 to begin logging.
-4. **Send data:** Type AB in ComMaster's Send Data box, set the format (Format) to HEX, and press Send. Because the format is HEX, what is sent is not the characters A and B but the single hexadecimal byte 0xAB.
-5. **Zoom in on the waveform:** Stop the measurement and zoom in on the waveform. Because the signal changes very fast, it first appears only as a single line, and zooming in slowly reveals a waveform alternating between High (3.3 V) and 0 V.
+2. **Configure and send:** In the serial terminal ComMaster, open the COM port of the converter module at 9600 baud, 8 data bits, 1 stop bit, and no parity, start recording on the logic analyzer, and send AB with the format set to HEX. Because the format is HEX, what is sent is not the characters A and B but the single hexadecimal byte 0xAB.
+3. **Zoom in on the waveform:** Stop the measurement and zoom in on the waveform. Because the signal changes very fast, it first appears only as a single line, and zooming in slowly reveals a waveform alternating between High (3.3 V) and 0 V.
 
 ![Figure 35. 0xAB sent with ComMaster and the UART waveform measured and decoded by the logic analyzer](../../images/Week10_p78.png)
 
@@ -986,24 +984,17 @@ After the initial idle state (High) comes the start bit (Low), then 1, 1, 0, 1, 
 Next, the same logic analyzer is used to check the voltage levels of a CAN signal. Two Kvaser USB-CAN interfaces and the CanKing software are used to produce the CAN signal.
 
 1. **Hardware setup:** Connect the two Kvaser devices to the CAN distribution box to form one CAN bus. One device sends and the other receives, a **loopback test**. CAN communication requires termination resistors, so plug the DB-9 connector with a built-in termination resistor into the distribution box. Connect the two logic analyzer channels to CAN_H and CAN_L of the bus.
-2. **Run the software:** Run two instances of CanKing, selecting channel 0 (0 - Kvaser Leaf Light v2) in one and channel 1 (1 - Kvaser Leaf Light v2) in the other.
-3. **Set the bus speed:** Vehicles usually use 500 kbit/s, but here the speed is lowered to the minimum in the list so that the logic analyzer can show the waveform in detail, setting the bus speed (Bus Speed) to 33.333 kbit/s. All nodes on the same bus must use the same speed, so both CanKing instances are set to the same value (Set in all is a button that applies the same speed to all CAN controllers).
-4. **Join the bus:** Pressing the Go On Bus button makes the device join the bus and continuously read the bus state. The bus status (Bus Status) indicator changes from Off Bus to On Bus.
+2. **Set the bus speed and join the bus:** Run CanKing for each device (channels 0 and 1), set the bus speed to 33.333 kbit/s, and have both devices join the bus (Go On Bus). Vehicles usually use 500 kbit/s, but the speed is lowered to the minimum in the list so that the logic analyzer can show the waveform in detail, and all nodes on the same bus must use the same speed, so both CanKing instances are set to the same value.
 
 ![Figure 37. Channel, bus speed, and bit timing settings in CanKing](../../images/Week10_p85.png)
 
 *Figure 37. Channel, bus speed, and bit timing settings in CanKing*
 
-The settings window in Figure 37 contains bus statistics (Bus Statistics: received messages, transmitted messages, error frames, error counters), bus configuration (Bus Configuration: CAN channel, CAN mode, access mode, Silent Mode), bus parameters (Bus Parameters: bus speed, SJW, bit timing), and bus status. The bus speed list contains 1000, 500, 250, 125, 100, 83.333, 62.5, 50, and 33.333 kbit/s, each written with a sample point position of 75.0%. Silent Mode only listens to the bus and sends no bit at all, including the ACK; it corresponds to the bus monitoring mode of the standard and is used to observe the bus of a running vehicle without disturbing it [4].
+The settings window in Figure 37 contains bus statistics (received and transmitted message counts, error frames, error counters), bus configuration, bus parameters (bus speed, SJW, bit timing), and bus status, and every value in the bus speed list (from 1000 kbit/s down to 33.333 kbit/s) is defined with a sample point position of 75.0%. Silent Mode in the bus configuration only listens to the bus and sends no bit at all, including the ACK; it corresponds to the bus monitoring mode of the standard and is used to observe the bus of a running vehicle without disturbing it [4].
 
 **Bit timing.** At a bus speed of 33.333 kbit/s, one bit lasts $1 / 33333 \approx 30$ µs. A CAN controller handles a bit by dividing it into small units called **time quanta (tq)**. The values Tseg1 = 14 and Tseg2 = 5 on the screen mean that after the synchronization segment (sync segment) of 1 tq at the very start of the bit, the segment before the sample point is 14 tq and the segment after it is 5 tq. One bit is therefore $1 + 14 + 5 = 20$ tq, and 1 tq is $30 / 20 = 1.5$ µs. The sample point lies at $`(1 + 14)/20 = 75\%`$ of the bit from its start, which is the 75.0% shown on the screen. The value is read late in the bit to give the signal time to make the round trip on the bus and settle. SJW (synchronization jump width) = 4 means that the bit segments can be lengthened or shortened by at most 4 tq at a time during resynchronization [1].
 
-Now a virtual message is sent from one CanKing. Set the following in the CAN Message window and press the Send button to transmit the CAN data.
-
-- **CAN Identifier:** `$123` (hexadecimal 0x123)
-- **Channel:** The channel of the sending device (CAN 1)
-- **DLC:** `$8` (8 bytes)
-- **Message Data:** The value of each byte. Here Bytes 0-7 were set to `$82`, `$2A`, `$42`, `$D1`, `$F2`, `$2E`, `$56`, `$23`. Pressing Randomize Data fills in random values.
+Now one CanKing sends a message with identifier 0x123, DLC 8 (8 bytes), and data 82 2A 42 D1 F2 2E 56 23.
 
 ![Figure 38. CanKing screens sending and receiving an 8-byte message with identifier 0x123](../../images/Week10_p90.png)
 
@@ -1084,12 +1075,7 @@ To connect to this terminal block, a cable was made by twisting two CAN wires an
 
 ### 3.6 Starting CANoe and Configuring the CAN Network
 
-The procedure for starting CAN monitoring with CANoe is as follows.
-
-1. **Connect the equipment:** Connect the Vector CAN interface to the vehicle's CAN port and to the PC over USB.
-2. **Run the software:** Start CANoe. CANoe is licensed, so at startup it checks over the network whether a license is available.
-3. **Create a new configuration:** Choose File and then New Configuration, and select the template **CAN 500kBaud 2ch**. The CAN communication of this vehicle is set to 500 kbit/s, so monitoring also uses a two-channel (2ch) configuration at 500 kbit/s.
-4. **Check the configuration windows:** When the configuration opens, the **Simulation Setup** window appears on the left and the **Measurement Setup** window on the right.
+To start monitoring with CANoe, connect the Vector CAN interface to the vehicle's CAN port and to the PC, and in CANoe, which requires a license, create a new configuration from the template **CAN 500kBaud 2ch**. The CAN communication of this vehicle is set to 500 kbit/s, so monitoring also uses a two-channel (2ch) configuration at 500 kbit/s. When the configuration opens, the **Simulation Setup** window appears on the left and the **Measurement Setup** window on the right.
 
 ![Figure 45. The Simulation Setup and Measurement Setup windows of CANoe](../../images/Week10_p111.png)
 
@@ -1097,7 +1083,7 @@ The procedure for starting CAN monitoring with CANoe is as follows.
 
 Simulation Setup on the left of Figure 45 shows the CAN channels and the CAN nodes attached to them. At this point only the CANoe device connected to the PC is attached, so only one network block appears (Figure 45 shows the Network CAN2 block on the CAN2 tab). The tree in the middle (Networks, CAN Networks, CAN1, CAN2) manages, for each channel, the nodes (Nodes), interactive generator (Interactive Generator), replay blocks (Replay blocks), databases (Databases), and channels (Channels). Measurement Setup on the right shows the measurement items, in which data received from the bus flows from the input on the left (Online) to the analysis blocks on the right. Start (the lightning icon) and Stop on the ribbon at the top start and stop the measurement, and dec/hex under Appearance selects whether values are shown in decimal or hexadecimal.
 
-5. **Check the channel settings:** Opening the hardware settings of channel CAN1 under CAN Networks in Simulation Setup lets one check and change the device settings and speed.
+The hardware settings window of channel CAN1 (Figure 46) lets one check and change the device settings and the communication speed.
 
 ![Figure 46. The Network Hardware Configuration window for channel CAN1](../../images/Week10_p112.png)
 
@@ -1107,7 +1093,7 @@ In Figure 46, channel CAN 1 has device type (Type) VN1610, controller (Controlle
 
 > **Caution:** The bit rate of the monitoring equipment must exactly match the bit rate of the vehicle bus. If it is set differently, the equipment misreads bits and sends error frames, which can disturb the communication of a running vehicle. When the vehicle's speed is unknown, check it first in a receive-only mode such as Silent Mode (Section 3.3).
 
-6. **Check the measurement items:** The actual CAN data monitoring functions are provided by the blocks in the Measurement Setup window.
+The actual CAN data monitoring functions are provided by the blocks in the Measurement Setup window.
 
 | Block | Function |
 |:-----|:-----|
@@ -1121,10 +1107,7 @@ In Figure 46, channel CAN 1 has device type (Type) VN1610, controller (Controlle
 
 ### 3.7 Monitoring without a CAN Database
 
-First, CAN data is monitored directly without a CAN database.
-
-1. Double-click the **Trace** block in Measurement Setup to open the Trace window.
-2. Press **Start** on the ribbon, and CAN information is displayed in the Trace window in real time.
+First, CAN data is monitored directly without a CAN database. Opening the Trace window from the **Trace** block in Measurement Setup and starting the measurement displays the received CAN frames in the Trace window in real time.
 
 ![Figure 47. The Trace window showing frames received without a CAN database in hexadecimal](../../images/Week10_p117.png)
 
@@ -1136,18 +1119,13 @@ Viewing the data without a CAN database like this, one cannot tell which byte ch
 
 ### 3.8 Monitoring with a CAN Database Added
 
-A DBC file describes the information about the CAN to be monitored. The procedure for adding a CAN database is as follows.
-
-1. In the Simulation Setup tree, click the **Databases** item under CAN1 (right button).
-2. Press **Add...** in the menu that appears. Import Wizard can also import a database in another format.
-3. When the window for selecting a DBC file appears, open the CAN database file of the test vehicle.
-4. The CAN DBC file is added under Databases.
+A DBC file describes the information about the CAN to be monitored. Adding the test vehicle's DBC file to the **Databases** item under CAN1 in the Simulation Setup tree (Add; a database in another format is imported with Import Wizard) makes the file appear under Databases.
 
 ![Figure 48. The menu that adds a DBC file with Add under Databases in Simulation Setup](../../images/Week10_p121.png)
 
 *Figure 48. The menu that adds a DBC file with Add under Databases in Simulation Setup*
 
-Double-clicking the Trace window again and starting monitoring shows the same frames together with the information from the CAN database. An expand (+) button appears to the left of each frame, and pressing it shows which signals the data of that identifier contains and what their values mean.
+Monitoring again shows the same frames together with the information from the CAN database. An expand (+) button appears to the left of each frame, and pressing it shows which signals the data of that identifier contains and what their values mean.
 
 ![Figure 49. The Trace window showing signal names, physical values, raw values, and descriptions after the CAN database was added](../../images/Week10_p123.png)
 
@@ -1229,12 +1207,7 @@ vcu_LONG_ACCEL [m/s^2]       0.03
 
 ### 3.9 Real-Time Graphs and Data Logging
 
-The way to check data in real time as a graph rather than as a list of messages is as follows.
-
-1. Click (double-click) the **Graphics** block in the Measurement Setup window, and a new Graphics window appears.
-2. Click the data (signal) to be checked in the list.
-3. Drag and drop the signal into the Graphics window.
-4. A graph of the current value is drawn in real time in the graph area.
+To check data in real time as a graph rather than as a list of messages, open a Graphics window from the **Graphics** block in the Measurement Setup window and drag the signal to be checked from the list into it. The current value of that signal is then drawn as a real-time graph.
 
 ![Figure 50. A real-time graph of the steering angle signal vcu_SAS_Angle and the Trace window](../../images/Week10_p128.png)
 
@@ -1242,25 +1215,21 @@ The way to check data in real time as a graph rather than as a list of messages 
 
 Figure 50 puts the steering wheel value (vcu_SAS_Angle) into the graph. When the wheel was turned to the right the graph went down to negative values, and while turning to the left it rose to positive values. In the Trace window on the right, vcu_SAS_Angle at the same moment is 456.1 deg (raw value 11D1). Adding the steering wheel speed (vcu_SAS_Speed) in the same way lets several items be checked at once.
 
-CANoe supports **logging** data during vehicle experiments, **replaying** it later, and **sending the replayed data onto a CAN bus** again. The procedure for setting up logging is as follows.
+CANoe supports **logging** data during vehicle experiments, **replaying** it later, and **sending the replayed data onto a CAN bus** again. Logging is set up in two windows after enabling the **Logging** block at the bottom of the Measurement Setup window (it is inactive at first).
 
-1. Close the Trace window and find the **Logging** block at the bottom of the Measurement Setup window. At first it is inactive, shaded and appearing faint.
-2. Double-click the Logging block to enable it.
-3. Double-clicking it again opens the **Trigger Configuration** window, which sets how logging is done. Leaving the mode (Mode) at Entire measurement records the whole measurement from Start to Stop. The buffer size (Buffer size) is the number of messages that can be held in memory before being written (50000 here).
+The **Trigger Configuration** window sets the logging range. Leaving the mode (Mode) at Entire measurement records the whole measurement from Start to Stop, and the buffer size (Buffer size) is the number of messages that can be held in memory before being written (50000 here).
 
 ![Figure 51. The Trigger Configuration window that sets the logging range](../../images/Week10_p131.png)
 
 *Figure 51. The Trigger Configuration window that sets the logging range*
 
-4. Double-click the file icon to the right of the Logging block to open the **Logging File Configuration** window and set up the log file. Set the destination folder (Destination folder) to the desktop, and set the file name (Destination file) with field codes (Field Codes). Field codes build the file name automatically from information such as the current time (LocalTime), the user name, and the monitored system, so that earlier files are not overwritten; using {LocalTime} gives a name such as 2023-02-05_14-47-29.blf.
-5. Choose **BLF Frame Logging (\*.blf)** as the file format (File format). BLF is the binary log file format characteristic of CANoe; a file saved as BLF can later be replayed in CANoe, and while replaying, its frames can be sent onto another CAN bus in real time. PCAP and PCAPNG in the list are formats for logging Ethernet frames.
-6. Press the OK button to finish the setup.
+The **Logging File Configuration** window sets the destination folder, name, and format of the log file. Setting the file name with field codes (Field Codes) builds the name automatically from information such as the current time (LocalTime), the user name, and the monitored system, so that earlier files are not overwritten; using {LocalTime} gives a name such as 2023-02-05_14-47-29.blf. The format chosen is **BLF Frame Logging (\*.blf)**. BLF is the binary log file format characteristic of CANoe; a file saved as BLF can later be replayed in CANoe, and while replaying, its frames can be sent onto another CAN bus in real time. PCAP and PCAPNG in the list are formats for logging Ethernet frames.
 
 ![Figure 52. The Logging File Configuration window that sets the destination folder, file name, and BLF format](../../images/Week10_p132.png)
 
 *Figure 52. The Logging File Configuration window that sets the destination folder, file name, and BLF format*
 
-Pressing the Start button in this state records all the information on the screen in real time to the BLF file on the desktop, and pressing Stop ends the recording, after which the saved BLF file can be found on the desktop.
+Starting the measurement in this state records all the received information to the BLF file in real time, and stopping the measurement ends the recording.
 
 > **Note:** Logging and replay are important functions in vehicle testing. Even if a problem that occurred while driving cannot be analyzed on the spot, keeping it in a BLF file allows the same data to be replayed and analyzed in the office, or the replayed frames to be sent to ECUs on a test bench to reproduce the same situation.
 

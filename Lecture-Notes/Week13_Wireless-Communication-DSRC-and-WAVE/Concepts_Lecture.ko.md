@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-11-18
+> **최종 수정일:** 2026-11-19
 
 > **학습 목표:**
 > 1. OSI 참조 모델에 비추어 IEEE 802.11, DSRC, WAVE, ETSI와 ISO의 ITS 스테이션, 3GPP V2X의 프로토콜 스택을 비교할 수 있다
@@ -1431,8 +1431,8 @@ AC_VI의 CWmin은 $(15 + 1)/2 - 1 = 7$, AC_VO의 CWmin은 $(15 + 1)/4 - 1 = 3$, 
 
 그림 60의 교대 접근 절차는 다음과 같다.
 
-1. IEEE 1609.3의 WME가 1609.4의 MLME 확장에 MLMEX-CHSTART.req로 CCH 구간의 채널 접근을 요청하고 MLMEX-CHSTART.cfm으로 확인받는다. SCH 구간에 대해서도 같은 요청을 한다. 이 요청은 채널 식별자(Channel Identifier), 시간 슬롯(Time Slot), 지원 속도 집합(OperationalRateSet), EDCA 매개변수 집합, 즉시 접근 여부(ImmediateAccess, 0\~255의 값이며 0이면 즉시 접근을 요청하지 않음)를 담는다.
-2. 시간 슬롯 0이 시작되는 보호 구간(GI) 동안 MLME 확장은 802.11의 PLME에 PLME-SET.req를 보내, 필요하면 채널 시작 주파수(dot11ChannelStartingFactor)를 바꾸고, 현재 주파수(dot11CurrentFrequency)를 CCH로, 필요하면 채널 폭(dot11PhyOFDMChannelWidth)을 설정한다. 각 요청은 PLME-SET.cfm으로 확인된다.
+1. IEEE 1609.3의 WME가 1609.4의 MLME 확장에 MLMEX-CHSTART.req로 CCH 구간의 채널 접근을 요청하고 MLMEX-CHSTART.cfm으로 확인받는다. SCH 구간에 대해서도 같은 요청을 한다. 이 요청에는 채널과 시간 슬롯, EDCA 매개변수, 즉시 접근 여부가 들어간다.
+2. 시간 슬롯 0이 시작되는 보호 구간(GI) 동안 MLME 확장은 802.11의 PLME에 PLME-SET.req를 보내 현재 주파수를 CCH로 바꾼다(필요하면 채널 시작 주파수와 채널 폭도 바꾼다). 각 요청은 PLME-SET.cfm으로 확인된다.
 3. 시간 슬롯 1이 시작되는 보호 구간에서 같은 방식으로 현재 주파수를 SCH로 바꾼다. 이후 동기 구간마다 2와 3을 되풀이한다.
 
 즉시 접근에서는 WME가 MLMEX-CHSTART.req를 한 번 보내면 MLME 확장이 시간 슬롯 1을 기다리지 않고 곧바로 PLME-SET.req로 주파수를 SCH로 바꾸며, 시간 슬롯 1이 끝날 때까지 SCH를 쓴다.
@@ -1454,9 +1454,9 @@ GPS 수신기가 있는 장치는 GPS로 UTC를 직접 얻지만, 터널 안처�
 
 그림 62의 시각 광고(TA, timing advertisement) 절차는 다음과 같다.
 
-1. 시각 제공자의 WME가 WME-TimingAdvertisementService.req를 받으면, MLME 확장에 MLMEX-TA.req를 보낸다. 이 요청은 목적지 MAC 주소, 반복 주기(Repeat Rate), 채널 식별자, 시간 슬롯, 광고할 내용(TimingAdvertisementContents)을 담는다. 확인(.cfm)을 받으면 WME는 상위 계층에 WME-Notification.ind로 알린다.
-2. MLME 확장은 반복 주기마다 802.11 MLME에 MLME-TIMING_ADVERTISEMENT.req를 보내고, MLME는 TA 프레임을 방송한다. 이 요청은 상대 MAC 주소, 능력 정보, Time Advertisement 요소, 국가, 전력 제한, 확장 능력, 제조사별 정보를 담는다.
-3. 시각 사용자의 MLME는 TA 프레임을 받아 MLME-TIMING_ADVERTISEMENT.ind로 타임스탬프, 로컬 시각, 수신 전력 지표(RCPI), 출발지 MAC 주소, 채널 식별자, 광고 내용을 올리고, MLME 확장은 MLMEX-TA.ind로 WME에 전달한다.
+1. 시각 제공자의 WME가 WME-TimingAdvertisementService.req를 받으면, 반복 주기(Repeat Rate)와 채널, 광고할 내용을 정해 MLME 확장에 MLMEX-TA.req를 보낸다. 확인(.cfm)을 받으면 WME는 상위 계층에 WME-Notification.ind로 알린다.
+2. MLME 확장은 반복 주기마다 802.11 MLME에 MLME-TIMING_ADVERTISEMENT.req를 보내고, MLME는 Time Advertisement 요소를 담은 TA 프레임을 방송한다.
+3. 시각 사용자의 MLME는 TA 프레임을 받아 타임스탬프, 로컬 시각, 광고 내용을 MLME-TIMING_ADVERTISEMENT.ind로 올리고, MLME 확장은 MLMEX-TA.ind로 WME에 전달한다.
 
 | 필드 | 크기(옥텟) | 내용 |
 |:-----|:-----|:-----|
@@ -1591,13 +1591,7 @@ TPID는 두 값씩 짝을 이루며, 앞의 값은 정보 요소 확장이 없�
 - **제공자 측:** 상위 계층이 WME-ProviderService.req로 서비스를 요청하면 WME는 서비스 정보를 관리 정보 베이스(WME-MIB)에 기록하고(WME-Set.req) 확인(.cfm)을 돌려준다. WME는 MLMEX-CHSTART.req로 채널 접근을 시작하고, WSM-WaveShortMessage.req로 WSA를 WSMP에 넘긴다. 서비스가 IP를 쓰면 MLMEX-REGISTERTXPROFILE.req로 IP 패킷의 송신 매개변수를 등록한다. WSMP, LLC, MAC/PHY를 거쳐 WSA를 담은 WSM이 방송된다.
 - **사용자 측:** 상위 계층이 WME-UserService.req로 관심 있는 서비스를 등록해 둔다. WSA를 담은 WSM이 MA-UNITDATA.ind, DL-UNITDATA.ind, WSM-WaveShortMessage.ind로 WME까지 올라오면, WME는 등록된 서비스와 맞는지 확인하여 이용 가능한 서비스 정보를 기록하고(AvailableServiceInfo), MLMEX-CHSTART.req로 그 서비스 채널에 접근한다. 서비스가 IP를 쓰면 송신 프로필도 등록하고, WME-Notification.ind로 상위 계층에 알린다. 이로써 서비스가 제공된다.
 
-제공자가 WME-ProviderService.req로 서비스를 등록할 때 넘기는 주요 매개변수는 다음과 같다.
-
-- 서비스를 구분하는 값: 로컬 서비스 인덱스(Local Service Index), 동작(Action, 추가, 삭제 등), 제공자 서비스 식별자(PSID), 제공자 서비스 맥락(Provider Service Context)
-- 보낼 위치와 방식: 목적지 MAC 주소, WSA 형식(보안 여부), 서비스 채널 식별자, WSA를 보낼 채널 식별자, 채널 접근 방식, 반복 주기(Repeat Rate)
-- IP 서비스 정보: IP 서비스 여부, IPv6 주소, 서비스 포트, 제공자 MAC 주소
-- 사용자 측의 수용 조건: RCPI 문턱값(신호가 이보다 약한 WSA는 무시), WSA 수 문턱값과 그 계산 간격
-- 기타: 정보 요소 지시자, 서명의 유효 기간(SignatureLifetime)
+제공자가 WME-ProviderService.req로 넘기는 매개변수에는 서비스 식별자(PSID)와 제공자 서비스 맥락(Provider Service Context), WSA를 보낼 채널과 반복 주기, 보안 여부, IP 서비스 정보, 사용자 측의 수용 조건(신호가 수신 전력 지표(RCPI) 문턱값보다 약한 WSA는 무시) 등이 있다.
 
 ![그림 72. 서비스 제공자의 WSA 생성과 서비스 정보 세그먼트의 구성](../../images/Week13_13-3_p36.png)
 
@@ -1694,7 +1688,7 @@ DSRC의 하이패스 같은 전자 요금 징수를 WAVE에서도 할 수 있도
 
 **초기화: BST와 VST의 교환.** 2.6절의 하이패스처럼 WAVE EPS도 BST와 VST를 교환하여 통신을 시작한다.
 
-1. 그림 74에서 RSU의 수취인 응용 핵심부가 RegisterApplicationRSU.req로 응용을 등록한다. 이 요청은 응용 식별자(AID), 필수 응용 여부, 우선순위와 선택적인 장치 ID(EID), 프로필, 매개변수를 담는다.
+1. 그림 74에서 RSU의 수취인 응용 핵심부가 응용 식별자(AID)와 선택적인 장치 ID(EID)를 지정하여 RegisterApplicationRSU.req로 응용을 등록한다.
 2. WIAL의 I-KE가 Initialization.req로 **BST(beacon service table)** 를 만들어 T-KE에 넘긴다. BST는 비컨 ID, 시각, 프로필, 프로필 목록, 필수 응용 목록(AID, 선택적인 EID와 매개변수), 선택 응용 목록으로 이루어진다.
 3. T-KE는 WME-ProviderService.req로 BST를 WSA의 제공자 서비스 맥락(ProviderServiceContext)에 넣어 등록하고, WAVE 스택은 BST를 담은 WSA를 반복해서 방송한다.
 4. 그림 75에서 OBU의 WAVE 스택이 WSA를 받으면 WME-Notification으로 T-KE에 알리고, T-KE는 Initialization.ind(BST)로 I-KE에 넘긴다. I-KE는 NotifyApplicationOBU.req로 지불인 응용에 알리고, Initialization.res로 **VST(vehicle service table)** 를 만든다. VST는 프로필, 응용 목록(AID, 선택적인 EID와 매개변수), OBE 구성 정보(장치 등급, 제조사 ID, OBE 상태)로 이루어진다.
