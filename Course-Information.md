@@ -2,7 +2,7 @@
 
 [Repository Guide](README.md) | [English](Course-Information.md) | [한국어](Course-Information.ko.md)
 
-> **Last Updated:** 2026-11-16
+> **Last Updated:** 2026-11-24
 
 ## Table of Contents
 
@@ -79,7 +79,6 @@
 - **Attendance:** Attendance is checked (the course is not exempt from attendance checks).
 - **Exam Proctoring:** Exams are not held without proctoring.
 - **Assessment Scores:** Assessment scores are not disclosed.
-- **Assignment Submission:** The deadline of the weeks 2 and 3 assignment follows the announcement, and the deadlines of the weeks 4 and 5 assignment and the weeks 6, 7, and 8 assignment are one week after the assignment is released.
 
 ---
 
@@ -91,13 +90,13 @@
 |:-----|:-----|:-----|:-----|
 | W01 | 3/8 | Transformation into Future Vehicles and the Need for Automotive Communication | 1주차 자율주행통신시스템 |
 | W02 | 3/15 | Changes in Vehicle Architecture and Industry Transformation | 2주차 자율주행통신시스템 |
-| W03 | 3/22 | Introduction to the CAN Bus: Concepts and Use Cases | 3주차 자율주행통신시스템<br>자율차통신강의_부록_자율차구성<br>Assignment 1 (submitted 3/18) |
+| W03 | 3/22 | Introduction to the CAN Bus: Concepts and Use Cases | 3주차 자율주행통신시스템<br>자율차통신강의_부록_자율차구성<br>Assignment 1 |
 | W04 | 3/29 | Data Communication: Overview, Transmission Media, and Data Communication Methods | 4주차 자율주행통신시스템<br>자율차통신강의_부록_JARI |
-| W05 | 4/5 | Data Communication: Protocols and Layered Architecture | 5주차 자율주행통신시스템<br>Assignment 2 (submitted 4/6) |
+| W05 | 4/5 | Data Communication: Protocols and Layered Architecture | 5주차 자율주행통신시스템<br>Assignment 2 |
 | W06 | 4/12 | Data Communication: Topologies | 6주차 자율주행통신시스템<br>자율차통신강의_부록_MIRA |
 | W07 | 4/19 | Data Communication: LLC, MAC, and CSMA/CD | 7주차 자율주행통신시스템 |
 | W08 | 4/26 | Midterm exam | Midterm exam |
-| W09 | 5/3 | In-Vehicle Networks in Detail: LIN, FlexRay, Ethernet, and CAN | 9주차 자율주행통신시스템<br>Assignment 3 (submitted 5/3) |
+| W09 | 5/3 | In-Vehicle Networks in Detail: LIN, FlexRay, Ethernet, and CAN | 9주차 자율주행통신시스템<br>Assignment 3 |
 | W10 | 5/10 | CAN Practice for Autonomous Vehicles | 10주차 자율주행통신시스템 |
 | W11 | 5/17 | Autonomous Driving V2X Communication Technology: Technology Overview and Development Cases in the United States | \[학습자료\]\[11-1\] 커넥티드 자율주행 개요 및 기술 분류<br>\[학습자료\]\[11-2\] 커넥티드 자율주행의 활용과 특성<br>\[학습자료\]\[11-3\] 커넥티드 자율주행 차량용 V2X 메시지 |
 | W12 | 5/24 | Autonomous Driving V2X Communication Technology: Development Cases in Korea, Europe, and Japan and an Overview of Wireless Communication Technology | \[학습자료\]\[12-1\] 각국의 커넥티드 자율주행 - 미국<br>\[학습자료\]\[12-2\] 각국의 커넥티드 자율주행 - 유럽과 일본<br>\[학습자료\]\[12-3\] 각국의 커넥티드 자율주행 - 한국 |
@@ -106,7 +105,7 @@
 | W15 | 6/14 | Final exam | Final exam |
 
 - The planned topics follow the weekly plan shared by both syllabi, and the textbook scope of weeks 1-7 and 9-14 is the PPT and video materials (the `DSC-211012` syllabus lists PPT and lab video materials for week 10). The `DAMO423-00` syllabus is laid out over 16 weeks and sets week 15 as field learning and other activities and week 16 as the final exam, while the `DSC-211012` syllabus sets week 15 as the final exam. The final exam was held in week 15.
-- The class dates are the dates of the Saturday class time. The lectures were provided every week as videos in three sessions, and the Lecture Decks Covered column gives the file names of the lecture decks. Weeks 11-13 have a separate deck for each session. The date next to an assignment is the date the report was submitted.
+- The class dates are the dates of the Saturday class time. The lectures were provided every week as videos in three sessions, and the Lecture Decks Covered column gives the file names of the lecture decks. Weeks 11-13 have a separate deck for each session.
 - Appendices introducing the Korea Automotive Technology Institute (KATECH), the Japan Automobile Research Institute (JARI), HORIBA MIRA of the United Kingdom, and the IEEE 802 standards committee are at the end of the decks of weeks 2, 4, 6, and 7, respectively. Of the separate appendix decks, `자율차통신강의_부록_자율차구성` (the physical composition of autonomous vehicles) was covered in week 3 and `자율차통신강의_부록_UTAC` (UTAC of France) in week 13, while `자율차통신강의_부록_JARI` and `자율차통신강의_부록_MIRA` introduce the same institutes as the appendices of the week 4 and week 6 decks. The appendices are organized in the lecture note of the corresponding week.
 - Both syllabi list appendix 4 of week 5 (the autonomous large bus of KATECH) and appendix 6 of week 12 (UTIS of KATECH, included in 12-2) as video materials.
 - Weeks 8 (midterm exam) and 15 (final exam) have no lecture note.

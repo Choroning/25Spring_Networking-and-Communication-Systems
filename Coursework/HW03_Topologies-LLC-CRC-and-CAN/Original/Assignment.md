@@ -2,11 +2,9 @@
 
 [Repository Guide](../../../README.md) | [English](Assignment.md) | [한국어](Assignment.ko.md)
 
-> **Last Updated:** 2026-11-16
+> **Last Updated:** 2026-11-24
 
 This is the third assignment of Networking and Communication Systems, an essay assignment given during the course. It consists of ten questions on the material of weeks 6, 7, and 8, worth 100 points in total. Questions 1-3 are grouped under Week 6, Questions 4-6 under Week 7, and Questions 7-10 under Week 8, and the content of Questions 7-10 is covered in Week 9.
-
-- **Deadline:** One week after the assignment is released (report submitted on 2025-05-03 (Sat))
 
 ---
 

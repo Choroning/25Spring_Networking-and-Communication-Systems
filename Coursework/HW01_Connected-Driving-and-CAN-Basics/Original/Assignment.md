@@ -2,11 +2,9 @@
 
 [Repository Guide](../../../README.md) | [English](Assignment.md) | [한국어](Assignment.ko.md)
 
-> **Last Updated:** 2026-11-16
+> **Last Updated:** 2026-11-24
 
 This is the first assignment of Networking and Communication Systems, an essay assignment given during the course. It consists of seven questions on the material of weeks 2 and 3: Questions 1-3 on Week 2 are worth 30 points, and Questions 4-7 on Week 3 are worth 30 points.
-
-- **Deadline:** As announced (report submitted on 2025-03-18 (Tue))
 
 ---
 

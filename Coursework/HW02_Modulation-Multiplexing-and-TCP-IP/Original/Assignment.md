@@ -2,11 +2,9 @@
 
 [Repository Guide](../../../README.md) | [English](Assignment.md) | [한국어](Assignment.ko.md)
 
-> **Last Updated:** 2026-11-16
+> **Last Updated:** 2026-11-24
 
 This is the second assignment of Networking and Communication Systems, an essay assignment given during the course. It consists of six questions on the material of weeks 4 and 5, worth 60 points in total.
-
-- **Deadline:** One week after the assignment is released (report submitted on 2025-04-06 (Sun))
 
 ---
 
