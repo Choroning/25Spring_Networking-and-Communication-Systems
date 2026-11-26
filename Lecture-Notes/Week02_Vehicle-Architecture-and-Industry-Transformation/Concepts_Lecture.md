@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-18
+> **Last Updated:** 2026-11-26
 
 > **Learning Objectives:**
 > 1. Define the SAE levels of driving automation with the concepts of DDT, OEDR, ODD, and fallback, and distinguish Levels 2, 3, and 4 by the degree of driver involvement
@@ -56,7 +56,6 @@
   - [4.6 Autonomous Driving Technology Research Institute](#46-autonomous-driving-technology-research-institute)
   - [4.7 Major Autonomous Driving Projects](#47-major-autonomous-driving-projects)
 - [Concept Applications](#concept-applications)
-- [Glossary](#glossary)
 - [Summary](#summary)
 - [Self-Check Questions](#self-check-questions)
 - [References](#references)
@@ -69,7 +68,11 @@
 
 ### 1.1 Definitions of Autonomous Driving Levels
 
-The standards that divide the levels of autonomous driving technology are the Levels 0-5 of SAE International and the Levels 0-4 that the U.S. National Highway Traffic Safety Administration (NHTSA) proposed in 2013 [1], [2]. Levels 0-3 of the two correspond to each other, and SAE splits NHTSA's Level 4 into Level 4, with a limited operational design domain (ODD), and Level 5, with no limit. NHTSA adopted the SAE levels in 2016 [3]. Systems at Levels 1-2 are **vehicle automation systems** that assist the driver (Level 0 has no driving automation system), and systems at Level 3 and above are **automated driving systems (ADS)** in which the system takes over the entire driving task.
+The standards that divide the levels of autonomous driving technology are the Levels 0-5 of SAE International and the Levels 0-4 that the U.S. National Highway Traffic Safety Administration (NHTSA) proposed in 2013 [1], [2]. Levels 0-3 of the two correspond to each other, and SAE splits NHTSA's Level 4 into Level 4, with a limited operational design domain (ODD), and Level 5, with no limit. NHTSA adopted the SAE levels in 2016 [3]. Systems at Levels 1-2 are **vehicle automation systems** that assist the driver (Level 0 has no driving automation system), and systems at Level 3 and above are automated driving systems (ADS) in which the system takes over the entire driving task.
+
+> **Definition:** An **automated driving system (ADS)** is a driving automation system at Level 3 or above that takes over the entire driving task.
+
+> **Definition:** The **ODD (operational design domain)** is the range of conditions (road type, speed, weather, time of day, and so on) under which an automated driving system is designed to operate properly.
 
 | SAE Level | NHTSA Level | NHTSA Name | Driver's Hands, Feet, and Eyes |
 |:-----|:-----|:-----|:-----|
@@ -94,7 +97,11 @@ The question of whether a vehicle with automatic lane changing is Level 3 illust
 
 *Figure 1. Cases that trigger fallback and a minimal risk maneuver*
 
-The key concept separating Level 3 and Level 4 is **fallback**. As on the left of Figure 1, fallback occurs when something is wrong with the driver, when something is wrong with the automated driving system, or when the vehicle meets a situation outside its operating range (ODD). The vehicle then performs a **minimal risk maneuver (MRM)** to reach a **minimal risk condition (MRC)**. The right of Figure 1 is an example of an MRM in which, after fallback occurs in the driving lane, the vehicle changes lanes, moves to the shoulder, and stops.
+The key concept separating Level 3 and Level 4 is fallback. As on the left of Figure 1, fallback occurs when something is wrong with the driver, when something is wrong with the automated driving system, or when the vehicle meets a situation outside its operating range (ODD). The vehicle then performs a minimal risk maneuver (MRM) to reach a minimal risk condition (MRC). The right of Figure 1 is an example of an MRM in which, after fallback occurs in the driving lane, the vehicle changes lanes, moves to the shoulder, and stops.
+
+> **Definition:** A **minimal risk maneuver (MRM)** is the action by which a vehicle minimizes risk, through maneuvers such as slowing down, changing lanes, and stopping, when normal driving can no longer continue because something is wrong with the driver or the system or the vehicle has left its ODD.
+
+> **Definition:** A **minimal risk condition (MRC)** is the state in which a vehicle that has completed an MRM is stopped safely, for example on the shoulder.
 
 ```mermaid
 flowchart LR
@@ -108,6 +115,8 @@ flowchart LR
 
 At Level 3, when the system issues a request to intervene, the person in the driver's seat (the fallback-ready user) must take over driving. At Levels 4 and 5, takeover by a person is not assumed, and the system itself must perform an MRM to reach an MRC.
 
+> **Definition:** A **request to intervene (RTI)** is the SAE J3016 notification by which a Level 3 system tells the person in the driver seat to take over driving.
+
 > **Note:** The international standard setting the minimum requirements for MRMs began, led by Korea, as the work item ISO/AWI 23793-1 and was published in 2024 as ISO 23793-1:2024 [4]. The standard defines a classification of MRMs and the control strategies and test requirements for the two simplest types, the straight stop (type 1) and the in-lane stop (type 2).
 
 ### 1.3 Summary of the Levels of Driving Automation
@@ -118,7 +127,11 @@ SAE J3016 defines the levels with the following terms [1].
 
 > **Definition:** **OEDR (object and event detection and response)** is the subtask of the DDT that monitors surrounding objects and events and responds appropriately.
 
-SAE J3016 also defines separate concepts for situations in which whoever is performing the DDT can no longer continue driving. The response that takes over the DDT or reaches an MRC when the system fails or leaves its ODD is the **DDT fallback**, and the person who must be ready to respond to a request to intervene at Level 3 is the **DDT fallback-ready user**.
+SAE J3016 also defines separate concepts for situations in which whoever is performing the DDT can no longer continue driving.
+
+> **Definition:** The **DDT fallback** (fallback) is the response that takes over the DDT or reaches an MRC when the system fails or leaves its ODD.
+
+> **Definition:** The **DDT fallback-ready user** is the person who must be ready to respond to a request to intervene at Level 3.
 
 <table>
 <tr><th rowspan="2">Category</th><th rowspan="2">Level</th><th rowspan="2">Name</th><th rowspan="2">Narrative Definition</th><th colspan="2">DDT</th><th rowspan="2">DDT Fallback</th><th rowspan="2">ODD</th></tr>
@@ -156,9 +169,13 @@ As the level rises, the system takes on more work, so the number and variety of 
 
 *Table 3. Outlook of the average number of sensors by level of automation*
 
+A value written with a slash, such as "2/3" in the table, means two or three.
+
+> **Definition:** **μbolo** is short for microbolometer, a device that detects the infrared (heat) radiation objects emit to form an image; here it refers to the thermal cameras and infrared sensors used for night vision.
+
 > **Definition:** **Radar** is a sensor that emits radio waves to measure the distance and relative speed of objects.
 
-> **Definition:** **Dead reckoning** is a method of estimating the current position by accumulating the distance and direction traveled from wheel speeds and inertial sensors. A value written with a slash, such as "2/3" in the table, means two or three.
+> **Definition:** **Dead reckoning** is a method of estimating the current position by accumulating the distance and direction traveled from wheel speeds and inertial sensors.
 
 Level 1 uses about 7 sensors, but Level 5 uses about 30, more than four times as many. In particular, LiDAR, surround cameras, and dead reckoning are added from Level 3, because from Level 3 the system takes on OEDR and must monitor all of its surroundings by itself. As sensors increase, the bandwidth demanded of the in-vehicle network that gathers sensor data also grows.
 
@@ -177,11 +194,15 @@ Frost & Sullivan divided autonomous vehicles into six platforms and summarized t
 
 *Table 4. Evolution roadmap of autonomous vehicle platforms*
 
+> **Definition:** The **E/E (electrical/electronic) architecture** is the overall structure that determines how a vehicle's ECUs, sensors, actuators, wiring, communication networks, and power supply are placed and connected.
+
 > **Definition:** **Deterministic software** always produces the same output for the same input within a fixed time. Learning-based AI recognizes well but its behavior is hard to predict fully, so deterministic software is used alongside it for functions with strict time constraints such as braking.
 
 > **Definition:** **Redundancy** is a design that provides two or more parts or paths with the same role so that the function continues even if one fails.
 
 The E/E row of Table 4 relates directly to vehicle communication. A structure that used separate ECUs and protocols for each function changes, through the consolidation of ECUs and protocols (CAN FD, Ethernet), into a structure centered on domain controllers. This change is revisited in Section 1.9.
+
+> **Definition:** **CAN FD (CAN with Flexible Data-Rate)** is the extension of CAN that raises the bit rate of the data phase and allows up to 64 bytes of data in one frame (Week 9).
 
 ### 1.6 Business Sectors of the Autonomous Vehicle Ecosystem
 
@@ -198,6 +219,8 @@ The business areas of the autonomous vehicle ecosystem can be divided into four 
 | (4) Fleet management services | Fleet management | Car sharing, ride hailing, operations management |
 
 *Table 5. The four business sectors of the autonomous vehicle ecosystem*
+
+> **Definition:** **Middleware** is software that sits between the operating system and applications and provides common functions such as communication and data management.
 
 Automakers partner with different companies in each sector. For example, BMW was linked with hardware from HELLA, Innoviz, Continental, and Aptiv, AI and cloud from IBM Watson, HD maps from HERE, and mobility services such as Car2Go and ParkNow, and Google was linked with Velodyne's LiDAR, the software and HD maps of its subsidiary Waymo, and Uber's ride-hailing service. Ford was linked with hardware from Velodyne, Princeton Lightwave, Aptiv, and Continental, V2X from Autotalks, AI from Argo, HD maps from Civil Maps and DeepMap, and mobility services from Chariot and TransLoc. GM was linked with hardware from Veoneer, LG, and Strobe, software and HD maps from Cruise, outside-vehicle communication from OnStar, cloud from IBM Watson, and ride hailing and sharing from Lyft and Maven, and Volvo was linked with hardware from HELLA, Autoliv, Aptiv, and Veoneer, software from Zenuity, cloud from Cisco, HD maps from TomTom, and ride hailing from Uber and its automated driving pilot program DriveMe. Software, cloud, and fleet management services (sectors 2-4) lie outside the traditional domain of automakers and parts suppliers, and it is in these areas that new companies enter the ecosystem.
 
@@ -230,6 +253,12 @@ In Table 6, some companies such as Tesla and Waymo span several areas, while Int
 2. It announced an investment of 110 trillion won to build two new semiconductor fabs in Europe that would mainly produce automotive chips. In September 2021, Intel CEO Pat Gelsinger forecast that semiconductors would grow from 4% of the bill of materials of a premium vehicle in 2019 to 12% in 2025 and 20% in 2030 [8]. Intel promotes an automated driving platform that spans the data center, 5G, HMI, and in-vehicle computing.
 3. In February 2022 it formed a group dedicated to automotive within Intel Foundry Services (IFS). The group is responsible for the Open Central Compute Architecture, a computing platform on which automakers can build next-generation solutions; the Automotive-Grade Foundry Platform, manufacturing technology that satisfies automotive applications and customer requirements; and Transition to Advanced Technologies, providing design services and IP to help automakers move to advanced process and packaging technologies.
 
+> **Definition:** An **AP (application processor)** is a high-performance processor that runs an operating system and complex applications.
+
+> **Definition:** A **foundry** is the business of manufacturing semiconductors designed by other companies on contract, or a company in that business.
+
+> **Definition:** The **HMI (human-machine interface)** is the display and controls through which the driver and the system exchange information.
+
 ### 1.8 Comparing the Scale of Big Tech and Automakers
 
 Big tech has huge market capitalization and enormous capacity to raise capital, and its profit margin relative to revenue is far higher than that of automakers. Comparing 2021 revenue and profit and market capitalization as of April 2022 gives Table 7 [9].
@@ -255,9 +284,9 @@ By contrast, Korean parts suppliers have low profitability. The revenue of 110 K
 
 ### 1.9 E/E Architecture and the SDV
 
-> **Definition:** The **E/E (electrical/electronic) architecture** is the overall structure that determines how a vehicle's ECUs, sensors, actuators, wiring, communication networks, and power supply are placed and connected.
+> **Definition:** A **software-defined vehicle (SDV)** is a vehicle whose functions and performance are defined by software rather than hardware and whose functions change through software updates even after release.
 
-The E/E architecture of the vehicle is evolving toward the **software-defined vehicle (SDV)**. As in Figure 3, the change can be divided into three stages.
+The E/E architecture of the vehicle is evolving toward the software-defined vehicle (SDV). As in Figure 3, the change can be divided into three stages.
 
 ![Figure 3. Evolution from a distributed ECU architecture through a domain architecture to the SDV](../../images/Week02_p24.png)
 
@@ -271,7 +300,13 @@ The E/E architecture of the vehicle is evolving toward the **software-defined ve
 
 *Figure 4. The transition from low-speed MCU-based ECUs to high-performance AP-based computers and the software layers*
 
+> **Definition:** An **MCU (microcontroller unit)** is a low-cost control chip that puts a processor, memory, and I/O on one chip; in the traditional architecture each ECU contains one and handles one function.
+
 As in Figure 4, the transition to the SDV is a change from a system of about 100 low-cost, low-speed MCUs to a system of 3-5 high-performance APs. The software stack on the left stacks firmware (an operating system or RTOS, drivers, HAL, libraries, middleware, and the application layer) and a user interface on top of the hardware, and the right is the OSI reference model, which divides communication functions into seven layers. Because a high-performance AP handles many functions on one chip, the software on it must likewise be designed in layers to manage the complexity. The OSI model is covered in detail in Week 5.
+
+> **Definition:** An **RTOS (real-time operating system)** is an operating system that guarantees that tasks finish within fixed time limits.
+
+> **Definition:** A **HAL (hardware abstraction layer)** is a software layer that hides hardware differences so that the software in the layers above depends less on particular hardware.
 
 A change in E/E architecture is in fact a change in the supply structure.
 
@@ -322,9 +357,11 @@ The project develops automated driving components and systems for large buses an
 
 *Table 8. Structure of the automated large-bus project*
 
-Whereas the **SSVM (smart surround view monitoring)** system, which combines images from several cameras around the vehicle into a top-down view, and the **HMI (human-machine interface)**, the display and controls through which the driver and the system exchange information, are devices that the driver sees, the following two devices record and process driving data inside the vehicle.
+> **Definition:** **SSVM (smart surround view monitoring)** is a system that combines images from several cameras around the vehicle into a top-down view.
 
-> **Definition:** An **ADR** is a device that records driving data including camera video.
+Whereas the SSVM and the HMI are devices that the driver sees, the following two devices record and process driving data inside the vehicle.
+
+> **Definition:** An **ADR** is a device that records driving data including camera video. The source material does not spell out the abbreviation.
 
 > **Definition:** The **HAV-DCU** is the integrated controller (domain control unit) responsible for perception and decision-making in a highly automated vehicle.
 
@@ -342,6 +379,8 @@ flowchart LR
 
 Starting from testing each part on its own, the verification checks the functions of mounted parts, system integration, and vehicle integration in turn, and then widens the scope to the proving ground (PG), real roads, and real bus routes. The vehicle has an ADASIS 3.0 interface that delivers map data and an edge data logger that collects driving data, and the control server and parts data server receive the data for parts data analysis and verification of the system's functional safety.
 
+> **Definition:** **ADASIS (ADAS Interface Specification)** is a standard interface that delivers map data to ADAS controllers in the form of information about the road ahead of the vehicle (the electronic horizon).
+
 ### 2.2 Parts and Applications for Passenger Cars and Heavy Vehicles
 
 | Item | Automated Driving Parts for Passenger Cars | Automated Driving Parts for Heavy Vehicles |
@@ -354,6 +393,8 @@ Starting from testing each part on its own, the verification checks the function
 *Table 9. Automated driving parts and applications for passenger cars and heavy vehicles*
 
 > **Definition:** **Platooning** is a driving mode in which several trucks travel in a line at short gaps, coordinating acceleration and braking through V2V communication.
+
+> **Definition:** **Multimodal public transport** is public transport that links several modes, such as buses, rail, and shared vehicles, into one journey.
 
 ### 2.3 Main Parts
 
@@ -387,6 +428,8 @@ The automated driving system architecture design document was prepared in the fo
 2. **Definition of requirements for large-bus parts:** Functional requirements (15 for the 10 developed parts), quality requirements (3, including safety design goals), interface requirements (11, including power and power consumption), and constraints (software, hardware, and physical constraints) were defined.
 3. **Definition of interfaces between parts:** The interfaces of the in-vehicle network and the infrastructure-linked network were defined.
 4. **Collection of review comments from the demand-company technical committee:** Five of the seven comments (major items) were accepted.
+
+> **Definition:** An **ESU** is the routing unit in the bus network of this project that gathers data from the input devices and passes it to the HAV-DCU. The source material does not spell out the abbreviation.
 
 The accepted review comments include the following.
 
@@ -429,7 +472,13 @@ Figure 9 distinguishes the types of network by line color. Blue is CAN, green is
 
 *Table 11. Components of the large-bus network topology*
 
-In Figure 9 the HAV-DCU has two processing blocks attached, ASN.1 and ADASIS. **ASN.1 (Abstract Syntax Notation One)** is a notation for defining and encoding the structure of V2X messages, and the V2X messages of SAE J2735 are encoded in this way [12]. **ADASIS (ADAS Interface Specification)** is a standard interface that delivers map data to ADAS controllers in the form of information about the road ahead of the vehicle (the electronic horizon) [13]. In other words, the HAV-DCU interprets messages received over V2X and map information and uses them for decisions. V2X messages are covered in Week 11.
+> **Definition:** An **HVI (human-vehicle interface)** is the display and controls through which the driver and the vehicle exchange information; the term is used in the same sense as HMI.
+
+> **Definition:** An **on-board unit (OBU)** is the device mounted in a vehicle that handles V2X communication.
+
+> **Definition:** A **BIS (bus information system)** is a system that shows passengers bus operation information, such as expected arrival times and the next stop.
+
+In Figure 9 the HAV-DCU has two processing blocks attached, ASN.1 and ADASIS. **ASN.1 (Abstract Syntax Notation One)** is a general-purpose notation for defining the structure of messages, and the V2X messages of SAE J2735 are also defined and encoded in this way [12]. ADASIS (Section 2.1) delivers map information to the ADAS controllers [13]. In other words, the HAV-DCU interprets messages received over V2X and map information and uses them for decisions. V2X messages are covered in Week 11.
 
 It is worth noting that the networks are divided according to data volume. Large data such as the LiDAR point cloud is sent over Ethernet, medium-sized data such as radar object information over CAN FD, and small data such as control commands and status information over CAN. This reflects in the network design the differences in sensor data volume seen in Week 1.
 
@@ -493,9 +542,9 @@ flowchart LR
 
 *Table 12. Components of the large-bus automated driving software*
 
-> **Definition:** **RTI (request to intervene)** is the SAE J3016 request by which a Level 3 system tells the fallback-ready user to take over driving. It is different from the RTI (road traffic information) in the Volvo case of Section 3.8.
+This structure follows the typical flow of automated driving software from perception through decision-making to control. Each component can run on a different ECU or process, so the data flows between components become the requirements of the network design (Section 2.7). The RTI in Table 12 is the request to intervene of Section 1.2, which is different from the RTI (road traffic information) in the Volvo case of Section 3.8.
 
-This structure follows the typical flow of automated driving software from perception through decision-making to control. Each component can run on a different ECU or process, so the data flows between components become the requirements of the network design (Section 2.7).
+> **Definition:** **Euler angles** describe the attitude of an object by three rotation angles: roll, pitch, and yaw.
 
 ---
 
@@ -586,6 +635,10 @@ flowchart TB
 *Figure 17. Infotainment devices sharing a CAN bus*
 
 In Figure 17, the display, remote control, MMI head unit, test module, CD changer, mobile telephone, traffic information receiver (TMC), navigation, and digital radio (DAB) are all connected to a single CAN bus with two wires. Adding a new device also requires only connecting two wires to the bus.
+
+> **Definition:** **TMC (Traffic Message Channel)** is a service that carries traffic information digitally in FM radio broadcast signals.
+
+> **Definition:** **DAB (Digital Audio Broadcasting)** is a digital radio broadcasting system that transmits audio as digital signals.
 
 ### 3.4 Evolution of Network Methods
 
@@ -750,6 +803,10 @@ KATECH is a research institute established jointly by the government and industr
 
 *Table 18. Headquarters and regional organizations of KATECH*
 
+> **Definition:** **Root technologies** are the process technologies, such as casting, molding, welding, and heat treatment, on which manufacturing is built.
+
+> **Definition:** **ODA (official development assistance)** is aid that the governments of developed countries provide for the economic development and welfare of developing countries.
+
 There are four regional divisions: Daegyeong, Gwangju, Jeonnam, and Dongnam. The Cheonan headquarters consists of 14 research buildings, 3 support and auxiliary buildings, and a test track 1 km long and 30 m wide, with a total area of about 250,000 m² (75,600 pyeong). The research buildings include an environmental research building, comprehensive research buildings, an autonomous driving test building, a complex vibration laboratory, a reliability laboratory, a collision avoidance system research building, a vibration test building, electromagnetic compatibility test buildings, and an exhaust gas and engine research building.
 
 ### 4.3 Main Roles and Organization
@@ -816,6 +873,10 @@ The institute has more than 1,500 kinds of modern equipment for technology devel
 
 *Table 21. Representative equipment of KATECH by field*
 
+> **Definition:** A **dynamometer** is test equipment that turns a motor or a vehicle and measures force (torque), rotational speed, and power.
+
+> **Definition:** **Radiated immunity** is the ability of an electronic device to keep working correctly when exposed to electromagnetic waves arriving through space from outside.
+
 ### 4.6 Autonomous Driving Technology Research Institute
 
 The Autonomous Driving Technology Research Institute pursues research in three fields toward **infinite convenience** (human sensibility such as e-cockpits, personalized HMI, augmented reality, and content), **highest safety** (autonomous driving such as advanced driver assistance systems, unmanned driving, and platooning), and **perfect connection** (connectivity through smart car-talk services, the Internet of Things, and the cloud).
@@ -830,7 +891,13 @@ The Autonomous Driving Technology Research Institute pursues research in three f
 
 > **Definition:** An **LDM (local dynamic map)** is a map that manages dynamic information such as nearby vehicles, signals, and construction zones in real time on top of a static map.
 
-The NCAP systems of the cooperative automation area are the safety functions tested in new car safety assessment, of which automatic emergency braking is a representative example.
+> **Definition:** **UI/UX** refers together to the user interface, the screens and devices through which a user operates a system, and the user experience, what the user experiences while using it.
+
+> **Definition:** **NCAP (New Car Assessment Program)** is a new car safety assessment program that tests the crash safety and safety functions of new cars and publishes their ratings.
+
+> **Definition:** **AEB(S)** is the autonomous emergency braking system, which brakes automatically, without the driver pressing the brake, when it detects a risk of collision with a vehicle or pedestrian ahead.
+
+The NCAP systems (AEB(S) and others) in Table 22 are the safety functions tested in new car safety assessment.
 
 ![Figure 24. Staged framework of government autonomous driving projects](../../images/Week02_p73.png)
 
@@ -857,6 +924,10 @@ Figure 24 shows how government autonomous driving projects progress from Level 3
 | Main results | Perception, decision, control, and MRM logic; vehicles (two G80s, one Ioniq); 37 domestic and 22 international papers; 17 patents filed and 5 registered; 5 technology transfers; international standards | A computing module of up to 240 TOPS, two passenger and multipurpose demonstration vehicles, an AI cooperation model of the Ministry of Trade, Industry and Energy and the Ministry of Science and ICT, an autonomous driving standardization forum (six subcommittees) | Four domestic sensors installed, automated driving software for low-speed automated driving (LSAD) shuttles, three KAMO autonomous shuttles, demonstrations in Daegu and Sejong (until December 2021), two exhibitions, two private projects |
 
 *Table 23. Major autonomous driving projects of KATECH*
+
+> **Definition:** **TOPS (tera operations per second)** is a unit of AI computing performance meaning one trillion operations per second. 240 TOPS is $2.4 \times 10^{14}$ operations per second.
+
+> **Definition:** **LSAD (low-speed automated driving)** is an automated driving system that operates at low speed within a defined area; autonomous shuttles are a typical example.
 
 The system of Major Project 1 was validated through driver usability evaluation, VILS (vehicle-in-the-loop simulation) evaluation, which combines a real vehicle with a virtual environment, and real-vehicle evaluation on a proving ground (PG). The computing module of Major Project 2 has several vehicle communication interfaces. Eight camera channels are connected through GMSL2 serialized links (MAX9295 and MAX9296 SERDES, link rate 6 Gbit/s), and the camera sensor and ISP pairs are AR0231 with AP0200 (30 fps) and AR0233 with GW5200 (60 fps). The module also has three automotive Ethernet 100BASE-T1 ports (100 Mbit/s), 1000BASE-T Ethernet connecting four 16-channel 360° mechanical LiDARs, wireless interfaces (GNSS on the GPS L1 and GLONASS bands, and LTE Cat 4 with 150 Mbit/s downlink and 75 Mbit/s uplink), and a display output.
 
@@ -892,44 +963,6 @@ Connect each situation with the concept that serves as the basis for judgment.
 | An SAE Class C network is for body control below 10 kbit/s. | **F.** Body control below 10 kbit/s is Class A; Class C is for real-time control at 125 kbit/s-1 Mbit/s. |
 | The CEM of the Volvo S80 is a gateway connected to both CAN buses. | **T.** The CEM connects the 250 kbit/s bus and the 125 kbit/s bus. |
 | In SBW, the steering wheel and rack are mechanically connected by a column shaft. | **F.** SBW has no column shaft; the controller and motor move the rack based on the angle sensor signal. |
-
----
-
-<br>
-
-## Glossary
-
-| English | Korean | One-Line Definition |
-|:-----|:-----|:-----|
-| DDT Fallback | DDT 폴백 | The response that takes over the DDT or reaches an MRC when the system fails or leaves its ODD. |
-| DDT Fallback-ready User | 폴백 대비 사용자 | The person who must be ready to respond to a request to intervene at Level 3. |
-| μbolo | μbolo | The short form of microbolometer, referring to a thermal camera or infrared sensor for night vision. |
-| AP (application processor) | AP | A high-performance processor that runs an operating system and complex applications. |
-| Foundry | 파운드리 | A business that manufactures semiconductors designed by other companies on commission. |
-| MCU (microcontroller unit) | MCU | A low-cost control chip that contains a processor, memory, and I/O on one chip. |
-| RTOS (real-time operating system) | RTOS | A real-time operating system that guarantees that tasks finish within fixed time limits. |
-| HAL (hardware abstraction layer) | HAL | A layer that hides hardware differences so that the software above depends less on the hardware. |
-| Middleware | 미들웨어 | Software between the operating system and applications that provides common functions such as communication and data management. |
-| SSVM (smart surround view monitoring) | SSVM | A system that combines images from several cameras around the vehicle into a top-down view. |
-| HMI (human-machine interface) | HMI | The display and controls through which the driver and the system exchange information. |
-| Multimodal Public Transport | 멀티모달 대중교통 | Public transport that links several modes such as buses, rail, and shared vehicles. |
-| HVI (human-vehicle interface) | HVI | Used with the same meaning as HMI. |
-| OBU (on-board unit) | OBU | The in-vehicle device responsible for V2X communication. |
-| BIS (bus information system) | BIS | A system that shows bus operation information to passengers. |
-| Euler Angles | 오일러 각 | A way of representing the attitude of an object by three angles, roll, pitch, and yaw. |
-| TMC (Traffic Message Channel) | TMC | A service that carries traffic information on FM radio signals. |
-| DAB (Digital Audio Broadcasting) | DAB | Digital radio broadcasting. |
-| ODA (official development assistance) | 공적 개발 원조 | Aid that governments of developed countries provide for the development of developing countries. |
-| Root Technologies | 뿌리 기술 | Process technologies underlying manufacturing, such as casting, molding, welding, and heat treatment. |
-| Dynamometer | 다이나모 | Test equipment that rotates a motor or vehicle while measuring force, rotational speed, and power. |
-| Radiated Immunity | 전자파 복사 내성 | The ability of electronic equipment to operate correctly even when exposed to electromagnetic waves arriving from outside. |
-| UI/UX | UI/UX | User interface and user experience. |
-| NCAP (New Car Assessment Program) | NCAP | A program that tests the safety of new cars and publishes ratings. |
-| AEB(S) | AEB(S) | An autonomous emergency braking system. |
-| TOPS (tera operations per second) | TOPS | A unit of AI computing performance meaning one trillion operations per second. 240 TOPS is $2.4 \times 10^{14}$ operations per second. |
-| LSAD (low-speed automated driving) | LSAD | An automated driving system that operates at low speed within a defined area. |
-
-*Table 25. Glossary*
 
 ---
 

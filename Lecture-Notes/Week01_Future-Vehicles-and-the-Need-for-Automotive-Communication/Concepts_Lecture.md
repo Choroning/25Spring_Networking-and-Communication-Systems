@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-18
+> **Last Updated:** 2026-11-26
 
 > **Learning Objectives:**
 > 1. Explain the four keywords of the future vehicle industry, C.A.S.E., and interpret the market outlook of each area together with its source
@@ -44,7 +44,6 @@
   - [3.8 Connected Car Policy in Korea](#38-connected-car-policy-in-korea)
   - [3.9 Cooperative Automated Driving: C-ITS and Autonomous Driving](#39-cooperative-automated-driving-c-its-and-autonomous-driving)
 - [Concept Applications](#concept-applications)
-- [Glossary](#glossary)
 - [Summary](#summary)
 - [Self-Check Questions](#self-check-questions)
 - [References](#references)
@@ -82,8 +81,6 @@ In North America and Europe, an average of 90% of new cars were expected to have
 
 Services delivered through connected cars fall into six broad groups: infotainment, smartphone integration, electric vehicle services, navigation, telematics, and autonomous driving services. The present and future of the first five, as summarized by Frost & Sullivan in 2020, are shown in Table 2 [2].
 
-> **Definition:** **Telematics** combines telecommunication and informatics and refers to technology that attaches communication to a vehicle to provide services such as automatic crash notification, remote diagnostics, and location tracking.
-
 | Service | Current | Future |
 |:-----|:-----|:-----|
 | Infotainment | There are few partnerships between automakers and third parties, and most services are delivered through Apple CarPlay and Android Auto. | Automakers' own apps, music and video streaming, personalized content, ubiquitous Wi-Fi hotspots |
@@ -93,6 +90,14 @@ Services delivered through connected cars fall into six broad groups: infotainme
 | Telematics | Mandated emergency calls (eCall) and electric vehicle launches drive the introduction of telematics. | User profiles and customization, prescriptive maintenance, security alerts, eCall on all vehicles |
 
 *Table 2. Present and future of connected car services*
+
+> **Definition:** **Infotainment**, a blend of information and entertainment, is the function that provides music, video, and information services inside the car.
+
+> **Definition:** **Telematics** combines telecommunication and informatics and refers to technology that attaches communication to a vehicle to provide services such as automatic crash notification, remote diagnostics, and location tracking.
+
+> **Definition:** **RTTI (real-time traffic information)** is the abbreviation for real-time information on road traffic conditions collected and delivered to vehicles, or for the service that provides it.
+
+> **Definition:** **eCall** is the European emergency call system in which a vehicle that has had an accident automatically calls the emergency rescue center and reports its location.
 
 The physical layer of connected cars, that is, the communication means that actually carries the signals, is mostly the cellular network. A vehicle obtains communication capability either by the **embedded** method, which mounts a communication module directly in the vehicle, or by **tethering**, which borrows the communication function of a device such as a smartphone, and around 2020 the ratio of the two was about 6:4 [2]. The difference between the two methods is covered in detail in Section 3.2.
 
@@ -121,7 +126,9 @@ Table 3 shows that Level 0 vehicles, which have no autonomous driving function a
 
 > **Definition:** **MaaS (Mobility-as-a-Service)** is the concept of bundling several modes of transport into one service that offers route search, booking, and payment at once.
 
-All three services connect users with means of transport through a platform, so their market size is usually expressed as the **gross merchandise value (GMV)**, the total amount of transactions made through the platform.
+> **Definition:** The **gross merchandise value (GMV)** is the total amount of transactions made through a platform.
+
+DRT, eHailing, and MaaS all connect users with means of transport through a platform, so their market size is usually expressed as the gross merchandise value (GMV).
 
 | Segment | 2019 GMV (USD billion) | 2020 GMV (USD billion) | Year-over-Year Growth |
 |:-----|-----:|-----:|-----:|
@@ -136,11 +143,23 @@ Table 4 is based on Frost & Sullivan data with 2019 as the base year [3]. Becaus
 
 ### 1.5 Electric: The Market Outlook for Engine Vehicles and Electrified Vehicles
 
-> **Definition:** An **ICE (internal combustion engine)** vehicle is driven by an internal combustion engine alone. Electrified vehicles (xEV) include all of the following BEVs, PHEVs, FHEVs, MHEVs, and FCEVs.
+> **Definition:** An **ICE (internal combustion engine)** vehicle is driven by an internal combustion engine alone.
 
-Electrified vehicles are divided by how they obtain power into pure electric vehicles that use only a battery, hydrogen vehicles that generate electricity with a fuel cell, and hybrid vehicles that use both an engine and an electric motor. A pure electric vehicle driven only by a battery and electric motors is a **BEV (battery electric vehicle)**, and a hydrogen vehicle that runs on electricity produced by a hydrogen fuel cell is an **FCEV (fuel cell electric vehicle)**.
+> **Definition:** An **electrified vehicle (xEV)** is any vehicle that obtains all or part of its driving power from an electric motor.
 
-Hybrid vehicles are further divided into three kinds according to whether they can be charged from an external power source and how large a role the electric motor plays: the **PHEV (plug-in hybrid electric vehicle)**, which can be charged from an external power source, the **FHEV (full hybrid electric vehicle)**, which can drive short distances on its electric motor alone, and the **MHEV (mild hybrid electric vehicle)**, whose electric motor only assists the engine.
+Electrified vehicles are divided by how they obtain power into pure electric vehicles that use only a battery, hydrogen vehicles that generate electricity with a fuel cell, and hybrid vehicles that use both an engine and an electric motor.
+
+> **Definition:** A **BEV (battery electric vehicle)** is a pure electric vehicle driven only by a battery and electric motors.
+
+> **Definition:** An **FCEV (fuel cell electric vehicle)** is a hydrogen vehicle that runs on electricity produced by a hydrogen fuel cell.
+
+Hybrid vehicles are further divided into three kinds according to whether they can be charged from an external power source and how large a role the electric motor plays.
+
+> **Definition:** A **PHEV (plug-in hybrid electric vehicle)** is a hybrid vehicle that can be charged from an external power source.
+
+> **Definition:** An **FHEV (full hybrid electric vehicle)** is a hybrid vehicle that can drive short distances on its electric motor alone.
+
+> **Definition:** An **MHEV (mild hybrid electric vehicle)** is a hybrid vehicle whose electric motor only assists the engine.
 
 According to one market forecast, electrified vehicles (including electric and hydrogen vehicles) account for 28.6% of the entire passenger car market in 2025. This value equals 100% minus the 2025 ICE share of 71.4%.
 
@@ -159,19 +178,23 @@ This forecast contains two trends at once.
 
 Autonomous driving cannot be commercialized by technology alone; safety standards, laws and institutions, and infrastructure must be in place as well. Governments therefore set the direction through policy documents and roadmaps.
 
-**United States.** The U.S. Department of Transportation (DOT) published the autonomous driving guidelines *Automated Driving Systems 2.0* (2017) [4], *Automated Vehicles 3.0* (2018) [5], and *Automated Vehicles 4.0* (2020) [6], which set out directions for system safety, the operational design domain (ODD), the minimal risk condition (MRC), data, and laws and institutions. The DOT also leads support for research and development, testing, demonstration, and infrastructure. It publishes maps of planned and operational connected vehicle deployments and runs a research and development roadmap that proceeds from proof of concept through applied research to policy and deployment preparation.
+**United States.** The U.S. Department of Transportation (DOT) published the autonomous driving guidelines *Automated Driving Systems 2.0* (2017) [4], *Automated Vehicles 3.0* (2018) [5], and *Automated Vehicles 4.0* (2020) [6], which set out directions for system safety, the operational design domain (ODD), the minimal risk condition (MRC), data, and laws and institutions. The DOT also leads support for research and development, testing, demonstration, and infrastructure. It publishes maps of planned and operational connected vehicle deployments and runs a research and development roadmap that proceeds from proof of concept through applied research to policy and deployment preparation. ODD and MRC are revisited in Week 2.
 
 > **Definition:** The **ODD (operational design domain)** is the range of conditions (road type, speed, weather, time of day, etc.) under which an automated driving system is designed to operate properly.
 
-> **Definition:** The **MRC (minimal risk condition)** is the state in which the vehicle has been brought to a safe stop when the system can no longer continue driving. Both terms are revisited in Week 2.
+> **Definition:** The **MRC (minimal risk condition)** is the state in which the vehicle has been brought to a safe stop when the system can no longer continue driving.
 
 **Europe.** ERTRAC, the European road transport research advisory council, presented separate development roadmaps for passenger cars, freight vehicles, and urban mobility in its *Connected Automated Driving Roadmap* (2019) [7]. EPoSS, the technology platform for smart systems, presented in its 2015 roadmap the research and development, demonstration, and commercialization stages for each of eight activity fields: technology inside the car, infrastructure, big data, system integration and validation, system design, standardization, legal frameworks, and awareness measures [8]. The milestones of the EPoSS roadmap are conditional automated driving (Level 3) at low speeds in simple environments in 2020, highly automated driving (Level 4) on highways in 2025, and highly automated driving (Level 4) in cities in 2030. Throughout the 2010s the European Union carried out a series of projects: highly automated driving projects such as HAVEit, InteractIVe, AdaptIVe, and L3Pilot, driver assistance and platooning projects such as SARTRE and ENSEMBLE, infrastructure connectivity and cooperative driving projects such as DRIVE C2X and AUTONET, and networking, coordination, and support projects such as EuroFOT, CARTRE, SCOUT, and ARCADE. The EU also held the European Conference on Connected and Automated Driving (EUCAD) in 2017 and 2019.
 
-**Japan.** Japan established a cross-ministry governance system, **SIP Automated Driving for Universal Services (SIP-adus)**, under the Cabinet Office. Phase 1 ran from 2014 to 2018 and phase 2 from 2018 to 2022, with the Ministry of Internal Affairs and Communications, the Ministry of Economy, Trade and Industry, the National Police Agency, and the Ministry of Land, Infrastructure, Transport and Tourism among the participants. The program director (PD) is Seigo Kuzumaki, formerly of Toyota, appointed in 2016. Although the program runs within a government body, an expert from the automotive industry leads it, so it can be described as a structure in which industry takes the lead in building a kind of social consensus rather than one driven unilaterally by the state. The implementation organization places, under a promoting committee chaired by the PD with the Cabinet Office as secretariat (with the Cabinet Secretariat, the National Police Agency, the Ministry of Internal Affairs and Communications, the Ministry of Economy, Trade and Industry, the Ministry of Land, Infrastructure, Transport and Tourism, and others participating), three working groups for system implementation, next-generation transport, and international cooperation and a task force for the 2020 field operational test in the Tokyo waterfront city area, while the New Energy and Industrial Technology Development Organization (NEDO) manages the research projects.
+**Japan.** Japan established a cross-ministry governance system, SIP Automated Driving for Universal Services (SIP-adus), under the Cabinet Office. Phase 1 ran from 2014 to 2018 and phase 2 from 2018 to 2022, with the Ministry of Internal Affairs and Communications, the Ministry of Economy, Trade and Industry, the National Police Agency, and the Ministry of Land, Infrastructure, Transport and Tourism among the participants. The program director (PD) is Seigo Kuzumaki, formerly of Toyota, appointed in 2016. Although the program runs within a government body, an expert from the automotive industry leads it, so it can be described as a structure in which industry takes the lead in building a kind of social consensus rather than one driven unilaterally by the state. The implementation organization places, under a promoting committee chaired by the PD with the Cabinet Office as secretariat (with the Cabinet Secretariat, the National Police Agency, the Ministry of Internal Affairs and Communications, the Ministry of Economy, Trade and Industry, the Ministry of Land, Infrastructure, Transport and Tourism, and others participating), three working groups for system implementation, next-generation transport, and international cooperation and a task force for the 2020 field operational test in the Tokyo waterfront city area, while the New Energy and Industrial Technology Development Organization (NEDO) manages the research projects.
+
+> **Definition:** **SIP-adus (SIP Automated Driving for Universal Services)** is the automated driving program of Japan's Cross-ministerial Strategic Innovation Promotion Program (SIP), run under the Cabinet Office.
 
 The strategy of SIP phase 2 is to extend the operational domain of autonomous driving from expressways to arterial and general roads and to expand into mobility services such as public transport and logistics. Through this it aims to reduce traffic accidents and congestion, support the mobility of vulnerable people, and solve the driver shortage in logistics, toward a society in which everyone can travel safely and comfortably. A distinctive feature is that privately owned vehicles (mass-produced by automakers) and logistics and mobility service vehicles are pursued on separate tracks. Phase 1 (until 2018) established the static information infrastructure linked with high-definition 3D maps (the basic concept of the dynamic map), and phase 2 (until 2022) developed dynamic traffic information such as V2X-based accident reduction, traffic flow improvement, and signal information, and demonstrated it in the Tokyo waterfront area. The targets for private vehicles were Level 2 on general roads by 2020, Level 2-3 on expressways around 2020, and Level 4 on expressways around 2025.
 
 Following the reference architecture of Society 5.0, the SIP-adus R&D plan defines eight strategic fields: strategy, rules, organization, business, functions, data, data collection, and technology (assets) [9]. Strategy covers the vision and scope; rules cover laws and regulations; organization covers operating bodies such as implementing agencies and councils; business covers services, contracts, and ecosystems; functions cover the individual functions that realize services; data covers data sets, codes, and catalogs; data collection covers the collection, integration, and cleansing of data and IoT device management; and technology (assets) covers sensors, actuators, hardware, and networks, while security and authentication form an axis spanning all fields. It also developed separate roadmaps for ten technology fields, namely maps (high-definition 3D maps, dynamic maps), communication infrastructure, perception, decision-making, human factors, functional safety, cybersecurity, software talent, social acceptance, and safety assessment, with particular emphasis on securing software talent and competitiveness. Among these, the roadmap for the perception and decision-making fields targets Level 3 on expressways and Level 2 on general roads for private vehicles in fiscal 2020. On the institutional side, the Ministry of Land, Infrastructure, Transport and Tourism and the National Traffic Safety and Environment Laboratory prepare performance criteria for Level 2 on expressways (lane keeping, lane changes) and Level 3 (ALKS, automated lane keeping system), safety guidelines for automated vehicles, and international standards on methods for confirming ALKS safety performance. On the research side, the roadmap pursues test course improvement and pre-evaluation for public road driving by the Japan Automobile Research Institute (JARI), research on the perception technology needed for Levels 3 and 4 with the Tokyo waterfront field operational test, collection of driving video data and development of automatic tagging technology, driver models built from driving behavior data, and the construction and operation of a traffic accident database (Institute for Traffic Accident Research and Data Analysis, ITARDA). Demonstrations were carried out in many forms by local governments, at expressway rest areas, for last-mile transport, in the Smart Mobility Challenge (a competition), on airport roads, and in smart cities.
+
+> **Definition:** **Society 5.0** is the national vision of the Japanese government for a society that highly integrates cyberspace and physical space; the name means the fifth society, after the hunting, agrarian, industrial, and information societies.
 
 | Country | Main Policy Documents and Framework | Characteristics |
 |:-----|:-----|:-----|
@@ -274,13 +297,21 @@ World production in 2021 was about 76.42 million units, with China first at 26.0
 
 *Table 11. Comparison of future vehicle workforces by country*
 
-**Restructuring of the supply chain.** About 70% of future vehicle parts are electrical and electronic parts. After the financial crisis, the United States pushed to convert more than 20% of its parts suppliers into producers of eco-friendly vehicle parts, whereas in Korea only 5% of parts makers produce electrical and electronic parts. Building on world-class software competitiveness, the United States is preparing to produce **software-defined vehicles (SDV)** centered on software-based parts.
+**Restructuring of the supply chain.** About 70% of future vehicle parts are electrical and electronic parts. After the financial crisis, the United States pushed to convert more than 20% of its parts suppliers into producers of eco-friendly vehicle parts, whereas in Korea only 5% of parts makers produce electrical and electronic parts. Building on world-class software competitiveness, the United States is preparing to produce software-defined vehicles (SDV) centered on software-based parts.
 
-> **Definition:** An **SDV** is a vehicle whose functions and performance are defined by software rather than hardware and whose functions change through software updates even after release.
+> **Definition:** A **software-defined vehicle (SDV)** is a vehicle whose functions and performance are defined by software rather than hardware and whose functions change through software updates even after release.
 
-The supply chain for automotive parts is a hierarchy in which suppliers deliver parts tier by tier up to the automaker at the top. A **tier-1 supplier** delivers modules or systems directly to the **automaker (OEM)**, which designs, assembles, and sells vehicles, and a **tier-2 supplier** delivers parts to tier-1 suppliers.
+The supply chain for automotive parts is a hierarchy in which suppliers deliver parts tier by tier up to the automaker at the top.
 
-The change in the supply chain goes hand in hand with the change in the vehicle's electrical/electronic (E/E) architecture. Table 12 compares the existing and future structures; the key point is that computation is centralized in order to increase functionality.
+> **Definition:** An **automaker (OEM, original equipment manufacturer)** is a company that designs, assembles, and sells vehicles.
+
+> **Definition:** A **tier-1 supplier** is a company that delivers modules or systems directly to an automaker.
+
+> **Definition:** A **tier-2 supplier** is a company that delivers parts to tier-1 suppliers.
+
+> **Definition:** An **E/E architecture (electrical/electronic architecture)** is the structure that determines how a vehicle's electrical and electronic parts, controllers, wiring, and networks are divided and connected.
+
+The change in the supply chain goes hand in hand with the change in the vehicle's electrical/electronic (E/E) architecture. Table 12 compares the existing and future structures; the key point is that computation is centralized in order to increase functionality. The stages of E/E architecture evolution are covered in detail in Week 2.
 
 | Item | Yesterday (distributed) | Tomorrow (centralized) |
 |:-----|:-----|:-----|
@@ -294,7 +325,17 @@ The change in the supply chain goes hand in hand with the change in the vehicle'
 
 *Table 12. Existing and future structures of the vehicle E/E architecture*
 
-> **Definition:** **OTA (over-the-air)** is the method of updating software remotely over wireless communication. The stages of E/E architecture evolution are covered in detail in Week 2.
+> **Definition:** A **sensor** is a device that measures a physical quantity such as temperature, speed, or position and converts it into an electrical signal.
+
+> **Definition:** An **actuator** is a device that receives an electrical signal and produces a physical action, such as a motor, a valve, or a lamp.
+
+> **Definition:** An **ECU (electronic control unit)** is a small in-vehicle computer that reads sensor values, computes, and controls actuators.
+
+> **Definition:** **AUTOSAR (AUTomotive Open System ARchitecture)** is the standard architecture for in-vehicle ECU software, agreed on jointly by automakers and suppliers, which standardizes the interfaces between an ECU's basic software and its application software. Adaptive AUTOSAR is the specification for high-performance central computers.
+
+> **Definition:** A **hypervisor** is software that lets several operating systems run at the same time on one piece of hardware by giving each of them its own virtual hardware.
+
+> **Definition:** **OTA (over-the-air)** is the method of updating software remotely over wireless communication.
 
 **Electric and autonomous vehicles.** In electric vehicles, major countries are investing in large-scale EV infrastructure (charging infrastructure) while encouraging **reshoring** (the return of manufacturing to the home country) of their companies operating abroad and an exit strategy from China. The commercialization of autonomous vehicles is behind earlier expectations, but major countries are enacting or revising laws and institutions and widening the scope of permitted test driving.
 
@@ -344,7 +385,7 @@ In Table 14, about 60% of the non-responding companies answered that their curre
 
 *Figure 1. Evolution from a stand-alone automated driving system to a V2V/V2I-based connected automated driving system*
 
-Most autonomous driving today is a **stand-alone automated driving system**. As in the lower left of Figure 1, the vehicle decides based only on information within the range its own sensors can see (the semicircular sensing area). Future autonomous driving evolves into the **V2V/V2I-based connected automated driving system** on the right of Figure 1. The vehicle exchanges information with other vehicles at the intersection (V2V information exchange), receives information from pedestrians and traffic lights, and is also connected to the user (occupant). Because it obtains even information about places its sensors cannot see through communication, autonomous driving combines with communication and evolves into connected automated driving. This is why the V2X communication covered in Section 3 is needed.
+Most autonomous driving today is a **stand-alone automated driving system**. As in the lower left of Figure 1, the vehicle decides based only on information within the range its own sensors can see (the semicircular sensing area). Future autonomous driving evolves into the **V2V/V2I-based connected automated driving system** on the right of Figure 1. The vehicle exchanges information with other vehicles at the intersection (V2V information exchange), receives information from pedestrians and traffic lights, and is also connected to the user (occupant). Because it obtains even information about places its sensors cannot see through communication, autonomous driving combines with communication and evolves into connected automated driving. This is why the V2X communication covered in Section 3 is needed. The meanings of V2V and V2I are covered in Section 3.1.
 
 ---
 
@@ -402,19 +443,23 @@ flowchart TD
 
 *Table 16. Comparison of in-vehicle networks and V2X communication*
 
-> **Note:** This course covers both branches. Weeks 3 and 9-10 cover IVNs centered on CAN; Weeks 4-7 cover the basics of data communication and networking that underlie both branches (transmission media, protocols and layered architecture, topologies, medium access control); and Weeks 11-14 cover V2X messages, connected automated driving by country, DSRC and WAVE, and C-V2X.
+> **Definition:** **CAN (Controller Area Network)** is the serial communication protocol created by Robert Bosch GmbH to connect the controllers in a vehicle, used for real-time control of the powertrain, chassis, and body (Week 3).
+
+> **Note:** This course covers both branches. Weeks 3 and 9-10 cover IVNs centered on CAN; Weeks 4-7 cover the basics of data communication and networking that underlie both branches (transmission media, protocols and layered architecture, topologies, medium access control); and Weeks 11-14 cover V2X messages, connected automated driving by country, DSRC and WAVE, and C-V2X. WAVE and C-V2X are defined in Section 3.6.
+
+> **Definition:** **DSRC (Dedicated Short Range Communications)** is short-range wireless communication that operates in a frequency band dedicated to vehicle communication.
 
 ### 2.3 The Physical Form of the Vehicle Network: Wiring Harnesses
 
-In reality, the in-vehicle network exists in the form of a **wiring harness**, a bundle of many wires. The harness is a core part of the multimedia (electrical/electronic) system and a high value-added part with a strong job creation effect, because producing it requires a large workforce.
+In reality, the in-vehicle network exists in the form of a wiring harness, a bundle of many wires. The harness is a core part of the multimedia (electrical/electronic) system and a high value-added part with a strong job creation effect, because producing it requires a large workforce.
 
-> **Definition:** A **harness** originally means the gear fastened around a horse or draft animal to hitch it to a cart. The word developed into a name for the bundle of wires that runs throughout the vehicle body. Comparing the upper and lower right of Figure 3 shows that the wire bundle wrapping around the body resembles the gear of a horse.
+> **Definition:** A **wiring harness** is the bundle of wires running throughout the vehicle body, the physical form of the in-vehicle network; the name comes from the gear used to hitch a horse to a cart.
 
 ![Figure 3. A harness assembly plant, the harness of a draft horse, and the harness of a car](../../images/Week01_p57.png)
 
 *Figure 3. A harness assembly plant, the harness of a draft horse, and the harness of a car*
 
-The harness acts as the vehicle's nervous system, so a vehicle cannot be completed if even one type is missing. In 2022, COVID-19 lockdowns in China and the Russia-Ukraine war caused a harness supply crisis that halted vehicle production around the world. As on the left of Figure 3, a harness is a labor-intensive part whose wires workers lay out by hand on an assembly board, so the factories are mainly in low-wage countries. The harness market is expected to grow to 95 trillion won by 2027, and the industry is responding with automation and diversification of production sites.
+The harness acts as the vehicle's nervous system, so a vehicle cannot be completed if even one type is missing. In 2022, COVID-19 lockdowns in China and the Russia-Ukraine war caused a harness supply crisis that halted vehicle production around the world. As on the left of Figure 3, a harness is a labor-intensive part whose wires workers lay out by hand on an assembly board, so the factories are mainly in low-wage countries. The harness market is expected to grow to 95 trillion won by 2027, and the industry is responding with automation and diversification of production sites. Comparing the upper and lower right of Figure 3 shows that the wire bundle wrapping around the body resembles the gear of a horse.
 
 Major Korean IVN and harness companies include Yura Corporation (Yura Tech Group, 2021 revenue of 2.0222 trillion won), Kyungshin (Kyungshin Holdings Group, 2021 revenue of 1.7352 trillion won), and Mobase Electronics (Mobase Group, 2021 revenue of 601.0 billion won).
 
@@ -461,7 +506,13 @@ Figure 5 shows the major ECUs in one vehicle. The engine control unit, transmiss
 
 > **Definition:** **ADAS (advanced driver assistance systems)** are advanced systems that assist the driver.
 
-Whereas ADAS assists the driver by assessing the driving situation, **ABS**, a braking system that prevents the wheels from locking during hard braking, **ESP**, a stability control system that prevents the body from skidding, and **TPMS**, which monitors tire pressure, are safety systems that monitor and correct the state of the vehicle itself.
+Whereas ADAS assists the driver by assessing the driving situation, ABS, ESP, and TPMS are safety systems that monitor and correct the state of the vehicle itself.
+
+> **Definition:** **ABS (anti-lock braking system)** is a braking system that prevents the wheels from locking during hard braking.
+
+> **Definition:** **ESP (electronic stability program)** is a stability control system that prevents the body from skidding.
+
+> **Definition:** **TPMS (tire pressure monitoring system)** is a system that monitors tire pressure.
 
 ### 2.5 Composition of the In-Vehicle Network
 
@@ -480,7 +531,7 @@ Several protocols with different uses and speeds are used together in an in-vehi
 
 *Figure 6. An in-vehicle network organized around a gateway*
 
-Figure 6 is an example of the IVN configuration of a real vehicle [22]. The central **gateway** connects the different networks. The OBD-II diagnostic port, the cellular module, and, through an Ethernet switch, cameras and ECUs are connected to the gateway. The low-speed CAN bus connects the radio, GPS, infotainment, and telematics, as well as body control ECUs such as door, light, and climate control. The high-speed CAN bus connects safety systems such as ABS, SRS (airbags), and EBA (emergency brake assist) and powertrain ECUs such as engine, transmission, and oil supply control. The domain controller is linked to the gateway by CAN and sits between the low-speed and high-speed CAN buses, and ECUs connected by LIN hang below it as a sub-network. In addition, ECUs are attached to a separate CAN bus and a FlexRay bus that branch from the gateway. In the legend of the figure, CAN-High (red line) and CAN-Low (blue line) denote the high-speed and low-speed CAN buses, respectively. ISO 11898 high-speed CAN and low-speed fault-tolerant CAN both carry signals as the voltage difference between two wires, CAN_H and CAN_L, a principle covered in Week 3.
+Figure 6 is an example of the IVN configuration of a real vehicle [22]. The central gateway connects the different networks. The OBD-II diagnostic port, the cellular module, and, through an Ethernet switch, cameras and ECUs are connected to the gateway. The low-speed CAN bus connects the radio, GPS, infotainment, and telematics, as well as body control ECUs such as door, light, and climate control. The high-speed CAN bus connects safety systems such as ABS, SRS (airbags), and EBA (emergency brake assist) and powertrain ECUs such as engine, transmission, and oil supply control. The domain controller is linked to the gateway by CAN and sits between the low-speed and high-speed CAN buses, and ECUs connected by LIN hang below it as a sub-network. In addition, ECUs are attached to a separate CAN bus and a FlexRay bus that branch from the gateway. In the legend of the figure, CAN-High (red line) and CAN-Low (blue line) denote the high-speed and low-speed CAN buses, respectively. ISO 11898 high-speed CAN and low-speed fault-tolerant CAN both carry signals as the voltage difference between two wires, CAN_H and CAN_L, a principle covered in Week 3.
 
 > **Definition:** A **gateway** is a device that converts and forwards messages between networks with different protocols or speeds.
 
@@ -507,7 +558,15 @@ V2X is divided into four types according to the communication partner.
 
 *Table 18. The four types of V2X communication*
 
-> **Note:** The N in V2N is sometimes read as a device that a person carries (nomadic device), but in the 3GPP standards V2N means vehicle-to-network, in which the vehicle communicates with a server through the base station and core network [23]. Today the latter meaning is more widely used.
+> **Definition:** **V2V (vehicle-to-vehicle)** is V2X communication in which a vehicle exchanges information directly with other vehicles.
+
+> **Definition:** **V2I (vehicle-to-infrastructure)** is V2X communication in which a vehicle exchanges information with road infrastructure such as traffic signals and roadside units.
+
+> **Definition:** **V2P (vehicle-to-pedestrian)** is V2X communication in which a vehicle exchanges information with pedestrians' devices.
+
+> **Definition:** **V2N (vehicle-to-network)** is V2X communication in which a vehicle communicates with servers through the base station and the core network.
+
+> **Note:** The N in V2N is sometimes read as a device that a person carries (nomadic device), but the 3GPP standards use it in the sense of vehicle-to-network [23], and this meaning is the more common one today.
 
 ### 3.2 Communication Module Types of Connected Cars: Embedded and Tethered
 
@@ -583,7 +642,11 @@ Combining wireless communication with autonomous vehicles brings the following b
 
 *Table 22. Classification of connected automated driving services*
 
-Safety services and convenience services place different demands on communication. Safety services must deliver small data within a fixed time (for example, 10 ms) without fail, so **latency** is critical. Convenience services must deliver large data such as video and internet content quickly, so **throughput** is critical.
+Safety services and convenience services place different demands on communication. Safety services must deliver small data within a fixed time (for example, 10 ms) without fail, so latency is critical. Convenience services must deliver large data such as video and internet content quickly, so throughput is critical.
+
+> **Definition:** **Latency** is the time from the moment data is sent to the moment it is received.
+
+> **Definition:** **Throughput** is the amount of data actually delivered per unit time, expressed in units such as bps.
 
 > **Definition:** **C-ITS (Cooperative Intelligent Transport Systems)** is a cooperative traffic system in which vehicles exchange information with other vehicles and road infrastructure in real time to prevent accidents.
 
@@ -641,11 +704,15 @@ There are three representative V2X communication standards for vehicles.
 
 *Table 23. Advantages and disadvantages of V2X communication methods for vehicles*
 
+> **Definition:** The **IEEE (Institute of Electrical and Electronics Engineers)** is the institute based in the United States that makes communication standards such as Wi-Fi.
+
+> **Definition:** **3GPP (3rd Generation Partnership Project)** is the international standards body that makes mobile communication standards.
+
 > **Definition:** **WAVE (Wireless Access in Vehicular Environments)** is a vehicle communication method that uses IEEE 802.11p, an adaptation of the wireless LAN (Wi-Fi) technology IEEE 802.11 to the vehicle environment, as its physical and MAC layers, and it corresponds to DSRC (Dedicated Short Range Communications) in the broad sense.
 
 > **Definition:** **C-V2X (Cellular V2X)** is the V2X technology defined by the mobile communication standards body 3GPP on the basis of LTE and 5G.
 
-The difference between the two methods stems from the standards they started from. WAVE extends the wireless LAN standards and C-V2X extends the cellular standards, so WAVE is standardized by the **IEEE**, the Institute of Electrical and Electronics Engineers based in the United States, which makes communication standards such as Wi-Fi, and C-V2X by **3GPP**, the international standards body that makes mobile communication standards.
+The difference between WAVE and C-V2X stems from the standards they started from. WAVE extends the wireless LAN standards and C-V2X extends the cellular standards, so WAVE is standardized by the IEEE and C-V2X by 3GPP.
 
 | Item | WAVE | C-V2X | Cellular |
 |:-----|:-----|:-----|:-----|
@@ -668,7 +735,11 @@ In Table 24, the cellular method cannot perform V2V because all data must pass t
 
 *Figure 9. The two communication interfaces of C-V2X, Uu and PC5*
 
-As in Figure 9, C-V2X has two communication interfaces. **Uu** is the ordinary cellular link in which the vehicle communicates with a base station, used for V2N connections to cloud computing or edge computing servers beyond the base station. **PC5** is the link in which devices communicate directly with each other without passing through a base station (the sidelink), used for V2V, V2I, and V2P. PC5 direct communication can operate even where there is no cellular network coverage [27].
+As in Figure 9, C-V2X has two communication interfaces. Uu is the ordinary cellular link in which the vehicle communicates with a base station, used for V2N connections to cloud computing or edge computing servers beyond the base station. PC5 is the link in which devices communicate directly with each other without passing through a base station (the sidelink), used for V2V, V2I, and V2P. PC5 direct communication can operate even where there is no cellular network coverage [27].
+
+> **Definition:** **Uu** is the radio interface between a device and a base station in C-V2X.
+
+> **Definition:** **PC5** is the direct interface between devices without a base station (the sidelink) in C-V2X.
 
 > **Note:** Table 24 classifies C-V2X as paid because it reflects services that use Uu and the business structure in which mobile network operators build the infrastructure. PC5 direct communication does not pass through a base station, so the communication itself may incur no mobile network charges.
 
@@ -796,42 +867,6 @@ Connect each situation with the concept that serves as the basis for judgment.
 | Autonomous vehicles need 5G in every case. | **F.** If only processed perception information is sent, the data volume is small, about 5 kB per second, and can be carried even on CAN. |
 | The U.S. FCC designated the upper 30 MHz of the 5.9 GHz band for C-V2X. | **T.** It moved the lower 45 MHz to unlicensed use and kept the upper 30 MHz for C-V2X. |
 | Japan's SIP-adus is run solely by the Ministry of Economy, Trade and Industry. | **F.** It is cross-ministry governance under the Cabinet Office, with the Ministry of Internal Affairs and Communications, the Ministry of Economy, Trade and Industry, the National Police Agency, and the Ministry of Land, Infrastructure, Transport and Tourism among the participants. |
-
----
-
-<br>
-
-## Glossary
-
-| English | Korean | One-Line Definition |
-|:-----|:-----|:-----|
-| Infotainment | 인포테인먼트 | A word combining information and entertainment, referring to functions that provide music, video, and information services inside the car. |
-| eCall | eCall | The European emergency call system in which a vehicle that has crashed automatically calls an emergency center and reports its location. |
-| RTTI (real-time traffic information) | RTTI | An abbreviation for real-time traffic information. |
-| GMV (gross merchandise value) | 총거래액 | The total amount of transactions made through a platform. |
-| BEV (battery electric vehicle) | BEV | A pure electric vehicle driven only by a battery and electric motors. |
-| FCEV (fuel cell electric vehicle) | FCEV | A hydrogen vehicle that runs on electricity produced by a hydrogen fuel cell. |
-| PHEV (plug-in hybrid electric vehicle) | PHEV | A hybrid that can be charged from an external power source. |
-| FHEV (full hybrid electric vehicle) | FHEV | A hybrid that can drive short distances on its electric motor alone. |
-| MHEV (mild hybrid electric vehicle) | MHEV | A hybrid whose electric motor only assists the engine. |
-| Society 5.0 | Society 5.0 | A national vision of the Japanese government for a society that highly integrates cyberspace and physical space. It means the fifth society, following the hunting, agrarian, industrial, and information societies. |
-| Automaker (OEM) | 완성차 업체 | A company that designs, assembles, and sells vehicles. |
-| Tier-1 Supplier | 1차 협력사 | A company that delivers modules or systems directly to automakers. |
-| Tier-2 Supplier | 2차 협력사 | A company that delivers parts to tier-1 suppliers. |
-| AUTOSAR (AUTomotive Open System ARchitecture) | AUTOSAR | A standard architecture for vehicle ECU software. |
-| Hypervisor | 하이퍼바이저 | Software that lets several operating systems run simultaneously on one piece of hardware. |
-| ECU (electronic control unit) | 전자 제어 장치 | A small in-vehicle computer that reads sensor values, computes, and controls actuators. |
-| Sensor | 센서 | A device that converts a physical quantity such as temperature, speed, or position into an electrical signal. |
-| Actuator | 액추에이터 | A device that receives an electrical signal and produces an actual action, such as a motor, valve, or lamp. |
-| ABS (anti-lock braking system) | ABS | A braking system that prevents the wheels from locking during hard braking. |
-| ESP (electronic stability program) | ESP | A stability control system that prevents the body from skidding. |
-| TPMS (tire pressure monitoring system) | TPMS | A device that monitors tire pressure. |
-| Latency | 지연 시간 | The time from the moment data is sent to the moment it is received. |
-| Throughput | 전송 속도 | The amount of data that can be sent per unit time. |
-| IEEE | IEEE | The Institute of Electrical and Electronics Engineers, based in the United States, which makes communication standards such as Wi-Fi. |
-| 3GPP (3rd Generation Partnership Project) | 3GPP | The international standards body that makes mobile communication standards. |
-
-*Table 29. Glossary*
 
 ---
 

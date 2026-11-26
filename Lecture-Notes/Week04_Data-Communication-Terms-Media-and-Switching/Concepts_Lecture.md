@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-18
+> **Last Updated:** 2026-11-26
 
 > **Learning Objectives:**
 > 1. Distinguish information, data, signal, signaling, and transmission, and explain the four combinations of encoding data into signals
@@ -49,7 +49,6 @@
   - [4.5 Major Facility: Hydrogen and Fuel Cell Test Facility](#45-major-facility-hydrogen-and-fuel-cell-test-facility)
   - [4.6 Major Facility: Truck Platooning](#46-major-facility-truck-platooning)
 - [Concept Applications](#concept-applications)
-- [Glossary](#glossary)
 - [Summary](#summary)
 - [Self-Check Questions](#self-check-questions)
 - [References](#references)
@@ -77,18 +76,22 @@ Data communication is the transfer of data from one device to another through a 
 
 There are two kinds of transmission. **Analog transmission** amplifies a weakened signal with an amplifier, and **digital transmission** regenerates the signal with a repeater. The difference between the two is covered in Section 1.4.
 
+> **Definition:** A **repeater** is a device placed along a transmission path that receives a weakened signal, determines its 0s and 1s, and sends it on as a newly regenerated signal.
+
 ### 1.2 Analog and Digital
 
 > **Definition:** **Analog** means that a value varies continuously.
 
 > **Definition:** **Digital** means that a value takes only a few discrete values.
 
-This distinction applies to both data and signals.
+The distinction between analog and digital applies to both data and signals.
 
 - **Analog data:** Has continuous values. Like voice, video, or temperature, there can be infinitely many values between any two values.
 - **Digital data:** Has discrete values. Like characters or integers, it takes one of a set of defined values.
 - **Analog signal:** A continuously varying electromagnetic wave transmitted through wire, optical fiber, or the atmosphere.
 - **Digital signal:** A sequence of voltage pulses carried over a wire. It is less sensitive to noise than an analog signal and cheaper to implement, but it is affected by signal attenuation.
+
+> **Definition:** **Attenuation** is the loss of energy, and hence of strength, that a signal suffers as it travels through a medium; higher-frequency components are attenuated more.
 
 ![Figure 1. Attenuation of a digital signal seen at the transmitting and receiving ends](../../images/Week04_p06.png)
 
@@ -120,12 +123,16 @@ flowchart LR
 
 The left side of Figure 3 is the case in which a telephone converts a human voice (sound waves) into an electrical signal of the same shape and sends it. The right side is the case in which a modem converts a computer's digital pulses into an analog signal on a carrier and sends it over the line, and the modem at the receiving side converts it back into digital pulses. For digital signals, analog data becomes a digital signal through a codec, and digital data becomes a digital signal either as a direct representation or after coding with specific rules.
 
+> **Definition:** A **carrier** is a sine wave of fixed frequency used to carry data; the transmitter varies its amplitude, frequency, or phase according to the data (Section 1.6).
+
 | Data \ Signal | Analog signal | Digital signal |
 |:-----|:-----|:-----|
 | Analog data | Two cases. (1) The signal occupies the same spectrum as the data (voice on a telephone line). (2) The analog data is encoded to occupy a different spectrum (AM and FM radio). | Encoded into a digital bit stream by a codec. |
 | Digital data | Encoded by a modem. | Two cases. (1) Two different voltages represent the two binary values. (2) The data is encoded to produce a digital signal with desired properties (the line codes of Section 1.7). |
 
 *Table 2. Comparison of signal conversion for analog and digital data*
+
+> **Definition:** The **spectrum** of a signal is the range of frequency components it contains; speech, for example, spans roughly a few hundred Hz to a few kHz.
 
 ### 1.4 Analog Transmission and Digital Transmission
 
@@ -144,17 +151,21 @@ The key difference between the two is how noise is handled. An amplifier amplifi
 
 ### 1.5 Considerations in Data Encoding Techniques
 
-> **Definition:** An **encoding scheme** is the rule that converts data into signal elements. A signal element is a part of the signal distinguished as one unit, for example, the voltage level during one bit time.
+> **Definition:** A **signal element** is a part of the signal distinguished as one unit, for example, the voltage level during one bit time.
+
+> **Definition:** An **encoding scheme** is the rule that converts data into signal elements.
 
 The considerations differ for each encoding combination.
 
-1. **Encoding digital data into a digital or analog signal:** 1s and 0s must be represented by different signal elements. **Synchronization** is needed so that the receiver knows where bits begin and end, and **sampling** is needed to read each bit at the correct instant. Attenuation and a high data rate must also be considered together.
+1. **Encoding digital data into a digital or analog signal:** 1s and 0s must be represented by different signal elements. **Synchronization** is needed so that the receiver knows where bits begin and end, and reading each bit at the correct instant (bit sampling) is needed. Attenuation and a high data rate must also be considered together.
 2. **Encoding analog data into a digital signal:** How faithfully the original signal can be restored, that is, quality and fidelity, is what matters.
 3. **Converting analog data into an analog signal:** Not used in local networks.
 
 ### 1.6 Analog Encoding of Digital Data: Modulation
 
-To send digital data over a medium that passes only analog signals, such as a telephone line or radio, a sine wave of fixed frequency must be varied according to the data. This sine wave used to carry data is called the **carrier**, and its frequency the **carrier frequency**.
+To send digital data over a medium that passes only analog signals, such as a telephone line or radio, a sine wave of fixed frequency must be varied according to the data. This sine wave used to carry data is the carrier of Section 1.3.
+
+> **Definition:** The **carrier frequency** is the frequency of the carrier.
 
 > **Definition:** **Modulation** is the changing of one or more of the amplitude, frequency, and phase of the carrier according to the data.
 
@@ -191,17 +202,21 @@ On the left of Figure 5, the waveform is dense (high frequency) where the bit is
 - Because phase changes must be detected precisely, it is a more complex technique than ASK and FSK.
 - To understand PSK, bandwidth (Hz), data rate (bps), and signaling rate (baud) must be distinguished.
 
+> **Definition:** The **bandwidth of a signal** is the width of the range of frequencies its components occupy; for a modulated signal it is the frequency range centered on the carrier frequency, measured in Hz.
+
 ![Figure 6. PSK waveform of the bit stream 00110100010](../../images/Week04_p23.png)
 
 *Figure 6. PSK waveform of the bit stream 00110100010*
 
 In Figure 6, the amplitude and frequency are constant, and the phase shifts by 180° at the points where the waveform appears to break abruptly. The simplest binary PSK (BPSK) gives 0 and 1 different phases (for example, 0° and 180°), so the phase is inverted whenever the bit value changes. Differential PSK (DPSK) inverts the phase relative to the previous signal for a 1 and keeps it for a 0. In Figure 6, the phase breaks only where a bit of 1 (the 3rd, 4th, 6th, and 10th) begins, so the waveform of Figure 6 is differential PSK.
 
-> **Definition:** The **baud rate (signaling rate)** is the number of symbols transmitted per second, in baud. Here a symbol is the unit of signal that carries data information, that is, a signal element distinguished at one time.
+> **Definition:** A **symbol** is the unit of signal that carries data information, that is, a signal element distinguished at one time.
+
+> **Definition:** The **baud rate (signaling rate)** is the number of symbols transmitted per second, in baud.
 
 > **Definition:** The **data rate** is the number of bits transmitted per second, in bps.
 
-If a symbol takes one of $M$ states, it can carry $\log_2 M$ bits, so the two rates are related as follows [1].
+If a symbol takes one of $M$ states, it can carry $\log_2 M$ bits, so the baud rate and the data rate are related as follows [1].
 
 ```math
 \text{Data rate (bps)} = \text{Baud rate (baud)} \times \log_2 M
@@ -288,7 +303,11 @@ In Figure 8, NRZ stays high throughout the consecutive 1s of the 4th and 5th bit
 
 ### 1.8 Digital Encoding of Analog Information: Sampling and PCM
 
-To send analog information such as voice digitally, the continuous signal must be measured at regular intervals and converted into numbers. Measuring the value of a continuous signal at regular time intervals is called **sampling**, and the number of measurements per second the **sampling rate**.
+To send analog information such as voice digitally, the continuous signal must be measured at regular intervals and converted into numbers.
+
+> **Definition:** **Sampling** is measuring the value of a continuous signal at regular time intervals.
+
+> **Definition:** The **sampling rate** is the number of measurements per second in sampling.
 
 > **Key Point:** **Sampling theorem.** If a signal is sampled at a rate higher than twice its highest frequency, the original signal can be completely reconstructed from the samples alone. In practice, the signal is filtered so that all of its frequency components lie below some upper bound of $B$ Hz, and it is then sampled at $2B$ samples per second. Because the highest frequency of the signal is below $B$, this rate is higher than twice the highest frequency.
 
@@ -320,7 +339,9 @@ This 64 kbps is the basic unit of one voice channel in the digital telephone net
 
 ### 1.9 Multiplexing: FDM and TDM
 
-> **Definition:** **Multiplexing** is the process of combining two or more low-rate channels into one high-rate channel so that several users share one transmission line. The process of separating the original channels again at the receiving side is called demultiplexing (demuxing).
+> **Definition:** **Multiplexing** is the process of combining two or more low-rate channels into one high-rate channel so that several users share one transmission line.
+
+> **Definition:** **Demultiplexing (demuxing)** is the process of separating the multiplexed channels back into the original channels at the receiving side.
 
 **(1) Frequency-division multiplexing (FDM).** The total frequency bandwidth of a transmission line is divided into several smaller bands so that several users can use it simultaneously. It is used mainly for transmitting analog signals.
 
@@ -352,6 +373,8 @@ In Figure 12, the multiplexer sends the data of sources 1, 2, 3, 4, 5, and 6 one
 
 *Table 5. Synchronous and asynchronous TDM*
 
+> **Definition:** A **station** is a device at the edge of a network that sends and receives data, such as a computer, a terminal, or a telephone.
+
 **Worked example.** To combine six terminals that each send at 9.6 kbps with synchronous TDM, the line needs at least $6 \times 9.6 = 57.6$ kbps. If only two terminals are sending at some moment, four of the six slots are transmitted empty, wasting $`4/6 \approx 67\%`$ of the capacity. Asynchronous TDM gives slots only to the terminals that have data to send, so in the same situation a slower line is enough, or more terminals can be connected to the same line.
 
 ---
@@ -362,7 +385,11 @@ In Figure 12, the multiplexer sends the data of sources 1, 2, 3, 4, 5, and 6 one
 
 ### 2.1 Classification and Performance Factors of Transmission Media
 
-> **Definition:** A **transmission medium** is the physical path between a transmitter and a receiver. Transmission media are divided into guided media and unguided media.
+> **Definition:** A **transmission medium** is the physical path between a transmitter and a receiver.
+
+> **Definition:** **Guided media** are transmission media, such as copper wire or glass fiber, that lead the signal along a fixed path (Sections 2.2 to 2.5).
+
+> **Definition:** **Unguided media** are transmission media, such as the atmosphere and outer space, through which the signal spreads out from an antenna; microwave and infrared communication use them.
 
 The characteristics of a transmission medium are determined by the type of medium and the transmission frequency. The factors that affect the data rate and transmission distance are as follows.
 
@@ -537,7 +564,7 @@ The considerations in using microwaves are as follows.
 
 ### 3.1 Communications Networks
 
-> **Definition:** A **communications network** is a collection of nodes that passes data from node to node to the destination. Devices at the edge of the network that send and receive data, such as computers, terminals, and telephones, are called stations.
+> **Definition:** A **communications network** is a collection of nodes that passes data from node to node to the destination. The stations (Section 1.9) that send and receive data are attached at the edge of the network.
 
 ![Figure 20. A communications network of stations A-F and switching nodes 1-7](../../images/Week04_p54.png)
 
@@ -587,7 +614,7 @@ Once the circuit is established, data passes straight through the reserved chann
 
 ### 3.3 Packet Switching
 
-> **Definition:** **Packet switching** is a method that divides data into small blocks called packets and sends them. Network resources are used only while data is being transmitted, and the route of each packet, the unit of information transfer, is decided individually at each node along the path connecting the nodes.
+> **Definition:** **Packet switching** is a method that divides data into small blocks called packets and sends them. Network resources are used only while data is being transmitted. The two ways of handling packets are covered in Section 3.4.
 
 Packet switching suits short, intermittent data traffic and is the most widely used method today. Compared with circuit switching, it differs as follows.
 
@@ -630,9 +657,9 @@ Packet switching suits short, intermittent data traffic and is the most widely u
 
 There are two ways in which a packet-switching network handles packets.
 
-> **Definition:** In the **datagram** approach, each packet is handled independently of the others. Even packets of the same message may take different routes.
+> **Definition:** The **datagram** approach handles each packet independently of the others. Even packets of the same message may take different routes.
 
-> **Definition:** In the **virtual circuit** approach, a preplanned route is established before any packets are sent, and all packets follow that route.
+> **Definition:** The **virtual circuit** approach establishes a preplanned route before any packets are sent, and all packets follow it.
 
 The properties of datagrams are as follows.
 
@@ -676,9 +703,11 @@ ISDN is a typical example of multirate circuit switching. The basic rate interfa
 
 ### 3.6 Frame Relay
 
-> **Definition:** **Frame relay** is a network for multi-access that connects two or more devices to the network at the same time, like a LAN, and is a protocol that improved the packet transmission technology of X.25 to suit high-speed data communication.
+**X.25** is an early packet-switching standard designed for an era of high line error rates, in which every node checked each packet for errors and handled retransmission whenever it received one. The processing overhead at each node was correspondingly large.
 
-**X.25** is an early packet-switching standard designed for an era of high line error rates, in which every node checked each packet for errors and handled retransmission whenever it received one. The processing overhead at each node was correspondingly large. The characteristics of frame relay are as follows.
+> **Definition:** **Frame relay** is a packet-switching protocol that improved the packet transmission technology of X.25 to suit high-speed data communication, leaving error handling to the end stations rather than to intermediate nodes.
+
+The characteristics of frame relay are as follows.
 
 - Data is placed in variable-length units called frames.
 - Error correction functions such as retransmission are left not to the intermediate nodes but to the end stations at both ends. In this way, the overall data rate is increased.
@@ -796,6 +825,8 @@ JARI conducts the following research on hydrogen and fuel cells, fuel cell vehic
 
 *Figure 30. Air flow simulation results and drag coefficients for platooning of three trucks*
 
+> **Definition:** **Platooning** is a way of driving in which several vehicles, linked by communication, travel together in a line while keeping short gaps between them. The vehicle in front parts the air, so the vehicles behind meet less air resistance and save fuel.
+
 JARI researches autonomous driving and platooning as part of developing energy-saving ITS technologies. The results in Figure 30 are as follows.
 
 - **Air flow simulation (left graph):** Shows, for each inter-vehicle gap, the rate at which the total running resistance decreases when three trucks platoon. The improvement is about 24% at a gap of 2 m, about 15% at 4 m, about 10% at 8 m, and about 9% at 12 m, and an improvement of about 8.5% remains even at 24 m. The shorter the gap, the larger the effect. The condition noted in the figure is 80 km/h with a gap of 4-12 m.
@@ -829,30 +860,6 @@ Platooning can keep short gaps safely only if acceleration and braking are synch
 | Synchronous TDM assigns slots even to terminals that have no data. | **T.** The slots are fixed, so capacity is wasted, and asynchronous TDM compensates for this. |
 | Multimode fiber has a thinner core than single-mode fiber. | **F.** The core of multimode fiber, 50 µm or more, is thicker than that of single-mode fiber (about 9 µm). |
 | In the datagram approach, packets of the same message always take the same path. | **F.** The route of each packet is decided independently, so packets may take different paths and their order may change. |
-
----
-
-<br>
-
-## Glossary
-
-| English | Korean | One-Line Definition |
-|:-----|:-----|:-----|
-| Attenuation | 감쇠 | The phenomenon in which a signal loses energy and weakens while passing through a medium. |
-| Spectrum | 스펙트럼 | The range of frequency components a signal contains. Voice spans roughly a few hundred Hz to a few kHz. |
-| Carrier | 반송파 | A sine wave of fixed frequency used to carry data. |
-| Carrier Frequency | 반송 주파수 | The frequency of the carrier. |
-| Bandwidth of the Signal | 신호의 대역폭 | The range of frequencies the signal contains around the carrier frequency. Its unit is Hz. |
-| Symbol | 심볼 | The unit of signal that carries data information, that is, a signal element distinguished at one time. |
-| Sampling | 샘플링 | Measuring the value of a continuous signal at regular time intervals. |
-| Sampling Rate | 샘플링 속도 | The number of measurements per second in sampling. |
-| Demultiplexing (demuxing) | 역다중화 | The process of separating the original channels again at the receiving side. |
-| Guided Media | 유도 매체 | Transmission media, such as wires and optical fibers, that lead the signal along a defined path. |
-| Unguided Media | 비유도 매체 | Transmission media, such as the atmosphere or outer space, through which the signal spreads out. |
-| Station | 단말 | Devices at the edge of the network that send and receive data, such as computers, terminals, and telephones,. |
-| Platooning | 군집 주행 | A driving method in which several vehicles, connected by communication, travel together in a line while keeping short gaps between them. The leading vehicle cuts through the air, reducing the air resistance on the following vehicles and saving fuel. |
-
-*Table 17. Glossary*
 
 ---
 

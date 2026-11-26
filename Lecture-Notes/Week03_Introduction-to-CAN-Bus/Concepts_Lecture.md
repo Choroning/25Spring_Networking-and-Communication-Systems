@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-18
+> **Last Updated:** 2026-11-26
 
 > **Learning Objectives:**
 > 1. Explain CAN differential signaling and the meaning of dominant and recessive bits, and explain why termination resistors are needed
@@ -50,7 +50,6 @@
   - [4.4 GM Cruise](#44-gm-cruise)
   - [4.5 Comparison of the Three Sensor Configurations](#45-comparison-of-the-three-sensor-configurations)
 - [Concept Applications](#concept-applications)
-- [Glossary](#glossary)
 - [Summary](#summary)
 - [Self-Check Questions](#self-check-questions)
 - [References](#references)
@@ -89,7 +88,11 @@ The CAN specification (ISO 11898) defines the physical layer and the data link l
 
 *Table 1. Layers and functions defined by CAN*
 
-The CAN specification does not define layers 3 through 7. The functions mean the following. **Framing** wraps data into a frame of a fixed format, and **arbitration** decides which node uses the bus when several nodes try to transmit at once (Section 1.8). **Fault confinement** limits the participation of a faulty node so that it cannot disable the whole bus (Section 1.9). **Bit timing** sets the length of one bit and the instant at which a bit is read, and keeps the clocks of the nodes aligned.
+The CAN specification does not define layers 3 through 7. The functions mean the following. **Framing** wraps data into a frame of a fixed format. **Bit timing** sets the length of one bit and the instant at which a bit is read, and keeps the clocks of the nodes aligned.
+
+> **Definition:** **Arbitration** is deciding which node uses the bus when several nodes try to transmit at once (Section 1.8).
+
+> **Definition:** **Fault confinement** is limiting the participation of a faulty node so that it cannot disable the whole bus (Section 1.9).
 
 > **[Computer Networks]** The OSI reference model divides communication functions into seven layers: physical, data link, network, transport, session, presentation, and application. A network in which all nodes hang on one bus, as inside a vehicle, needs no network layer to find routes, so CAN defines only the lower two layers and leaves the rest to application protocols. The OSI model is covered in detail in Week 5.
 
@@ -126,7 +129,7 @@ Figure 2 shows how the OSI data link and physical layers are subdivided in CAN. 
 
 A high-speed CAN bus is a twisted pair made of two wires, **CAN_H** and **CAN_L**. The receiver decides each bit not from the voltage of one wire but from the voltage difference between the two wires.
 
-**Differential signaling** puts signals that change in opposite directions on two wires, and the receiver determines the value from the difference of the two voltages, $`V_{diff} = V_{CAN\_H} - V_{CAN\_L}`$.
+> **Definition:** **Differential signaling** puts signals that change in opposite directions on two wires, and the receiver determines the value from the difference of the two voltages, $`V_{diff} = V_{CAN\_H} - V_{CAN\_L}`$.
 
 A CAN bus has only two states.
 
@@ -329,7 +332,11 @@ In Figure 10, the yellow parts are the identifier and the gray parts are the RTR
 
 A CAN frame contains no address of a receiving node. A frame sent by one node reaches every node on the bus, and each node decides by itself, from the identifier, whether it needs the message.
 
-> **Definition:** **Broadcast communication** is a method in which every node in the network receives the message sent by one node. In CAN, the node that sends a message is called the producer, and the nodes that receive and use it are called consumers.
+> **Definition:** **Broadcast communication** is a method in which every node in the network receives the message sent by one node.
+
+> **Definition:** A **producer** is, in CAN, the node that sends a message.
+
+> **Definition:** A **consumer** is, in CAN, a node that receives a message and uses it.
 
 ![Figure 11. Broadcast communication in which every station receives the producer's frame and filters it](../../images/Week03_p17.png)
 
@@ -353,7 +360,7 @@ Because many nodes share one bus, the case in which two or more nodes try to tra
 - **CD (collision detection):** Each transmitting node compares, bit by bit, the bit it sent with the bit it reads from the bus.
 - **AMP (arbitration on message priority):** When the comparison disagrees, only one node remains, according to the priority of the identifier.
 
-> **Definition:** **Bit-wise arbitration** is the process in which nodes that started transmitting at the same time send their identifiers one bit at a time from the most significant bit, and a node that sent recessive (1) but reads dominant (0) on the bus stops transmitting at once and becomes a receiver. The frame of the remaining node is not damaged at all, so this arbitration is called non-destructive arbitration.
+> **Definition:** **Bit-wise arbitration (non-destructive arbitration)** is the process in which nodes that started transmitting at the same time send their identifiers one bit at a time from the most significant bit, and a node that sent recessive (1) but reads dominant (0) on the bus stops transmitting at once and becomes a receiver. Because the frame of the node that wins the arbitration is not damaged at all, it is also called non-destructive arbitration.
 
 Because of the wired-AND property of Table 4, 0 wins over 1. Therefore, at the first position where the identifier bits differ, the node with 0 wins, and in the end **the node with the smallest identifier value takes the bus.**
 
@@ -463,6 +470,12 @@ stateDiagram-v2
 | Bus off | TEC > 255 | The node is logically disconnected from the bus and neither transmits nor acknowledges. |
 
 *Table 9. Error states of a CAN node*
+
+> **Definition:** **Error active** is the normal state of a CAN node in which both the transmit error counter (TEC) and the receive error counter (REC) are at most 127; on detecting an error, the node sends an active error flag made of dominant bits.
+
+> **Definition:** **Error passive** is the state of a CAN node whose TEC or REC exceeds 127; on detecting an error it sends only a passive error flag made of recessive bits, and it must wait longer after transmitting.
+
+> **Definition:** **Bus off** is the state of a CAN node whose TEC exceeds 255; the node is logically disconnected from the bus and neither transmits nor acknowledges.
 
 A node in the bus off state returns to the error active state only after reset and configuration and after observing 128 occurrences of 11 consecutive recessive bits (that is, after confirming that the bus has been healthy long enough). This function of isolating a faulty node step by step is the fault confinement of Section 1.2.
 
@@ -581,7 +594,7 @@ The application domains, the systems they cover, and the classifications of the 
 
 *Table 12. Network classification by application domain in a vehicle*
 
-> **Note:** The speed boundaries of the SAE classes vary between sources. A common classification based on SAE J2057 puts Class A below 10 kbps, Class B at 10 kbps-125 kbps, and Class C at 125 kbps-1 Mbps, and puts faster multimedia networks in Class D [7]. In every classification, the order is the same: body control is the slowest class, and powertrain and chassis control is the fastest. A pretensioner is a device that pulls the seat belt tight at the moment of a crash to hold the occupant in the seat.
+> **Note:** The speed boundaries of the SAE classes vary between sources. A common classification based on SAE J2057 puts Class A below 10 kbps, Class B at 10 kbps-125 kbps, and Class C at 125 kbps-1 Mbps, and puts faster multimedia networks in Class D [7]. In every classification, the order is the same: body control is the slowest class, and powertrain and chassis control is the fastest.
 
 | Speed | Protocol | Characteristics |
 |:-----|:-----|:-----|
@@ -601,7 +614,7 @@ The application domains, the systems they cover, and the classifications of the 
 
 *Table 14. Representative protocols by application domain*
 
-Infotainment is a blend of information and entertainment and refers to functions such as navigation, audio, and video, and telematics refers to services that connect the vehicle with the outside world over communication networks. Safe-by-Wire, BST, and DSI in the safety domain are dedicated buses that connect the airbag controller with crash sensors and igniters.
+Infotainment is a blend of information and entertainment and refers to functions such as navigation, audio, and video, and telematics refers to services that connect the vehicle with the outside world over communication networks. Safe-by-Wire, BST, and DSI in the safety domain are dedicated buses that connect the airbag controller with crash sensors and igniters. The pretensioner in Table 13 is a device that pulls the seat belt tight at the moment of a crash to hold the occupant in the seat.
 
 ### 2.2 LIN
 
@@ -634,7 +647,9 @@ In Figure 24, the red line is the MOST network (optical fiber). The audio/video 
 
 ### 2.4 TTP
 
-> **Definition:** **TTP (Time-Triggered Protocol)** is a fault-tolerant, time-triggered communication protocol. In time-triggered communication, each node sends messages only in its own time window of a predefined schedule.
+> **Definition:** **Time-triggered communication** is a method in which each node sends messages only in its own time window of a predefined schedule.
+
+> **Definition:** **TTP (Time-Triggered Protocol)** is a fault-tolerant, time-triggered communication protocol.
 
 In event-triggered communication such as CAN, which sends when an event occurs, it is hard to guarantee when a low-priority message will be delivered if the bus is busy. X-by-wire systems, which perform braking or steering only through wires and electronic control, require messages to arrive exactly on time, so they need a protocol that guarantees timing while tolerating faults. TTP was developed for this requirement by the TTA (Time-Triggered Architecture) group, in which Volkswagen, Audi, PSA Peugeot Citroen, Delphi, Honeywell, NEC, and Oki took part. It is used in the aerospace and automotive fields. TTP/A in Table 14 is the low-cost version for body control, and TTP/C is the version for real-time control.
 
@@ -670,11 +685,11 @@ The development of OBD is as follows.
 - The US emission regulation OBD-II requires a self-diagnosis function in the controller of every system that can affect exhaust emissions, and makes it possible to find out with dedicated diagnostic equipment which part failed and when.
 - Korea made the OBD-II specification mandatory for new vehicles from 2005 and for all vehicles from 2007.
 
-OBD-II uses one of the following five protocols: SAE J1850 PWM, SAE J1850 VPW, ISO 9141-2, ISO 14230-4 (KWP2000), and ISO 15765-4 (SAE J2480, CAN-based).
+OBD-II uses one of the following five protocols: SAE J1850 PWM, SAE J1850 VPW, ISO 9141-2, ISO 14230-4 (KWP2000), and ISO 15765-4 (SAE J2480, CAN-based). The requirements for OBD-II diagnostic equipment (scan tools) are set by SAE J1978.
 
 > **Note:** In the United States, CAN-based ISO 15765-4 has been mandatory for OBD-II communication since model year 2008, so most vehicles today also use CAN for diagnostic communication [8].
 
-> **Definition:** **KWP2000 (Keyword Protocol 2000)** is a serial communication protocol developed for vehicle diagnosis, the international standard ISO 14230. It is one of the protocols that OBD-II permits, and the requirements for OBD-II diagnostic equipment (scan tools) are set by SAE J1978.
+> **Definition:** **KWP2000 (Keyword Protocol 2000)** is a serial communication protocol developed for vehicle diagnosis, the international standard ISO 14230. It is one of the protocols that OBD-II permits.
 
 A KWP2000 message consists of a header, data, and a checksum.
 
@@ -745,6 +760,16 @@ Synchronous bandwidth is a part of the capacity reserved permanently for data th
 
 Networks developed as hardware performance rose sharply, the number of CPUs placed in many locations grew, and the amount of data exchanged between systems and the need for it increased. Networks are divided into LAN, MAN, and WAN according to the size of their physical configuration, that is, the geographic range they connect. This classification is not merely a distinction of size but also reflects the technical characteristics used at each scale (transmission method, speed, and the need for routing).
 
+> **Definition:** A **host** is a computer or device that is connected to a network and sends and receives data.
+
+> **Definition:** A **LAN (local area network)** is a network of hosts located at short distances, such as in a single building or on a campus.
+
+> **Definition:** A **MAN (metropolitan area network)** is a network that connects a city-scale area.
+
+> **Definition:** A **WAN (wide area network)** is a network structure that supports a wide area of national scale or larger.
+
+> **Definition:** **Routing** is choosing one of several possible paths and relaying data along it to the destination.
+
 ![Figure 30. Relationship among LAN, MAN, and WAN](../../images/Week03_p51.png)
 
 *Figure 30. Relationship among LAN, MAN, and WAN*
@@ -754,7 +779,7 @@ In Figure 30, several LANs within buildings or areas are tied together by a city
 | Type | Range | Characteristics |
 |:-----|:-----|:-----|
 | LAN (local area network) | Short distances such as a single building or campus | Can be connected with a single transmission cable, and because the distance is short, it transmits by broadcasting. Usually tens of Mbps to a few Gbps. |
-| MAN (metropolitan area network) | City scale | Its hardware and software configuration is similar to a LAN, but its scale of connection is larger. The international standard is DQDB, which connects hosts with two buses running in opposite directions. |
+| MAN (metropolitan area network) | City scale | Its hardware and software configuration is similar to a LAN, but its scale of connection is larger. The international standard is DQDB (Section 3.3). |
 | WAN (wide area network) | Wide areas of national scale or larger | Must support long-distance transmission over point-to-point (1:1) connections, so routing is essential. |
 
 *Table 17. Comparison of LAN, MAN, and WAN*
@@ -769,15 +794,9 @@ Figure 31 plots distance (m) on the horizontal axis and data rate (bps) on the v
 
 ### 3.2 LAN
 
-> **Definition:** A **LAN (local area network)** is a network of hosts located at short distances, such as in a single building or on a campus.
-
-> **Definition:** A **host** is a computer or device that is connected to a network and sends and receives data.
-
 A LAN can connect all hosts with a single transmission cable, and because the distance is short, it transmits by broadcasting, in which all hosts receive the data sent by one host. Its speed is usually tens of Mbps to a few Gbps, and it mainly uses bus and ring topologies (Section 3.5).
 
 ### 3.3 MAN and DQDB
-
-> **Definition:** A **MAN (metropolitan area network)** is a network that connects a city-scale area. Its hardware and software configuration is similar to a LAN, but its scale of connection is larger.
 
 The international standard for MANs is **DQDB (Distributed Queue Dual Bus)**, which connects hosts with two buses that run in opposite directions.
 
@@ -803,8 +822,6 @@ The characteristics of DQDB are as follows.
 
 ### 3.4 WAN
 
-> **Definition:** A **WAN (wide area network)** is a network structure that supports a wide area of national scale or larger.
-
 ```mermaid
 flowchart LR
     D --- A --- B
@@ -814,7 +831,7 @@ flowchart LR
 
 *Figure 33. Example WAN connected by point-to-point links*
 
-A WAN connects distant hosts with point-to-point (1:1) links. In Figure 33, for D to send to C, there is no direct link between D and C, so the data must go through D, A, and B and then from B directly to C, or from B through E to C. Because the data must be relayed along one of several possible paths, **routing** is essential. In a LAN, by contrast, all hosts share one medium and the data sent reaches everyone, so no routing is needed.
+A WAN connects distant hosts with point-to-point (1:1) links. In Figure 33, for D to send to C, there is no direct link between D and C, so the data must go through D, A, and B and then from B directly to C, or from B through E to C. Because the data must be relayed along one of several possible paths, routing is essential. In a LAN, by contrast, all hosts share one medium and the data sent reaches everyone, so no routing is needed.
 
 ### 3.5 Basic Topologies: Bus and Ring
 
@@ -855,11 +872,13 @@ flowchart LR
 - Data sent by a host travels once around the ring and always returns to the sending host. Along the way every host receives the data, so the ring supports broadcasting.
 - The host that sent the data is responsible for removing the returned data from the network. If it does not, the data keeps circling the ring.
 
-In a ring, too, collisions can occur if two or more hosts transmit at the same time. To prevent them, a control frame called a **token** is used.
+In a ring, too, collisions can occur if two or more hosts transmit at the same time. To prevent them, a control frame called a token is used.
 
 1. A host that wants to send data must first obtain the token circulating on the ring.
 2. Because there is only one token in the network, only one host sends data at any moment. Therefore, no collision occurs.
 3. The token circulates through every host on the ring in turn, so all hosts have equal opportunities to transmit.
+
+> **Definition:** A **token** is a control frame that circulates around a ring network; only the host holding it may send data, which prevents collisions.
 
 The advantages and disadvantages of various topologies, including bus and ring, are covered in detail in Week 6.
 
@@ -880,6 +899,8 @@ Vehicles have the same structure.
 *Figure 37. Representative ECUs in a vehicle*
 
 As Figure 37 shows, a vehicle has many ECUs: the engine control unit, transmission control, power steering, airbags, electrical drives (mirrors, seats, sunroof, wipers, windows), climate control, the dashboard, the diagnosis unit, telematics and infotainment, the audio system, the TV module, connectivity, ADAS (adaptive cruise control, parking sensors, blind spot detection, radar, lane change assistance), keyless entry and the immobilizer, ABS, ESP, TPMS, the electro-hydraulic brake, the trunk latches, and lighting.
+
+> **Definition:** **RADAR (radio detection and ranging)** is a sensor that emits radio waves and uses the signals reflected back by objects to measure their distance and relative speed; it works well even in rain and fog.
 
 ![Figure 38. Networks used in a vehicle and their representative applications](../../images/Week03_p66.png)
 
@@ -1031,22 +1052,6 @@ Waymo and Cruise chose an approach that mounts many LIDARs, radars, and cameras 
 | A termination resistor is attached at every node. | **F.** 120 Ω resistors are attached only at the two physical ends of the bus. |
 | If six consecutive bits of the same value appear, the receiver declares a stuff error. | **T.** The transmitter inserts an opposite bit after every five, so six in a row violate the rule. |
 | A WAN transmits by broadcasting, so it needs no routing. | **F.** A WAN performs long-distance transmission over chained point-to-point links, so routing is essential. |
-
----
-
-<br>
-
-## Glossary
-
-| English | Korean | One-Line Definition |
-|:-----|:-----|:-----|
-| Differential Signaling | 차동 신호 방식 | A method that puts signals changing in opposite directions on two wires, so that the receiver determines the value from the difference of the two voltages, $`V_{diff} = V_{CAN\_H} - V_{CAN\_L}`$. |
-| Producer | 생산자 | In CAN, the node that sends a message. |
-| Consumer | 소비자 | In CAN, a node that receives and uses a message. |
-| Non-destructive Arbitration | 비파괴적 중재 | The name given to bit-wise arbitration because the frame of the remaining node is not damaged at all. |
-| RADAR (radio detection and ranging) | 레이더 | A sensor that measures the distance and relative speed of objects with radio waves and is robust to rain and fog. |
-
-*Table 24. Glossary*
 
 ---
 
