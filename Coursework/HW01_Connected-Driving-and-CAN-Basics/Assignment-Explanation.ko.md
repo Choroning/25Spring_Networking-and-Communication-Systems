@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Assignment-Explanation.md) | [한국어](Assignment-Explanation.ko.md)
 
-> **최종 수정일:** 2026-11-26
+> **최종 수정일:** 2026-11-27
 
 > **학습 목표:**
 > 1. 자율주행차가 V2X 통신을 갖춘 커넥티드 자율주행으로 발전해야 하는 이유와 안전, 편의 측면의 용도를 설명할 수 있다
@@ -48,10 +48,10 @@
 ```text
 Coursework/HW01_Connected-Driving-and-CAN-Basics/
 ├── Original/
-│   ├── Assignment.ko.md            # 과제 안내문 (한국어)
-│   └── Assignment.md               # 과제 안내문 (영어)
-├── Assignment-Explanation.ko.md    # 과제 해설 (한국어)
-└── Assignment-Explanation.md       # 과제 해설 (영어)
+│   ├── Assignment.ko.md            # assignment handout (Korean)
+│   └── Assignment.md               # assignment handout (English)
+├── Assignment-Explanation.ko.md    # assignment explanation (Korean)
+└── Assignment-Explanation.md       # assignment explanation (English)
 ```
 
 *그림 1. HW1 과제의 디렉토리 구성*
@@ -263,10 +263,10 @@ CAN 장비와 계측 장비는 D-sub 9핀 커넥터를 많이 쓰며, 핀 배열
 고속 CAN(ISO 11898-2)은 버스의 **양 끝**에 공칭 120 Ω의 **종단 저항(termination resistor)** 을 하나씩, CAN_H와 CAN_L 사이에 연결한다 [5]. 노드가 매달린 중간 지점이나 분기선(drop cable)에는 달지 않는다.
 
 ```text
-        한쪽 끝                                    다른 쪽 끝
+        One end                                    Other end
 CAN_H  ●───┬──────────┬──────────┬──────────┬───●
            │          │          │          │
-        [120 Ω]     노드 1     노드 2    [120 Ω]
+        [120 Ω]     Node 1     Node 2    [120 Ω]
            │          │          │          │
 CAN_L  ●───┴──────────┴──────────┴──────────┴───●
 ```
@@ -305,7 +305,7 @@ R_{\text{합성}} = \frac{1}{\dfrac{1}{120\ \Omega} + \dfrac{1}{120\ \Omega}} = 
                                    │          │
                                   [D]        [E]
 
-■: 양 끝의 터미네이터
+■: terminators at both ends
 ```
 
 *그림 5. 버스형 토폴로지*
@@ -355,9 +355,9 @@ CAN은 비트 1과 0을 전압의 높고 낮음으로만 나타내는 NRZ(Non-Re
 3주차의 예에서 d는 우성(0), r은 열성(1), Sd와 Sr은 넣은 스터핑 비트이다.
 
 ```text
-보낼 비트열      r d r r r r r r   d r d d d d d    r
-스터핑 후        r d r r r r r Sd r d r d d d d d Sr r
-디스터핑 후      r d r r r r r r   d r d d d d d    r
+Bits to send     r d r r r r r r   d r d d d d d    r
+After stuffing   r d r r r r r Sd r d r d d d d d Sr r
+After destuffing r d r r r r r r   d r d d d d d    r
 ```
 
 *그림 7. 비트 스터핑과 디스터핑의 예*
@@ -365,8 +365,8 @@ CAN은 비트 1과 0을 전압의 높고 낮음으로만 나타내는 NRZ(Non-Re
 3\~7번째 비트에서 r이 5개 이어졌으므로 그 뒤에 Sd를 넣고, 다시 11\~15번째 비트에서 d가 5개 이어졌으므로 Sr을 넣는다. 16비트가 18비트로 늘어나지만 어느 구간에도 같은 비트가 6개 이상 이어지지 않는다. 스터핑 비트가 다음 구간의 첫 비트로 세어지는 경우도 확인할 필요가 있다.
 
 ```text
-보낼 비트열      r r r r r    d d d d    r
-스터핑 후        r r r r r Sd d d d d Sr r
+Bits to send     r r r r r    d d d d    r
+After stuffing   r r r r r Sd d d d d Sr r
 ```
 
 *그림 8. 스터핑 비트가 다음 구간에 포함되는 예*
@@ -397,11 +397,11 @@ ID는 버스를 누가 쓸지 정하는 **우선순위**도 겸한다. 규칙은
 이 방식을 **비트 단위 중재(bit-wise arbitration)** 라 하며, 충돌한 프레임을 버리지 않으므로 비파괴적이다. 이를 CSMA/CD + AMP(Arbitration on Message Priority)라고도 부른다(3주차, 9주차). 10주차의 예처럼 ID 0x65F, 0x67F, 0x659인 세 노드가 동시에 송신하면 다음과 같이 진행된다.
 
 ```text
-비트 위치     b10 b9 b8 b7 b6 b5 b4 b3 b2 b1 b0
-0x659          1  1  0  0  1  0  1  1  0  0  1   ← 끝까지 송신
-0x65F          1  1  0  0  1  0  1  1  1         ← b2에서 패배
-0x67F          1  1  0  0  1  1                  ← b5에서 패배
-버스           1  1  0  0  1  0  1  1  0  0  1
+Bit position  b10 b9 b8 b7 b6 b5 b4 b3 b2 b1 b0
+0x659          1  1  0  0  1  0  1  1  0  0  1   ← sends to the end
+0x65F          1  1  0  0  1  0  1  1  1         ← loses at b2
+0x67F          1  1  0  0  1  1                  ← loses at b5
+Bus            1  1  0  0  1  0  1  1  0  0  1
 ```
 
 *그림 9. ID 0x659, 0x65F, 0x67F의 비트 단위 중재*

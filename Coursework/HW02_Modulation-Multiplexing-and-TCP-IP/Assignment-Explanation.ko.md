@@ -42,10 +42,10 @@
 ```text
 Coursework/HW02_Modulation-Multiplexing-and-TCP-IP/
 ├── Original/
-│   ├── Assignment.ko.md            # 과제 안내문 (한국어)
-│   └── Assignment.md               # 과제 안내문 (영어)
-├── Assignment-Explanation.ko.md    # 과제 해설 (한국어)
-└── Assignment-Explanation.md       # 과제 해설 (영어)
+│   ├── Assignment.ko.md            # assignment handout (Korean)
+│   └── Assignment.md               # assignment handout (English)
+├── Assignment-Explanation.ko.md    # assignment explanation (Korean)
+└── Assignment-Explanation.md       # assignment explanation (English)
 ```
 
 *그림 1. HW2 과제의 디렉토리 구성*
@@ -155,13 +155,13 @@ $2 f_{\max}$를 **Nyquist 율(Nyquist rate)** 이라 한다. 조건을 만족하
 **주파수 분할 다중화(FDM)** 는 전송로의 전체 주파수 대역을 여러 개의 좁은 대역(채널)으로 나누어 사용자마다 하나씩 배정한다. 각 사용자의 신호는 자기 채널의 반송 주파수로 변조되어 모든 사용자가 **동시에** 전송한다. 이웃 채널끼리 간섭하지 않도록 채널 사이에 비워 두는 대역을 **가드 밴드(guard band)** 라 한다. 신호의 대역폭이 매체의 대역폭보다 훨씬 작을 때 쓸 수 있으며, 주로 아날로그 신호 전송(라디오와 TV 방송, 옛 전화 중계)에 쓰인다.
 
 ```text
-주파수 ▲
-       │ ████████████████████████████  채널 C
-       │ ░░░░░░░░░ 가드 밴드 ░░░░░░░░░
-       │ ████████████████████████████  채널 B
-       │ ░░░░░░░░░ 가드 밴드 ░░░░░░░░░
-       │ ████████████████████████████  채널 A
-       └─────────────────────────────▶ 시간
+Freq.  ▲
+       │ ████████████████████████████  Channel C
+       │ ░░░░░░░░░ guard band ░░░░░░░░
+       │ ████████████████████████████  Channel B
+       │ ░░░░░░░░░ guard band ░░░░░░░░
+       │ ████████████████████████████  Channel A
+       └─────────────────────────────▶ Time
 ```
 
 *그림 4. FDM: 주파수 축을 나누어 모든 채널이 동시에 전송*
@@ -169,12 +169,12 @@ $2 f_{\max}$를 **Nyquist 율(Nyquist rate)** 이라 한다. 조건을 만족하
 **시간 분할 다중화(TDM)** 는 전송로를 쓰는 시간을 짧은 **타임 슬롯**으로 나누어 사용자에게 차례로 배정한다. 어느 순간에는 한 사용자만 전송로 전체의 대역을 쓰지만, 슬롯이 매우 빠르게 돌아가므로 모든 사용자가 동시에 쓰는 것처럼 보인다. 슬롯이 한 바퀴 도는 단위를 **프레임**이라 한다. 신호의 전송 속도가 매체의 전송 속도보다 훨씬 작을 때 쓸 수 있으며, 주로 디지털 신호 전송(디지털 전화 회선 등)에 쓰인다.
 
 ```text
-주파수 ▲
+Freq.  ▲
        │ ┌──┬──┬──┬──┬──┬──┬──┬──┬──┐
        │ │A │B │C │A │B │C │A │B │C │
        │ └──┴──┴──┴──┴──┴──┴──┴──┴──┘
-       │  프레임 1  프레임 2  프레임 3
-       └─────────────────────────────▶ 시간
+       │  Frame 1   Frame 2   Frame 3
+       └─────────────────────────────▶ Time
 ```
 
 *그림 5. TDM: 시간 축을 나누어 채널이 차례로 전체 대역을 사용*
@@ -223,11 +223,11 @@ OSI의 세션 계층(대화의 시작과 종료, 동기점 관리)과 표현 계
 데이터는 송신 측에서 위 계층부터 아래 계층으로 내려가며 계층마다 헤더가 붙는데, 이를 **캡슐화(encapsulation)** 라 한다. 수신 측은 반대로 아래 계층부터 헤더를 하나씩 떼어 낸다.
 
 ```text
-응용 계층                                 [  데이터  ]
-전송 계층                       [TCP 헤더][  데이터  ]               세그먼트
-인터넷 계층             [IP 헤더][TCP 헤더][  데이터  ]               데이터그램
-네트워크 접근 계층 [MAC 헤더][IP 헤더][TCP 헤더][  데이터  ][트레일러]  프레임
-물리 계층          0 1 1 0 1 0 0 1 ...                                비트
+Application layer                         [   data   ]
+Transport layer                 [TCP hdr ][   data   ]               segment
+Internet layer          [IP hdr ][TCP hdr ][   data   ]               datagram
+Network access     [MAC hdr ][IP hdr ][TCP hdr ][   data   ][trailer]  frame
+Physical layer     0 1 1 0 1 0 0 1 ...                                bits
 ```
 
 *그림 6. TCP/IP 계층을 내려가며 이루어지는 캡슐화*

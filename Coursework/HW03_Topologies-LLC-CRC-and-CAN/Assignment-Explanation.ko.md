@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Assignment-Explanation.md) | [한국어](Assignment-Explanation.ko.md)
 
-> **최종 수정일:** 2026-11-16
+> **최종 수정일:** 2026-11-27
 
 > **학습 목표:**
 > 1. 네트워크 연결 장비의 종류와 각 장비의 특징을 설명할 수 있다
@@ -46,10 +46,10 @@
 ```text
 Coursework/HW03_Topologies-LLC-CRC-and-CAN/
 ├── Original/
-│   ├── Assignment.ko.md            # 과제 안내문 (한국어)
-│   └── Assignment.md               # 과제 안내문 (영어)
-├── Assignment-Explanation.ko.md    # 과제 해설 (한국어)
-└── Assignment-Explanation.md       # 과제 해설 (영어)
+│   ├── Assignment.ko.md            # assignment handout (Korean)
+│   └── Assignment.md               # assignment handout (English)
+├── Assignment-Explanation.ko.md    # assignment explanation (Korean)
+└── Assignment-Explanation.md       # assignment explanation (English)
 ```
 
 *그림 1. HW3 과제의 디렉토리 구성*
